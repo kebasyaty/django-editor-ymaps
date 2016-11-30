@@ -93,6 +93,7 @@ migrate:
 ~~~~~~~~
 
 ::
+
     python manage.py migrate
 
 
@@ -100,6 +101,7 @@ templates:
 ~~~~~~~~~~
 
 ::
+
     <head>
     <link rel="stylesheet" type="text/css" href="{% static 'yandex_maps/css/ymap_front.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'yandex_maps/switchery/switchery.min.css' %}">

@@ -1,0 +1,361 @@
+body {
+    font-family:arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size:16px;
+    color: #666;
+}
+
+:focus {
+outline: none;
+}
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {/* */
+border: none;
+}
+
+a {
+    color:#79aec8;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+label {
+    font-size: 16px;
+    color: #666;
+}
+
+textarea {
+    display: none;
+}
+
+
+/* Map editor */
+#id_map_editor {
+    min-height:910px;
+    min-width:1200px;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+
+
+/* Panel */
+#id_ymap_panel_show_button {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 48px;
+    right: auto;
+    bottom: auto;
+    left: -49px;
+    z-index: 100;
+    background: url("../img/ico_menu.png") #f6f6f6 no-repeat center;
+    background-size: cover;
+    border: solid #999;
+    border-width: 1px 1px 1px 0;
+    cursor: pointer;
+    -moz-border-radius: 0 8px 8px 0;
+    -webkit-border-radius: 0 8px 8px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+#id_ymap_panel {
+    width:340px;
+    position:absolute;
+    top:0;
+    right: auto;
+    bottom:0;
+    left:-340px;
+    z-index: 100;
+    background: #f8f8f8;
+}
+
+#id_ymap_panel_close_button {
+    width: 16px;
+    height: 16px;
+    background: url("../img/ico_close.png") no-repeat, 0 0;
+    cursor: pointer;
+    margin: 5px 5px auto auto;
+    overflow: hidden;
+}
+
+#id_ymap_panel_close_button:hover {
+    background-position: -16px 0;
+}
+
+#id_ymap_panel_filter_collections {
+    width:100%;
+    height:190px;
+    text-align:center;
+    padding-top: 10px;
+}
+
+#id_ymap_panel_filter_collections label {
+    display: block;
+    margin-bottom: 2px;
+}
+
+#id_panel_icons {
+    width: 100%;
+    position: relative;
+    height: 70%;
+}
+
+#id_inner_panel_icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    overflow-y: scroll;
+    -moz-border-radius: 8px 0 0 8px;
+    -webkit-border-radius: 8px 0 0 8px;
+    border-radius: 8px 0 0 8px;
+}
+
+
+/* Icons map */
+.table_icons {
+    width:95%;
+    height:auto;
+    position:absolute;
+    top:5px;
+    bottom: 5px;
+    left:5px;
+    border-spacing:2px;
+}
+
+.table_icons tr td {
+    border:1px solid #eee;
+    width:41px;
+    height:46px;
+    text-align:center;
+    vertical-align:middle;
+    cursor: pointer;
+}
+
+.table_icons tr td:hover {
+    border:1px solid #999;
+    width:41px;
+    height:46px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+img#id_icon {
+    height: 39px;
+    width: auto;
+}
+
+#id_fake_color_icon {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+}
+
+#id_icon_text {
+    color: #666;
+    font-size: 16px;
+    font-family:arial, "nimbus sans l", "helvetica cy", sans-serif;
+}
+
+
+/* Collection */
+select#id_collection_polyline,
+select#id_collection_placemark,
+select#id_collection_polygon {
+    width:96%;
+    margin-bottom: 10px;
+}
+
+
+/* Menu on balloon */
+.table_balloon_context {
+    width: 100%;
+    position:relative;
+    font-size: 16px;
+}
+
+.table_balloon_context tr th {
+    height: 42px;
+    color: #999;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.table_balloon_context tr td {
+    width: 50%;
+    color: #666;
+    font-size: 16px;
+}
+
+.table_balloon_context tr td.balloon_footer {
+    color: #666;
+    font-size: 12px;
+}
+
+div.gap {
+    margin-top: 10px;
+}
+
+#id_slider_width_line {
+    width: 84%;
+    margin: 5px auto auto 10px;
+}
+
+#id_slider_opacity_line, #id_slider_opacity_fill {
+    width: 42%;
+    margin: 5px auto auto 10px;
+}
+
+#id_handle_width_line,
+#id_handle_opacity_line,
+#id_handle_opacity_fill {
+    width: 26px;
+    height: 22px;
+    top: 50%;
+    margin-top: -11px;
+    text-align: center;
+    line-height: 24px;
+}
+
+
+/* Popup - TinyMCE и select collection */
+.popup_close_button {
+    width: 20px;
+    height: 20px;
+    background: url("../img/big_ico_close.png") #fff no-repeat center;
+    background-size: cover;
+    cursor: pointer;
+    margin: 5px 5px 10px auto;
+}
+
+
+/* TinyMCE */
+#id_popup_tinymce {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#id_floating_textarea_tinymce {
+    width: 400px;
+    margin: 0 auto;
+}
+
+
+/* popup select collection */
+#id_popup_select_collection,
+#id_placemark_popup_select_collection {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#id_floating_select_collection,
+#id_placemark_floating_select_collection {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+#id_items_select_collection,
+#id_placemark_items_select_collection {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    overflow-y: scroll;
+}
+
+#id_items_select_collection,
+#id_placemark_items_select_collection {
+    font-size: 16px;
+    color: #666;
+}
+
+#id_placemark_items_select_collection > fieldset {
+    border: 1px solid #ccc;
+}
+
+#id_placemark_items_select_collection > fieldset:last-child {
+    margin-top: 10px;
+}
+
+#id_placemark_items_select_collection > fieldset > legend {
+    color: #999;
+    font-size: 16px;
+    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+}
+
+#id_collection_polyline-button,
+#id_collection_placemark-button,
+#id_collection_polygon-button {
+    background: #f6f6f6;
+}
+
+
+/* Form save */
+#id_form_geoobjects {
+    display: none;
+}
+
+
+/* Dialog popup */
+#id_dialog {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+}
+
+
+/* placeholder */
+input[placeholder] {
+    width: 86%;
+}
+
+::-webkit-input-placeholder {
+    color: #999;
+    font-family:arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size: 14px;
+}
+:-moz-placeholder {
+    color: #999;
+    font-family:arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size: 14px;
+}
+.placeholder {
+    color: #999;
+    font-family:arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size: 14px;
+}
+
+
+/* jquery ui */
+label.ui-checkboxradio-label {
+    border: none !important;
+}

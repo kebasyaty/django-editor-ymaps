@@ -1,0 +1,133 @@
+{% if ymap %}
+{% load staticfiles i18n %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Editor of yandex maps</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'yandex_maps/css/ymap_editor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'yandex_maps/really-simple-color-picker/css/colorPicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'yandex_maps/jquery_ui/jquery-ui.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'yandex_maps/jquery_ui/jquery-ui.structure.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'yandex_maps/ymap_tinymce/css/front_tinymce.css' %}">
+
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script type="text/javascript" src="{% static 'yandex_maps/js/jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'yandex_maps/jquery_ui/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'yandex_maps/really-simple-color-picker/js/jquery.colorPicker.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'yandex_maps/js/jquery.json.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'yandex_maps/js/jquery.placeholder.js' %}"></script>
+    <script type="text/javascript" src="/tinymce/filebrowser/"></script>
+    <script type="text/javascript" src="{% static "yandex_maps/tiny_mce/jquery.tinymce.js" %}"></script>
+    <script type="text/javascript" src="{% static "yandex_maps/tiny_mce/tiny_mce.js" %}"></script>
+    <script type="text/javascript" src="{% static 'yandex_maps/js/ymap_editor_load.js' %}"></script>
+
+    <link rel="shortcut icon" href="{% static 'yandex_maps/img/favicon.ico' %}" type="image/x-icon">
+
+<script type="text/javascript">
+    // ymaps - global variables
+    var id_map = {{ ymap.pk }},
+            zoom_map = {{ ymap.zoom }},
+            center_map = {{ ymap.get_coordinates }},
+            custom_icons = {
+                {% for icon in custom_icons %}
+                '{{ icon.slug }}': [new Image().src = '{{ icon.image.url }}', {{ icon.get_size }}, {{ icon.get_offset }}]{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            };
+</script>
+
+</head>
+
+<body>
+    <div id="id_map_editor">
+        <div id="id_ymap_panel_show_button"></div>
+
+        <!-- панель редактора -->
+        <div id="id_ymap_panel">
+            <div id="id_ymap_panel_close_button"></div>
+
+            <!-- Фильтр геообъектов по коллекциям -->
+            <div id="id_ymap_panel_filter_collections">
+                <label for="id_collection_placemark">Указатели</label>
+                <select id="id_collection_placemark" name="collection_placemark">
+                    <option value="all-show">Все&ensp;&rArr;&ensp;Видны</option>
+                    <option value="all-hide">Все&ensp;&rArr;&ensp;Скрыты</option>
+                </select>
+                <div class="gap"></div>
+                <label for="id_collection_polyline">Маршруты</label>
+                <select id="id_collection_polyline" name="collection_polyline">
+                    <option value="all-show">Все&ensp;&rArr;&ensp;Видны</option>
+                    <option value="all-hide">Все&ensp;&rArr;&ensp;Скрыты</option>
+                </select>
+                <div class="gap"></div>
+                <label for="id_collection_polygon">Территории</label>
+                <select id="id_collection_polygon" name="collection_polygon">
+                    <option value="all-show">Все&ensp;&rArr;&ensp;Видны</option>
+                    <option value="all-hide">Все&ensp;&rArr;&ensp;Скрыты</option>
+                </select>
+            </div>
+            <!-- средний блок -->
+            <div id="id_panel_icons">
+                <div id="id_inner_panel_icons">
+                    <!-- таблица для вывода иконок -->
+                    <table class="table_icons"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- popup TinyMCE -->
+    <div id="id_popup_tinymce">
+        <div id="id_tinymce_close_button" class="popup_close_button"></div>
+        <div id="id_floating_textarea_tinymce">
+            <textarea id="id_textarea_tinymce"></textarea>
+        </div>
+    </div>
+
+    <!-- popup select collection -->
+    <div id="id_popup_select_collection">
+        <div id="id_collection_close_button" class="popup_close_button"></div>
+        <div id="id_floating_select_collection">
+            <div id="id_items_select_collection" class="widget"></div>
+        </div>
+    </div>
+
+    <div id="id_placemark_popup_select_collection">
+        <div id="id_placemark_collection_close_button" class="popup_close_button"></div>
+        <div id="id_placemark_floating_select_collection">
+            <div id="id_placemark_items_select_collection" class="widget">
+                <fieldset><legend>Категории</legend></fieldset>
+                <fieldset><legend>Подкатегории</legend></fieldset>
+            </div>
+        </div>
+    </div>
+    
+    <!-- форма передачи геообъектов -->
+    <form id="id_form_geoobjects" action="{% url 'yandex_maps:save_geoobject' %}">
+        <input id="id_map" name="map" type="text" value="{{ ymap.pk }}" />
+        <input id="id_icon_content" type="text" name="icon_content" />
+        <textarea id="id_hint_content" name="hint_content"></textarea>
+        <textarea id="id_balloon_content" name="balloon_content"></textarea>
+        <input id="id_icon_name" name="icon_name" type="text" value="" />
+        <input id="id_color" name="color" type="text" value="" />
+        <input id="id_stroke_width" name="stroke_width" type="number" value="" />
+        <input id="id_stroke_color" name="stroke_color" type="text" value="" />
+        <input id="id_stroke_opacity" name="stroke_opacity" type="text" value="" />
+        <textarea id="id_coordinates" name="coordinates"></textarea>
+        <input id="id_fill_color" name="fill_color" type="text" value="" />
+        <input id="id_fill_opacity" name="fill_opacity" type="text" value="" />
+        <input id="id_category" type="text" name="category" />
+        <select multiple="multiple" id="id_subcategory" name="subcategory"></select>
+        <input id="id_pk" type="text" name="pk">
+        <input id="id_geo_type" type="text" name="geo_type" />
+        <input id="id_action" type="text" name="action" />
+    </form>
+
+<div id="id_dialog"></div>
+
+</body>
+</html>
+{% endif %}

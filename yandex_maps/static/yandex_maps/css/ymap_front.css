@@ -1,0 +1,149 @@
+/* YMap */
+#id_ymap {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Panel */
+#id_ymap_panel_show_button {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 48px;
+    right: auto;
+    bottom: auto;
+    left: -49px;
+    z-index: 100;
+    background: url("../img/ico_menu.png") #f6f6f6 no-repeat center;
+    background-size: cover;
+    border: solid #999;
+    border-width: 1px 1px 1px 0;
+    cursor: pointer;
+    -moz-border-radius: 0 8px 8px 0;
+    -webkit-border-radius: 0 8px 8px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+#id_ymap_panel {
+    width:340px;
+    position:absolute;
+    top:0;
+    right: auto;
+    bottom:0;
+    left:-340px;
+    z-index: 100;
+    background: #f8f8f8;
+}
+
+#id_ymap_panel_close_button {
+    width: 16px;
+    height: 16px;
+    background: url("../img/ico_close.png") no-repeat, 0 0;
+    cursor: pointer;
+    margin: 5px 5px auto auto;
+}
+
+#id_ymap_panel_close_button:hover {
+    background-position: -16px 0;
+}
+
+#id_ymap_panel_filter_collections {
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    padding-top: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.ymap_link,
+#id_filter_hint_link {
+    font-family:arial, "nimbus sans l", "helvetica cy", sans-serif;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.ymap_link {
+    color: #9e977e;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    padding: 0 4px 2px;
+}
+
+#id_filter_hint_link {
+    color: #aabbf2;
+    font-size: 12px;
+}
+
+#id_ymap_list_collections {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    background: #f8f8f8;
+}
+
+#id_ymap_list_collection_placemark,
+#id_ymap_list_collection_polyline,
+#id_ymap_list_collection_polygon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    overflow: auto;
+}
+
+.ymap_title_collection {
+    position: relative;
+    top: 2px;
+    left: 10px;
+    font-family:arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size: 14px;
+    color: #9e977e;
+    letter-spacing: 1px;
+}
+
+.ymap_list_collection > fieldset {
+    border: 1px solid #ccc;
+}
+
+.ymap_list_collection > fieldset > p,
+.ymap_list_collection > p {
+    font-family:arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size: 14px;
+    color: #9e977e;
+    letter-spacing: 1px;
+}
+
+.ymap_list_collection > fieldset:last-child {
+    margin-top: 7px;
+}
+
+.ymap_list_collection > fieldset > legend {
+    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size: 14px;
+    color: #9e977e;
+    letter-spacing: 1px;
+}
+
+#id_filter_hint {
+    position: relative;
+}
+
+#id_filter_hint_text {
+    display: none;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    z-index: 1;
+    font-family:arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size: 11px;
+    color: #4a4940;
+    letter-spacing: 1px;
+    background: #f5eac5;
+    border: 1px solid #9e977e;
+    padding: 2px;
+}

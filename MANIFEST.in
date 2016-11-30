@@ -1,0 +1,4 @@
+include LICENSE
+include README.rst
+global-exclude *.pyc *~ .directory
+recursive-include yandex_maps *.py *.js *.html *.css *.png *.jpg *.gif django.mo django.po

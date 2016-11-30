@@ -21,7 +21,6 @@ version 0.1
     django-imagekit
     django-tinymce
     djlime-filebrowser
-    pilkit
     python-slugify
     django-smart-selects
 

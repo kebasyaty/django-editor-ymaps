@@ -48,7 +48,7 @@ settings:
         'yandex_maps',
     ]
     
-    # Здесь ставьте свои настройки. Для карта, они подгружаются отдельно.
+    # Здесь ставьте свои настройки. Для карт, они подгружаются отдельно.
     # https://github.com/aljosa/django-tinymce
     TINYMCE_DEFAULT_CONFIG = { ... }
 

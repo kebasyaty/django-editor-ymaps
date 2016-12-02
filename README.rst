@@ -30,7 +30,7 @@ version 0.1
 
 ::
 
-    pip install django-yandex-maps
+    pip install django-editor-yandex-maps
 
 
 settings:

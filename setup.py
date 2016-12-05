@@ -3,7 +3,7 @@
 #
 #  Copyright (c) 2016 genkosta
 #
-#  django-editor-yandex-maps is free software under terms of the MIT License.
+#  django-editor-ymaps is free software under terms of the MIT License.
 #
 
 import os
@@ -27,7 +27,7 @@ def find_version(*parts):
 
 
 setup(
-    name     = 'django-editor-yandex-maps',
+    name     = 'django-editor-ymaps',
     version  = find_version('yandex_maps', '__init__.py'),
     packages= find_packages(),
     requires = ['python (== 2.7)', 'django (>= 1.8)'],
@@ -35,10 +35,10 @@ setup(
     long_description = open('README.rst').read(),
     author       = 'genkosta',
     author_email = 'genkosta43@gmail.com',
-    url          = 'https://github.com/genkosta/django-editor-yandex-maps',
-    download_url = 'https://github.com/genkosta/django-editor-yandex-maps/tarball/master',
+    url          = 'https://github.com/genkosta/django-editor-ymaps',
+    download_url = 'https://github.com/genkosta/django-editor-ymaps/tarball/master',
     license      = 'MIT License',
-    keywords     = 'django yandex maps map',
+    keywords     = 'django editor ymaps yandex maps map',
     classifiers  = [
         'Environment :: Web Environment',
         'Framework :: Django',

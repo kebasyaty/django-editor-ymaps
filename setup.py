@@ -30,6 +30,7 @@ setup(
     name     = 'django-editor-ymaps',
     version  = find_version('yandex_maps', '__init__.py'),
     packages= find_packages(),
+    include_package_data=True,
     requires = ['python (== 2.7)', 'django (>= 1.8)'],
     description  = 'Creating and editing Yandex maps.',
     long_description = open('README.rst').read(),

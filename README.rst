@@ -109,6 +109,7 @@ templates:
     <link rel="stylesheet" type="text/css" href="{% static 'yandex_maps/ymap_tinymce/css/front_tinymce.css' %}">
 
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'yandex_maps/js/jquery.json.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'yandex_maps/switchery/switchery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'yandex_maps/js/ymap_front_load.js' %}"></script>

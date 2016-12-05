@@ -1,6 +1,0 @@
-Pillow
-django-imagekit
-django-tinymce
-djlime-filebrowser
-python-slugify
-django-smart-selects

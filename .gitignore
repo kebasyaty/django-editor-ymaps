@@ -6,4 +6,5 @@
 .directory
 dist/
 build/
-django-editor-ymaps.egg-info
+*.egg-info
+

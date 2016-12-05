@@ -1,4 +1,7 @@
 include LICENSE
 include README.rst
 global-exclude *.pyc *~ .directory
-recursive-include yandex_maps *.py *.js *.html *.css *.png *.jpg *.gif django.mo django.po
+recursive-include yandex_maps *.py
+recursive-include yandex_maps/locale *.mo *.po
+recursive-include yandex_maps/static *.css *.png *.jpg *.gif *.js *.less
+recursive-include yandex_maps/templates *.html *.txt

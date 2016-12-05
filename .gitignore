@@ -1,6 +1,9 @@
-*.pyc
+*.py[cow]
 .idea
 *~
 /media/*
 */media/*
 .directory
+dist/
+build/
+/django-editor-ymaps.egg-info

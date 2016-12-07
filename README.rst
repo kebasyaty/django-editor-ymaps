@@ -130,4 +130,4 @@ templates:
 ::
 
     Кнопка перехода на страницу редактора
-    .. images:: 02.png
+    https://github.com/genkosta/django-editor-ymaps/blob/master/images:: 02.png

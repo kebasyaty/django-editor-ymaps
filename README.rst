@@ -132,4 +132,5 @@ templates:
 
     .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/02.png
         :alt: Кнопка перехода на страницу редактора
+        :width: 100%
 

@@ -130,12 +130,17 @@ templates:
 ::
 
     .. class:: no-web
-    
-        Кнопка перехода на страницу редактора
+
         .. image:: https://raw.githubusercontent.com/jkbrzt/httpie/master/httpie.png
+            :alt: HTTPie compared to cURL
+            :width: 100%
+            :align: center
 
 
 .. class:: no-web
 
-    Кнопка перехода на страницу редактора
     .. image:: https://raw.githubusercontent.com/jkbrzt/httpie/master/httpie.png
+        :alt: HTTPie compared to cURL
+        :width: 100%
+        :align: center
+

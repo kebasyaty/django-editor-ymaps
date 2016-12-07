@@ -1827,8 +1827,9 @@ ymaps.ready(function () {
                 if (icon_name.search('Stretchy') == -1) {
 
                     Placemark = new ymaps.Placemark($.evalJSON(fields['coordinates']), {
+                        iconContent: fields['icon_content'],
                         hintContent: fields['hint_content'],
-                        balloonContentHeader: fields['hint_content'],
+                        balloonContentHeader: fields['icon_content'],
                         balloonContentBody: fields['balloon_content'],
                         pk: tmp['pk'],
                         collectionID: collection_id,
@@ -1844,7 +1845,7 @@ ymaps.ready(function () {
                     Placemark = new ymaps.Placemark($.evalJSON(fields['coordinates']), {
                         iconContent: fields['icon_content'],
                         hintContent: fields['hint_content'],
-                        balloonContentHeader: fields['hint_content'],
+                        balloonContentHeader: fields['icon_content'],
                         balloonContentBody: fields['balloon_content'],
                         pk: tmp['pk'],
                         collectionID: collection_id,
@@ -1860,8 +1861,9 @@ ymaps.ready(function () {
                 custom_icon = window.custom_icons[icon_name];
 
                 Placemark = new ymaps.Placemark($.evalJSON(fields['coordinates']), {
+                    iconContent: fields['icon_content'],
                     hintContent: fields['hint_content'],
-                    balloonContentHeader: fields['hint_content'],
+                    balloonContentHeader: fields['icon_content'],
                     balloonContentBody: fields['balloon_content'],
                     pk: tmp['pk'],
                     collectionID: collection_id,

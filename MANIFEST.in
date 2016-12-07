@@ -3,5 +3,5 @@ include README.rst
 global-exclude *~ .directory
 recursive-include yandex_maps *.py
 recursive-include yandex_maps/locale *.mo *.po
-recursive-include yandex_maps/static *.css *.png *.jpg *.gif *.js *.less
+recursive-include yandex_maps/static *.css *.png *.jpg *.gif *.js *.less *.htm
 recursive-include yandex_maps/templates *.html *.txt

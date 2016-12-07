@@ -129,9 +129,13 @@ templates:
 
 ::
 
+    .. class:: no-web
+    
+        Кнопка перехода на страницу редактора
+        .. image:: https://raw.githubusercontent.com/jkbrzt/httpie/master/httpie.png
+
+
+.. class:: no-web
+
     Кнопка перехода на страницу редактора
     .. image:: https://raw.githubusercontent.com/jkbrzt/httpie/master/httpie.png
-
-
-Кнопка перехода на страницу редактора
-.. image:: https://raw.githubusercontent.com/jkbrzt/httpie/master/httpie.png

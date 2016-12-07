@@ -129,8 +129,6 @@ templates:
 
 .. class:: no-web
 
+    **Кнопка перехода на страницу редактора**
     .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/02.png
-        :alt: HTTPie compared to cURL
-        :width: 100%
-        :align: center
 

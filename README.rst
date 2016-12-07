@@ -18,7 +18,6 @@ version 0.2
 ::
 
     List:
-    
     1. Pillow
     #. django-imagekit
     #. django-tinymce

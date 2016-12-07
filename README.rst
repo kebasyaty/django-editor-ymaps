@@ -17,12 +17,12 @@ version 0.2
 
 ::
 
-    #. Pillow
-    #. django-imagekit
-    #. django-tinymce
-    #. djlime-filebrowser
-    #. python-slugify
-    #. django-smart-selects
+    * Pillow
+    * django-imagekit
+    * django-tinymce
+    * djlime-filebrowser
+    * python-slugify
+    * django-smart-selects
 
 
 Установка:

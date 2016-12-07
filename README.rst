@@ -137,4 +137,3 @@ templates:
 Кнопка перехода на страницу редактора
 .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/images/02.png
     :alt: my-picture1
-

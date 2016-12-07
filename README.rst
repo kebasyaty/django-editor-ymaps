@@ -143,6 +143,16 @@ templates:
 .. class:: no-web
 
     .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/images/05.png
-        :alt: Кнопка перехода на страницу редактора
+        :alt: Центровка карты
+        :width: 100%
+
+
+Фрагмент страницы редактора с открытой панелью
+----------------------------------------------
+
+.. class:: no-web
+
+    .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/images/05.png
+        :alt: Фрагмент страницы редактора с открытой панелью
         :width: 100%
 

@@ -17,7 +17,7 @@ version 0.2
 
 ::
 
--   Pillow
+    - Pillow
     - django-imagekit
     - django-tinymce
     - djlime-filebrowser

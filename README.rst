@@ -152,7 +152,7 @@ templates:
 
 .. class:: no-web
 
-    .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/images/05.png
+    .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/images/04.png
         :alt: Фрагмент страницы редактора с открытой панелью
         :width: 100%
 

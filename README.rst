@@ -128,18 +128,19 @@ templates:
 ++++++++++
 
 
+Кнопка перехода на страницу редактора
+-------------------------------------
 .. class:: no-web
-
-    Кнопка перехода на страницу редактора
-    -------------------------------------
     
     .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/images/02.png
         :alt: Кнопка перехода на страницу редактора
         :width: 100%
 
 
-    Центровка карты
-    ----------------
+Центровка карты
+----------------
+
+.. class:: no-web
 
     .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/images/05.png
         :alt: Кнопка перехода на страницу редактора

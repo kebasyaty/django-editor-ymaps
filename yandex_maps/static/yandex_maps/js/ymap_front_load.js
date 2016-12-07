@@ -317,7 +317,7 @@ ymaps.ready(function () {
 
                     Placemark = new ymaps.Placemark($.evalJSON(fields['coordinates']), {
                         hintContent: fields['hint_content'],
-                        balloonContentHeader: fields['hint_content'],
+                        balloonContentHeader: fields['icon_content'],
                         balloonContentBody: fields['balloon_content'],
                         pk: tmp['pk'],
                         collectionID: collection_id,
@@ -333,7 +333,7 @@ ymaps.ready(function () {
                     Placemark = new ymaps.Placemark($.evalJSON(fields['coordinates']), {
                         iconContent: fields['icon_content'],
                         hintContent: fields['hint_content'],
-                        balloonContentHeader: fields['hint_content'],
+                        balloonContentHeader: fields['icon_content'],
                         balloonContentBody: fields['balloon_content'],
                         pk: tmp['pk'],
                         collectionID: collection_id,
@@ -350,7 +350,7 @@ ymaps.ready(function () {
 
                 Placemark = new ymaps.Placemark($.evalJSON(fields['coordinates']), {
                     hintContent: fields['hint_content'],
-                    balloonContentHeader: fields['hint_content'],
+                    balloonContentHeader: fields['icon_content'],
                     balloonContentBody: fields['balloon_content'],
                     pk: tmp['pk'],
                     collectionID: collection_id,

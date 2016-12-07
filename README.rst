@@ -130,8 +130,8 @@ templates:
 ::
 
     Кнопка перехода на страницу редактора
-    . image:: 02.png
+    .. image:: https://raw.githubusercontent.com/jkbrzt/httpie/master/httpie.png
 
 
 Кнопка перехода на страницу редактора
-.. image:: ../02.png
+.. image:: https://raw.githubusercontent.com/jkbrzt/httpie/master/httpie.png

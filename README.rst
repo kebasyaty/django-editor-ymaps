@@ -130,4 +130,4 @@ templates:
 ::
 
     Кнопка перехода на страницу редактора
-    .. image:: /tree/master/images/02.png
+    .. image:: images/02.png

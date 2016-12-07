@@ -127,8 +127,7 @@ templates:
 Скриншоты:
 ++++++++++
 
+**Кнопка перехода на страницу редактора**
 .. class:: no-web
-
-    **Кнопка перехода на страницу редактора**
     .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/02.png
 

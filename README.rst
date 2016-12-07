@@ -130,7 +130,7 @@ templates:
 
 .. class:: no-web
 
-    .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/02.png
+    .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/images/02.png
         :alt: Кнопка перехода на страницу редактора
         :width: 100%
 

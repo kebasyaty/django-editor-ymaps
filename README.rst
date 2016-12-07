@@ -3,7 +3,7 @@ django-editor-ymaps
 
 Удобное использование Яндекс-Карт в проектах на Django.
 
-version **0.2**
+version **0.2.1**
 
 Проверено на Django 1.8 и 1,9 , Python 2.7
 

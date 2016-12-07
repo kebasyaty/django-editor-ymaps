@@ -136,3 +136,10 @@ templates:
         :alt: Кнопка перехода на страницу редактора
         :width: 100%
 
+
+    Центровка карты
+    
+    .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/images/05.png
+        :alt: Кнопка перехода на страницу редактора
+        :width: 100%
+

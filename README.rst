@@ -228,6 +228,6 @@ templates:
 
 
 ~~~~~~~~~~~~~~~~~~~~
-License: MIT License
+License: MIT
 ~~~~~~~~~~~~~~~~~~~~
 

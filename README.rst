@@ -216,3 +216,13 @@ templates:
         :alt: Вид кластеров с кастомной иконкой.
         :width: 100%
 
+
+Вид с открытым балуном (левый клик на объекте).
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. class:: no-web
+
+    .. image:: https://raw.githubusercontent.com/genkosta/django-editor-ymaps/master/images/06.png
+        :alt: Вид с открытым балуном (левый клик на объекте).
+        :width: 100%
+

@@ -1,8 +1,9 @@
 # coding: utf-8
+
 """Creating and editing Yandex maps."""
 
-VERSION = (1, 0)
-__version__ = '.'.join(map(str, VERSION))
+
+__version__ = '1.0 beta'
 
 __author__ = 'genkosta'
 

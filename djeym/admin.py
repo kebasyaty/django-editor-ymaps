@@ -43,16 +43,19 @@ class TileSourceAdmin(admin.ModelAdmin):
 class MapControlsInline(admin.TabularInline):
     model = MapControls
     can_delete = False
+    classes = ['collapse']
 
 
 class ExternalModulesInline(admin.StackedInline):
     model = ExternalModules
+    classes = ['collapse']
     can_delete = False
 
 
 class GeneralSettingsInline(admin.StackedInline):
     model = GeneralSettings
     can_delete = False
+    classes = ['collapse']
     exclude = ('cluster_icon_content_bg_color',
                'cluster_icon_content_txt_color')
 
@@ -68,6 +71,7 @@ class PresetInline(admin.StackedInline):
     model = Preset
     extra = 0
     exclude = ('slug',)
+    classes = ['collapse']
 
 
 @admin.register(Statistics)

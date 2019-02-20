@@ -1,4 +1,5 @@
-*.py[cow]
+*.py[cod]
+__pycache__/
 *~
 .directory
 dist/

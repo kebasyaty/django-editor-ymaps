@@ -1,6 +1,6 @@
 include LICENSE
 include README.rst
-global-exclude *~ .directory screenshots
+global-exclude *~ .directory screenshots icon_collections.zip tile.zip
 recursive-include djeym *.py
 recursive-include djeym/locale *.mo *.po
 recursive-include djeym/static *.css *.png *.jpg *.gif *.js *.htm

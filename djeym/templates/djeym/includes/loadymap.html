@@ -1,0 +1,39 @@
+{% if ymap %}
+{% load i18n staticfiles djeymtags djeymfilters %}
+{% if not general_settings.disable_site_panel %}{% include panel_path %}{% endif %}
+<script type="text/javascript">
+    var djeymMapID = {{ ymap.pk }},
+        djeymCenterMap = [{{ ymap.latitude }},{{ ymap.longitude }}],
+        djeymZoomMap = {{ ymap.zoom }},
+        djeymCluster = ["{{ cluster.svg.url }}",{{ cluster.get_size }},{{ cluster.get_offset }}],
+        djeymControls = {{ controls.get_control_list|safe }},
+        djeymSearchProvider = {{ controls.provider|lower }},
+        djeymClusteringSite = {{ general_settings.clustering_site|lower }},
+        djeymClusterLayout = "{{ general_settings.cluster_layout }}",
+        djeymClusterIconContent = {{ general_settings.cluster_icon_content|lower }},
+        djeymClusterIconContentBgColor = "{{ general_settings.cluster_icon_content_bg_color }}",
+        djeymClusterIconContentTxtColor = "{{ general_settings.cluster_icon_content_txt_color }}",
+        djeymMapType = "{{ controls.maptype }}",
+        djeymDisableSitePanel = {{ general_settings.disable_site_panel|lower }},
+        {% if tile %}
+            djeymTile = {
+                maxZoom: {{ tile.maxzoom }},
+                minZoom: {{ tile.minzoom }},
+                copyrights: "{{ tile.copyrights|safe|escape_double_brackets }}"
+            },
+            djeymSource = function () { return "{% random_domain tile.source|safe tile.apikey %}"; },
+        {% endif %}
+        djeymRoundTheme = {{ external_modules.roundtheme|lower }},
+        djeymHeatmap = {{ external_modules.heatmap|lower }},
+        djeymHeatmapRadius = {{ heatmap_settings.radius }},
+        djeymHeatmapDissipating = {{ heatmap_settings.dissipating|lower }},
+        djeymHeatmapOpacity = {{ heatmap_settings.opacity }},
+        djeymHeatmapIntensity = {{ heatmap_settings.intensity }},
+        djeymHeatmapGradientColor1 = "{{ heatmap_settings.gradient_color1 }}",
+        djeymHeatmapGradientColor2 = "{{ heatmap_settings.gradient_color2 }}",
+        djeymHeatmapGradientColor3 = "{{ heatmap_settings.gradient_color3 }}",
+        djeymHeatmapGradientColor4 = "{{ heatmap_settings.gradient_color4 }}";
+</script>
+{% get_api_ymap lang=language_code %}
+<script type="text/javascript" src="{% static "djeym/js/ymfront.js" %}"></script>
+{% endif %}

@@ -1,0 +1,41 @@
+{% load staticfiles %}
+{# Get API YMap #}
+{% if not api_key %}
+<script src="https://api-maps.yandex.ru/{{ api_version }}/?lang={{ lang }}&mode={{ mode }}&ns={{ ns }}" type="text/javascript"></script>
+{% else %}
+<script src="https://enterprise.api-maps.yandex.ru/{{ api_version }}/?lang={{ lang }}&apikey={{ api_key }}&mode={{ mode }}&ns={{ ns }}" type="text/javascript"></script>
+{% endif %}
+{% if external_modules.roundtheme %}
+{# Round map controls theme #}
+<style type="text/css">
+ymaps[class*=-float-button],
+ymaps[class*=-listbox__button] {
+    border-radius: 36px !important;
+}
+ymaps[class*=-traffic] {
+    border-radius: 36px !important;
+}
+.djeym-matrix-menu__btn {
+    border-radius: 50px !important;
+}
+.djeym-matrix-menu__btn-empty {
+    border-radius: 50px !important;
+}
+.djeym-button {
+   border-radius: 50px !important; 
+}
+</style>
+{% endif %}
+{# Heatmap #}
+{% if external_modules.heatmap %}
+<script src="{% static 'djeym/plugins/heatmap/heatmap.min.js' %}" type="text/javascript"></script>
+{% endif %}
+{# Area Calculation #}
+{% if external_modules.areacalculation %}
+<script src="{% static 'djeym/plugins/calculateArea/util.calculateArea.min.js' %}" type="text/javascript"></script>
+{% endif %}
+{# Presets #}
+{% if presets %}
+<script src="{% static 'djeym/js/js.cookie.js' %}" type="text/javascript"></script>
+<script type="text/javascript">{% for preset in presets %}{{ preset.js|safe }}{% endfor %}</script>
+{% endif %}

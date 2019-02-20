@@ -1,0 +1,838 @@
+/* For condition <!--[if lte IE 11]> */
+
+.browserupgrade {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 11000;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.browserupgrade div {
+    color: #ccc;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    margin: 10% 20px auto 20px;
+    padding: 20px;
+    border: 2px dashed #666;
+}
+
+.browserupgrade span {
+    color: #009900;
+    font-size: 16px;
+    border: 2px solid #009900;
+    border-radius: 50px;
+    padding: 2px 8px 3px;
+    margin-right: 10px;
+}
+
+.browserupgrade a {
+    color: #3399ff !important;
+    font-size: 18px !important;
+    text-decoration: underline !important;
+}
+
+.browserupgrade a:hover {
+    color: #c00 !important;
+}
+
+/* Warning - Necessary to enable JavaScript */
+
+.noscript {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 11000;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.noscript div {
+    color: #ccc;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    margin: 10% 20px auto 20px;
+    padding: 20px;
+    border: 2px dashed #666;
+}
+
+.noscript span {
+    color: #ffcc00;
+    font-size: 22px;
+    border: 2px solid #ffcc00;
+    border-radius: 50px;
+    padding: 2px 8px 5px;
+    margin-right: 10px;
+}
+
+.noscript a {
+    color: #3399ff !important;
+    font-size: 18px !important;
+    text-decoration: underline !important;
+}
+
+.noscript a:hover {
+    color: #c00 !important;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body {
+    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size: 16px;
+    color: #666;
+}
+
+:focus {
+    outline: none;
+}
+
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"]>input[type="button"]::-moz-focus-inner {
+    border: none;
+}
+
+a {
+    color: #3399ff;
+    text-decoration: none;
+    font-size: 11px
+}
+
+a:hover {
+    color: #c00;
+}
+
+label {
+    font-size: 14px;
+    color: #666;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 4px;
+    text-align: left;
+}
+
+legend {
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+legend svg {
+    color: #3399ff;
+}
+
+legend.legend_btn_style {
+    color: #666;
+    background-color: #fff;
+    padding: 2px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+legend.legend_btn_style svg {
+    color: #2196f3;
+}
+
+.small {
+    color: #666;
+    font-size: smaller;
+}
+
+/* Buttons */
+
+.djeym-button {
+    background-color: white;
+    border: 1px solid #bbb;
+    color: #666;
+    padding: 6px 20px 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 9px;
+}
+
+/* Menu - Categories */
+
+.boxios-ios-icon-display {
+    color: #666;
+}
+
+.boxios-ios-label-text {
+    color: #666;
+}
+
+/* Placeholder */
+
+input[type="text"],
+input[type="number"] {
+    width: 96%;
+    height: 25px;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    padding: 2px 5px;
+    color: #333;
+    font-size: 14px;
+    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+}
+
+::-webkit-input-placeholder {
+    color: #999;
+    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size: 14px;
+}
+
+:-moz-placeholder {
+    color: #999;
+    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size: 14px;
+}
+
+.placeholder {
+    color: #999;
+    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-size: 14px;
+}
+
+/* Map Editor */
+
+.djeym-ymap {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+/* EDITOR PANEL
+   (Панель редактора)
+-------------------------------------------
+*/
+
+.djeym-sidenav {
+    height: 100%;
+    width: 360px;
+    position: fixed;
+    z-index: 1059;
+    top: 0;
+    left: -360px;
+    background-color: #f8f8f8;
+    border-right: 1px solid #ddd;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.djeym-sidenav__wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.djeym-sidenav__content {
+    display: table-row;
+    height: 100%;
+}
+
+.djeym-sidenav__footer {
+    padding: 8px 0 5px;
+    text-align: center;
+}
+
+/* Editor panel header.
+   (Заголовок панели редактора)
+*/
+
+.djeym-sidenav .djeym-sidenav-header {
+    width: 100%;
+    height: 101px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Logo */
+
+.djeym-logo {
+    width: 200px;
+}
+
+/* Position and style the close button (top right corner).
+   (Настроить позицию кнопки "Закрыть панель" (верхний правый угол))
+*/
+
+.djeym-sidenav .djeym-closebtn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 1;
+    font-size: 22px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+/* The navigation menu items.
+   (Элементы меню навигации)
+*/
+
+.djeym-sidenav .djeym-sidenav-item {
+    padding: 10px;
+}
+
+/* Matrix menu */
+
+.djeym-matrix-menu,
+.djeym-matrix-menu__btn-empty {
+    border-spacing: 8px;
+}
+
+.djeym-matrix-menu__btn {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    color: #666;
+    font-size: 22px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    background: #fff;
+}
+
+.djeym-matrix-menu__btn-empty {
+    width: 36px;
+    height: 36px;
+    background-color: #eee;
+    border-radius: 9px;
+}
+
+.djeym-matrix-menu__btn svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/* Tabs */
+
+#id_djeym_tab_category,
+#id_djeym_tab_tile,
+#id_djeym_tab_about,
+#id_djeym_tab_controls,
+#id_djeym_tab_heatmap,
+#id_djeym_tab_presets {
+    display: none;
+}
+
+/* Hide content of tabs */
+
+.djeym_content_category,
+.djeym_content_about,
+.djeym_content_tile_sources,
+.djeym_content_map_controls,
+.djeym_content_heatmap,
+.djeym_content_presets {
+    display: none;
+}
+
+/* Icons Map */
+
+.djeym_matrix_icons {
+    display: none;
+    width: 100%;
+    border-spacing: 10px;
+}
+
+.djeym_matrix_icons td {
+    width: 25%;
+    height: 60px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+/* Marker Icon */
+
+.djeym_hat_decor {
+    height: 60px;
+}
+
+.djeym_marker_icon {
+    height: 60px;
+    position: relative;
+    top: -24px;
+    z-index: 1;
+}
+
+/* colorPicker */
+
+.colorPicker-picker {
+    display: inline-block;
+}
+
+/* Slider */
+
+.slider-handle {
+    color: #333;
+    font-weight: bold;
+}
+
+/* CKEditor */
+
+div[id^="cke_editor"] {
+    margin: 0 auto !important;
+}
+
+/* Badges */
+
+.djeym-badge-blue {
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 2px 8px;
+    letter-spacing: 1px;
+    background-color: #03a9f4;
+}
+
+.djeym-badge-white {
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 2px 8px;
+    letter-spacing: 1px;
+    background-color: #fff;
+}
+
+/* Custom layout for the contents of the balloon. */
+
+.djeym_ballon_header,
+.djeym_ballon_body,
+.djeym_ballon_footer {
+    display: block;
+    width: 322px !important;
+    max-width: 322px !important;
+}
+
+.djeym_ballon_header {
+    margin: 0 0 5px;
+    font-size: 120%;
+    font-weight: bold;
+    color: #333;
+}
+
+.djeym_ballon_body {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.djeym_ballon_footer {
+    margin: 5px 0 0;
+    font-size: 90%;
+    color: #777;
+}
+
+/* Cluster - Icon content */
+
+.djeym_cluster_icon_content {
+    border-radius: 60px;
+}
+
+.djeym_cluster_icon_content span {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 20px;
+}
+
+/* Tables */
+
+.djeym_content_heatmap td,
+.djeym_map_controls td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+/* Calculate Area */
+
+.djeym_result_calculate_area {
+    color: #E91E63;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Accordion */
+
+.djeym_accordion {
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+.active,
+.djeym_accordion:hover {
+    background-color: #03a9f4;
+}
+
+.djeym_accordion__icon {
+    width: 30px;
+    height: 28px;
+    color: #2196f3;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.djeym_accordion__title {
+    height: 28px;
+    color: #333;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.djeym_accordion_panel {
+    padding: 0 18px;
+    background-color: #fff;
+    display: none;
+    overflow: hidden;
+}
+
+/* HELPERS
+----------------------------------------------------------------------------------------------------
+*/
+
+/* Margins */
+
+.m-t-5 {
+    margin-top: 5px !important;
+}
+
+.m-t-10 {
+    margin-top: 10px !important;
+}
+
+.m-t-15 {
+    margin-top: 15px !important;
+}
+
+.m-t-20 {
+    margin-top: 20px !important;
+}
+
+.m-r-5 {
+    margin-right: 5px !important;
+}
+
+.m-r-7 {
+    margin-right: 7px !important;
+}
+
+.m-r-10 {
+    margin-right: 10px !important;
+}
+
+.m-l-10 {
+    margin-left: 10px !important;
+}
+
+.m-l-20 {
+    margin-left: 20px !important;
+}
+
+/* Paddings */
+
+.p-t-5 {
+    padding-top: 5px !important;
+}
+
+.p-t-10 {
+    padding-top: 10px !important;
+}
+
+.p-t-15 {
+    padding-top: 15px !important;
+}
+
+.p-t-20 {
+    padding-top: 20px !important;
+}
+
+.p-t-30 {
+    padding-top: 30px !important;
+}
+
+.p-r-2 {
+    padding-right: 2px !important;
+}
+
+.p-r-5 {
+    padding-right: 5px !important;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.p-b-10 {
+    padding-bottom: 10px !important;
+}
+
+.p-b-15 {
+    padding-bottom: 15px !important;
+}
+
+.p-l-5 {
+    padding-left: 5px !important;
+}
+
+.p-l-15 {
+    padding-left: 15px !important;
+}
+
+.p-l-20 {
+    padding-left: 20px !important;
+}
+
+.padding-12 {
+    padding: 12px !important;
+}
+
+/* Font Color */
+
+.font-gray-eee {
+    color: #eee;
+}
+
+.font-gray-999 {
+    color: #999 !important;
+}
+
+.font-gray-666 {
+    color: #666 !important;
+}
+
+.font-gray-333 {
+    color: #333 !important;
+}
+
+.font-black {
+    color: #000 !important;
+}
+
+.font-light-blue {
+    color: #03a9f4 !important;
+}
+
+.font-blue {
+    color: #2196F3 !important;
+}
+
+.font-dark-blue {
+    color: #2196f3 !important;
+}
+
+.font-green {
+    color: #33cc99 !important;
+}
+
+.font-aqua {
+    color: #3399cc !important;
+}
+
+.font-light-yellow {
+    color: #ffeb3b !important;
+}
+
+.font-yellow {
+    color: #ffcc00 !important;
+}
+
+.font-gold {
+    color: #cc9933 !important;
+}
+
+.font-dark-gold {
+    color: #996600 !important;
+}
+
+.font-orange {
+    color: #ff9933 !important;
+}
+
+.font-dark-orange {
+    color: #FF6600 !important;
+}
+
+.font-brown {
+    color: #795548 !important;
+}
+
+.font-light-red {
+    color: rgba(255, 51, 51, 0.7) !important;
+}
+
+.font-red {
+    color: #ff3333 !important;
+}
+
+.font-crimson {
+    color: #E91E63 !important;
+}
+
+.font-dark-red {
+    color: #c00 !important;
+}
+
+/* Font Size */
+
+.font-large {
+    font-size: large;
+}
+
+.font-10 {
+    font-size: 10px !important;
+}
+
+.font-12 {
+    font-size: 12px !important;
+}
+
+.font-14 {
+    font-size: 14px !important;
+}
+
+.font-16 {
+    font-size: 16px !important;
+}
+
+.font-18 {
+    font-size: 18px !important;
+}
+
+.font-24 {
+    font-size: 24px !important;
+}
+
+.font-72 {
+    font-size: 72px;
+}
+
+/* Weight Font */
+
+.font-bold {
+    font-weight: bold;
+}
+
+/* Width and Hight */
+
+.width-100 {
+    width: 100% !important;
+}
+
+.hight-100 {
+    height: 100% !important;
+}
+
+.hight-40 {
+    height: 40px !important;
+}
+
+/* Background */
+
+.bg-gray-333 {
+    background-color: #333 !important;
+}
+
+.bg-gray-eee {
+    background-color: #eee !important;
+}
+
+.bg-transparent {
+    background-color: transparent !important;
+}
+
+.bg-aqua {
+    background-color: #3399cc !important;
+}
+
+.bg-light-blue {
+    background-color: #99ccff !important;
+}
+
+/* Position */
+
+.position-relative {
+    position: relative !important;
+}
+
+/* Center */
+
+.block-center {
+    margin: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Underline */
+
+.underline {
+    border: solid #ccc;
+    border-width: 0 0 1px 0;
+}
+
+/* Borders */
+
+.border-none {
+    border: none !important;
+}
+
+.border-line-ddd {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Hidden */
+
+.hidden {
+    display: none !important;
+}

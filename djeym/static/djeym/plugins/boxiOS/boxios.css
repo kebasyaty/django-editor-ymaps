@@ -1,0 +1,240 @@
+/*
+* boxiOS
+* iOS Style - Radio, Checkboxes and Range.
+*/
+
+label.boxios-ios-label {
+    display: table-row;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Icons */
+
+.boxios-ios-icon-display {
+    position: relative;
+    top: 2px;
+    font-size: larger;
+}
+
+.boxios-ios-icon-display,
+.boxios-ios-checkbox,
+.boxios-ios-radio,
+.boxios-ios-label-text {
+    display: table-cell;
+}
+
+/* CHECKBOX - iOS STYLE
+-------------------------------
+*/
+
+/* hide the "real" checkbox visually */
+
+.boxios-ios-checkbox input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/* style the "fake" checkbox */
+
+.boxios-ios-checkbox__value {
+    background-color: #eee;
+    border: 0.0625em solid #ccc;
+    border-radius: 0.75em;
+    box-shadow: inset 0 0.0625em 0 0.0625em rgba(0, 0, 0, 0.075);
+    display: inline-block;
+    height: 1.5em;
+    margin: 0 0.75em;
+    position: relative;
+    transition: all 120ms;
+    vertical-align: -0.5em;
+    width: 2.5em;
+}
+
+.boxios-ios-checkbox__value::before {
+    background-color: #fff;
+    border: 0.0625em solid;
+    border-color: inherit;
+    border-radius: 50%;
+    box-shadow: 0 0.0625em 0 0.0625em rgba(0, 0, 0, 0.075);
+    content: '';
+    display: block;
+    height: 1.625em;
+    left: 25%;
+    margin-left: -0.9375em;
+    margin-top: -0.125em;
+    position: absolute;
+    top: 0;
+    transition: all 120ms ease-in;
+    width: 1.625em;
+}
+
+.boxios-ios-checkbox input:checked+.boxios-ios-checkbox__value {
+    background-color: #3399ff;
+    border-color: #ccc;
+}
+
+.boxios-ios-checkbox input:checked+.boxios-ios-checkbox__value::before {
+    left: 75%;
+}
+
+/* RADIO - iOS STYLE
+-------------------------------
+*/
+
+/* hide the "real" radios visually */
+
+.boxios-ios-radio input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/* style the "fake" radios */
+
+.boxios-ios-radio__value {
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 95% auto;
+    border: 0.0625em solid #ccc;
+    border-radius: 50%;
+    box-shadow: inset 0 0.0625em 0 0.0625em rgba(0, 0, 0, 0.075);
+    display: inline-block;
+    height: 1.5em;
+    margin: 0 0.65em 0 0.55em;
+    position: relative;
+    vertical-align: -0.5em;
+    width: 1.5em;
+}
+
+.boxios-ios-radio input:checked+.boxios-ios-radio__value {
+    background-color: #3399ff;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0ZGRkZGRiIgZD0iTTM5LjM2MyA3OWwtMjMuMzYzLTIzLjUxIDExLjM0Ny0xMS40MTkgMTIuMzQ3IDEyLjQxOSAzMy4yODktMzMuNDkgMTEuMDE3IDExLjA4NS00NC42MzcgNDQuOTE1eiIvPjwvc3ZnPg==);
+    border-color: #ccc;
+    box-shadow: 0 0.0625em 0 0.0625em rgba(0, 0, 0, 0.075);
+}
+
+/* RANGE - iOS STYLE
+-------------------------------
+*/
+
+.boxios-ios-range-slider {
+    width: 100%;
+}
+
+/* Input "range" */
+
+input[type=range].boxios-ios-range-slider__range {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 12px 0;
+}
+
+input[type=range].boxios-ios-range-slider__range:focus {
+    outline: none;
+}
+
+/* Chrome | Opera */
+
+input[type=range].boxios-ios-range-slider__range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+    background: #3399ff;
+    border-radius: 5px;
+    border: 0 solid rgba(0, 0, 0, 0);
+}
+
+input[type=range].boxios-ios-range-slider__range::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(13, 13, 13, 0.1);
+    border: 1px solid #cccccc;
+    height: 28px;
+    width: 28px;
+    border-radius: 50px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -12px;
+}
+
+input[type=range].boxios-ios-range-slider__range:focus::-webkit-slider-runnable-track {
+    background: #3399ff;
+}
+
+/* FF */
+
+input[type=range].boxios-ios-range-slider__range::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+    background: #3399ff;
+    border-radius: 5px;
+    border: 0 solid rgba(0, 0, 0, 0);
+}
+
+input[type=range].boxios-ios-range-slider__range::-moz-range-thumb {
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(13, 13, 13, 0.1);
+    border: 1px solid #cccccc;
+    height: 28px;
+    width: 28px;
+    border-radius: 50px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+/* IE */
+
+input[type=range].boxios-ios-range-slider__range::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range].boxios-ios-range-slider__range::-ms-fill-lower {
+    background: #3399ff;
+    border: 0 solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+}
+
+input[type=range].boxios-ios-range-slider__range::-ms-fill-upper {
+    background: #3399ff;
+    border: 0 solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+}
+
+input[type=range].boxios-ios-range-slider__range::-ms-thumb {
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(13, 13, 13, 0.1);
+    border: 1px solid #cccccc;
+    height: 28px;
+    width: 28px;
+    border-radius: 50px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+input[type=range].boxios-ios-range-slider__range:focus::-ms-fill-lower {
+    background: #3399ff;
+}
+
+input[type=range].boxios-ios-range-slider__range:focus::-ms-fill-upper {
+    background: #3399ff;
+}

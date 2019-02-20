@@ -1,0 +1,122 @@
+{% load i18n %}
+{% for preset in presets %}
+    <tr><td{% if not forloop.last %} class="p-b-10"{% endif %}>
+        <button class="djeym_accordion">
+            <table>
+                <tr>
+                    <td class="djeym_accordion__icon">{{ preset.icon|safe }}</td>
+                    <td class="djeym_accordion__title"><span class="djeym-badge-white">{{ preset.title }}</span></td>
+                </tr>
+            </table>
+        </button>
+        <div class="djeym_accordion_panel">
+            <form  class="djeym_update_preset_settings_form" 
+                action="{% url 'djeym:ajax_update_preset_settings' %}" method="post">{% csrf_token %}
+                <input type="hidden" name="ymap" value="{{ ymap.pk }}">
+                <input type="hidden" name="pk" value="{{ preset.pk }}">
+                <table class="width-100">
+                    <tr>
+                        <td width="33%" class="p-t-15"><span class="djeym-badge-blue font-14">{{ preset.title }}</span></td>
+                        <td width="33%" class="p-t-15">{% trans 'Position' %}</td>
+                        <td width="33%" class="p-t-15">
+                            <input id="id_djeym_presets_position" type="number" name="position" 
+                                value="{{ preset.position }}" style="width: 88%;" min="0" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="p-t-15">
+                            <label class="boxios-ios-label">
+                                <span class="boxios-ios-icon-display">
+                                    <i class="fas fa-heading"></i></span>
+                                <span class="boxios-ios-checkbox">
+                                    <input class="boxios-checkbox_preset" name="autoheader" 
+                                        type="checkbox"{% if preset.autoheader %} checked{% endif %}>
+                                    <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
+                                </span>
+                                <span class="boxios-ios-label-text">{% trans 'Automatically add to end of header' %}</span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <label class="boxios-ios-label">
+                                <span class="boxios-ios-icon-display">
+                                    <i class="far fa-file-image"></i></span>
+                                <span class="boxios-ios-checkbox">
+                                    <input class="boxios-checkbox_preset" name="autobody" 
+                                        type="checkbox"{% if preset.autobody %} checked{% endif %}>
+                                    <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
+                                </span>
+                                <span class="boxios-ios-label-text">{% trans 'Automatically add to end of description' %}</span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <label class="boxios-ios-label">
+                                <span class="boxios-ios-icon-display">
+                                    <i class="fas fa-arrow-down"></i></span>
+                                <span class="boxios-ios-checkbox">
+                                    <input class="boxios-checkbox_preset" name="autofooter" 
+                                        type="checkbox"{% if preset.autofooter %} checked{% endif %}>
+                                    <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
+                                </span>
+                                <span class="boxios-ios-label-text">{% trans 'Automatically add to end of footer' %}</span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="33%" class="p-t-15">
+                            <label class="boxios-ios-label">
+                                <span class="boxios-ios-icon-display">
+                                    <i class="fas fa-map-marker-alt"></i></span>
+                                <span class="boxios-ios-checkbox">
+                                    <input class="boxios-checkbox_preset" name="placemark" 
+                                        type="checkbox"{% if preset.placemark %} checked{% endif %}>
+                                    <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
+                                </span>
+                                <span class="boxios-ios-label-text"></span>
+                            </label>
+                        </td>
+                        <td width="33%" class="p-t-15">
+                            <label class="boxios-ios-label">
+                                <span class="boxios-ios-icon-display">
+                                    <i class="fas fa-project-diagram"></i></span>
+                                <span class="boxios-ios-checkbox">
+                                    <input class="boxios-checkbox_preset" name="polyline" 
+                                        type="checkbox"{% if preset.polyline %} checked{% endif %}>
+                                    <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
+                                </span>
+                                <span class="boxios-ios-label-text"></span>
+                            </label>
+                        </td>
+                        <td width="33%" class="p-t-15">
+                            <label class="boxios-ios-label">
+                                <span class="boxios-ios-icon-display">
+                                    <i class="fas fa-shapes"></i></span>
+                                <span class="boxios-ios-checkbox">
+                                    <input class="boxios-checkbox_preset" name="polygon" 
+                                        type="checkbox"{% if preset.polygon %} checked{% endif %}>
+                                    <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
+                                </span>
+                                <span class="boxios-ios-label-text"></span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="font-12 p-t-5">
+                            <table>
+                                <tr>
+                                    <td valign="top"><i class="fas fa-info-circle m-r-5 font-dark-blue"></i></td>
+                                    <td valign="top" class="font-gray-999">{{ preset.description|safe }}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr><td colspan="3" align="center" class="p-t-15">
+                        <button type="submit" class="djeym-button"><i class="fas fa-save"></i></button></td></tr>
+                </table>
+            </form>
+        </div>
+    </td></tr>
+{% endfor %}

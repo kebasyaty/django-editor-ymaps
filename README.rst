@@ -36,7 +36,9 @@ Requirements
 
 Installation
 ************
-pip install django-editor-ymaps
+Install using pip::
+
+ pip install django-editor-ymaps
 
 Settings
 --------

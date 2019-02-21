@@ -139,3 +139,6 @@ Usage
 1. `Скачайте источники тайловых слоев. (Download tile sources.) <https://github.com/genkosta/django-editor-ymaps/blob/master/Tile.zip?raw=true>`_
 2. Ознакомьтесь с содержимым массива. (Read the contents of the array.)
 3. Прочитайте readme файл и добавьте источники через панель администратора. (Read the readme file and add sources through the admin panel.)
+
+4) Создайте вашу первую карту. (Create your first map.)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

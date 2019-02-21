@@ -1,6 +1,7 @@
 ============
 DjEYM
 ============
+
 .. image:: https://img.shields.io/badge/version-1.0%20beta-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
@@ -17,6 +18,7 @@ DjEYM
    :target: https://www.python.org/
    :alt: Python
 
-
-
-
+django-editor-ymaps
+-------------------
+Удобное использование картографической службы Яндекса для веб-разработки на популярном и свободном фреймворке Django.
+**********************************************************************************************************************

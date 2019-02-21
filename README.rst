@@ -83,8 +83,7 @@ Add other settings::
         }
     }
     
-    # Enter your URL
-    # (Введите URL-адрес)
+    # Add your URL
     LOGIN_URL = '/login/'
     
     # django-smart-selects

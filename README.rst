@@ -145,7 +145,7 @@ Usage
 1. Перейдите по адресу - Панель администратора > ЯНДЕКС КАРТЫ >  Карты > Добавить Карту.
    (Navigate to the address - Admin Panel > Yandex Maps > Maps > Add Map.)
 
-5) Создайте категории геообъектов нужного типа для новой карты. (Create categories of geo objects of the desired type for the new map.)
+5) Создайте категории геообъектов нужного типа для новой карты. (Create categories of geo-objects of the desired type for the new map.)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Категории маркеров. (Marker categories.)
 2. Подкатегории маркеров. (Subcategories of markers.)

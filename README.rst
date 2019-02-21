@@ -33,3 +33,7 @@ Requirements
 - lxml
 - django-smart-selects==1.5.3
 - django-ipware
+
+Installation
+""""""""""""
+pip install django-editor-ymaps

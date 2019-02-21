@@ -42,7 +42,7 @@ Install using pip::
 
 Settings
 ********
-Add 'djeym' to your INSTALLED_APPS setting::
+Add apps to your INSTALLED_APPS setting::
 
  INSTALLED_APPS = [
      ...

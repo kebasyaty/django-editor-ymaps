@@ -44,12 +44,69 @@ Settings
 ********
 Add apps to your INSTALLED_APPS setting::
 
- INSTALLED_APPS = [
-     ...
-     'imagekit',
-     'smart_selects',
-     'ckeditor',
-     'ckeditor_uploader',
-     'djeym',
-     ...
- ]
+    INSTALLED_APPS = [
+        ...
+        'imagekit',
+        'smart_selects',
+        'ckeditor',
+        'ckeditor_uploader',
+        'djeym',
+        ...
+    ]
+
+Add other settings::
+
+    # django-ckeditor
+    CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
+    CKEDITOR_UPLOAD_PATH = 'uploads/'
+    CKEDITOR_FILENAME_GENERATOR = 'djeym.utils.get_filename'
+    CKEDITOR_IMAGE_BACKEND = 'pillow'
+    CKEDITOR_ALLOW_NONIMAGE_FILES = False  # Only image files. (На Ваше усмотрение)
+    CKEDITOR_CONFIGS = {
+        'default': {
+            'toolbar': 'full',
+            'height': 400,
+            'width': '100%',
+        },
+        'djeym': {
+            'toolbar': 'full',
+            'height': 400,
+            'width': 362,
+            'colorButton_colors': 'F08080,CD5C5C,FF0000,B22222,FF1493,C71585,800080,F0E68C,'
+                                  'BDB76B,6A5ACD,483D8B,3CB371,2E8B57,9ACD32,008000,808000,'
+                                  '20B2AA,008B8B,00BFFF,F4A460,CD853F,A52A2A,708090,34495e,'
+                                  '999966,333333,82cdff,1e98ff,177bc9,0e4779,56db40,1bad03,'
+                                  '97a100,595959,b3b3b3,f371d1,b51eff,793d0e,ffd21e,ff931e,'
+                                  'e6761b,ed4543',
+            'colorButton_enableAutomatic': False,
+            'colorButton_enableMore': True
+        }
+    }
+    
+    # Enter your URL
+    # (Введите URL-адрес)
+    LOGIN_URL = '/login/'
+    
+    # django-smart-selects
+    # https://github.com/digi604/django-smart-selects
+    JQUERY_URL = False
+    USE_DJANGO_JQUERY = True
+    
+    # API key - Used only in the paid API version.
+    # You can get the key in the developer’s office - https://developer.tech.yandex.ru/
+    # ( API-ключ - Используется только в платной версии API.
+    #   Получить ключ можно в кабинете разработчика - https://developer.tech.yandex.ru/ )
+    DJEYM_YMAPS_API_KEY = ''
+    
+    # Map download mode. Default -> 'release'
+    # (Режим загрузки карт.)
+    # DJEYM_YMAPS_DOWNLOAD_MODE = 'debug'
+    
+    # Font Awesome, Material Design etc.
+    # Default Font Awesome Free 5.3.1 - https://fontawesome.com
+    # Example: ['/static/path/css/style.min.css']
+    # Example: ['/static/path/js/script.min.js']
+    # Only for admin panel and editor page. (Только для панели администратора и страницы редактора.)
+    # For the site connect directly in templates. (Для сайта подключите непосредственно в шаблонах.)
+    DJEYM_YMAPS_ICONS_FOR_CATEGORIES_CSS = []
+    DJEYM_YMAPS_ICONS_FOR_CATEGORIES_JS = []

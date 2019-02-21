@@ -23,7 +23,7 @@ django-editor-ymaps
 Удобное использование картографической службы Яндекса для веб-разработки на популярном и свободном фреймворке Django.
 
 Requirements
-""""""""""""
+************
 - Python >= 3.5
 - Django >= 2.0
 - Pillow
@@ -35,5 +35,5 @@ Requirements
 - django-ipware
 
 Installation
-""""""""""""
+************
 pip install django-editor-ymaps

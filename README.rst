@@ -19,7 +19,9 @@ DjEYM (django-editor-ymaps)
 
 Description
 ===========
-Удобное использование картографической службы Яндекса для веб-разработки на популярном и свободном фреймворке Django. (Convenient use of the Yandex map service for web development on the popular and free Django framework.)
+Удобное использование картографической службы Яндекса для веб-разработки на популярном и свободном фреймворке Django.
+
+(Convenient use of the Yandex map service for web development on the popular and free Django framework.)
 
 Requirements
 ------------

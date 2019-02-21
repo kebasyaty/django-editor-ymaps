@@ -144,3 +144,10 @@ Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Перейдите по адресу - Панель администратора > ЯНДЕКС КАРТЫ >  Карты > Добавить Карту.
    (Navigate to the address - Admin Panel > Yandex Maps > Maps > Add Map.)
+
+5) Создайте категории геообъектов нужного типа. (Create categories of geo-objects of the desired type)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. Категории маркеров. (Marker categories.)
+2. Подкатегории маркеров. (Subcategories of markers.)
+3. Категории маршрутов. (Categories of routes.)
+4. Категории территорий. (Categories of territories.)

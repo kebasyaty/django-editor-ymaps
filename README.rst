@@ -113,6 +113,10 @@ Add other settings::
     DJEYM_YMAPS_ICONS_FOR_CATEGORIES_CSS = []
     DJEYM_YMAPS_ICONS_FOR_CATEGORIES_JS = []
 
+Update Migrations::
+
+    python manage.py migrate djeym
+
 *****
 Usage
 *****

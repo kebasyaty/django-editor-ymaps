@@ -17,14 +17,12 @@ DjEYM
    :target: https://www.python.org/
    :alt: Python
 
-*******************
 django-editor-ymaps
-*******************
+===================
 Удобное использование картографической службы Яндекса для веб-разработки на популярном и свободном фреймворке Django. (Convenient use of the Yandex map service for web development on the popular and free Django framework.)
 
-************
 Requirements
-************
+------------
 - Python >= 3.5
 - Django >= 2.0
 - Pillow
@@ -35,16 +33,15 @@ Requirements
 - django-smart-selects==1.5.3
 - django-ipware
 
-************
+
 Installation
-************
+------------
 Install using pip::
 
  pip install django-editor-ymaps
 
-********
 Settings
-********
+^^^^^^^^
 Add apps to your INSTALLED_APPS setting::
 
     INSTALLED_APPS = [
@@ -118,7 +115,7 @@ Update Migrations::
     python manage.py migrate djeym
 
 Usage
-=====
+-----
 1) Добавьте иконку кластера. (Add Cluster Icon.)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. `Скачайте коллекции иконок. (Download icon collections.) <https://github.com/genkosta/django-editor-ymaps/blob/master/Icon_Collections.zip?raw=true>`_

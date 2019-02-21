@@ -149,3 +149,8 @@ Usage
 2. Подкатегории маркеров. (Subcategories of markers.)
 3. Категории маршрутов. (Categories of routes.)
 4. Категории территорий. (Categories of territories.)
+
+6) Редактировать карту. (Edit map.)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/edit_map.png?raw=true
+   :alt: Edit map

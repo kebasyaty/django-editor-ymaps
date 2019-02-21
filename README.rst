@@ -41,7 +41,7 @@ Install using pip::
  pip install django-editor-ymaps
 
 Settings
-^^^^^^^^
+--------
 Add apps to your INSTALLED_APPS setting::
 
     INSTALLED_APPS = [

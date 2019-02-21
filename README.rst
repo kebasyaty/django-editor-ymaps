@@ -44,12 +44,12 @@ Settings
 ********
 Add 'djeym' to your INSTALLED_APPS setting::
 
-   INSTALLED_APPS = [
-        ...
-        'imagekit',
-        'smart_selects',
-        'ckeditor',
-        'ckeditor_uploader',
-        'djeym',
-        ...
-    ]
+ INSTALLED_APPS = [
+     ...
+     'imagekit',
+     'smart_selects',
+     'ckeditor',
+     'ckeditor_uploader',
+     'djeym',
+     ...
+ ]

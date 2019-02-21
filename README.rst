@@ -119,3 +119,4 @@ Usage
 Добавьте иконку кластера. (Add Cluster Icon.)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. `Скачайте коллекции иконок (Download icon collections) <https://github.com/genkosta/django-editor-ymaps/blob/master/Icon_Collections.zip?raw=true>`_
+2. Ознакомьтесь с содержимым массива (Read the contents of the array)

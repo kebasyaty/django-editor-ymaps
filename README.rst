@@ -72,7 +72,7 @@ Add other settings::
             'toolbar': 'full',
             'height': 400,
             'width': 362,
-            'colorButton_colors': 'F08080,CD5C5C,FF0000,B22222,FF1493,C71585,800080,F0E68C,'
+            'colorButton_colors': 'FFFFFF,F08080,CD5C5C,FF0000,FF1493,C71585,800080,F0E68C,'
                                   'BDB76B,6A5ACD,483D8B,3CB371,2E8B57,9ACD32,008000,808000,'
                                   '20B2AA,008B8B,00BFFF,F4A460,CD853F,A52A2A,708090,34495e,'
                                   '999966,333333,82cdff,1e98ff,177bc9,0e4779,56db40,1bad03,'

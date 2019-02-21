@@ -7,5 +7,16 @@ DjEYM
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
    :target: https://github.com/genkosta/django-editor-ymaps/blob/master/LICENSE
    :alt: MIT
+.. image:: https://pepy.tech/badge/django-editor-ymaps
+   :target: https://pepy.tech/project/django-editor-ymaps
+   :alt: Downloads
+.. image:: https://img.shields.io/badge/django-%3E%3D%202.0-brightgreen.svg
+   :target: https://www.djangoproject.com/
+   :alt: Django
+.. image:: https://img.shields.io/badge/python-%3E%3D%203.5-yellow.svg
+   :target: https://www.python.org/
+   :alt: Python
+
+
 
 

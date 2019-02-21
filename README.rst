@@ -1,7 +1,6 @@
 ============
 DjEYM
 ============
-
 .. image:: https://img.shields.io/badge/version-1.0%20beta-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
@@ -18,10 +17,12 @@ DjEYM
    :target: https://www.python.org/
    :alt: Python
 
+*******************
 django-editor-ymaps
 *******************
 Удобное использование картографической службы Яндекса для веб-разработки на популярном и свободном фреймворке Django.
 
+************
 Requirements
 ************
 - Python >= 3.5
@@ -34,12 +35,14 @@ Requirements
 - django-smart-selects==1.5.3
 - django-ipware
 
+************
 Installation
 ************
 Install using pip::
 
  pip install django-editor-ymaps
 
+********
 Settings
 ********
 Add apps to your INSTALLED_APPS setting::
@@ -109,3 +112,7 @@ Add other settings::
     # For the site connect directly in templates. (Для сайта подключите непосредственно в шаблонах.)
     DJEYM_YMAPS_ICONS_FOR_CATEGORIES_CSS = []
     DJEYM_YMAPS_ICONS_FOR_CATEGORIES_JS = []
+
+*****
+Usage
+*****

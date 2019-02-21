@@ -116,3 +116,6 @@ Add other settings::
 *****
 Usage
 *****
+Добавьте иконку кластера. (Add Cluster Icon.)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. `Скачайте коллекции иконок (Download icon collections) <https://github.com/genkosta/django-editor-ymaps/raw/master/icon_collections.zip>`_

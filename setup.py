@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Copyright (c) 2014 genkosta
+#  Copyright (c) 2014-2019 genkosta
 #
 #  django-editor-ymaps is free software under terms of the MIT License.
 #
@@ -10,7 +10,7 @@ from setuptools import find_packages, setup
 
 
 def get_readme(file_path):
-    with open(file_path) as readme_file:
+    with open(file_path, 'r', encoding='utf-8') as readme_file:
         result = readme_file.read()
     return result
 

@@ -295,13 +295,8 @@ class AjaxSaveGeoObjects(View):
                     return JsonResponse(response_data, status=400)
 
             elif action == 'reload':
-                with connection.cursor() as cursor:
-                    cursor.execute(
-                        """SELECT json_code
-                            FROM djeym_heatpoint
-                            WHERE id = %s AND active = TRUE""", [pk])
-
-                    response_data = '[' + cursor.fetchone()[0] + ']'
+                json_code = HeatPoint.objects.get(pk=pk).json_code
+                response_data = '[' + json_code + ']'
 
             elif action == 'delete':
                 HeatPoint.objects.get(id=pk).delete()
@@ -325,13 +320,8 @@ class AjaxSaveGeoObjects(View):
                     return JsonResponse(response_data, status=400)
 
             elif action == 'reload':
-                with connection.cursor() as cursor:
-                    cursor.execute(
-                        """SELECT json_code
-                            FROM djeym_placemark
-                            WHERE id = %s AND active = TRUE""", [pk])
-
-                    response_data = '[' + cursor.fetchone()[0] + ']'
+                json_code = Placemark.objects.get(pk=pk).json_code
+                response_data = '[' + json_code + ']'
 
             elif action == 'delete':
                 Placemark.objects.get(id=pk).delete()
@@ -355,13 +345,8 @@ class AjaxSaveGeoObjects(View):
                     return JsonResponse(response_data, status=400)
 
             elif action == 'reload':
-                with connection.cursor() as cursor:
-                    cursor.execute(
-                        """SELECT json_code
-                            FROM djeym_polyline
-                            WHERE id = %s AND active = TRUE""", [pk])
-
-                    response_data = '[' + cursor.fetchone()[0] + ']'
+                json_code = Polyline.objects.get(pk=pk).json_code
+                response_data = '[' + json_code + ']'
 
             elif action == 'delete':
                 Polyline.objects.get(id=pk).delete()
@@ -385,13 +370,10 @@ class AjaxSaveGeoObjects(View):
                     return JsonResponse(response_data, status=400)
 
             elif action == 'reload':
-                with connection.cursor() as cursor:
-                    cursor.execute(
-                        """SELECT json_code
-                            FROM djeym_polygon
-                            WHERE id = %s AND active = TRUE""", [pk])
 
-                    response_data = '[' + cursor.fetchone()[0] + ']'
+                with connection.cursor() as cursor:
+                    json_code = Polygon.objects.get(pk=pk).json_code
+                    response_data = '[' + json_code + ']'
 
             elif action == 'delete':
                 Polygon.objects.get(id=pk).delete()

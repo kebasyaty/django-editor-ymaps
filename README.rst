@@ -25,8 +25,8 @@ Description
 
 Requirements
 ------------
-- Python >= 3.5
-- Django >= 2.0
+- Python (3.5, 3.6, 3.7)
+- Django (2.0, 2.1, 2.2)
 - Pillow
 - django-imagekit
 - python-slugify

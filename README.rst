@@ -132,6 +132,9 @@ Usage
 3. Прочитайте readme файл для выбранной коллекции и добавьте коллекцию через панель администратора.
    (Read the readme file for the selected collection and add the collection through the admin panel.)
 
+.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/import_icon_collection.png?raw=true
+   :alt: Import Icon Collection
+
 3) Добавьте источники тайловых слоев. (Add tile sources.)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. `Скачайте источники тайловых слоев. (Download tile sources.) <https://github.com/genkosta/django-editor-ymaps/blob/master/Tile.zip?raw=true>`_

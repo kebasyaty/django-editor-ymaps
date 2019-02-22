@@ -197,3 +197,6 @@ Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_presets.png?raw=true
    :alt: Editor Menu - Presets
+
+Добавление геообъектов на карту. (Adding geo-objects to the map.)
+-----------------------------------------------------------------

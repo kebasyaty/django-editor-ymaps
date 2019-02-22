@@ -172,3 +172,8 @@ Usage
 ****************************************************
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_icons.png?raw=true
    :alt: Editor Menu - Icons
+
+2) Меню редактора - Фильтры по категориям. (Editor Menu - Filters by category.)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_filters.png?raw=true
+   :alt: Editor Menu - Filters by category

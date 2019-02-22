@@ -135,6 +135,11 @@ Usage
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/import_icon_collection.png?raw=true
    :alt: Import Icon Collection
 
+Добавляя собственные иконки, проверяйте смещение по эталону. (By adding your own icons, check the offset by standard.)
+**********************************************************************************************************************
+.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/change_icon_for_markers.png?raw=true
+   :alt: Change Icon for markers
+
 3) Добавьте источники тайловых слоев. (Add tile sources.)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. `Скачайте источники тайловых слоев. (Download tile sources.) <https://github.com/genkosta/django-editor-ymaps/blob/master/Tile.zip?raw=true>`_

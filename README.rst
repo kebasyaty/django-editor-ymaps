@@ -27,13 +27,13 @@ Requirements
 ------------
 - Python (3.5, 3.6, 3.7)
 - Django (2.0, 2.1, 2.2)
-- Pillow
-- django-imagekit
-- python-slugify
-- django-ckeditor
-- lxml
-- django-smart-selects==1.5.3
-- django-ipware
+- Pillow - `https://pypi.org/project/Pillow/ <https://pypi.org/project/Pillow/>`_
+- django-imagekit - `https://github.com/matthewwithanm/django-imagekit <https://github.com/matthewwithanm/django-imagekit>`_
+- python-slugify - `https://github.com/un33k/python-slugify <https://github.com/un33k/python-slugify>`_
+- django-ckeditor - `https://github.com/django-ckeditor/django-ckeditor <https://github.com/django-ckeditor/django-ckeditor>`_
+- lxml - `https://pypi.org/project/lxml/ <https://pypi.org/project/lxml/>`_
+- django-smart-selects==1.5.3 - `https://github.com/digi604/django-smart-selects <https://github.com/digi604/django-smart-selects>`_
+- django-ipware - `https://github.com/un33k/django-ipware <https://github.com/un33k/django-ipware>`_
 
 
 Installation
@@ -136,7 +136,7 @@ Usage
    :alt: Import Icon Collection
 
 Добавляя собственные иконки, проверяйте смещение по эталону. (By adding your own icons, check the offset by standard.)
-**********************************************************************************************************************
+*************************************************************************************************************
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/change_icon_for_markers.png?raw=true
    :alt: Change Icon for markers
 

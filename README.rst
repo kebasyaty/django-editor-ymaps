@@ -177,3 +177,8 @@ Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_filters.png?raw=true
    :alt: Editor Menu - Filters by category
+
+3) Меню редактора - Источники тайлов. (Editor Menu - Tile Sources.)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_tile.png?raw=true
+   :alt: Editor Menu - Tile Sources

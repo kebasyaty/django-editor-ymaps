@@ -162,3 +162,11 @@ Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/edit_map.png?raw=true
    :alt: Edit map
+
+Обзор страницы редактора. (Editor page overview.)
+-------------------------------------------------
+
+1) Меню редактора - Иконки. (Editor Menu - Icons.)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_icons.png?raw=true
+   :alt: Editor Menu - Icons

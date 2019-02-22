@@ -17,12 +17,13 @@ def get_readme(file_path):
 
 setup(
     name='django-editor-ymaps',
-    version='1.0 beta',
+    version='1.0',
     packages=find_packages(),
     include_package_data=True,
     requires=['python (>= 3.5)', 'django (>= 2.0)'],
     description='Creating and editing Yandex maps.',
     long_description=get_readme('README.rst'),
+    long_description_content_type='text/x-rst',
     author='genkosta',
     author_email='genkosta43@gmail.com',
     url='https://github.com/genkosta/django-editor-ymaps',
@@ -32,6 +33,9 @@ setup(
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
+        'Framework :: Django :: 2.0',
+        'Framework :: Django :: 2.1',
+        'Framework :: Django :: 2.2',
         'Intended Audience :: Developers',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',

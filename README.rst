@@ -168,5 +168,7 @@ Usage
 
 1) Меню редактора - Иконки. (Editor Menu - Icons.)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Доступ только для персонала. (Access only to staff.)
+****************************************************
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_icons.png?raw=true
    :alt: Editor Menu - Icons

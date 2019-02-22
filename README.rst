@@ -192,3 +192,8 @@ Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_heatmap.png?raw=true
    :alt: Editor Menu - Heatmap settings
+
+6) Меню редактора - Пресеты. (Editor Menu - Presets.)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_presets.png?raw=true
+   :alt: Editor Menu - Presets

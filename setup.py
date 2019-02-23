@@ -36,6 +36,7 @@ setup(
     url='https://github.com/genkosta/django-editor-ymaps',
     download_url='https://github.com/genkosta/django-editor-ymaps/tarball/master',
     license='MIT License',
+    platforms=['any'],
     keywords='django yandex map maps djeym',
     classifiers=[
         'Development Status :: 4 - Beta',

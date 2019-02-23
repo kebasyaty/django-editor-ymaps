@@ -252,3 +252,5 @@ Usage
        :alt: Choose an icon
 
 4. **Добавим информацию об объекте.** ( *Add information about the object.* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_info.png?raw=true
+       :alt: Add Info

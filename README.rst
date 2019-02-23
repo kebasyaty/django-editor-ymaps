@@ -159,7 +159,7 @@ Usage
 4) Создайте вашу первую карту. (Create your first map.)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Перейдите по адресу - Панель администратора > ЯНДЕКС КАРТЫ >  Карты > Добавить Карту.
-   (Navigate to the address - Admin Panel > Yandex Maps > Maps > Add Map.)
+   (Navigate to the address - Admin Panel > YANDEX MAPS > Maps > Add Map.)
 
 5) Создайте категории геообъектов нужного типа для новой карты. (Create categories of geo-objects of the desired type for the new map.)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -205,8 +205,11 @@ Usage
 
 6) Меню редактора - Пресеты. (Editor Menu - Presets.)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Есть возможность создавать свои пресеты. (There is an opportunity to create your own presets.)
-**********************************************************************************************
+Имеется возможность создавать свои пресеты. (You can create your own presets.)
+******************************************************************************
+Панель администратора > ЯНДЕКС КАРТЫ >  Карты > Карта > ПРЕСЕТЫ > Добавить еще один Пресет
+(Admin Panel > YANDEX MAPS > Maps > Map > PRESETS > Add another preset)
+
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_presets.png?raw=true
    :alt: Editor Menu - Presets
 

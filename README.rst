@@ -86,7 +86,7 @@ Add other settings::
     }
     
     # Add your URL
-    LOGIN_URL = '/login/'
+    LOGIN_URL = '/admin/'
     
     # django-smart-selects
     # https://github.com/digi604/django-smart-selects

@@ -260,10 +260,10 @@ Usage
            :alt: Popup with text editor
 
 5. **Выбираем категорию для геообъекта.** ( *Select a category for a geoobject.* )
-    1. **Открываем категории.** ( *Open categories.* )
+    - **Открываем категории.** ( *Open categories.* )
         .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/select_category.png?raw=true
            :alt: Open categories
 
-    2. **Выбираем категорию.** ( *Choose a category.* )
+    - **Выбираем категорию.** ( *Choose a category.* )
         .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/select_category_2.png?raw=true
            :alt: Choose a category

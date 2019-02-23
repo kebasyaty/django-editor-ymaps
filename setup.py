@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
+#  Convenient use of the Yandex map service for web development on 
+#  the popular and free Django framework.
+#
 #  Copyright (c) 2014-2019 genkosta
 #
 #  django-editor-ymaps is free software under terms of the MIT License.
 #
 
 from setuptools import find_packages, setup
+
+
+VERSION = (1, 0)
+__version__ = '.'.join(map(str, VERSION))
 
 
 def get_readme(file_path):
@@ -17,7 +24,7 @@ def get_readme(file_path):
 
 setup(
     name='django-editor-ymaps',
-    version='1.0',
+    version=__version__,
     packages=find_packages(),
     include_package_data=True,
     requires=['python (>= 3.5)', 'django (>= 2.0)'],

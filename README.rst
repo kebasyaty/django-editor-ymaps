@@ -170,7 +170,7 @@ Usage
 
 **Добавляя собственные иконки, проверяйте смещение по эталону.** ( *By adding your own icons, check the offset by standard.* )
 
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/change_icon_for_markers.png?raw=true
+.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/offset_icon_for_markers.png?raw=true
    :alt: Change Icon for markers
 
 3) Добавьте источники тайловых слоев. ( *Add tile sources.* )
@@ -240,10 +240,15 @@ Usage
 Добавление геообъектов на карту. ( *Adding geo-objects to the map.* )
 ---------------------------------------------------------------------
 1) Добавим маркер. ( *Add a marker.* )
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. **Левый клик на карте, откроется меню с предложением выбрать тип объекта.** ( *Left-clicking on the map opens a menu with a suggestion to choose the type of object.* )
 
 2. **Выбираем кнопку - Добавить новый Маркер.** ( *Select the button - Add a new Marker.* )
 
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_marker.png?raw=true
-   :alt: Add a marker
+  .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_marker.png?raw=true
+     :alt: Add a marker
+
+3. **Выберите подходящую иконку.** ( *Choose the appropriate icon.* )
+  .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/%D1%81hoose_an_icon.png?raw=true
+    :alt: Choose an icon
+

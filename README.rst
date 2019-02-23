@@ -269,7 +269,10 @@ Usage
            :alt: Choose a category
 
 6. **Нажимаем кнопку "+" и получаем результат.** ( *Press the "+" button and get the result.* )
-    - .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_1.png?raw=true
-         :alt: View result 1
-    - .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_2.png?raw=true
-         :alt: View result 2
+    - pic 1
+        .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_1.png?raw=true
+           :alt: View result 1
+
+    - pic 2
+        .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_2.png?raw=true
+           :alt: View result 2

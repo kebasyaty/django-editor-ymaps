@@ -112,6 +112,16 @@ Add other settings::
     DJEYM_YMAPS_ICONS_FOR_CATEGORIES_CSS = []
     DJEYM_YMAPS_ICONS_FOR_CATEGORIES_JS = []
 
+Add to main URLs::
+
+    urlpatterns = [
+        ...
+        path('chaining/', include('smart_selects.urls')),
+        path('ckeditor/', include('ckeditor_uploader.urls')),
+        path('djeym/', include('djeym.urls', namespace='djeym')),
+        ...
+    ]
+
 Update Migrations::
 
     python manage.py migrate djeym

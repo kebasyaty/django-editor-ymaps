@@ -257,4 +257,4 @@ Usage
 
     - **Каждая из кнопок открывает свое окно текстового редактора.** ( *Each of the buttons opens its text editor window.* )
         .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/popup_with_text_editor.png?raw=true
-       :alt: Popup with text editor
+           :alt: Popup with text editor

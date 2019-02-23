@@ -30,6 +30,7 @@ Features
 3. **Создавать геообъекты четырех типов - Маркеры, маршруты, территории и тепловые точки.** ( *Create geo-objects of four types - Markers, routes, territories and heat points.* )
 4. **Использовать кастомные иконки для кластеров и маркеров в формате SVG.** ( *Use custom icons for clusters and markers in the format SVG.* )
 5. **Создавать категории и подкатегории для фильтрации геообъектов на карте.** ( *Create categories and subcategories for filtering geo objects on the map.* )
+6. **Добавлять источники тайловых слоев и API-ключи к ним (если требуется).** ( *Add tile source sources and API keys to them (if required).* )
 
 Requirements
 ------------

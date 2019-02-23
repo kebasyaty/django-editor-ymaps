@@ -287,11 +287,9 @@ Usage
     - **Кластер** ( *Cluster* )
         .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/cluster.png?raw=true
            :alt: Cluster
-
     - **Popup - Two columns**
         .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/cluster_popup_two_columns.png?raw=true
            :alt: Two columns
-
     - **Popup - Carousel**
         .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/cluster_popup_carousel.png?raw=true
            :alt: Carousel

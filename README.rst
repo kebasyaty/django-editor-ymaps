@@ -26,13 +26,21 @@ Description
 Features
 --------
 1. **Через панель администратора, создавать новые карты с богатой возможностью настроек.** ( *Through the admin panel, create new maps with a wide range of options.* )
+
 2. **Редактировать карты на специальной странице редактора, с доступом только для персонала.** ( *Edit maps on a special page of the editor, with access only for staff.* )
+
 3. **Создавать геообъекты четырех типов - Маркеры, маршруты, территории и тепловые точки.** ( *Create geo-objects of four types - Markers, routes, territories and heat points.* )
+
 4. **Использовать кастомные иконки для кластеров и маркеров в формате SVG.** ( *Use custom icons for clusters and markers in the format SVG.* )
+
 5. **Создавать категории и подкатегории для фильтрации геообъектов на карте.** ( *Create categories and subcategories for filtering geo objects on the map.* )
+
 6. **Добавлять источники тайловых слоев и API-ключи к ним (если требуется). Имеется возможность добавить стандартный набор из 21 источника.** ( *Add tile layer sources and API keys to them (if required). It is possible to add a standard set of 21 sources.* )
+
 7. **Скрывать ненужные элементы управления на картах.** ( *Hide unnecessary controls on maps.* )
+
 8. **Активировать тепловой слой, изменять настройки слоя и создавать тепловые точки.** ( *Activate the thermal layer, change the layer settings and create heat points.* )
+
 9. **Имеется возможность создавать и управлять пресетами для автоматической вставки некоторой информации или 
 дополнительного функционала, в информационных окнах геообъектов. Для каждой карты добавляются два стандартных пресета (Text и Likes).** ( *It is possible to create and manage presets to automatically insert some information or
 additional functionality, in the information windows of geo-objects. For each map, two standard presets are added (Text and Likes).* )

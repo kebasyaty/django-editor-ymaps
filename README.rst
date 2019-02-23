@@ -19,22 +19,21 @@ DjEYM (django-editor-ymaps)
 
 Description
 -----------
-Удобное использование картографической службы Яндекса для веб-разработки на популярном и свободном фреймворке Django.
+**Удобное использование картографической службы Яндекса для веб-разработки на популярном и свободном фреймворке Django.**
 
-(Convenient use of the Yandex map service for web development on the popular and free Django framework.)
+(*Convenient use of the Yandex map service for web development on the popular and free Django framework.*)
 
 Requirements
 ------------
-- Python (3.5, 3.6, 3.7)
-- Django (2.0, 2.1, 2.2)
-- Pillow - `https://pypi.org/project/Pillow/ <https://pypi.org/project/Pillow/>`_
-- django-imagekit - `https://github.com/matthewwithanm/django-imagekit <https://github.com/matthewwithanm/django-imagekit>`_
-- python-slugify - `https://github.com/un33k/python-slugify <https://github.com/un33k/python-slugify>`_
-- django-ckeditor - `https://github.com/django-ckeditor/django-ckeditor <https://github.com/django-ckeditor/django-ckeditor>`_
-- lxml - `https://pypi.org/project/lxml/ <https://pypi.org/project/lxml/>`_
-- django-smart-selects==1.5.3 - `https://github.com/digi604/django-smart-selects <https://github.com/digi604/django-smart-selects>`_
-- django-ipware - `https://github.com/un33k/django-ipware <https://github.com/un33k/django-ipware>`_
-
+- **Python** (3.5, 3.6, 3.7)
+- **Django** (2.0, 2.1, 2.2)
+- **Pillow** - `https://pypi.org/project/Pillow/ <https://pypi.org/project/Pillow/>`_
+- **django-imagekit** - `https://github.com/matthewwithanm/django-imagekit <https://github.com/matthewwithanm/django-imagekit>`_
+- **python-slugify** - `https://github.com/un33k/python-slugify <https://github.com/un33k/python-slugify>`_
+- **django-ckeditor** - `https://github.com/django-ckeditor/django-ckeditor <https://github.com/django-ckeditor/django-ckeditor>`_
+- **lxml** - `https://pypi.org/project/lxml/ <https://pypi.org/project/lxml/>`_
+- **django-smart-selects==1.5.3** - `https://github.com/digi604/django-smart-selects <https://github.com/digi604/django-smart-selects>`_
+- **django-ipware** - `https://github.com/un33k/django-ipware <https://github.com/un33k/django-ipware>`_
 
 Installation
 ------------
@@ -209,7 +208,7 @@ Usage
 
 Панель администратора > ЯНДЕКС КАРТЫ >  Карты > Карта > ПРЕСЕТЫ > Добавить еще один Пресет
 
-*(Admin Panel > YANDEX MAPS > Maps > Map > PRESETS > Add another preset)*
+(*Admin Panel > YANDEX MAPS > Maps > Map > PRESETS > Add another preset*)
 
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_presets.png?raw=true
    :alt: Editor Menu - Presets

@@ -33,6 +33,9 @@ Features
 6. **Добавлять источники тайловых слоев и API-ключи к ним (если требуется). Имеется возможность добавить стандартный набор из 21 источника.** ( *Add tile layer sources and API keys to them (if required). It is possible to add a standard set of 21 sources.* )
 7. **Скрывать ненужные элементы управления на картах.** ( *Hide unnecessary controls on maps.* )
 8. **Активировать тепловой слой, изменять настройки слоя и создавать тепловые точки.** ( *Activate the thermal layer, change the layer settings and create heat points.* )
+9. **Имеется возможность создавать и управлять пресетами для автоматической вставки некоторой информации или 
+дополнительного функционала, в информационных окнах геообъектов. Для каждой карты добавляются два стандартных пресета (Text и Likes).** ( *It is possible to create and manage presets to automatically insert some information or
+additional functionality, in the information windows of geo-objects. For each map, two standard presets are added (Text and Likes).* )
 
 Requirements
 ------------

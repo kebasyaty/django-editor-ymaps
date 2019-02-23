@@ -177,7 +177,7 @@ Usage
 
 1) Меню редактора - Иконки. (*Editor Menu - Icons.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**Доступ только для персонала.** (*Access only to staff.*)
+- **Доступ только для персонала.** (*Access only to staff.*)
 
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_icons.png?raw=true
    :alt: Editor Menu - Icons
@@ -204,11 +204,11 @@ Usage
 
 6) Меню редактора - Пресеты. (*Editor Menu - Presets.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**Имеется возможность создавать свои пресеты. (You can create your own presets.)**
+- **Имеется возможность создавать свои пресеты. (You can create your own presets.)**
 
-Панель администратора > ЯНДЕКС КАРТЫ >  Карты > Карта > ПРЕСЕТЫ > Добавить еще один Пресет
+   Панель администратора > ЯНДЕКС КАРТЫ >  Карты > Карта > ПРЕСЕТЫ > Добавить еще один Пресет
 
-(*Admin Panel > YANDEX MAPS > Maps > Map > PRESETS > Add another preset*)
+   ( *Admin Panel > YANDEX MAPS > Maps > Map > PRESETS > Add another preset* )
 
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_presets.png?raw=true
    :alt: Editor Menu - Presets

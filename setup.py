@@ -37,7 +37,7 @@ setup(
     download_url='https://github.com/genkosta/django-editor-ymaps/tarball/master',
     license='MIT License',
     platforms=['any'],
-    keywords='django yandex map maps djeym',
+    keywords=['django', 'yandex', 'maps', 'admin', 'editor'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
@@ -53,6 +53,8 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Topic :: Internet :: WWW/HTTP',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
         'Django',

@@ -57,9 +57,13 @@ Requirements
 
 Installation
 ------------
-Install using pip::
+Install libraries::
 
- pip install django-editor-ymaps
+    sudo apt install -y python-dev python3-dev libjpeg8-dev python-pil libevent-dev build-essential libpq-dev libxml2-dev libxslt-dev gettext libjpeg-dev
+
+Install django-editor-ymaps using pip::
+
+    pip install django-editor-ymaps
 
 Settings
 --------

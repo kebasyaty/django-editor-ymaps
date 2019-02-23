@@ -127,19 +127,19 @@ Update Migrations::
 
 Usage
 -----
-1) Добавьте иконку кластера. (Add Cluster Icon.)
+1) Добавьте иконку кластера. (*Add Cluster Icon.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. `Скачайте коллекции иконок. (Download icon collections.) <https://github.com/genkosta/django-editor-ymaps/blob/master/Icon_Collections.zip?raw=true>`_
-2. Ознакомьтесь с содержимым массива. (Read the contents of the array.)
+1. `Скачайте коллекции иконок. (*Download icon collections.*) <https://github.com/genkosta/django-editor-ymaps/blob/master/Icon_Collections.zip?raw=true>`_
+2. Ознакомьтесь с содержимым массива. (*Read the contents of the array.*)
 3. Выберите иконку кластера и добавьте по адресу - Панель администратора > ЯНДЕКС КАРТЫ > Иконки для кластеров > Добавить Иконку для кластеров.
-   (Select the cluster icon and add it to the address - Admin Panel > YANDEX MAPS > Icons for Clusters > Add Icon for Clusters.)
+   (*Select the cluster icon and add it to the address - Admin Panel > YANDEX MAPS > Icons for Clusters > Add Icon for Clusters.*)
 
-2) Добавьте коллекцию иконок. (Add icon collection.)
+2) Добавьте коллекцию иконок. (*Add icon collection.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. `Скачайте коллекции иконок. (Download icon collections.) <https://github.com/genkosta/django-editor-ymaps/blob/master/Icon_Collections.zip?raw=true>`_
-2. Ознакомьтесь с содержимым массива. (Read the contents of the array.)
+1. `Скачайте коллекции иконок. (*Download icon collections.*) <https://github.com/genkosta/django-editor-ymaps/blob/master/Icon_Collections.zip?raw=true>`_
+2. Ознакомьтесь с содержимым массива. (*Read the contents of the array.*)
 3. Прочитайте readme файл для выбранной коллекции и добавьте коллекцию через панель администратора.
-   (Read the readme file for the selected collection and add the collection through the admin panel.)
+   (*Read the readme file for the selected collection and add the collection through the admin panel.*)
 
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/import_icon_collection.png?raw=true
    :alt: Import Icon Collection
@@ -149,60 +149,60 @@ Usage
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/change_icon_for_markers.png?raw=true
    :alt: Change Icon for markers
 
-3) Добавьте источники тайловых слоев. (Add tile sources.)
+3) Добавьте источники тайловых слоев. (*Add tile sources.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. `Скачайте источники тайловых слоев. (Download tile sources.) <https://github.com/genkosta/django-editor-ymaps/blob/master/Tile.zip?raw=true>`_
-2. Ознакомьтесь с содержимым массива. (Read the contents of the array.)
-3. Прочитайте readme файл и добавьте источники через панель администратора. (Read the readme file and add sources through the admin panel.)
+1. `Скачайте источники тайловых слоев. (*Download tile sources.*) <https://github.com/genkosta/django-editor-ymaps/blob/master/Tile.zip?raw=true>`_
+2. Ознакомьтесь с содержимым массива. (*Read the contents of the array.*)
+3. Прочитайте readme файл и добавьте источники через панель администратора. (*Read the readme file and add sources through the admin panel.*)
 
-4) Создайте вашу первую карту. (Create your first map.)
+4) Создайте вашу первую карту. (*Create your first map.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Перейдите по адресу - Панель администратора > ЯНДЕКС КАРТЫ >  Карты > Добавить Карту.
-   (Navigate to the address - Admin Panel > YANDEX MAPS > Maps > Add Map.)
+   (*Navigate to the address - Admin Panel > YANDEX MAPS > Maps > Add Map.*)
 
-5) Создайте категории геообъектов нужного типа для новой карты. (Create categories of geo-objects of the desired type for the new map.)
+5) Создайте категории геообъектов нужного типа для новой карты. (*Create categories of geo-objects of the desired type for the new map.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. Категории маркеров. (Marker categories.)
-2. Подкатегории маркеров. (Subcategories of markers.)
-3. Категории маршрутов. (Categories of routes.)
-4. Категории территорий. (Categories of territories.)
+1. Категории маркеров. (*Marker categories.*)
+2. Подкатегории маркеров. (*Subcategories of markers.*)
+3. Категории маршрутов. (*Categories of routes.*)
+4. Категории территорий. (*Categories of territories.*)
 
-6) Редактировать карту. (Edit map.)
+6) Редактировать карту. (*Edit map.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/edit_map.png?raw=true
    :alt: Edit map
 
-Обзор страницы редактора. (Editor page overview.)
+Обзор страницы редактора. (*Editor page overview.*)
 -------------------------------------------------
 
-1) Меню редактора - Иконки. (Editor Menu - Icons.)
+1) Меню редактора - Иконки. (*Editor Menu - Icons.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Доступ только для персонала.** (*Access only to staff.*)
 
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_icons.png?raw=true
    :alt: Editor Menu - Icons
 
-2) Меню редактора - Фильтры по категориям. (Editor Menu - Filters by category.)
+2) Меню редактора - Фильтры по категориям. (*Editor Menu - Filters by category.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_filters.png?raw=true
    :alt: Editor Menu - Filters by category
 
-3) Меню редактора - Источники тайлов. (Editor Menu - Tile Sources.)
+3) Меню редактора - Источники тайлов. (*Editor Menu - Tile Sources.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_tile.png?raw=true
    :alt: Editor Menu - Tile Sources
 
-4) Меню редактора - Общие настройки. (Editor Menu - General settings.)
+4) Меню редактора - Общие настройки. (*Editor Menu - General settings.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_settings.png?raw=true
    :alt: Editor Menu - General settings
 
-5) Меню редактора - Настройки тепловой карты. (Editor Menu - Heatmap settings.)
+5) Меню редактора - Настройки тепловой карты. (*Editor Menu - Heatmap settings.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_heatmap.png?raw=true
    :alt: Editor Menu - Heatmap settings
 
-6) Меню редактора - Пресеты. (Editor Menu - Presets.)
+6) Меню редактора - Пресеты. (*Editor Menu - Presets.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Имеется возможность создавать свои пресеты. (You can create your own presets.)**
 
@@ -213,5 +213,5 @@ Usage
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_presets.png?raw=true
    :alt: Editor Menu - Presets
 
-Добавление геообъектов на карту. (Adding geo-objects to the map.)
+Добавление геообъектов на карту. (*Adding geo-objects to the map.*)
 -----------------------------------------------------------------

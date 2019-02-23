@@ -254,3 +254,7 @@ Usage
 4. **Добавим информацию об объекте.** ( *Add information about the object.* )
     .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_info.png?raw=true
        :alt: Add Info
+
+    - **Каждая из кнопок открывает свое окно текстового редактора.** ( *Each of the buttons opens its text editor window.* )
+        .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/popup_with_text_editor.png?raw=true
+       :alt: Popup with text editor

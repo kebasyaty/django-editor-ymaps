@@ -205,6 +205,8 @@ Usage
 
 6) Меню редактора - Пресеты. (Editor Menu - Presets.)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Есть возможность создавать свои пресеты. (There is an opportunity to create your own presets.)
+**********************************************************************************************
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_presets.png?raw=true
    :alt: Editor Menu - Presets
 

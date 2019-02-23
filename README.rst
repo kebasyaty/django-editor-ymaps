@@ -23,6 +23,14 @@ Description
 
 ( *Convenient use of the Yandex map service for web development on the popular and free Django framework.* )
 
+Features
+--------
+1. **Через панель администратора, создавать новые карты с богатой возможностью настроек.** ( *Through the admin panel, create new maps with a wide range of options.* )
+2. **Редактировать карты на специальной странице редактора, с доступом только для персонала.** ( *Edit maps on a special page of the editor, with access only for staff.* )
+3. **Создавать геообъекты четырех типов - Маркеры, маршруты, территории и тепловые точки.** ( *Create geo-objects of four types - Markers, routes, territories and heat points.* )
+4. **Использовать кастомные иконки для кластеров и маркеров в формате SVG.** ( *Use custom icons for clusters and markers in the format SVG.* )
+5. **Создавать категории и подкатегории для фильтрации геообъектов на карте.** ( *Create categories and subcategories for filtering geo objects on the map.* )
+
 Requirements
 ------------
 - **Python** (3.5, 3.6, 3.7)

@@ -31,6 +31,8 @@ Features
 4. **Использовать кастомные иконки для кластеров и маркеров в формате SVG.** ( *Use custom icons for clusters and markers in the format SVG.* )
 5. **Создавать категории и подкатегории для фильтрации геообъектов на карте.** ( *Create categories and subcategories for filtering geo objects on the map.* )
 6. **Добавлять источники тайловых слоев и API-ключи к ним (если требуется). Имеется возможность добавить стандартный набор из 21 источника.** ( *Add tile layer sources and API keys to them (if required). It is possible to add a standard set of 21 sources.* )
+7. **Скрывать ненужные элементы управления на картах.** ( *Hide unnecessary controls on maps.* )
+8. **Активировать тепловой слой, изменять настройки слоя и создавать тепловые точки.** ( *Activate the thermal layer, change the layer settings and create heat points.* )
 
 Requirements
 ------------

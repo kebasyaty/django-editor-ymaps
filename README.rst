@@ -276,3 +276,8 @@ Usage
     - pic 2
         .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_2.png?raw=true
            :alt: View result 2
+
+7. **Геообъекты редактируются через контекстное меню - Сделайте правый клик на объекте и внесите нужные изменения. Чтобы сохранить результат, нажмите кнопку с изображением дискеты.** ( *Geo-objects are edited via the context menu - Right-click on the object and make the necessary changes. To save the result, click the button with the image of a floppy disk.* )
+    - pic
+        .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/update_info.png?raw=true
+           :alt: Update info

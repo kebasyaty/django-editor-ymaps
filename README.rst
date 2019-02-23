@@ -239,3 +239,11 @@ Usage
 
 Добавление геообъектов на карту. ( *Adding geo-objects to the map.* )
 ---------------------------------------------------------------------
+1) Добавим маркер. ( Add a marker. )
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. **Левый клик на карте, откроется меню с предложением выбрать тип объекта.** ( *Left-clicking on the map opens a menu with a suggestion to choose the type of object.* )
+
+2. **Выбираем кнопку - Добавить новый Маркер.** ( *Select the button - Add a new Marker.* )
+
+.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_marker.png?raw=true
+   :alt: Add a marker

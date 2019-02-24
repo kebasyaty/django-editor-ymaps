@@ -310,6 +310,10 @@ Usage
     .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editing_route.png?raw=true
        :alt: Edit
 
+- **Можно настроить соответствие по цвету.** ( *You can adjust the color matching.* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/route_color_matching.png?raw=true
+       :alt: Color matching
+
 4) Территория. ( *Territory.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **Добавить территорию.** ( *Add territory.* )
@@ -323,6 +327,10 @@ Usage
 - **Редактировать** ( *Edit* )
     .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editing_territory.png?raw=true
        :alt: Edit
+
+- **Можно настроить соответствие по цвету.** ( *You can adjust the color matching.* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/territory_color_matching.png?raw=true
+       :alt: Color matching
 
 5) Тепловая карта. ( *Heatmap.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -326,7 +326,7 @@ Usage
 
 5) Тепловая карта. ( *Heatmap.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- **Добавить тепловую точку.** ( *.* )
+- **Добавить тепловую точку.** ( *Add heat point.* )
     .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_heatpoint.png?raw=true
        :alt: Add heat point
 

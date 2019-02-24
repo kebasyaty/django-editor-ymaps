@@ -377,3 +377,7 @@ Usage
 - **Карта с открытой панелью.** ( *Map with open panel.* )
     .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/map_opened_panel.png?raw=true
        :alt: Map with open panel
+
+Первый вариант логотипа. ( *The first version of the logo.* )
+-------------------------------------------------------------
+- **Возможно пригодится поклонникам теории плоской земли.** ( *Perhaps useful to fans of the theory of flat land.* )

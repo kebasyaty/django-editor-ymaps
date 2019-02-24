@@ -351,3 +351,11 @@ Usage
       {% djeym_load_ymap slug='roskoshnye-oteli-v-gonolulu' panel='djeym/includes/panel.html' %}
       <!-- END JS -->
     </body>
+
+- **Карта с закрытой панелью.** ( *Map with a closed panel.* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/map_closed_panel.png?raw=true
+       :alt: Map with a closed panel
+
+- **Карта с открытой панелью.** ( *Map with open panel.* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/map_opened_panel.png?raw=true
+       :alt: Map with open panel

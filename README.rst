@@ -323,3 +323,27 @@ Usage
 - **Редактировать** ( *Edit* )
     .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editing_territory.png?raw=true
        :alt: Edit
+
+Выводим карту на страницу сайта. ( *Display a map on the site page.* )
+----------------------------------------------------------------------
+
+Добавьте в шаблон. ( Add to template. )::
+
+    {% load i18n staticfiles djeymtags %}
+
+    <!-- START CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/fontawesome/css/all.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/boxiOS/boxios.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "djeym/css/ymfront.css" %}">
+    <!-- END CSS -->
+
+    <!-- START MAP -->
+    <div id="djeymYMapsID" class="djeym-ymap" style="width: auto; height: 400px"></div>
+    <!-- END MAP -->
+
+    <!-- START JS -->
+    <script type="text/javascript" src="{% static "djeym/js/jquery-3.3.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "djeym/plugins/boxiOS/boxios.js" %}"></script>
+    <script type="text/javascript" src="{% static "djeym/plugins/fontawesome/js/all.min.js" %}"></script>
+    {% djeym_load_ymap slug='roskoshnye-oteli-v-gonolulu' panel='djeym/includes/panel.html' %}
+    <!-- END JS -->

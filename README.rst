@@ -388,3 +388,7 @@ Usage
 
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/first_logo/first_logos.png?raw=true
    :alt: First logo
+
+LICENSE
+-------
+- `MIT <https://github.com/genkosta/django-editor-ymaps/blob/master/LICENSE>`_

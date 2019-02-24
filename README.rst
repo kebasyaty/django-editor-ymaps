@@ -309,3 +309,17 @@ Usage
 - **Редактировать** ( *Edit* )
     .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editing_route.png?raw=true
        :alt: Edit
+
+4) Территория. ( *Territory.* )
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- **Добавить территорию.** ( *Add territory.* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_territory.png?raw=true
+       :alt: Add territory
+
+- **Результат.** ( *Result.* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_territory.png?raw=true
+       :alt: Result
+
+- **Редактировать** ( *Edit* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editing_territory.png?raw=true
+       :alt: Edit

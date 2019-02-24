@@ -3,5 +3,5 @@ include README.rst
 global-exclude *~ .directory screenshots *.zip
 recursive-include djeym *.py
 recursive-include djeym/locale *.mo
-recursive-include djeym/static *.js *.css *.png *.jpg *.gif *.svg *.xml *.ico *.eot *.ttf *.woff *.woff2
+recursive-include djeym/static *.js *.css *.json *.png *.jpg *.gif *.svg *.xml *.ico *.eot *.ttf *.woff *.woff2
 recursive-include djeym/templates *.html *.txt

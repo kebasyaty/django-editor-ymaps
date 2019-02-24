@@ -391,4 +391,4 @@ Usage
 
 LICENSE
 -------
-- `MIT <https://github.com/genkosta/django-editor-ymaps/blob/master/LICENSE>`_
+- `MIT License <https://github.com/genkosta/django-editor-ymaps/blob/master/LICENSE>`_

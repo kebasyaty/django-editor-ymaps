@@ -386,5 +386,5 @@ Usage
 
 - `Download the image archive with the GIMP (xcf) file. <https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/first_logo/first_logo.zip?raw=true>`_
 
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/first_logo/first_logos.png?raw=true
-       :alt: First logo
+.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/first_logo/first_logos.png?raw=true
+   :alt: First logo

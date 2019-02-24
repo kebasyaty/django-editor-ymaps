@@ -324,6 +324,16 @@ Usage
     .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editing_territory.png?raw=true
        :alt: Edit
 
+5) Тепловая карта. ( *Heatmap.* )
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- **Добавить тепловую точку.** ( *.* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_heatpoint.png?raw=true
+       :alt: Add heat point
+
+- **Добавить информацию.** ( *Add information.* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/heatpoint_add_info.png?raw=true
+       :alt: Add info
+
 Выводим карту на страницу сайта. ( *Display a map on the site page.* )
 ----------------------------------------------------------------------
 

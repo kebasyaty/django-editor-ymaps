@@ -394,3 +394,6 @@ LICENSE
 - `MIT License <https://github.com/genkosta/django-editor-ymaps/blob/master/LICENSE>`_
 - Copyright (c) 2014-2019
 
+Donation
+--------
+- `Yandex Money <https://money.yandex.ru/to/410015413221944>`_

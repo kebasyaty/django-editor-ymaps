@@ -295,3 +295,17 @@ Usage
 - **Popup - Carousel**
     .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/cluster_popup_carousel.png?raw=true
        :alt: Carousel
+
+3) Маршрут. ( *Route.* )
+^^^^^^^^^^^^^^^^^^^^^^^^
+- **Добавить маршрут.** ( *Add route.* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_route.png?raw=true
+       :alt: Add route
+
+- **Результат.** ( *Result.* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_route.png?raw=true
+       :alt: Result
+
+- **Редактировать** ( *Edit* )
+    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editing_route.png?raw=true
+       :alt: Edit

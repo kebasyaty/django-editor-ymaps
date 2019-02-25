@@ -44,7 +44,7 @@ class Command(BaseCommand):
             '<p><img alt="" src="/media/uploads/2019/02/13/e988f41a-92cd-4f6c-b8db-8655188c1f2a.jpg" style="height:214px; width:322px" /></p>',
             '<p><img alt="" src="/media/uploads/2019/02/13/556e0572-e8f6-4b23-96ae-b53f73587ac9.jpg" style="height:214px; width:322px" /></p>',
             '<p><img alt="" src="/media/uploads/2019/02/13/da2fb316-9fd9-4d96-b4dd-7e44c0610eb2.jpg" style="height:181px; width:322px" /></p>',
-            '<p><img alt="" src="/media/uploads/2019/02/14/36fa0a2f-6784-4314-a40b-903a1a734a35.png" style="height:120px; width:120px" /></p>'
+            '<p><img alt="" src="/media/uploads/2019/02/13/36fa0a2f-6784-4314-a40b-903a1a734a35.png" style="height:322px; width:322px" /></p>'
         ]
         count_images = len(images)
 

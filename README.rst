@@ -57,7 +57,7 @@ Requirements
 
 Installation
 ------------
-Install libraries ( Ubuntu 18.04, Mint 19.x and later )::
+Install libraries ( Ubuntu >= 18.04, Mint 19.x )::
 
     sudo apt install python-dev python3-dev libjpeg8-dev python-pil libevent-dev build-essential libpq-dev libxml2-dev libxslt1-dev gettext libjpeg-dev
 

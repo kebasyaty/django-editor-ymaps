@@ -389,13 +389,14 @@ Custom Commands
 1. `Скачайте архив, распакуйте и добавьте файлы в свой медиа-раздел. ( Download archive, unpack and add files to your media section. ) <https://github.com/genkosta/django-editor-ymaps/blob/master/media.zip?raw=true>`_
 
 2. **Запустите команду.** ( *Run the command.* )
-  По умолчанию = 100 ( Default = 100 )::
+  Запустите в корневой директории вашего проекта. ( Run in the root directory of your project. )::
 
     # Рекомендуется для настроек карты. ( Recommended for map settings. )
     # Масштаб ( Zoom ): 3
     # Широта ( Latitude ): 0
     # Долгота ( Longitude ): 0
 
+    # --count - Default = 100
     python manage.py addmarker --count 1000
 
   .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_addmarker.png?raw=true

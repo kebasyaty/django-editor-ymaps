@@ -245,7 +245,7 @@ input[type="number"] {
     background-color: #f8f8f8;
     border-right: 1px solid #ddd;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 .djeym-sidenav__wrapper {

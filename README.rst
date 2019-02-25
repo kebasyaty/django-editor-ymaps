@@ -145,6 +145,10 @@ Add to main URLs::
         ...
     ]
 
+Add directory to your project::
+
+    media/uploads
+
 Update Migrations::
 
     python manage.py migrate djeym

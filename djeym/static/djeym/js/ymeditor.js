@@ -2586,7 +2586,7 @@ function init() {
 
   // Update Preset settings.
   // (Обновить настройки Пресета.)
-  $( document ).on( "submit", ".djeym_update_preset_settings_form", function() {
+  $( document ).on( "submit", ".djeym_update_preset_settings_form", function( event ) {
     event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
 
     let $form = $( this );
@@ -2611,8 +2611,9 @@ function init() {
       } );
   } );
 
-  //
-  $( "#djeymGeneralSettingsForm" ).on( "submit", function() {
+  // Update General Settings.
+  // (Обновить общие настройки.)
+  $( "#djeymGeneralSettingsForm" ).on( "submit", function( event ) {
     event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
 
     let $form = $( this );

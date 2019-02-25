@@ -382,6 +382,17 @@ Usage
     .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/map_opened_panel.png?raw=true
        :alt: Map with open panel
 
+Custom Commands
+---------------
+- **Для того, чтобы проверить производительность ( достаточна ли она для вашего проекта ) - С помощью команды "addmarker", добавьте некоторое количество маркеров на карту.** ( *In order to check the performance (whether it is sufficient for your project) - Using the "addmarker" command, add a certain number of markers to the map.* )
+
+1. `Скачайте архив, распакуйте и добавьте файлы в свой медиа-раздел. ( Download archive, unpack and add files to your media section. ) <https://github.com/genkosta/django-editor-ymaps/blob/master/media.zip?raw=true>`_
+
+2. **Запустите команду.** ( *Run the command.* )
+  По умолчанию = 100 ( Default = 100 )::
+
+    python manage.py addmarker --count 1000
+
 Первый вариант логотипа. ( *The first version of the logo.* )
 -------------------------------------------------------------
 - **Возможно пригодится для поклонников теории плоской земли.** ( *Perhaps useful for fans of the theory of flat land.* )

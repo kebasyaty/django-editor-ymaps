@@ -391,6 +391,11 @@ Custom Commands
 2. **Запустите команду.** ( *Run the command.* )
   По умолчанию = 100 ( Default = 100 )::
 
+    # Рекомендуется для настроек карты. ( Recommended for map settings. )
+    # Масштаб ( Zoom ): 3
+    # Широта ( Latitude ): 0
+    # Долгота ( Longitude ): 0
+
     python manage.py addmarker --count 1000
 
   .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_addmarker.png?raw=true

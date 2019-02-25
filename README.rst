@@ -393,6 +393,9 @@ Custom Commands
 
     python manage.py addmarker --count 1000
 
+  .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_addmarker.png?raw=true
+     :alt: Command result - addmarker
+
 Первый вариант логотипа. ( *The first version of the logo.* )
 -------------------------------------------------------------
 - **Возможно пригодится для поклонников теории плоской земли.** ( *Perhaps useful for fans of the theory of flat land.* )

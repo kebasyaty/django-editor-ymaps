@@ -2602,6 +2602,10 @@ function init() {
           $( ".boxios-checkbox_preset" ).off( "change" );
           $( "#id_djeym_presets" ).html( data.html );
           $( ".boxios-checkbox_preset" ).boxiosCheckbox( { size: "small" } );
+          // Corrections for Firefox.
+          if ( navigator.userAgent.toLowerCase().indexOf( "firefox" ) > -1 ) {
+            $( ".djeym-button" ).css( "padding", "3px 20px" );
+          }
           djeymAccordion();
         }, 1000 );
       } )
@@ -2784,6 +2788,12 @@ function init() {
       // Load image for help
       // (Загрузить изображение для справки)
       globalImageOfHelp = new Image().src = "/static/djeym/img/help.png";
+
+      // Corrections for Firefox.
+      if ( navigator.userAgent.toLowerCase().indexOf( "firefox" ) > -1 ) {
+        $( ".legend_btn_style, .boxios-ios-label-text" ).css( "font-size", "12px" );
+        $( ".djeym-button" ).css( "padding", "3px 20px" );
+      }
 
       // Open the panel. (Открыть панель.)
       setTimeout( function() {

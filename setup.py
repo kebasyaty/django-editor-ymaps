@@ -17,7 +17,7 @@ __version__ = '.'.join(map(str, VERSION))
 
 
 def get_readme(file_path):
-    with open(file_path, 'r', encoding='utf-8') as readme_file:
+    with open(file_path) as readme_file:
         result = readme_file.read()
     return result
 

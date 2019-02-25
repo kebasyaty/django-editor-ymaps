@@ -407,6 +407,12 @@ Custom Commands
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/first_logo/first_logos.png?raw=true
    :alt: First logo
 
+Условия использования API Яндекс.Карт ( *Terms of use for the API* )
+--------------------------------------------------------------------
+- `Условия использования API Яндекс.Карт <https://tech.yandex.ru/maps/doc/jsapi/2.1/terms/index-docpage/>`_
+
+- `Terms of use for the API <https://tech.yandex.com/maps/doc/jsapi/2.1/terms/index-docpage/>`_
+
 LICENSE
 -------
 - `MIT License <https://github.com/genkosta/django-editor-ymaps/blob/master/LICENSE>`_

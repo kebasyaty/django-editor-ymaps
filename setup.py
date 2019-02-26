@@ -9,6 +9,7 @@
 #  django-editor-ymaps is free software under terms of the MIT License.
 #
 
+from os import path
 from setuptools import find_packages, setup
 
 
@@ -16,10 +17,10 @@ VERSION = (1, 0)
 __version__ = '.'.join(map(str, VERSION))
 
 
-def get_readme(file_path):
-    with open(file_path) as readme_file:
-        result = readme_file.read()
-    return result
+# read the contents of your README file
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 
 setup(
@@ -29,7 +30,7 @@ setup(
     include_package_data=True,
     requires=['python (>= 3.5)', 'django (>= 2.0)'],
     description='Creating and editing Yandex maps.',
-    long_description=get_readme('README.rst'),
+    long_description=long_description,
     long_description_content_type='text/x-rst',
     author='genkosta',
     author_email='genkosta43@gmail.com',

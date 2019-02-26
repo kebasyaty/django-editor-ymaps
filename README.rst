@@ -226,7 +226,7 @@ Usage
    :alt: Editor Menu - General settings
 
 5) Меню редактора - Настройки тепловой карты. (*Editor Menu - Heatmap settings.*)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_heatmap.png?raw=true
    :alt: Editor Menu - Heatmap settings
 
@@ -389,6 +389,7 @@ Custom Commands
 1. `Скачайте архив, распакуйте и добавьте файлы в свой медиа-раздел. ( Download archive, unpack and add files to your media section. ) <https://github.com/genkosta/django-editor-ymaps/blob/master/media.zip?raw=true>`_
 
 2. **Запустите команду.** ( *Run the command.* )
+
   Запустите в корневой директории вашего проекта. ( Run in the root directory of your project. )::
 
     # Рекомендуется для настроек карты. ( Recommended for map settings. )

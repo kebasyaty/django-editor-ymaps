@@ -41,7 +41,7 @@ Features
 
 8. **Активировать тепловой слой, изменять настройки слоя и создавать тепловые точки.** ( *Activate the thermal layer, change the layer settings and create heat points.* )
 
-9. **Имеется возможность создавать и управлять пресетами для автоматической вставки некоторой текстовой информации или дополнительного функционала, в информационных окнах геообъектов. Для каждой карты добавляются два стандартных пресета (Text и Likes).** ( *It is possible to create and manage presets for automatic insertion of some textual information or additional functionality in the information windows of geoobjects. Two standard presets are added for each map (Text and Likes).* )
+9. **Имеется возможность создавать и управлять пресетами для автоматической вставки некоторой текстовой информации или дополнительного функционала в информационных окнах геообъектов. Для каждой карты добавляются два стандартных пресета (Text и Likes).** ( *It is possible to create and manage presets for automatic insertion of some textual information or additional functionality in the information windows of geoobjects. Two standard presets are added for each map (Text and Likes).* )
 
 Requirements
 ------------

@@ -2602,6 +2602,7 @@ function init() {
           $( ".boxios-checkbox_preset" ).off( "change" );
           $( "#id_djeym_presets" ).html( data.html );
           $( ".boxios-checkbox_preset" ).boxiosCheckbox( { size: "small" } );
+
           // Corrections for Firefox.
           if ( navigator.userAgent.toLowerCase().indexOf( "firefox" ) > -1 ) {
             $( ".djeym-button" ).css( "padding", "3px 20px" );
@@ -2793,6 +2794,7 @@ function init() {
       if ( navigator.userAgent.toLowerCase().indexOf( "firefox" ) > -1 ) {
         $( ".legend_btn_style, .boxios-ios-label-text" ).css( "font-size", "12px" );
         $( ".djeym-button" ).css( "padding", "3px 20px" );
+        $( ".djeym-button > div" ).css( "font-size", "12px" );
       }
 
       // Open the panel. (Открыть панель.)

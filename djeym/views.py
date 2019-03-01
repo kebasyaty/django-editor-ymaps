@@ -18,6 +18,7 @@ from django.views.generic import TemplateView, View
 from ipware import get_client_ip
 from slugify import slugify
 
+from .__init__ import __version__
 from .decorators import ajax_login_required_and_staff
 from .forms import (CKEditorTextareaForm, GeneralSettingsForm,
                     GeoObjectsTransferForm, HeatmapSettingsForm, HeatPointForm,
@@ -52,6 +53,7 @@ class EditorYMap(StaffRequiredMixin, TemplateView):
             else:
                 icons = None
 
+            context['djeym_version'] = __version__
             context['form_geo'] = GeoObjectsTransferForm(ymap_id=ymap.pk)
             context['form_controls'] = MapControlsForm(instance=controls)
             context['cluster'] = ymap.icon_cluster

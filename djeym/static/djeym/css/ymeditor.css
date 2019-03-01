@@ -737,7 +737,7 @@ div[id^="cke_editor"] {
 }
 
 .font-14 {
-    font-size: 14px !important;
+    font-size: 14px;
 }
 
 .font-16 {

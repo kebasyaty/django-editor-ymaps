@@ -42,6 +42,8 @@ setup(
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
+        'Natural Language :: Russian',
+        'Natural Language :: English',
         'Framework :: Django',
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',

@@ -76,21 +76,14 @@
     transform: translate(-50%, -50%);
 }
 
-/* Tabs */
-
-#id_djeym_tab_routes,
-#id_djeym_tab_territories {
-    display: none;
-}
-
 /* Categories */
 
 .boxios-ios-icon-display {
-    color: #666;
+    color: #999;
 }
 
 .boxios-ios-label-text {
-    color: #333;
+    color: #666;
     font-size: 14px;
 }
 
@@ -102,7 +95,7 @@
 }
 
 .legend_btn_style {
-    color: #666;
+    color: #999;
     font-weight: bold;
     font-size: 14px;
 }

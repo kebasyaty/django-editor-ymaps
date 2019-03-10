@@ -23,8 +23,27 @@ djeymYMaps.ready( function() {
     // Create Map
     Map = new djeymYMaps.Map( "id_check_icon_offset_map", {
       center: [ 0, 0 ],
-      zoom: 3
+      zoom: 3,
+      type: null
+    }, {
+      maxZoom: 12,
+      minZoom: 0
     } );
+
+    // Connect a third-party source of tiles.
+    let djeymSource = function() {
+      return "http://" + [ "a", "b", "c", "d" ][ Math.floor( Math.random() * 4 ) ] +
+             ".tile.osm.kosmosnimki.ru/night/%z/%x/%y.png";
+    };
+    Map.layers.add( new djeymYMaps.Layer(
+      djeymSource(), {
+        projection: djeymYMaps.projection.sphericalMercator
+      } ) );
+    Map.copyrights.add(
+      "Map data: © <a href=\"http://www.openstreetmap.org/copyright\" " +
+      "target=\"_blank\">OpenStreetMap</a>  contributors, under ODbL | Tiles: " +
+      "© <a href=\"http://osm.kosmosnimki.ru/\" target=\"_blank\">ScanEx</a>"
+    );
 
     if ( Map ) { //
       // Create Standard Placemark

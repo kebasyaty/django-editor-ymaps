@@ -389,6 +389,8 @@ Custom Commands
 
   Запустите в корневой директории вашего проекта. ( Run in the root directory of your project. )::
 
+    # Название карты: Test ( Map name: Test )
+    #
     # Рекомендуется для настроек карты. ( Recommended for map settings. )
     # Масштаб ( Zoom ): 3
     # Широта ( Latitude ): 0

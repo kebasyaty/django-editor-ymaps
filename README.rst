@@ -430,6 +430,9 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.0.7
+    - Optimized map panel for the site page.
+
 - # 1.0.6
     - Custom command "addmarker" - The value of the variable Slug is changed to "test".
     - Panel for the site map - Added conditions for hiding buttons with empty filters.

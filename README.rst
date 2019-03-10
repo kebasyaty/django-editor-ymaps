@@ -436,7 +436,7 @@ CHANGELOG
     - Admin Panel, section "Change Icon for markers" - Changed the map to a dark theme, for contrast.
     - Updated README.rst
 
-- # 1.0-1.0.5
+- # 1.0 - 1.0.5
     - Added automatic styles correction for Firefox. - Fixed font size for headings and buttons.
     - Added automatic substitution of the version number in the help section.
     - Updated migration for optimization.

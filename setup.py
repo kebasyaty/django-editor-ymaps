@@ -4,7 +4,7 @@
 #  Convenient use of the Yandex map service for web development on 
 #  the popular and free Django framework.
 #
-#  Copyright (c) 2014-2019 genkosta
+#  Copyright (c) 2014 genkosta
 #
 #  django-editor-ymaps is free software under terms of the MIT License.
 #
@@ -13,7 +13,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (1, 0, 5)
+VERSION = (1, 0, 6)
 __version__ = '.'.join(map(str, VERSION))
 
 
@@ -56,7 +56,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Topic :: Internet :: WWW/HTTP',
+        'Topic :: Scientific/Engineering :: GIS',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[

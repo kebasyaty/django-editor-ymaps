@@ -427,3 +427,16 @@ LICENSE
 Donation
 --------
 - `Yandex Money <https://money.yandex.ru/to/410015413221944>`_
+
+CHANGELOG
+---------
+- # 1.0.6
+    1. Custom command "addmarker" - The value of the variable Slug is changed to "test".
+    2. Panel for the site map - Added conditions for hiding buttons with empty filters.
+    3. Admin Panel, section "Change Icon for markers" - Changed the map to a dark theme, for contrast.
+    4. Updated README.rst
+
+- # 1.0-1.0.5
+    1. Added automatic styles correction for Firefox. - Fixed font size for headings and buttons.
+    2. Added automatic substitution of the version number in the help section.
+    3. Updated migration for optimization.

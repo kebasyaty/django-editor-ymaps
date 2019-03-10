@@ -1,31 +1,6 @@
 {% load i18n %}
 <div id="id_djeym_temp_sidenav" class="hidden">
     <!-- START PANEL -->
-    <style type="text/css">
-    /* Matrix menu - Tabs */
-    {% if category_placemarks %}
-        #id_djeym_tab_routes,
-        #id_djeym_tab_territories {
-            display: none;
-        }
-    {% elif category_polylines %}
-        #id_djeym_tab_markers,
-        #id_djeym_tab_territories {
-            display: none;
-        }
-    {% elif category_polygons %}
-        #id_djeym_tab_markers,
-        #id_djeym_tab_routes {
-            display: none;
-        }
-    {% else %}
-        #id_djeym_tab_markers,
-        #id_djeym_tab_routes,
-        #id_djeym_tab_territories {
-            display: none;
-        }
-    {% endif %}
-    </style>
     <div id="id_djeym_sidenav" class="djeym-sidenav">
         <div class="djeym-sidenav__wrapper">
             <div class="djeym-sidenav-header">
@@ -64,35 +39,18 @@
             </div>
             <!-- Categories -->
             <div class="djeym-sidenav__content">
-                <!-- Filter - Marker categories and subcategories. -->
-                <div id="id_djeym_tab_markers" class="djeym-sidenav-item djeym-tab-item">
-                    <fieldset id="idCategoriesPlacemarks" class="djeym-fieldset">
-                        <legend class="legend_btn_style">
-                            {% trans 'Categories of placemarks' %}</legend>
-                        {% for item in category_placemarks %}
-                            <p>
-                                <label class="boxios-ios-label">
-                                    {% if item.category_icon %}<span class="boxios-ios-icon-display">{{ item.category_icon|safe }}</span>{% endif %}
-                                    <span class="boxios-ios-checkbox">
-                                        <input type="checkbox" class="filter-by-category-placemarks" checked
-                                                value="{{ item.pk }}" data-jack_color="{{ item.category_color }}">
-                                        <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
-                                    </span>
-                                    <span class="boxios-ios-label-text">{{ item.title }}</span>
-                                </label>
-                            </p>
-                        {% endfor %}
-                    </fieldset>
-                    {% if category_submarks %}
-                        <fieldset id="idSubcategoriesPlacemarks" class="djeym-fieldset m-t-20">
+                {% if category_placemarks %}
+                    <!-- Filter - Marker categories and subcategories. -->
+                    <div id="id_djeym_tab_markers" class="djeym-sidenav-item djeym-tab-item">
+                        <fieldset id="idCategoriesPlacemarks" class="djeym-fieldset">
                             <legend class="legend_btn_style">
-                                {% trans 'Subcategories of placemarks' %}</legend>
-                            {% for item in category_submarks %}
+                                {% trans 'Categories of placemarks' %}</legend>
+                            {% for item in category_placemarks %}
                                 <p>
                                     <label class="boxios-ios-label">
                                         {% if item.category_icon %}<span class="boxios-ios-icon-display">{{ item.category_icon|safe }}</span>{% endif %}
                                         <span class="boxios-ios-checkbox">
-                                            <input type="checkbox" class="filter-by-category-submarks"
+                                            <input type="checkbox" class="filter-by-category-placemarks" checked
                                                     value="{{ item.pk }}" data-jack_color="{{ item.category_color }}">
                                             <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
                                         </span>
@@ -101,48 +59,71 @@
                                 </p>
                             {% endfor %}
                         </fieldset>
-                    {% endif %}
-                </div>
-                <!-- Filter - Route categories. -->
-                <div id="id_djeym_tab_routes" class="djeym-sidenav-item djeym-tab-item">
-                    <fieldset id="idCategoriesRoutes" class="djeym-fieldset">
-                        <legend class="legend_btn_style">
-                            {% trans 'Categories of routes' %}</legend>
-                        {% for item in category_polylines %}
-                            <p>
-                                <label class="boxios-ios-label">
-                                    {% if item.category_icon %}<span class="boxios-ios-icon-display">{{ item.category_icon|safe }}</span>{% endif %}
-                                    <span class="boxios-ios-checkbox">
-                                        <input type="checkbox" class="filter-by-category-polylines" checked
-                                                value="{{ item.pk }}" data-jack_color="{{ item.category_color }}">
-                                        <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
-                                    </span>
-                                    <span class="boxios-ios-label-text">{{ item.title }}</span>
-                                </label>
-                            </p>
-                        {% endfor %}
-                    </fieldset>
-                </div>
-                <!-- Filter - Territories categories. -->
-                <div id="id_djeym_tab_territories" class="djeym-sidenav-item djeym-tab-item">
-                    <fieldset id="idCategoriesTerritories" class="djeym-fieldset">
-                        <legend class="legend_btn_style">
-                            {% trans 'Categories of territories' %}</legend>
-                        {% for item in category_polygons %}
-                            <p>
-                                <label class="boxios-ios-label">
-                                    {% if item.category_icon %}<span class="boxios-ios-icon-display">{{ item.category_icon|safe }}</span>{% endif %}
-                                    <span class="boxios-ios-checkbox">
-                                        <input type="checkbox" class="filter-by-category-polygons" checked
-                                                value="{{ item.pk }}" data-jack_color="{{ item.category_color }}">
-                                        <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
-                                    </span>
-                                    <span class="boxios-ios-label-text">{{ item.title }}</span>
-                                </label>
-                            </p>
-                        {% endfor %}
-                    </fieldset>
-                </div>
+                        {% if category_submarks %}
+                            <fieldset id="idSubcategoriesPlacemarks" class="djeym-fieldset m-t-20">
+                                <legend class="legend_btn_style">
+                                    {% trans 'Subcategories of placemarks' %}</legend>
+                                {% for item in category_submarks %}
+                                    <p>
+                                        <label class="boxios-ios-label">
+                                            {% if item.category_icon %}<span class="boxios-ios-icon-display">{{ item.category_icon|safe }}</span>{% endif %}
+                                            <span class="boxios-ios-checkbox">
+                                                <input type="checkbox" class="filter-by-category-submarks"
+                                                        value="{{ item.pk }}" data-jack_color="{{ item.category_color }}">
+                                                <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
+                                            </span>
+                                            <span class="boxios-ios-label-text">{{ item.title }}</span>
+                                        </label>
+                                    </p>
+                                {% endfor %}
+                            </fieldset>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                {% if category_polylines %}
+                    <!-- Filter - Route categories. -->
+                    <div id="id_djeym_tab_routes" class="djeym-sidenav-item djeym-tab-item">
+                        <fieldset id="idCategoriesRoutes" class="djeym-fieldset">
+                            <legend class="legend_btn_style">
+                                {% trans 'Categories of routes' %}</legend>
+                            {% for item in category_polylines %}
+                                <p>
+                                    <label class="boxios-ios-label">
+                                        {% if item.category_icon %}<span class="boxios-ios-icon-display">{{ item.category_icon|safe }}</span>{% endif %}
+                                        <span class="boxios-ios-checkbox">
+                                            <input type="checkbox" class="filter-by-category-polylines" checked
+                                                    value="{{ item.pk }}" data-jack_color="{{ item.category_color }}">
+                                            <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
+                                        </span>
+                                        <span class="boxios-ios-label-text">{{ item.title }}</span>
+                                    </label>
+                                </p>
+                            {% endfor %}
+                        </fieldset>
+                    </div>
+                {% endif %}
+                {% if category_polygons %}
+                    <!-- Filter - Territories categories. -->
+                    <div id="id_djeym_tab_territories" class="djeym-sidenav-item djeym-tab-item">
+                        <fieldset id="idCategoriesTerritories" class="djeym-fieldset">
+                            <legend class="legend_btn_style">
+                                {% trans 'Categories of territories' %}</legend>
+                            {% for item in category_polygons %}
+                                <p>
+                                    <label class="boxios-ios-label">
+                                        {% if item.category_icon %}<span class="boxios-ios-icon-display">{{ item.category_icon|safe }}</span>{% endif %}
+                                        <span class="boxios-ios-checkbox">
+                                            <input type="checkbox" class="filter-by-category-polygons" checked
+                                                    value="{{ item.pk }}" data-jack_color="{{ item.category_color }}">
+                                            <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
+                                        </span>
+                                        <span class="boxios-ios-label-text">{{ item.title }}</span>
+                                    </label>
+                                </p>
+                            {% endfor %}
+                        </fieldset>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

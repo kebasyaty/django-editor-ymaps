@@ -196,7 +196,8 @@ function init() {
     $( "#djeymYMapsID" ).append( $tempSidenav.html() );
     $tempSidenav.remove();
     let $matrixMenuBtn = $( ".djeym-matrix-menu__btn" );
-    if ( $matrixMenuBtn.length === 1 ) { $matrixMenuBtn.eq( 0 ).hide(); };
+    if ( $matrixMenuBtn.length === 1 ) { $matrixMenuBtn.eq( 0 ).hide(); }
+    $( ".djeym-tab-item" ).eq( 0 ).addClass( "djeym_tab_active" ).show();
   } )();
 
   // CREATE OBJECT MANAGERS ------------------------------------------------------------------------

@@ -76,6 +76,14 @@
     transform: translate(-50%, -50%);
 }
 
+/* Matrix menu - Tabs */
+
+#id_djeym_tab_markers,
+#id_djeym_tab_routes,
+#id_djeym_tab_territories {
+    display: none;
+}
+
 /* Categories */
 
 .boxios-ios-icon-display {
@@ -95,8 +103,7 @@
 }
 
 .legend_btn_style {
-    color: #999;
-    font-weight: bold;
+    color: #666666db;
     font-size: 14px;
 }
 

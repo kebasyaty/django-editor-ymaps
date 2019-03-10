@@ -22,7 +22,7 @@ class Command(BaseCommand):
             msg = 'Error - The number of markers cannot be a negative number. Parameter: --count'
             raise CommandError(msg)
 
-        slug = 'roskoshnye-oteli-v-gonolulu'
+        slug = 'test'
         ymap = Map.objects.filter(slug=slug).first()
 
         if ymap is None:

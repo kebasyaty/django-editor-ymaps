@@ -430,6 +430,9 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.0.8
+    - Admin panel, section "Change Icon for markers" - The size of the icons on the map is increased, for the convenience of correction the offset.
+
 - # 1.0.7
     - Optimized map panel for the site page.
 

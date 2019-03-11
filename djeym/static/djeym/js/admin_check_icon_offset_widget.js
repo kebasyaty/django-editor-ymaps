@@ -20,6 +20,9 @@ djeymYMaps.ready( function() {
     // Display hint for map.
     $( ".field-check_icon_offset, .hint_check_icon_offset" ).show();
 
+    // Map height correction.
+    $( "#id_check_icon_offset_map" ).css( "height", "600px" );
+
     // Create Map
     Map = new djeymYMaps.Map( "id_check_icon_offset_map", {
       center: [ 0, 0 ],
@@ -50,8 +53,8 @@ djeymYMaps.ready( function() {
       standardPlacemark = new djeymYMaps.Placemark( Map.getCenter(), {}, {
         iconLayout: "default#image",
         iconImageHref: "/static/djeym/img/offset.svg",
-        iconImageSize: [ 60, 60 ],
-        iconImageOffset: [ -30, 0 ],
+        iconImageSize: [ 60 * 4, 60 * 4 ],
+        iconImageOffset: [ -30 * 4, 0 ],
         hasBalloon: false,
         hasHint: false
       } );
@@ -60,8 +63,8 @@ djeymYMaps.ready( function() {
       testPlacemark = new djeymYMaps.Placemark( Map.getCenter(), {}, {
         iconLayout: "default#image",
         iconImageHref: $( ".file-upload a" ).attr( "href" ),
-        iconImageSize: [ +sizeWidth, +sizeHeight ],
-        iconImageOffset: [ +offsetX.val(), +offsetY.val() ],
+        iconImageSize: [ ( +sizeWidth * 4 ).toFixed( 1 ), ( +sizeHeight * 4 ).toFixed( 1 ) ],
+        iconImageOffset: [ ( +offsetX.val() * 4 ).toFixed( 1 ), ( +offsetY.val() * 4 ).toFixed( 1 ) ],
         hasBalloon: false,
         hasHint: false
       } );
@@ -74,7 +77,7 @@ djeymYMaps.ready( function() {
       $( "#id_offset_x, #id_offset_y" ).on( "keyup mouseup", function( event ) {
         event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
         testPlacemark.options.set(
-          { iconImageOffset: [ +offsetX.val(), +offsetY.val() ] } );
+          { iconImageOffset: [ ( +offsetX.val() * 4 ).toFixed( 1 ), ( +offsetY.val() * 4 ).toFixed( 1 ) ] } );
       } );
 
       $( "#id_offset_x" ).on( "mousewheel", function( event ) {
@@ -89,7 +92,7 @@ djeymYMaps.ready( function() {
         }
         offsetX.val( num );
         testPlacemark.options.set(
-          { iconImageOffset: [ num, +offsetY.val() ] } );
+          { iconImageOffset: [ ( num * 4 ).toFixed( 1 ), ( +offsetY.val() * 4 ).toFixed( 1 ) ] } );
       } );
 
       $( "#id_offset_y" ).on( "mousewheel", function( event ) {
@@ -104,7 +107,7 @@ djeymYMaps.ready( function() {
         }
         offsetY.val( num );
         testPlacemark.options.set(
-          { iconImageOffset: [ +offsetX.val(), num ] } );
+          { iconImageOffset: [ ( +offsetX.val() * 4 ).toFixed( 1 ), ( num * 4 ).toFixed( 1 ) ] } );
       } );
 
       // Add buttons for touch screen.
@@ -123,7 +126,7 @@ djeymYMaps.ready( function() {
         let num = ( +offsetX.val() + 0.1 ).toFixed( 1 );
         offsetX.val( num );
         testPlacemark.options.set(
-          { iconImageOffset: [ num, +offsetY.val() ] } );
+          { iconImageOffset: [ ( num * 4 ).toFixed( 1 ), ( +offsetY.val() * 4 ).toFixed( 1 ) ] } );
       } );
       $( "#id_offset_x_left_btn" ).on( "touchstart click", function( event ) {
         event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
@@ -131,14 +134,14 @@ djeymYMaps.ready( function() {
         num = ( num < 0 ) ? num : 0;
         offsetX.val( num );
         testPlacemark.options.set(
-          { iconImageOffset: [ num, +offsetY.val() ] } );
+          { iconImageOffset: [ ( num * 4 ).toFixed( 1 ), ( +offsetY.val() * 4 ).toFixed( 1 ) ] } );
       } );
       $( "#id_offset_y_down_btn" ).on( "touchstart click", function( event ) {
         event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
         let num = ( +offsetY.val() + 0.1 ).toFixed( 1 );
         offsetY.val( num );
         testPlacemark.options.set(
-          { iconImageOffset: [ +offsetX.val(), num ] } );
+          { iconImageOffset: [ ( +offsetX.val() * 4 ).toFixed( 1 ), ( num * 4 ).toFixed( 1 ) ] } );
       } );
       $( "#id_offset_y_up_btn" ).on( "touchstart click", function( event ) {
         event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
@@ -146,7 +149,7 @@ djeymYMaps.ready( function() {
         num = ( num < 0 ) ? num : 0;
         offsetY.val( num );
         testPlacemark.options.set(
-          { iconImageOffset: [ +offsetX.val(), num ] } );
+          { iconImageOffset: [ ( +offsetX.val() * 4 ).toFixed( 1 ), ( num * 4 ).toFixed( 1 ) ] } );
       } );
     }
   }

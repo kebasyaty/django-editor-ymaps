@@ -26,7 +26,7 @@ class Command(BaseCommand):
         ymap = Map.objects.filter(slug=slug).first()
 
         if ymap is None:
-            msg = 'Create a Map - roskoshnye-oteli-v-gonolulu'
+            msg = 'Create a map with the name - Test'
             raise CommandError(msg)
 
         categories = CategoryPlacemark.objects.all()
@@ -35,7 +35,7 @@ class Command(BaseCommand):
         count_subcategories = subcategories.count()
         next_number_marker = Placemark.objects.count() + 1
         text = paragraphs(30, common=False)[0]
-        icon_name_list = [icon.slug for icon in CustomMarkerIcon.objects.all()]
+        icon_name_list = [icon.slug for icon in CustomMarkerIcon.objects.filter(icon_collection=ymap.icon_collection)]
         images = [
             '<p><img alt="" src="/media/uploads/2019/02/13/e51b6d5e-18df-4bb0-988a-b10b7a3bebb5.jpg" style="height:214px; width:322px" /></p>',
             '<p><img alt="" src="/media/uploads/2019/02/13/80c1d6e5-0a8e-48e5-9fda-980666ba2525.jpg" style="height:214px; width:322px" /></p>',
@@ -48,6 +48,10 @@ class Command(BaseCommand):
         ]
         count_images = len(images)
 
+        if count_categories == 0:
+            msg = 'Create a category for markers!'
+            raise CommandError(msg)
+
         for num in range(count):
             placemark = Placemark.objects.create(
                 ymap=ymap,
@@ -59,6 +63,7 @@ class Command(BaseCommand):
                 coordinates='[{0},{1}]'.format(
                     random.randrange(-84, 76), random.randrange(-170, 170))
             )
-            placemark.subcategories.add(*[subcategories[idx] for idx in random.sample(
-                range(count_subcategories), random.randrange(count_subcategories) + 1)])
+            if count_subcategories > 0:
+                placemark.subcategories.add(*[subcategories[idx] for idx in random.sample(
+                    range(count_subcategories), random.randrange(count_subcategories) + 1)])
             next_number_marker += 1

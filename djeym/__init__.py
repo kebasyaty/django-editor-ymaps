@@ -8,7 +8,7 @@ $$$$$____$$$$___$$$$$____$$____$$___$$
 """
 
 __title__ = 'DjEYM (django-editor-ymaps)'
-__version__ = '1.0.8'
+__version__ = '1.0.9'
 __author__ = 'genkosta'
 __license__ = 'MIT'
 __copyright__ = 'Copyright (c) 2014 genkosta'

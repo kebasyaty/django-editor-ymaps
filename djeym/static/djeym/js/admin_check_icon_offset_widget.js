@@ -32,7 +32,7 @@ djeymYMaps.ready( function() {
 
     // Connect a third-party source of tiles.
     let djeymSource = function() {
-      return "http://" + [ "a", "b", "c", "d" ][ Math.floor( Math.random() * 4 ) ] +
+      return "http://" + [ "a", "b", "c", "d" ][ Math.round( Math.random() * 3 ) ] +
              ".tile.osm.kosmosnimki.ru/night/%z/%x/%y.png";
     };
     Map.layers.add( new djeymYMaps.Layer(

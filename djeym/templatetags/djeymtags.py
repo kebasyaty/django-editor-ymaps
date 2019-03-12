@@ -74,14 +74,14 @@ def get_api_ymap(context, lang="", ns='djeymYMaps'):
 
 @register.simple_tag
 def random_domain(value, apikey=""):
-    """Tile Sources - Add random selection of subdomains and api key"""
+    """Tile Sources - Add random selection of subdomains, api key"""
     count_elem = re.search(r'\[\[(.+)\]\]', value)
 
     if count_elem is not None:
         count_elem = len(eval(count_elem.group(0))[0])
 
     value = re.sub(r'\[(\[.+\])\]',
-                   '" + \\1[ Math.floor( Math.random() * {} ) ] + "'.format(count_elem), value)
+                   '" + \\1[ Math.round( Math.random() * {} ) ] + "'.format(int(count_elem) - 1), value)
     if len(apikey) > 0:
         var_key = re.search(r'\{\{(.+)\}\}', value).group(0)
         clean_var_key = re.sub(r'{{|}}', "", var_key)

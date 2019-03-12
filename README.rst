@@ -1,4 +1,4 @@
-.. image:: https://img.shields.io/badge/version-1.0.8%20beta-brightgreen.svg
+.. image:: https://img.shields.io/badge/version-1.0.9%20beta-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
@@ -430,6 +430,10 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.0.9
+    - Updated custom command - addmarker.
+    - Updated admin panel section - Change icon for markers.
+
 - # 1.0.8
     - Admin panel, section "Change Icon for markers" - The size of the icons on the map is increased, for the convenience of correction the offset.
 

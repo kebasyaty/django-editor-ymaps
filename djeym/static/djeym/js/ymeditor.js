@@ -125,6 +125,20 @@ function init() {
     }
   }
 
+  // Wait for the content to load into the Balloon and update the information for the presets.
+  // (Дождаться загрузки контента в Balloon и обновить информацию для пресетов.)
+  function waitLoadContent() {
+    if ( !$( "div" ).is( "#djeymSignLoaded" ) ) {
+      setTimeout( function() {
+        waitLoadContent();
+      }, 100 );
+    } else {
+      $( ".djeymUpdateInfoPreset" ).each( function() {
+        $( this ).trigger( "click" );
+      } );
+    }
+  }
+
   // CUSTOMIZE PLUGINS (Настройка плагинов) --------------------------------------------------------
 
   // colorPicker - Default colors (Цвета по умолчанию)
@@ -332,11 +346,7 @@ function init() {
   Map.events.add( "balloonopen", function() { //
     // Update Info Preset.
     // (Обновить информацию пресета.)
-    setTimeout( function() {
-      $( ".djeymUpdateInfoPreset" ).each( function() {
-        $( this ).trigger( "click" );
-      } );
-    }, 1000 );
+    waitLoadContent();
   } );
 
   // Update preset information in the balloon-panel.
@@ -346,12 +356,9 @@ function init() {
     "ymaps:regex(class, .*-cluster-tabs__menu-item.*), " +
     "ymaps:regex(class, .*-cluster-carousel__pager-item.*), " +
     "ymaps:regex(class, .*-cluster-carousel__nav.*)",
-    function() {
-      setTimeout( function() {
-        $( ".djeymUpdateInfoPreset" ).each( function() {
-          $( this ).trigger( "click" );
-        } );
-      }, 1000 );
+    function( event ) {
+      event.stopPropagation ? event.stopPropagation() : ( event.cancelBubble = true );
+      waitLoadContent();
     } );
 
   // When closing the balun, clean the content elements.

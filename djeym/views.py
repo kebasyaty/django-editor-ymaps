@@ -113,6 +113,7 @@ class AjaxBalloonContent(View):
         ids = request.GET.get('ids')
         presets_bool = json.loads(request.GET.get('presetsBool'))
         presets = []
+        sign_loading = '<div id="djeymSignLoaded"></div>'
 
         if presets_bool:
             presets = Preset.objects.filter(
@@ -132,6 +133,7 @@ class AjaxBalloonContent(View):
             if presets:
                 geoobject = self.add_presets(presets, geoobject, obj_type, pk)
 
+            geoobject.footer += sign_loading
             response_data = {
                 'header': mark_safe(geoobject.header),
                 'body': mark_safe(geoobject.body),
@@ -146,6 +148,7 @@ class AjaxBalloonContent(View):
                 if presets:
                     placemark = self.add_presets(
                         presets, placemark, obj_type, str(pk))
+                placemark.footer += sign_loading
                 response_data[pk] = {
                     'header': mark_safe(placemark.header),
                     'body': mark_safe(placemark.body),

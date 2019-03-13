@@ -1,4 +1,4 @@
-.. image:: https://img.shields.io/badge/version-1.0.10%20beta-brightgreen.svg
+.. image:: https://img.shields.io/badge/version-1.0.11%20beta-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
@@ -430,8 +430,11 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.0.11
+    - Optimized update information for presets.
+
 - # 1.0.10
-    - Tile Sources - Updated templatetags - random_domain (increased scatter).
+    - Tile Sources - Updated templatetags - random_domain ( increased domain scatter ).
 
 - # 1.0.9
     - Updated custom command - addmarker.

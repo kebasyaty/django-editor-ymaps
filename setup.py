@@ -13,7 +13,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (1, 0, 10)
+VERSION = (1, 0, 11)
 __version__ = '.'.join(map(str, VERSION))
 
 
@@ -60,7 +60,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        'Django',
+        'Django>=2.0',
         'Pillow',
         'django-imagekit',
         'python-slugify',

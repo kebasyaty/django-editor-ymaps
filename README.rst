@@ -46,6 +46,8 @@ Features
 
 9. **Имеется возможность создавать и управлять пресетами для автоматической вставки некоторой текстовой информации или дополнительного функционала в информационных окнах геообъектов. Для каждой карты добавляются два стандартных пресета (Text и Likes).** ( *It is possible to create and manage presets for automatic insertion of some textual information or additional functionality in the information windows of geoobjects. Two standard presets are added for each map (Text and Likes).* )
 
+10. **Начиная с версии 1.1, добавлен шаблонный тег для прямого геокодирования. Например - На странице профиля, геокодер получает адресс пользователя и отображает его маркером на отдельной карте. Эти карты независимы, их ненужно саздавать через панель администратора. Ниже, в докуменетации, есть пример с описанием.** ( *Starting with version 1.1, a template tag has been added for direct geocoding. For example - On the profile page, the geocoder receives the user's address and displays it with a marker on a separate map. These cards are independent, it is unnecessary to hack them through the admin panel. Below, in the documentation, there is an example with a description.* )
+
 Requirements
 ------------
 - **Python** (3.5, 3.6, 3.7)

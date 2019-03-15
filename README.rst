@@ -412,6 +412,9 @@ Custom Commands
 
 Использование Геокодера. ( *Using Geocoder.* )
 ----------------------------------------------
+`Условия использования API Геокодера <https://tech.yandex.ru/maps/doc/geocoder/desc/concepts/limits-docpage/>`_
+
+`Terms of use for the Geocoder API <https://tech.yandex.com/maps/doc/geocoder/desc/concepts/limits-docpage/>`_
 
 Добавьте в шаблон. ( Add to template. )::
 

@@ -13,7 +13,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (1, 0, 11)
+VERSION = (1, 1)
 __version__ = '.'.join(map(str, VERSION))
 
 

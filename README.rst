@@ -461,6 +461,9 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.1
+    - Добавлен Геокодер, пример использования в описании выше. ( Added Geocoder, an example of use in the description above. )
+
 - # 1.0.11
     - Optimized update information for presets.
 

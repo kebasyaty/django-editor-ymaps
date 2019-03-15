@@ -40,6 +40,12 @@ Features
 
 9. **Имеется возможность создавать и управлять пресетами для автоматической вставки некоторой текстовой информации или дополнительного функционала в информационных окнах геообъектов. Для каждой карты добавляются два стандартных пресета (Text и Likes).** ( *It is possible to create and manage presets for automatic insertion of some textual information or additional functionality in the information windows of geoobjects. Two standard presets are added for each map (Text and Likes).* )
 
+Условия использования API Яндекс.Карт ( *Terms of use for the API* )
+--------------------------------------------------------------------
+- `Условия использования API Яндекс.Карт <https://tech.yandex.ru/maps/doc/jsapi/2.1/terms/index-docpage/>`_
+
+- `Terms of use for the API <https://tech.yandex.com/maps/doc/jsapi/2.1/terms/index-docpage/>`_
+
 Requirements
 ------------
 - **Python** (3.5, 3.6, 3.7)
@@ -412,12 +418,6 @@ Custom Commands
 
 .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/first_logo/first_logos.png?raw=true
    :alt: First logo
-
-Условия использования API Яндекс.Карт ( *Terms of use for the API* )
---------------------------------------------------------------------
-- `Условия использования API Яндекс.Карт <https://tech.yandex.ru/maps/doc/jsapi/2.1/terms/index-docpage/>`_
-
-- `Terms of use for the API <https://tech.yandex.com/maps/doc/jsapi/2.1/terms/index-docpage/>`_
 
 LICENSE
 -------

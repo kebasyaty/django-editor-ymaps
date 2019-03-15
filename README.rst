@@ -410,6 +410,32 @@ Custom Commands
   .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_addmarker.png?raw=true
      :alt: Command result - addmarker
 
+Использование Геокодера. ( *Using Geocoder.* )
+----------------------------------------------
+
+Добавьте в шаблон. ( Add to template. )::
+
+    {% load i18n staticfiles djeymtags %}
+
+    <body>
+        <!-- START MAP -->
+        <div id="djeymYMapsID" class="djeym-ymap" style="width: auto; height: 400px"></div>
+        <!-- END MAP -->
+
+        <!-- START JS -->
+        <!--
+        country = 'Country Name' // Обязательная переменная. (Mandatory variable.)
+        controls = 'all' // Default -> 'zoom'
+        tile_slug = 'openstreetmap' // Default -> 'default'
+        marker_slug = 'home-light-blue-sherry' // Default -> 'default'
+        -->
+        {% ymap_geocoder country='Россия' region='Белгородская обл.' city='Старый Оскол' district='мкр. Жукова' street='' house='дом 29а' controls = 'all' tile_slug='openstreetmap' marker_slug='home-light-blue-sherry' %}
+        <!-- END JS -->
+    </body>
+
+.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/geocoder.png?raw=true
+  :alt: Geocoder
+
 Первый вариант логотипа. ( *The first version of the logo.* )
 -------------------------------------------------------------
 - **Возможно пригодится для поклонников теории плоской земли.** ( *Perhaps useful for fans of the theory of flat land.* )

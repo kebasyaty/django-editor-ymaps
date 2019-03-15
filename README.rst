@@ -425,11 +425,11 @@ Custom Commands
         <!-- START JS -->
         <!--
         country = 'Country Name' // Обязательная переменная. (Mandatory variable.)
-        controls = 'all' // Default -> 'zoom'
+        controls = 'zoom' | 'all' // Default -> 'zoom'
         tile_slug = 'openstreetmap' // Default -> 'default'
         marker_slug = 'home-light-blue-sherry' // Default -> 'default'
         -->
-        {% ymap_geocoder country='Россия' region='Белгородская обл.' city='Старый Оскол' district='мкр. Жукова' street='' house='дом 29а' controls = 'all' tile_slug='openstreetmap' marker_slug='home-light-blue-sherry' %}
+        {% ymap_geocoder country='Россия' region='Белгородская обл.' city='Старый Оскол' district='мкр. Жукова' street='' house='дом 29а' tile_slug='openstreetmap' marker_slug='home-light-blue-sherry' %}
         <!-- END JS -->
     </body>
 

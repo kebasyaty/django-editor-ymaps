@@ -155,14 +155,14 @@ function init() {
   // Close panel.
   // (Закрыть панель.)
   $( "#id_djeym_sidenav .djeym-closebtn" ).on( "click", function( event ) {
-    event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+    event.preventDefault();
     document.getElementById( "id_djeym_sidenav" ).style.left = "-360px";
   } );
 
   // Open menu tab.
   // (Открыть вкладку меню.)
   $( ".djeym-matrix-menu__btn" ).on( "click", function( event ) {
-    event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+    event.preventDefault();
 
     let $this = $( this );
     let tabIDName = $this.data( "id_name" );
@@ -179,11 +179,11 @@ function init() {
   Map = new djeymYMaps.Map( "djeymYMapsID", {
     center: window.djeymCenterMap,
     zoom: window.djeymZoomMap,
-    type: ( window.djeymTile === undefined ) ? window.djeymMapType : null,
+    type: ( typeof window.djeymTile === "undefined" ) ? window.djeymMapType : null,
     controls: window.djeymControls
   }, {
-    maxZoom: ( window.djeymTile === undefined ) ? 23 : window.djeymTile.maxZoom,
-    minZoom: ( window.djeymTile === undefined ) ? 0 : window.djeymTile.minZoom,
+    maxZoom: ( typeof window.djeymTile === "undefined" ) ? 23 : window.djeymTile.maxZoom,
+    minZoom: ( typeof window.djeymTile === "undefined" ) ? 0 : window.djeymTile.minZoom,
     hasHint: false,
     geoObjectBalloonMinWidth: 322,
     geoObjectBalloonMaxWidth: 342,
@@ -251,7 +251,7 @@ function init() {
 
   // Connect a third-party source of tiles.
   // (Подключить сторонний источник тайлов.)
-  if ( window.djeymTile !== undefined ) {
+  if ( typeof window.djeymTile !== "undefined" ) {
     Map.layers.add( new djeymYMaps.Layer(
       window.djeymSource(), {
         projection: djeymYMaps.projection.sphericalMercator
@@ -357,7 +357,7 @@ function init() {
     "ymaps:regex(class, .*-cluster-carousel__pager-item.*), " +
     "ymaps:regex(class, .*-cluster-carousel__nav.*)",
     function( event ) {
-      event.stopPropagation ? event.stopPropagation() : ( event.cancelBubble = true );
+      event.stopPropagation();
       waitLoadContent();
     } );
 
@@ -414,32 +414,28 @@ function init() {
       // Add Placemark (Добавить метку)
       $( ".djeym__balloon__content-body .djeym_add_placemark" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
-
+          event.preventDefault();
           djeymContextMenuPlacemark( mapEvent, true, coords );
         } );
 
       // Add Polyline (Добавить маршрут)
       $( ".djeym__balloon__content-body .djeym_add_polyline" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
-
+          event.preventDefault();
           djeymContextMenuPolyline( mapEvent, true, coords );
         } );
 
       // Add Polygon (Добавить территорию)
       $( ".djeym__balloon__content-body .djeym_add_polygon" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
-
+          event.preventDefault();
           djeymContextMenuPolygon( mapEvent, true, coords );
         } );
 
       // Add Heat Point. (Добавить тепловую точку.)
       $( ".djeym__balloon__content-body .djeym_add_heat_point" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
-
+          event.preventDefault();
           djeymHeatPoint( mapEvent, true, coords );
         } );
     }
@@ -518,7 +514,7 @@ function init() {
       // Button - Save.
       // (Кнопка - Сохранить.)
       $( ".djeym__balloon__content-body .saveHeatPoint" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
 
         // Fill in the form (Заполнить форму)
         $( "#id_title" ).val( title );
@@ -537,7 +533,7 @@ function init() {
         // Actions after a successful save.
         // Действия после удачного сохранения.
         $( ".djeym__balloon__content-body #id_bat_save" ).on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
           Map.balloon.close();
         } );
       } );
@@ -545,14 +541,14 @@ function init() {
       // Button - Cancel.
       // (Кнопка - Отменить.)
       $( ".djeym__balloon__content-body .cancelHeatPoint" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
         Map.balloon.close();
       } );
 
       // Button - Help.
       // (Кнопка - Помощь.)
       $( ".djeym__balloon__content-body .helpHeatPoint" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
         let iconHTML = "<i class=\"fas fa-info-circle m-r-10 font-dark-blue font-14\"></i>";
         let textHTML = gettext( "Due to the features of the plugin, to edit or delete a " +
                                 "heat point, go to the admin panel - YANDEX MAPS / Heat Points." );
@@ -700,7 +696,7 @@ function init() {
       // Help
       $( ".djeym__balloon__content-body #id_djeym_help" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
           let iconHTML = "<i class=\"fas fa-info-circle m-r-10 font-dark-blue font-14\"></i>";
           let imgHTML = "<img src=\"" + globalImageOfHelp + "\" width=\"50%\" alt=\"Help\">";
           let textHTML1 = gettext( "Open the editor panel and select the desired icon." );
@@ -725,7 +721,7 @@ function init() {
 
       // Select and replace icon. (Выбор и смена иконки.)
       $( "#id_djeym_matrix_icons td" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
 
         let $this = $( this );
         let iconURL = $this.data( "icon_url" );
@@ -745,7 +741,7 @@ function init() {
 
       // Open select of category. (Открыть выбор коллекции.)
       $( ".djeym__balloon__content-body #id_select_category" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
 
         let itemsSelectCategory = "<div id=\"id_popup_select_category\">";
         let $radioButtonsCategory;
@@ -844,7 +840,7 @@ function init() {
       // (Кнопка - Добавить, Сохранить.)
       $( ".djeym__balloon__content-body .savePlacemark" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
 
           if ( balloonContentHeader.length === 0 ) {
             swal( {
@@ -892,7 +888,7 @@ function init() {
       // Actions after a successful save or update.
       // Действия после удачного сохранения или обновления.
       $( ".djeym__balloon__content-body #id_bat_save" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
 
         if ( !mode ) {
           Map.geoObjects.remove( objEvent );
@@ -905,7 +901,7 @@ function init() {
         // Button - Delete (Кнопка - Удалить)
         $( ".djeym__balloon__content-body .delPlacemark" )
           .on( "click", function( event ) {
-            event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+            event.preventDefault();
 
             swal( {
               type: "warning",
@@ -928,7 +924,7 @@ function init() {
 
       // Button - Cancel (Кнопка - Отменить)
       $( ".djeym__balloon__content-body .cancelPlacemark" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
 
         if ( pk > 0 ) {
           $( "#id_pk" ).val( pk );
@@ -946,7 +942,7 @@ function init() {
       // CKEditor - Add context to the editor field.
       // CKEditor - Добавить контекст в поле редактора.
       $( ".djeym__balloon__content-body .djeym_text_content" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
 
         let $ckeditor;
         let targetVarName = $( this ).data( "target_var_name" );
@@ -1148,7 +1144,7 @@ function init() {
       // Help
       $( ".djeym__balloon__content-body #id_djeym_help" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
           let iconHTML = "<i class=\"fas fa-info-circle m-r-10 font-dark-blue font-14\"></i>";
           let imgHTML = "<img src=\"" + globalImageOfHelp + "\" width=\"50%\" alt=\"Help\">";
           let textHTML = gettext( "After the button [ <b>+</b> ], click the left mouse " +
@@ -1222,7 +1218,7 @@ function init() {
 
       // Open selection category (Открыть выбор коллекции)
       $( ".djeym__balloon__content-body #id_select_category" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
 
         let itemsSelectCategory = "<div id=\"id_popup_select_category\">";
         let $radioButtonsCategory;
@@ -1274,7 +1270,7 @@ function init() {
       // Button - Add, Edit.  (Кнопка - Добавить, Редактировать.)
       $( ".djeym__balloon__content-body .editPolyline" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
 
           if ( mode ) {
             if ( balloonContentHeader.length === 0 ) {
@@ -1332,7 +1328,7 @@ function init() {
 
       // Button - Cancel (Кнопка - Отменить)
       $( ".djeym__balloon__content-body .cancelPolyline" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
 
         if ( pk > 0 ) {
           $( "#id_pk" ).val( pk );
@@ -1353,7 +1349,7 @@ function init() {
         // Button - Save (Кнопка - Сохранить)
         $( ".djeym__balloon__content-body .savePolyline" )
           .on( "click", function( event ) {
-            event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+            event.preventDefault();
 
             if ( balloonContentHeader.length === 0 ) {
               swal( {
@@ -1393,7 +1389,7 @@ function init() {
         // Actions after a successful save or update.
         // (Действия после удачного сохранения или обновления.)
         $( ".djeym__balloon__content-body #id_bat_save" ).on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
 
           Map.geoObjects.remove( objEvent );
           Map.balloon.close();
@@ -1401,7 +1397,7 @@ function init() {
 
         // Button - Delete (Кнопка - Удалить)
         $( ".djeym__balloon__content-body .delPolyline" ).on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
 
           swal( {
             type: "warning",
@@ -1430,7 +1426,7 @@ function init() {
       // CKEditor - Добавить контекст в поле редактора.
       $( ".djeym__balloon__content-body .djeym_text_content" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
 
           let $ckeditor;
           let targetVarName = $( this ).data( "target_var_name" );
@@ -1638,7 +1634,7 @@ function init() {
       // Help
       $( ".djeym__balloon__content-body #id_djeym_help" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
           let iconHTML = "<i class=\"fas fa-info-circle m-r-10 font-dark-blue font-14\"></i>";
           let imgHTML = "<img src=\"" + globalImageOfHelp + "\" width=\"50%\" alt=\"Help\">";
           let textHTML = gettext( "After the button [ <b>+</b> ], " +
@@ -1765,7 +1761,7 @@ function init() {
       // Open selection category (Открыть выбор коллекции)
       $( ".djeym__balloon__content-body #id_select_category" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
 
           let itemsSelectCategory = "<div id=\"id_popup_select_category\">";
           let $radioButtonsCategory;
@@ -1817,7 +1813,7 @@ function init() {
       // Button - Add, Edit. (Кнопка - Добавить, Редактировать.)
       $( ".djeym__balloon__content-body .editPolygon" )
         .on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
 
           if ( mode ) {
             if ( balloonContentHeader.length === 0 ) {
@@ -1877,7 +1873,7 @@ function init() {
 
       // Button - Cancel (Кнопка - Отменить)
       $( ".djeym__balloon__content-body .cancelPolygon" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
 
         if ( pk > 0 ) {
           $( "#id_pk" ).val( pk );
@@ -1897,7 +1893,7 @@ function init() {
       if ( !mode ) { //
         // Button - Save (Кнопка - Сохранить)
         $( ".djeym__balloon__content-body .savePolygon" ).on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
 
           if ( balloonContentHeader.length === 0 ) {
             swal( {
@@ -1938,7 +1934,7 @@ function init() {
         // Actions after a successful save or update.
         // Действия после удачного сохранения или обновления.
         $( ".djeym__balloon__content-body #id_bat_save" ).on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
 
           Map.geoObjects.remove( objEvent );
           Map.balloon.close();
@@ -1946,7 +1942,7 @@ function init() {
 
         // Button - Delete (Кнопка - Удалить)
         $( ".djeym__balloon__content-body .delPolygon" ).on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+          event.preventDefault();
 
           swal( {
             type: "warning",
@@ -1973,7 +1969,7 @@ function init() {
       // CKEditor - Add context to the editor field.
       // CKEditor - Добавить контекст в поле редактора.
       $( ".djeym__balloon__content-body .djeym_text_content" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
 
         let $ckeditor;
         let targetVarName = $( this ).data( "target_var_name" );
@@ -2383,7 +2379,7 @@ function init() {
   // Saving and updating geo-objects.
   // (Сохранение и обновление геообъектов.)
   $( "#id_form_geoobjects" ).on( "submit", function( event ) {
-    event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+    event.preventDefault();
 
     let $form = $( this );
     let url = $form.attr( "action" );
@@ -2448,7 +2444,7 @@ function init() {
   // Update selection of map controls.
   // (Обновить выбор элементов управления картой.)
   $( "#djeymMapControlsForm" ).on( "submit", function( event ) {
-    event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+    event.preventDefault();
 
     let $form = $( this );
     let url = $form.attr( "action" );
@@ -2474,7 +2470,7 @@ function init() {
   // Save Heatmap settings.
   // (Сохранить настройки тепловой карты.)
   $( "#heatmapSettingsForm" ).on( "submit", function( event ) {
-    event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+    event.preventDefault();
 
     let $form = $( this );
     let url = $form.attr( "action" );
@@ -2496,7 +2492,7 @@ function init() {
   // Activate Heatmap.
   // (Активировать Тепловую карту.)
   $( "#id_djeym_activate_heatmap" ).on( "input", function( event ) {
-    event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+    event.preventDefault();
 
     let url = "/djeym/ajax-activate-heatmap/";
     let heatmap = String( $( this ).is( ":checked" ) );
@@ -2526,7 +2522,7 @@ function init() {
   // Heatmap, reset to default settings.
   // (Тепловая карта, сброс к настройкам по умолчанию.)
   $( "#id_djeym_heatmap_undo_settings" ).on( "click", function( event ) {
-    event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+    event.preventDefault();
 
     let url = "/djeym/ajax-heatmap-undo-settings/";
     let dataForm = {
@@ -2594,7 +2590,7 @@ function init() {
   // Update Preset settings.
   // (Обновить настройки Пресета.)
   $( document ).on( "submit", ".djeym_update_preset_settings_form", function( event ) {
-    event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+    event.preventDefault();
 
     let $form = $( this );
     let url = $form.attr( "action" );
@@ -2626,7 +2622,7 @@ function init() {
   // Update General Settings.
   // (Обновить общие настройки.)
   $( "#djeymGeneralSettingsForm" ).on( "submit", function( event ) {
-    event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+    event.preventDefault();
 
     let $form = $( this );
     let url = $form.attr( "action" );

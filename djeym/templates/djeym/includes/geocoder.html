@@ -1,0 +1,52 @@
+{% load i18n staticfiles djeymtags djeymfilters %}
+<style type="text/css">
+.djeym-ymap {
+    position: relative;
+}
+
+#djeymModalLock {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: #fff;
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-delay: 0s;
+    transition-timing-function: linear;
+}
+
+#djeymSpinIndicator {
+    width: 128px;
+    height: 128px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: url('/static/djeym/img/loading.gif') no-repeat;
+    margin: -64px 0 0 -64px;
+}
+</style>
+{% get_api_ymap lang=language_code %}
+<script type="text/javascript">
+var djeymAddress = "{{ address }}",
+    djeymControls = {{ controls|lower }};
+{% if tile is not None %}
+var djeymTile = {
+        maxZoom: {{ tile.maxzoom }},
+        minZoom: {{ tile.minzoom }},
+        copyrights: "{{ tile.copyrights|safe|escape_double_brackets }}"
+    },
+    djeymSource = function () { return "{% random_domain tile.source|safe tile.apikey %}"; };
+{% endif %}
+{% if marker is not None %}
+var djeymMarker = {
+        iconImageHref: "{{ marker.svg.url }}",
+        iconImageOffset: {{ marker.get_offset }},
+        iconImageSize: {{ marker.get_size }}
+    }
+{% endif %}
+</script>
+<script type="text/javascript" src="{% static 'djeym/js/geocoder.js' %}"></script>

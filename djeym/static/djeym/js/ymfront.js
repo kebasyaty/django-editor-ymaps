@@ -55,11 +55,11 @@ function init() {
   Map = new djeymYMaps.Map( "djeymYMapsID", {
     center: window.djeymCenterMap,
     zoom: window.djeymZoomMap,
-    type: ( window.djeymTile === undefined ) ? window.djeymMapType : null,
+    type: ( typeof window.djeymTile === "undefined" ) ? window.djeymMapType : null,
     controls: window.djeymControls
   }, {
-    maxZoom: ( window.djeymTile === undefined ) ? 23 : window.djeymTile.maxZoom,
-    minZoom: ( window.djeymTile === undefined ) ? 0 : window.djeymTile.minZoom,
+    maxZoom: ( typeof window.djeymTile === "undefined" ) ? 23 : window.djeymTile.maxZoom,
+    minZoom: ( typeof window.djeymTile === "undefined" ) ? 0 : window.djeymTile.minZoom,
     hasHint: false
   } );
 
@@ -122,7 +122,7 @@ function init() {
   }
 
   // Connect a third-party source of tiles.
-  if ( window.djeymTile !== undefined ) {
+  if ( typeof window.djeymTile !== "undefined" ) {
     Map.layers.add( new djeymYMaps.Layer(
       window.djeymSource(), {
         projection: djeymYMaps.projection.sphericalMercator
@@ -194,7 +194,7 @@ function init() {
     "ymaps:regex(class, .*-cluster-carousel__pager-item.*), " +
     "ymaps:regex(class, .*-cluster-carousel__nav.*)",
     function( event ) {
-      event.stopPropagation ? event.stopPropagation() : ( event.cancelBubble = true );
+      event.stopPropagation();
       waitLoadContent();
     } );
 
@@ -601,13 +601,13 @@ function init() {
     function panelActivation() { //
       // Close panel.
       $( "#id_djeym_sidenav .djeym-closebtn" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
         document.getElementById( "id_djeym_sidenav" ).style.left = "-360px";
       } );
 
       // Open menu tab.
       $( ".djeym-matrix-menu__btn" ).on( "click", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
+        event.preventDefault();
 
         let $this = $( this );
         let tabIDName = $this.data( "id_name" );

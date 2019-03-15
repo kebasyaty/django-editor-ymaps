@@ -5,7 +5,7 @@ from django import template
 from django.conf import settings
 from django.utils.safestring import mark_safe
 
-from djeym.models import Map, Preset
+from djeym.models import CustomMarkerIcon, Map, TileSource
 
 register = template.Library()
 
@@ -81,7 +81,8 @@ def random_domain(value, apikey=""):
         count_elem = len(eval(count_elem.group(0))[0])
 
     value = re.sub(r'\[(\[.+\])\]',
-                   '" + \\1[ Math.round( Math.random() * {} ) ] + "'.format(int(count_elem) - 1), value)
+                   '" + \\1[ Math.round( Math.random() * {} ) ] + "'
+                   .format(int(count_elem) - 1), value)
     if len(apikey) > 0:
         var_key = re.search(r'\{\{(.+)\}\}', value).group(0)
         clean_var_key = re.sub(r'{{|}}', "", var_key)
@@ -89,3 +90,25 @@ def random_domain(value, apikey=""):
     else:
         value = re.sub(r'\{\{.+\}\}', "", value)
     return mark_safe(value)
+
+
+@register.inclusion_tag('djeym/includes/geocoder.html', takes_context=True)
+def ymap_geocoder(context, country="", region="", city="", district="", street="",
+                  house="", controls="zoom", tile_slug='default', marker_slug='default'):
+    address = ""
+
+    if country and (region or city):
+        if (not district and not street) or not house:
+            district, street, house = "", "", ""
+        items = (country, region, city, district, street, house)
+        address = ', '.join([item for item in items if item])
+
+    result = {
+        'language_code': context['request'].LANGUAGE_CODE,
+        'address': address,
+        'controls': True if controls != 'all' else False,
+        'tile': TileSource.objects.filter(slug=tile_slug).first(),
+        'marker': CustomMarkerIcon.objects.filter(slug=marker_slug).first()
+    }
+
+    return result

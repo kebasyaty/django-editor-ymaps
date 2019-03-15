@@ -19,7 +19,7 @@ DJEYM_YMAPS_ICONS_FOR_CATEGORIES = get_icon_font_plugin()
 @admin.register(TileSource)
 class TileSourceAdmin(admin.ModelAdmin):
     change_list_template = 'djeym/admin/tile_source_change_list.html'
-    list_display = ('title', 'admin_thumbnail', 'maxzoom', 'minzoom')
+    list_display = ('title', 'admin_thumbnail', 'maxzoom', 'minzoom', 'slug')
     list_display_links = ('title', 'admin_thumbnail')
     readonly_fields = ('slug',)
 
@@ -393,8 +393,8 @@ class IconCollectionAdmin(admin.ModelAdmin):
 class CustomMarkerIconAdmin(admin.ModelAdmin):
     form = OffsetCustomIconForm
     change_form_template = 'djeym/admin/check_icon_offset_change_form.html'
-    list_display = ('title', 'admin_thumbnail',
-                    'get_collection_name', 'active')
+    list_display = ('title', 'admin_thumbnail', 'get_collection_name',
+                    'active', 'slug')
     list_display_links = ('title', 'admin_thumbnail')
     readonly_fields = ('size_width', 'size_height', 'slug')
     list_editable = ('active',)

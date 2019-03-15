@@ -434,7 +434,7 @@ CHANGELOG
     - Optimized update information for presets.
 
 - # 1.0.10
-    - Tile Sources - Updated templatetags - random_domain ( increased domain scatter ).
+    - Tile Sources - Updated templatetags - random_domain ( increased subdomains scatter ).
 
 - # 1.0.9
     - Updated custom command - addmarker.

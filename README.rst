@@ -20,6 +20,12 @@ DjEYM ( django-editor-ymaps )
 
 ( *Convenient use of the Yandex map service for web development on the popular and free Django framework.* )
 
+Условия использования API Яндекс.Карт ( *Terms of use for the API* )
+--------------------------------------------------------------------
+- `Условия использования API Яндекс.Карт <https://tech.yandex.ru/maps/doc/jsapi/2.1/terms/index-docpage/>`_
+
+- `Terms of use for the API <https://tech.yandex.com/maps/doc/jsapi/2.1/terms/index-docpage/>`_
+
 Features
 --------
 1. **Через панель администратора, создавать новые карты с богатой возможностью настроек.** ( *Through the admin panel, create new maps with a wide range of options.* )
@@ -39,12 +45,6 @@ Features
 8. **Активировать тепловой слой, изменять настройки слоя и создавать тепловые точки.** ( *Activate the thermal layer, change the layer settings and create heat points.* )
 
 9. **Имеется возможность создавать и управлять пресетами для автоматической вставки некоторой текстовой информации или дополнительного функционала в информационных окнах геообъектов. Для каждой карты добавляются два стандартных пресета (Text и Likes).** ( *It is possible to create and manage presets for automatic insertion of some textual information or additional functionality in the information windows of geoobjects. Two standard presets are added for each map (Text and Likes).* )
-
-Условия использования API Яндекс.Карт ( *Terms of use for the API* )
---------------------------------------------------------------------
-- `Условия использования API Яндекс.Карт <https://tech.yandex.ru/maps/doc/jsapi/2.1/terms/index-docpage/>`_
-
-- `Terms of use for the API <https://tech.yandex.com/maps/doc/jsapi/2.1/terms/index-docpage/>`_
 
 Requirements
 ------------

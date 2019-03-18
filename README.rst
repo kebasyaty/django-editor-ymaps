@@ -429,12 +429,14 @@ Custom Commands
 
         <!-- START JS -->
         <!--
-        country = 'Country Name' // Обязательная переменная. (Mandatory variable.)
-        controls = 'zoom' | 'all' // Default -> 'zoom'
+        address = country + region + city + district + street + house
+        // Address Example: 'Россия, Белгородская обл., Старый Оскол, мкр. Жукова, дом 29а'
+        controls = 'all' // Default -> 'zoom'
         tile_slug = 'openstreetmap' // Default -> 'default'
         marker_slug = 'home-light-blue-sherry' // Default -> 'default'
+        load_indicator_slug = 'platinum-circle' // Default -> 'default'
         -->
-        {% ymap_geocoder country='Россия' region='Белгородская обл.' city='Старый Оскол' district='мкр. Жукова' street='' house='дом 29а' tile_slug='openstreetmap' marker_slug='home-light-blue-sherry' %}
+        {% ymap_geocoder address='Россия, Белгородская обл., Старый Оскол, мкр. Жукова, дом 29а' tile_slug='openstreetmap' marker_slug='home-light-blue-sherry' load_indicator_slug='platinum-circle' %}
         <!-- END JS -->
     </body>
 

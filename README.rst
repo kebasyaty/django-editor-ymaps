@@ -48,7 +48,7 @@ Features
 
 10. **Начиная с версии 1.1, добавлен шаблонный тег для прямого геокодирования. Например - На странице профиля, геокодер получает адрес пользователя и отображает его маркером на отдельной карте. Эти карты независимы, их ненужно создавать через панель администратора. Ниже, в документации, есть пример с описанием.** ( *Starting with version 1.1, a template tag has been added for direct geocoding. For example - On the profile page, the geocoder receives the user's address and displays it with a marker on a separate map. These cards are independent, it is unnecessary to hack them through the admin panel. Below, in the documentation, there is an example with a description.* )
 
-11. **Начиная с версии 1.2, имеется возможность добавить индикатор загрузки в иноформационные окна геообектов. Назначение индикатора, в основном декоративное. На GitHub-е проекта находится архив с иконками ( Spinner.zip ).** ( *Starting from version 1.2, it is possible to add a loading indicator to the information windows of geo objects. The purpose of the indicator, mostly decorative. On the GitHub project there is an archive with icons (Spinner.zip).* )
+11. **Начиная с версии 1.2, имеется возможность добавить индикатор загрузки в иноформационные окна геообектов. Назначение индикатора, в основном декоративное. На GitHub-е проекта находится архив с иконками ( Spinner.zip ). При переходе на версию 1.2, обновите миграции.** ( *Starting from version 1.2, it is possible to add a loading indicator to the information windows of geo objects. The purpose of the indicator, mostly decorative. On the GitHub project there is an archive with icons (Spinner.zip). When upgrading to version 1.2, upgrade the migration.* )
 
 Requirements
 ------------
@@ -483,6 +483,7 @@ CHANGELOG
     - Возможность добавить индикатор загрузки в информационные ока геообъектов.  На GitHub-е проекта находится архив с иконками ( Spinner.zip ). ( Ability to add a loading indicator to the information eye of geo objects. On the GitHub project there is an archive with icons (Spinner.zip). )
     - Обновлен Геокодер и его настройки. Новые настройки имеются в описании выше. ( Updated Geocoder and its settings. New settings are available in the description above. )
     - Сделано несколько небольших исправлений. ( Made a few minor fixes. )
+    - При переходе на версию 1.2, обновите миграции. ( When upgrading to version 1.2, upgrade the migration. )
 
 - # 1.1
     - Добавлен Геокодер, пример использования в описании выше. ( Added Geocoder, an example of use in the description above. )

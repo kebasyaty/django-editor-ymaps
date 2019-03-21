@@ -444,7 +444,7 @@ Custom Commands
         // Marker icon. (Иконка маркера.)
         marker_slug = 'home-light-blue-sherry' // Default -> 'default'
     
-        // Load indicator icon. (Иконка индикатора нагрузки.)
+        // Load indicator icon. (Иконка индикатора загрузки.)
         load_indicator_slug = 'platinum-circle' // Default -> 'default'
     
         // Load indicator size (Размер индикатора нагрузки.)

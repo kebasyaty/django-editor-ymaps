@@ -431,14 +431,26 @@ Custom Commands
 
         <!-- START JS -->
         <!--
+        // Address. (Адрес.)
         address = country + region + city + district + street + house
         // Address Example: 'Россия, Белгородская обл., Старый Оскол, мкр. Жукова, дом 29а'
+    
+        // Map Controls. (Элементы управления картой.)
         controls = 'all' // Default -> 'zoom'
+    
+        // Tile layer map. (Тайловый слой карты.)
         tile_slug = 'openstreetmap' // Default -> 'default'
+    
+        // Marker icon. (Иконка маркера.)
         marker_slug = 'home-light-blue-sherry' // Default -> 'default'
+    
+        // Load indicator icon. (Иконка индикатора нагрузки.)
         load_indicator_slug = 'platinum-circle' // Default -> 'default'
+    
+        // Load indicator size (Размер индикатора нагрузки.)
+        size = '96' - (64, 96, 128) // Default -> '64'
         -->
-        {% ymap_geocoder address='Россия, Белгородская обл., Старый Оскол, мкр. Жукова, дом 29а' tile_slug='openstreetmap' marker_slug='home-light-blue-sherry' load_indicator_slug='platinum-circle' %}
+        {% ymap_geocoder address='Россия, Белгородская обл., Старый Оскол, мкр. Жукова, дом 29а' tile_slug='openstreetmap' marker_slug='home-light-blue-sherry' load_indicator_slug='platinum-circle' size='96' %}
         <!-- END JS -->
     </body>
 
@@ -467,6 +479,11 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2
+    - Возможность добавить индикатор загрузки в информационные ока геообъектов.  На GitHub-е проекта находится архив с иконками ( Spinner.zip ). ( Ability to add a loading indicator to the information eye of geo objects. On the GitHub project there is an archive with icons (Spinner.zip). )
+    - Обновлен Геокодер и его настройки. Новые настройки имеются в описании выше. ( Updated Geocoder and its settings. New settings are available in the description above. )
+    - Сделано несколько небольших исправлений. ( Made a few minor fixes. )
+
 - # 1.1
     - Добавлен Геокодер, пример использования в описании выше. ( Added Geocoder, an example of use in the description above. )
 

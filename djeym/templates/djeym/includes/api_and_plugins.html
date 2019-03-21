@@ -36,6 +36,6 @@ ymaps[class*=-traffic] {
 {% endif %}
 {# Presets #}
 {% if presets %}
-<script src="{% static 'djeym/js/js.cookie.js' %}" type="text/javascript"></script>
+<script src="{% static 'djeym/js/js.cookie.min.js' %}" type="text/javascript"></script>
 <script type="text/javascript">{% for preset in presets %}{{ preset.js|safe }}{% endfor %}</script>
 {% endif %}

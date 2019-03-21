@@ -8,22 +8,23 @@ $( document ).ready( function() {
 
   $( "#changelist .actions" ).css( "margin-top", "20px" );
 
-  // Start function of spin indication
+  // Start load indication
   let TIMEOUT_SPIN_INDICATION;
-  function startSpinIndication() {
-    $( "#id_modal_lock" ).show();
+  function startLoadIndication() {
+    $( "#djeymModalLock" ).show().find( "#djeymLoadIndicator" ).addClass( "djeym-load-indicator" );
     TIMEOUT_SPIN_INDICATION = setTimeout( function() {
-      if ( $( "#id_modal_lock" ).css( "display" ) !== "none" ) {
-        stopSpinIndication();
+      if ( $( "#djeymModalLock" ).css( "display" ) !== "none" ) {
+        stopLoadIndication();
       }
     }, 30000 );
   }
 
-  // Stop function of spin indication
-  function stopSpinIndication() {
-    let $modalLock = $( "#id_modal_lock" );
+  // Stop load indication
+  function stopLoadIndication() {
+    let $modalLock = $( "#djeymModalLock" );
     $modalLock.css( "opacity", "0" );
     setTimeout( function() {
+      $modalLock.find( "#djeymLoadIndicator" ).removeClass( "djeym-load-indicator" );
       $modalLock.hide().css( "opacity", ".85" );
       clearTimeout( TIMEOUT_SPIN_INDICATION );
     }, 1000 );
@@ -40,14 +41,14 @@ $( document ).ready( function() {
       .done( function( data ) {
         if ( data.successfully ) {
           location.reload( true );
-          stopSpinIndication();
+          stopLoadIndication();
         }
       } )
       .fail( function( jqxhr, textStatus, error ) {
         let err = textStatus + ", " + error;
         let errDetail = "";
 
-        stopSpinIndication();
+        stopLoadIndication();
 
         if ( jqxhr.responseJSON !== undefined &&
           jqxhr.responseJSON.hasOwnProperty( "detail" ) ) {
@@ -75,7 +76,7 @@ $( document ).ready( function() {
       formData.append( "csrfmiddlewaretoken", csrftoken );
       formData.append( "collection", collectionFile );
 
-      startSpinIndication();
+      startLoadIndication();
       sandFormAjax( url, formData );
     } );
   } else if ( $( "a" ).is( "#id_import_tile_source" ) ) { //
@@ -93,7 +94,7 @@ $( document ).ready( function() {
       formData.append( "csrfmiddlewaretoken", csrftoken );
       formData.append( "sources", sourcesFile );
 
-      startSpinIndication();
+      startLoadIndication();
       sandFormAjax( url, formData );
     } );
   }

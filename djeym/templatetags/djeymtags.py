@@ -5,7 +5,7 @@ from django import template
 from django.conf import settings
 from django.utils.safestring import mark_safe
 
-from djeym.models import CustomMarkerIcon, Map, TileSource
+from djeym.models import CustomMarkerIcon, LoadIndicator, Map, TileSource
 
 register = template.Library()
 
@@ -25,7 +25,10 @@ def djeym_load_ymap(context, slug='', panel='djeym/includes/panel.html'):
             'controls': ymap.controls,
             'external_modules': ymap.external_modules,
             'heatmap_settings': ymap.heatmap_settings,
-            'general_settings': ymap.general_settings
+            'general_settings': ymap.general_settings,
+            'load_indicators': LoadIndicator.objects.all(),
+            'selected_load_indicator': ymap.load_indicator,
+            'load_indicator_size': ymap.load_indicator_size
         })
 
         if not ymap.general_settings.disable_site_panel:
@@ -93,22 +96,21 @@ def random_domain(value, apikey=""):
 
 
 @register.inclusion_tag('djeym/includes/geocoder.html', takes_context=True)
-def ymap_geocoder(context, country="", region="", city="", district="", street="",
-                  house="", controls="zoom", tile_slug='default', marker_slug='default'):
-    address = ""
+def ymap_geocoder(context, address="", controls="zoom", tile_slug='default',
+                  marker_slug='default', load_indicator_slug='default', size='64'):
 
-    if country and (region or city):
-        if (not district and not street) or not house:
-            district, street, house = "", "", ""
-        items = (country, region, city, district, street, house)
-        address = ', '.join([item for item in items if item])
+    load_indicator = LoadIndicator.objects.filter(
+        slug=load_indicator_slug).first()
 
     result = {
         'language_code': context['request'].LANGUAGE_CODE,
         'address': address,
         'controls': True if controls != 'all' else False,
         'tile': TileSource.objects.filter(slug=tile_slug).first(),
-        'marker': CustomMarkerIcon.objects.filter(slug=marker_slug).first()
+        'marker': CustomMarkerIcon.objects.filter(slug=marker_slug).first(),
+        'load_indicator': load_indicator.svg.url if
+        load_indicator is not None else '/static/djeym/img/spinner.svg',
+        'load_indicator_size': size
     }
 
     return result

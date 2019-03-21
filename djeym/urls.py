@@ -74,5 +74,11 @@ urlpatterns = [
          name='ajax_update_preset_settings'),
     path('ajax-general-settings/',
          views.AjaxGeneralSettings.as_view(),
-         name='ajax_general_settings')
+         name='ajax_general_settings'),
+    path('ajax-load-indicator-icon/',
+         views.AjaxLoadIndicatorIcon.as_view(),
+         name='ajax_load_indicator_icon'),
+    path('ajax-load-indicator-change/',
+         views.AjaxLoadIndicatorChange.as_view(),
+         name='ajax_load_indicator_change')
 ]

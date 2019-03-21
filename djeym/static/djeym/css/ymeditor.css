@@ -347,30 +347,33 @@ input[type="number"] {
 #id_djeym_tab_about,
 #id_djeym_tab_controls,
 #id_djeym_tab_heatmap,
-#id_djeym_tab_presets {
+#id_djeym_tab_presets,
+#id_djeym_tab_load_indicators {
     display: none;
 }
 
 /* Matrix menu - Hide content of tabs */
 
+.djeym_content_matrix_icons,
 .djeym_content_category,
 .djeym_content_about,
 .djeym_content_tile_sources,
 .djeym_content_map_controls,
 .djeym_content_heatmap,
-.djeym_content_presets {
+.djeym_content_presets,
+.djeym_content_load_indicators {
     display: none;
 }
 
 /* Icons Map */
 
-.djeym_matrix_icons {
+.djeym_content_matrix_icons {
     display: none;
     width: 100%;
     border-spacing: 10px;
 }
 
-.djeym_matrix_icons td {
+.djeym_content_matrix_icons td {
     width: 25%;
     height: 60px;
     background-color: #fff;
@@ -391,7 +394,7 @@ input[type="number"] {
 .djeym_marker_icon {
     height: 60px;
     position: relative;
-    top: -24px;
+    top: -28px;
     z-index: 1;
 }
 
@@ -534,6 +537,40 @@ div[id^="cke_editor"] {
     background-color: #fff;
     display: none;
     overflow: hidden;
+}
+
+/* LoadIndicator */
+
+#djeymModalLock {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: #fff;
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: .8s;
+    transition-delay: 0s;
+    transition-timing-function: linear;
+}
+
+#djeymLoadIndicator {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+@keyframes djeym-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
 }
 
 /* HELPERS

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-20 10:03+0000\n"
+"POT-Creation-Date: 2019-03-21 10:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "Ошибка - Не указано имя коллекции. Парам
 msgid "Error - Specify a directory with icons. Parameter: --path"
 msgstr "Ошибка - Укажите каталог с иконками. Параметр: --path"
 
-#: djeym/management/commands/exporticons.py:31 djeym/views.py:756
+#: djeym/management/commands/exporticons.py:31 djeym/views.py:787
 msgid "The {} collection already exists."
 msgstr "Коллекция {} уже существует."
 
@@ -49,11 +49,11 @@ msgid ""
 msgstr ""
 "У вас нет разрешения, необходимого для выполнения запрошенной операции."
 
-#: djeym/models.py:43 djeym/templates/djeym/ymeditor.html:338
+#: djeym/models.py:43 djeym/templates/djeym/ymeditor.html:354
 msgid "Two Columns"
 msgstr "Две колонки"
 
-#: djeym/models.py:44 djeym/templates/djeym/ymeditor.html:349
+#: djeym/models.py:44 djeym/templates/djeym/ymeditor.html:365
 msgid "Carousel"
 msgstr "Карусель"
 
@@ -69,151 +69,151 @@ msgstr "Спутник"
 msgid "Hybrid"
 msgstr "Гибрид"
 
-#: djeym/models.py:138 djeym/models.py:347 djeym/models.py:461
-#: djeym/models.py:614 djeym/models.py:685 djeym/models.py:757
-#: djeym/models.py:827
+#: djeym/models.py:144 djeym/models.py:353 djeym/models.py:467
+#: djeym/models.py:645 djeym/models.py:716 djeym/models.py:788
+#: djeym/models.py:858 djeym/models.py:1416
 msgid "Title"
 msgstr "Название"
 
-#: djeym/models.py:141
+#: djeym/models.py:147
 msgid "Maximum zoom"
 msgstr "Максимальный зум"
 
-#: djeym/models.py:144
+#: djeym/models.py:150
 msgid "Minimum zoom"
 msgstr "Минимальный зум"
 
-#: djeym/models.py:146
+#: djeym/models.py:152
 msgid "Source"
 msgstr "Источник"
 
-#: djeym/models.py:149 djeym/models.py:195
-#: djeym/templates/djeym/ymeditor.html:403
+#: djeym/models.py:155 djeym/models.py:201
+#: djeym/templates/djeym/ymeditor.html:420
 msgid "Screenshot"
 msgstr "Скриншот"
 
-#: djeym/models.py:153
+#: djeym/models.py:159
 msgid "Recommended size - Width=360 x Height=180"
 msgstr "Рекомендуемый размер - Ширина=360 х Высота=180"
 
-#: djeym/models.py:156
+#: djeym/models.py:162
 msgid "Copyrights"
 msgstr "Копирайты"
 
-#: djeym/models.py:158
+#: djeym/models.py:164
 msgid "Site"
 msgstr "Сайт"
 
-#: djeym/models.py:161
+#: djeym/models.py:167
 msgid "API Key"
 msgstr "Ключ API"
 
-#: djeym/models.py:165
+#: djeym/models.py:171
 msgid "API key or access_token"
 msgstr "Ключ API (apikey) или Токен доступа (access_token)"
 
-#: djeym/models.py:167
+#: djeym/models.py:173
 msgid "Note"
 msgstr "Примечание"
 
-#: djeym/models.py:182 djeym/models.py:487
+#: djeym/models.py:188 djeym/models.py:493
 msgid "Tile Source"
 msgstr "Источник тайлов"
 
-#: djeym/models.py:183 djeym/templates/djeym/ymeditor.html:238
+#: djeym/models.py:189 djeym/templates/djeym/ymeditor.html:254
 msgid "Tile Sources"
 msgstr "Источники тайлов"
 
-#: djeym/models.py:203 djeym/models.py:251 djeym/models.py:279
-#: djeym/models.py:342 djeym/models.py:411 djeym/models.py:517
-#: djeym/models.py:518 djeym/models.py:609 djeym/models.py:656
-#: djeym/models.py:680 djeym/models.py:728 djeym/models.py:752
-#: djeym/models.py:798 djeym/models.py:822 djeym/models.py:870
-#: djeym/models.py:894 djeym/models.py:950 djeym/models.py:1007
-#: djeym/models.py:1077
+#: djeym/models.py:209 djeym/models.py:257 djeym/models.py:285
+#: djeym/models.py:348 djeym/models.py:417 djeym/models.py:540
+#: djeym/models.py:541 djeym/models.py:640 djeym/models.py:687
+#: djeym/models.py:711 djeym/models.py:759 djeym/models.py:783
+#: djeym/models.py:829 djeym/models.py:853 djeym/models.py:901
+#: djeym/models.py:925 djeym/models.py:981 djeym/models.py:1038
+#: djeym/models.py:1108
 msgid "Map"
 msgid_plural "Map"
 msgstr[0] "Карта"
 msgstr[1] "Карты"
 msgstr[2] "Карту"
 
-#: djeym/models.py:209
+#: djeym/models.py:215
 msgid "Geolocation"
 msgstr "Геолокация"
 
-#: djeym/models.py:210
+#: djeym/models.py:216
 msgid "Search by map"
 msgstr "Поиск по карте"
 
-#: djeym/models.py:212
+#: djeym/models.py:218
 msgid "Search by organization name"
 msgstr "Поиск по названию организаций"
 
-#: djeym/models.py:213
+#: djeym/models.py:219
 msgid "Routing panel"
 msgstr "Панель маршрутизации"
 
-#: djeym/models.py:214
+#: djeym/models.py:220
 msgid "Traffic jams"
 msgstr "Пробки"
 
-#: djeym/models.py:215
+#: djeym/models.py:221
 msgid "Map Layer Switch"
 msgstr "Переключатель слоев карты"
 
-#: djeym/models.py:216
+#: djeym/models.py:222
 msgid "Full screen mode"
 msgstr "Полноэкранный режим"
 
-#: djeym/models.py:217 djeym/models.py:497
+#: djeym/models.py:223 djeym/models.py:520
 msgid "Zoom"
 msgstr "Масштаб"
 
-#: djeym/models.py:218
+#: djeym/models.py:224
 msgid "Ruler"
 msgstr "Линейка"
 
-#: djeym/models.py:220
+#: djeym/models.py:226
 msgid "Map type"
 msgstr "Тип карты"
 
-#: djeym/models.py:226 djeym/models.py:229
-#: djeym/templates/djeym/ymeditor.html:383
+#: djeym/models.py:232 djeym/models.py:235
+#: djeym/templates/djeym/ymeditor.html:400
 msgid "Map Controls"
 msgstr "Элементы управления картой"
 
-#: djeym/models.py:258
+#: djeym/models.py:264
 msgid "Round map controls theme"
 msgstr "Тема для круглых элементов управления"
 
-#: djeym/models.py:261 djeym/models.py:333 djeym/models.py:334
+#: djeym/models.py:267 djeym/models.py:339 djeym/models.py:340
 msgid "Heatmap"
 msgid_plural "Heat maps"
 msgstr[0] "Тепловая карта"
 msgstr[1] "Тепловые карты"
 msgstr[2] "Тепловую карту"
 
-#: djeym/models.py:264
+#: djeym/models.py:270
 msgid "Area Calculation"
 msgstr "Расчет площади"
 
-#: djeym/models.py:267
+#: djeym/models.py:273
 msgid "Enable"
 msgstr "Подключить"
 
-#: djeym/models.py:270 djeym/models.py:271
+#: djeym/models.py:276 djeym/models.py:277
 msgid "External modules"
 msgstr "Внешние модули"
 
-#: djeym/models.py:286
+#: djeym/models.py:292
 msgid "Point radius of influence (px)"
 msgstr "Радиус влияния (px)"
 
-#: djeym/models.py:290
+#: djeym/models.py:296
 msgid "Disperse points"
 msgstr "Рассеивание точек"
 
-#: djeym/models.py:292
+#: djeym/models.py:298
 msgid ""
 "Enable - Disperse points on higher zoom levels according to radius. Disable "
 "- Don't disperse."
@@ -221,24 +221,24 @@ msgstr ""
 "Включено - Уменьшать пиксельный размер точек при уменьшении зума. Выключено "
 "- Не уменьшать."
 
-#: djeym/models.py:296
+#: djeym/models.py:302
 msgid "Transparency of heat layer"
 msgstr "Прозрачность теплового слоя"
 
-#: djeym/models.py:303
+#: djeym/models.py:309
 msgid "Intensity of median point"
 msgstr "Прозрачность у медианной по весу точки"
 
-#: djeym/models.py:330 djeym/models.py:450
+#: djeym/models.py:336 djeym/models.py:456
 msgid "Settings"
 msgstr "Настройки"
 
-#: djeym/models.py:350
+#: djeym/models.py:356
 msgid "Icon (html tag)"
 msgstr "Иконка (html tag)"
 
-#: djeym/models.py:354 djeym/models.py:624 djeym/models.py:696
-#: djeym/models.py:766 djeym/models.py:838
+#: djeym/models.py:360 djeym/models.py:655 djeym/models.py:727
+#: djeym/models.py:797 djeym/models.py:869
 msgid ""
 "https://fontawesome.com/icons?d=gallery&m=free - Example: &lt;i class=\"fab "
 "fa-android\"&gt;&lt;/i&gt;"
@@ -246,82 +246,82 @@ msgstr ""
 "https://fontawesome.com/icons?d=gallery&m=free - Пример: &lt;i class=\"fab "
 "fa-android\"&gt;&lt;/i&gt;"
 
-#: djeym/models.py:364
+#: djeym/models.py:370
 msgid "Description"
 msgstr "Описание"
 
-#: djeym/models.py:367
+#: djeym/models.py:373
 msgid "Brief description of the preset."
 msgstr "Краткое описание пресета."
 
-#: djeym/models.py:370 djeym/templates/djeym/includes/presets.html:36
+#: djeym/models.py:376 djeym/templates/djeym/includes/presets.html:36
 msgid "Automatically add to end of header"
 msgstr "Автоматически добавлять в конец заголовка"
 
-#: djeym/models.py:372 djeym/templates/djeym/includes/presets.html:50
+#: djeym/models.py:378 djeym/templates/djeym/includes/presets.html:50
 msgid "Automatically add to end of description"
 msgstr "Автоматически добавлять в конец описания"
 
-#: djeym/models.py:374 djeym/templates/djeym/includes/presets.html:64
+#: djeym/models.py:380 djeym/templates/djeym/includes/presets.html:64
 msgid "Automatically add to end of footer"
 msgstr "Автоматически добавлять в конец подвала"
 
-#: djeym/models.py:376
+#: djeym/models.py:382
 msgid "Markers"
 msgstr "Маркеры"
 
-#: djeym/models.py:377 djeym/models.py:999
+#: djeym/models.py:383 djeym/models.py:1030
 msgid "Routes"
 msgstr "Маршруты"
 
-#: djeym/models.py:379 djeym/models.py:1068 djeym/models.py:1069
+#: djeym/models.py:385 djeym/models.py:1099 djeym/models.py:1100
 msgid "Territory"
 msgid_plural "Territorys"
 msgstr[0] "Территория"
 msgstr[1] "Территории"
 msgstr[2] "Территорию"
 
-#: djeym/models.py:382 djeym/templates/djeym/includes/presets.html:20
+#: djeym/models.py:388 djeym/templates/djeym/includes/presets.html:20
 msgid "Position"
 msgstr "Позиция"
 
-#: djeym/models.py:391
+#: djeym/models.py:397
 msgid "Preset"
 msgstr "Пресет"
 
-#: djeym/models.py:392 djeym/templates/djeym/ymeditor.html:568
+#: djeym/models.py:398 djeym/templates/djeym/ymeditor.html:585
 msgid "Presets"
 msgstr "Пресеты"
 
-#: djeym/models.py:403
+#: djeym/models.py:409
 msgid "A preset with this name already exists for this map."
 msgstr "Пресет с таким названием уже существует для данной карты."
 
-#: djeym/models.py:418 djeym/templates/djeym/ymeditor.html:309
+#: djeym/models.py:424 djeym/templates/djeym/ymeditor.html:325
 msgid "Сlustering in editor"
 msgstr "Кластеризация в редакторе"
 
-#: djeym/models.py:421 djeym/templates/djeym/ymeditor.html:321
+#: djeym/models.py:427 djeym/templates/djeym/ymeditor.html:337
 msgid "Сlustering on site"
 msgstr "Кластеризация на сайте"
 
-#: djeym/models.py:424 djeym/templates/djeym/ymeditor.html:326
+#: djeym/models.py:430 djeym/templates/djeym/ymeditor.html:342
 msgid "Layout for the cluster information window"
 msgstr "Макет для информационного окна кластера"
 
-#: djeym/models.py:430 djeym/templates/djeym/ymeditor.html:364
+#: djeym/models.py:436 djeym/templates/djeym/ymeditor.html:380
 msgid "Display the number of objects in the cluster icon"
 msgstr "Отображать количество объектов на иконке кластера"
 
-#: djeym/models.py:433 djeym/templates/djeym/ymeditor.html:372
+#: djeym/models.py:439 djeym/templates/djeym/ymeditor.html:388
 msgid "Background color"
 msgstr "Цвет фона"
 
-#: djeym/models.py:439 djeym/templates/djeym/ymeditor.html:376
+#: djeym/models.py:445 djeym/templates/djeym/ymeditor.html:392
 msgid "Text color"
 msgstr "Цвет текста"
 
-#: djeym/models.py:445
+#: djeym/models.py:451
 msgid ""
 "Disable the panel on the site (button with the image of the gear and the eye "
 "in the center)"
@@ -329,12 +329,12 @@ msgstr ""
 "Отключить панель на сайте (кнопка с изображением шестеренки и глазом по "
 "центру)"
 
-#: djeym/models.py:453 djeym/models.py:454
-#: djeym/templates/djeym/ymeditor.html:285
+#: djeym/models.py:459 djeym/models.py:460
+#: djeym/templates/djeym/ymeditor.html:301
 msgid "General settings"
 msgstr "Общие настройки"
 
-#: djeym/models.py:464
+#: djeym/models.py:470
 msgid ""
 "Examples: Supermarkets of the city of Kharkov or Hawaii - Oahu Island or "
 "Luxury hotels in Honolulu or Parking of primitive people, etc."
@@ -342,71 +342,84 @@ msgstr ""
 "Примеры: Супермаркеты города Харькова или Гавайи - Остров Оаху или Роскошные "
 "отели в Гонолулу или Стоянки первобытных людей и т. д."
 
-#: djeym/models.py:471 djeym/models.py:1170 djeym/models.py:1172
+#: djeym/models.py:477 djeym/models.py:1201 djeym/models.py:1203
 msgid "Icon for cluster"
 msgid_plural "Icons for clusters"
 msgstr[0] "Иконка для кластера"
 msgstr[1] "Иконки для кластеров"
 msgstr[2] "Иконку для кластеров"
 
-#: djeym/models.py:478 djeym/models.py:1228
+#: djeym/models.py:484 djeym/models.py:1259
 msgid "Icon collection for markers"
 msgid_plural "Icon collections for markers"
 msgstr[0] "Коллекция иконок для маркеров"
 msgstr[1] "Коллекции иконок для маркеров"
 msgstr[2] "Коллекцию иконок"
 
-#: djeym/models.py:494
+#: djeym/models.py:502 djeym/models.py:629 djeym/models.py:1430
+msgid "Load indicator"
+msgstr "Индикатор загрузки"
+
+#: djeym/models.py:508 djeym/models.py:1413
+msgid "https://github.com/genkosta/django-editor-ymaps/blob/master/Spinner.zip"
+msgstr ""
+"https://github.com/genkosta/django-editor-ymaps/blob/master/Spinner.zip"
+
+#: djeym/models.py:512
+msgid "Load indicator size"
+msgstr "Размер индикатора загрузки"
+
+#: djeym/models.py:517
 msgid "Active map"
 msgstr "Активная карта"
 
-#: djeym/models.py:499
+#: djeym/models.py:522
 msgid "Latitude"
 msgstr "Широта"
 
-#: djeym/models.py:501
+#: djeym/models.py:524
 msgid "Latitude center of the map."
 msgstr "Широта центра карты."
 
-#: djeym/models.py:503
+#: djeym/models.py:526
 msgid "Longitude"
 msgstr "Долгота"
 
-#: djeym/models.py:505
+#: djeym/models.py:528
 msgid "Longitude center of the map."
 msgstr "Долгота центра карты."
 
-#: djeym/models.py:509 djeym/models.py:933 djeym/models.py:990
-#: djeym/models.py:1060
+#: djeym/models.py:532 djeym/models.py:964 djeym/models.py:1021
+#: djeym/models.py:1091
 msgid "Created at"
 msgstr "Создано"
 
-#: djeym/models.py:510 djeym/models.py:934 djeym/models.py:991
-#: djeym/models.py:1061
+#: djeym/models.py:533 djeym/models.py:965 djeym/models.py:1022
+#: djeym/models.py:1092
 msgid "Updated at"
 msgstr "Обновлено"
 
-#: djeym/models.py:528
+#: djeym/models.py:551
 msgid "The collection must have at least one active icon."
 msgstr "В коллекции должна быть хотя бы одна активная иконка."
 
-#: djeym/models.py:569
+#: djeym/models.py:592
 msgid "Cluster Icon"
 msgstr "Иконка кластера"
 
-#: djeym/models.py:580
+#: djeym/models.py:603
 msgid "Example icon from collection"
 msgstr "Пример иконки из коллекции"
 
-#: djeym/models.py:589
+#: djeym/models.py:612
 msgid "Tile screenshot"
 msgstr "Скриншот тайла"
 
-#: djeym/models.py:598
+#: djeym/models.py:621
 msgid "Heat map status"
 msgstr "Статус тепловой карты"
 
-#: djeym/models.py:616
+#: djeym/models.py:647
 msgid ""
 "Name of any geographic area - Country Name or City Name or District Name or "
 "The name of the resort coast, etc."
@@ -414,49 +427,49 @@ msgstr ""
 "Название любой географической территории - Название страны или Название "
 "города или Название района или Название курортного побережья и т.д."
 
-#: djeym/models.py:620 djeym/models.py:692 djeym/models.py:762
-#: djeym/models.py:834
+#: djeym/models.py:651 djeym/models.py:723 djeym/models.py:793
+#: djeym/models.py:865
 msgid "Category Icon (html tag)"
 msgstr "Иконка категории (html tag)"
 
-#: djeym/models.py:628 djeym/models.py:672 djeym/models.py:700
-#: djeym/models.py:744 djeym/models.py:770 djeym/models.py:814
-#: djeym/models.py:842 djeym/models.py:886
+#: djeym/models.py:659 djeym/models.py:703 djeym/models.py:731
+#: djeym/models.py:775 djeym/models.py:801 djeym/models.py:845
+#: djeym/models.py:873 djeym/models.py:917
 msgid "Category color"
 msgstr "Цвет категории"
 
-#: djeym/models.py:632 djeym/models.py:704 djeym/models.py:774
-#: djeym/models.py:846
+#: djeym/models.py:663 djeym/models.py:735 djeym/models.py:805
+#: djeym/models.py:877
 msgid "Applies to Checkboxes and Radio Buttons."
 msgstr "Применяется для элементов типа Checkbox и Radio Button."
 
-#: djeym/models.py:634 djeym/models.py:706 djeym/models.py:776
-#: djeym/models.py:848
+#: djeym/models.py:665 djeym/models.py:737 djeym/models.py:807
+#: djeym/models.py:879
 msgid "Active category"
 msgstr "Активная категория"
 
-#: djeym/models.py:642 djeym/models.py:644
+#: djeym/models.py:673 djeym/models.py:675
 msgid "Category of placemark"
 msgid_plural "Category of placemarks"
 msgstr[0] "Категория маркеров"
 msgstr[1] "Категории маркеров"
 msgstr[2] "Категорию маркеров"
 
-#: djeym/models.py:651 djeym/models.py:723 djeym/models.py:793
-#: djeym/models.py:865
+#: djeym/models.py:682 djeym/models.py:754 djeym/models.py:824
+#: djeym/models.py:896
 msgid "A category with this name already exists for the selected map."
 msgstr "Категория с таким названием уже существует для выбранной карты."
 
-#: djeym/models.py:660 djeym/models.py:732 djeym/models.py:802
-#: djeym/models.py:874
+#: djeym/models.py:691 djeym/models.py:763 djeym/models.py:833
+#: djeym/models.py:905
 msgid "Category name"
 msgstr "Название категории"
 
-#: djeym/models.py:667 djeym/models.py:809 djeym/models.py:881
+#: djeym/models.py:698 djeym/models.py:840 djeym/models.py:912
 msgid "Category Icon"
 msgstr "Иконка категории"
 
-#: djeym/models.py:687
+#: djeym/models.py:718
 msgid ""
 "Subcategory - This is what complements the categories of markers. Examples: "
 "Parking or Bicycle Parking or ATM or Cafe or Wi-Fi or Playground, etc."
@@ -465,30 +478,31 @@ msgstr ""
 "Автостоянка или Велопарковка или Банкомат или Кафе или Wi-Fi или Игровая "
 "площадка и т. д."
 
-#: djeym/models.py:714 djeym/models.py:716
+#: djeym/models.py:745 djeym/models.py:747
 msgid "Subcategory of placemark"
 msgid_plural "Subcategory of placemarks"
 msgstr[0] "Подкатегория маркеров"
 msgstr[1] "Подкатегории маркеров"
 msgstr[2] "Подкатегорию маркеров"
 
-#: djeym/models.py:739 djeym/models.py:1124 djeym/models.py:1165
-#: djeym/models.py:1264 djeym/models.py:1308
+#: djeym/models.py:770 djeym/models.py:1155 djeym/models.py:1196
+#: djeym/models.py:1295 djeym/models.py:1339 djeym/models.py:1408
+#: djeym/models.py:1448
 msgid "Icon"
 msgstr "Иконка"
 
-#: djeym/models.py:759
+#: djeym/models.py:790
 msgid "Examples: Tourist routes or Marathon routes etc."
 msgstr "Примеры: Туристические маршруты или Маршруты марафонов и т.д."
 
-#: djeym/models.py:784 djeym/models.py:786
+#: djeym/models.py:815 djeym/models.py:817
 msgid "Category of route"
 msgid_plural "Category of routes"
 msgstr[0] "Категория маршрутов"
 msgstr[1] "Категории маршрутов"
 msgstr[2] "Категорию маршрутов"
 
-#: djeym/models.py:829
+#: djeym/models.py:860
 msgid ""
 "The name of the aggregate of any geographic area. Examples: Honduran cities "
 "or Hawaiian beaches or Residential complexes in Antarctica."
@@ -496,111 +510,111 @@ msgstr ""
 "Название совокупности любых географических территории. Примеры: Города "
 "Гондураса или Гавайские пляжи или Жилые комплексы в Антарктиде."
 
-#: djeym/models.py:856 djeym/models.py:858
+#: djeym/models.py:887 djeym/models.py:889
 msgid "Category of territory"
 msgid_plural "Category of territories"
 msgstr[0] "Категория территорий"
 msgstr[1] "Категории территорий"
 msgstr[2] "Категорию территорий"
 
-#: djeym/models.py:900 djeym/models.py:956 djeym/models.py:1013
+#: djeym/models.py:931 djeym/models.py:987 djeym/models.py:1044
 msgid "Category"
 msgstr "Категория"
 
-#: djeym/models.py:910
+#: djeym/models.py:941
 msgid "Subcategories"
 msgstr "Подкатегории"
 
-#: djeym/models.py:917 djeym/models.py:1082
-#: djeym/templates/djeym/ymeditor.html:649
+#: djeym/models.py:948 djeym/models.py:1113
+#: djeym/templates/djeym/ymeditor.html:742
 msgid "Place name"
 msgstr "Название места"
 
-#: djeym/models.py:918 djeym/models.py:965 djeym/models.py:1022
+#: djeym/models.py:949 djeym/models.py:996 djeym/models.py:1053
 msgid "Content"
 msgstr "Содержание"
 
-#: djeym/models.py:919 djeym/models.py:966 djeym/models.py:1023
+#: djeym/models.py:950 djeym/models.py:997 djeym/models.py:1054
 msgid "Footer"
 msgstr "Нижний колонтитул"
 
-#: djeym/models.py:921 djeym/models.py:1258
+#: djeym/models.py:952 djeym/models.py:1289
 msgid "Icon name"
 msgstr "Название иконки"
 
-#: djeym/models.py:924 djeym/models.py:982 djeym/models.py:1052
-#: djeym/models.py:1095
+#: djeym/models.py:955 djeym/models.py:1013 djeym/models.py:1083
+#: djeym/models.py:1126
 msgid "Coordinates"
 msgstr "Координаты"
 
-#: djeym/models.py:928
+#: djeym/models.py:959
 msgid "Active placemark"
 msgstr "Активная метка"
 
-#: djeym/models.py:931 djeym/models.py:988 djeym/models.py:1058
-#: djeym/models.py:1102
+#: djeym/models.py:962 djeym/models.py:1019 djeym/models.py:1089
+#: djeym/models.py:1133
 msgid "JSON"
 msgstr "JSON"
 
-#: djeym/models.py:941
+#: djeym/models.py:972
 msgid "Placemark"
 msgstr "Маркер"
 
-#: djeym/models.py:942
+#: djeym/models.py:973
 msgid "Placemarks"
 msgstr "Маркеры"
 
-#: djeym/models.py:964
+#: djeym/models.py:995
 msgid "Route name"
 msgstr "Название маршрута"
 
-#: djeym/models.py:967 djeym/models.py:1024
-#: djeym/templates/djeym/ymeditor.html:776
-#: djeym/templates/djeym/ymeditor.html:880
+#: djeym/models.py:998 djeym/models.py:1055
+#: djeym/templates/djeym/ymeditor.html:871
+#: djeym/templates/djeym/ymeditor.html:974
 msgid "Stroke width"
 msgstr "Ширина линии"
 
-#: djeym/models.py:970 djeym/models.py:1027
-#: djeym/templates/djeym/ymeditor.html:770
-#: djeym/templates/djeym/ymeditor.html:869
+#: djeym/models.py:1001 djeym/models.py:1058
+#: djeym/templates/djeym/ymeditor.html:865
+#: djeym/templates/djeym/ymeditor.html:963
 msgid "Line color"
 msgstr "Цвет линии"
 
-#: djeym/models.py:976 djeym/models.py:1033
-#: djeym/templates/djeym/ymeditor.html:789
-#: djeym/templates/djeym/ymeditor.html:893
+#: djeym/models.py:1007 djeym/models.py:1064
+#: djeym/templates/djeym/ymeditor.html:884
+#: djeym/templates/djeym/ymeditor.html:987
 msgid "Opacity line"
 msgstr "Прозрачность линии"
 
-#: djeym/models.py:985
+#: djeym/models.py:1016
 msgid "Active route"
 msgstr "Активный маршрут"
 
-#: djeym/models.py:998
+#: djeym/models.py:1029
 msgid "Route"
 msgstr "Маршрут"
 
-#: djeym/models.py:1021
+#: djeym/models.py:1052
 msgid "Territory name"
 msgstr "Название территории"
 
-#: djeym/models.py:1040 djeym/templates/djeym/ymeditor.html:874
+#: djeym/models.py:1071 djeym/templates/djeym/ymeditor.html:968
 msgid "Fill color"
 msgstr "Цвет заливки"
 
-#: djeym/models.py:1046 djeym/templates/djeym/ymeditor.html:906
+#: djeym/models.py:1077 djeym/templates/djeym/ymeditor.html:1000
 msgid "Fill opacity"
 msgstr "Прозрачность заливки"
 
-#: djeym/models.py:1055
+#: djeym/models.py:1086
 msgid "Active territory"
 msgstr "Активная территория"
 
-#: djeym/models.py:1088 djeym/templates/djeym/ymeditor.html:653
+#: djeym/models.py:1119 djeym/templates/djeym/ymeditor.html:746
 msgid "Weight"
 msgstr "Вес"
 
-#: djeym/models.py:1091
+#: djeym/models.py:1122
 msgid ""
 "Examples: Average property value on a district site or Number of cameras "
 "installed on a building, etc."
@@ -608,98 +622,98 @@ msgstr ""
 "Примеры: Средняя стоимость недвижимости на участке района или Количество "
 "кинокамер установленных на здании и т.д."
 
-#: djeym/models.py:1097
+#: djeym/models.py:1128
 msgid "Active heat point"
 msgstr "Активная тепловая точка"
 
-#: djeym/models.py:1108 djeym/models.py:1109 djeym/models.py:1116
+#: djeym/models.py:1139 djeym/models.py:1140 djeym/models.py:1147
 msgid "Heat Point"
 msgid_plural "Thermal points"
 msgstr[0] "Тепловая точка"
 msgstr[1] "Тепловые точки"
 msgstr[2] "Тепловую точку"
 
-#: djeym/models.py:1128 djeym/models.py:1268
+#: djeym/models.py:1159 djeym/models.py:1299
 msgid "Only SVG files."
 msgstr "Только SVG файлы."
 
-#: djeym/models.py:1131
+#: djeym/models.py:1162
 msgid "Cluster name"
 msgstr "Название кластера"
 
-#: djeym/models.py:1135
+#: djeym/models.py:1166
 msgid "Example: Green Garden"
 msgstr "Пример: Green Garden"
 
-#: djeym/models.py:1137 djeym/models.py:1270
+#: djeym/models.py:1168 djeym/models.py:1301
 msgid "Icon width"
 msgstr "Ширина иконки"
 
-#: djeym/models.py:1138 djeym/models.py:1271
+#: djeym/models.py:1169 djeym/models.py:1302
 msgid "Icon height"
 msgstr "Высота иконки"
 
-#: djeym/models.py:1141 djeym/models.py:1274
+#: djeym/models.py:1172 djeym/models.py:1305
 msgid "Offset by axis - X"
 msgstr "Смещение по оси - X"
 
-#: djeym/models.py:1147 djeym/models.py:1281
+#: djeym/models.py:1178 djeym/models.py:1312
 msgid "Offset by axis - Y"
 msgstr "Смещение по оси - Y"
 
-#: djeym/models.py:1202 djeym/models.py:1344
+#: djeym/models.py:1233 djeym/models.py:1375
 msgid "Collection name"
 msgstr "Название коллекции"
 
-#: djeym/models.py:1206
+#: djeym/models.py:1237
 msgid "Example: Light golden Avocado"
 msgstr "Пример: Светло-золотистый Авокадо"
 
-#: djeym/models.py:1224
+#: djeym/models.py:1255
 msgid "Sample Icon"
 msgstr "Образец иконки"
 
-#: djeym/models.py:1230
+#: djeym/models.py:1261
 msgid "Icon collections for markers"
 msgstr "Коллекции иконок для маркеров"
 
-#: djeym/models.py:1234
+#: djeym/models.py:1265
 msgid "Icon count"
 msgstr "Количество иконок"
 
-#: djeym/models.py:1238
+#: djeym/models.py:1269
 msgid "Count of active icons"
 msgstr "Количество активных иконок"
 
-#: djeym/models.py:1244
+#: djeym/models.py:1275
 msgid "Export Collection"
 msgstr "Экспортировать коллекцию"
 
-#: djeym/models.py:1245
+#: djeym/models.py:1276
 msgid "Get a collection of icons"
 msgstr "Получить коллекцию иконок"
 
-#: djeym/models.py:1253
+#: djeym/models.py:1284
 msgid "Icon Collection"
 msgstr "Коллекция иконок"
 
-#: djeym/models.py:1261
+#: djeym/models.py:1292
 msgid "Example: Airport"
 msgstr "Пример: Airport (Рекомендуется на английском языке)"
 
-#: djeym/models.py:1278
+#: djeym/models.py:1309
 msgid "Left, right - First time is automatically calculated."
 msgstr "Слева, справа - Первый раз вычисляется автоматически."
 
-#: djeym/models.py:1285
+#: djeym/models.py:1316
 msgid "Up, down - First time is automatically calculated."
 msgstr "Сверху, снизу - Первый раз вычисляется автоматически."
 
-#: djeym/models.py:1288
+#: djeym/models.py:1319
 msgid "Active icon"
 msgstr "Активная иконка"
 
-#: djeym/models.py:1290
+#: djeym/models.py:1321
 msgid ""
 "If the project uses 2-3 icons, it makes sense to disable the rest to "
 "optimize the download."
@@ -707,25 +721,35 @@ msgstr ""
 "Если в проекте используется 2-3 иконки, есть смысл отключить остальные для "
 "оптимизации загрузки."
 
-#: djeym/models.py:1313 djeym/models.py:1315
+#: djeym/models.py:1344 djeym/models.py:1346
 msgid "Icon for marker"
 msgid_plural "Icons for markers"
 msgstr[0] "Иконка для маркера"
 msgstr[1] "Иконки для маркеров"
 msgstr[2] "Иконку для маркеров"
 
-#: djeym/models.py:1339
+#: djeym/models.py:1370
 msgid ""
 "For the selected collection, there is already an icon with a similar name."
 msgstr "Для выбранной коллекции, уже имеется иконка с похожим названием."
 
-#: djeym/models.py:1370
+#: djeym/models.py:1401
 msgid "Record"
 msgstr "Запись"
 
-#: djeym/models.py:1371
+#: djeym/models.py:1402
 msgid "Statistics"
 msgstr "Статистика"
+
+#: djeym/models.py:1431 djeym/templates/djeym/ymeditor.html:595
+msgid "Load indicators"
+msgstr "Индикаторы загрузки"
+
+#: djeym/models.py:1440
+msgid "Default - Reserved name for the indicator. Choose another name."
+msgstr ""
+"Default - Зарезервированное название для индикатора. Выберите другое "
+"название."
 
 #: djeym/templates/djeym/admin/center_map_change_form.html:20
 #: djeym/templates/djeym/admin/check_icon_offset_change_form.html:20
@@ -778,11 +802,9 @@ msgstr "Пожалуйста, исправьте ошибки ниже."
 
 #: djeym/templates/djeym/admin/check_icon_offset_change_form.html:33
 msgid ""
-"After saving the icon, a map is added to adjust the size and offset along "
-"the axes."
+"After saving the icon, a map is added to adjust the offset along the axes."
 msgstr ""
-"После сохранения иконки, добавляется карта для настройки размера и смещения "
-"по осям."
+"После сохранения иконки, добавляется карта для настройки смещения по осям."
 
 #: djeym/templates/djeym/admin/icon_collection_change_list.html:52
 #, python-format
@@ -802,27 +824,27 @@ msgstr "Экспортировать источники"
 msgid "Import tile sources"
 msgstr "Импортировать источники"
 
-#: djeym/templates/djeym/includes/panel.html:40
-#: djeym/templates/djeym/ymeditor.html:163
+#: djeym/templates/djeym/includes/panel.html:47
+#: djeym/templates/djeym/ymeditor.html:179
 msgid "Categories of placemarks"
 msgstr "Категории маркеров"
 
-#: djeym/templates/djeym/includes/panel.html:57
-#: djeym/templates/djeym/ymeditor.html:181
+#: djeym/templates/djeym/includes/panel.html:65
+#: djeym/templates/djeym/ymeditor.html:197
 msgid "Subcategories of placemarks"
 msgstr "Подкатегории маркеров"
 
-#: djeym/templates/djeym/includes/panel.html:77
-#: djeym/templates/djeym/ymeditor.html:199
+#: djeym/templates/djeym/includes/panel.html:88
+#: djeym/templates/djeym/ymeditor.html:215
 msgid "Categories of routes"
 msgstr "Категории маршрутов"
 
-#: djeym/templates/djeym/includes/panel.html:97
-#: djeym/templates/djeym/ymeditor.html:217
+#: djeym/templates/djeym/includes/panel.html:110
+#: djeym/templates/djeym/ymeditor.html:233
 msgid "Categories of territories"
 msgstr "Категории территорий"
 
-#: djeym/templates/djeym/ymeditor.html:62
+#: djeym/templates/djeym/ymeditor.html:76
 msgid ""
 "You are using an <strong>outdated</strong> browser.<br>\n"
 " Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to "
@@ -832,7 +854,7 @@ msgstr ""
 "\"http://browsehappy.com/\">обновите свой браузер</a>, чтобы использовать "
 "все современные возможности."
 
-#: djeym/templates/djeym/ymeditor.html:75
+#: djeym/templates/djeym/ymeditor.html:89
 msgid ""
 "For full functionality of this site it is necessary to enable JavaScript."
 "<br>\n"
@@ -844,19 +866,19 @@ msgstr ""
 "<br>Вот <a href=\"http://www.enable-javascript.com/ru/\" target=\"_blank\"> "
 "инструкции, как включить JavaScript в вашем браузере.</a>"
 
-#: djeym/templates/djeym/ymeditor.html:90
+#: djeym/templates/djeym/ymeditor.html:104
 msgid "Editor menu"
 msgstr "Меню редактора"
 
-#: djeym/templates/djeym/ymeditor.html:138
+#: djeym/templates/djeym/ymeditor.html:154
 msgid "Icons"
 msgstr "Иконки"
 
-#: djeym/templates/djeym/ymeditor.html:158
+#: djeym/templates/djeym/ymeditor.html:174
 msgid "Filters by categories"
 msgstr "Фильтры по категориям"
 
-#: djeym/templates/djeym/ymeditor.html:244
+#: djeym/templates/djeym/ymeditor.html:260
 msgid ""
 "If you need to add an api key, go to the admin panel - YANDEX MAPS / Tile "
 "Sources."
@@ -864,35 +886,35 @@ msgstr ""
 "Если Вам нужно добавить ключ API, перейдите в админ-панель - ЯНДЕКС КАРТЫ / "
 "Источники тайлов."
 
-#: djeym/templates/djeym/ymeditor.html:256
+#: djeym/templates/djeym/ymeditor.html:272
 msgid "Default"
 msgstr "По умолчанию"
 
-#: djeym/templates/djeym/ymeditor.html:297
+#: djeym/templates/djeym/ymeditor.html:313
 msgid "Activate round theme"
 msgstr "Активировать круглую тему"
 
-#: djeym/templates/djeym/ymeditor.html:430
+#: djeym/templates/djeym/ymeditor.html:447
 msgid "Activate Heatmap"
 msgstr "Активировать тепловую карту"
 
-#: djeym/templates/djeym/ymeditor.html:434
+#: djeym/templates/djeym/ymeditor.html:451
 msgid "Reset to default settings"
 msgstr "Вернуть настройки по умолчанию"
 
-#: djeym/templates/djeym/ymeditor.html:440
+#: djeym/templates/djeym/ymeditor.html:457
 msgid "Heatmap settings"
 msgstr "Настройки тепловой карты"
 
-#: djeym/templates/djeym/ymeditor.html:446
+#: djeym/templates/djeym/ymeditor.html:463
 msgid "Gradient"
 msgstr "Градиент"
 
-#: djeym/templates/djeym/ymeditor.html:510
+#: djeym/templates/djeym/ymeditor.html:527
 msgid "About editor"
 msgstr "О редакторе"
 
-#: djeym/templates/djeym/ymeditor.html:527
+#: djeym/templates/djeym/ymeditor.html:544
 msgid ""
 "Convenient use of the Yandex map service for web development on the popular "
 "and free Django framework."
@@ -900,44 +922,48 @@ msgstr ""
 "Удобное использование картографической службы Яндекса для веб-разработки на "
 "популярном и свободном фреймворке Django."
 
-#: djeym/templates/djeym/ymeditor.html:620
+#: djeym/templates/djeym/ymeditor.html:628
+msgid "Size"
+msgstr "Размер"
+
+#: djeym/templates/djeym/ymeditor.html:714
 msgid "Button assignment"
 msgstr "Назначение кнопок"
 
-#: djeym/templates/djeym/ymeditor.html:624
+#: djeym/templates/djeym/ymeditor.html:718
 msgid "Add New Marker"
 msgstr "Добавить новый Маркер"
 
-#: djeym/templates/djeym/ymeditor.html:627
+#: djeym/templates/djeym/ymeditor.html:721
 msgid "Add a new Route"
 msgstr "Добавить новый Маршрут"
 
-#: djeym/templates/djeym/ymeditor.html:630
+#: djeym/templates/djeym/ymeditor.html:724
 msgid "Add new Territory"
 msgstr "Добавить новую Территорию"
 
-#: djeym/templates/djeym/ymeditor.html:634
+#: djeym/templates/djeym/ymeditor.html:728
 msgid "Add new Heat Point"
 msgstr "Добавить новую Тепловую точку"
 
-#: djeym/templates/djeym/ymeditor.html:650
-#: djeym/templates/djeym/ymeditor.html:655
+#: djeym/templates/djeym/ymeditor.html:743
+#: djeym/templates/djeym/ymeditor.html:748
 msgid "Optional field."
 msgstr "Необязательное поле."
 
-#: djeym/templates/djeym/ymeditor.html:654
+#: djeym/templates/djeym/ymeditor.html:747
 msgid "The quantitative significance of the point."
 msgstr "Количественная значимость точки."
 
-#: djeym/templates/djeym/ymeditor.html:1068
+#: djeym/templates/djeym/ymeditor.html:1160
 msgid "Page not found"
 msgstr "Страница не найдена"
 
-#: djeym/templates/djeym/ymeditor.html:1070
+#: djeym/templates/djeym/ymeditor.html:1162
 msgid "We're sorry, but the requested map could not be found."
 msgstr "К сожалению, запрошенная карта не найдена."
 
-#: djeym/templates/djeym/ymeditor.html:1072
+#: djeym/templates/djeym/ymeditor.html:1164
 msgid "Maybe the map is not active or just missing."
 msgstr "Возможно карта не активна или просто отсутствует."
 

@@ -26,8 +26,8 @@ from .forms import (CKEditorTextareaForm, GeneralSettingsForm,
                     PresetForm)
 from .mixins import StaffRequiredMixin
 from .models import (CustomClusterIcon, CustomMarkerIcon, HeatPoint,
-                     IconCollection, Map, Placemark, Polygon, Polyline, Preset,
-                     Statistics, TileSource)
+                     IconCollection, LoadIndicator, Map, Placemark, Polygon,
+                     Polyline, Preset, Statistics, TileSource)
 from .utils import get_errors_form, get_icon_font_plugin
 
 DJEYM_YMAPS_ICONS_FOR_CATEGORIES = get_icon_font_plugin()
@@ -66,6 +66,9 @@ class EditorYMap(StaffRequiredMixin, TemplateView):
             context['heat_form'] = HeatmapSettingsForm(
                 instance=ymap.heatmap_settings)
             context['general_settings'] = ymap.general_settings
+            context['load_indicators'] = LoadIndicator.objects.all()
+            context['selected_load_indicator'] = ymap.load_indicator
+            context['load_indicator_size'] = ymap.load_indicator_size
             context['category_icons_css'] = [] if DJEYM_YMAPS_ICONS_FOR_CATEGORIES[2] else \
                 DJEYM_YMAPS_ICONS_FOR_CATEGORIES[0]
             context['category_icons_js'] = [] if DJEYM_YMAPS_ICONS_FOR_CATEGORIES[2] else \
@@ -375,10 +378,8 @@ class AjaxSaveGeoObjects(View):
                     return JsonResponse(response_data, status=400)
 
             elif action == 'reload':
-
-                with connection.cursor() as cursor:
-                    json_code = Polygon.objects.get(pk=pk).json_code
-                    response_data = '[' + json_code + ']'
+                json_code = Polygon.objects.get(pk=pk).json_code
+                response_data = '[' + json_code + ']'
 
             elif action == 'delete':
                 Polygon.objects.get(id=pk).delete()
@@ -403,6 +404,25 @@ class AjaxCustomClusterIcon(View):
 
         icon_id = request.GET.get("obj_id")
         icon = CustomClusterIcon.objects.filter(pk=icon_id).first()
+
+        if icon is not None:
+            return JsonResponse({"url": icon.svg.url})
+        else:
+            return JsonResponse({"detail": "Icon not found."}, status=404)
+
+
+class AjaxLoadIndicatorIcon(View):
+    """
+    Ajax - Download icons for the download indicator, for the admin panel.U
+    Ajax - Загрузка иконок для индикатора загрузки, для панели администратора.
+    """
+
+    @ajax_login_required_and_staff
+    def dispatch(self, *args, **kwargs):
+        request = self.request
+
+        icon_id = request.GET.get("obj_id")
+        icon = LoadIndicator.objects.filter(pk=icon_id).first()
 
         if icon is not None:
             return JsonResponse({"url": icon.svg.url})
@@ -470,6 +490,30 @@ class AjaxTileSourceChange(View):
     @ajax_login_required_and_staff
     def dispatch(self, request, *args, **kwargs):
         return super(AjaxTileSourceChange, self).dispatch(request, *args, **kwargs)
+
+
+class AjaxLoadIndicatorChange(View):
+    """
+    Ajax - Change the download indicator.
+    Ajax - Изменить индикатор загрузки.
+    """
+
+    def post(self, request, *args, **kwargs):
+        map_id = int(request.POST.get('map_id'))
+        slug = request.POST.get('slug')
+        size = int(request.POST.get('size'))
+
+        ymap = Map.objects.get(pk=map_id)
+        ymap.load_indicator = LoadIndicator.objects.filter(slug=slug).first()
+        ymap.load_indicator_size = size
+        ymap.save()
+
+        response_data = {'successfully': True}
+        return JsonResponse(response_data)
+
+    @ajax_login_required_and_staff
+    def dispatch(self, request, *args, **kwargs):
+        return super(AjaxLoadIndicatorChange, self).dispatch(request, *args, **kwargs)
 
 
 class AjaxGeneralSettings(View):

@@ -1,5 +1,18 @@
 {% if ymap %}
 {% load i18n staticfiles djeymtags djeymfilters %}
+{% if selected_load_indicator %}
+{% widthratio load_indicator_size 2 1 as margin_offset %}
+<style type="text/css">
+    #djeymModalLock { display: block; }
+    #djeymLoadIndicator {
+        width: {{ load_indicator_size }}px;
+        height: {{ load_indicator_size }}px;
+        margin: -{{ margin_offset }}px 0 0 -{{ margin_offset }}px;
+        content: url('{{ selected_load_indicator.svg.url }}');
+        animation: djeym-spin .8s infinite linear;
+    }
+</style>
+{% endif %}
 {% if not general_settings.disable_site_panel %}{% include panel_path %}{% endif %}
 <script type="text/javascript">
     var djeymMapID = {{ ymap.pk }},
@@ -15,6 +28,8 @@
         djeymClusterIconContentTxtColor = "{{ general_settings.cluster_icon_content_txt_color }}",
         djeymMapType = "{{ controls.maptype }}",
         djeymDisableSitePanel = {{ general_settings.disable_site_panel|lower }},
+        djeymDelayStopLoadIndicator = {% if selected_load_indicator %}300{% else %}0{% endif %},
+        djeymBalloonMinHeight = {{ load_indicator_size }},
         {% if tile %}
             djeymTile = {
                 maxZoom: {{ tile.maxzoom }},
@@ -35,5 +50,5 @@
         djeymHeatmapGradientColor4 = "{{ heatmap_settings.gradient_color4 }}";
 </script>
 {% get_api_ymap lang=language_code %}
-<script type="text/javascript" src="{% static "djeym/js/ymfront.js" %}"></script>
+<script type="text/javascript" src="{% static "djeym/js/ymfront.min.js" %}"></script>
 {% endif %}

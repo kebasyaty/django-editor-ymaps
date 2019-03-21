@@ -7,9 +7,9 @@ from .forms import CenterMapForm, OffsetCustomIconForm
 from .models import (CategoryPlacemark, CategoryPolygon, CategoryPolyline,
                      CustomClusterIcon, CustomMarkerIcon, ExternalModules,
                      GeneralSettings, HeatmapSettings, HeatPoint,
-                     IconCollection, Map, MapControls, Placemark, Polygon,
-                     Polyline, Preset, Statistics, SubCategoryPlacemark,
-                     TileSource)
+                     IconCollection, LoadIndicator, Map, MapControls,
+                     Placemark, Polygon, Polyline, Preset, Statistics,
+                     SubCategoryPlacemark, TileSource)
 from .utils import get_icon_font_plugin
 from .widgets import AdminFileThumbWidget, ColorPickerWidget
 
@@ -78,7 +78,7 @@ class PresetInline(admin.StackedInline):
 class StatisticsAdmin(admin.ModelAdmin):
     # ckeditor_change_form.html - Used by default.
     change_form_template = 'djeym/admin/ckeditor_change_form.html'
-    list_display = ('obj_type', 'obj_id', 'ip', 'likes', 'timestamp')
+    list_display = ('obj_type', 'obj_id', 'ip', 'timestamp')
     readonly_fields = ('likes',)
 
     class Media:
@@ -92,10 +92,11 @@ class MapAdmin(admin.ModelAdmin):
     form = CenterMapForm
     change_form_template = 'djeym/admin/center_map_change_form.html'
     list_display = ('title', 'get_status_heatmap', 'get_custom_cluster',
-                    'get_custom_marker_icon', 'get_tile_screenshot', 'zoom',
-                    'slug', 'active')
+                    'get_custom_marker_icon', 'get_tile_screenshot', 'get_load_indicator',
+                    'zoom', 'slug', 'active')
     list_display_links = ('title', 'get_custom_cluster', 'get_status_heatmap',
-                          'get_custom_marker_icon', 'get_tile_screenshot')
+                          'get_custom_marker_icon', 'get_tile_screenshot',
+                          'get_load_indicator')
     list_editable = ('active',)
     readonly_fields = ('slug',)
     inlines = (MapControlsInline, ExternalModulesInline,
@@ -414,5 +415,31 @@ class CustomMarkerIconAdmin(admin.ModelAdmin):
         js = [
             '/static/djeym/js/jquery-3.3.1.min.js',
             '/static/djeym/plugins/jquery_mousewheel/jquery.mousewheel.min.js',
+            '/static/djeym/js/get_icon_name.js'
+        ]
+
+
+@admin.register(LoadIndicator)
+class LoadIndicatorAdmin(admin.ModelAdmin):
+    # ckeditor_change_form.html - Used by default.
+    change_form_template = 'djeym/admin/ckeditor_change_form.html'
+
+    list_display = ('title', 'admin_thumbnail', 'slug')
+    list_display_links = ('title', 'admin_thumbnail')
+    readonly_fields = ('slug',)
+
+    formfield_overrides = {
+        models.FileField: {'widget': AdminFileThumbWidget()},
+    }
+
+    class Media:
+        css = {
+            'all': [
+                '/static/djeym/css/djeym_admin.css',
+            ]
+        }
+
+        js = [
+            '/static/djeym/js/jquery-3.3.1.min.js',
             '/static/djeym/js/get_icon_name.js'
         ]

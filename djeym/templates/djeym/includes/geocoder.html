@@ -1,4 +1,5 @@
 {% load i18n staticfiles djeymtags djeymfilters %}
+{% widthratio load_indicator_size 2 1 as margin_offset %}
 <style type="text/css">
 .djeym-ymap {
     position: relative;
@@ -19,14 +20,20 @@
     transition-timing-function: linear;
 }
 
-#djeymSpinIndicator {
-    width: 128px;
-    height: 128px;
+#djeymLoadIndicator {
+    width: {{ load_indicator_size }}px;
+    height: {{ load_indicator_size }}px;
     position: absolute;
     top: 50%;
     left: 50%;
-    background: url('/static/djeym/img/loading.gif') no-repeat;
-    margin: -64px 0 0 -64px;
+    margin: -{{ margin_offset }}px 0 0 -{{ margin_offset }}px;
+    content: url('{{ load_indicator }}');
+    animation: djeym-spin 1s infinite linear;
+}
+
+@keyframes djeym-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(359deg); }
 }
 </style>
 {% get_api_ymap lang=language_code %}
@@ -49,4 +56,4 @@ var djeymMarker = {
     }
 {% endif %}
 </script>
-<script type="text/javascript" src="{% static 'djeym/js/geocoder.js' %}"></script>
+<script type="text/javascript" src="{% static 'djeym/js/geocoder.min.js' %}"></script>

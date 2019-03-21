@@ -4,17 +4,18 @@ function init() {
   "use strict";
 
   // Add download indicator to the map.
-  let html = "<div id=\"djeymModalLock\"><div id=\"djeymSpinIndicator\"></div></div>";
+  let html = "<div id=\"djeymModalLock\"><div id=\"djeymLoadIndicator\"></div></div>";
   document.getElementById( "djeymYMapsID" ).innerHTML = html;
 
   // Stop spin indication.
   function stopSpinIndication() {
     let modalLock = document.getElementById( "djeymModalLock" );
-    modalLock.style.opacity = 0;
     setTimeout( function() {
-      modalLock.style.display = "none";
-      modalLock.style.opacity = 1;
-    }, 2000 );
+      modalLock.style.opacity = 0;
+      setTimeout( function() {
+        modalLock.remove();
+      }, 1200 );
+    }, 1400 );
   }
 
   // CREATE A MAP (Создать карту) ------------------------------------------------------------------

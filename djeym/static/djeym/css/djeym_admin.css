@@ -129,7 +129,8 @@ label[for="id_is_cluster"] {
 
 #id_custom_cluster_icon,
 #id_collection_example_icon,
-#id_tile_screenshot {
+#id_tile_screenshot,
+#id_icon_load_indicator {
     display: none;
     max-height: 60px;
     position: relative;
@@ -139,7 +140,8 @@ label[for="id_is_cluster"] {
 
 .custom_cluster_icon_wrapper,
 .icon_collection_wrapper,
-.tile_screenshot_wrapper {
+.tile_screenshot_wrapper,
+.load_indicator_icon_wrapper {
     overflow: visible !important;
 }
 
@@ -202,21 +204,40 @@ label[for="id_is_cluster"] {
 
 /* Modal lock */
 
-#id_modal_lock {
+#djeymModalLock {
     display: none;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 10000;
-    background: url('../img/loading.gif') #fff no-repeat center;
-    background-size: 128px;
+    background-color: #fff;
     opacity: .85;
     transition-property: opacity;
-    transition-duration: .5s;
+    transition-duration: 1s;
     transition-delay: 0s;
     transition-timing-function: linear;
+}
+
+.djeym-load-indicator {
+    width: 128px;
+    height: 128px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -64px 0 0 -64px;
+    content: url('../../djeym/img/spinner.svg');
+    animation: djeym-spin 1s infinite linear;
+}
+
+@keyframes djeym-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
 }
 
 /* Helpers */

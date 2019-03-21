@@ -23,16 +23,49 @@ function init() {
   // FUNCTIONS -------------------------------------------------------------------------------------
 
   // Wait for the content to load into the Balloon and update the information for the presets.
+  // (Дождаться загрузки контента в Balloon и обновить информацию для пресетов.)
   function waitLoadContent() {
-    if ( !$( "div" ).is( "#djeymSignLoaded" ) ) {
-      setTimeout( function() {
-        waitLoadContent();
-      }, 100 );
-    } else {
-      $( ".djeymUpdateInfoPreset" ).each( function() {
-        $( this ).trigger( "click" );
-      } );
-    }
+    setTimeout( function() {
+      let loadIndicator = document.getElementById( "djeymLoadIndicator" );
+
+      if ( loadIndicator === null ) { return; }
+      loadIndicator.style.display = "block";
+
+      let $images = $( "ymaps:regex(class, .*-balloon__content) img" );
+      let imgLoaded = false;
+      let counter = 0;
+
+      if ( window.djeymDelayStopLoadIndicator === 300 ) {
+        if ( $images.length === 0 ) {
+          imgLoaded = true;
+        } else {
+          $images.each( function() {
+            if ( this.complete ) { counter++; }
+          } );
+          if ( counter === $images.length ) { imgLoaded = true; }
+        }
+      } else {
+        imgLoaded = true;
+      }
+
+      if ( !$( "div" ).is( "#djeymSignLoaded" ) || !imgLoaded ) {
+        setTimeout( function() {
+          waitLoadContent();
+        }, 100 );
+      } else {
+        document.getElementById( "djeymSignLoaded" ).remove();
+        $( ".djeymUpdateInfoPreset" ).each( function() {
+          $( this ).trigger( "click" );
+        } );
+        let modalLock = document.getElementById( "djeymModalLock" );
+        if ( modalLock !== null ) {
+          setTimeout( function() {
+            modalLock.remove();
+          }, 800 );
+          modalLock.style.opacity = 0;
+        }
+      }
+    }, window.djeymDelayStopLoadIndicator );
   }
 
   // jQuery ----------------------------------------------------------------------------------------
@@ -210,12 +243,10 @@ function init() {
 
   // CREATE OBJECT MANAGERS ------------------------------------------------------------------------
 
-  // Custom layout for the balloon cluster.
-  // (Кастомный макет для балуна кластера.)
+  // Custom layout for Balloon.
+  // (Кастомный макет для Balloon.)
   let customBalloonContentLayout = djeymYMaps.templateLayoutFactory.createClass(
-
-    // The "raw" flag means that the data is inserted "as is" without escaping html tags.
-    // (Флаг "raw" означает, что данные вставляются "как есть" без экранирования html тегов.)
+    "<div id=\"djeymModalLock\"><div id=\"djeymLoadIndicator\"></div></div>" +
     "<div class=\"djeym_ballon_header\">{{ properties.balloonContentHeader|raw }}</div>" +
     "<div class=\"djeym_ballon_body\">{{ properties.balloonContentBody|raw }}</div>" +
     "<div class=\"djeym_ballon_footer\">{{ properties.balloonContentFooter|raw }}</div>"
@@ -231,10 +262,14 @@ function init() {
   );
 
   let geoObjectBalloonOptions = {
+    geoObjectHasBalloon: true,
+    geoObjectHasHint: false,
     geoObjectBalloonMinWidth: 322,
     geoObjectBalloonMaxWidth: 342,
+    geoObjectBalloonMinHeight: window.djeymBalloonMinHeight,
     geoObjectBalloonPanelMaxMapArea: 0,
-    geoObjectBalloonContentLayout: customBalloonContentLayout
+    geoObjectBalloonContentLayout: customBalloonContentLayout,
+    geoObjectOpenBalloonOnClick: false
   };
 
   let objMngPlacemarkOptions = {
@@ -245,8 +280,8 @@ function init() {
       customIconContentLayoutForCluster : null,
     clusterBalloonItemContentLayout: customBalloonContentLayout,
     clusterDisableClickZoom: true,
-    clusterOpenBalloonOnClick: true,
-    showInAlphabeticalOrder: true,
+    clusterOpenBalloonOnClick: false,
+    showInAlphabeticalOrder: false,
     clusterBalloonPanelMaxMapArea: 0,
     clusterMaxZoom: Map.options.get( "maxZoom" ),
     clusterBalloonContentLayout: window.djeymClusterLayout,
@@ -275,6 +310,15 @@ function init() {
   // Create a manager for Polygons.
   // (Создать менеджер для полигонов.)
   globalObjMngPolygon = new djeymYMaps.ObjectManager( geoObjectBalloonOptions );
+
+  // Clear content of geo-object.
+  // (Очистить содержимое геообъекта.)
+  function clearContentGeoObject( geoObject ) {
+    geoObject.properties.balloonContentHeader = "";
+    geoObject.properties.balloonContentBody = "";
+    geoObject.properties.balloonContentFooter = "";
+    return geoObject;
+  }
 
   // Balloon switching to mode Panel.
   // (Переключение инфо-окна в режим панели)
@@ -308,6 +352,8 @@ function init() {
   // Ajax, load content for (Cluster) balloonContent - Header, Body and Footer.
   // (Ajax, загрузить контент для (Кластер) balloonContent - Header, Body и Footer.)
   globalObjMngPlacemark.clusters.events.add( "click", function( event ) {
+    Map.balloon.close( true );
+
     let objectId = event.get( "objectId" );
     let cluster = globalObjMngPlacemark.clusters.getById( objectId );
     let geoObjects = cluster.properties.geoObjects;
@@ -317,6 +363,14 @@ function init() {
     for ( let idx = 0; idx < countObjs; idx++ ) {
       ids.push( geoObjects[ idx ].properties.id );
     }
+
+    for ( let idx = 0; idx < countObjs; idx++ ) {
+      globalObjMngPlacemark.clusters.balloon.setData( clearContentGeoObject( geoObjects[ idx ] ) );
+    }
+
+    setTimeout( function() {
+      globalObjMngPlacemark.clusters.balloon.open( objectId );
+    }, 100 );
 
     $.get( "/djeym/ajax-balloon-content/", {
       ids: JSON.stringify( ids ),
@@ -330,8 +384,7 @@ function init() {
         marker.properties.balloonContentBody = content.body;
         marker.properties.balloonContentFooter = content.footer;
       }
-
-      globalObjMngPlacemark.clusters.balloon.open( objectId );
+      $( "ymaps:regex(class, .*-cluster-tabs__menu-item.*)" ).eq( 0 ).trigger( "click" );
     } ).fail( function( jqxhr, textStatus, error ) {
       let err = textStatus + ", " + error;
       console.log( "Request Failed: " + err );
@@ -341,6 +394,18 @@ function init() {
   // Ajax, load content for balloonContent - Header, Body and Footer.
   // (Ajax, загрузить контент для balloonContent - Header, Body и Footer.)
   function ajaxGetBalloonContent( geoObjectType, geoObject ) {
+    Map.balloon.close( true );
+
+    setTimeout( function() {
+      if ( geoObjectType === "Point" ) {
+        globalObjMngPlacemark.objects.balloon.open( geoObject.id );
+      } else if ( geoObjectType === "LineString" ) {
+        globalObjMngPolyline.objects.balloon.open( geoObject.id );
+      } else if ( geoObjectType === "Polygon" ) {
+        globalObjMngPolygon.objects.balloon.open( geoObject.id );
+      }
+    }, 100 );
+
     $.get( "/djeym/ajax-balloon-content/",
       { objID: geoObject.properties.id,
         objType: geoObjectType,
@@ -349,15 +414,13 @@ function init() {
       geoObject.properties.balloonContentHeader = data.header;
       geoObject.properties.balloonContentBody = data.body;
       geoObject.properties.balloonContentFooter = data.footer;
-      if ( geoObjectType === "Point" ) {
+
+      if ( geoObjectType === "Point" ) { //
         globalObjMngPlacemark.objects.balloon.setData( geoObject );
-        globalObjMngPlacemark.objects.balloon.open( geoObject.id );
-      } else if ( geoObjectType === "LineString" ) {
+      } else if ( geoObjectType === "LineString" ) { //
         globalObjMngPolyline.objects.balloon.setData( geoObject );
-        globalObjMngPolyline.objects.balloon.open( geoObject.id );
-      } else if ( geoObjectType === "Polygon" ) {
+      } else if ( geoObjectType === "Polygon" ) { //
         globalObjMngPolygon.objects.balloon.setData( geoObject );
-        globalObjMngPolygon.objects.balloon.open( geoObject.id );
       }
     } ).fail( function( jqxhr, textStatus, error ) {
       let err = textStatus + ", " + error;
@@ -370,26 +433,20 @@ function init() {
   globalObjMngPlacemark.objects.events.add( "click", function( event ) {
     let objectId = event.get( "objectId" );
     let geoObject = globalObjMngPlacemark.objects.getById( objectId );
-    let sumStrings = geoObject.properties.balloonContentHeader +
-                     geoObject.properties.balloonContentBody +
-                     geoObject.properties.balloonContentFooter;
-    if ( sumStrings.length === 0 ) { ajaxGetBalloonContent( geoObject.geometry.type, geoObject ); }
+    geoObject = clearContentGeoObject( geoObject );
+    ajaxGetBalloonContent( geoObject.geometry.type, geoObject );
   } );
   globalObjMngPolyline.objects.events.add( "click", function( event ) {
     let objectId = event.get( "objectId" );
     let geoObject = globalObjMngPolyline.objects.getById( objectId );
-    let sumStrings = geoObject.properties.balloonContentHeader +
-                     geoObject.properties.balloonContentBody +
-                     geoObject.properties.balloonContentFooter;
-    if ( sumStrings.length === 0 ) { ajaxGetBalloonContent( geoObject.geometry.type, geoObject ); }
+    geoObject = clearContentGeoObject( geoObject );
+    ajaxGetBalloonContent( geoObject.geometry.type, geoObject );
   } );
   globalObjMngPolygon.objects.events.add( "click", function( event ) {
     let objectId = event.get( "objectId" );
     let geoObject = globalObjMngPolygon.objects.getById( objectId );
-    let sumStrings = geoObject.properties.balloonContentHeader +
-                     geoObject.properties.balloonContentBody +
-                     geoObject.properties.balloonContentFooter;
-    if ( sumStrings.length === 0 ) { ajaxGetBalloonContent( geoObject.geometry.type, geoObject ); }
+    geoObject = clearContentGeoObject( geoObject );
+    ajaxGetBalloonContent( geoObject.geometry.type, geoObject );
   } );
 
   // Filter by Categories and Subcategories of placemarks.
@@ -601,14 +658,11 @@ function init() {
     function panelActivation() { //
       // Close panel.
       $( "#id_djeym_sidenav .djeym-closebtn" ).on( "click", function( event ) {
-        event.preventDefault();
         document.getElementById( "id_djeym_sidenav" ).style.left = "-360px";
       } );
 
       // Open menu tab.
       $( ".djeym-matrix-menu__btn" ).on( "click", function( event ) {
-        event.preventDefault();
-
         let $this = $( this );
         let tabIDName = $this.data( "id_name" );
 

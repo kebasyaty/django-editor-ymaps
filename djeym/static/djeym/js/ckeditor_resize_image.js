@@ -37,8 +37,6 @@ $( document ).ready( function() {
       // Listening to Tab "Upload".
       // (Прослушивание вкладки "Загрузка".)
       $( document ).on( "click", "a.cke_dialog_tab_selected", function( event ) {
-        event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
-
         let $this = $( this );
         let commonParent = $this.parent().parent();
         let buttonLoadOnServer = commonParent.find( "a.cke_dialog_ui_fileButton" );
@@ -82,9 +80,7 @@ $( document ).ready( function() {
           cursor: "pointer"
         } );
 
-        controlAgent.on( "click", function( event ) {
-          event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
-
+        controlAgent.on( "click", function( event ) { //
           // Stop image processing for old browsers.
           // (Останавливаем обработку изображения для устаревших браузеров.)
           if ( !( window.File && window.FileReader && window.FileList && window.Blob ) ) {

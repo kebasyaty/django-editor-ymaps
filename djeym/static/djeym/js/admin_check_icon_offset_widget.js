@@ -118,14 +118,14 @@ djeymYMaps.ready( function() {
       offsetY.after( "<div id=\"id_offset_y_up_btn\" class=\"marker_offset_btn\">" +
                 "<img src=\"/static/djeym/img/arrow_up.svg\" alt=\"Plus\"></div>" );
 
-      $( "#id_offset_x_right_btn" ).on( "touchstart click", function( event ) {
+      $( "#id_offset_x_right_btn" ).on( "click", function( event ) {
         event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
         let num = ( +offsetX.val() + 0.1 ).toFixed( 1 );
         offsetX.val( num );
         testPlacemark.options.set(
           { iconImageOffset: [ num, +offsetY.val() ] } );
       } );
-      $( "#id_offset_x_left_btn" ).on( "touchstart click", function( event ) {
+      $( "#id_offset_x_left_btn" ).on( "click", function( event ) {
         event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
         let num = ( +offsetX.val() - 0.1 ).toFixed( 1 );
         num = ( num < 0 ) ? num : 0;
@@ -133,14 +133,14 @@ djeymYMaps.ready( function() {
         testPlacemark.options.set(
           { iconImageOffset: [ num, +offsetY.val() ] } );
       } );
-      $( "#id_offset_y_down_btn" ).on( "touchstart click", function( event ) {
+      $( "#id_offset_y_down_btn" ).on( "click", function( event ) {
         event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
         let num = ( +offsetY.val() + 0.1 ).toFixed( 1 );
         offsetY.val( num );
         testPlacemark.options.set(
           { iconImageOffset: [ +offsetX.val(), num ] } );
       } );
-      $( "#id_offset_y_up_btn" ).on( "touchstart click", function( event ) {
+      $( "#id_offset_y_up_btn" ).on( "click", function( event ) {
         event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
         let num = ( +offsetY.val() - 0.1 ).toFixed( 1 );
         num = ( num < 0 ) ? num : 0;

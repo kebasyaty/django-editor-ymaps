@@ -7,8 +7,10 @@ $$__$$__$$__$$__$$_______$$____$$___$$
 $$$$$____$$$$___$$$$$____$$____$$___$$
 """
 
+VERSION = (1, 2)
+
 __title__ = 'DjEYM (django-editor-ymaps)'
-__version__ = '1.1'
+__version__ = '.'.join(map(str, VERSION))
 __author__ = 'genkosta'
 __license__ = 'MIT'
 __copyright__ = 'Copyright (c) 2014 genkosta'

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-20 10:03+0000\n"
+"POT-Creation-Date: 2019-03-21 09:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: djeym/static/djeym/js/ckeditor_resize_image.js:62
+#: djeym/static/djeym/js/ckeditor_resize_image.js:60
 msgid "Image size will be optimized to 966 pixels."
 msgstr "Размер изображения будет оптимизирован до 966 пикселей."
 
-#: djeym/static/djeym/js/ckeditor_resize_image.js:91
+#: djeym/static/djeym/js/ckeditor_resize_image.js:87
 msgid ""
 "The File APIs are not fully supported in this browser. Upgrade your browser "
 "- http://browsehappy.com/"
@@ -32,33 +32,33 @@ msgstr ""
 "Файловые API не полностью поддерживаются в этом браузере. Обновите свой "
 "браузер - http://browsehappy.com/"
 
-#: djeym/static/djeym/js/ckeditor_resize_image.js:111
+#: djeym/static/djeym/js/ckeditor_resize_image.js:107
 msgid "Only JPG and PNG files."
 msgstr "Только файлы JPG и PNG."
 
-#: djeym/static/djeym/js/ckeditor_resize_image.js:194
+#: djeym/static/djeym/js/ckeditor_resize_image.js:190
 msgid "Server Error ???"
 msgstr "Ошибка сервера ???"
 
-#: djeym/static/djeym/js/ymeditor.js:379
+#: djeym/static/djeym/js/ymeditor.js:466
 msgid "Select an object"
 msgstr "Выберите объект"
 
-#: djeym/static/djeym/js/ymeditor.js:402 djeym/static/djeym/js/ymeditor.js:597
-#: djeym/static/djeym/js/ymeditor.js:1053
-#: djeym/static/djeym/js/ymeditor.js:1537
+#: djeym/static/djeym/js/ymeditor.js:489 djeym/static/djeym/js/ymeditor.js:680
+#: djeym/static/djeym/js/ymeditor.js:1137
+#: djeym/static/djeym/js/ymeditor.js:1621
 msgid "The map has an unfinished geoobject."
 msgstr "На карте имеется незавершенный геообъект."
 
-#: djeym/static/djeym/js/ymeditor.js:468
+#: djeym/static/djeym/js/ymeditor.js:551
 msgid "Add Heat point"
 msgstr "Добавить тепловую точку"
 
-#: djeym/static/djeym/js/ymeditor.js:468
+#: djeym/static/djeym/js/ymeditor.js:551
 msgid "Heat point settings"
 msgstr "Настройки тепловой точки"
 
-#: djeym/static/djeym/js/ymeditor.js:550
+#: djeym/static/djeym/js/ymeditor.js:633
 msgid ""
 "Due to the features of the plugin, to edit or delete a heat point, go to the "
 "admin panel - YANDEX MAPS / Heat Points."
@@ -66,19 +66,19 @@ msgstr ""
 "Из за особенностей плагина, чтобы редактировать или удалить тепловую точку, "
 "перейдите в админ-панель - ЯНДЕКС КАРТЫ / Тепловые точки."
 
-#: djeym/static/djeym/js/ymeditor.js:658
+#: djeym/static/djeym/js/ymeditor.js:741
 msgid "Add marker"
 msgstr "Добавить маркер"
 
-#: djeym/static/djeym/js/ymeditor.js:658
+#: djeym/static/djeym/js/ymeditor.js:741
 msgid "Marker settings"
 msgstr "Настройки маркера"
 
-#: djeym/static/djeym/js/ymeditor.js:699
+#: djeym/static/djeym/js/ymeditor.js:782
 msgid "Open the editor panel and select the desired icon."
 msgstr "Откройте панель редактора и выберите нужную иконку."
 
-#: djeym/static/djeym/js/ymeditor.js:700
+#: djeym/static/djeym/js/ymeditor.js:783
 msgid ""
 "If you need to change the position of the marker - Close the context menu, "
 "move the marker, again open the context menu (right click on the object) and "
@@ -88,71 +88,74 @@ msgstr ""
 "маркер, сново откройте контекстное меню (правый клик на объекте) и сохраните "
 "результат."
 
-#: djeym/static/djeym/js/ymeditor.js:749
+#: djeym/static/djeym/js/ymeditor.js:832
 msgid "Categories"
 msgstr "Категории"
 
-#: djeym/static/djeym/js/ymeditor.js:761
+#: djeym/static/djeym/js/ymeditor.js:844
 msgid "Subcategories"
 msgstr "Подкатегории"
 
-#: djeym/static/djeym/js/ymeditor.js:773 djeym/static/djeym/js/ymeditor.js:853
-#: djeym/static/djeym/js/ymeditor.js:1235
-#: djeym/static/djeym/js/ymeditor.js:1284
-#: djeym/static/djeym/js/ymeditor.js:1362
-#: djeym/static/djeym/js/ymeditor.js:1778
-#: djeym/static/djeym/js/ymeditor.js:1827
-#: djeym/static/djeym/js/ymeditor.js:1906
+#: djeym/static/djeym/js/ymeditor.js:856 djeym/static/djeym/js/ymeditor.js:936
+#: djeym/static/djeym/js/ymeditor.js:1319
+#: djeym/static/djeym/js/ymeditor.js:1368
+#: djeym/static/djeym/js/ymeditor.js:1446
+#: djeym/static/djeym/js/ymeditor.js:1862
+#: djeym/static/djeym/js/ymeditor.js:1911
+#: djeym/static/djeym/js/ymeditor.js:1990
 msgid "Select a category"
 msgstr "Выберите категорию"
 
-#: djeym/static/djeym/js/ymeditor.js:829
+#: djeym/static/djeym/js/ymeditor.js:912
 msgid "There are no categories for markers."
 msgstr "Категории для маркеров отсутствуют."
 
-#: djeym/static/djeym/js/ymeditor.js:830 djeym/static/djeym/js/ymeditor.js:1261
-#: djeym/static/djeym/js/ymeditor.js:1804
+#: djeym/static/djeym/js/ymeditor.js:913 djeym/static/djeym/js/ymeditor.js:1345
+#: djeym/static/djeym/js/ymeditor.js:1888
 msgid "Add a category in the admin panel."
 msgstr "Добавьте категорию на панели администратора."
 
-#: djeym/static/djeym/js/ymeditor.js:845
+#: djeym/static/djeym/js/ymeditor.js:928
 msgid "Give a name to the marker"
 msgstr "Дайте название для маркера"
 
-#: djeym/static/djeym/js/ymeditor.js:906 djeym/static/djeym/js/ymeditor.js:1402
-#: djeym/static/djeym/js/ymeditor.js:1947
+#: djeym/static/djeym/js/ymeditor.js:989 djeym/static/djeym/js/ymeditor.js:1486
+#: djeym/static/djeym/js/ymeditor.js:2030
 msgid "Confirm object deletion!"
 msgstr "Подтвердите удаление объекта!"
 
-#: djeym/static/djeym/js/ymeditor.js:948 djeym/static/djeym/js/ymeditor.js:1432
-#: djeym/static/djeym/js/ymeditor.js:1975
+#: djeym/static/djeym/js/ymeditor.js:1031
+#: djeym/static/djeym/js/ymeditor.js:1515
+#: djeym/static/djeym/js/ymeditor.js:2057
 msgid "Image width is automatically optimized to <b>322</b> pixels."
 msgstr ""
 "Ширина изображения автоматически оптимизируется до <b>322</b> пикселей."
 
-#: djeym/static/djeym/js/ymeditor.js:954
+#: djeym/static/djeym/js/ymeditor.js:1037
 msgid "Place name"
 msgstr "Название места"
 
-#: djeym/static/djeym/js/ymeditor.js:957 djeym/static/djeym/js/ymeditor.js:1441
-#: djeym/static/djeym/js/ymeditor.js:1984
+#: djeym/static/djeym/js/ymeditor.js:1040
+#: djeym/static/djeym/js/ymeditor.js:1524
+#: djeym/static/djeym/js/ymeditor.js:2066
 msgid "Details"
 msgstr "Подробности"
 
-#: djeym/static/djeym/js/ymeditor.js:960 djeym/static/djeym/js/ymeditor.js:1444
-#: djeym/static/djeym/js/ymeditor.js:1987
+#: djeym/static/djeym/js/ymeditor.js:1043
+#: djeym/static/djeym/js/ymeditor.js:1527
+#: djeym/static/djeym/js/ymeditor.js:2069
 msgid "Footer"
 msgstr "Нижний колонтитул"
 
-#: djeym/static/djeym/js/ymeditor.js:1106
+#: djeym/static/djeym/js/ymeditor.js:1190
 msgid "Add route"
 msgstr "Добавить маршрут"
 
-#: djeym/static/djeym/js/ymeditor.js:1106
+#: djeym/static/djeym/js/ymeditor.js:1190
 msgid "Route settings"
 msgstr "Настройки маршрута"
 
-#: djeym/static/djeym/js/ymeditor.js:1147
+#: djeym/static/djeym/js/ymeditor.js:1231
 msgid ""
 "After the button [ <b>+</b> ], click the left mouse button on the map and "
 "create a route. Open the context menu again (right-click on the object) and "
@@ -162,28 +165,28 @@ msgstr ""
 "маршрут. Снова откройте контекстное меню (правой кнопкой мыши на объекте) и "
 "сохраните результат."
 
-#: djeym/static/djeym/js/ymeditor.js:1260
+#: djeym/static/djeym/js/ymeditor.js:1344
 msgid "There are no categories for routes."
 msgstr "Категории для маршрутов отсутствуют."
 
-#: djeym/static/djeym/js/ymeditor.js:1276
-#: djeym/static/djeym/js/ymeditor.js:1354
+#: djeym/static/djeym/js/ymeditor.js:1360
+#: djeym/static/djeym/js/ymeditor.js:1438
 msgid "Give a name for the route"
 msgstr "Дайте название для маршрута"
 
-#: djeym/static/djeym/js/ymeditor.js:1438
+#: djeym/static/djeym/js/ymeditor.js:1521
 msgid "Route name"
 msgstr "Название маршрута"
 
-#: djeym/static/djeym/js/ymeditor.js:1594
+#: djeym/static/djeym/js/ymeditor.js:1678
 msgid "Add territory"
 msgstr "Добавить территорию"
 
-#: djeym/static/djeym/js/ymeditor.js:1594
+#: djeym/static/djeym/js/ymeditor.js:1678
 msgid "Territory settings"
 msgstr "Настройки территории"
 
-#: djeym/static/djeym/js/ymeditor.js:1637
+#: djeym/static/djeym/js/ymeditor.js:1722
 msgid ""
 "After the button [ <b>+</b> ], click the left mouse button on the map and "
 "mark the territory. Open the context menu again (right-click on the object) "
@@ -193,27 +196,24 @@ msgstr ""
 "территорию. Снова откройте контекстное меню (правой кнопкой мыши на объекте) "
 "и сохраните результат."
 
-#: djeym/static/djeym/js/ymeditor.js:1803
+#: djeym/static/djeym/js/ymeditor.js:1887
 msgid "There are no categories for territories."
 msgstr "Категории для территорий отсутствуют."
 
-#: djeym/static/djeym/js/ymeditor.js:1819
-#: djeym/static/djeym/js/ymeditor.js:1898
+#: djeym/static/djeym/js/ymeditor.js:1903
+#: djeym/static/djeym/js/ymeditor.js:1982
 msgid "Give a name to the territory."
 msgstr "Дайте название для территории."
 
-#: djeym/static/djeym/js/ymeditor.js:1981
+#: djeym/static/djeym/js/ymeditor.js:2063
 msgid "Territory name"
 msgstr "Название территории"
 
-#: djeym/static/djeym/js/ymeditor.js:2426
-#: djeym/static/djeym/js/ymeditor.js:2454
-#: djeym/static/djeym/js/ymeditor.js:2504
-#: djeym/static/djeym/js/ymeditor.js:2627
+#: djeym/static/djeym/js/ymeditor.js:2479
 msgid "The editor page will automatically reload for full completion."
 msgstr ""
 "Страница редактора автоматически перезагрузится для полного завершения."
 
-#: djeym/static/djeym/js/ymeditor.js:2532
+#: djeym/static/djeym/js/ymeditor.js:2618
 msgid "Confirm reset to default settings!"
 msgstr "Подтвердите сброс к настройкам по умолчанию!"

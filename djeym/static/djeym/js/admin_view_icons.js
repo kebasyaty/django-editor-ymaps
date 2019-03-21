@@ -56,7 +56,6 @@ $( document ).ready( function() {
     } );
 
     $icon.on( "keyup mouseup mouseout", function( event ) {
-      event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
       let $this = $( this );
       $this.parent().find( ".view_icon" ).html( $this.val() );
     } );
@@ -66,15 +65,23 @@ $( document ).ready( function() {
     let $iconCluster = $( "#id_icon_cluster" );
     let clusterIconID = $iconCluster.find( "option:selected" ).val();
     let ajaxClusterIconURL = "/djeym/ajax-cluster-icon/";
+
     let $iconCollection = $( "#id_icon_collection" );
     let ajaxExampleIconURL = "/djeym/ajax-collection-example-icon/";
     let collectionIconID = $iconCollection.find( "option:selected" ).val();
+
     let $tileSource = $( "#id_tile" );
     let tileSourceID = $tileSource.find( "option:selected" ).val();
     let ajaxTileSourceURL = "/djeym/ajax-tile-screenshot/";
+
+    let $iconLoadIndicator = $( "#id_load_indicator" );
+    let loadIndicatorIconID = $iconLoadIndicator.find( "option:selected" ).val();
+    let ajaxLoadIndicatorIconURL = "/djeym/ajax-load-indicator-icon/";
+
     let $imageClusterIcon;
     let $imageExampleIcon;
     let $imageTile;
+    let $imageLoadIndicator;
 
     // If there is no cluster or collection, hide the "Edit Map" button.
     // (Если нет кластера или коллекции, скрыть кнопку "Редактировать карту".)
@@ -90,7 +97,6 @@ $( document ).ready( function() {
     $imageClusterIcon = $( "#id_custom_cluster_icon" );
     ajaxGetIcon( ajaxClusterIconURL, $imageClusterIcon, clusterIconID );
     $iconCluster.on( "change", function( event ) {
-      event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
       clusterIconID = $( this ).find( "option:selected" ).val();
       ajaxGetIcon( ajaxClusterIconURL, $imageClusterIcon, clusterIconID );
     } );
@@ -102,7 +108,6 @@ $( document ).ready( function() {
     $imageExampleIcon = $( "#id_collection_example_icon" );
     ajaxGetIcon( ajaxExampleIconURL, $imageExampleIcon, collectionIconID );
     $iconCollection.on( "change", function( event ) {
-      event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
       collectionIconID = $( this ).find( "option:selected" ).val();
       ajaxGetIcon( ajaxExampleIconURL, $imageExampleIcon, collectionIconID );
     } );
@@ -120,13 +125,23 @@ $( document ).ready( function() {
     }
 
     $tileSource.on( "change", function( event ) {
-      event.preventDefault ? event.preventDefault() : ( event.returnValue = false );
       tileSourceID = $( this ).find( "option:selected" ).val();
       if ( tileSourceID.length > 0 ) {
         ajaxGetIcon( ajaxTileSourceURL, $imageTile, tileSourceID );
       } else {
         $imageTile.attr( "src", "/static/djeym/img/default_tile.png" ).show();
       }
+    } );
+
+    // Ajax, load - Icon of load indicator for Map.
+    $iconLoadIndicator.parent().addClass( "load_indicator_icon_wrapper" ).append(
+      "<img src=\"\" id=\"id_icon_load_indicator\" alt=\"Icon\">"
+    );
+    $imageLoadIndicator = $( "#id_icon_load_indicator" );
+    ajaxGetIcon( ajaxLoadIndicatorIconURL, $imageLoadIndicator, loadIndicatorIconID );
+    $iconLoadIndicator.on( "change", function( event ) {
+      loadIndicatorIconID = $( this ).find( "option:selected" ).val();
+      ajaxGetIcon( ajaxLoadIndicatorIconURL, $imageLoadIndicator, loadIndicatorIconID );
     } );
   }
 } );

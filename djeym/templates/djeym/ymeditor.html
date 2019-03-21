@@ -48,11 +48,25 @@
 
     <!-- START CSS -->
     {% for url_css in category_icons_css %}<link rel="stylesheet" type="text/css" href="{{ url_css }}">{% endfor %}
-    <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/really-simple-color-picker/css/colorPicker.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/really-simple-color-picker/css/colorPicker.min.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/fontawesome/css/all.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/sweetalert2/sweetalert2.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/boxiOS/boxios.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "djeym/css/ymeditor.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/sweetalert2/sweetalert2.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/boxiOS/boxios.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "djeym/css/ymeditor.min.css" %}">
+
+    {% if selected_load_indicator %}
+    {% widthratio load_indicator_size 2 1 as margin_offset %}
+    <style type="text/css">
+        #djeymModalLock { display: block; }
+        #djeymLoadIndicator {
+            width: {{ load_indicator_size }}px;
+            height: {{ load_indicator_size }}px;
+            margin: -{{ margin_offset }}px 0 0 -{{ margin_offset }}px;
+            content: url('{{ selected_load_indicator.svg.url }}');
+            animation: djeym-spin .8s infinite linear;
+        }
+    </style>
+    {% endif %}
     <!-- END CSS -->
 </head>
 
@@ -89,7 +103,6 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                 <fieldset>
                     <legend class="legend_btn_style"><i class="fas fa-th m-r-5"></i>{% trans 'Editor menu' %}</legend>
                     <table class="djeym-matrix-menu block-center">
-                        <caption class="p-b-5"><span class="font-10 font-dark-gold">++=><&@%$^~^$%@&><=++</span></caption>
                         <tr>
                             <td class="djeym-matrix-menu__btn djeym_tab_active"
                                 data-id_name="id_djeym_tab_icon">
@@ -121,7 +134,10 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                 data-id_name="id_djeym_tab_presets">
                                 <i class="fas fa-code"></i>
                             </td>
-                            <td class="djeym-matrix-menu__btn-empty"></td>
+                            <td class="djeym-matrix-menu__btn"
+                                data-id_name="id_djeym_tab_load_indicators">
+                                <i class="fas fa-spinner"></i>
+                            </td>
                             <td class="djeym-matrix-menu__btn-empty"></td>
                             <td class="djeym-matrix-menu__btn-empty"></td>
                             <td class="djeym-matrix-menu__btn-empty"></td>
@@ -136,7 +152,7 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                 <div id="id_djeym_tab_icon" class="djeym-sidenav-item djeym-tab-item">
                     <fieldset>
                         <legend class="legend_btn_style"><i class="fas fa-map-marker-alt m-r-5"></i>{% trans 'Icons' %}</legend>
-                        <table id="id_djeym_matrix_icons" class="djeym_matrix_icons">
+                        <table id="id_djeym_matrix_icons" class="djeym_content_matrix_icons">
                             {% for icon in icons %}
                                 {% if forloop.first %}<tr>{% endif %}
                                     <td style="background-image: url({{ icon.svg.url }}); background-size: auto {{ icon.size_height }}px;"
@@ -246,6 +262,8 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                 </table>
                             </caption>
                             <tr>
+                                <td height="60" width="45%" style="background: url({% static 'djeym/img/default_tile.png' %}) 
+                                    no-repeat center; background-size: cover;"></td>
                                 <td width="55%"class="border-line-ddd">
                                     <label class="boxios-ios-label">
                                         <span class="boxios-ios-radio">
@@ -256,11 +274,11 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                         <span class="boxios-ios-label-text">{% trans 'Default' %}<br><small>max zoom 23</small></span>
                                     </label>
                                 </td>
-                                <td height="60" width="45%" style="background: url({% static 'djeym/img/default_tile.png' %}) 
-                                    no-repeat center; background-size: cover;"></td>
                             </tr>
                             {% for item in tile_sources %}
                                 <tr>
+                                    <td height="60" width="45%" style="background: url({{ item.screenshot.url }}) 
+                                        no-repeat center; background-size: cover;"></td>
                                     <td width="55%"{% if not forloop.last %} class="border-line-ddd"{% endif %}>
                                         <label class="boxios-ios-label">
                                             <span class="boxios-ios-radio">
@@ -271,8 +289,6 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                             <span class="boxios-ios-label-text">{{ item.title }}<br><small>max zoom {{ item.maxzoom }}</small></span>
                                         </label>
                                     </td>
-                                    <td height="60" width="45%" style="background: url({{ item.screenshot.url }}) 
-                                        no-repeat center; background-size: cover;"></td>
                                 </tr>
                             {% endfor %}
                         </table>
@@ -281,6 +297,8 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                 <!-- General settings and map controls.
                      (Общие настройки и элементы управления картой.) -->
                 <div id="id_djeym_tab_controls" class="djeym-sidenav-item djeym-tab-item">
+                    <!-- General settings.
+                        (Общие настройки.) -->
                     <fieldset class="djeym_content_map_controls p-t-10">
                         <legend class="legend_btn_style"><i class="fas fa-cogs m-r-5"></i>{% trans 'General settings' %}</legend>
                         <form id="djeymGeneralSettingsForm" action="{% url 'djeym:ajax_general_settings' %}" method="post">{% csrf_token %}
@@ -376,9 +394,12 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                     <td class="font-14">{% trans 'Text color' %}</td>
                                 </tr>
                             </table>
-                            <div class="text-center m-t-15"><button class="djeym-button"><i class="fas fa-save"></i></button></div>
+                            <div class="text-center m-t-15">
+                                <button type="submit" class="djeym-button"><i class="fas fa-save"></i></button></div>
                         </form>
                     </fieldset>
+                    <!-- Map controls.
+                        (Элементы управления картой.) -->
                     <fieldset class="m-t-20">
                         <legend class="legend_btn_style"><i class="fas fa-cogs m-r-5"></i>{% trans 'Map Controls' %}</legend>
                         <form id="djeymMapControlsForm" action="{% url 'djeym:ajax_map_controls' %}" method="post">{% csrf_token %}
@@ -386,6 +407,10 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                 {% for field in form_controls %}
                                     {% if field.html_name != 'ymap' and field.html_name != 'maptype' %}
                                         <tr>
+                                            <td{% if field.html_name == 'typeselector' %} class="border-none"{% endif %}>
+                                                <img src="/static/djeym/img/map_controls/{{ field.html_name }}.png" 
+                                                    height="{% if field.html_name  == 'provider' %}111{% elif field.html_name  == 'zoom' %}68{% else %}33{% endif %}" 
+                                                    alt="{% trans 'Screenshot' %}"></td>
                                             <td{% if field.html_name == 'typeselector' %} class="border-none"{% endif %}>
                                                 <label class="boxios-ios-label">
                                                     <span class="boxios-ios-checkbox">
@@ -397,20 +422,18 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                                     <span class="boxios-ios-label-text">{{ field.label }}</span>
                                                 </label>
                                             </td>
-                                            <td{% if field.html_name == 'typeselector' %} class="border-none"{% endif %}>
-                                                <img src="/static/djeym/img/map_controls/{{ field.html_name }}.png" 
-                                                    height="{% if field.html_name  == 'provider' %}111{% elif field.html_name  == 'zoom' %}68{% else %}33{% endif %}" 
-                                                    alt="{% trans 'Screenshot' %}"></td>
                                         </tr>
                                         {% if field.html_name == 'typeselector' %}
-                                            <tr><td colspan="2"><span class="m-l-10 m-r-10">{{ form_controls.maptype.label }}</span>{{ form_controls.maptype }}</td></tr>
+                                            <tr><td colspan="2">
+                                                <div>{{ form_controls.maptype.label }}</div>
+                                                <div>{{ form_controls.maptype }}</div></td></tr>
                                         {% endif %}
                                     {% elif field.html_name != 'maptype' %}
                                         <tr><td colspan="2" class="border-none">{{ field }}</td></tr>
                                     {% endif %}
                                 {% endfor %}
                                 <tr><td align="center" colspan="2" class="p-t-15 border-none">
-                                        <button class="djeym-button"><i class="fas fa-save"></i></button></td></tr>
+                                        <button type="submit" class="djeym-button"><i class="fas fa-save"></i></button></td></tr>
                             </table>
                         </form>
                     </fieldset>
@@ -571,6 +594,84 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                         </table>
                     </fieldset>
                 </div>
+                <!-- Table of icons for loading indicators.
+                     (Таблица иконок для индикаторов загрузки.) -->
+                <div id="id_djeym_tab_load_indicators" class="djeym-sidenav-item djeym-tab-item">
+                    <fieldset>
+                        <legend class="legend_btn_style"><i class="fas fa-spinner m-r-5"></i>{% trans 'Load indicators' %}</legend>
+                        <table id="id_djeym_load_indicators" class="djeym_content_load_indicators font-14 width-100">
+                            <tr>
+                                <td width="48"></td>
+                                <td colspan="2">
+                                    <label class="boxios-ios-label">
+                                        <span class="boxios-ios-radio">
+                                            <input class="boxios-radio-load_indicator" 
+                                                type="radio"{% if not selected_load_indicator %} checked{% endif %} name="load_indicator" 
+                                                value="default">
+                                            <span class="boxios-ios-radio__value" aria-hidden="true"></span>
+                                        </span>Default
+                                    </label>
+                                </td>
+                            </tr>
+                            {% for indicator in load_indicators  %}
+                                <tr>
+                                    <td width="48"{% if forloop.last %} class="border-line-ddd p-b-15"{% endif %}>
+                                        <img src="{{ indicator.svg.url }}" width="32" alt="Icon"></td>
+                                    <td colspan="2"{% if forloop.last %} class="border-line-ddd p-b-15"{% endif %}>
+                                        <label class="boxios-ios-label">
+                                            <span class="boxios-ios-radio">
+                                                <input class="boxios-radio-load_indicator" 
+                                                    type="radio"{% if selected_load_indicator == indicator %} checked{% endif %} name="load_indicator" 
+                                                    value="{{ indicator.slug }}">
+                                                <span class="boxios-ios-radio__value" aria-hidden="true"></span>
+                                            </span>{{ indicator.title }}
+                                        </label>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            {% if load_indicators %}
+                                <tr>
+                                    <td colspan="3" class="p-t-15">{% trans 'Size' %}</td>
+                                </tr>
+                                <tr>
+                                    <td width="33%" class="border-line-ddd p-b-15">
+                                        <label class="boxios-ios-label">
+                                            <span class="boxios-ios-radio">
+                                                <input class="boxios-radio-load_indicator_size" 
+                                                    type="radio"{% if load_indicator_size == 64 %} checked{% endif %} name="load_indicator_size" 
+                                                    value="64">
+                                                <span class="boxios-ios-radio__value" aria-hidden="true"></span>
+                                            </span>64
+                                        </label>
+                                    </td>
+                                    <td width="33%" class="border-line-ddd p-b-15">
+                                        <label class="boxios-ios-label">
+                                            <span class="boxios-ios-radio">
+                                                <input class="boxios-radio-load_indicator_size" 
+                                                    type="radio"{% if load_indicator_size == 96 %} checked{% endif %} name="load_indicator_size" 
+                                                    value="96">
+                                                <span class="boxios-ios-radio__value" aria-hidden="true"></span>
+                                            </span>96
+                                        </label>
+                                    </td>
+                                    <td width="33%" class="border-line-ddd p-b-15">
+                                        <label class="boxios-ios-label">
+                                            <span class="boxios-ios-radio">
+                                                <input class="boxios-radio-load_indicator_size" 
+                                                    type="radio"{% if load_indicator_size == 128 %} checked{% endif %} name="load_indicator_size" 
+                                                    value="128">
+                                                <span class="boxios-ios-radio__value" aria-hidden="true"></span>
+                                            </span>128
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr><td colspan="3" align="center" class="p-t-20">
+                                        <button type="button" class="djeym-button" id="id_djeym_button_change_load_indicator">
+                                            <i class="fas fa-save"></i></button></td></tr>
+                            {% endif %}
+                        </table>
+                    </fieldset>
+                </div>
             </div>
             <div class="djeym-sidenav__footer font-14 bg-gray-eee font-gray-999">
                 <i class="far fa-copyright font-12"></i> {{ '2014'|year_copyright }} DjEYM
@@ -596,7 +697,6 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
     <!-- ACTION MENU (Меню действий) -->
     <div id="id_hidden_action_menu__content" class="hidden">
         <table class="djeym__table_balloon_context djeym-matrix-menu block-center">
-            <caption><span class="font-10 font-dark-gold">++=><&@%$^~^$%@&><=++</span></caption>
             <tr>
                 <td class="djeym_add_placemark djeym-matrix-menu__btn">
                     <i class="fas fa-map-marker-alt"></i></td>
@@ -643,7 +743,6 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
     <!-- CONTEXT MENU FOR HEAT POINT (Контекстное меню для тепловой точки.) -->
     <div id="id_hidden_heatpoint__content" class="hidden">
         <table class="djeym__table_balloon_context block-center m-t-10">
-            <caption><span class="font-10 font-dark-gold">++=><&@%$^~^$%@&><=++</span></caption>
             <tr><td class="p-t-10">
                 <input id="id_djeym_heatpoint_title" type="text" value="" maxlength="60" 
                     placeholder="{% trans 'Place name' %}">
@@ -679,9 +778,8 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
     <div id="id_hidden_placemark__content" class="hidden">
         <table class="djeym__table_balloon_context">
             <tr>
-                <td class="p-t-10">
+                <td>
                     <table class="djeym-matrix-menu block-center">
-                        <caption><span class="font-10 font-dark-gold">++=><&@%$^~^$%@&><=++</span></caption>
                         <tr>
                             <td class="djeym-matrix-menu__btn djeym_text_content"
                                 data-target_var_name="balloonContentHeader">
@@ -702,7 +800,11 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
             </tr>
             <tr>
                 <td class="text-center">
-                    <img src="{% static 'djeym/img/hat.svg' %}" class="djeym_hat_decor" alt="Hat"><br>
+                    <img src="{% static 'djeym/img/hat.svg' %}" class="djeym_hat_decor" alt="Hat">
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center">
                     <img src="" id="id_icon" class="djeym_marker_icon" alt="Icon">
                 </td>
             </tr>
@@ -746,7 +848,6 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
             <tr>
                 <td colspan="2">
                     <table class="djeym-matrix-menu block-center">
-                        <caption><span class="font-10 font-dark-gold">++=><&@%$^~^$%@&><=++</span></caption>
                         <tr>
                             <td class="djeym-matrix-menu__btn djeym_text_content"
                                 data-target_var_name="balloonContentHeader">
@@ -838,7 +939,6 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
             <tr>
                 <td colspan="2">
                     <table class="djeym-matrix-menu block-center">
-                        <caption><span class="font-10 font-dark-gold">++=><&@%$^~^$%@&><=++</span></caption>
                         <tr>
                             <td class="djeym-matrix-menu__btn djeym_text_content"
                                 data-target_var_name="balloonContentHeader">
@@ -979,8 +1079,6 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
     <!-- HELP - "ADD GEO-OBJECT NAME"-->
     <div class="djeym-warning-add-geo-object-name hidden">
         <table class="djeym-matrix-menu block-center">
-            <caption class="p-b-5">
-                <span class="font-10 font-dark-gold">++=><&@%$^~^$%@&><=++</span></caption>
             <tr>
                 <td class="djeym-matrix-menu__btn-empty"></td>
                 <td class="djeym-matrix-menu__btn cursor-default"><i class="fas fa-heading"></i></td>
@@ -992,8 +1090,6 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
     <!-- HELP - "SELECT A CATEGORY"-->
     <div class="djeym-warning-select-category hidden">
         <table class="djeym-matrix-menu block-center">
-            <caption class="p-b-5">
-                <span class="font-10 font-brown">++=><&@%$^~^$%@&><=++</span></caption>
             <tr>
                 <td class="djeym-matrix-menu__btn-empty"></td>
                 <td class="djeym-matrix-menu__btn cursor-default"><i class="fas fa-tasks"></i></td>
@@ -1005,14 +1101,14 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
     <!-- START JS -->
     <script type="text/javascript" src="{% static "djeym/js/jquery-3.3.1.min.js" %}"></script>
     {% for url_js in category_icons_js %}<script type="text/javascript" src="{{ url_js }}"></script>{% endfor %}
-    <script type="text/javascript" src="{% static "djeym/plugins/really-simple-color-picker/js/jquery.colorPicker.js" %}"></script>
+    <script type="text/javascript" src="{% static "djeym/plugins/really-simple-color-picker/js/jquery.colorPicker.min.js" %}"></script>
     <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
     <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
     <script type="text/javascript" src="{% static "ckeditor/ckeditor/adapters/jquery.js" %}"></script>
     <script type="text/javascript" src="{% static "djeym/plugins/fontawesome/js/all.min.js" %}"></script>
     <script type="text/javascript" src="{% static "djeym/plugins/sweetalert2/sweetalert2.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "djeym/plugins/boxiOS/boxios.js" %}"></script>
-    <script type="text/javascript" src="{% static "djeym/js/ckeditor_resize_image.js" %}"></script>
+    <script type="text/javascript" src="{% static "djeym/plugins/boxiOS/boxios.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "djeym/js/ckeditor_resize_image.min.js" %}"></script>
     <script type="text/javascript" src="{% url 'djeym:javascript-catalog' %}"></script>
     <script type="text/javascript">
         window.CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/";
@@ -1039,6 +1135,8 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
             djeymClusterIconContentBgColor = "{{ general_settings.cluster_icon_content_bg_color }}",
             djeymClusterIconContentTxtColor = "{{ general_settings.cluster_icon_content_txt_color }}",
             djeymMapType = "{{ controls.maptype }}",
+            djeymDelayStopLoadIndicator = {% if selected_load_indicator %}300{% else %}0{% endif %},
+            djeymBalloonMinHeight = {{ load_indicator_size }},
             djeymCategories = {
                 placemarks: {},
                 submarks: {},
@@ -1059,7 +1157,7 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
             {% endfor %}
     </script>
     {% get_api_ymap lang=language_code %}
-    <script type="text/javascript" src="{% static "djeym/js/ymeditor.js" %}"></script>
+    <script type="text/javascript" src="{% static "djeym/js/ymeditor.min.js" %}"></script>
     <!-- END JS -->
 </body>
 </html>

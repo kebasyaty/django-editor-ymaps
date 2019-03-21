@@ -50,6 +50,12 @@ MAP_TYPE_CHOICES = (
     ('yandex#hybrid', _('Hybrid'))
 )
 
+LOAD_INDICATOR_SIZE_CHOICES = (
+    (64, "64"),
+    (96, "96"),
+    (128, "128")
+)
+
 FEATURE_POINT = {
     "type": "Feature",
     "id": 0,
@@ -491,6 +497,23 @@ class Map(models.Model):
         on_delete=models.SET_NULL
     )
 
+    load_indicator = models.ForeignKey(
+        'LoadIndicator',
+        verbose_name=_('Load indicator'),
+        related_name='map_load_indicator',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        help_text=_(
+            'https://github.com/genkosta/django-editor-ymaps/blob/master/Spinner.zip')
+    )
+
+    load_indicator_size = models.PositiveSmallIntegerField(
+        _('Load indicator size'),
+        choices=LOAD_INDICATOR_SIZE_CHOICES,
+        default=64
+    )
+
     active = models.BooleanField(_('Active map'), default=True)
 
     zoom = models.PositiveSmallIntegerField(
@@ -596,6 +619,14 @@ class Map(models.Model):
             return mark_safe(
                 '<img src="/static/djeym/img/colder_minus.svg/" height="30" alt="Icon">')
     get_status_heatmap.short_description = _('Heat map status')
+
+    def get_load_indicator(self):
+        if bool(self.load_indicator):
+            return mark_safe('<img src="{0}" height="{1}" alt="Icon">'
+                             .format(self.load_indicator.svg.url, DJEYM_YMAPS_ICONS_MAX_SIZE))
+        else:
+            return ""
+    get_load_indicator.short_description = _('Load indicator')
 
     def get_absolute_url(self):
         return reverse('djeym:editor_ymap', args=(self.slug,))
@@ -1371,6 +1402,52 @@ class Statistics(models.Model):
         verbose_name_plural = _('Statistics')
 
 
+class LoadIndicator(models.Model):
+    """Load Indicator"""
+    svg = models.FileField(
+        _('Icon'),
+        upload_to=make_upload_path,
+        validators=[validate_svg],
+        null=True,
+        help_text=_(
+            'https://github.com/genkosta/django-editor-ymaps/blob/master/Spinner.zip')
+    )
+
+    title = models.CharField(_('Title'), unique=True,
+                             max_length=60, default="")
+
+    slug = models.SlugField(max_length=255, blank=True, null=True)
+
+    @property
+    def upload_dir(self):
+        return 'djeym_load_indicators'
+
+    def __str__(self):
+        return '{}'.format(self.title)
+
+    class Meta:
+        ordering = ("title", "id")
+        verbose_name = _('Load indicator')
+        verbose_name_plural = _('Load indicators')
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(LoadIndicator, self).save(*args, **kwargs)
+
+    def clean(self):
+        slug = slugify(self.title)
+        if slug == 'default':
+            msg = _('Default - Reserved name for the indicator. Choose another name.')
+            raise ValidationError({'title': msg})
+
+    def admin_thumbnail(self):
+        if bool(self.svg):
+            return mark_safe('<img src="{0}" height="60" alt="Icon">'.format(self.svg.url))
+        else:
+            return ""
+    admin_thumbnail.short_description = _('Icon')
+
+
 # Signals ------------------------------------------------------------------------------------------
 
 def custom_icon_cluster_size_correction(instance, **kwargs):
@@ -1538,19 +1615,19 @@ def heatpoint_update_json_code(instance, **kwargs):
         instance.save()
 
 
-def placemark_delete_preset(instance, **kwargs):
-    """Delete orphaned presets - Placemark"""
+def placemark_delete_statistics(instance, **kwargs):
+    """Delete orphaned statistics - Placemark"""
     Statistics.objects.filter(obj_type='Point', obj_id=instance.pk).delete()
 
 
-def polyline_delete_preset(instance, **kwargs):
-    """Delete orphaned presets - Polyline"""
+def polyline_delete_statistics(instance, **kwargs):
+    """Delete orphaned statistics - Polyline"""
     Statistics.objects.filter(obj_type='LineString',
                               obj_id=instance.pk).delete()
 
 
-def polygon_delete_preset(instance, **kwargs):
-    """Delete orphaned presets - Polygon"""
+def polygon_delete_statistics(instance, **kwargs):
+    """Delete orphaned statistics - Polygon"""
     Statistics.objects.filter(obj_type='Polygon', obj_id=instance.pk).delete()
 
 
@@ -1572,12 +1649,14 @@ pre_save.connect(cleaning_files_pre_save, sender=CustomClusterIcon)
 pre_delete.connect(cleaning_files_pre_delete, sender=CustomClusterIcon)
 pre_save.connect(cleaning_files_pre_save, sender=CustomMarkerIcon)
 pre_delete.connect(cleaning_files_pre_delete, sender=CustomMarkerIcon)
+pre_save.connect(cleaning_files_pre_save, sender=LoadIndicator)
+pre_delete.connect(cleaning_files_pre_delete, sender=LoadIndicator)
 
 # Clean old screenshots
 pre_save.connect(cleaning_files_pre_save, sender=TileSource)
 pre_delete.connect(cleaning_files_pre_delete, sender=TileSource)
 
 # Delete orphaned presets
-pre_delete.connect(placemark_delete_preset, sender=Placemark)
-pre_delete.connect(polyline_delete_preset, sender=Polyline)
-pre_delete.connect(polygon_delete_preset, sender=Polygon)
+pre_delete.connect(placemark_delete_statistics, sender=Placemark)
+pre_delete.connect(polyline_delete_statistics, sender=Polyline)
+pre_delete.connect(polygon_delete_statistics, sender=Polygon)

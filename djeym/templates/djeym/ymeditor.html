@@ -1150,7 +1150,7 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
             djeymClusterIconContentTxtColor = "{{ general_settings.cluster_icon_content_txt_color }}",
             djeymMapType = "{{ controls.maptype }}",
             djeymDelayStopLoadIndicator = {% if selected_load_indicator %}300{% else %}0{% endif %},
-            djeymBalloonMinHeight = {{ load_indicator_size }},
+            djeymBalloonMinHeight = {{ load_indicator_size }} + 40,
             djeymCategories = {
                 placemarks: {},
                 submarks: {},

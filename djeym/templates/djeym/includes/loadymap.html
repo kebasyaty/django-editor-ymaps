@@ -29,7 +29,7 @@
         djeymMapType = "{{ controls.maptype }}",
         djeymDisableSitePanel = {{ general_settings.disable_site_panel|lower }},
         djeymDelayStopLoadIndicator = {% if selected_load_indicator %}300{% else %}0{% endif %},
-        djeymBalloonMinHeight = {{ load_indicator_size }},
+        djeymBalloonMinHeight = {{ load_indicator_size }} + 40,
         {% if tile %}
             djeymTile = {
                 maxZoom: {{ tile.maxzoom }},

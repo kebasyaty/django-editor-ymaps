@@ -521,5 +521,7 @@ CHANGELOG
     - Added automatic substitution of the version number in the help section.
     - Updated migration for optimization.
 
+----
+
 .. contents:: Contents
    :depth: 3

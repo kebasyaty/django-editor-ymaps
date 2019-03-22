@@ -32,6 +32,11 @@ DjEYM ( django-editor-ymaps )
 
 - `Terms of use for the API <https://tech.yandex.com/maps/doc/jsapi/2.1/terms/index-docpage/>`_
 
+.. attention::
+   **При переходе на версию 1.2, обновите миграции:** python manage.py migrate djeym
+
+   **When upgrading to version 1.2, upgrade the migration.:** python manage.py migrate djeym
+
 Features
 --------
 1. **Через панель администратора, создавать новые карты с богатой возможностью настроек.** ( *Through the admin panel, create new maps with a wide range of options.* )

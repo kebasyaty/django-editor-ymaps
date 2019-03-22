@@ -520,3 +520,6 @@ CHANGELOG
     - Added automatic styles correction for Firefox. - Fixed font size for headings and buttons.
     - Added automatic substitution of the version number in the help section.
     - Updated migration for optimization.
+
+.. contents:: Contents
+   :depth: 3

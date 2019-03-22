@@ -35,7 +35,7 @@ DjEYM ( django-editor-ymaps )
 .. attention::
    **При переходе на версию 1.2, обновите миграции:** python manage.py migrate djeym
 
-   **When upgrading to version 1.2, upgrade the migration.:** python manage.py migrate djeym
+   **When upgrading to version 1.2, upgrade the migration:** python manage.py migrate djeym
 
 Features
 --------

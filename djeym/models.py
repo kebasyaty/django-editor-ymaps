@@ -514,6 +514,11 @@ class Map(models.Model):
         default=64
     )
 
+    disable_indicator_animation = models.BooleanField(
+        _('Disable loading indicator animation'),
+        default=False
+    )
+
     active = models.BooleanField(_('Active map'), default=True)
 
     zoom = models.PositiveSmallIntegerField(

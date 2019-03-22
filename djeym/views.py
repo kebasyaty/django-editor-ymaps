@@ -502,10 +502,12 @@ class AjaxLoadIndicatorChange(View):
         map_id = int(request.POST.get('map_id'))
         slug = request.POST.get('slug')
         size = int(request.POST.get('size'))
+        animation = request.POST.get('animation')
 
         ymap = Map.objects.get(pk=map_id)
         ymap.load_indicator = LoadIndicator.objects.filter(slug=slug).first()
         ymap.load_indicator_size = size
+        ymap.disable_indicator_animation = animation
         ymap.save()
 
         response_data = {'successfully': True}

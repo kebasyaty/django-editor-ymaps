@@ -63,7 +63,7 @@
             height: {{ load_indicator_size }}px;
             margin: -{{ margin_offset }}px 0 0 -{{ margin_offset }}px;
             content: url('{{ selected_load_indicator.svg.url }}');
-            animation: djeym-spin .8s infinite linear;
+            {% if not ymap.disable_indicator_animation %}animation: djeym-spin .8s infinite linear;{% endif %}
         }
     </style>
     {% endif %}
@@ -662,6 +662,20 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                                     value="128">
                                                 <span class="boxios-ios-radio__value" aria-hidden="true"></span>
                                             </span>128
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="p-t-15">
+                                        <label class="boxios-ios-label">
+                                            <span class="boxios-ios-icon-display">
+                                                <i class="fas fa-ban"></i></span>
+                                            <span class="boxios-ios-checkbox">
+                                                <input class="boxios-checkbox_disable_loading_indicator_animation"
+                                                    {% if ymap.disable_indicator_animation %} checked{% endif %} type="checkbox">
+                                                <span class="boxios-ios-checkbox__value" aria-hidden="true"></span>
+                                            </span>
+                                            <span class="boxios-ios-label-text">{% trans 'Disable loading indicator animation' %}</span>
                                         </label>
                                     </td>
                                 </tr>

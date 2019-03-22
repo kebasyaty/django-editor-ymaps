@@ -55,8 +55,8 @@ function init() {
   function getBalloonContent( geoObjectType, classIcon, textHeader, footerType ) {
     footerType = ( footerType ) ? "__" + footerType : "";
     return {
-      contentHeader: "<div class=\"djeym__balloon__content-header\">" +
-                "<div id=\"djeymModalLock\"><div id=\"djeymLoadIndicator\"></div></div>" +
+      contentHeader: "<div id=\"djeymModalLock\"><div id=\"djeymLoadIndicator\"></div></div>" +
+                "<div class=\"djeym__balloon__content-header\">" +
                 "<i class=\"" + classIcon + " m-r-10 font-blue\"></i>" + textHeader + "</div>",
       contentBody: "<div class=\"djeym__balloon__content-body\">" +
                 $( "#id_hidden_" + geoObjectType + "__content" ).html() +
@@ -215,10 +215,20 @@ function init() {
   // Custom layout for Balloon.
   // (Кастомный макет для Балуна.)
   let customBalloonContentLayout = djeymYMaps.templateLayoutFactory.createClass(
+    "<div class=\"position-relative hight-100\">" +
     "<div id=\"djeymModalLock\"><div id=\"djeymLoadIndicator\"></div></div>" +
     "<div class=\"djeym_ballon_header\">{{ properties.balloonContentHeader|raw }}</div>" +
     "<div class=\"djeym_ballon_body\">{{ properties.balloonContentBody|raw }}</div>" +
-    "<div class=\"djeym_ballon_footer\">{{ properties.balloonContentFooter|raw }}</div>"
+    "<div class=\"djeym_ballon_footer\">{{ properties.balloonContentFooter|raw }}</div></div>"
+  );
+
+  // Custom layout for Balloon.
+  // (Кастомный макет для Балуна.)
+  let customBalloonContextMenuLayout = djeymYMaps.templateLayoutFactory.createClass(
+    "<div class=\"djeym_ballon_header\">{{ properties.balloonContentHeader|raw }}</div>" +
+    "<div class=\"djeym_ballon_body\">{{ properties.balloonContentBody|raw }}</div>" +
+    "<div class=\"djeym_ballon_footer\">{{ properties.balloonContentFooter|raw }}</div>" +
+    "<div id=\"djeymSignLoaded\"></div>"
   );
 
   // Custom layout for content cluster icons.
@@ -245,7 +255,8 @@ function init() {
     geoObjectBalloonMaxWidth: 342,
     geoObjectBalloonMinHeight: window.djeymBalloonMinHeight,
     geoObjectBalloonPanelMaxMapArea: 0,
-    geoObjectOpenBalloonOnClick: false
+    geoObjectOpenBalloonOnClick: true,
+    geoObjectBalloonContentLayout: customBalloonContextMenuLayout
   } );
 
   if ( Map.getType() === null ) {
@@ -391,28 +402,6 @@ function init() {
   } );
 
   // ADD EVENTS TO THE MAP (Добавить события на карту) ---------------------------------------------
-
-  // Opening the Balloon in edit mode.
-  // (Открытие Балуна в режиме редактирования.)
-  Map.geoObjects.events.add( "click", function( event ) {
-    let object = event.get( "target" );
-    if ( typeof object.geometry !== "undefined" ) {
-      Map.balloon.close( true );
-      setTimeout( function() {
-        Map.balloon.open( event.get( "coords" ), {
-          contentHeader: "<div id=\"djeymModalLock\"><div id=\"djeymLoadIndicator\"></div></div>" +
-            object.properties.get( "balloonContentHeader" ),
-          contentBody: object.properties.get( "balloonContentBody" ),
-          contentFooter: object.properties.get( "balloonContentFooter" ) +
-            "<div id=\"djeymSignLoaded\"></div>"
-        }, {
-          minWidth: 322,
-          maxWidth: 342,
-          minHeight: window.djeymBalloonMinHeight
-        } );
-      }, 100 );
-    }
-  } );
 
   // Start the movement of the map and resize the map.
   // (Начало движения карты и изменение размера карты.)
@@ -2586,11 +2575,11 @@ function init() {
   // (Активировать Тепловую карту.)
   $( "#id_djeym_activate_heatmap" ).on( "change", function( event ) {
     let url = "/djeym/ajax-activate-heatmap/";
-    let heatmap = String( $( this ).is( ":checked" ) );
+    let heatmap = $( this ).is( ":checked" );
     let dataForm = {
       csrfmiddlewaretoken: $( "input[name=\"csrfmiddlewaretoken\"" ).val(),
       mapID: window.djeymMapID,
-      heatmap: heatmap.charAt( 0 ).toUpperCase() + heatmap.slice( 1 )
+      heatmap: heatmap ? "True" : "False"
     };
 
     $.post( url, dataForm )
@@ -2730,12 +2719,14 @@ function init() {
     let $btn = $( this );
     let slug = $( ".boxios-radio-load_indicator:checked" ).val();
     let size = $( ".boxios-radio-load_indicator_size:checked" ).val();
+    let animation = $( ".boxios-checkbox_disable_loading_indicator_animation" ).prop( "checked" );
     let url = "/djeym/ajax-load-indicator-change/";
     let dataForm = {
       csrfmiddlewaretoken: $( "input[name=\"csrfmiddlewaretoken\"" ).val(),
       map_id: window.djeymMapID,
       slug: slug,
-      size: size
+      size: size,
+      animation: animation ? "True" : "False"
     };
 
     startBtnLoadIndicator( $btn );
@@ -2893,7 +2884,8 @@ function init() {
       } );
 
       $( ".djeym_content_load_indicators" ).show( "fast", function() {
-        $( ".boxios-radio-load_indicator" ).boxiosRadio( { size: GLOBAL_BOXIOS_SIZE } );
+        $( ".boxios-radio-load_indicator, .boxios-checkbox_disable_loading_indicator_animation" )
+          .boxiosRadio( { size: GLOBAL_BOXIOS_SIZE } );
         $( ".boxios-radio-load_indicator_size" ).boxiosRadio( { size: "small" } );
       } );
 

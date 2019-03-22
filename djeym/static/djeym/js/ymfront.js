@@ -244,12 +244,13 @@ function init() {
   // CREATE OBJECT MANAGERS ------------------------------------------------------------------------
 
   // Custom layout for Balloon.
-  // (Кастомный макет для Balloon.)
+  // (Кастомный макет для Балуна.)
   let customBalloonContentLayout = djeymYMaps.templateLayoutFactory.createClass(
+    "<div class=\"position-relative hight-100\">" +
     "<div id=\"djeymModalLock\"><div id=\"djeymLoadIndicator\"></div></div>" +
     "<div class=\"djeym_ballon_header\">{{ properties.balloonContentHeader|raw }}</div>" +
     "<div class=\"djeym_ballon_body\">{{ properties.balloonContentBody|raw }}</div>" +
-    "<div class=\"djeym_ballon_footer\">{{ properties.balloonContentFooter|raw }}</div>"
+    "<div class=\"djeym_ballon_footer\">{{ properties.balloonContentFooter|raw }}</div></div>"
   );
 
   // Custom layout for content cluster icons.

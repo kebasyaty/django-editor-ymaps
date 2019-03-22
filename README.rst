@@ -1,3 +1,9 @@
+.. figure:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/logo.png?raw=true
+   :target: https://pypi.org/project/django-editor-ymaps/
+   :alt: Logo
+
+----
+
 .. image:: https://img.shields.io/badge/version-1.2.1%20beta-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version

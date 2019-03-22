@@ -361,11 +361,11 @@ Usage
     {% load i18n staticfiles djeymtags %}
 
     <head>
-      <!-- START CSS -->
-      <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/fontawesome/css/all.min.css" %}">
-      <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/boxiOS/boxios.css" %}">
-      <link rel="stylesheet" type="text/css" href="{% static "djeym/css/ymfront.css" %}">
-      <!-- END CSS -->
+        <!-- START CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/fontawesome/css/all.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/boxiOS/boxios.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "djeym/css/ymfront.min.css" %}">
+        <!-- END CSS -->
     </head>
 
     <body>
@@ -373,12 +373,12 @@ Usage
       <div id="djeymYMapsID" class="djeym-ymap" style="width: auto; height: 400px"></div>
       <!-- END MAP -->
 
-      <!-- START JS -->
-      <script type="text/javascript" src="{% static "djeym/js/jquery-3.3.1.min.js" %}"></script>
-      <script type="text/javascript" src="{% static "djeym/plugins/boxiOS/boxios.js" %}"></script>
-      <script type="text/javascript" src="{% static "djeym/plugins/fontawesome/js/all.min.js" %}"></script>
-      {% djeym_load_ymap slug='roskoshnye-oteli-v-gonolulu' panel='djeym/includes/panel.html' %}
-      <!-- END JS -->
+        <!-- START JS -->
+        <script type="text/javascript" src="{% static "djeym/js/jquery-3.3.1.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "djeym/plugins/boxiOS/boxios.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "djeym/plugins/fontawesome/js/all.min.js" %}"></script>
+        {% djeym_load_ymap slug='test' panel='djeym/includes/panel.html' %}
+        <!-- END JS -->
     </body>
 
 - **Карта с закрытой панелью.** ( *Map with a closed panel.* )

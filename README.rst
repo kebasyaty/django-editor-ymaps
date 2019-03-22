@@ -1,4 +1,4 @@
-.. image:: https://img.shields.io/badge/version-1.2%20beta-brightgreen.svg
+.. image:: https://img.shields.io/badge/version-1.2.1%20beta-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
@@ -479,11 +479,17 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2.1
+    - Обновлен индикатор загрузки. ( Updated load indicator. )
+    - Обновите миграции. ( Update the migration. )
+    - python manage.py migrate djeym
+
 - # 1.2
     - Возможность добавить индикатор загрузки в информационные ока геообъектов.  На GitHub-е проекта находится архив с иконками ( Spinner.zip ). ( Ability to add a loading indicator to the information eye of geo objects. On the GitHub project there is an archive with icons (Spinner.zip). )
     - Обновлен Геокодер и его настройки. Новые настройки имеются в описании выше. ( Updated Geocoder and its settings. New settings are available in the description above. )
     - Сделано несколько небольших исправлений. ( Made a few minor fixes. )
     - При переходе на версию 1.2, обновите миграции. ( When upgrading to version 1.2, upgrade the migration. )
+    - python manage.py migrate djeym
 
 - # 1.1
     - Добавлен Геокодер, пример использования в описании выше. ( Added Geocoder, an example of use in the description above. )

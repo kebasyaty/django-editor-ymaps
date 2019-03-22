@@ -490,6 +490,10 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2.2
+    - Индикатор загрузки - Исправлено некорректное определение минимальной высоты окна для геообъекта.
+    - ( Load Indicator - Fixed incorrect determination of the minimum window height for a geoobject. )
+
 - # 1.2.1
     - Обновлен индикатор загрузки. ( Updated load indicator. )
     - Обновите миграции. ( Update the migration. )

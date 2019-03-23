@@ -2,7 +2,7 @@
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Logo
 
-----
+|
 
 .. image:: https://img.shields.io/badge/version-1.2.3%20beta-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/

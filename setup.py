@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+$$$$$___$$$$$$__$$$$$__$$__$$__$$___$$
+$$__$$______$$__$$______$$$$___$$$_$$$
+$$__$$______$$__$$$$_____$$____$$_$_$$
+$$__$$__$$__$$__$$_______$$____$$___$$
+$$$$$____$$$$___$$$$$____$$____$$___$$
+"""
 #
 #  Convenient use of the Yandex map service for web development on 
 #  the popular and free Django framework.

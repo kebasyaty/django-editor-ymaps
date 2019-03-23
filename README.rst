@@ -4,7 +4,7 @@
 
 ----
 
-.. image:: https://img.shields.io/badge/version-1.2.2%20beta-brightgreen.svg
+.. image:: https://img.shields.io/badge/version-1.2.3%20beta-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
@@ -490,6 +490,10 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2.3
+    - Сделаны исправления и улучшения для индикатора загрузки.
+    - ( Made fixes and improvements for the load indicator. )
+
 - # 1.2.2
     - Индикатор загрузки - Исправлено некорректное определение минимальной высоты окна для геообъекта.
     - ( Load Indicator - Fixed incorrect determination of the minimum window height for a geoobject. )

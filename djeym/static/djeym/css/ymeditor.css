@@ -552,7 +552,7 @@ div[id^="cke_editor"] {
     background-color: #fff;
     opacity: 1;
     transition-property: opacity;
-    transition-duration: .8s;
+    transition-duration: .6s;
     transition-delay: 0s;
     transition-timing-function: linear;
 }

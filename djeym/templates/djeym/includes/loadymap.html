@@ -28,8 +28,7 @@
         djeymClusterIconContentTxtColor = "{{ general_settings.cluster_icon_content_txt_color }}",
         djeymMapType = "{{ controls.maptype }}",
         djeymDisableSitePanel = {{ general_settings.disable_site_panel|lower }},
-        djeymDelayStopLoadIndicator = {% if selected_load_indicator %}300{% else %}0{% endif %},
-        djeymBalloonMinHeight = {{ load_indicator_size }} + 40,
+        djeymBalloonMinHeight = {% if selected_load_indicator %}{{ load_indicator_size }} + 40{% else %}60{% endif %},
         {% if tile %}
             djeymTile = {
                 maxZoom: {{ tile.maxzoom }},

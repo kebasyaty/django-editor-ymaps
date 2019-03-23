@@ -24,48 +24,50 @@ function init() {
 
   // Wait for the content to load into the Balloon and update the information for the presets.
   // (Дождаться загрузки контента в Balloon и обновить информацию для пресетов.)
+  let globalRestartID1;
+  let globalRestartID2;
+  let globalRestartID3;
+  let globalRestartID4;
   function waitLoadContent() {
-    setTimeout( function() {
+    globalRestartID4 = setTimeout( function() {
       let loadIndicator = document.getElementById( "djeymLoadIndicator" );
 
       if ( loadIndicator === null ) { return; }
+
       loadIndicator.style.display = "block";
 
       let $images = $( "ymaps:regex(class, .*-balloon__content) img" );
       let imgLoaded = false;
       let counter = 0;
 
-      if ( window.djeymDelayStopLoadIndicator === 300 ) {
-        if ( $images.length === 0 ) {
-          imgLoaded = true;
-        } else {
-          $images.each( function() {
-            if ( this.complete ) { counter++; }
-          } );
-          if ( counter === $images.length ) { imgLoaded = true; }
-        }
-      } else {
+      if ( $images.length === 0 ) {
         imgLoaded = true;
+      } else {
+        $images.each( function() {
+          if ( this.complete ) { counter++; }
+        } );
+        if ( counter === $images.length ) { imgLoaded = true; }
       }
 
       if ( !$( "div" ).is( "#djeymSignLoaded" ) || !imgLoaded ) {
-        setTimeout( function() {
+        globalRestartID3 = setTimeout( function() {
           waitLoadContent();
         }, 100 );
       } else {
-        document.getElementById( "djeymSignLoaded" ).remove();
         $( ".djeymUpdateInfoPreset" ).each( function() {
           $( this ).trigger( "click" );
         } );
         let modalLock = document.getElementById( "djeymModalLock" );
         if ( modalLock !== null ) {
-          setTimeout( function() {
-            modalLock.remove();
-          }, 800 );
-          modalLock.style.opacity = 0;
+          globalRestartID2 = setTimeout( function() {
+            globalRestartID1 = setTimeout( function() {
+              modalLock.remove();
+            }, 600 );
+            modalLock.style.opacity = 0;
+          }, 200 );
         }
       }
-    }, window.djeymDelayStopLoadIndicator );
+    }, 500 );
   }
 
   // jQuery ----------------------------------------------------------------------------------------
@@ -216,6 +218,10 @@ function init() {
   Map.events.add( "balloonopen", function() { //
     // Update Info Preset.
     // (Обновить информацию пресета.)
+    clearTimeout( globalRestartID1 );
+    clearTimeout( globalRestartID2 );
+    clearTimeout( globalRestartID3 );
+    clearTimeout( globalRestartID4 );
     waitLoadContent();
   } );
 
@@ -228,6 +234,10 @@ function init() {
     "ymaps:regex(class, .*-cluster-carousel__nav.*)",
     function( event ) {
       event.stopPropagation();
+      clearTimeout( globalRestartID1 );
+      clearTimeout( globalRestartID2 );
+      clearTimeout( globalRestartID3 );
+      clearTimeout( globalRestartID4 );
       waitLoadContent();
     } );
 

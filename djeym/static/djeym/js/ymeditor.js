@@ -130,12 +130,12 @@ function init() {
 
   // Wait for the content to load into the Balloon and update the information for the presets.
   // (Дождаться загрузки контента в Balloon и обновить информацию для пресетов.)
-  let globalRestartID1;
-  let globalRestartID2;
-  let globalRestartID3;
-  let globalRestartID4;
+  let globalTimerID1;
+  let globalTimerID2;
+  let globalTimerID3;
+  let globalTimerID4;
   function waitLoadContent() {
-    globalRestartID4 = setTimeout( function() {
+    globalTimerID4 = setTimeout( function() {
       let loadIndicator = document.getElementById( "djeymLoadIndicator" );
 
       if ( loadIndicator === null ) { return; }
@@ -156,7 +156,7 @@ function init() {
       }
 
       if ( !$( "div" ).is( "#djeymSignLoaded" ) || !imgLoaded ) {
-        globalRestartID3 = setTimeout( function() {
+        globalTimerID3 = setTimeout( function() {
           waitLoadContent();
         }, 100 );
       } else {
@@ -165,8 +165,8 @@ function init() {
         } );
         let modalLock = document.getElementById( "djeymModalLock" );
         if ( modalLock !== null ) {
-          globalRestartID2 = setTimeout( function() {
-            globalRestartID1 = setTimeout( function() {
+          globalTimerID2 = setTimeout( function() {
+            globalTimerID1 = setTimeout( function() {
               modalLock.remove();
             }, 600 );
             modalLock.style.opacity = 0;
@@ -417,10 +417,10 @@ function init() {
   Map.events.add( "balloonopen", function() { //
     // Update Info Preset.
     // (Обновить информацию пресета.)
-    clearTimeout( globalRestartID1 );
-    clearTimeout( globalRestartID2 );
-    clearTimeout( globalRestartID3 );
-    clearTimeout( globalRestartID4 );
+    clearTimeout( globalTimerID1 );
+    clearTimeout( globalTimerID2 );
+    clearTimeout( globalTimerID3 );
+    clearTimeout( globalTimerID4 );
     waitLoadContent();
   } );
 
@@ -433,10 +433,10 @@ function init() {
     "ymaps:regex(class, .*-cluster-carousel__nav.*)",
     function( event ) {
       event.stopPropagation();
-      clearTimeout( globalRestartID1 );
-      clearTimeout( globalRestartID2 );
-      clearTimeout( globalRestartID3 );
-      clearTimeout( globalRestartID4 );
+      clearTimeout( globalTimerID1 );
+      clearTimeout( globalTimerID2 );
+      clearTimeout( globalTimerID3 );
+      clearTimeout( globalTimerID4 );
       waitLoadContent();
     } );
 

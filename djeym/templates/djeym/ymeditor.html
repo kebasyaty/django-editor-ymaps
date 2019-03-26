@@ -533,6 +533,7 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                             {% trans 'About editor' %}</legend>
                         <div class="djeym_content_about">
                             <h2 class="font-gray-333">DjEYM</h2>
+                            {% comment %}
                             <p>
                                 <a href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="nofollow">
                                     <img src="https://img.shields.io/badge/version-{{ djeym_version }}%20beta-brightgreen.svg" alt="Version"></a>
@@ -545,16 +546,17 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                 <a href="https://www.djangoproject.com/" target="_blank" rel="nofollow">
                                     <img src="https://img.shields.io/badge/django-%3E%3D%202.0-brightgreen.svg" alt="Django"></a>
                             </p>
+                            {% endcomment %}
                             <div class="font-18 font-bold font-gray-333">django-editor-ymaps</div>
                             <div class="font-gray-333 font-14">
                                 {% trans 'Convenient use of the Yandex map service for web development on the popular and free Django framework.' %}
                             </div>
                             <div class="m-t-20">
                                 <div><span class="font-bold">Version: </span>
-                                    <span class="djeym-badge-blue">{{ djeym_version }} beta</span></div>
+                                    <span class="djeym-badge-yellow">{{ djeym_version }} beta</span></div>
                                 <div class="m-t-10"><span class="font-bold">Requirements:</span><br>
-                                    <span class="djeym-badge-blue">Python >= 3.5</span>
-                                    <span class="djeym-badge-blue m-r-5">Django >= 2.0</span></div></div>
+                                    <span class="djeym-badge-yellow">Python >= 3.5</span>
+                                    <span class="djeym-badge-yellow m-r-5">Django >= 2.0</span></div></div>
                             <div class="m-t-20">
                                 <i class="fab fa-python font-blue"></i>
                                 <span class="font-bold"> PyPI: </span>

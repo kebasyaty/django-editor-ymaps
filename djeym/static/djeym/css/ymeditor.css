@@ -419,14 +419,24 @@ div[id^="cke_editor"] {
 
 /* Badges */
 
-.djeym-badge-blue {
-    color: #fff;
+.djeym-badge-yellow {
+    color: #cc0000ab;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 700;
     border-radius: 20px;
     padding: 2px 8px;
     letter-spacing: 1px;
-    background-color: #3399ff;
+    background-color: #ffeba0;
+}
+
+.djeym-badge-blue {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 2px 8px;
+    letter-spacing: 1px;
+    background-color: #39f;
 }
 
 .djeym-badge-white {
@@ -568,6 +578,7 @@ div[id^="cke_editor"] {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(359deg);
     }

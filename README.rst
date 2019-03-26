@@ -35,7 +35,7 @@ DjEYM ( django-editor-ymaps )
 .. attention::
    **При переходе на версию 1.2, обновите миграции:** python manage.py migrate djeym
 
-   **Обратите внимание на раздел -** `Выводим карту на страницу сайта. <https://pypi.org/project/django-editor-ymaps/#id29>`_ **Добавлены минимизированные файлы (.min.)**.
+   **Обратите внимание на раздел -** `Выводим карту на страницу сайта. <https://pypi.org/project/django-editor-ymaps/#id31>`_ **Добавлены минимизированные файлы (.min.)**.
 
    **When upgrading to version 1.2, upgrade the migration:** python manage.py migrate djeym
 
@@ -495,7 +495,7 @@ CHANGELOG
 - # 1.2.4
     - Обновленная панель для страницы редактора карт. Изменения сделаны для раздела - Помощь.
     - ( Updated panel for the map editor page. Changes are made to the section - Help. )
-    - Обратите внимание на раздел - `Выводим карту на страницу сайта. <https://pypi.org/project/django-editor-ymaps/#id29>`_ Добавлены минимизированные файлы (.min.).
+    - Обратите внимание на раздел - `Выводим карту на страницу сайта. <https://pypi.org/project/django-editor-ymaps/#id31>`_ Добавлены минимизированные файлы (.min.).
 
 - # 1.2.3
     - Сделаны исправления и улучшения для индикатора загрузки.

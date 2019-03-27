@@ -175,16 +175,13 @@ class AjaxGetGeoObjectsPlacemark(View):
     def get(self, request, *args, **kwargs):
         map_id = int(request.GET.get('map_id'))
         offset = int(request.GET.get('offset'))
+        limit = offset + 1000
 
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """SELECT json_code
-                   FROM djeym_placemark
-                   WHERE ymap_id = %s AND active = TRUE
-                   LIMIT 1000 OFFSET %s""", [map_id, offset])
+        geoobjects = Placemark.objects.filter(ymap__pk=map_id).values_list(
+            'json_code', flat=True)[offset:limit]
 
-            response_data = '[' + ','.join([row[0]
-                                            for row in cursor.fetchall()]) + ']'
+        response_data = '[' + ','.join(geoobjects) + ']'
+
         return HttpResponse(response_data, content_type="application/json")
 
     def dispatch(self, request, *args, **kwargs):
@@ -202,16 +199,13 @@ class AjaxGetHeatPoints(View):
     def get(self, request, *args, **kwargs):
         map_id = int(request.GET.get('map_id'))
         offset = int(request.GET.get('offset'))
+        limit = offset + 1000
 
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """SELECT json_code
-                   FROM djeym_heatpoint
-                   WHERE ymap_id = %s AND active = TRUE
-                   LIMIT 1000 OFFSET %s""", [map_id, offset])
+        geoobjects = HeatPoint.objects.filter(ymap__pk=map_id).values_list(
+            'json_code', flat=True)[offset:limit]
 
-            response_data = '[' + ','.join([row[0]
-                                            for row in cursor.fetchall()]) + ']'
+        response_data = '[' + ','.join(geoobjects) + ']'
+
         return HttpResponse(response_data, content_type="application/json")
 
     def dispatch(self, request, *args, **kwargs):
@@ -229,16 +223,13 @@ class AjaxGetGeoObjectsPolyline(View):
     def get(self, request, *args, **kwargs):
         map_id = int(request.GET.get('map_id'))
         offset = int(request.GET.get('offset'))
+        limit = offset + 500
 
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """(SELECT json_code
-                    FROM djeym_polyline
-                    WHERE ymap_id = %s AND active = TRUE
-                    LIMIT 500 OFFSET %s)""", [map_id, offset])
+        geoobjects = Polyline.objects.filter(ymap__pk=map_id).values_list(
+            'json_code', flat=True)[offset:limit]
 
-            response_data = '[' + ','.join([row[0]
-                                            for row in cursor.fetchall()]) + ']'
+        response_data = '[' + ','.join(geoobjects) + ']'
+
         return HttpResponse(response_data, content_type="application/json")
 
     def dispatch(self, request, *args, **kwargs):
@@ -256,16 +247,13 @@ class AjaxGetGeoObjectsPolygon(View):
     def get(self, request, *args, **kwargs):
         map_id = int(request.GET.get('map_id'))
         offset = int(request.GET.get('offset'))
+        limit = offset + 500
 
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """(SELECT json_code
-                    FROM djeym_polygon
-                    WHERE ymap_id = %s AND active = TRUE
-                    LIMIT 500 OFFSET %s)""", [map_id, offset])
+        geoobjects = Polygon.objects.filter(ymap__pk=map_id).values_list(
+            'json_code', flat=True)[offset:limit]
 
-            response_data = '[' + ','.join([row[0]
-                                            for row in cursor.fetchall()]) + ']'
+        response_data = '[' + ','.join(geoobjects) + ']'
+
         return HttpResponse(response_data, content_type="application/json")
 
     def dispatch(self, request, *args, **kwargs):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-22 07:58+0000\n"
+"POT-Creation-Date: 2019-03-27 12:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "Ошибка - Не указано имя коллекции. Парам
 msgid "Error - Specify a directory with icons. Parameter: --path"
 msgstr "Ошибка - Укажите каталог с иконками. Параметр: --path"
 
-#: djeym/management/commands/exporticons.py:31 djeym/views.py:789
+#: djeym/management/commands/exporticons.py:31 djeym/views.py:777
 msgid "The {} collection already exists."
 msgstr "Коллекция {} уже существует."
 
@@ -959,15 +959,15 @@ msgstr "Необязательное поле."
 msgid "The quantitative significance of the point."
 msgstr "Количественная значимость точки."
 
-#: djeym/templates/djeym/ymeditor.html:1180
+#: djeym/templates/djeym/ymeditor.html:1179
 msgid "Page not found"
 msgstr "Страница не найдена"
 
-#: djeym/templates/djeym/ymeditor.html:1182
+#: djeym/templates/djeym/ymeditor.html:1181
 msgid "We're sorry, but the requested map could not be found."
 msgstr "К сожалению, запрошенная карта не найдена."
 
-#: djeym/templates/djeym/ymeditor.html:1184
+#: djeym/templates/djeym/ymeditor.html:1183
 msgid "Maybe the map is not active or just missing."
 msgstr "Возможно карта не активна или просто отсутствует."
 

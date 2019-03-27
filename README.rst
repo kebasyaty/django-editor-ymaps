@@ -4,7 +4,7 @@
 
 |
 
-.. image:: https://img.shields.io/badge/version-1.2.4%20beta-brightgreen.svg
+.. image:: https://img.shields.io/badge/version-1.2.5%20beta-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg

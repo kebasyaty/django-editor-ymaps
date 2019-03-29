@@ -1,3 +1,9 @@
+/*
+* Geocoder - For direct geocoding.
+* Copyright (c) 2014 genkosta
+* License MIT
+*/
+
 djeymYMaps.ready( init );
 
 function init() {

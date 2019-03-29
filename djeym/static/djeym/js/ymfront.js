@@ -1,6 +1,8 @@
 /*
 * DjEYM
 * Create Yandex Map for the site page.
+* Copyright (c) 2014 genkosta
+* License MIT
 */
 
 djeymYMaps.ready( init );

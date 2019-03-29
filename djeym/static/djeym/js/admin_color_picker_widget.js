@@ -1,6 +1,8 @@
 /*
 * Admin panel - Plug-in initialization "colorPicker"
 * (Панель администратора - Инициализация плагина "colorPicker")
+* Copyright (c) 2014 genkosta
+* License MIT
 */
 
 $( document ).ready( function() {

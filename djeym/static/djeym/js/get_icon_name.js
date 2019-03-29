@@ -1,5 +1,7 @@
 /*
 * Get Icon name.
+* Copyright (c) 2014 genkosta
+* License MIT
 */
 
 $( document ).ready( function() {

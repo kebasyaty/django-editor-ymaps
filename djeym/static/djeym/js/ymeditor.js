@@ -1,6 +1,9 @@
 /*
 * DjEYM
 * Yandex Map Editor.
+* https://github.com/genkosta/django-editor-ymaps
+* Copyright (c) 2014 genkosta
+* License MIT
 */
 
 djeymYMaps.ready( init );

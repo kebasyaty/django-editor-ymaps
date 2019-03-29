@@ -30,13 +30,13 @@ class TileSourceAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': [
-                '/static/djeym/css/djeym_admin.css',
+                '/static/djeym/css/djeym_admin.min.css',
             ]
         }
 
         js = [
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/import_export.js'
+            '/static/djeym/js/import_export.min.js'
         ]
 
 
@@ -83,7 +83,7 @@ class StatisticsAdmin(admin.ModelAdmin):
 
     class Media:
         css = {
-            'all': ['/static/djeym/css/djeym_admin.css']
+            'all': ['/static/djeym/css/djeym_admin.min.css']
         }
 
 
@@ -105,13 +105,13 @@ class MapAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': [
-                '/static/djeym/css/djeym_admin.css',
+                '/static/djeym/css/djeym_admin.min.css',
             ]
         }
 
         js = [
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/admin_view_icons.js',
+            '/static/djeym/js/admin_view_icons.min.js',
         ]
         css['all'].extend(DJEYM_YMAPS_ICONS_FOR_CATEGORIES[0])
         js.extend(DJEYM_YMAPS_ICONS_FOR_CATEGORIES[1])
@@ -139,12 +139,12 @@ class CategoryPlacemarkAdmin(admin.ModelAdmin):
 
     class Media:
         css = {
-            'all': ['/static/djeym/css/djeym_admin.css']
+            'all': ['/static/djeym/css/djeym_admin.min.css']
         }
 
         js = [
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/admin_view_icons.js',
+            '/static/djeym/js/admin_view_icons.min.js',
         ]
         css['all'].extend(DJEYM_YMAPS_ICONS_FOR_CATEGORIES[0])
         js.extend(DJEYM_YMAPS_ICONS_FOR_CATEGORIES[1])
@@ -167,12 +167,12 @@ class SubCategoryPlacemarkAdmin(admin.ModelAdmin):
 
     class Media:
         css = {
-            'all': ['/static/djeym/css/djeym_admin.css']
+            'all': ['/static/djeym/css/djeym_admin.min.css']
         }
 
         js = [
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/admin_view_icons.js',
+            '/static/djeym/js/admin_view_icons.min.js',
         ]
         css['all'].extend(DJEYM_YMAPS_ICONS_FOR_CATEGORIES[0])
         js.extend(DJEYM_YMAPS_ICONS_FOR_CATEGORIES[1])
@@ -195,12 +195,12 @@ class CategoryPolylineAdmin(admin.ModelAdmin):
 
     class Media:
         css = {
-            'all': ['/static/djeym/css/djeym_admin.css']
+            'all': ['/static/djeym/css/djeym_admin.min.css']
         }
 
         js = [
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/admin_view_icons.js',
+            '/static/djeym/js/admin_view_icons.min.js',
         ]
         css['all'].extend(DJEYM_YMAPS_ICONS_FOR_CATEGORIES[0])
         js.extend(DJEYM_YMAPS_ICONS_FOR_CATEGORIES[1])
@@ -223,12 +223,12 @@ class CategoryPolygonAdmin(admin.ModelAdmin):
 
     class Media:
         css = {
-            'all': ['/static/djeym/css/djeym_admin.css']
+            'all': ['/static/djeym/css/djeym_admin.min.css']
         }
 
         js = [
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/admin_view_icons.js',
+            '/static/djeym/js/admin_view_icons.min.js',
         ]
         css['all'].extend(DJEYM_YMAPS_ICONS_FOR_CATEGORIES[0])
         js.extend(DJEYM_YMAPS_ICONS_FOR_CATEGORIES[1])
@@ -254,13 +254,13 @@ class PlacemarkAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': [
-                '/static/djeym/css/djeym_admin.css',
+                '/static/djeym/css/djeym_admin.min.css',
             ]
         }
 
         js = (
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/ckeditor_resize_image.js',
+            '/static/djeym/js/ckeditor_resize_image.min.js',
         )
 
 
@@ -284,13 +284,13 @@ class PolylineAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': [
-                '/static/djeym/css/djeym_admin.css',
+                '/static/djeym/css/djeym_admin.min.css',
             ]
         }
 
         js = (
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/ckeditor_resize_image.js',
+            '/static/djeym/js/ckeditor_resize_image.min.js',
         )
 
 
@@ -314,13 +314,13 @@ class PolygonAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': [
-                '/static/djeym/css/djeym_admin.css',
+                '/static/djeym/css/djeym_admin.min.css',
             ]
         }
 
         js = (
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/ckeditor_resize_image.js',
+            '/static/djeym/js/ckeditor_resize_image.min.js',
         )
 
 
@@ -337,7 +337,7 @@ class HeatPointAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': [
-                '/static/djeym/css/djeym_admin.css',
+                '/static/djeym/css/djeym_admin.min.css',
             ]
         }
 
@@ -357,13 +357,13 @@ class CustomClusterIconAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': [
-                '/static/djeym/css/djeym_admin.css',
+                '/static/djeym/css/djeym_admin.min.css',
             ]
         }
 
         js = [
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/get_icon_name.js'
+            '/static/djeym/js/get_icon_name.min.js'
         ]
 
 
@@ -380,13 +380,13 @@ class IconCollectionAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': [
-                '/static/djeym/css/djeym_admin.css',
+                '/static/djeym/css/djeym_admin.min.css',
             ]
         }
 
         js = [
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/import_export.js'
+            '/static/djeym/js/import_export.min.js'
         ]
 
 
@@ -408,14 +408,14 @@ class CustomMarkerIconAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': [
-                '/static/djeym/css/djeym_admin.css',
+                '/static/djeym/css/djeym_admin.min.css',
             ]
         }
 
         js = [
             '/static/djeym/js/jquery-3.3.1.min.js',
             '/static/djeym/plugins/jquery_mousewheel/jquery.mousewheel.min.js',
-            '/static/djeym/js/get_icon_name.js'
+            '/static/djeym/js/get_icon_name.min.js'
         ]
 
 
@@ -435,11 +435,11 @@ class LoadIndicatorAdmin(admin.ModelAdmin):
     class Media:
         css = {
             'all': [
-                '/static/djeym/css/djeym_admin.css',
+                '/static/djeym/css/djeym_admin.min.css',
             ]
         }
 
         js = [
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/get_icon_name.js'
+            '/static/djeym/js/get_icon_name.min.js'
         ]

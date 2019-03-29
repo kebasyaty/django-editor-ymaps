@@ -4,6 +4,9 @@
 *
 * Max size 966px.
 * Максимальный размер изображения 966 пикселей.
+*
+* Copyright (c) 2014 genkosta
+* License MIT
 */
 
 var runCKEditorResizeImage;

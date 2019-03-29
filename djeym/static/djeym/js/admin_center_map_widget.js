@@ -2,6 +2,8 @@
 * Admin panel.
 * Load map for determine the center of the map.
 * (Панель администратора. Загрузить карту для определения центра карты.)
+* Copyright (c) 2014 genkosta
+* License MIT
 */
 
 djeymYMaps.ready( function() {

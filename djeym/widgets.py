@@ -10,13 +10,13 @@ class ColorPickerWidget(forms.widgets.TextInput):
     class Media:
         css = {
             'all': (
-                '/static/djeym/plugins/really-simple-color-picker/css/colorPicker.css',
+                '/static/djeym/plugins/really-simple-color-picker/css/colorPicker.min.css',
             )
         }
         js = (
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/plugins/really-simple-color-picker/js/jquery.colorPicker.js',
-            '/static/djeym/js/admin_color_picker_widget.js'
+            '/static/djeym/plugins/really-simple-color-picker/js/jquery.colorPicker.min.js',
+            '/static/djeym/js/admin_color_picker_widget.min.js'
         )
 
     def render(self, name, value, attrs=None, renderer=None):
@@ -31,7 +31,7 @@ class CenterMapWidget(forms.Widget):
     class Media:
         js = (
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/admin_center_map_widget.js'
+            '/static/djeym/js/admin_center_map_widget.min.js'
         )
 
     def render(self, name, value, attrs=None, renderer=None):
@@ -49,7 +49,7 @@ class CheckIconOffsetWidget(forms.Widget):
     class Media:
         js = (
             '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/js/admin_check_icon_offset_widget.js'
+            '/static/djeym/js/admin_check_icon_offset_widget.min.js'
         )
 
     def render(self, name, value, attrs=None, renderer=None):

@@ -2,6 +2,8 @@
 * Admin panel.
 * Load map for checking icon offset.
 * (Панель администратора. Загрузить карту для проверки смещения иконки.)
+* Copyright (c) 2014 genkosta
+* License MIT
 */
 
 djeymYMaps.ready( function() {

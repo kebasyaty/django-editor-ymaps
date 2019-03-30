@@ -9,7 +9,7 @@
         height: {{ load_indicator_size }}px;
         margin: -{{ margin_offset }}px 0 0 -{{ margin_offset }}px;
         content: url('{{ selected_load_indicator.svg.url }}');
-        {% if not ymap.disable_indicator_animation %}animation: djeym-spin .8s infinite linear;{% endif %}
+        {% if not ymap.disable_indicator_animation %}animation: djeym-spin {{ ymap.animation_speed }}s infinite linear;{% endif %}
     }
 </style>
 {% endif %}

@@ -25,6 +25,26 @@ from .utils import (DJEYM_YMAPS_ICONS_MAX_SIZE, cleaning_files_pre_delete,
 
 ZOOM_CHOICES = [(num, num) for num in range(24)]
 
+# Load indicator animation speed
+ANIMATION_SPEED = (
+    ('0.3', '0.3'),
+    ('0.4', '0.4'),
+    ('0.5', '0.5'),
+    ('0.6', '0.6'),
+    ('0.7', '0.7'),
+    ('0.8', '0.8'),
+    ('0.9', '0.9'),
+    ('1', '1'),
+    ('1.1', '1.1'),
+    ('1.2', '1.2'),
+    ('1.3', '1.3'),
+    ('1.4', '1.4'),
+    ('1.5', '1.5'),
+    ('1.6', '1.6'),
+    ('1.7', '1.7'),
+    ('1.8', '1.8'),
+)
+
 TRANSPARENCY_CHOICES = (
     ('0', '0'),
     ('0.1', '0.1'),
@@ -514,9 +534,18 @@ class Map(models.Model):
         default=64
     )
 
+    animation_speed = models.CharField(
+        _('Load indicator animation speed'),
+        max_length=255,
+        choices=ANIMATION_SPEED,
+        default='0.8')
+
     disable_indicator_animation = models.BooleanField(
         _('Disable loading indicator animation'),
-        default=False
+        default=False,
+        help_text=_(
+            'It may be useful for the abbreviation or logo of the company, '
+            'if it does not make sense to animate them.')
     )
 
     active = models.BooleanField(_('Active map'), default=True)

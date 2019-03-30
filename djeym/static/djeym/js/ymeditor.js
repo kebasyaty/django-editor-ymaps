@@ -2732,6 +2732,7 @@ function init() {
     let $btn = $( this );
     let slug = $( ".boxios-radio-load_indicator:checked" ).val();
     let size = $( ".boxios-radio-load_indicator_size:checked" ).val();
+    let speed = $( "#id_djeym_animation_speed" ).val();
     let animation = $( ".boxios-checkbox_disable_loading_indicator_animation" ).prop( "checked" );
     let url = "/djeym/ajax-load-indicator-change/";
     let dataForm = {
@@ -2739,6 +2740,7 @@ function init() {
       map_id: window.djeymMapID,
       slug: slug,
       size: size,
+      speed: speed,
       animation: animation ? "True" : "False"
     };
 
@@ -2900,6 +2902,7 @@ function init() {
         $( ".boxios-radio-load_indicator, .boxios-checkbox_disable_loading_indicator_animation" )
           .boxiosRadio( { size: GLOBAL_BOXIOS_SIZE } );
         $( ".boxios-radio-load_indicator_size" ).boxiosRadio( { size: "small" } );
+        $( "#id_djeym_animation_speed" ).boxiosRange();
       } );
 
       // Load image for help

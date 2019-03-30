@@ -97,7 +97,7 @@ def random_domain(value, apikey=""):
 
 @register.inclusion_tag('djeym/includes/geocoder.html', takes_context=True)
 def ymap_geocoder(context, address="", controls="zoom", tile_slug='default',
-                  marker_slug='default', load_indicator_slug='default', size='64'):
+                  marker_slug='default', load_indicator_slug='default', size='64', speed='0.8'):
 
     load_indicator = LoadIndicator.objects.filter(
         slug=load_indicator_slug).first()
@@ -110,7 +110,8 @@ def ymap_geocoder(context, address="", controls="zoom", tile_slug='default',
         'marker': CustomMarkerIcon.objects.filter(slug=marker_slug).first(),
         'load_indicator': load_indicator.svg.url if
         load_indicator is not None else '/static/djeym/img/spinner.svg',
-        'load_indicator_size': size
+        'load_indicator_size': size,
+        'speed': speed
     }
 
     return result

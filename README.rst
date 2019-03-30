@@ -499,6 +499,8 @@ CHANGELOG
     - В настройки карт добавлен параметр - Скорость анимации для индикатора загрузки. ( Added a parameter to the map settings - Animation speed for the load indicator. )
     - Добавлен параметр "speed" для Геокодера. ( Added "speed" parameter for Geocoder. )
     - `Использование Геокодера. ( Using Geocoder. ) <https://pypi.org/project/django-editor-ymaps/#using-geocoder>`_
+    - Обновите миграции. ( Update the migration. )
+    - python manage.py migrate djeym
 
 - # 1.2.6
     - Минимизированы файлы CSS и JS, загружаемые  в панель администратора. ( The CSS and JS files loaded into the admin panel are minimized. )

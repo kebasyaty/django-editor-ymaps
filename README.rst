@@ -462,8 +462,11 @@ Custom Commands
     
         // Load indicator size (Размер индикатора нагрузки.)
         size = '96' - (64, 96, 128) // Default -> '64'
+
+        // Скорость анимации для индикатора загрузки. ( Animation speed for loading indicator. )
+        speed = '0.3' - (0.3-1.8) // Default -> '0.8'
         -->
-        {% ymap_geocoder address='Россия, Белгородская обл., Старый Оскол, мкр. Жукова, дом 29а' tile_slug='openstreetmap' marker_slug='home-light-blue-sherry' load_indicator_slug='platinum-circle' size='96' %}
+        {% ymap_geocoder address='Россия, Белгородская обл., Старый Оскол, мкр. Жукова, дом 29а' tile_slug='openstreetmap' marker_slug='home-light-blue-sherry' load_indicator_slug='platinum-circle' size='96' speed='0.3' %}
         <!-- END JS -->
     </body>
 
@@ -492,6 +495,11 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2.7
+    - В настройки карт добавлен параметр - Скорость анимации индикатора загрузки. ( Added a parameter to the map settings - Download indicator animation speed. )
+    - Добавлен параметр "speed" для Геокодера. ( Added "speed" parameter for Geocoder. )
+    - `Использование Геокодера. ( Using Geocoder. ) <https://pypi.org/project/django-editor-ymaps/#using-geocoder>`_
+
 - # 1.2.6
     - Минимизированы файлы CSS и JS, загружаемые  в панель администратора. ( The CSS and JS files loaded into the admin panel are minimized. )
 

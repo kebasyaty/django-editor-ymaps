@@ -496,7 +496,7 @@ Donation
 CHANGELOG
 ---------
 - # 1.2.7
-    - В настройки карт добавлен параметр - Скорость анимации индикатора загрузки. ( Added a parameter to the map settings - Download indicator animation speed. )
+    - В настройки карт добавлен параметр - Скорость анимации для индикатора загрузки. ( Added a parameter to the map settings - Animation speed for the load indicator. )
     - Добавлен параметр "speed" для Геокодера. ( Added "speed" parameter for Geocoder. )
     - `Использование Геокодера. ( Using Geocoder. ) <https://pypi.org/project/django-editor-ymaps/#using-geocoder>`_
 

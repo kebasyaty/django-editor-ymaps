@@ -668,8 +668,11 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                     <tr>
                                         <td colspan="3" class="border-line-ddd p-t-15 p-b-15">
                                             <div class="boxios-ios-range-slider">
-                                                <label for="id_djeym_animation_speed">{% trans 'Animation speed' %} - 
-                                                    <span id="id_djeym_animation_speed_value">{{ ymap.animation_speed }}</span></label>
+                                                <label for="id_djeym_animation_speed"><div>{% trans 'Animation speed' %}:</div>
+                                                    <div class="font-gray-999">{% trans 'One turn per' %}
+                                                    <span id="id_djeym_animation_speed_value" class="font-gray-333">{{ ymap.animation_speed }}</span>
+                                                    {% trans 'seconds' %}</div>
+                                                </label>
                                                 <input id="id_djeym_animation_speed" type="range" name="animation_speed" 
                                                     class="boxios-ios-range-slider__range m-t-20" value="{{ ymap.animation_speed }}" 
                                                     min="0.3" max="1.8" step="0.1" data-redirect_value_to="#id_djeym_animation_speed_value">

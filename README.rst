@@ -4,7 +4,7 @@
 
 |
 
-.. image:: https://img.shields.io/badge/version-1.2.7%20beta-brightgreen.svg
+.. image:: https://img.shields.io/badge/version-1.2.8%20beta-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
@@ -495,6 +495,9 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2.8
+    - Индикатор загрузки - В панель редактора карт, добавлено уточнение для величины скорости анимации. ( Load Indicator - In the panel of the map editor, added clarification for the value of the speed of animation. )
+
 - # 1.2.7
     - В настройки карт добавлен параметр - Скорость анимации для индикатора загрузки. ( Added a parameter to the map settings - Animation speed for the load indicator. )
     - Добавлен параметр "speed" для Геокодера. ( Added "speed" parameter for Geocoder. )

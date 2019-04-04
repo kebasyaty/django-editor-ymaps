@@ -495,6 +495,9 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2.9
+    - Обновлена панель для страницы редактора. ( Updated panel page editor. )
+
 - # 1.2.8
     - Индикатор загрузки - В панель редактора карт, добавлено уточнение для величины скорости анимации. ( Load Indicator - In the panel of the map editor, added clarification for the value of the speed of animation. )
 

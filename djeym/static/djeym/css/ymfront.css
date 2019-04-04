@@ -1,7 +1,7 @@
 @font-face {
-    font-family: 'Ubuntu';
-    src: local('Ubuntu Light'), local('Ubuntu-Light'), url('../fonts/ubuntu/ubuntulight.woff2') format('woff2'), url('../fonts/ubuntu/ubuntulight.woff') format('woff'), url('../fonts/ubuntu/ubuntulight.ttf') format('truetype');
-    font-weight: 300;
+    font-family: 'Noto Sans';
+    src: local('Noto Sans'), local('NotoSans'), url('../fonts/noto/notosans.woff2') format('woff2'), url('../fonts/noto/notosans.woff') format('woff'), url('../fonts/noto/notosans.ttf') format('truetype');
+    font-weight: 400;
     font-style: normal;
 }
 

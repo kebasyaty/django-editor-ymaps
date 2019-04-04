@@ -718,7 +718,7 @@ function init() {
 
       // Corrections for Firefox.
       if ( navigator.userAgent.toLowerCase().indexOf( "firefox" ) > -1 ) { //
-        $( ".legend_btn_style, .boxios-ios-label-text" ).css( "font-weight", "600" );
+        // $( ".legend_btn_style, .boxios-ios-label-text" ).css( "font-weight", "600" );
         $( ".djeym-button" ).css( "padding", "3px 20px" );
       }
 

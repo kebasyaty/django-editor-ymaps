@@ -495,6 +495,9 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2.3
+   - Обновлены стили для панели, для страницы сайта. Добавлен дефолтный шрифт. ( Updated styles for the panel for the page. Added default font. )
+
 - # 1.2.9
     - Обновлена панель для страницы редактора. ( Updated panel page editor. )
 

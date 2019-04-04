@@ -2910,10 +2910,11 @@ function init() {
       globalImageOfHelp = new Image().src = "/static/djeym/img/help.png";
 
       // Corrections for Firefox.
-      if ( navigator.userAgent.toLowerCase().indexOf( "firefox" ) > -1 ) {
-        $( ".legend_btn_style, .boxios-ios-label-text" ).css( "font-size", "12px" );
+      if ( navigator.userAgent.toLowerCase().indexOf( "firefox" ) > -1 ) { //
+        // $( ".legend_btn_style, .boxios-ios-label-text" ).css( "font-size", "12px" );
         $( ".djeym-button" ).css( "padding", "3px 20px" );
-        $( ".djeym-button > div" ).css( "font-size", "12px" );
+
+        // $( ".djeym-button > div" ).css( { fontSize: "12px", fontWeight: 600 } );
         globalMinHeightContextMenu += 40;
       }
 

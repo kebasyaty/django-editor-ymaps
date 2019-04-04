@@ -169,7 +169,7 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                 <!-- Filter geo-objects by category.
                      (Фильтр геообъектов по коллекциям.) -->
                 <div id="id_djeym_tab_category" class="djeym-sidenav-item djeym-tab-item">
-                    <fieldset>
+                    <fieldset class="p-b-14">
                         <legend class="legend_btn_style">
                             <i class="fas fa-tasks m-r-5"></i>{% trans 'Filters by categories' %}
                         </legend>
@@ -394,7 +394,7 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                     <td class="font-14">{% trans 'Text color' %}</td>
                                 </tr>
                             </table>
-                            <div class="text-center m-t-15">
+                            <div class="text-center m-t-15 p-b-0">
                                 <button type="submit" class="djeym-button"><i class="fas fa-save"></i></button></div>
                         </form>
                     </fieldset>
@@ -432,7 +432,7 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                         <tr><td colspan="2" class="border-none">{{ field }}</td></tr>
                                     {% endif %}
                                 {% endfor %}
-                                <tr><td align="center" colspan="2" class="p-t-15 border-none">
+                                <tr><td align="center" colspan="2" class="p-t-15 border-none p-b-0">
                                         <button type="submit" class="djeym-button"><i class="fas fa-save"></i></button></td></tr>
                             </table>
                         </form>
@@ -520,7 +520,7 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                         </tr>
                                     {% endif %}
                                 {% endfor %}
-                                <tr><td colspan="2" align="center" class="p-t-20 border-none">
+                                <tr><td colspan="2" align="center" class="p-t-20 border-none p-b-0">
                                         <button type="submit" class="djeym-button"><i class="fas fa-save"></i></button></td></tr>
                             </table>
                         </form>
@@ -550,33 +550,33 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                 {% trans 'Convenient use of the Yandex map service for web development on the popular and free Django framework.' %}
                             </div>
                             <div class="m-t-20">
-                                <div><span class="font-bold">Version: </span>
+                                <div><span>Version: </span>
                                     <span class="djeym-badge-yellow">{{ djeym_version }} beta</span></div>
-                                <div class="m-t-10"><span class="font-bold">Requirements:</span><br>
+                                <div class="m-t-10"><span>Requirements:</span><br>
                                     <span class="djeym-badge-yellow">Python >= 3.5</span>
                                     <span class="djeym-badge-yellow m-r-5">Django >= 2.0</span></div></div>
                             <div class="m-t-20">
                                 <i class="fab fa-python font-blue"></i>
-                                <span class="font-bold"> PyPI: </span>
+                                <span> PyPI: </span>
                                 <a href="https://pypi.org/project/django-editor-ymaps/" 
                                     class="font-16" target="_blank" rel="nofollow">django-editor-ymaps</a></div>
                             <div class="m-t-5">
-                                <i class="fab fa-github font-blue"></i><span class="font-bold"> GitHub: </span>
+                                <i class="fab fa-github font-blue"></i><span> GitHub: </span>
                                 <a href="https://github.com/genkosta/django-editor-ymaps" 
                                     class="font-16" target="_blank" rel="nofollow">django-editor-ymaps</a></div>
                             <div class="m-t-5">
                                 <i class="fas fa-at font-blue"></i>
-                                <span class="font-bold"> Feedback: </span>
+                                <span> Feedback: </span>
                                 <a href="mailto:genkosta43@gmail.com?subject=DjEYM"
                                 class="font-16" rel="nofollow">genkosta43@gmail.com</a></div>
                             <div class="m-t-5">
                                 <i class="fas fa-certificate font-blue"></i>
-                                <span class="font-bold"> License: </span>
+                                <span> License: </span>
                                 <a href="https://github.com/genkosta/django-editor-ymaps/blob/master/LICENSE"
                                 class="font-16" target="_blank" rel="nofollow">MIT License</a></div>
                             <div class="m-t-5">
                                 <i class="fab fa-yandex font-red m-r-7"></i>
-                                <span class="font-bold"> Donation: </span>
+                                <span> Donation: </span>
                                 <a href="https://money.yandex.ru/to/410015413221944" 
                                     class="font-16" target="_blank" rel="nofollow">Yandex Money</a></div>
                             <div class="m-t-20 font-light-yellow font-72 text-center">
@@ -671,7 +671,7 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                                 <label for="id_djeym_animation_speed"><div>{% trans 'Animation speed' %}:</div>
                                                     <div class="font-gray-999">{% trans 'One turn per' %}
                                                     <span id="id_djeym_animation_speed_value" class="font-gray-333">{{ ymap.animation_speed }}</span>
-                                                    {% trans 'seconds' %}</div>
+                                                    {% trans 'sec.' %}</div>
                                                 </label>
                                                 <input id="id_djeym_animation_speed" type="range" name="animation_speed" 
                                                     class="boxios-ios-range-slider__range m-t-20" value="{{ ymap.animation_speed }}" 
@@ -681,7 +681,7 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                                     </tr>
                                 </tr>
                                 <tr>
-                                    <td colspan="3" class="p-t-15">
+                                    <td colspan="3" class="border-line-ddd p-t-15 p-b-15">
                                         <label class="boxios-ios-label">
                                             <span class="boxios-ios-icon-display">
                                                 <i class="fas fa-ban"></i></span>

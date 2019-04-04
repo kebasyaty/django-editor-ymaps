@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: local('Ubuntu Light'), local('Ubuntu-Light'), url('../fonts/ubuntu/ubuntulight.woff2') format('woff2'), url('../fonts/ubuntu/ubuntulight.woff') format('woff'), url('../fonts/ubuntu/ubuntulight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
 /* Map */
 
 .djeym-ymap {
@@ -8,6 +15,7 @@
 /* Panel */
 
 .djeym-sidenav {
+    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
     height: 100%;
     width: 300px;
     position: absolute;
@@ -91,7 +99,7 @@
 }
 
 .boxios-ios-label-text {
-    color: #666;
+    color: #999;
     font-size: 14px;
 }
 
@@ -103,7 +111,7 @@
 }
 
 .legend_btn_style {
-    color: #666666db;
+    color: #999;
     font-size: 14px;
 }
 
@@ -182,6 +190,7 @@
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(359deg);
     }

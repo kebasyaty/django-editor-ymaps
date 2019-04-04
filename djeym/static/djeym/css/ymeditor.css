@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url('../fonts/ubuntu/ubuntumedium.woff2') format('woff2'), url('../fonts/ubuntu/ubuntumedium.woff') format('woff'), url('../fonts/ubuntu/ubuntumedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
 /* For condition <!--[if lte IE 11]> */
 
 .browserupgrade {
@@ -94,7 +101,7 @@ body {
 }
 
 body {
-    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
     font-size: 16px;
     color: #666;
 }
@@ -134,8 +141,6 @@ fieldset {
 }
 
 legend {
-    color: #333;
-    font-weight: bold;
     font-size: 14px;
 }
 
@@ -145,10 +150,6 @@ legend svg {
 
 legend.legend_btn_style {
     color: #666;
-    background-color: #fff;
-    padding: 2px 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
 }
 
 legend.legend_btn_style svg {
@@ -163,6 +164,7 @@ legend.legend_btn_style svg {
 /* Buttons */
 
 .djeym-button {
+    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
     background-color: white;
     border: 1px solid #bbb;
     color: #666;
@@ -196,24 +198,24 @@ input[type="number"] {
     padding: 2px 5px;
     color: #333;
     font-size: 14px;
-    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
 }
 
 ::-webkit-input-placeholder {
     color: #999;
-    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
     font-size: 14px;
 }
 
 :-moz-placeholder {
     color: #999;
-    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
     font-size: 14px;
 }
 
 .placeholder {
     color: #999;
-    font-family: arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
     font-size: 14px;
 }
 
@@ -242,7 +244,7 @@ input[type="number"] {
     z-index: 1059;
     top: 0;
     left: -360px;
-    background-color: #f8f8f8;
+    background-color: #fff;
     border-right: 1px solid #ddd;
     overflow-x: hidden;
     transition: 0.3s;
@@ -275,7 +277,6 @@ input[type="number"] {
     height: 101px;
     background-color: #fff;
     margin-bottom: 10px;
-    border-bottom: 1px solid #ddd;
 }
 
 /* Logo */
@@ -420,13 +421,13 @@ div[id^="cke_editor"] {
 /* Badges */
 
 .djeym-badge-yellow {
-    color: #cc0000ab;
+    color: #000;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 500;
     border-radius: 20px;
     padding: 2px 8px;
     letter-spacing: 1px;
-    background-color: #ffeba0;
+    background-color: #ffdb4d;
 }
 
 .djeym-badge-blue {
@@ -656,12 +657,20 @@ div[id^="cke_editor"] {
     padding-right: 5px !important;
 }
 
+.p-b-0 {
+    padding-bottom: 0 !important;
+}
+
 .p-b-5 {
     padding-bottom: 5px !important;
 }
 
 .p-b-10 {
     padding-bottom: 10px !important;
+}
+
+.p-b-14 {
+    padding-bottom: 14px !important;
 }
 
 .p-b-15 {

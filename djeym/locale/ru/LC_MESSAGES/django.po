@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-31 13:21+0000\n"
+"POT-Creation-Date: 2019-04-04 06:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -951,8 +951,8 @@ msgid "One turn per"
 msgstr "Один оборот за"
 
 #: djeym/templates/djeym/ymeditor.html:674
-msgid "seconds"
-msgstr "секунды"
+msgid "sec."
+msgstr "сек."
 
 #: djeym/templates/djeym/ymeditor.html:693
 msgid "Disable animation"

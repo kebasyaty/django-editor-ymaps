@@ -4,7 +4,7 @@
 
 |
 
-.. image:: https://img.shields.io/badge/version-1.2.10%20beta-brightgreen.svg
+.. image:: https://img.shields.io/badge/version-1.2.11%20beta-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
@@ -495,7 +495,10 @@ Donation
 
 CHANGELOG
 ---------
-- # 1.2.3
+- # 1.2.11
+    - Добавлен дефолтный шрифт в инфо-окна геообъектов и окна контекстного меню. ( Added default font in geo-objects info-windows and context menu windows. )
+
+- # 1.2.10
    - Обновлены стили для панели, для страницы сайта. Добавлен дефолтный шрифт. ( Updated styles for the panel for the page. Added default font. )
 
 - # 1.2.9

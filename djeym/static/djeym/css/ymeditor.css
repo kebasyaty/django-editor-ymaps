@@ -1,7 +1,14 @@
 @font-face {
-    font-family: 'Ubuntu';
-    src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url('../fonts/ubuntu/ubuntumedium.woff2') format('woff2'), url('../fonts/ubuntu/ubuntumedium.woff') format('woff'), url('../fonts/ubuntu/ubuntumedium.ttf') format('truetype');
-    font-weight: 500;
+    font-family: 'Noto Sans';
+    src: local('Noto Sans'), local('NotoSans'), url('../fonts/noto/notosans.woff2') format('woff2'), url('../fonts/noto/notosans.woff') format('woff'), url('../fonts/noto/notosans.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans Bold';
+    src: local('Noto Sans Bold'), local('NotoSans-Bold'), url('../fonts/noto/notosansbold.woff2') format('woff2'), url('../fonts/noto/notosansbold.woff') format('woff'), url('../fonts/noto/notosansbold.ttf') format('truetype');
+    font-weight: 700;
     font-style: normal;
 }
 
@@ -101,7 +108,7 @@ body {
 }
 
 body {
-    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif;
     font-size: 16px;
     color: #666;
 }
@@ -164,11 +171,11 @@ legend.legend_btn_style svg {
 /* Buttons */
 
 .djeym-button {
-    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif;
     background-color: white;
     border: 1px solid #bbb;
     color: #666;
-    padding: 6px 20px 3px;
+    padding: 4px 20px 3px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -198,24 +205,24 @@ input[type="number"] {
     padding: 2px 5px;
     color: #333;
     font-size: 14px;
-    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif;
 }
 
 ::-webkit-input-placeholder {
     color: #999;
-    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif;
     font-size: 14px;
 }
 
 :-moz-placeholder {
     color: #999;
-    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif;
     font-size: 14px;
 }
 
 .placeholder {
     color: #999;
-    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif;
     font-size: 14px;
 }
 
@@ -423,7 +430,7 @@ div[id^="cke_editor"] {
 .djeym-badge-yellow {
     color: #000;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: normal;
     border-radius: 20px;
     padding: 2px 8px;
     letter-spacing: 1px;
@@ -433,7 +440,6 @@ div[id^="cke_editor"] {
 .djeym-badge-blue {
     color: #fff;
     font-size: 12px;
-    font-weight: 700;
     border-radius: 20px;
     padding: 2px 8px;
     letter-spacing: 1px;
@@ -443,7 +449,6 @@ div[id^="cke_editor"] {
 .djeym-badge-white {
     color: #333;
     font-size: 12px;
-    font-weight: bold;
     border-radius: 20px;
     padding: 2px 8px;
     letter-spacing: 1px;
@@ -465,18 +470,42 @@ div[id^="cke_editor"] {
     font-size: 120%;
     font-weight: bold;
     color: #333;
+    font-family: 'Noto Sans Bold', arial, "nimbus sans l", "helvetica cy", sans-serif !important;
+
+}
+
+.djeym_ballon_header * {
+    margin: 0 !important;
 }
 
 .djeym_ballon_body {
     font-size: 13px;
     line-height: 1.6;
     color: #333;
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif !important;
 }
 
 .djeym_ballon_footer {
     margin: 5px 0 0;
     font-size: 90%;
     color: #777;
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif !important;
+}
+
+/* Context Menu */
+
+.djeym__balloon__content-header {
+    font-family: 'Noto Sans Bold', arial, "nimbus sans l", "helvetica cy", sans-serif !important;
+    color: #333;
+}
+
+.djeym__balloon__content-body,
+.djeym__balloon__content-footer {
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif !important;
+}
+
+.djeym__balloon__content-body {
+    color: #666;
 }
 
 /* Cluster - Icon content */

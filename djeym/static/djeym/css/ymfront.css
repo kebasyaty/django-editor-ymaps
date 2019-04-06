@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Noto Sans Bold';
+    src: local('Noto Sans Bold'), local('NotoSans-Bold'), url('../fonts/noto/notosansbold.woff2') format('woff2'), url('../fonts/noto/notosansbold.woff') format('woff'), url('../fonts/noto/notosansbold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
 /* Map */
 
 .djeym-ymap {
@@ -15,7 +22,7 @@
 /* Panel */
 
 .djeym-sidenav {
-    font-family: 'Ubuntu', arial, "nimbus sans l", "helvetica cy", sans-serif;
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif;
     height: 100%;
     width: 300px;
     position: absolute;
@@ -134,18 +141,25 @@
     font-size: 120%;
     font-weight: bold;
     color: #333;
+    font-family: 'Noto Sans Bold', arial, "nimbus sans l", "helvetica cy", sans-serif !important;
+}
+
+.djeym_ballon_header * {
+    margin: 0 !important;
 }
 
 .djeym_ballon_body {
     font-size: 13px;
     line-height: 1.6;
     color: #333;
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif !important;
 }
 
 .djeym_ballon_footer {
     margin: 5px 0 0;
     font-size: 90%;
     color: #777;
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif !important;
 }
 
 /* Cluster - Icon content */

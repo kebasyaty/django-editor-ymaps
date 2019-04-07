@@ -464,9 +464,9 @@ Custom Commands
         size = '96' - (64, 96, 128) // Default -> '64'
 
         // Скорость анимации для индикатора загрузки. ( Animation speed for loading indicator. )
-        speed = '0.3' - (0.3-1.8) // Default -> '0.8'
+        speed = '0.6' - (0.3-1.8) // Default -> '0.8'
         -->
-        {% ymap_geocoder address='Россия, Белгородская обл., Старый Оскол, мкр. Жукова, дом 29а' tile_slug='openstreetmap' marker_slug='home-light-blue-sherry' load_indicator_slug='platinum-circle' size='96' speed='0.3' %}
+        {% ymap_geocoder address='Россия, Белгородская обл., Старый Оскол, мкр. Жукова, дом 29а' tile_slug='openstreetmap' marker_slug='home-light-blue-sherry' load_indicator_slug='platinum-circle' size='96' speed='0.6' %}
         <!-- END JS -->
     </body>
 

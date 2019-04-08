@@ -4,7 +4,7 @@
 
 |
 
-.. image:: https://img.shields.io/badge/version-1.2.11%20beta-brightgreen.svg
+.. image:: https://img.shields.io/badge/version-1.2.12%20-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
@@ -495,6 +495,9 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2.12
+    - Улучшена последовательность загрузки геообъектов на карту. Релиз переведен в статус Stable. ( Improved sequence of loading geo objects onto the map. Release translated to Stable status. )
+
 - # 1.2.11
     - Добавлен дефолтный шрифт в инфо-окна геообъектов и окна контекстного меню. ( Added default font in geo-objects info-windows and context menu windows. )
 

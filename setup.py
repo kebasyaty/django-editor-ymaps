@@ -20,7 +20,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (1, 2, 11)
+VERSION = (1, 2, 12)
 __version__ = '.'.join(map(str, VERSION))
 
 
@@ -47,7 +47,7 @@ setup(
     platforms=['any'],
     keywords=['django', 'yandex', 'maps', 'admin', 'editor'],
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Natural Language :: Russian',
         'Natural Language :: English',

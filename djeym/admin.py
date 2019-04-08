@@ -18,6 +18,8 @@ DJEYM_YMAPS_ICONS_FOR_CATEGORIES = get_icon_font_plugin()
 
 @admin.register(TileSource)
 class TileSourceAdmin(admin.ModelAdmin):
+    # ckeditor_change_form.html - Used by default.
+    change_form_template = 'djeym/admin/ckeditor_change_form.html'
     change_list_template = 'djeym/admin/tile_source_change_list.html'
     list_display = ('title', 'admin_thumbnail', 'maxzoom', 'minzoom', 'slug')
     list_display_links = ('title', 'admin_thumbnail')

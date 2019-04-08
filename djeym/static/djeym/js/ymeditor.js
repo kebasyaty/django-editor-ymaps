@@ -59,14 +59,14 @@ function init() {
     footerType = ( footerType ) ? "__" + footerType : "";
     return {
       contentHeader: "<div id=\"djeymModalLock\"><div id=\"djeymLoadIndicator\"></div></div>" +
-                "<div class=\"djeym__balloon__content-header\">" +
-                "<i class=\"" + classIcon + " m-r-10 font-blue\"></i>" + textHeader + "</div>",
+        "<div class=\"djeym__balloon__content-header\">" +
+        "<i class=\"" + classIcon + " m-r-10 font-blue\"></i>" + textHeader + "</div>",
       contentBody: "<div class=\"djeym__balloon__content-body\">" +
-                $( "#id_hidden_" + geoObjectType + "__content" ).html() +
-                "<div id=\"id_bat_save\"></div></div>",
+        $( "#id_hidden_" + geoObjectType + "__content" ).html() +
+        "<div id=\"id_bat_save\"></div></div>",
       contentFooter: "<div class=\"djeym__balloon__content-footer\">" +
-                $( "#id_hidden_" + geoObjectType + footerType + "__footer" ).html() +
-                "<div id=\"djeymSignLoaded\"></div>" + "</div>"
+        $( "#id_hidden_" + geoObjectType + footerType + "__footer" ).html() +
+        "<div id=\"djeymSignLoaded\"></div>" + "</div>"
     };
   }
 
@@ -319,7 +319,7 @@ function init() {
   // Enable search by organization.
   // (Включить поиск по организациям.)
   if ( window.djeymControls.includes( "searchControl" ) &&
-       window.djeymSearchProvider ) {
+    window.djeymSearchProvider ) {
     Map.controls.get( "searchControl" ).options.set( "provider", "yandex#search" );
   }
 
@@ -451,8 +451,8 @@ function init() {
 
     // Cleaning Balloon content. (Очистить контент Балуна.)
     $( ".djeym__balloon__content-header, " +
-       ".djeym__balloon__content-body, " +
-       ".djeym__balloon__content-footer" ).remove();
+      ".djeym__balloon__content-body, " +
+      ".djeym__balloon__content-footer" ).remove();
   } );
 
   // Menu - Select and create a geo-object.
@@ -633,7 +633,7 @@ function init() {
         event.stopPropagation();
         let iconHTML = "<i class=\"fas fa-info-circle m-r-10 font-dark-blue font-14\"></i>";
         let textHTML = gettext( "Due to the features of the plugin, to edit or delete a " +
-                                "heat point, go to the admin panel - YANDEX MAPS / Heat Points." );
+          "heat point, go to the admin panel - YANDEX MAPS / Heat Points." );
         textHTML = "<div class=\"font-14\">" + textHTML + "</div>";
         swal( {
           html: iconHTML + textHTML,
@@ -783,8 +783,8 @@ function init() {
           let imgHTML = "<img src=\"" + globalImageOfHelp + "\" width=\"50%\" alt=\"Help\">";
           let textHTML1 = gettext( "Open the editor panel and select the desired icon." );
           let textHTML2 = gettext( "If you need to change the position of the marker - " +
-                                   "Close the context menu, move the marker, again open the " +
-                                   "context menu (right click on the object) and save result." );
+            "Close the context menu, move the marker, again open the " +
+            "context menu (right click on the object) and save result." );
 
           textHTML1 = "<div class=\"font-14\">" + textHTML1 + "</div><hr>";
           textHTML2 = "<div class=\"font-14\">" + textHTML2 + "</div><hr>";
@@ -831,7 +831,7 @@ function init() {
 
         globalTemp = window.djeymCategories.placemarks;
         itemsSelectCategory += "<fieldset><legend class=\"legend_btn_style\">" +
-                    gettext( "Categories" ) + "</legend>";
+          gettext( "Categories" ) + "</legend>";
 
         for ( let key in globalTemp ) {
           if ( globalTemp.hasOwnProperty( key ) ) {
@@ -843,7 +843,7 @@ function init() {
 
         globalTemp = window.djeymCategories.submarks;
         itemsSelectCategory += "<fieldset class=\"m-t-20\"><legend class=\"legend_btn_style\">" +
-                    gettext( "Subcategories" ) + "</legend>";
+          gettext( "Subcategories" ) + "</legend>";
 
         for ( let key in globalTemp ) {
           if ( globalTemp.hasOwnProperty( key ) ) {
@@ -868,9 +868,9 @@ function init() {
           } ).then( function( result ) {
             if ( result.value ) {
               $radioButtonsCategory = $( "#id_popup_select_category " +
-                                        ".radio_buttons_category:checked" );
+                ".radio_buttons_category:checked" );
               $checkboxButtonsSubCategory = $( "#id_popup_select_category " +
-                                              ".checkbox_buttons_subcategory:checked" );
+                ".checkbox_buttons_subcategory:checked" );
 
               if ( $radioButtonsCategory.length !== 0 ) {
                 categoryID = parseInt( $radioButtonsCategory.val() );
@@ -956,7 +956,7 @@ function init() {
           $subcategories.find( "option" ).remove();
           for ( let idx = 0; idx < subCategoryIDs.length; idx++ ) {
             $subcategories.append( "<option selected value=\"" +
-            subCategoryIDs[ idx ] + "\"></option>" );
+              subCategoryIDs[ idx ] + "\"></option>" );
           }
 
           // Add an action type in the form
@@ -1231,8 +1231,8 @@ function init() {
           let iconHTML = "<i class=\"fas fa-info-circle m-r-10 font-dark-blue font-14\"></i>";
           let imgHTML = "<img src=\"" + globalImageOfHelp + "\" width=\"50%\" alt=\"Help\">";
           let textHTML = gettext( "After the button [ <b>+</b> ], click the left mouse " +
-                                  "button on the map and create a route. Open the context " +
-                                  "menu again (right-click on the object) and save the result." );
+            "button on the map and create a route. Open the context " +
+            "menu again (right-click on the object) and save the result." );
 
           textHTML = "<div class=\"font-14\">" + textHTML + "</div><hr>";
 
@@ -1328,7 +1328,7 @@ function init() {
           } ).then( function( result ) {
             if ( result.value ) {
               $radioButtonsCategory = $( "#id_popup_select_category " +
-                                        ".radio_buttons_category:checked" );
+                ".radio_buttons_category:checked" );
 
               if ( $radioButtonsCategory.length ) {
                 categoryID = parseInt( $radioButtonsCategory.val() );
@@ -1485,7 +1485,7 @@ function init() {
           swal( {
             type: "warning",
             html: "<div class=\"font-dark-red font-24\">" +
-                  gettext( "Confirm object deletion!" ) + "</div>",
+              gettext( "Confirm object deletion!" ) + "</div>",
             showCloseButton: true,
             showCancelButton: true
           } ).then( ( result ) => {
@@ -1722,9 +1722,9 @@ function init() {
           let iconHTML = "<i class=\"fas fa-info-circle m-r-10 font-dark-blue font-14\"></i>";
           let imgHTML = "<img src=\"" + globalImageOfHelp + "\" width=\"50%\" alt=\"Help\">";
           let textHTML = gettext( "After the button [ <b>+</b> ], " +
-                                  "click the left mouse button on the map and mark the " +
-                                  "territory. Open the context menu again " +
-                                  "(right-click on the object) and save the result." );
+            "click the left mouse button on the map and mark the " +
+            "territory. Open the context menu again " +
+            "(right-click on the object) and save the result." );
 
           textHTML = "<div class=\"font-14\">" + textHTML + "</div><hr>";
 
@@ -1871,7 +1871,7 @@ function init() {
             } ).then( function( result ) {
               if ( result.value ) {
                 $radioButtonsCategory = $( "#id_popup_select_category " +
-                                          ".radio_buttons_category:checked" );
+                  ".radio_buttons_category:checked" );
 
                 if ( $radioButtonsCategory.length !== 0 ) {
                   categoryID = parseInt( $radioButtonsCategory.val() );
@@ -2029,7 +2029,7 @@ function init() {
           swal( {
             type: "warning",
             html: "<div class=\"font-dark-red font-24\">" +
-                  gettext( "Confirm object deletion!" ) + "</div>",
+              gettext( "Confirm object deletion!" ) + "</div>",
             showCloseButton: true,
             showCancelButton: true
           } ).then( ( result ) => {
@@ -2288,9 +2288,11 @@ function init() {
     }, 100 );
 
     $.get( "/djeym/ajax-balloon-content/",
-      { objID: geoObject.properties.id,
+      {
+        objID: geoObject.properties.id,
         objType: geoObjectType,
-        presetsBool: true }
+        presetsBool: true
+      }
     ).done( function( data ) {
       geoObject.properties.balloonContentHeader = data.header;
       geoObject.properties.balloonContentBody = data.body;
@@ -2457,7 +2459,7 @@ function init() {
     let errDetail = "";
 
     if ( jqxhr.responseJSON !== undefined &&
-                jqxhr.responseJSON.hasOwnProperty( "detail" ) ) {
+      jqxhr.responseJSON.hasOwnProperty( "detail" ) ) {
       errDetail = jqxhr.responseJSON.detail;
 
       swal( {
@@ -2634,7 +2636,8 @@ function init() {
                 0.2: data.gradient_color2,
                 0.7: data.gradient_color3,
                 1.0: data.gradient_color4
-              } } );
+              }
+            } );
 
             let $gradientColor1 = $( "#id_djeym_heatmap_gradient_color1" );
             let $gradientColor2 = $( "#id_djeym_heatmap_gradient_color2" );
@@ -2771,7 +2774,7 @@ function init() {
             offset += 1000;
             loadPlacemarkGeoObjects( offset );
           } else {
-            loadHeatPoints( 0 );
+            setTimeout( function() { loadHeatPoints( 0 ); }, 50 );
           }
         } )
         .fail( function( jqxhr, textStatus, error ) {
@@ -2791,7 +2794,7 @@ function init() {
             offset += 1000;
             loadHeatPoints( offset );
           } else {
-            loadPolylineGeoObjects( 0 );
+            setTimeout( function() { loadPolylineGeoObjects( 0 ); }, 50 );
           }
         } )
         .fail( function( jqxhr, textStatus, error ) {
@@ -2810,7 +2813,7 @@ function init() {
             offset += 500;
             loadPolylineGeoObjects( offset );
           } else {
-            loadPolygonGeoObjects( 0 );
+            setTimeout( function() { loadPolygonGeoObjects( 0 ); }, 50 );
           }
         } )
         .fail( function( jqxhr, textStatus, error ) {
@@ -2829,7 +2832,7 @@ function init() {
             offset += 500;
             loadPolygonGeoObjects( offset );
           } else {
-            panelActivation();
+            setTimeout( function() { panelActivation(); }, 50 );
           }
         } )
         .fail( function( jqxhr, textStatus, error ) {
@@ -2852,25 +2855,29 @@ function init() {
         $( ".filter-by-category-placemarks" ).each( function() {
           $this = $( this );
           $this.boxiosCheckbox( {
-            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data( "jack_color" ) } );
+            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data( "jack_color" )
+          } );
         } );
 
         $( ".filter-by-category-submarks" ).each( function() {
           $this = $( this );
           $this.boxiosCheckbox( {
-            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data( "jack_color" ) } );
+            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data( "jack_color" )
+          } );
         } );
 
         $( ".filter-by-category-polylines" ).each( function() {
           $this = $( this );
           $this.boxiosCheckbox( {
-            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data( "jack_color" ) } );
+            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data( "jack_color" )
+          } );
         } );
 
         $( ".filter-by-category-polygons" ).each( function() {
           $this = $( this );
           $this.boxiosCheckbox( {
-            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data( "jack_color" ) } );
+            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data( "jack_color" )
+          } );
         } );
       } );
 

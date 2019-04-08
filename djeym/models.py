@@ -620,7 +620,7 @@ class Map(models.Model):
     def get_custom_cluster(self):
         if bool(self.icon_cluster):
             return mark_safe('<img src="{0}" height="{1}" alt="Cluster Icon">'
-                             .format(self.icon_cluster.svg.url, DJEYM_YMAPS_ICONS_MAX_SIZE))
+                             .format(self.icon_cluster.svg.url, 46))
         else:
             return ""
     get_custom_cluster.short_description = _('Cluster Icon')
@@ -630,7 +630,7 @@ class Map(models.Model):
             icon_collection=self.icon_collection).first()
         if icon is not None:
             return mark_safe('<img src="{0}" height="{1}" alt="Icon">'
-                             .format(icon.svg.url, DJEYM_YMAPS_ICONS_MAX_SIZE))
+                             .format(icon.svg.url, 46))
         else:
             return ""
     get_custom_marker_icon.short_description = _(
@@ -638,11 +638,11 @@ class Map(models.Model):
 
     def get_tile_screenshot(self):
         if bool(self.tile):
-            return mark_safe('<img src="{0}" height="60" alt="Screenshot">'
-                             .format(self.tile.screenshot.url))
+            return mark_safe('<img src="{0}" height="{1}" alt="Screenshot">'
+                             .format(self.tile.screenshot.url, 46))
         else:
             return mark_safe(
-                '<img src="/static/djeym/img/default_tile.png" height="60" alt="Screenshot">')
+                '<img src="/static/djeym/img/default_tile.png" height="46" alt="Screenshot">')
     get_tile_screenshot.short_description = _('Tile screenshot')
 
     def get_status_heatmap(self):
@@ -657,7 +657,7 @@ class Map(models.Model):
     def get_load_indicator(self):
         if bool(self.load_indicator):
             return mark_safe('<img src="{0}" height="{1}" alt="Icon">'
-                             .format(self.load_indicator.svg.url, DJEYM_YMAPS_ICONS_MAX_SIZE))
+                             .format(self.load_indicator.svg.url, 46))
         else:
             return ""
     get_load_indicator.short_description = _('Load indicator')

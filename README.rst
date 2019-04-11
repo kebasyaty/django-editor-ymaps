@@ -4,7 +4,7 @@
 
 |
 
-.. image:: https://img.shields.io/badge/version-1.2.12%20-brightgreen.svg
+.. image:: https://img.shields.io/badge/version-1.2.14%20-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
@@ -495,6 +495,12 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2.14
+    - Замена логотипа. ( Replacing the logo. )
+
+- # 1.2.13
+    - Обновлены стили для панели редактора. ( Updated styles for panel editor. )
+
 - # 1.2.12
     - Улучшена последовательность загрузки геообъектов на карту. Релиз переведен в статус Stable. ( Improved sequence of loading geo objects onto the map. Release translated to Stable status. )
 

@@ -4,7 +4,7 @@
 
 |
 
-.. image:: https://img.shields.io/badge/version-1.2.14%20-brightgreen.svg
+.. image:: https://img.shields.io/badge/version-1.2.15%20-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
@@ -498,6 +498,10 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2.15
+    - Добавлена поддержка es6 для IE. ( Added es6 support for IE. )
+    - Обратите внимание на раздел - `Выводим карту на страницу сайта. <https://pypi.org/project/django-editor-ymaps/#display-a-map-on-the-site-page>`_ <!--Support es6 for older browsers-->
+
 - # 1.2.14
     - Замена логотипа. ( Replacing the logo. )
 

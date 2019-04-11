@@ -379,6 +379,9 @@ Usage
         <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/boxiOS/boxios.min.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "djeym/css/ymfront.min.css" %}">
         <!-- END CSS -->
+
+        <!--Support es6 for older browsers-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.3/polyfill.min.js" nomodule></script>
     </head>
 
     <body>

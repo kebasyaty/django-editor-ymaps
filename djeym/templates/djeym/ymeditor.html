@@ -68,19 +68,17 @@
     </style>
     {% endif %}
     <!-- END CSS -->
+
+    <!--Support es6 for older browsers-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.3/polyfill.min.js" nomodule></script>
 </head>
 
 <body>
-    <!--[if lte IE 11]>
+    <!--[if lte IE 10]>
     <div class="browserupgrade"><div><span>upgrade</span>
         {% blocktrans %}You are using an <strong>outdated</strong> browser.<br>
  Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.{% endblocktrans %}
     </div></div>
-    <![endif]-->
-
-    <!-- Include a polyfill for ES6 Promises for IE11 and Android browser -->
-    <!--[if gte IE 11]>
-        <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     <![endif]-->
 
     <noscript>

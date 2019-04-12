@@ -7,7 +7,7 @@ $$__$$__$$__$$__$$_______$$____$$___$$
 $$$$$____$$$$___$$$$$____$$____$$___$$
 """
 
-VERSION = (1, 2, 15)
+VERSION = (1, 2, 16)
 
 __title__ = 'DjEYM (django-editor-ymaps)'
 __version__ = '.'.join(map(str, VERSION))

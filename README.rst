@@ -32,6 +32,8 @@ DjEYM ( django-editor-ymaps )
 
 - `Terms of use for the API <https://tech.yandex.com/maps/doc/jsapi/2.1/terms/index-docpage/>`_
 
+|
+
 .. attention::
    **При переходе на версию 1.2, обновите миграции:** python manage.py migrate djeym
 

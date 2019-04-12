@@ -32,6 +32,8 @@ DjEYM ( django-editor-ymaps )
 
 - `Terms of use for the API <https://tech.yandex.com/maps/doc/jsapi/2.1/terms/index-docpage/>`_
 
+|
+
 Attention
 ---------
    **При переходе на версию 1.2, обновите миграции:** python manage.py migrate djeym
@@ -39,6 +41,8 @@ Attention
    **Обратите внимание на раздел -** `Выводим карту на страницу сайта. <https://pypi.org/project/django-editor-ymaps/#display-a-map-on-the-site-page>`_ **Добавлены минимизированные файлы (.min.). Добавлена поддержка es6 для IE.**
 
    **When upgrading to version 1.2, upgrade the migration:** python manage.py migrate djeym
+
+|
 
 Features
 --------

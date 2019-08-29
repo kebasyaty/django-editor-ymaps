@@ -109,6 +109,14 @@ Add apps to your INSTALLED_APPS setting::
         ...
     ]
 
+Add middleware to your MIDDLEWARE setting::
+
+    INSTALLED_APPS = [
+        ...
+        'django.middleware.locale.LocaleMiddleware',
+        ...
+    ]
+
 Add other settings::
 
     # django-ckeditor

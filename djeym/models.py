@@ -472,6 +472,10 @@ class GeneralSettings(models.Model):
           'the gear and the eye in the center)'),
         default=False)
 
+    disable_map_header = models.BooleanField(
+        _('Disable the map header on the site (search and filter at the top of the map)'),
+        default=True)
+
     def __str__(self):
         return '{}'.format(_('Settings'))
 

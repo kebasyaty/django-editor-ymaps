@@ -253,6 +253,13 @@ function init() {
     $( ".djeym-tab-item" ).eq( 0 ).addClass( "djeym_tab_active" ).show();
   } )();
 
+  // ADD HEADER TO MAP ------------------------------------------------------------------------------
+  ( function() {
+    let $tempTopnav = $( "#id_djeym_temp_topnav" );
+    $( "#djeymYMapsID" ).append( $tempTopnav.html() );
+    $tempTopnav.remove();
+  } )();
+
   // CREATE OBJECT MANAGERS ------------------------------------------------------------------------
 
   // Custom layout for Balloon.

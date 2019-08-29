@@ -1,0 +1,19 @@
+{% load i18n %}
+<div id="id_djeym_temp_topnav">
+    <!-- START HEADER -->
+    <div id="id_djeym_topnav" class="djeym-topnav">
+            <!-- Categories -->
+                {% if category_placemarks %}
+                    <!-- Filter - Marker categories. -->
+                    <select size="1" name="marker-categories" id="categoriesSelector">
+                        <option value="0" selected>{% trans 'Categories of placemarks' %}</option>
+                        {% for item in category_placemarks %}
+                            <option value="{{ item.pk }}">
+                                {{ item.title }}
+                            </option>
+                        {% endfor %}
+                    </select><br>
+                {% endif %}
+    </div>
+    <!-- END HEADER -->
+</div>

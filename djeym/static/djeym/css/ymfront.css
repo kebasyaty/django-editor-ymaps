@@ -66,6 +66,16 @@
     padding: 10px;
 }
 
+/* Header */
+.djeym-topnav {
+    font-family: 'Noto Sans', arial, "nimbus sans l", "helvetica cy", sans-serif;
+    position: absolute;
+    z-index: 1059;
+    top: 50px;
+    text-align: center;
+    left: 100px;
+}
+
 /* Matrix menu */
 
 .djeym-matrix-menu {

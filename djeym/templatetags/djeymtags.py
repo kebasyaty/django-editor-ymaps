@@ -11,7 +11,7 @@ register = template.Library()
 
 
 @register.inclusion_tag('djeym/includes/loadymap.html', takes_context=True)
-def djeym_load_ymap(context, slug='', panel='djeym/includes/panel.html'):
+def djeym_load_ymap(context, slug='', panel='djeym/includes/panel.html', header='djeym/includes/map_header.html'):
     """Load YMap"""
     ymap = Map.objects.filter(slug=slug, active=True).first()
     result = {'ymap': ymap}
@@ -37,7 +37,8 @@ def djeym_load_ymap(context, slug='', panel='djeym/includes/panel.html'):
                 'category_submarks': ymap.subcategory_placemark.filter(active=True),
                 'category_polylines': ymap.category_polyline.filter(active=True),
                 'category_polygons': ymap.category_polygon.filter(active=True),
-                'panel_path': panel
+                'panel_path': panel,
+                'header_path': header
             })
 
     return result

@@ -31,13 +31,21 @@ def djeym_load_ymap(context, slug='', panel='djeym/includes/panel.html', header=
             'load_indicator_size': ymap.load_indicator_size
         })
 
-        if not ymap.general_settings.disable_site_panel:
+        if not ymap.general_settings.disable_site_panel or not ymap.general_settings.disable_map_header:
             result.update({
                 'category_placemarks': ymap.category_placemark.filter(active=True),
                 'category_submarks': ymap.subcategory_placemark.filter(active=True),
                 'category_polylines': ymap.category_polyline.filter(active=True),
                 'category_polygons': ymap.category_polygon.filter(active=True),
-                'panel_path': panel,
+            })
+
+        if not ymap.general_settings.disable_site_panel:
+            result.update({
+                'panel_path': panel
+            })
+
+        if not ymap.general_settings.disable_map_header:
+            result.update({
                 'header_path': header
             })
 

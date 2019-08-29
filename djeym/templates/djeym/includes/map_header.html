@@ -8,7 +8,7 @@
                     <select size="1" name="marker-categories" id="categoriesSelector">
                         <option value="0" selected>{% trans 'Categories of placemarks' %}</option>
                         {% for item in category_placemarks %}
-                            <option value="{{ item.pk }}">
+                            <option class="category-for-selection" value="{{ item.pk }}">
                                 {{ item.title }}
                             </option>
                         {% endfor %}

@@ -30,6 +30,7 @@ from .models import (CustomClusterIcon, CustomMarkerIcon, HeatPoint,
                      Polyline, Preset, Statistics, TileSource)
 from .utils import get_errors_form, get_icon_font_plugin
 
+
 DJEYM_YMAPS_ICONS_FOR_CATEGORIES = get_icon_font_plugin()
 
 
@@ -188,6 +189,35 @@ class AjaxGetGeoObjectsPlacemark(View):
         if not request.is_ajax():
             return HttpResponseForbidden()
         return super(AjaxGetGeoObjectsPlacemark, self).dispatch(request, *args, **kwargs)
+
+
+class SearchPlacemarks(View):
+    """
+    Ajax - Find Placemark type geo-objects for a website page or editor page.
+    Ajax - Найти геообъекты типа Placemark для страницы сайта или редактора.
+    """
+
+    def get(self, request, *args, **kwargs):
+        map_id = int(request.GET.get('map_id'))
+        search_string = str(request.GET.get('search_string'))
+
+        geoobjects = Placemark.objects.filter(
+            Q(header__icontains=search_string) |
+            Q(body__icontains=search_string) |
+            Q(footer__icontains=search_string),
+            ymap__pk=map_id
+        ).values_list('id', flat=True)
+
+        # ToDo
+
+        response_data = '[' + ','.join([str(obj) for obj in geoobjects]) + ']'
+
+        return HttpResponse(response_data, content_type="application/json")
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.is_ajax():
+            return HttpResponseForbidden()
+        return super(SearchPlacemarks, self).dispatch(request, *args, **kwargs)
 
 
 class AjaxGetHeatPoints(View):

@@ -1,19 +1,21 @@
 {% load i18n %}
-<div id="id_djeym_temp_topnav">
+<div id="id_djeym_temp_topnav" class="hidden">
     <!-- START HEADER -->
     <div id="id_djeym_topnav" class="djeym-topnav">
-            <!-- Categories -->
-                {% if category_placemarks %}
-                    <!-- Filter - Marker categories. -->
-                    <select size="1" name="marker-categories" id="categoriesSelector">
-                        <option value="0" selected>{% trans 'Categories of placemarks' %}</option>
-                        {% for item in category_placemarks %}
-                            <option class="category-for-selection" value="{{ item.pk }}">
-                                {{ item.title }}
-                            </option>
-                        {% endfor %}
-                    </select><br>
-                {% endif %}
+        <!-- Search -->
+        <input id="placemarksSearch" type="text" size="30" placeholder="Поиск"><br>
+        <!-- Categories -->
+        {% if category_placemarks %}
+        <!-- Filter - Marker categories. -->
+        <select size="1" name="marker-categories" id="categoriesSelector">
+            <option value="0" selected>{% trans 'Categories of placemarks' %}</option>
+            {% for item in category_placemarks %}
+            <option class="category-for-selection" value="{{ item.pk }}">
+                {{ item.title }}
+            </option>
+            {% endfor %}
+        </select><br>
+        {% endif %}
     </div>
     <!-- END HEADER -->
 </div>

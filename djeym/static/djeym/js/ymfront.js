@@ -263,11 +263,13 @@ function init() {
     })();
 
     // ADD HEADER TO MAP ------------------------------------------------------------------------------
-    (function () {
-        let $tempTopnav = $("#id_djeym_temp_topnav");
-        $("#djeymYMapsID").append($tempTopnav.html());
-        $tempTopnav.remove();
-    })();
+    if (!window.djeymDisableMapHeader) {
+        (function () {
+            let $tempTopnav = $("#id_djeym_temp_topnav");
+            $("#djeymYMapsID").append($tempTopnav.html());
+            $tempTopnav.remove();
+        })();
+    }
 
     // CREATE OBJECT MANAGERS ------------------------------------------------------------------------
 
@@ -519,24 +521,68 @@ function init() {
         }
     });
 
-    $("#categoriesSelector").on("change", function () {
-        let categoriesIDs = [];
+    if (!window.djeymDisableMapHeader) {
 
-        var select_elem = $("#categoriesSelector")[0];
+        let categoriesIdsForHeader = [];
+        let placemarksIdsForHeader = [];
 
-        if (select_elem.selectedIndex == 0) {
-            $(".category-for-selection").each(function (idx, elem) {
-                categoriesIDs.push(+$(elem).val());
+        function GetCategoriesForHeader() {
+            categoriesIdsForHeader = [];
+
+            var select_elem = $("#categoriesSelector")[0];
+
+            if (select_elem.selectedIndex !== 0) {
+                categoriesIdsForHeader.push(+$("#categoriesSelector  option:selected").val());
+            }
+        }
+
+        function GetPlacemarksForHeader() {
+            placemarksIdsForHeader = [];
+            if ($("#placemarksSearch").val() !== '') {
+                $.get("/djeym/ajax-find-geo-objects-placemark/",
+                    {
+                        map_id: window.djeymMapID,
+                        search_string: $("#placemarksSearch").val(),
+                    }
+                ).done(function (data) {
+                    placemarksIdsForHeader = data;
+                    SetFilterForMapHeader();
+                }).fail(function (jqxhr, textStatus, error) {
+                    let err = textStatus + ", " + error;
+                    console.log("Request Failed: " + err);
+                });
+            } else {
+                SetFilterForMapHeader();
+            }
+        }
+
+        function SetFilterForMapHeader(search_string) {
+            if (categoriesIdsForHeader.length === 0) {
+                GetCategoriesForHeader();
+            }
+
+            globalObjMngPlacemark.setFilter(function (object) {
+                let filter = true;
+                if (categoriesIdsForHeader.length !== 0) {
+                    filter = categoriesIdsForHeader.includes(object.properties.categoryID)
+                }
+                let search = true;
+                if ($("#placemarksSearch").val() !== '') {
+                    search = placemarksIdsForHeader.includes(object.properties.id)
+                }
+                return (filter && search);
             });
         }
-        else {
-            categoriesIDs.push(+$("#categoriesSelector  option:selected").val());
-        }
 
-        globalObjMngPlacemark.setFilter(function (object) {
-                return categoriesIDs.includes(object.properties.categoryID);
-            });
-    });
+        $("#categoriesSelector").on("change", function () {
+            GetCategoriesForHeader();
+            SetFilterForMapHeader($("#placemarksSearch").val());
+        });
+
+        $("#placemarksSearch").on("change", function () {
+            GetPlacemarksForHeader();
+        });
+    }
 
     // Filter by Category routes.
     // (Фильтр по категориям маршрутов.)

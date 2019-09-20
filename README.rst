@@ -4,7 +4,7 @@
 
 |
 
-.. image:: https://img.shields.io/badge/version-1.2.16%20-brightgreen.svg
+.. image:: https://img.shields.io/badge/version-1.2.17%20-brightgreen.svg
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
@@ -28,24 +28,17 @@ DjEYM ( django-editor-ymaps )
 
 Условия использования API Яндекс.Карт ( *Terms of use for the API* )
 --------------------------------------------------------------------
-- `Условия использования API Яндекс.Карт <https://tech.yandex.ru/maps/doc/jsapi/2.1/terms/index-docpage/>`_
+- (ru) `Условия использования API Яндекс.Карт <https://tech.yandex.ru/maps/doc/jsapi/2.1/terms/index-docpage/>`_
 
-- `Terms of use for the API <https://tech.yandex.com/maps/doc/jsapi/2.1/terms/index-docpage/>`_
+- (en) `Terms of use for the API <https://tech.yandex.com/maps/doc/jsapi/2.1/terms/index-docpage/>`_
 
 |
 
 Attention
 ---------
-- **При переходе на версию 1.2, обновите миграции:** python manage.py migrate djeym
+- **(ru) При переходе на версию 1.2.17, обновите миграции:** python manage.py migrate djeym
 
-- **Обратите внимание на раздел -** `Выводим карту на страницу сайта. <https://pypi.org/project/django-editor-ymaps/#display-a-map-on-the-site-page>`_ 
-    - **Добавлены минимизированные файлы (.min.).**
-    - **Добавлена поддержка es6 для IE.**
-
-- **When upgrading to version 1.2, upgrade the migration:** python manage.py migrate djeym
-    - **Pay attention to the section -** `Display the map on the site page. <https://pypi.org/project/django-editor-ymaps/#display-a-map-on-the-site-page>`_
-    - **Added minimized files (.min.).**
-    - **Added es6 support for IE.**
+- **(en) When upgrading to version 1.2.17, upgrade the migration:** python manage.py migrate djeym
 
 |
 
@@ -76,7 +69,7 @@ Features
 Requirements
 ------------
 - **Python** (3.5, 3.6, 3.7)
-- **Django** (2.0, 2.1, 2.2)
+- **Django** (2.0, 2.1, 2.2, 2.2.5)
 - **Pillow** - `https://pypi.org/project/Pillow/ <https://pypi.org/project/Pillow/>`_
 - **django-imagekit** - `https://github.com/matthewwithanm/django-imagekit <https://github.com/matthewwithanm/django-imagekit>`_
 - **python-slugify** - `https://github.com/un33k/python-slugify <https://github.com/un33k/python-slugify>`_
@@ -108,6 +101,12 @@ Add apps to your INSTALLED_APPS setting::
         'djeym',
         ...
     ]
+
+    MIDDLEWARE = [
+        ...
+        'django.middleware.locale.LocaleMiddleware',
+    ]
+
 
 Add other settings::
 
@@ -167,13 +166,20 @@ Add other settings::
 
 Add to main URLs::
 
+    from django.conf import settings
+    from django.contrib import admin
+    from django.contrib.staticfiles.urls import static
+    from django.urls import include, path
+
     urlpatterns = [
         ...
+        path('admin/', admin.site.urls),
         path('chaining/', include('smart_selects.urls')),
         path('ckeditor/', include('ckeditor_uploader.urls')),
         path('djeym/', include('djeym.urls', namespace='djeym')),
         ...
-    ]
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 Add directory to your project::
 
@@ -384,14 +390,11 @@ Usage
     {% load i18n staticfiles djeymtags %}
 
     <head>
-        <!-- START CSS -->
-        <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/fontawesome/css/all.min.css" %}">
-        <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/boxiOS/boxios.min.css" %}">
-        <link rel="stylesheet" type="text/css" href="{% static "djeym/css/ymfront.min.css" %}">
-        <!-- END CSS -->
-
-        <!--Support es6 for older browsers-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.3/polyfill.min.js" nomodule></script>
+      <!-- START CSS -->
+      <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/fontawesome/css/all.min.css" %}">
+      <link rel="stylesheet" type="text/css" href="{% static "djeym/plugins/boxiOS/boxios.min.css" %}">
+      <link rel="stylesheet" type="text/css" href="{% static "djeym/css/ymfront.min.css" %}">
+      <!-- END CSS -->
     </head>
 
     <body>
@@ -399,12 +402,13 @@ Usage
       <div id="djeymYMapsID" class="djeym-ymap" style="width: auto; height: 400px"></div>
       <!-- END MAP -->
 
-        <!-- START JS -->
-        <script type="text/javascript" src="{% static "djeym/js/jquery-3.3.1.min.js" %}"></script>
-        <script type="text/javascript" src="{% static "djeym/plugins/boxiOS/boxios.min.js" %}"></script>
-        <script type="text/javascript" src="{% static "djeym/plugins/fontawesome/js/all.min.js" %}"></script>
-        {% djeym_load_ymap slug='test' panel='djeym/includes/panel.html' %}
-        <!-- END JS -->
+      <!-- START JS -->
+      <script src="//unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js" nomodule></script>
+      <script type="text/javascript" src="{% static "djeym/js/jquery-3.3.1.min.js" %}"></script>
+      <script type="text/javascript" src="{% static "djeym/plugins/boxiOS/boxios.min.js" %}"></script>
+      <script type="text/javascript" src="{% static "djeym/plugins/fontawesome/js/all.min.js" %}"></script>
+      {% djeym_load_ymap slug='test' panel='djeym/includes/panel.html' %}
+      <!-- END JS -->
     </body>
 
 - **Карта с закрытой панелью.** ( *Map with a closed panel.* )
@@ -508,6 +512,14 @@ Donation
 
 CHANGELOG
 ---------
+- # 1.2.17
+    - 1
+    - (ru) Поправил ошибку при импорте коллекций: TypeError: the JSON object mus…
+    - (en) Fixed error when importing collections: TypeError: the JSON object mus ...
+    - 2
+    - (ru) Обновлен файл README.rst.
+    - (en) Updated README.rst file.
+
 - # 1.2.16
     - Обновлен файл README.rst. ( Updated README.rst file. )
 

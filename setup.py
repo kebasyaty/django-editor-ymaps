@@ -11,7 +11,7 @@ $$$$$____$$$$___$$$$$____$$____$$___$$
 #  Convenient use of the Yandex map service for web development on 
 #  the popular and free Django framework.
 #
-#  Copyright (c) 2014 genkosta
+#  Copyright (c) 2014 kebasyaty
 #
 #  django-editor-ymaps is free software under terms of the MIT License.
 #
@@ -20,7 +20,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (1, 2, 16)
+VERSION = (1, 2, 17)
 __version__ = '.'.join(map(str, VERSION))
 
 
@@ -39,10 +39,10 @@ setup(
     description='Creating and editing Yandex maps.',
     long_description=long_description,
     long_description_content_type='text/x-rst',
-    author='genkosta',
-    author_email='genkosta43@gmail.com',
-    url='https://github.com/genkosta/django-editor-ymaps',
-    download_url='https://github.com/genkosta/django-editor-ymaps/tarball/master',
+    author='kebasyaty',
+    author_email='kebasyaty@gmail.com',
+    url='https://github.com/kebasyaty/django-editor-ymaps',
+    download_url='https://github.com/kebasyaty/django-editor-ymaps/tarball/master',
     license='MIT License',
     platforms=['any'],
     keywords=['django', 'yandex', 'maps', 'admin', 'editor'],
@@ -55,6 +55,7 @@ setup(
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
         'Framework :: Django :: 2.2',
+        'Framework :: Django :: 2.2.5',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',

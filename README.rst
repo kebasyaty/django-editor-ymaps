@@ -1,4 +1,4 @@
-.. figure:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/logo.png?raw=true
+.. figure:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/logo.png?raw=true
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Logo
 
@@ -8,7 +8,7 @@
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Version
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
-   :target: https://github.com/genkosta/django-editor-ymaps/blob/master/LICENSE
+   :target: https://github.com/kebasyaty/django-editor-ymaps/blob/master/LICENSE
    :alt: MIT
 .. image:: https://pepy.tech/badge/django-editor-ymaps
    :target: https://pepy.tech/project/django-editor-ymaps
@@ -187,29 +187,29 @@ Usage
 -----
 1) Добавьте иконку кластера. ( *Add Cluster Icon.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. `Скачайте коллекции иконок. (Download icon collections.) <https://github.com/genkosta/django-editor-ymaps/blob/master/Icon_Collections.zip?raw=true>`_
+1. `Скачайте коллекции иконок. (Download icon collections.) <https://github.com/kebasyaty/django-editor-ymaps/blob/master/Icon_Collections.zip?raw=true>`_
 2. **Ознакомьтесь с содержимым архива.** ( *Read the contents of the archive.* )
 3. **Выберите иконку кластера и добавьте по адресу - Панель администратора > ЯНДЕКС КАРТЫ > Иконки для кластеров > Добавить Иконку для кластеров.**
    ( *Select the cluster icon and add it to the address - Admin Panel > YANDEX MAPS > Icons for Clusters > Add Icon for Clusters.* )
 
 2) Добавьте коллекцию иконок. ( *Add icon collection.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. `Скачайте коллекции иконок. (Download icon collections.) <https://github.com/genkosta/django-editor-ymaps/blob/master/Icon_Collections.zip?raw=true>`_
+1. `Скачайте коллекции иконок. (Download icon collections.) <https://github.com/kebasyaty/django-editor-ymaps/blob/master/Icon_Collections.zip?raw=true>`_
 2. **Ознакомьтесь с содержимым архива.** ( *Read the contents of the archive.* )
 3. **Прочитайте readme файл для выбранной коллекции и добавьте коллекцию через панель администратора.**
    ( *Read the readme file for the selected collection and add the collection through the admin panel.* )
 
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/import_icon_collection.png?raw=true
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/import_icon_collection.png?raw=true
    :alt: Import Icon Collection
 
 **Добавляя собственные иконки, проверяйте смещение по эталону.** ( *By adding your own icons, check the offset by standard.* )
 
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/offset_icon_for_markers.png?raw=true
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/offset_icon_for_markers.png?raw=true
    :alt: Change Icon for markers
 
 3) Добавьте источники тайловых слоев. ( *Add tile sources.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. `Скачайте источники тайловых слоев. (Download tile sources.) <https://github.com/genkosta/django-editor-ymaps/blob/master/Tile.zip?raw=true>`_
+1. `Скачайте источники тайловых слоев. (Download tile sources.) <https://github.com/kebasyaty/django-editor-ymaps/blob/master/Tile.zip?raw=true>`_
 2. **Ознакомьтесь с содержимым архива.** ( *Read the contents of the archive.* )
 3. **Прочитайте readme файл и добавьте источники через панель администратора.** ( *Read the readme file and add sources through the admin panel.* )
 
@@ -227,7 +227,7 @@ Usage
 
 6) Редактировать карту. ( *Edit map.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/edit_map.png?raw=true
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/edit_map.png?raw=true
    :alt: Edit map
 
 Обзор страницы редактора. ( *Editor page overview.* )
@@ -237,27 +237,27 @@ Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **Доступ только для персонала.** ( *Access only to staff.* )
 
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_icons.png?raw=true
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_icons.png?raw=true
    :alt: Editor Menu - Icons
 
 2) Меню редактора - Фильтры по категориям. ( *Editor Menu - Filters by category.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_filters.png?raw=true
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_filters.png?raw=true
    :alt: Editor Menu - Filters by category
 
 3) Меню редактора - Источники тайлов. ( *Editor Menu - Tile Sources.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_tile.png?raw=true
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_tile.png?raw=true
    :alt: Editor Menu - Tile Sources
 
 4) Меню редактора - Общие настройки. ( *Editor Menu - General settings.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_settings.png?raw=true
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_settings.png?raw=true
    :alt: Editor Menu - General settings
 
 5) Меню редактора - Настройки тепловой карты. (*Editor Menu - Heatmap settings.*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_heatmap.png?raw=true
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_heatmap.png?raw=true
    :alt: Editor Menu - Heatmap settings
 
 6) Меню редактора - Пресеты. ( *Editor Menu - Presets.* )
@@ -268,7 +268,7 @@ Usage
 
    ( *Admin Panel > YANDEX MAPS > Maps > Map > PRESETS > Add another preset* )
 
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editor_menu_presets.png?raw=true
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_presets.png?raw=true
    :alt: Editor Menu - Presets
 
 Добавление геообъектов на карту. ( *Adding geo-objects to the map.* )
@@ -278,102 +278,102 @@ Usage
 1. **Левый клик на карте, откроется меню с предложением выбрать тип объекта.** ( *Left-clicking on the map opens a menu with a suggestion to choose the type of object.* )
 
 2. **Выбираем кнопку - Добавить новый Маркер.** ( *Select the button - Add a new Marker.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_marker.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/add_marker.png?raw=true
        :alt: Add a marker
 
 3. **Выберите подходящую иконку.** ( *Choose the appropriate icon.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/%D1%81hoose_an_icon.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/%D1%81hoose_an_icon.png?raw=true
        :alt: Choose an icon
 
 4. **Добавим информацию об объекте.** ( *Add information about the object.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_info.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/add_info.png?raw=true
        :alt: Add Info
 
     - **Каждая из кнопок открывает свое окно текстового редактора.** ( *Each of the buttons opens its text editor window.* )
-        .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/popup_with_text_editor.png?raw=true
+        .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/popup_with_text_editor.png?raw=true
            :alt: Popup with text editor
 
 5. **Выбираем категорию для геообъекта.** ( *Select a category for a geoobject.* )
     - **Открываем категории.** ( *Open categories.* )
-        .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/select_category.png?raw=true
+        .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/select_category.png?raw=true
            :alt: Open categories
 
     - **Выбираем категорию.** ( *Choose a category.* )
-        .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/select_category_2.png?raw=true
+        .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/select_category_2.png?raw=true
            :alt: Choose a category
 
 6. **Нажимаем кнопку "+" и получаем результат.** ( *Press the "+" button and get the result.* )
     - pic 1
-        .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_1.png?raw=true
+        .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/result_1.png?raw=true
            :alt: View result 1
 
     - pic 2
-        .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_2.png?raw=true
+        .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/result_2.png?raw=true
            :alt: View result 2
 
 7. **Геообъекты редактируются через контекстное меню - Сделайте правый клик на объекте и внесите нужные изменения. Чтобы сохранить результат, нажмите кнопку с изображением дискеты.** ( *Geo-objects are edited via the context menu - Right-click on the object and make the necessary changes. To save the result, click the button with the image of a floppy disk.* )
     - pic
-        .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/update_info.png?raw=true
+        .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/update_info.png?raw=true
            :alt: Update info
 
 2) Вид Кластера. ( *Cluster View.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **Кластер** ( *Cluster* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/cluster.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/cluster.png?raw=true
        :alt: Cluster
 
 - **Popup - Two columns**
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/cluster_popup_two_columns.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/cluster_popup_two_columns.png?raw=true
        :alt: Two columns
 
 - **Popup - Carousel**
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/cluster_popup_carousel.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/cluster_popup_carousel.png?raw=true
        :alt: Carousel
 
 3) Маршрут. ( *Route.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^
 - **Добавить маршрут.** ( *Add route.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_route.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/add_route.png?raw=true
        :alt: Add route
 
 - **Результат.** ( *Result.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_route.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/result_route.png?raw=true
        :alt: Result
 
 - **Редактировать** ( *Edit* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editing_route.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editing_route.png?raw=true
        :alt: Edit
 
 - **Можно настроить соответствие по цвету.** ( *You can adjust the color matching.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/route_color_matching.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/route_color_matching.png?raw=true
        :alt: Color matching
 
 4) Территория. ( *Territory.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **Добавить территорию.** ( *Add territory.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_territory.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/add_territory.png?raw=true
        :alt: Add territory
 
 - **Результат.** ( *Result.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_territory.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/result_territory.png?raw=true
        :alt: Result
 
 - **Редактировать** ( *Edit* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/editing_territory.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editing_territory.png?raw=true
        :alt: Edit
 
 - **Можно настроить соответствие по цвету.** ( *You can adjust the color matching.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/territory_color_matching.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/territory_color_matching.png?raw=true
        :alt: Color matching
 
 5) Тепловая карта. ( *Heatmap.* )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **Добавить тепловую точку.** ( *Add heat point.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/add_heatpoint.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/add_heatpoint.png?raw=true
        :alt: Add heat point
 
 - **Добавить информацию.** ( *Add information.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/heatpoint_add_info.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/heatpoint_add_info.png?raw=true
        :alt: Add info
 
 Выводим карту на страницу сайта. ( *Display a map on the site page.* )
@@ -408,18 +408,18 @@ Usage
     </body>
 
 - **Карта с закрытой панелью.** ( *Map with a closed panel.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/map_closed_panel.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/map_closed_panel.png?raw=true
        :alt: Map with a closed panel
 
 - **Карта с открытой панелью.** ( *Map with open panel.* )
-    .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/map_opened_panel.png?raw=true
+    .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/map_opened_panel.png?raw=true
        :alt: Map with open panel
 
 Custom Commands
 ---------------
 - **Для того, чтобы проверить производительность ( достаточна ли она для вашего проекта ) - С помощью команды "addmarker", добавьте некоторое количество маркеров на карту.** ( *In order to check the performance (whether it is sufficient for your project) - Using the "addmarker" command, add a certain number of markers to the map.* )
 
-1. `Скачайте архив, распакуйте и добавьте файлы в свой медиа-раздел. ( Download archive, unpack and add files to your media section. ) <https://github.com/genkosta/django-editor-ymaps/blob/master/media.zip?raw=true>`_
+1. `Скачайте архив, распакуйте и добавьте файлы в свой медиа-раздел. ( Download archive, unpack and add files to your media section. ) <https://github.com/kebasyaty/django-editor-ymaps/blob/master/media.zip?raw=true>`_
 
 2. **Запустите команду.** ( *Run the command.* )
 
@@ -435,7 +435,7 @@ Custom Commands
     # --count - Default = 100
     python manage.py addmarker --count 1000
 
-  .. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/result_addmarker.png?raw=true
+  .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/result_addmarker.png?raw=true
      :alt: Command result - addmarker
 
 Использование Геокодера. ( *Using Geocoder.* )
@@ -483,24 +483,24 @@ Custom Commands
         <!-- END JS -->
     </body>
 
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/geocoder.png?raw=true
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/geocoder.png?raw=true
   :alt: Geocoder
 
 Первый вариант логотипа. ( *The first version of the logo.* )
 -------------------------------------------------------------
 - **Возможно пригодится для поклонников теории плоской земли.** ( *Perhaps useful for fans of the theory of flat land.* )
 
-- `Скачать архив изображений в месте с проектным файлом (xcf) для редактора GIMP. <https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/first_logo/first_logo.zip?raw=true>`_
+- `Скачать архив изображений в месте с проектным файлом (xcf) для редактора GIMP. <https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/first_logo/first_logo.zip?raw=true>`_
 
-- `Download the image archive in place with the project file (xcf) for the GIMP editor. <https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/first_logo/first_logo.zip?raw=true>`_
+- `Download the image archive in place with the project file (xcf) for the GIMP editor. <https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/first_logo/first_logo.zip?raw=true>`_
 
-.. image:: https://github.com/genkosta/django-editor-ymaps/blob/master/screenshots/first_logo/first_logos.png?raw=true
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/first_logo/first_logos.png?raw=true
    :alt: First logo
 
 LICENSE
 -------
-- `MIT License <https://github.com/genkosta/django-editor-ymaps/blob/master/LICENSE>`_
-- Copyright (c) 2014 genkosta
+- `MIT License <https://github.com/kebasyaty/django-editor-ymaps/blob/master/LICENSE>`_
+- Copyright (c) 2014 kebasyaty
 
 Donation
 --------

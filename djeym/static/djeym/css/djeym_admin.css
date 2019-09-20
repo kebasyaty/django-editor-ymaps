@@ -221,12 +221,12 @@ label[for="id_is_cluster"] {
 }
 
 .djeym-load-indicator {
-    width: 128px;
-    height: 128px;
+    width: 96px;
+    height: 96px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -64px 0 0 -64px;
+    margin: -48px 0 0 -48px;
     content: url('../../djeym/img/spinner.svg');
     animation: djeym-spin 1s infinite linear;
 }

@@ -7,12 +7,12 @@ $$__$$__$$__$$__$$_______$$____$$___$$
 $$$$$____$$$$___$$$$$____$$____$$___$$
 """
 
-VERSION = (1, 2, 16)
+VERSION = (1, 2, 17)
 
 __title__ = 'DjEYM (django-editor-ymaps)'
 __version__ = '.'.join(map(str, VERSION))
-__author__ = 'genkosta'
+__author__ = 'kebasyaty'
 __license__ = 'MIT'
-__copyright__ = 'Copyright (c) 2014 genkosta'
+__copyright__ = 'Copyright (c) 2014 kebasyaty'
 
 default_app_config = 'djeym.apps.DjeymConfig'

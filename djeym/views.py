@@ -7,7 +7,6 @@ import re
 
 from django.core.files import File
 from django.core.files.base import ContentFile
-from django.db import connection
 from django.db.models import Q
 from django.http import (FileResponse, HttpResponse, HttpResponseForbidden,
                          JsonResponse)
@@ -772,7 +771,7 @@ class AjaxImportIconCollection(View):
         with request.FILES.get('collection').file as json_file:
             collection_json = json_file.read()
 
-        collection_json = json.loads(collection_json)
+        collection_json = json.loads(collection_json.decode('utf-8'))
         title = collection_json['title']
 
         if IconCollection.objects.filter(slug=slugify(title)).count() != 0:
@@ -858,7 +857,7 @@ class AjaxImportTileSource(View):
         with request.FILES.get('sources').file as json_file:
             source_list = json_file.read()
 
-        source_list = json.loads(source_list)
+        source_list = json.loads(source_list.decode('utf-8'))
 
         for source in source_list:
             if TileSource.objects.filter(slug=slugify(source['title'])).count() == 0:

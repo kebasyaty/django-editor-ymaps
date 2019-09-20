@@ -15,33 +15,9 @@
     <title>{{ ymap.title }}</title>
 
     <!-- START FAVICONS -->
-    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'djeym/img/favicons/apple-icon-57x57.png' %}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'djeym/img/favicons/apple-icon-60x60.png' %}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'djeym/img/favicons/apple-icon-72x72.png' %}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'djeym/img/favicons/apple-icon-76x76.png' %}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'djeym/img/favicons/apple-icon-114x114.png' %}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'djeym/img/favicons/apple-icon-120x120.png' %}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'djeym/img/favicons/apple-icon-144x144.png' %}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'djeym/img/favicons/apple-icon-152x152.png' %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'djeym/img/favicons/apple-icon-180x180.png' %}">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'djeym/img/favicons/android-icon-192x192.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'djeym/img/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="96x96" href="{% static 'djeym/img/favicons/favicon-96x96.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'djeym/img/favicons/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'djeym/img/favicons/manifest.json' %}">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="DjEYM">
-    <meta name="apple-mobile-web-app-title" content="DjEYM">
-    <meta name="msapplication-navbutton-color" content="#ffffff">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="msapplication-starturl" content="/">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{% static 'djeym/img/favicons/ms-icon-144x144.png' %}">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="msapplication-config" content="{% static 'djeym/img/favicons/browserconfig.xml' %}">
-    <link rel="mask-icon" href="{% static 'djeym/img/favicons/safari-pinned-tab.svg' %}" color="#333333">
-
     <link rel="shortcut icon" href="{% static 'djeym/img/favicons/favicon.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'djeym/img/favicons/favicon.ico' %}" type="image/x-icon">
     <!-- END FAVICONS -->
@@ -70,7 +46,7 @@
     <!-- END CSS -->
 
     <!--Support es6 for older browsers-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.3/polyfill.min.js" nomodule></script>
+    <script src="//unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js" nomodule></script>
 </head>
 
 <body>
@@ -145,7 +121,7 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                 </fieldset>
             </div>
             <div class="djeym-sidenav__content">
-                <!-- Table for category of icons.
+                <!-- Table for a collection of icons.
                      (Таблица для коллекции иконок.) -->
                 <div id="id_djeym_tab_icon" class="djeym-sidenav-item djeym-tab-item">
                     <fieldset>
@@ -530,53 +506,35 @@ Here are the <a href="http://www.enable-javascript.com/" target="_blank">
                         <legend class="legend_btn_style"><i class="fas fa-question m-r-5"></i>
                             {% trans 'About editor' %}</legend>
                         <div class="djeym_content_about">
-                            <h2 class="font-gray-333">DjEYM</h2>
-                            <p>
-                                <a href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="nofollow">
-                                    <img src="https://img.shields.io/badge/version-{{ djeym_version }}%20-brightgreen.svg" alt="Version"></a>
-                                <a href="https://github.com/genkosta/django-editor-ymaps/blob/master/LICENSE" target="_blank" rel="nofollow">
-                                    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="MIT"></a>
-                                <a href="https://pepy.tech/project/django-editor-ymaps" target="_blank" rel="nofollow">
-                                    <img src="https://pepy.tech/badge/django-editor-ymaps" alt="Downloads"></a>
-                                <a href="https://www.python.org/" target="_blank" rel="nofollow">
-                                    <img src="https://img.shields.io/badge/python-%3E%3D%203.5-yellow.svg" alt="Python"></a>
-                                <a href="https://www.djangoproject.com/" target="_blank" rel="nofollow">
-                                    <img src="https://img.shields.io/badge/django-%3E%3D%202.0-brightgreen.svg" alt="Django"></a>
-                            </p>
-                            <div class="font-18 font-bold font-gray-333">django-editor-ymaps</div>
-                            <div class="font-gray-333 font-14">
+                            <div class="font-22 font-bold font-gray-333 m-t-10">django-editor-ymaps</div>
+                            <div class="font-gray-333 font-14 m-t-10">
                                 {% trans 'Convenient use of the Yandex map service for web development on the popular and free Django framework.' %}
                             </div>
-                            <div class="m-t-20">
-                                <div><span>Version: </span>
+                            <div class="m-t-30">
+                                <div><span class="font-gray-333 font-bold">Version: </span>
                                     <span class="djeym-badge-yellow">{{ djeym_version }}</span></div>
-                                <div class="m-t-10"><span>Requirements:</span><br>
+                                <div class="m-t-10"><span class="font-gray-333 font-bold">Requirements:</span><br>
                                     <span class="djeym-badge-yellow">Python >= 3.5</span>
                                     <span class="djeym-badge-yellow m-r-5">Django >= 2.0</span></div></div>
                             <div class="m-t-20">
                                 <i class="fab fa-python font-blue"></i>
-                                <span> PyPI: </span>
+                                <span class="font-gray-333 font-bold"> PyPI: </span>
                                 <a href="https://pypi.org/project/django-editor-ymaps/" 
                                     class="font-16" target="_blank" rel="nofollow">django-editor-ymaps</a></div>
                             <div class="m-t-5">
-                                <i class="fab fa-github font-blue"></i><span> GitHub: </span>
-                                <a href="https://github.com/genkosta/django-editor-ymaps" 
+                                <i class="fab fa-github font-blue"></i><span class="font-gray-333 font-bold"> GitHub: </span>
+                                <a href="https://github.com/kebasyaty/django-editor-ymaps" 
                                     class="font-16" target="_blank" rel="nofollow">django-editor-ymaps</a></div>
                             <div class="m-t-5">
                                 <i class="fas fa-at font-blue"></i>
-                                <span> Feedback: </span>
-                                <a href="mailto:genkosta43@gmail.com?subject=DjEYM"
-                                class="font-16" rel="nofollow">genkosta43@gmail.com</a></div>
+                                <span class="font-gray-333 font-bold"> Feedback: </span>
+                                <a href="mailto:kebasyaty@gmail.com?subject=DjEYM"
+                                class="font-16" rel="nofollow">kebasyaty@gmail.com</a></div>
                             <div class="m-t-5">
                                 <i class="fas fa-certificate font-blue"></i>
-                                <span> License: </span>
-                                <a href="https://github.com/genkosta/django-editor-ymaps/blob/master/LICENSE"
+                                <span class="font-gray-333 font-bold"> License: </span>
+                                <a href="https://github.com/kebasyaty/django-editor-ymaps/blob/master/LICENSE"
                                 class="font-16" target="_blank" rel="nofollow">MIT License</a></div>
-                            <div class="m-t-5">
-                                <i class="fab fa-yandex font-red m-r-7"></i>
-                                <span> Donation: </span>
-                                <a href="https://money.yandex.ru/to/410015413221944" 
-                                    class="font-16" target="_blank" rel="nofollow">Yandex Money</a></div>
                             <div class="m-t-20 font-light-yellow font-72 text-center">
                                 <i class="fas fa-map-marked-alt"></i></div>
                         </div>

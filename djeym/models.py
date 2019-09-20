@@ -993,7 +993,7 @@ class Placemark(models.Model):
     active = models.BooleanField(_('Active placemark'), default=True)
 
     json_code = models.TextField(
-        _('JSON'), blank=True, default=json.dumps(FEATURE_POINT))
+        _('JSON'), blank=True, default=json.dumps(FEATURE_POINT), editable=False)
 
     created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('Updated at'), auto_now=True)
@@ -1050,7 +1050,7 @@ class Polyline(models.Model):
     active = models.BooleanField(_('Active route'), default=True)
 
     json_code = models.TextField(
-        _('JSON'), blank=True, default=json.dumps(FEATURE_LINE))
+        _('JSON'), blank=True, default=json.dumps(FEATURE_LINE), editable=False)
 
     created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('Updated at'), auto_now=True)
@@ -1120,7 +1120,7 @@ class Polygon(models.Model):
     active = models.BooleanField(_('Active territory'), default=True)
 
     json_code = models.TextField(
-        _('JSON'), blank=True, default=json.dumps(FEATURE_POLYGON))
+        _('JSON'), blank=True, default=json.dumps(FEATURE_POLYGON), editable=False)
 
     created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('Updated at'), auto_now=True)
@@ -1164,7 +1164,7 @@ class HeatPoint(models.Model):
     slug = models.SlugField(unique=True, max_length=255, blank=True, null=True)
 
     json_code = models.TextField(
-        _('JSON'), blank=True, default=json.dumps(FEATURE_HEAT_POINT))
+        _('JSON'), blank=True, default=json.dumps(FEATURE_HEAT_POINT), editable=False)
 
     def __str__(self):
         return '{}'.format(self.title)

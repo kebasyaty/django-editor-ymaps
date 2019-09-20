@@ -602,7 +602,7 @@ function init() {
             offset += 1000;
             loadPlacemarkGeoObjects( offset );
           } else {
-            setTimeout( function() { loadHeatPoints( 0 ); }, 50 );
+            setTimeout( function() { loadHeatPoints( 0 ); }, 0 );
           }
         } )
         .fail( function( jqxhr, textStatus, error ) {
@@ -622,7 +622,7 @@ function init() {
             offset += 1000;
             loadHeatPoints( offset );
           } else {
-            setTimeout( function() { loadPolylineGeoObjects( 0 ); }, 50 );
+            setTimeout( function() { loadPolylineGeoObjects( 0 ); }, 0 );
           }
         } )
         .fail( function( jqxhr, textStatus, error ) {
@@ -641,7 +641,7 @@ function init() {
             offset += 500;
             loadPolylineGeoObjects( offset );
           } else {
-            setTimeout( function() { loadPolygonGeoObjects( 0 ); }, 50 );
+            setTimeout( function() { loadPolygonGeoObjects( 0 ); }, 0 );
           }
         } )
         .fail( function( jqxhr, textStatus, error ) {
@@ -660,7 +660,7 @@ function init() {
             offset += 500;
             loadPolygonGeoObjects( offset );
           } else {
-            setTimeout( function() { panelActivation(); }, 50 );
+            setTimeout( function() { panelActivation(); }, 0 );
           }
         } )
         .fail( function( jqxhr, textStatus, error ) {

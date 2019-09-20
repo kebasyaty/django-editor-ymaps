@@ -533,9 +533,9 @@ div[id^="cke_editor"] {
 /* Calculate Area */
 
 .djeym_result_calculate_area {
+  font-family: 'Noto Sans Bold', arial, "nimbus sans l", "helvetica cy", sans-serif;
   color: #E91E63;
   font-size: 16px;
-  font-weight: bold;
 }
 
 /* Accordion */
@@ -635,6 +635,14 @@ div[id^="cke_editor"] {
 
 .m-t-20 {
   margin-top: 20px !important;
+}
+
+.m-t-25 {
+  margin-top: 25px !important;
+}
+
+.m-t-30 {
+  margin-top: 30px !important;
 }
 
 .m-r-5 {
@@ -835,6 +843,10 @@ div[id^="cke_editor"] {
   font-size: 18px !important;
 }
 
+.font-22 {
+  font-size: 22px !important;
+}
+
 .font-24 {
   font-size: 24px !important;
 }
@@ -846,7 +858,7 @@ div[id^="cke_editor"] {
 /* Weight Font */
 
 .font-bold {
-  font-weight: bold;
+  font-family: 'Noto Sans Bold', arial, "nimbus sans l", "helvetica cy", sans-serif;
 }
 
 /* Width and Hight */

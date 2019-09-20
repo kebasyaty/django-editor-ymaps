@@ -241,7 +241,7 @@ class PlacemarkAdmin(admin.ModelAdmin):
     change_form_template = 'djeym/admin/ckeditor_change_form.html'
     list_display = ('__str__', 'ymap', 'category', 'active')
     list_filter = ('ymap',)
-    readonly_fields = ('coordinates', 'icon_name', 'json_code')
+    readonly_fields = ('coordinates', 'icon_name')
     list_editable = ('active',)
 
     formfield_overrides = {
@@ -271,7 +271,7 @@ class PolylineAdmin(admin.ModelAdmin):
     change_form_template = 'djeym/admin/ckeditor_change_form.html'
     list_display = ('__str__', 'active')
     list_filter = ('ymap',)
-    readonly_fields = ('coordinates', 'json_code')
+    readonly_fields = ('coordinates',)
     list_editable = ('active',)
 
     formfield_overrides = {
@@ -301,7 +301,7 @@ class PolygonAdmin(admin.ModelAdmin):
     change_form_template = 'djeym/admin/ckeditor_change_form.html'
     list_display = ('__str__', 'active')
     list_filter = ('ymap',)
-    readonly_fields = ('coordinates', 'json_code')
+    readonly_fields = ('coordinates',)
     list_editable = ('active',)
 
     formfield_overrides = {
@@ -333,7 +333,7 @@ class HeatPointAdmin(admin.ModelAdmin):
     list_display = ('title', 'weight', 'slug', 'active')
     list_editable = ('active',)
     list_filter = ('ymap',)
-    readonly_fields = ('coordinates', 'slug', 'json_code')
+    readonly_fields = ('coordinates', 'slug')
     search_fields = ('title',)
 
     class Media:

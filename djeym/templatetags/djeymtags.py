@@ -4,6 +4,8 @@ import re
 from django import template
 from django.conf import settings
 from django.utils.safestring import mark_safe
+import random
+import string
 
 from djeym.models import CustomMarkerIcon, LoadIndicator, Map, TileSource
 
@@ -124,3 +126,18 @@ def ymap_geocoder(context, address="", controls="zoom", tile_slug='default',
     }
 
     return result
+
+
+@register.inclusion_tag('djeym/includes/distance.html')
+def distance(point1, point2):
+    result = {
+        'point1': point1,
+        'point2': point2,
+        'unique_id': ''.join([random.choice(string.ascii_lowercase) for i in range(8)])
+    }
+    return result
+
+
+@register.inclusion_tag('djeym/includes/coordinates_saver.html', takes_context=True)
+def coordinates_saver(context):
+    return {}

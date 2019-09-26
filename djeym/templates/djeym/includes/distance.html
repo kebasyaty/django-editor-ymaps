@@ -1,0 +1,9 @@
+<p id="distance-{{ unique_id }}"></p>
+<script type="text/javascript">
+
+    // Функция ymaps.ready() будет вызвана, когда
+    // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+    utilsYMaps.ready(function () {
+        get_distance('{{ point1 }}', '{{ point2 }}', '#distance-{{ unique_id }}');
+    });
+</script>

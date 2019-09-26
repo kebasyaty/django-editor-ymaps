@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import math
+import json
 import os
 import re
 import shutil
@@ -14,6 +14,11 @@ from django.db.models.fields.files import FileDescriptor, ImageFileDescriptor
 from django.utils.translation import ugettext_lazy as _
 from imagekit.models import ImageSpecField
 from lxml import etree
+import math
+import requests
+import asyncio
+from websocket import create_connection
+
 
 # Maximum size of icons for markers and clusters of Yandex maps.
 # (Максимальный размер иконок для маркеров и кластеров Яндекс карт.)
@@ -218,3 +223,78 @@ def cleaning_files_pre_delete(sender, instance, **kwargs):
                         os.remove(path)
             except (FileNotFoundError, ValueError):
                 pass
+
+
+def get_distance_from_coords(lat1, long1, lat2, long2):
+    """
+    :param lat1: широта 1-й точки
+    :param long1: долгота 1-й точки
+    :param lat2: широта 2-й точки
+    :param long2: долгота 2-й точки
+    :return: Расстояние между точками.
+    """
+    earth_radius = 6371008.8
+
+    # перевести координаты в радианы
+    lat1 = lat1 * math.pi / 180.0
+    lat2 = lat2 * math.pi / 180.0
+    long1 = long1 * math.pi / 180.0
+    long2 = long2 * math.pi / 180.0
+
+    # косинусы и синусы широт и разницы долгот
+    cl1 = math.cos(lat1)
+    cl2 = math.cos(lat2)
+    sl1 = math.sin(lat1)
+    sl2 = math.sin(lat2)
+    delta = long2 - long1
+    cdelta = math.cos(delta)
+    sdelta = math.sin(delta)
+
+    # вычисления длины большого круга
+    y = math.sqrt(math.pow(cl2 * sdelta, 2) + math.pow(cl1 * sl2 - sl1 * cl2 * cdelta, 2))
+    x = sl1 * sl2 + cl1 * cl2 * cdelta
+
+    ad = math.atan2(y, x)
+    dist = ad * earth_radius
+
+    return dist
+
+
+def get_coordinates(point_name):
+    r = requests.get("https://geocode-maps.yandex.ru/1.x/?format=json&apikey=%s&geocode=%s" % (
+        getattr(settings, 'DJEYM_YMAPS_API_KEY', ""),
+        point_name
+    ))
+    position = r.json()["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]["Point"]["pos"]
+    coords = position.split(' ')
+    return {'latitude': float(coords[1]), 'longitude': float(coords[0])}
+
+
+@asyncio.coroutine
+def get_coordinates_async(point_name):
+    r = yield from requests.get("https://geocode-maps.yandex.ru/1.x/?format=json&apikey=%s&geocode=%s" % (
+        getattr(settings, 'DJEYM_YMAPS_API_KEY', ""),
+        point_name
+    ))
+    position = r.json()["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]["Point"]["pos"]
+    coords = position.split(' ')
+    yield {'latitude': float(coords[1]), 'longitude': float(coords[0])}
+
+
+def save_coordinates_async(session_key, app_name, model_name, object_id,
+                           address_field_name='address', coordinates_field_name='coordinates'):
+    ws_server_path = '{}://{}:{}/{}'.format(
+        settings.CHAT_WS_SERVER_PROTOCOL,
+        settings.CHAT_WS_SERVER_HOST,
+        settings.CHAT_WS_SERVER_PORT,
+        session_key
+    )
+    ws = create_connection(ws_server_path)
+    ws.send(json.dumps({'type': 'save-coordinates',
+                        'session_key': session_key,
+                        'app': app_name,
+                        'object_type': model_name,
+                        'object_id': object_id,
+                        'from_field': address_field_name,
+                        'to_field': coordinates_field_name}))
+    ws.close()

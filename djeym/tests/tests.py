@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 from decimal import Decimal
-
+import json
 from django.test import TestCase
-
-from .models import (CategoryPlacemark, CategoryPolygon, CategoryPolyline,
-                     CounterID, CustomClusterIcon, CustomMarkerIcon,
-                     ExternalModules, GeneralSettings, HeatmapSettings,
-                     HeatPoint, IconCollection, Map, MapControls, Placemark,
-                     Polygon, Polyline, Preset, Statistics,
-                     SubCategoryPlacemark, TileSource)
+import ast
+from djeym.models import (CategoryPlacemark, CategoryPolygon, CategoryPolyline,
+                          CounterID, CustomClusterIcon, CustomMarkerIcon,
+                          ExternalModules, GeneralSettings, HeatmapSettings,
+                          HeatPoint, IconCollection, Map, MapControls, Placemark,
+                          Polygon, Polyline, Preset, Statistics,
+                          SubCategoryPlacemark, TileSource)
 
 
 class ModelsTest(TestCase):
@@ -166,7 +166,16 @@ class ModelsTest(TestCase):
         self.assertEqual(MapControls._meta.get_field('maptype').default, 'yandex#map')
         self.assertEqual(test_map_controls.maptype, 'yandex#map')
 
-        self.assertEqual(test_map_controls.get_control_list(), result)
+        val1 = self.list_from_string(test_map_controls.get_control_list())
+        val1.sort()
+        val2 = self.list_from_string(result)
+        val2.sort()
+        self.assertEqual(val1, val2)
+
+    def list_from_string(self, string):
+        res = ast.literal_eval(string)
+        res = [n.strip() for n in res]
+        return res
 
     def test_external_modules(self):
         """
@@ -329,9 +338,8 @@ class ModelsTest(TestCase):
             'json_code').get_internal_type(), 'TextField')
         self.assertTrue(HeatPoint._meta.get_field(
             'json_code').blank)
-        self.assertEqual(HeatPoint._meta.get_field(
-            'json_code').default, text_json_1)
-        self.assertEqual(test_heat_point.json_code, text_json_2)
+        self.assertEqual(json.loads(HeatPoint._meta.get_field('json_code').default), json.loads(text_json_1))
+        self.assertEqual(json.loads(test_heat_point.json_code), json.loads(text_json_2))
 
         self.assertIn(test_heat_point.__str__(),
                       ('Heat Point - 1', 'Тепловая точка - 1'))
@@ -611,7 +619,7 @@ class ModelsTest(TestCase):
         self.assertEqual(test_map.get_custom_cluster(), "")
         self.assertEqual(test_map.get_custom_marker_icon(), "")
         self.assertEqual(test_map.get_tile_screenshot(
-        ), '<img src="/static/djeym/img/default_tile.png" height="60" alt="Screenshot">')
+        ), '<img src="/static/djeym/img/default_tile.png" height="46" alt="Screenshot">')
 
     def test_category_placemark(self):
         """

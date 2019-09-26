@@ -1,0 +1,15 @@
+<script>
+    function save_coordinates(app, object_type, object_id, from_field, to_field) {
+        let packet = JSON.stringify({
+            type: 'save-coordinates',
+            session_id: {{ request.session.session_id }},
+            app: app,
+            object_type: object_type,
+            object_id: object_id,
+            from_field: from_field,
+            to_field: to_field,
+        });
+        console.log('save coordinates:', packet);
+        websocket.send(packet);
+    }
+</script>

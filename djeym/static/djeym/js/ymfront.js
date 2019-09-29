@@ -265,9 +265,7 @@ function init() {
     // ADD HEADER TO MAP ------------------------------------------------------------------------------
     if (!window.djeymDisableMapHeader) {
         (function () {
-            let $tempTopnav = $("#id_djeym_temp_topnav");
-            $("#djeymYMapsID").append($tempTopnav.html());
-            $tempTopnav.remove();
+            $('#id_djeym_temp_topnav').children().appendTo('#djeymYMapsID');
         })();
     }
 
@@ -525,6 +523,7 @@ function init() {
 
         let categoriesIdsForHeader = [];
         let placemarksIdsForHeader = [];
+        let coords = null;
 
         function GetCategoriesForHeader() {
             categoriesIdsForHeader = [];
@@ -556,7 +555,7 @@ function init() {
             }
         }
 
-        function SetFilterForMapHeader(search_string) {
+        function SetFilterForMapHeader() {
             if (categoriesIdsForHeader.length === 0) {
                 GetCategoriesForHeader();
             }
@@ -570,273 +569,318 @@ function init() {
                 if ($("#placemarksSearch").val() !== '') {
                     search = placemarksIdsForHeader.includes(object.properties.id)
                 }
-                return (filter && search);
+                let distance_low = true;
+                if (coords != null)
+                {
+                    let km_distance = $(".maper .wrap_items_maper .location .ui-slider-handle .num").html();
+                    let true_distance = 100;
+                    if (km_distance === "50+ км")
+                    {
+                        true_distance = 100;
+                    }
+                    else
+                    {
+                        true_distance = parseInt(km_distance);
+                    }
+                    let distance = getDistanceFromLatLonInKm(coords[0], coords[1],
+                        object.geometry.coordinates[0], object.geometry.coordinates[1]);
+                    distance_low = distance <= true_distance;
+                }
+                return (filter && search && distance_low);
             });
         }
 
         $("#categoriesSelector").on("change", function () {
             GetCategoriesForHeader();
-            SetFilterForMapHeader($("#placemarksSearch").val());
+            SetFilterForMapHeader();
         });
 
         $("#placemarksSearch").on("change", function () {
             GetPlacemarksForHeader();
         });
-    }
 
-    // Filter by Category routes.
-    // (Фильтр по категориям маршрутов.)
-    $(".filter-by-category-polylines").on("change", function () {
-        let categoriesIDs = [];
-
-        $(".filter-by-category-polylines:checked").each(function (idx, elem) {
-            categoriesIDs.push(+$(elem).val());
-        });
-
-        globalObjMngPolyline.setFilter(function (object) {
-            return categoriesIDs.includes(object.properties.categoryID);
-        });
-    });
-
-    // Filter by category of territory.
-    // (Фильтр по категориям территорий.)
-    $(".filter-by-category-polygons").on("change", function () {
-        let categoriesIDs = [];
-
-        $(".filter-by-category-polygons:checked").each(function (idx, elem) {
-            categoriesIDs.push(+$(elem).val());
-        });
-
-        globalObjMngPolygon.setFilter(function (object) {
-            return categoriesIDs.includes(object.properties.categoryID);
-        });
-    });
-
-    // Add object manager to map.
-    // (Добавить менеджер объектов на карту.)
-    Map.geoObjects.add(globalObjMngPlacemark);
-    Map.geoObjects.add(globalObjMngPolyline);
-    Map.geoObjects.add(globalObjMngPolygon);
-
-    // FUNCTIONS - ADD GEO-OBJECTS -------------------------------------------------------------------
-    // (Функции - Добавить геообъекты.)
-
-    // Add Placemarks
-    function addPlacemarkTypeObjects(geoObjects) {
-        globalObjMngPlacemark.add({
-            type: "FeatureCollection",
-            features: geoObjects
-        });
-    }
-
-    // Add Heat Points
-    function addHeatPoints(geoObjects) {
-        if (window.djeymHeatmap) {
-            globalHeatPoints.features.push(geoObjects);
-            globalHeatmap.setData(globalHeatPoints);
+        function GetCenterForFiltering(point) {
+            if (point == "")
+            {
+                coords = null;
+                SetFilterForMapHeader();
+            }
+            else
+            {
+                utilsYMaps.geocode(point).then(function (res) {
+                    coords = res.geoObjects.get(0).geometry.getCoordinates();
+                    Map.setCenter(coords);
+                    SetFilterForMapHeader();
+                });
+            }
         }
-    }
 
-    // Add Polylines
-    function addPolylineTypeObjects(geoObjects) {
-        globalObjMngPolyline.add({
-            type: "FeatureCollection",
-            features: geoObjects
+        $(".maper .wrap_items_maper .location input[name='city']").on("change", function () {
+            let point = $(this).val() + $(".maper .wrap_items_maper .location input[name='address']").val();
+            GetCenterForFiltering(point);
         });
-    }
-
-    // Add Polygons
-    function addPolygonTypeObjects(geoObjects) {
-        globalObjMngPolygon.add({
-            type: "FeatureCollection",
-            features: geoObjects
+        $(".maper .wrap_items_maper .location input[name='address']").on("change", function () {
+            let point = $(".maper .wrap_items_maper .location input[name='city']").val() + $(this).val();
+            GetCenterForFiltering(point);
         });
-    }
+        $(".maper .wrap_items_maper .location .ui-slider-handle").on("mouseup", function () {
+            SetFilterForMapHeader();
+        });
 
-    // AJAX ------------------------------------------------------------------------------------------
+        // Filter by Category routes.
+        // (Фильтр по категориям маршрутов.)
+        $(".filter-by-category-polylines").on("change", function () {
+            let categoriesIDs = [];
 
-    // Error processing. (Обработка ошибок.)
-    function errorProcessing(jqxhr, textStatus, error) {
-        let err = textStatus + ", " + error;
-        let errDetail = "";
+            $(".filter-by-category-polylines:checked").each(function (idx, elem) {
+                categoriesIDs.push(+$(elem).val());
+            });
 
-        if (jqxhr.responseJSON !== undefined &&
-            jqxhr.responseJSON.hasOwnProperty("detail")) {
-            errDetail = jqxhr.responseJSON.detail;
+            globalObjMngPolyline.setFilter(function (object) {
+                return categoriesIDs.includes(object.properties.categoryID);
+            });
+        });
 
-            swal({
-                type: "warning",
-                html: errDetail,
-                showCloseButton: true
+        // Filter by category of territory.
+        // (Фильтр по категориям территорий.)
+        $(".filter-by-category-polygons").on("change", function () {
+            let categoriesIDs = [];
+
+            $(".filter-by-category-polygons:checked").each(function (idx, elem) {
+                categoriesIDs.push(+$(elem).val());
+            });
+
+            globalObjMngPolygon.setFilter(function (object) {
+                return categoriesIDs.includes(object.properties.categoryID);
+            });
+        });
+
+        // Add object manager to map.
+        // (Добавить менеджер объектов на карту.)
+        Map.geoObjects.add(globalObjMngPlacemark);
+        Map.geoObjects.add(globalObjMngPolyline);
+        Map.geoObjects.add(globalObjMngPolygon);
+
+        // FUNCTIONS - ADD GEO-OBJECTS -------------------------------------------------------------------
+        // (Функции - Добавить геообъекты.)
+
+        // Add Placemarks
+        function addPlacemarkTypeObjects(geoObjects) {
+            globalObjMngPlacemark.add({
+                type: "FeatureCollection",
+                features: geoObjects
             });
         }
 
-        if (errDetail.length !== 0) {
-            console.log("Request Failed: " + err + " - " + errDetail);
-        } else {
-            console.log("Request Failed: " + err);
-        }
-    }
-
-    // FINAL STEPS -----------------------------------------------------------------------------------
-
-    setTimeout(function () { //
-        // Load Placemarks.
-        // (Загрузить метки.)
-        function loadPlacemarkGeoObjects(offset) {
-            $.getJSON("/djeym/ajax-get-geo-objects-placemark/",
-                {map_id: window.djeymMapID, offset: offset})
-                .done(function (data) {
-                    if (data.length > 0) {
-                        addPlacemarkTypeObjects(data);
-                        offset += 1000;
-                        loadPlacemarkGeoObjects(offset);
-                    } else {
-                        setTimeout(function () {
-                            loadHeatPoints(0);
-                        }, 50);
-                    }
-                })
-                .fail(function (jqxhr, textStatus, error) {
-                    errorProcessing(jqxhr, textStatus, error);
-                });
+        // Add Heat Points
+        function addHeatPoints(geoObjects) {
+            if (window.djeymHeatmap) {
+                globalHeatPoints.features.push(geoObjects);
+                globalHeatmap.setData(globalHeatPoints);
+            }
         }
 
-        loadPlacemarkGeoObjects(0);
-
-        // Loading Thermal points.
-        // (Загрузить Тепловые точки.)
-        function loadHeatPoints(offset) {
-            $.getJSON("/djeym/ajax-get-heat-points/",
-                {map_id: window.djeymMapID, offset: offset})
-                .done(function (data) {
-                    if (data.length > 0) {
-                        addHeatPoints(data);
-                        offset += 1000;
-                        loadHeatPoints(offset);
-                    } else {
-                        setTimeout(function () {
-                            loadPolylineGeoObjects(0);
-                        }, 50);
-                    }
-                })
-                .fail(function (jqxhr, textStatus, error) {
-                    errorProcessing(jqxhr, textStatus, error);
-                });
-        }
-
-        // Load Polylines.
-        // (Загрузить полилинии.)
-        function loadPolylineGeoObjects(offset) {
-            $.getJSON("/djeym/ajax-get-geo-objects-polyline/",
-                {map_id: window.djeymMapID, offset: offset})
-                .done(function (data) {
-                    if (data.length > 0) {
-                        addPolylineTypeObjects(data);
-                        offset += 500;
-                        loadPolylineGeoObjects(offset);
-                    } else {
-                        setTimeout(function () {
-                            loadPolygonGeoObjects(0);
-                        }, 50);
-                    }
-                })
-                .fail(function (jqxhr, textStatus, error) {
-                    errorProcessing(jqxhr, textStatus, error);
-                });
-        }
-
-        // Load Polygons.
-        // (Загрузить полигоны.)
-        function loadPolygonGeoObjects(offset) {
-            $.getJSON("/djeym/ajax-get-geo-objects-polygon/",
-                {map_id: window.djeymMapID, offset: offset})
-                .done(function (data) {
-                    if (data.length > 0) {
-                        addPolygonTypeObjects(data);
-                        offset += 500;
-                        loadPolygonGeoObjects(offset);
-                    } else {
-                        setTimeout(function () {
-                            panelActivation();
-                        }, 50);
-                    }
-                })
-                .fail(function (jqxhr, textStatus, error) {
-                    errorProcessing(jqxhr, textStatus, error);
-                });
-        }
-
-        function panelActivation() { //
-            // Close panel.
-            $("#id_djeym_sidenav .djeym-closebtn").on("click", function (event) {
-                document.getElementById("id_djeym_sidenav").style.left = "-360px";
+        // Add Polylines
+        function addPolylineTypeObjects(geoObjects) {
+            globalObjMngPolyline.add({
+                type: "FeatureCollection",
+                features: geoObjects
             });
+        }
 
-            // Open menu tab.
-            $(".djeym-matrix-menu__btn").on("click", function (event) {
-                let $this = $(this);
-                let tabIDName = $this.data("id_name");
+        // Add Polygons
+        function addPolygonTypeObjects(geoObjects) {
+            globalObjMngPolygon.add({
+                type: "FeatureCollection",
+                features: geoObjects
+            });
+        }
 
-                if (!$this.hasClass("djeym_tab_active")) {
-                    $(".djeym-matrix-menu__btn").removeClass("djeym_tab_active");
-                    $this.addClass("djeym_tab_active");
-                    $(".djeym-tab-item").hide();
-                    document.getElementById(tabIDName).style.display = "block";
+        // AJAX ------------------------------------------------------------------------------------------
+
+        // Error processing. (Обработка ошибок.)
+        function errorProcessing(jqxhr, textStatus, error) {
+            let err = textStatus + ", " + error;
+            let errDetail = "";
+
+            if (jqxhr.responseJSON !== undefined &&
+                jqxhr.responseJSON.hasOwnProperty("detail")) {
+                errDetail = jqxhr.responseJSON.detail;
+
+                swal({
+                    type: "warning",
+                    html: errDetail,
+                    showCloseButton: true
+                });
+            }
+
+            if (errDetail.length !== 0) {
+                console.log("Request Failed: " + err + " - " + errDetail);
+            } else {
+                console.log("Request Failed: " + err);
+            }
+        }
+
+        // FINAL STEPS -----------------------------------------------------------------------------------
+
+        setTimeout(function () { //
+            // Load Placemarks.
+            // (Загрузить метки.)
+            function loadPlacemarkGeoObjects(offset) {
+                $.getJSON("/djeym/ajax-get-geo-objects-placemark/",
+                    {map_id: window.djeymMapID, offset: offset})
+                    .done(function (data) {
+                        if (data.length > 0) {
+                            addPlacemarkTypeObjects(data);
+                            offset += 1000;
+                            loadPlacemarkGeoObjects(offset);
+                        } else {
+                            setTimeout(function () {
+                                loadHeatPoints(0);
+                            }, 50);
+                        }
+                    })
+                    .fail(function (jqxhr, textStatus, error) {
+                        errorProcessing(jqxhr, textStatus, error);
+                    });
+            }
+
+            loadPlacemarkGeoObjects(0);
+
+            // Loading Thermal points.
+            // (Загрузить Тепловые точки.)
+            function loadHeatPoints(offset) {
+                $.getJSON("/djeym/ajax-get-heat-points/",
+                    {map_id: window.djeymMapID, offset: offset})
+                    .done(function (data) {
+                        if (data.length > 0) {
+                            addHeatPoints(data);
+                            offset += 1000;
+                            loadHeatPoints(offset);
+                        } else {
+                            setTimeout(function () {
+                                loadPolylineGeoObjects(0);
+                            }, 50);
+                        }
+                    })
+                    .fail(function (jqxhr, textStatus, error) {
+                        errorProcessing(jqxhr, textStatus, error);
+                    });
+            }
+
+            // Load Polylines.
+            // (Загрузить полилинии.)
+            function loadPolylineGeoObjects(offset) {
+                $.getJSON("/djeym/ajax-get-geo-objects-polyline/",
+                    {map_id: window.djeymMapID, offset: offset})
+                    .done(function (data) {
+                        if (data.length > 0) {
+                            addPolylineTypeObjects(data);
+                            offset += 500;
+                            loadPolylineGeoObjects(offset);
+                        } else {
+                            setTimeout(function () {
+                                loadPolygonGeoObjects(0);
+                            }, 50);
+                        }
+                    })
+                    .fail(function (jqxhr, textStatus, error) {
+                        errorProcessing(jqxhr, textStatus, error);
+                    });
+            }
+
+            // Load Polygons.
+            // (Загрузить полигоны.)
+            function loadPolygonGeoObjects(offset) {
+                $.getJSON("/djeym/ajax-get-geo-objects-polygon/",
+                    {map_id: window.djeymMapID, offset: offset})
+                    .done(function (data) {
+                        if (data.length > 0) {
+                            addPolygonTypeObjects(data);
+                            offset += 500;
+                            loadPolygonGeoObjects(offset);
+                        } else {
+                            setTimeout(function () {
+                                panelActivation();
+                            }, 50);
+                        }
+                    })
+                    .fail(function (jqxhr, textStatus, error) {
+                        errorProcessing(jqxhr, textStatus, error);
+                    });
+            }
+
+            function panelActivation() { //
+                // Close panel.
+                $("#id_djeym_sidenav .djeym-closebtn").on("click", function (event) {
+                    document.getElementById("id_djeym_sidenav").style.left = "-360px";
+                });
+
+                // Open menu tab.
+                $(".djeym-matrix-menu__btn").on("click", function (event) {
+                    let $this = $(this);
+                    let tabIDName = $this.data("id_name");
+
+                    if (!$this.hasClass("djeym_tab_active")) {
+                        $(".djeym-matrix-menu__btn").removeClass("djeym_tab_active");
+                        $this.addClass("djeym_tab_active");
+                        $(".djeym-tab-item").hide();
+                        document.getElementById(tabIDName).style.display = "block";
+                    }
+                });
+
+                // boxiOS - Filters by categories
+                (function () {
+                    let $this;
+
+                    $(".filter-by-category-placemarks").each(function () {
+                        $this = $(this);
+                        $this.boxiosCheckbox({
+                            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data("jack_color")
+                        });
+                    });
+
+                    $(".filter-by-category-submarks").each(function () {
+                        $this = $(this);
+                        $this.boxiosCheckbox({
+                            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data("jack_color")
+                        });
+                    });
+
+                    $(".filter-by-category-polylines").each(function () {
+                        $this = $(this);
+                        $this.boxiosCheckbox({
+                            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data("jack_color")
+                        });
+                    });
+
+                    $(".filter-by-category-polygons").each(function () {
+                        $this = $(this);
+                        $this.boxiosCheckbox({
+                            size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data("jack_color")
+                        });
+                    });
+                })();
+
+                // Corrections for Firefox.
+                if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) { //
+                    // $( ".legend_btn_style, .boxios-ios-label-text" ).css( "font-weight", "600" );
+                    $(".djeym-button").css("padding", "3px 20px");
                 }
-            });
 
-            // boxiOS - Filters by categories
-            (function () {
-                let $this;
+                // Open the panel.
+                /*
+                let sidenav = document.getElementById( "id_djeym_sidenav" );
+                if ( sidenav.style.left !== "0" ) { sidenav.style.left = "0"; }
+                */
 
-                $(".filter-by-category-placemarks").each(function () {
-                    $this = $(this);
-                    $this.boxiosCheckbox({
-                        size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data("jack_color")
-                    });
-                });
-
-                $(".filter-by-category-submarks").each(function () {
-                    $this = $(this);
-                    $this.boxiosCheckbox({
-                        size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data("jack_color")
-                    });
-                });
-
-                $(".filter-by-category-polylines").each(function () {
-                    $this = $(this);
-                    $this.boxiosCheckbox({
-                        size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data("jack_color")
-                    });
-                });
-
-                $(".filter-by-category-polygons").each(function () {
-                    $this = $(this);
-                    $this.boxiosCheckbox({
-                        size: GLOBAL_BOXIOS_SIZE, jackColor: $this.data("jack_color")
-                    });
-                });
-            })();
-
-            // Corrections for Firefox.
-            if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) { //
-                // $( ".legend_btn_style, .boxios-ios-label-text" ).css( "font-weight", "600" );
-                $(".djeym-button").css("padding", "3px 20px");
+                // Add button «Show Panel» on map.
+                if (!window.djeymDisableSitePanel) {
+                    setTimeout(function () {
+                        Map.controls.add(globalButtonShowPanel, {position: {left: "10px", top: "59px"}});
+                    }, 500);
+                }
             }
-
-            // Open the panel.
-            /*
-            let sidenav = document.getElementById( "id_djeym_sidenav" );
-            if ( sidenav.style.left !== "0" ) { sidenav.style.left = "0"; }
-            */
-
-            // Add button «Show Panel» on map.
-            if (!window.djeymDisableSitePanel) {
-                setTimeout(function () {
-                    Map.controls.add(globalButtonShowPanel, {position: {left: "10px", top: "59px"}});
-                }, 500);
-            }
-        }
-    }, 2000);
+        }, 2000);
+    }
 }

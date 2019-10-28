@@ -13,10 +13,12 @@ register = template.Library()
 
 
 @register.inclusion_tag('djeym/includes/loadymap.html', takes_context=True)
-def djeym_load_ymap(context, slug='', panel='djeym/includes/panel.html', header='djeym/includes/map_header.html'):
+def djeym_load_ymap(context, slug='', panel='djeym/includes/panel.html',
+                    header='djeym/includes/map_header.html', load_api=True):
     """Load YMap"""
     ymap = Map.objects.filter(slug=slug, active=True).first()
-    result = {'ymap': ymap}
+    result = {'ymap': ymap,
+              'load_api': load_api}
 
     if ymap is not None:
         result.update({
@@ -82,7 +84,7 @@ def get_api_ymap(context, lang="", ns='djeymYMaps'):
         'mode': mode,
         'ns': ns,
         'external_modules': context.get('external_modules'),
-        'presets': context.get('presets')
+        'presets': context.get('presets'),
     }
 
 
@@ -108,7 +110,7 @@ def random_domain(value, apikey=""):
 
 @register.inclusion_tag('djeym/includes/geocoder.html', takes_context=True)
 def ymap_geocoder(context, address="", controls="zoom", tile_slug='default',
-                  marker_slug='default', load_indicator_slug='default', size='64', speed='0.8'):
+                  marker_slug='default', load_indicator_slug='default', size='64', speed='0.8', load_api=True):
 
     load_indicator = LoadIndicator.objects.filter(
         slug=load_indicator_slug).first()
@@ -122,7 +124,8 @@ def ymap_geocoder(context, address="", controls="zoom", tile_slug='default',
         'load_indicator': load_indicator.svg.url if
         load_indicator is not None else '/static/djeym/img/spinner.svg',
         'load_indicator_size': size,
-        'speed': speed
+        'speed': speed,
+        'load_api': load_api
     }
 
     return result

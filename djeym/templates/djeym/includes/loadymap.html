@@ -50,6 +50,8 @@
         djeymHeatmapGradientColor3 = "{{ heatmap_settings.gradient_color3 }}",
         djeymHeatmapGradientColor4 = "{{ heatmap_settings.gradient_color4 }}";
 </script>
-{% get_api_ymap lang=language_code %}
+{% if load_api %}
+    {% get_api_ymap lang=language_code %}
+{% endif %}
 <script type="text/javascript" src="{% static "djeym/js/ymfront.min.js" %}"></script>
 {% endif %}

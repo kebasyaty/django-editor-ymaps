@@ -11,7 +11,7 @@ function init() {
 
   // Add download indicator to the map.
   let html = "<div id=\"djeymModalLock\"><div id=\"djeymLoadIndicator\"></div></div>";
-  document.getElementById( "djeymYMapsID" ).innerHTML = html;
+  document.getElementById( "djeymYMapGeocoder" ).innerHTML = html;
 
   // Stop spin indication.
   function stopSpinIndication() {
@@ -25,7 +25,7 @@ function init() {
   }
 
   // CREATE A MAP (Создать карту) ------------------------------------------------------------------
-  let Map = new djeymYMaps.Map( "djeymYMapsID", {
+  let Map = new djeymYMaps.Map( "djeymYMapGeocoder", {
     center: [ 0, 0 ],
     zoom: 3,
     type: ( window.djeymTile === undefined ) ? window.djeymMapType : null,

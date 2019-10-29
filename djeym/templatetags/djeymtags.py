@@ -8,6 +8,10 @@ import random
 import string
 
 from djeym.models import CustomMarkerIcon, LoadIndicator, Map, TileSource
+import logging
+
+
+logger = logging.getLogger('custom_app')
 
 register = template.Library()
 
@@ -17,6 +21,7 @@ def djeym_load_ymap(context, slug='', panel='djeym/includes/panel.html',
                     header='djeym/includes/map_header.html', load_api=True):
     """Load YMap"""
     ymap = Map.objects.filter(slug=slug, active=True).first()
+    logger.debug("Map: {}".format(ymap))
     result = {'ymap': ymap,
               'load_api': load_api}
 

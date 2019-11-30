@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n static %}
 <div id="id_djeym_temp_topnav" class="hidden">
     <!-- START HEADER -->
     <div class="wrap_items_maper">
@@ -35,8 +35,8 @@
                 </div>
                 <div class="swipes">
                     <p>
-                        <label for="amount">На растоянии:</label>
-                        <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+                        <label for="amount_location">На растоянии:</label>
+                        <input type="text" id="amount_location" style="border:0; color:#f6931f; font-weight:bold;">
                     </p>
                     <div id="slider-range-max"
                          class="maxer ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
@@ -48,5 +48,6 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'djeym/js/map_header.js' %}"  type="text/javascript"></script>
     <!-- END HEADER -->
 </div>

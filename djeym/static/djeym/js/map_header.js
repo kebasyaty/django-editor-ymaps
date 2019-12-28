@@ -19,4 +19,19 @@ $(function () {
     $("#slider-range-max #amount_location").val($("#slider-range-max").slider("value"));
     jQuery('#slider-range-max .wraps .ui-slider-handle').html('<span class="num">5 км</span>')
 
+    $(document).mouseup(function (e) {
+        let container = $(".wrap_items_maper .location .wraps");
+        if (container.has(e.target).length === 0){
+            container.removeClass("opened");
+        }
+    });
+
+    if (is_mobile())
+    {
+        djeymYMaps.ready(function(){
+            $("#djeymYMapsID .wrap_items_maper").prependTo($("#djeymYMapsID").parent());
+            $("#djeymYMapsID").siblings(".header").prependTo($("#djeymYMapsID").parent());
+        });
+
+    }
 });

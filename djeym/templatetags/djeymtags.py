@@ -18,12 +18,13 @@ register = template.Library()
 
 @register.inclusion_tag('djeym/includes/loadymap.html', takes_context=True)
 def djeym_load_ymap(context, slug='', panel='djeym/includes/panel.html',
-                    header='djeym/includes/map_header.html', load_api=True):
+                    header='djeym/includes/map_header.html', load_api=True, global_buttons=False):
     """Load YMap"""
     ymap = Map.objects.filter(slug=slug, active=True).first()
     logger.debug("Map: {}".format(ymap))
     result = {'ymap': ymap,
-              'load_api': load_api}
+              'load_api': load_api,
+              'global_buttons': global_buttons}
 
     if ymap is not None:
         result.update({

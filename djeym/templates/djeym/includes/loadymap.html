@@ -53,5 +53,9 @@
 {% if load_api %}
     {% get_api_ymap lang=language_code %}
 {% endif %}
+{% if global_buttons %}
+    <button name="balloon_refreshed" hidden></button>
+    <button name="markers_refreshed" hidden></button>
+{% endif %}
 <script type="text/javascript" src="{% static "djeym/js/ymfront.min.js" %}"></script>
 {% endif %}

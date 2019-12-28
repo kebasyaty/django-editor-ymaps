@@ -449,6 +449,13 @@ function init() {
                 presetsBool: true
             }
         ).done(function (data) {
+            let button = $("button[name='balloon_refreshed']");
+            if (button)
+            {
+                button.html(JSON.stringify(data));
+                button.click();
+            }
+
             geoObject.properties.balloonContentHeader = data.header;
             geoObject.properties.balloonContentBody = data.body;
             geoObject.properties.balloonContentFooter = data.footer;

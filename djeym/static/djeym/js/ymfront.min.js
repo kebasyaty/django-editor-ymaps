@@ -432,16 +432,18 @@ function init() {
     function ajaxGetBalloonContent(geoObjectType, geoObject) {
         Map.balloon.close(true);
 
-        setTimeout(function () {
-            if (geoObjectType === "Point") {
-                globalObjMngPlacemark.objects.balloon.open(geoObject.id);
-            } else if (geoObjectType === "LineString") {
-                globalObjMngPolyline.objects.balloon.open(geoObject.id);
-            } else if (geoObjectType === "Polygon") {
-                globalObjMngPolygon.objects.balloon.open(geoObject.id);
-            }
-        }, 100);
-
+        let button = $("button[name='balloon_refreshed']");
+        if (!button) {
+            setTimeout(function () {
+                if (geoObjectType === "Point") {
+                    globalObjMngPlacemark.objects.balloon.open(geoObject.id);
+                } else if (geoObjectType === "LineString") {
+                    globalObjMngPolyline.objects.balloon.open(geoObject.id);
+                } else if (geoObjectType === "Polygon") {
+                    globalObjMngPolygon.objects.balloon.open(geoObject.id);
+                }
+            }, 100);
+        }
         $.get("/djeym/ajax-balloon-content/",
             {
                 objID: geoObject.properties.id,
@@ -449,10 +451,13 @@ function init() {
                 presetsBool: true
             }
         ).done(function (data) {
-            let button = $("button[name='balloon_refreshed']");
             if (button)
             {
-                button.html(JSON.stringify(data));
+                button.html(JSON.stringify({
+                    header: window.btoa(unescape(encodeURIComponent(data.header))),
+                    body: window.btoa(unescape(encodeURIComponent(data.body))),
+                    footer: window.btoa(unescape(encodeURIComponent(data.footer))),
+                }));
                 button.click();
             }
 

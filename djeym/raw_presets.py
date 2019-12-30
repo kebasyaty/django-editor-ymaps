@@ -12,7 +12,7 @@ raw_presets = [
         "icon": "<i class=\"fas fa-file-export\"></i>",
         "html": "<p>\r\n<div style=\"color:#e91e63;\">\u0414\u043e\u0431\u0430\u0432\u044c\u0442\u0435 \u0441\u0432\u043e\u0439 \u0442\u0435\u043a\u0441\u0442 \u043f\u043e \u0430\u0434\u0440\u0435\u0441\u0443 - \u042f\u041d\u0414\u0415\u041a\u0421 \u041a\u0410\u0420\u0422\u042b / \u041a\u0430\u0440\u0442\u044b / \u041a\u0430\u0440\u0442\u0430 /\u041f\u0440\u0435\u0441\u0435\u0442\u044b / Text</div>\r\n<div style=\"color:#3f51b5;\">( Add your text to the address - YANDEX MAPS / Maps / Map / Presets > Text )</div>\r\n</p>",
         "js": "",
-        "description": "<div>\u0412\u0441\u0442\u0430\u0432\u043b\u044f\u0435\u0442 \u0442\u0435\u043a\u0441\u0442\u043e\u0432\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e - \u0421\u0441\u044b\u043b\u043a\u0430, \u043a\u043e\u043f\u0438\u0440\u0430\u0439\u0442, \u0440\u0435\u043a\u043b\u0430\u043c\u0430 \u0438 \u0442.\u0434.</div>\r\n<div style=\"color:#607D8B;\">( Inserts text information - Link, copyright, advertising, etc. )</div>",
+        "description": "<div>\u0412\u0441\u0442\u0430\u0432\u043b\u044f\u0435\u0442 \u0442\u0435\u043a\u0441\u0442\u043e\u0432\u0443\u044e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e - \u0421\u0441\u044b\u043b\u043a\u0430, \u043a\u043e\u043f\u0438\u0440\u0430\u0439\u0442, \u0440\u0435\u043a\u043b\u0430\u043c\u0430 \u0438 \u0442.\u0434.</div>\r\n<div style=\"color:#607D8B;\">( Inserts text information - Link, copyright, partners, etc. )</div>",
         "slug": "text"
     }
 ]

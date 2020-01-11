@@ -44,3 +44,30 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
 function deg2rad(deg) {
     return deg * (Math.PI / 180)
 }
+
+utilsYMaps.ready(init);
+
+function relateSuggests(preselector="") {
+    var suggests = new Array();
+    $(preselector + "input[type=text][mode=suggest]").each(function () {
+        suggests.push(new utilsYMaps.SuggestView(this, {
+                results: 1
+            }));
+        $(this).attr("suggest-id", suggests.length - 1);
+    });
+    $(preselector + "input[type=text][mode=suggest]").on("change", function () {
+        let suggest = suggests[$(this).attr("suggest-id")];
+        let dataManager = suggest.state;
+        dataManager.singleSet("activeIndex", 0);
+        this.dispatchEvent(new KeyboardEvent('keydown', {'keyCode':13, 'which':13}));
+        /*let first_item = dataManager.get('items')[0];
+        $(this).val(first_item.value);
+        //this.value = first_item.value;
+        $(this).trigger("blur");
+        //this.dispatchEvent(new KeyboardEvent('keydown', {'keyCode':27, 'which':27}));*/
+    });
+}
+
+function init() {
+    relateSuggests();
+}

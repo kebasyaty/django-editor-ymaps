@@ -65,7 +65,7 @@ Install libraries ( Ubuntu >= 18.04, Mint 19.x )::
 
 Install django-editor-ymaps using pip::
 
-    pip install django-editor-ymaps
+    pip install https://github.com/kebasyaty/django-editor-ymaps/raw/master/dist/django-editor-ymaps-2.0.1.tar.gz
 
 Settings
 --------

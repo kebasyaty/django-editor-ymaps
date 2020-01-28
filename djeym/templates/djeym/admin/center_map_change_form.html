@@ -2,7 +2,8 @@
 {% load i18n admin_urls static admin_modify djeymtags %}
 
 {% block extrahead %}
-{% get_api_ymap LANGUAGE_CODE %}
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+{% djeym_load_api_ymaps LANGUAGE_CODE %}
 {{ block.super }}
 <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
 {{ media }}
@@ -27,17 +28,18 @@
 
 {% block content %}<div id="content-main">
 <div class="logo_djeym">
-    <a href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="nofollow">
+    <a href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="nofollow noreferrer noopener">
         <img src="/static/djeym/img/logo.svg" alt="Logo DjEYM"></a></div>
 {% if original.pk %}
-<div class="editing_map_link">
-    <a href="{{ original.get_absolute_url }}" target="_blank">
-        <div class="editing_map_link__a__wrapper">
-            <img src="/static/djeym/img/marker.svg" alt="Marker">{% trans 'Editing map' %}
-        </div>
-        <div id="id_editing_map_link__harmonic_1"></div>
-        <div id="id_editing_map_link__harmonic_2"></div>
-        <div id="id_triangle-right"></div>
+<div class="editing_map_link_wrapper">
+    <a href="{{ original.get_absolute_url }}">
+      <table class="editing_map_link_wrapper--table">
+        <tr>
+          <td><span class="mdi mdi-map-check mdi-36px"></span></td>
+          <td>{% trans 'Editing map' %}</td>
+          <td><img src="{% static 'djeym/img/amber_arrow.svg' %}" alt="Icon"</td>
+        </tr>
+      </table>
     </a>
 </div>
 {% endif %}

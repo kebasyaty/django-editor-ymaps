@@ -4,13 +4,12 @@ from decimal import Decimal
 from django.test import TestCase
 
 from .models import (CategoryPlacemark, CategoryPolygon, CategoryPolyline,
-                     CounterID, CustomClusterIcon, CustomMarkerIcon,
-                     ExternalModules, GeneralSettings, HeatmapSettings,
-                     HeatPoint, IconCollection, Map, MapControls, Placemark,
+                     ClusterIcon, GeneralSettings, HeatmapSettings, HeatPoint,
+                     IconCollection, Map, MapControls, MarkerIcon, Placemark,
                      Polygon, Polyline, Preset, Statistics,
                      SubCategoryPlacemark, TileSource)
 
-
+'''
 class ModelsTest(TestCase):
     """
     Testing models - Integrity check on the default state.
@@ -50,13 +49,13 @@ class ModelsTest(TestCase):
         self.header_polygon_1 = "<p>Test polygon 1</p>"
         self.header_polygon_2 = "<p>Test polygon 2</p>"
 
-        # CustomClusterIcon
+        # ClusterIcon
         self.title_cluster_icon = "Test Cluster Icon"
 
         # IconCollection
         self.title_icon_collection = "Test Icon Collection"
 
-        # CustomMarkerIcon
+        # MarkerIcon
         self.custom_marker_icon_1 = "Test Custom Marker Icon 1"
         self.custom_marker_icon_2 = "Test Custom Marker Icon 2"
 
@@ -163,7 +162,8 @@ class ModelsTest(TestCase):
         self.assertEqual(MapControls._meta.get_field(
             'maptype').get_internal_type(), 'CharField')
         self.assertFalse(MapControls._meta.get_field('maptype').blank)
-        self.assertEqual(MapControls._meta.get_field('maptype').default, 'yandex#map')
+        self.assertEqual(MapControls._meta.get_field(
+            'maptype').default, 'yandex#map')
         self.assertEqual(test_map_controls.maptype, 'yandex#map')
 
         self.assertEqual(test_map_controls.get_control_list(), result)
@@ -849,7 +849,7 @@ class ModelsTest(TestCase):
 
         collection = IconCollection.objects.create(title=title_icon_collection)
 
-        icon_marker = CustomMarkerIcon.objects.create(
+        icon_marker = MarkerIcon.objects.create(
             icon_collection=collection,
             title=custom_marker_icon,
             svg="test_marker.svg")
@@ -1067,17 +1067,17 @@ class ModelsTest(TestCase):
 
     def test_cluster_icon_check_without_image(self):
         """
-        Test the model of the CustomClusterIcon with the default settings.
-        Тестирование модели CustomClusterIcon с настройками по умолчанию.
+        Test the model of the ClusterIcon with the default settings.
+        Тестирование модели ClusterIcon с настройками по умолчанию.
         """
         title_cluster_icon = self.title_cluster_icon
 
-        cluster_icon = CustomClusterIcon.objects.create(
+        cluster_icon = ClusterIcon.objects.create(
             title=title_cluster_icon)
 
-        self.assertTrue(CustomClusterIcon._meta.get_field('title').unique)
-        self.assertFalse(CustomClusterIcon._meta.get_field('title').blank)
-        self.assertFalse(CustomClusterIcon._meta.get_field('svg').blank)
+        self.assertTrue(ClusterIcon._meta.get_field('title').unique)
+        self.assertFalse(ClusterIcon._meta.get_field('title').blank)
+        self.assertFalse(ClusterIcon._meta.get_field('svg').blank)
 
         self.assertEqual(cluster_icon.title, "Test Cluster Icon")
         self.assertFalse(bool(cluster_icon.svg))
@@ -1091,24 +1091,24 @@ class ModelsTest(TestCase):
         self.assertEqual(cluster_icon.__str__(), "Test Cluster Icon")
         self.assertEqual(cluster_icon.admin_thumbnail(), "")
 
-        self.assertEqual(CustomClusterIcon._meta.ordering, ("title", "id"))
+        self.assertEqual(ClusterIcon._meta.ordering, ("title", "id"))
 
         self.assertEqual(cluster_icon.get_size(), "[0,0]")
         self.assertEqual(cluster_icon.get_offset(), "[0.0,0.0]")
 
     def test_cluster_icon_check_with_image(self):
         """
-        Test the model of the CustomClusterIcon with the default settings.
-        Тестирование модели CustomClusterIcon с настройками по умолчанию.
+        Test the model of the ClusterIcon with the default settings.
+        Тестирование модели ClusterIcon с настройками по умолчанию.
         """
         title_cluster_icon = self.title_cluster_icon
 
-        cluster_icon = CustomClusterIcon.objects.create(
+        cluster_icon = ClusterIcon.objects.create(
             title=title_cluster_icon, svg="test_cluster.svg")
 
-        self.assertTrue(CustomClusterIcon._meta.get_field('title').unique)
-        self.assertFalse(CustomClusterIcon._meta.get_field('title').blank)
-        self.assertFalse(CustomClusterIcon._meta.get_field('svg').blank)
+        self.assertTrue(ClusterIcon._meta.get_field('title').unique)
+        self.assertFalse(ClusterIcon._meta.get_field('title').blank)
+        self.assertFalse(ClusterIcon._meta.get_field('svg').blank)
 
         self.assertEqual(cluster_icon.title, "Test Cluster Icon")
         self.assertTrue(bool(cluster_icon.svg))
@@ -1125,7 +1125,7 @@ class ModelsTest(TestCase):
             cluster_icon.admin_thumbnail(),
             "<img src=\"/media/test_cluster.svg\" height=\"60\" alt=\"Icon\">")
 
-        self.assertEqual(CustomClusterIcon._meta.ordering, ("title", "id"))
+        self.assertEqual(ClusterIcon._meta.ordering, ("title", "id"))
 
         self.assertEqual(cluster_icon.get_size(), "[60,60]")
         self.assertEqual(cluster_icon.get_offset(), "[-30.0,-30.0]")
@@ -1152,15 +1152,15 @@ class ModelsTest(TestCase):
 
     def test_custom_marker_icon(self):
         """
-        Test the model of the CustomMarkerIcon with the default settings.
-        Тестирование модели CustomMarkerIcon с настройками по умолчанию.
+        Test the model of the MarkerIcon with the default settings.
+        Тестирование модели MarkerIcon с настройками по умолчанию.
         """
         custom_marker_icon = self.custom_marker_icon_1
         title_icon_collection = self.title_icon_collection
 
         collection = IconCollection.objects.create(title=title_icon_collection)
 
-        icon_marker = CustomMarkerIcon.objects.create(
+        icon_marker = MarkerIcon.objects.create(
             icon_collection=collection,
             title=custom_marker_icon,
             svg="test_marker.svg")
@@ -1168,9 +1168,9 @@ class ModelsTest(TestCase):
         self.assertEqual(collection.icons.count(), 1)
         self.assertEqual(icon_marker.icon_collection.icons.count(), 1)
 
-        self.assertFalse(CustomMarkerIcon._meta.get_field('title').unique)
-        self.assertFalse(CustomMarkerIcon._meta.get_field('title').blank)
-        self.assertEqual(CustomMarkerIcon._meta.get_field(
+        self.assertFalse(MarkerIcon._meta.get_field('title').unique)
+        self.assertFalse(MarkerIcon._meta.get_field('title').blank)
+        self.assertEqual(MarkerIcon._meta.get_field(
             'title').max_length, 60)
 
         self.assertTrue(bool(icon_marker.svg))
@@ -1180,7 +1180,7 @@ class ModelsTest(TestCase):
         self.assertEqual(icon_marker.offset_y, Decimal(-60))
         self.assertTrue(icon_marker.active)
         self.assertEqual(icon_marker.__str__(), custom_marker_icon)
-        self.assertEqual(CustomMarkerIcon._meta.ordering, ("title", "id"))
+        self.assertEqual(MarkerIcon._meta.ordering, ("title", "id"))
         self.assertEqual(icon_marker.get_collection_name(),
                          title_icon_collection)
 
@@ -1193,8 +1193,8 @@ class ModelsTest(TestCase):
 
     def test_icon_collection_full(self):
         """
-        Testing IconCollection model with Map and CustomMarkerIcon models.
-        Тестирование модели IconCollection с моделями Map и CustomMarkerIcon.
+        Testing IconCollection model with Map and MarkerIcon models.
+        Тестирование модели IconCollection с моделями Map и MarkerIcon.
         """
         title_icon_collection = self.title_icon_collection
         custom_marker_icon_1 = self.custom_marker_icon_1
@@ -1204,12 +1204,12 @@ class ModelsTest(TestCase):
         icon_collection = IconCollection.objects.create(
             title=title_icon_collection)
 
-        icon_marker_1 = CustomMarkerIcon.objects.create(
+        icon_marker_1 = MarkerIcon.objects.create(
             icon_collection=icon_collection,
             title=custom_marker_icon_1,
             svg="test_marker.svg")
 
-        icon_marker_2 = CustomMarkerIcon.objects.create(
+        icon_marker_2 = MarkerIcon.objects.create(
             icon_collection=icon_collection,
             title=custom_marker_icon_2,
             svg="test_marker.svg")
@@ -1303,3 +1303,4 @@ class ModelsTest(TestCase):
             'timestamp').get_internal_type(), 'DateTimeField')
         self.assertFalse(Statistics._meta.get_field(
             'timestamp').blank)
+'''

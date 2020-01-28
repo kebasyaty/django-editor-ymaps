@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-$$$$$___$$$$$$__$$$$$__$$__$$__$$___$$
-$$__$$______$$__$$______$$$$___$$$_$$$
-$$__$$______$$__$$$$_____$$____$$_$_$$
-$$__$$__$$__$$__$$_______$$____$$___$$
-$$$$$____$$$$___$$$$$____$$____$$___$$
-"""
+#   ____         ____    __    __
+#  /\  _`\    __/\  _`\ /\ \  /\ \/'\_/`\
+#  \ \ \/\ \ /\_\ \ \L\_\ `\`\\/'/\      \
+#   \ \ \ \ \\/\ \ \  _\L`\ `\ /'\ \ \__\ \
+#    \ \ \_\ \\ \ \ \ \L\ \`\ \ \ \ \ \_/\ \
+#     \ \____/_\ \ \ \____/  \ \_\ \ \_\\ \_\
+#      \/___//\ \_\ \/___/    \/_/  \/_/ \/_/
+#            \ \____/
+#             \/___/
 #
 #  Convenient use of the Yandex map service for web development on 
 #  the popular and free Django framework.
@@ -20,7 +22,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (1, 2, 17)
+VERSION = (2, 0)
 __version__ = '.'.join(map(str, VERSION))
 
 
@@ -35,7 +37,7 @@ setup(
     version=__version__,
     packages=find_packages(),
     include_package_data=True,
-    requires=['python (>= 3.5)', 'django (>= 2.0)'],
+    requires=['python (>= 3.6)', 'django (>= 2.0)'],
     description='Creating and editing Yandex maps.',
     long_description=long_description,
     long_description_content_type='text/x-rst',
@@ -47,22 +49,21 @@ setup(
     platforms=['any'],
     keywords=['django', 'yandex', 'maps', 'admin', 'editor'],
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Natural Language :: Russian',
         'Natural Language :: English',
         'Framework :: Django',
         'Framework :: Django :: 2.0',
-        'Framework :: Django :: 2.1',
-        'Framework :: Django :: 2.2',
+        'Framework :: Django :: 3.0',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Topic :: Scientific/Engineering :: GIS',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
@@ -71,9 +72,11 @@ setup(
         'Pillow',
         'django-imagekit',
         'python-slugify',
-        'django-ckeditor',
+        'django-ckeditor @ git+https://github.com/django-ckeditor/django-ckeditor.git',
         'lxml',
-        'django-smart-selects==1.5.3',
-        'django-ipware'
+        'django-ipware',
+        'django-colorful',
+        'django-admin-sortable'
     ],
 )
+

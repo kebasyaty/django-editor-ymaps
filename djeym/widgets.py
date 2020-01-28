@@ -5,39 +5,18 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 
-class ColorPickerWidget(forms.widgets.TextInput):
-
-    class Media:
-        css = {
-            'all': (
-                '/static/djeym/plugins/really-simple-color-picker/css/colorPicker.min.css',
-            )
-        }
-        js = (
-            '/static/djeym/js/jquery-3.3.1.min.js',
-            '/static/djeym/plugins/really-simple-color-picker/js/jquery.colorPicker.min.js',
-            '/static/djeym/js/admin_color_picker_widget.min.js'
-        )
-
-    def render(self, name, value, attrs=None, renderer=None):
-        """Render the widget as an HTML string."""
-        input_static = super(ColorPickerWidget, self).render(
-            name, value, attrs)
-        return mark_safe(input_static)
-
-
 class CenterMapWidget(forms.Widget):
 
     class Media:
         js = (
-            '/static/djeym/js/jquery-3.3.1.min.js',
+            '/static/djeym/js/jquery.min.js',
             '/static/djeym/js/admin_center_map_widget.min.js'
         )
 
     def render(self, name, value, attrs=None, renderer=None):
         """Render the widget as an HTML string."""
-        text_hint = _("To determine the center of the map, move the marker or "
-                      "click on the map in the right place.")
+        text_hint = _("To determine the center of the map - "
+                      "Move the marker or click on the map in the right place.")
         html_hint = "<div class=\"hint_center_map\">{}</div>".format(text_hint)
         html_map = "<div id=\"id_center_map\"></div>"
         text_input_html = "{0}{1}".format(html_hint, html_map)
@@ -48,7 +27,7 @@ class CheckIconOffsetWidget(forms.Widget):
 
     class Media:
         js = (
-            '/static/djeym/js/jquery-3.3.1.min.js',
+            '/static/djeym/js/jquery.min.js',
             '/static/djeym/js/admin_check_icon_offset_widget.min.js'
         )
 

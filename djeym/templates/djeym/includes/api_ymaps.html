@@ -1,0 +1,8 @@
+{# Load API Yandex Maps #}
+{% if api_key and is_enterprise %}
+<script src="https://enterprise.api-maps.yandex.ru/{{ api_version }}/?lang={{ lang }}&apikey={{ api_key }}&mode={{ mode }}&ns={{ ns }}" type="text/javascript"></script>
+{% elif api_key %}
+<script src="https://api-maps.yandex.ru/{{ api_version }}/?lang={{ lang }}&apikey={{ api_key }}&mode={{ mode }}&ns={{ ns }}" type="text/javascript"></script>
+{% else %}
+<script src="https://api-maps.yandex.ru/{{ api_version }}/?lang={{ lang }}&mode={{ mode }}&ns={{ ns }}" type="text/javascript"></script>
+{% endif %}

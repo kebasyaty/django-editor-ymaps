@@ -10,87 +10,85 @@ from django.core.files.base import ContentFile
 from django.db.models import Q
 from django.http import (FileResponse, HttpResponse, HttpResponseForbidden,
                          JsonResponse)
-from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView, View
 from ipware import get_client_ip
 from slugify import slugify
 
-from .__init__ import __version__
+from .__init__ import (__django_version__, __djeym_version__,
+                       __python_version__, __vue_version__,
+                       __vuetify_version__)
 from .decorators import ajax_login_required_and_staff
-from .forms import (CKEditorTextareaForm, GeneralSettingsForm,
-                    GeoObjectsTransferForm, HeatmapSettingsForm, HeatPointForm,
+from .forms import (BlockedIPForm, CKEditorTextareaForm, CustomPlacemarkForm,
+                    GeneralSettingsForm, HeatmapSettingsForm, HeatPointForm,
                     MapControlsForm, PlacemarkForm, PolygonForm, PolylineForm,
                     PresetForm)
 from .mixins import StaffRequiredMixin
-from .models import (CustomClusterIcon, CustomMarkerIcon, HeatPoint,
-                     IconCollection, LoadIndicator, Map, Placemark, Polygon,
-                     Polyline, Preset, Statistics, TileSource)
-from .utils import get_errors_form, get_icon_font_plugin
+from .models import (BlockedIP, ClusterIcon, HeatPoint, IconCollection,
+                     JsonSettings, LoadIndicator, Map, MarkerIcon, Placemark,
+                     Polygon, Polyline, Preset, Statistics, TileSource)
+from .signals_func import save_json_settings
+from .utils import get_errors_form
 
-DJEYM_YMAPS_ICONS_FOR_CATEGORIES = get_icon_font_plugin()
-
-
-class EditorYMap(StaffRequiredMixin, TemplateView):
-    """
-    Load the map to the editor page.
-    Загрузить карту на страницу редактора.
-    """
-    template_name = "djeym/ymeditor.html"
-
-    def get_context_data(self, **kwargs):
-        slug = kwargs.get("slug")
-        ymap = Map.objects.filter(slug=slug, active=True).first()
-        context = super(EditorYMap, self).get_context_data(**kwargs)
-
-        if ymap is not None:
-            controls = ymap.controls
-
-            if ymap.icon_collection is not None:
-                icons = ymap.icon_collection.icons.filter(active=True)
-            else:
-                icons = None
-
-            context['djeym_version'] = __version__
-            context['form_geo'] = GeoObjectsTransferForm(ymap_id=ymap.pk)
-            context['form_controls'] = MapControlsForm(instance=controls)
-            context['cluster'] = ymap.icon_cluster
-            context['icons'] = icons
-            context['tile'] = ymap.tile
-            context['presets'] = ymap.presets.all()
-            context['tile_sources'] = TileSource.objects.all()
-            context['controls'] = controls
-            context['external_modules'] = ymap.external_modules
-            context['heat_form'] = HeatmapSettingsForm(
-                instance=ymap.heatmap_settings)
-            context['general_settings'] = ymap.general_settings
-            context['load_indicators'] = LoadIndicator.objects.all()
-            context['selected_load_indicator'] = ymap.load_indicator
-            context['load_indicator_size'] = ymap.load_indicator_size
-            context['category_icons_css'] = [] if DJEYM_YMAPS_ICONS_FOR_CATEGORIES[2] else \
-                DJEYM_YMAPS_ICONS_FOR_CATEGORIES[0]
-            context['category_icons_js'] = [] if DJEYM_YMAPS_ICONS_FOR_CATEGORIES[2] else \
-                DJEYM_YMAPS_ICONS_FOR_CATEGORIES[1]
-            context['form_cke'] = CKEditorTextareaForm()
-            context['category_placemarks'] = ymap.category_placemark.filter(
-                active=True)
-            context['category_submarks'] = ymap.subcategory_placemark.filter(
-                active=True)
-            context['category_polylines'] = ymap.category_polyline.filter(
-                active=True)
-            context['category_polygons'] = ymap.category_polygon.filter(
-                active=True)
-
-        context['ymap'] = ymap
-        return context
+IS_DEVELOPMANT = False
 
 
+def vue_vendors_css_js(target):
+    """Vendors CSS and JS for a framework Vue.js"""
+
+    ctx = {}
+
+    if not IS_DEVELOPMANT:
+        if target == 'front':
+            ctx['vue_css_app'] = 'app.3a825e69.css'
+            ctx['vue_css_chunk_vendors'] = 'chunk-vendors.e7a238a9.css'
+            ctx['vue_js_app'] = 'app.79f3d87c.js'
+            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.179b8deb.js'
+            ctx['vue_js_app_legacy'] = 'app-legacy.95d7a569.js'
+            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.effb0686.js'
+        else:
+            ctx['vue_css_app'] = 'app.5f96edde.css'
+            ctx['vue_css_chunk_vendors'] = 'chunk-vendors.428d2d05.css'
+            ctx['vue_js_app'] = 'app.c0f35299.js'
+            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.73813080.js'
+            ctx['vue_js_app_legacy'] = 'app-legacy.efd53f0e.js'
+            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.790a5c43.js'
+    else:
+        # Automatically get CSS and JS for Vue.js (for development only).
+        import os
+        from django.conf import settings
+        css_path_dir = '{0}/djeym/nodymaps/{1}/css'.format(
+            settings.STATIC_ROOT, target)
+        js_path_dir = '{0}/djeym/nodymaps/{1}/js'.format(
+            settings.STATIC_ROOT, target)
+        css_name_list = os.listdir(path=css_path_dir)
+        js_name_list = os.listdir(path=js_path_dir)
+        vue_css_app = list(filter(lambda name: re.match(
+            r'^app.[0-9a-z]+.css$', name) is not None, css_name_list))[0]
+        vue_css_chunk_vendors = list(filter(lambda name: re.match(
+            r'^chunk-vendors.[0-9a-z]+.css$', name) is not None, css_name_list))[0]
+        vue_js_app = list(filter(lambda name: re.match(
+            r'^app.[0-9a-z]+.js$', name) is not None, js_name_list))[0]
+        vue_js_chunk_vendors = list(filter(lambda name: re.match(
+            r'^chunk-vendors.[0-9a-z]+.js$', name) is not None, js_name_list))[0]
+        vue_js_app_legacy = list(filter(lambda name: re.match(
+            r'^app-legacy.[0-9a-z]+.js$', name) is not None, js_name_list))[0]
+        vue_js_chunk_vendors_legacy = list(filter(lambda name: re.match(
+            r'^chunk-vendors-legacy.[0-9a-z]+.js$', name) is not None, js_name_list))[0]
+        ctx['vue_css_app'] = vue_css_app
+        ctx['vue_css_chunk_vendors'] = vue_css_chunk_vendors
+        ctx['vue_js_app'] = vue_js_app
+        ctx['vue_js_chunk_vendors'] = vue_js_chunk_vendors
+        ctx['vue_js_app_legacy'] = vue_js_app_legacy
+        ctx['vue_js_chunk_vendors_legacy'] = vue_js_chunk_vendors_legacy
+
+    return ctx
+
+
+# UPLOADING BALLOON CONTENT ------------------------------------------------------------------------
 class AjaxBalloonContent(View):
-    """
-    Ajax, load Balloon Content.
-    Ajax, загрузить содержимое балуна.
-    """
+    """Ajax - Upload Balloon Content."""
 
     @staticmethod
     def add_presets(presets, geoobject, geoobject_type, pk):
@@ -113,11 +111,11 @@ class AjaxBalloonContent(View):
         pk = request.GET.get('objID')
         obj_type = request.GET.get('objType')
         ids = request.GET.get('ids')
-        presets_bool = json.loads(request.GET.get('presetsBool'))
+        is_presets = eval(request.GET.get('isPresets'))
         presets = []
         sign_loading = '<div id="djeymSignLoaded"></div>'
 
-        if presets_bool:
+        if is_presets:
             presets = Preset.objects.filter(
                 Q(autoheader=True) | Q(autobody=True) | Q(autofooter=True))
 
@@ -135,7 +133,7 @@ class AjaxBalloonContent(View):
             if presets:
                 geoobject = self.add_presets(presets, geoobject, obj_type, pk)
 
-            geoobject.footer += sign_loading
+            geoobject.footer += sign_loading if is_presets else ''
             response_data = {
                 'header': mark_safe(geoobject.header),
                 'body': mark_safe(geoobject.body),
@@ -150,7 +148,7 @@ class AjaxBalloonContent(View):
                 if presets:
                     placemark = self.add_presets(
                         presets, placemark, obj_type, str(pk))
-                placemark.footer += sign_loading
+                placemark.footer += sign_loading if is_presets else ''
                 response_data[pk] = {
                     'header': mark_safe(placemark.header),
                     'body': mark_safe(placemark.body),
@@ -165,18 +163,16 @@ class AjaxBalloonContent(View):
         return super(AjaxBalloonContent, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxGetGeoObjectsPlacemark(View):
-    """
-    Ajax - Get Placemark type geo-objects for a website page or editor page.
-    Ajax - Получить геообъекты типа Placemark для страницы сайта или редактора.
-    """
+# UPLOADING GEO OBJECTS ----------------------------------------------------------------------------
+class AjaxUploadPlacemarks(View):
+    """Ajax - Upload placemarks to map."""
 
     def get(self, request, *args, **kwargs):
-        map_id = int(request.GET.get('map_id'))
+        map_id = int(request.GET.get('mapID'))
         offset = int(request.GET.get('offset'))
         limit = offset + 1000
 
-        geoobjects = Placemark.objects.filter(ymap__pk=map_id).values_list(
+        geoobjects = Placemark.objects.filter(ymap__pk=map_id, active=True).values_list(
             'json_code', flat=True)[offset:limit]
 
         response_data = '[' + ','.join(geoobjects) + ']'
@@ -186,21 +182,18 @@ class AjaxGetGeoObjectsPlacemark(View):
     def dispatch(self, request, *args, **kwargs):
         if not request.is_ajax():
             return HttpResponseForbidden()
-        return super(AjaxGetGeoObjectsPlacemark, self).dispatch(request, *args, **kwargs)
+        return super(AjaxUploadPlacemarks, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxGetHeatPoints(View):
-    """
-    Ajax - Get geo-objects of type heat point for a site page or editor.
-    Ajax - Получить геообъекты типа тепловая точка для страницы сайта или редактора.
-    """
+class AjaxUploadHeatPoints(View):
+    """Ajax - Upload heat points to map."""
 
     def get(self, request, *args, **kwargs):
-        map_id = int(request.GET.get('map_id'))
+        map_id = int(request.GET.get('mapID'))
         offset = int(request.GET.get('offset'))
         limit = offset + 1000
 
-        geoobjects = HeatPoint.objects.filter(ymap__pk=map_id).values_list(
+        geoobjects = HeatPoint.objects.filter(ymap__pk=map_id, active=True).values_list(
             'json_code', flat=True)[offset:limit]
 
         response_data = '[' + ','.join(geoobjects) + ']'
@@ -210,21 +203,18 @@ class AjaxGetHeatPoints(View):
     def dispatch(self, request, *args, **kwargs):
         if not request.is_ajax():
             return HttpResponseForbidden()
-        return super(AjaxGetHeatPoints, self).dispatch(request, *args, **kwargs)
+        return super(AjaxUploadHeatPoints, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxGetGeoObjectsPolyline(View):
-    """
-    Ajax - Get Polyline type geo-objects for a website page or editor page.
-    Ajax - Получить геообъекты типа Polyline для страницы сайта или редактора.
-    """
+class AjaxUploadPolylines(View):
+    """Ajax - Upload polylines to map."""
 
     def get(self, request, *args, **kwargs):
-        map_id = int(request.GET.get('map_id'))
+        map_id = int(request.GET.get('mapID'))
         offset = int(request.GET.get('offset'))
         limit = offset + 500
 
-        geoobjects = Polyline.objects.filter(ymap__pk=map_id).values_list(
+        geoobjects = Polyline.objects.filter(ymap__pk=map_id, active=True).values_list(
             'json_code', flat=True)[offset:limit]
 
         response_data = '[' + ','.join(geoobjects) + ']'
@@ -234,21 +224,18 @@ class AjaxGetGeoObjectsPolyline(View):
     def dispatch(self, request, *args, **kwargs):
         if not request.is_ajax():
             return HttpResponseForbidden()
-        return super(AjaxGetGeoObjectsPolyline, self).dispatch(request, *args, **kwargs)
+        return super(AjaxUploadPolylines, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxGetGeoObjectsPolygon(View):
-    """
-    Ajax - Get Polygon type geo-objects for a website page or editor page.
-    Ajax - Получить геообъекты типа Polygon для страницы сайта или редактора.
-    """
+class AjaxUploadPolygons(View):
+    """Ajax - Upload polygons to map."""
 
     def get(self, request, *args, **kwargs):
-        map_id = int(request.GET.get('map_id'))
+        map_id = int(request.GET.get('mapID'))
         offset = int(request.GET.get('offset'))
         limit = offset + 500
 
-        geoobjects = Polygon.objects.filter(ymap__pk=map_id).values_list(
+        geoobjects = Polygon.objects.filter(ymap__pk=map_id, active=True).values_list(
             'json_code', flat=True)[offset:limit]
 
         response_data = '[' + ','.join(geoobjects) + ']'
@@ -258,20 +245,78 @@ class AjaxGetGeoObjectsPolygon(View):
     def dispatch(self, request, *args, **kwargs):
         if not request.is_ajax():
             return HttpResponseForbidden()
-        return super(AjaxGetGeoObjectsPolygon, self).dispatch(request, *args, **kwargs)
+        return super(AjaxUploadPolygons, self).dispatch(request, *args, **kwargs)
 
 
+# UPLOADING MAP AND SETTINGS TO THE EDITOR PAGE AND FRONT PAGE -------------------------------------
+class YMapEditor(StaffRequiredMixin, TemplateView):
+    """Load the map to the editor page."""
+
+    template_name = "djeym/ymaps_editor.html"
+
+    def get_context_data(self, **kwargs):
+        slug = kwargs.get('slug')
+        ymap = Map.objects.filter(slug=slug, active=True).first()
+        context = super(YMapEditor, self).get_context_data(**kwargs)
+
+        if ymap is not None:
+            context['load_indicator'] = ymap.load_indicator
+            context['load_indicator_size'] = ymap.load_indicator_size
+            context['form_cke'] = CKEditorTextareaForm()
+            context['djeym_version'] = __djeym_version__
+            context['python_version'] = '>= ' + __python_version__
+            context['django_version'] = '>= ' + __django_version__
+            context['vue_version'] = '== ' + __vue_version__
+            context['vuetify_version'] = '== ' + __vuetify_version__
+            context['is_heatmap'] = ymap.heatmap_settings.active
+            context['is_round_theme'] = ymap.general_settings.roundtheme
+            context['presets'] = ymap.presets.values_list('js', flat=True)
+            vue_vendors = vue_vendors_css_js('editor')
+            context.update(vue_vendors)
+
+        context['ymap'] = ymap
+        return context
+
+
+class AjaxUploadSettingsEditor(View):
+    """Ajax - Upload the settings for the editor page."""
+
+    def get(self, request, *args, **kwargs):
+        map_id = int(request.GET.get('mapID'))
+        response_data = Map.objects.get(pk=map_id).json_settings.editor
+
+        return HttpResponse(response_data, content_type="application/json")
+
+    @ajax_login_required_and_staff
+    def dispatch(self, request, *args, **kwargs):
+        return super(AjaxUploadSettingsEditor, self).dispatch(request, *args, **kwargs)
+
+
+class AjaxUploadSettingsFront(View):
+    """Ajax - Upload the settings for the front page."""
+
+    def get(self, request, *args, **kwargs):
+        map_id = int(request.GET.get('mapID'))
+        response_data = Map.objects.get(pk=map_id).json_settings.front
+
+        return HttpResponse(response_data, content_type="application/json")
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.is_ajax():
+            return HttpResponseForbidden()
+        return super(AjaxUploadSettingsFront, self).dispatch(request, *args, **kwargs)
+
+
+# GEO OBJECTS - SAVING | UPDATING | DELETING -------------------------------------------------------
 class AjaxSaveGeoObjects(View):
-    """
-    Save geo-objects to database.
-    Сохранить геообъекты в базу данных.
-    """
+    """Geo objects - saving, updating and deleting"""
 
     def post(self, request, *args, **kwargs):
         pk = int(request.POST.get('pk'))
-        geo_type = request.POST.get('geo_type')
+        geo_type = request.POST.get('geoType')
         action = request.POST.get('action')
 
+        # Heatpoint
         if geo_type == 'heatpoint':
 
             if action == 'save':
@@ -297,7 +342,8 @@ class AjaxSaveGeoObjects(View):
                 HeatPoint.objects.get(id=pk).delete()
                 response_data = '[]'
 
-        if geo_type == 'placemark':
+        # Placemark
+        elif geo_type == 'placemark':
 
             if action == 'save':
 
@@ -322,6 +368,7 @@ class AjaxSaveGeoObjects(View):
                 Placemark.objects.get(id=pk).delete()
                 response_data = '[]'
 
+        # Polyline
         elif geo_type == 'polyline':
 
             if action == 'save':
@@ -347,6 +394,7 @@ class AjaxSaveGeoObjects(View):
                 Polyline.objects.get(id=pk).delete()
                 response_data = '[]'
 
+        # Polygon
         elif geo_type == 'polygon':
 
             if action == 'save':
@@ -379,35 +427,73 @@ class AjaxSaveGeoObjects(View):
         return super(AjaxSaveGeoObjects, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxCustomClusterIcon(View):
-    """
-    Ajax - Upload a custom cluster icon for admin panel.
-    Ajax - Загрузка иконок пользовательского кластера для панели администратора.
-    """
+class AjaxSaveCusotmMarker(View):
+    """Ajax - Save cusotm marker"""
+
+    def post(self, request, *args, **kwargs):
+        client_ip, is_routable = get_client_ip(request)
+
+        if BlockedIP.objects.filter(ip=client_ip).count() == 0:
+            form = CustomPlacemarkForm(request.POST)
+
+            if form.is_valid():
+                marker = form.save(commit=False)
+                marker.user_ip = client_ip
+                marker.user_image = request.FILES.get('user_image', None)
+                marker.save()
+                form.save_m2m()
+            else:
+                response_data = {'detail': get_errors_form(form)['detail']}
+                return JsonResponse(response_data, status=400)
+
+        response_data = {'Success': True}
+        return JsonResponse(response_data)
+
+
+# BLOCK IP ADDRESSES -------------------------------------------------------------------------------
+class AjaxBlockIPAddress(View):
+    """Ajax - Block ip address"""
+
+    def post(self, request, *args, **kwargs):
+        form = BlockedIPForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+        else:
+            response_data = {'detail': get_errors_form(form)['detail']}
+            return JsonResponse(response_data, status=400)
+
+        response_data = {'Success': True}
+        return JsonResponse(response_data)
 
     @ajax_login_required_and_staff
-    def dispatch(self, *args, **kwargs):
-        request = self.request
+    def dispatch(self, request, *args, **kwargs):
+        return super(AjaxBlockIPAddress, self).dispatch(request, *args, **kwargs)
 
+
+# UPLOADING - SCREENSHOTS,EXAMPLE ICON, ICON COLLECTION --------------------------------------------
+# (For admin panel.)
+class AjaxClusterIcon(View):
+    """Ajax - Upload a example of cluster icon to admin panel."""
+
+    def get(self, request, *args, **kwargs):
         icon_id = request.GET.get("obj_id")
-        icon = CustomClusterIcon.objects.filter(pk=icon_id).first()
+        icon = ClusterIcon.objects.filter(pk=icon_id).first()
 
         if icon is not None:
             return JsonResponse({"url": icon.svg.url})
         else:
             return JsonResponse({"detail": "Icon not found."}, status=404)
 
+    @ajax_login_required_and_staff
+    def dispatch(self, request, *args, **kwargs):
+        return super(AjaxClusterIcon, self).dispatch(request, *args, **kwargs)
+
 
 class AjaxLoadIndicatorIcon(View):
-    """
-    Ajax - Download icons for the download indicator, for the admin panel.U
-    Ajax - Загрузка иконок для индикатора загрузки, для панели администратора.
-    """
+    """Ajax - Upload a example of icon for Upload Indicator to admin panel."""
 
-    @ajax_login_required_and_staff
-    def dispatch(self, *args, **kwargs):
-        request = self.request
-
+    def get(self, request, *args, **kwargs):
         icon_id = request.GET.get("obj_id")
         icon = LoadIndicator.objects.filter(pk=icon_id).first()
 
@@ -416,19 +502,17 @@ class AjaxLoadIndicatorIcon(View):
         else:
             return JsonResponse({"detail": "Icon not found."}, status=404)
 
+    @ajax_login_required_and_staff
+    def dispatch(self, request, *args, **kwargs):
+        return super(AjaxLoadIndicatorIcon, self).dispatch(request, *args, **kwargs)
+
 
 class AjaxCollectionExampleIcon(View):
-    """
-    Ajax - Upload a custom cluster icon for admin panel.
-    Ajax - Загрузка иконки примера из коллекции для панели администратора.
-    """
+    """Ajax - Upload a example of cluster icon to admin panel."""
 
-    @ajax_login_required_and_staff
-    def dispatch(self, *args, **kwargs):
-        request = self.request
-
+    def get(self, request, *args, **kwargs):
         collection_id = request.GET.get("obj_id")
-        icon = CustomMarkerIcon.objects.filter(
+        icon = MarkerIcon.objects.filter(
             icon_collection__pk=collection_id).first()
 
         if icon is not None:
@@ -436,17 +520,15 @@ class AjaxCollectionExampleIcon(View):
         else:
             return JsonResponse({"detail": "Icon not found."}, status=404)
 
+    @ajax_login_required_and_staff
+    def dispatch(self, request, *args, **kwargs):
+        return super(AjaxCollectionExampleIcon, self).dispatch(request, *args, **kwargs)
+
 
 class AjaxTileScreenshot(View):
-    """
-    Ajax - Upload a screenshot of the tile.
-    Ajax - Загрузить скриншот плитки.
-    """
+    """Ajax - Upload a example of screenshot of the tile to admin panel."""
 
-    @ajax_login_required_and_staff
-    def dispatch(self, *args, **kwargs):
-        request = self.request
-
+    def get(self, request, *args, **kwargs):
         source_id = request.GET.get("obj_id")
         tile_source = TileSource.objects.filter(pk=source_id).first()
 
@@ -455,20 +537,41 @@ class AjaxTileScreenshot(View):
         else:
             return JsonResponse({"detail": "Screenshot not found."}, status=404)
 
+    @ajax_login_required_and_staff
+    def dispatch(self, request, *args, **kwargs):
+        return super(AjaxTileScreenshot, self).dispatch(request, *args, **kwargs)
 
-class AjaxTileSourceChange(View):
-    """
-    Ajax - Tile Source Change.
-    Ajax - Смена источника тайлов.
-    """
+
+class AjaxIconCollection(View):
+    """Ajax - Upload icon collection for custom marker."""
+
+    def get(self, request, *args, **kwargs):
+        map_id = int(request.GET.get('mapID'))
+        icon_collection = Map.objects.get(
+            pk=map_id).icon_collection.icons.filter(active=True)
+
+        if icon_collection:
+            icon_collection = [{"url": item.svg.url, "slug": item.slug}
+                               for item in icon_collection]
+            return JsonResponse({"iconCollection": icon_collection})
+        else:
+            return JsonResponse({"detail": "Icon Collection not found."}, status=404)
+
+    @ajax_login_required_and_staff
+    def dispatch(self, request, *args, **kwargs):
+        return super(AjaxIconCollection, self).dispatch(request, *args, **kwargs)
+
+
+# SAVING CHANGES -----------------------------------------------------------------------------------
+class AjaxUpdateTileSource(View):
+    """Ajax - Tile source replacement."""
 
     def post(self, request, *args, **kwargs):
-        map_id = request.POST.get('map_id')
-        tile_id = int(request.POST.get('tile_id'))
+        map_id = request.POST.get('mapID')
+        tile_id = int(request.POST.get('tileID'))
 
         ymap = Map.objects.get(pk=map_id)
-        ymap.tile = TileSource.objects.get(
-            pk=tile_id) if tile_id != 0 else None
+        ymap.tile = TileSource.objects.get(pk=tile_id) if tile_id > 0 else None
         ymap.save()
 
         response_data = {'successfully': True}
@@ -476,17 +579,14 @@ class AjaxTileSourceChange(View):
 
     @ajax_login_required_and_staff
     def dispatch(self, request, *args, **kwargs):
-        return super(AjaxTileSourceChange, self).dispatch(request, *args, **kwargs)
+        return super(AjaxUpdateTileSource, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxLoadIndicatorChange(View):
-    """
-    Ajax - Change the download indicator.
-    Ajax - Изменить индикатор загрузки.
-    """
+class AjaxUpdateLoadIndicator(View):
+    """Ajax - Change the Load Indicator."""
 
     def post(self, request, *args, **kwargs):
-        map_id = int(request.POST.get('map_id'))
+        map_id = int(request.POST.get('mapID'))
         slug = request.POST.get('slug')
         size = int(request.POST.get('size'))
         speed = request.POST.get('speed')
@@ -496,7 +596,7 @@ class AjaxLoadIndicatorChange(View):
         ymap.load_indicator = LoadIndicator.objects.filter(slug=slug).first()
         ymap.load_indicator_size = size
         ymap.animation_speed = speed
-        ymap.disable_indicator_animation = animation
+        ymap.disable_indicator_animation = eval(animation)
         ymap.save()
 
         response_data = {'successfully': True}
@@ -504,28 +604,26 @@ class AjaxLoadIndicatorChange(View):
 
     @ajax_login_required_and_staff
     def dispatch(self, request, *args, **kwargs):
-        return super(AjaxLoadIndicatorChange, self).dispatch(request, *args, **kwargs)
+        return super(AjaxUpdateLoadIndicator, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxGeneralSettings(View):
-    """
-    Ajax - Update general settings.
-    Ajax - Обновите общие настройки.
-    """
+class AjaxUpdateGeneralSettings(View):
+    """Ajax - Update general settings."""
 
     def post(self, request, *args, **kwargs):
         map_id = request.POST.get('ymap')
-        roundtheme_bool = True if request.POST.get(
-            'roundtheme') is not None else False
         ymap = Map.objects.get(pk=map_id)
+        img_bg_panel_front_b64 = request.POST.get('img_bg_panel_front_b64', "")
         form = GeneralSettingsForm(
             request.POST, instance=ymap.general_settings)
 
         if form.is_valid():
-            form.save()
-            external_modules = ymap.external_modules
-            external_modules.roundtheme = roundtheme_bool
-            external_modules.save()
+            instance = form.save(commit=False)
+            if len(img_bg_panel_front_b64) > 0:
+                img_bg_panel_front_b64 = img_bg_panel_front_b64.split(',')[1]
+                instance.img_bg_panel_front = ContentFile(
+                    base64.b64decode(img_bg_panel_front_b64), 'pic.jpg')
+            instance.save()
         else:
             response_data = {'detail': get_errors_form(form)['detail']}
             return JsonResponse(response_data, status=400)
@@ -535,19 +633,34 @@ class AjaxGeneralSettings(View):
 
     @ajax_login_required_and_staff
     def dispatch(self, request, *args, **kwargs):
-        return super(AjaxGeneralSettings, self).dispatch(request, *args, **kwargs)
+        return super(AjaxUpdateGeneralSettings, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxMapControls(View):
-    """
-    Ajax - Update selection of map controls.
-    Ajax - Обновить выбор элементов управления картой.
-    """
+class AjaxDeleteImgBgPanelFront(View):
+    """Ajax - Delete the background image for the panel."""
+
+    def post(self, request, *args, **kwargs):
+        map_id = request.POST.get('mapID')
+        ymap = Map.objects.get(pk=map_id)
+        general_settings = ymap.general_settings
+        general_settings.img_bg_panel_front = None
+        general_settings.save()
+
+        response_data = {'successfully': True}
+        return JsonResponse(response_data)
+
+    @ajax_login_required_and_staff
+    def dispatch(self, request, *args, **kwargs):
+        return super(AjaxDeleteImgBgPanelFront, self).dispatch(request, *args, **kwargs)
+
+
+class AjaxUpdateMapControls(View):
+    """Ajax - Update Map controls."""
 
     def post(self, request, *args, **kwargs):
         map_id = request.POST.get('ymap')
-        controls = Map.objects.get(pk=map_id).controls
-        form = MapControlsForm(request.POST, instance=controls)
+        map_controls = Map.objects.get(pk=map_id).map_controls
+        form = MapControlsForm(request.POST, instance=map_controls)
 
         if form.is_valid():
             form.save()
@@ -560,14 +673,11 @@ class AjaxMapControls(View):
 
     @ajax_login_required_and_staff
     def dispatch(self, request, *args, **kwargs):
-        return super(AjaxMapControls, self).dispatch(request, *args, **kwargs)
+        return super(AjaxUpdateMapControls, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxHeatmapSettings(View):
-    """
-    Ajax - Update heatmap settings.
-    Ajax - Обновить настройки тепловой карты.
-    """
+class AjaxUpdateHeatmapSettings(View):
+    """Ajax - Update Heatmap settings."""
 
     def post(self, request, *args, **kwargs):
         map_id = request.POST.get('ymap')
@@ -586,73 +696,71 @@ class AjaxHeatmapSettings(View):
 
     @ajax_login_required_and_staff
     def dispatch(self, request, *args, **kwargs):
-        return super(AjaxHeatmapSettings, self).dispatch(request, *args, **kwargs)
+        return super(AjaxUpdateHeatmapSettings, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxActivateHeatmap(View):
-    """
-    Ajax - Activate Heatmap.
-    Ajax - Активировать Тепловую карту.
-    """
+class AjaxUpdatePresetSettings(View):
+    """Ajax - Update Preset settings."""
+
+    def post(self, request, *args, **kwargs):
+        map_id = request.POST.get('ymap')
+        preset_id = request.POST.get('presetID')
+        ymap = Map.objects.get(pk=map_id)
+        preset = Preset.objects.get(pk=preset_id, ymap=ymap)
+        form = PresetForm(request.POST, instance=preset)
+
+        if form.is_valid():
+            form.save()
+        else:
+            response_data = {'detail': get_errors_form(form)['detail']}
+            return JsonResponse(response_data, status=400)
+
+        presets = ymap.presets.all()
+        presets = [{
+            'id': item.pk,
+            'title': item.title,
+            'icon': item.icon,
+            'description': item. description,
+            'autoheader': item.autoheader,
+            'autobody': item.autobody,
+            'autofooter': item.autofooter,
+            'placemark': item.placemark,
+            'polyline': item.polyline,
+            'polygon': item.polygon,
+            'position': item.position
+        } for item in presets]
+
+        response_data = {'presets': presets}
+        return JsonResponse(response_data)
+
+    @ajax_login_required_and_staff
+    def dispatch(self, request, *args, **kwargs):
+        return super(AjaxUpdatePresetSettings, self).dispatch(request, *args, **kwargs)
+
+
+class AjaxUpdateFiltersCategories(View):
+    """Ajax - Update filters of categories"""
 
     def post(self, request, *args, **kwargs):
         map_id = request.POST.get('mapID')
-        heatmap_bool = request.POST.get('heatmap')
-        external_modules = Map.objects.get(pk=map_id).external_modules
+        json_categories = request.POST.get('jsonCategories')
 
-        external_modules.heatmap = heatmap_bool
-        external_modules.save()
+        json_settings = JsonSettings.objects.get(ymap__pk=map_id)
+        editor = json.loads(json_settings.editor)
+        editor['categories'] = json.loads(json_categories)
+        save_json_settings(json_settings, editor)
 
         response_data = {'successfully': True}
         return JsonResponse(response_data)
 
     @ajax_login_required_and_staff
     def dispatch(self, request, *args, **kwargs):
-        return super(AjaxActivateHeatmap, self).dispatch(request, *args, **kwargs)
+        return super(AjaxUpdateFiltersCategories, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxHeatmapUndoSettings(View):
-    """
-    Ajax - Heatmap, reset to default settings.
-    Ajax - Тепловая карта, сброс к настройкам по умолчанию.
-    """
-
-    def post(self, request, *args, **kwargs):
-        map_id = request.POST.get('map_id')
-        heatmap_settings = Map.objects.get(pk=map_id).heatmap_settings
-
-        heatmap_settings.radius = 10
-        heatmap_settings.dissipating = False
-        heatmap_settings.opacity = '0.8'
-        heatmap_settings.intensity = '0.2'
-        heatmap_settings.gradient_color1 = '#56db40b3'
-        heatmap_settings.gradient_color2 = '#ffd21ecc'
-        heatmap_settings.gradient_color3 = '#ed4543e6'
-        heatmap_settings.gradient_color4 = '#b22222'
-        heatmap_settings.save()
-
-        response_data = {
-            'radius': int(heatmap_settings.radius),
-            'dissipating': heatmap_settings.dissipating,
-            'opacity': float(heatmap_settings.opacity),
-            'intensityOfMidpoint': float(heatmap_settings.intensity),
-            'gradient_color1': heatmap_settings.gradient_color1,
-            'gradient_color2': heatmap_settings.gradient_color2,
-            'gradient_color3': heatmap_settings.gradient_color3,
-            'gradient_color4': heatmap_settings.gradient_color4
-        }
-        return JsonResponse(response_data)
-
-    @ajax_login_required_and_staff
-    def dispatch(self, request, *args, **kwargs):
-        return super(AjaxHeatmapUndoSettings, self).dispatch(request, *args, **kwargs)
-
-
+# GETTING AND UPDATING - LIKES | DISLIKES ----------------------------------------------------------
 class AjaxUpdateLikes(View):
-    """
-    Ajax - Update current value of likes.
-    Ajax - Обновить текущее значения лайков.
-    """
+    """Ajax - Getting and updating likes;dislikes."""
 
     def get(self, request, *args, **kwargs):
         obj_type = request.GET.get('djeymObjectType')
@@ -726,46 +834,69 @@ class AjaxUpdateLikes(View):
         return JsonResponse(response_data)
 
     def dispatch(self, request, *args, **kwargs):
+        if not request.is_ajax():
+            return HttpResponseForbidden()
         return super(AjaxUpdateLikes, self).dispatch(request, *args, **kwargs)
 
 
-class AjaxUpdatePresetSettings(View):
-    """
-    Ajax - Update Preset settings.
-    Ajax - Обновить настройки Пресета.
-    """
+# HEATMAP - ACTIVATE | RESET -----------------------------------------------------------------------
+class AjaxActivateHeatmap(View):
+    """Ajax - Activate Heatmap."""
 
     def post(self, request, *args, **kwargs):
-        map_id = request.POST.get('ymap')
-        preset_id = request.POST.get('pk')
-        preset = Preset.objects.get(pk=preset_id)
-        form = PresetForm(request.POST, instance=preset)
+        map_id = request.POST.get('mapID')
+        heatmap_bool = request.POST.get('heatmap')
+        external_modules = Map.objects.get(pk=map_id).external_modules
 
-        if form.is_valid():
-            form.save()
-            ymap = Map.objects.get(pk=map_id)
-            presets = ymap.presets.all()
-            rendered_presets = render_to_string(
-                'djeym/includes/presets.html',
-                {'presets': presets, 'ymap': ymap},
-                request=request)
-        else:
-            response_data = {'detail': get_errors_form(form)['detail']}
-            return JsonResponse(response_data, status=400)
+        external_modules.heatmap = heatmap_bool
+        external_modules.save()
 
-        response_data = {'html': rendered_presets}
+        response_data = {'successfully': True}
         return JsonResponse(response_data)
 
     @ajax_login_required_and_staff
     def dispatch(self, request, *args, **kwargs):
-        return super(AjaxUpdatePresetSettings, self).dispatch(request, *args, **kwargs)
+        return super(AjaxActivateHeatmap, self).dispatch(request, *args, **kwargs)
 
 
+class AjaxHeatmapUndoSettings(View):
+    """Ajax - Heatmap, reset to default settings."""
+
+    def post(self, request, *args, **kwargs):
+        map_id = request.POST.get('map_id')
+        heatmap_settings = Map.objects.get(pk=map_id).heatmap_settings
+
+        heatmap_settings.radius = 10
+        heatmap_settings.dissipating = False
+        heatmap_settings.opacity = '0.8'
+        heatmap_settings.intensity = '0.2'
+        heatmap_settings.gradient_color1 = '#66BB6A'
+        heatmap_settings.gradient_color2 = '#FDD835'
+        heatmap_settings.gradient_color3 = '#EF5350'
+        heatmap_settings.gradient_color4 = '#B71C1C'
+        heatmap_settings.save()
+
+        response_data = {
+            'radius': int(heatmap_settings.radius),
+            'dissipating': heatmap_settings.dissipating,
+            'opacity': float(heatmap_settings.opacity),
+            'intensityOfMidpoint': float(heatmap_settings.intensity),
+            'gradient_color1': heatmap_settings.gradient_color1,
+            'gradient_color2': heatmap_settings.gradient_color2,
+            'gradient_color3': heatmap_settings.gradient_color3,
+            'gradient_color4': heatmap_settings.gradient_color4
+        }
+        return JsonResponse(response_data)
+
+    @ajax_login_required_and_staff
+    def dispatch(self, request, *args, **kwargs):
+        return super(AjaxHeatmapUndoSettings, self).dispatch(request, *args, **kwargs)
+
+
+# IMPORT | EXPORT ----------------------------------------------------------------------------------
+# (Icon Collections and Tile Sources)
 class AjaxImportIconCollection(View):
-    """
-    Import the collection of icons from the json file to the database.
-    Импортировать коллекцию иконок из файла json в базу данных.
-    """
+    """Ajax - Import icon collection from the json file to the database."""
 
     def post(self, request, *args, **kwargs):
         with request.FILES.get('collection').file as json_file:
@@ -784,7 +915,7 @@ class AjaxImportIconCollection(View):
 
         for icon in icons:
             with io.BytesIO(icon['svg'].encode('utf-8')) as svg:
-                marker_icon = CustomMarkerIcon.objects.create(
+                marker_icon = MarkerIcon.objects.create(
                     icon_collection=collection,
                     title=icon['title'],
                     size_width=icon['size_width'],
@@ -803,10 +934,7 @@ class AjaxImportIconCollection(View):
 
 
 class ExportIconCollection(StaffRequiredMixin, View):
-    """
-    Export a collection of icons from a database into a json file.
-    Экспортировать коллекцию иконок из базы данных в файл json.
-    """
+    """Export a icon collection from a database to a json file."""
 
     def dispatch(self, request, *args, **kwargs):
         slug = kwargs.get("slug")
@@ -848,10 +976,7 @@ class ExportIconCollection(StaffRequiredMixin, View):
 
 
 class AjaxImportTileSource(View):
-    """
-    Import tile layer sources from json file to database.
-    Импортировать источники тайловых слоев из файла json в базу данных.
-    """
+    """Import tile sources from json file to database."""
 
     def post(self, request, *args, **kwargs):
         with request.FILES.get('sources').file as json_file:
@@ -887,10 +1012,7 @@ class AjaxImportTileSource(View):
 
 
 class ExportTileSource(StaffRequiredMixin, View):
-    """
-    Export tile layer sources from a database to a json file.
-    Экспортировать источники тайловых слоев из базы данных в файл json.
-    """
+    """Export tile sources from a database to a json file."""
 
     def dispatch(self, request, *args, **kwargs):
         sources = TileSource.objects.all()

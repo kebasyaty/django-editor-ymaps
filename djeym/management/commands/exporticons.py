@@ -7,7 +7,11 @@ from django.db import IntegrityError, transaction
 from django.utils.translation import ugettext as _
 from slugify import slugify
 
-from djeym.models import CustomMarkerIcon, IconCollection
+from djeym.models import IconCollection, MarkerIcon
+
+# --name - 'Icon Collection Name
+# --path - '/home/user_name/The path to the directory with icons'
+# python manage.py exporticons --name '' --path ''
 
 
 class Command(BaseCommand):
@@ -39,7 +43,7 @@ class Command(BaseCommand):
                 for icon in icon_list:
                     icon_path = "{0}/{1}".format(dir_path, icon)
                     with open(icon_path, mode='rb') as svg_file:
-                        CustomMarkerIcon.objects.create(
+                        MarkerIcon.objects.create(
                             icon_collection=collection,
                             title=os.path.splitext(icon)[0],
                             svg=File(svg_file))

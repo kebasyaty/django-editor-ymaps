@@ -1,0 +1,37 @@
+{% if ymap %}
+{% load i18n static djeymtags %}
+{% with lang.0 as language_code %}
+<link href="{% static 'djeym/nodymaps/front/css/'|add:vue_css_chunk_vendors %}" rel="stylesheet">
+<link href="{% static 'djeym/nodymaps/front/css/'|add:vue_css_app %}" rel="stylesheet">
+{% if load_indicator %}
+  {% widthratio load_indicator_size 2 1 as margin_offset %}
+  <style type="text/css">
+    #djeymModalLock { display: block; }
+    #djeymLoadIndicator {
+        width: {{ load_indicator_size }}px;
+        height: {{ load_indicator_size }}px;
+        margin: -{{ margin_offset }}px 0 0 -{{ margin_offset }}px;
+        content: url('{{ load_indicator.svg.url }}');
+        {% if not ymap.disable_indicator_animation %}animation: djeym-spin {{ ymap.animation_speed }}s infinite linear;{% endif %}
+    }
+  </style>
+{% endif %}
+<script>
+  var djeymMapID = {{ ymap.pk }},
+    djeymCSRFToken = '{{ csrf_token }}',
+    djeymLanguageCode = '{{ language_code }}',
+    djeymWidthMap = '{{ width_map_front }}',
+    djeymHeightMap = '{{ height_map_front }}',
+    djeymBalloonMinHeight = {% if load_indicator %}{{ load_indicator_size }} + 40{% else %}60{% endif %};
+</script>
+{% djeym_load_api_ymaps language_code %}
+{% if is_heatmap %}<script src="{% static "djeym/plugins/heatmap/heatmap.min.js" %}"></script>{% endif %}
+{% if is_round_theme %}<script src="{% static "djeym/plugins/round-theme/all.min.js" %}"></script>{% endif %}
+<script type="text/javascript">{% for preset in presets %}{{ preset|safe }}{% endfor %}</script>
+<script type="module" src="{% static 'djeym/nodymaps/front/js/'|add:vue_js_chunk_vendors %}"></script>
+<script type="module" src="{% static 'djeym/nodymaps/front/js/'|add:vue_js_app %}"></script>
+<script>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()},!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+<script src="{% static 'djeym/nodymaps/front/js/'|add:vue_js_chunk_vendors_legacy %}" nomodule></script>
+<script src="{% static 'djeym/nodymaps/front/js/'|add:vue_js_app_legacy %}" nomodule></script>
+{% endwith %}
+{% endif %}

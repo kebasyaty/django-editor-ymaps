@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class StaffRequiredMixin:
     """
-    View mixin which requires that the authenticated user is a staff member
+    Mixin which requires that the authenticated user is a staff member
     (i.e. `is_staff` is True).
     """
     # login_required(redirect_field_name='next', login_url=None)

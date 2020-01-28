@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json
 import math
 import os
 import re
@@ -8,50 +9,16 @@ from decimal import Decimal
 from io import BytesIO
 from pathlib import Path
 
-from django.conf import settings
+from django.apps import apps
 from django.core.exceptions import ValidationError
 from django.db.models.fields.files import FileDescriptor, ImageFileDescriptor
 from django.utils.translation import ugettext_lazy as _
 from imagekit.models import ImageSpecField
 from lxml import etree
 
-# Maximum size of icons for markers and clusters of Yandex maps.
-# (Максимальный размер иконок для маркеров и кластеров Яндекс карт.)
-DJEYM_YMAPS_ICONS_MAX_SIZE = 60
+from .globals import DJEYM_YMAPS_ICONS_MAX_SIZE
 
-
-def validate_image(image):
-    extension_list = ['.jpg', '.jpeg', '.png']
-    size = image.size
-    extension = Path(image.name).suffix.lower()
-
-    if extension not in extension_list:
-        raise ValidationError(_('Only JPG or PNG format files.'))
-    elif not size:
-        raise ValidationError(_('Image cannot be 0.0 mb.'))
-    elif not size or size > 524288:
-        raise ValidationError(_('Maximum image size 0.5 mb.'))
-
-
-def validate_hex_color(color):
-    if re.match(r'^#[0-9a-f]{3,8}$', color, re.I) is None:
-        raise ValidationError(_('Color does not match the hex standard.'))
-
-
-def get_icon_font_plugin():
-    """Get plug-in files for icon font."""
-    icons_default_bool = False
-    ymaps_icons_for_categories_css = getattr(
-        settings, 'DJEYM_YMAPS_ICONS_FOR_CATEGORIES_CSS', None)
-    ymaps_icons_for_categories_js = getattr(
-        settings, 'DJEYM_YMAPS_ICONS_FOR_CATEGORIES_JS', None)
-    if not bool(ymaps_icons_for_categories_css) or not bool(ymaps_icons_for_categories_js):
-        icons_default_bool = True
-        ymaps_icons_for_categories_css = [
-            '/static/djeym/plugins/fontawesome/css/all.min.css']
-        ymaps_icons_for_categories_js = [
-            '/static/djeym/plugins/fontawesome/js/all.min.js']
-    return ymaps_icons_for_categories_css, ymaps_icons_for_categories_js, icons_default_bool
+# SIZE CORRECTION ----------------------------------------------------------------------------------
 
 
 def get_size_correction(width, height):
@@ -75,6 +42,21 @@ def get_size_from_svg(svg):
             "height": int(Decimal(root.get('height')))
         }
     return result
+
+
+# VALIDATORS ---------------------------------------------------------------------------------------
+
+def validate_image(image):
+    extension_list = ['.jpg', '.jpeg', '.png']
+    size = image.size
+    extension = Path(image.name).suffix.lower()
+
+    if extension not in extension_list:
+        raise ValidationError(_('Only JPG or PNG format files.'))
+    elif not size:
+        raise ValidationError(_('Image cannot be 0.0 mb.'))
+    elif not size or size > 524288:
+        raise ValidationError(_('Maximum image size 0.5 mb.'))
 
 
 def validate_svg(svg):
@@ -120,21 +102,6 @@ def validate_svg(svg):
             _('Unable to read file attributes. The file may be damaged.'))
 
 
-def get_errors_form(*args):
-    err_dict = {}
-    detail = ''
-
-    for form in args:
-        for item in list(form):
-            if item.errors:
-                err_dict[item.name] = True
-                detail += u'{0}: {1}<br>'.format(item.label, item.errors)
-            else:
-                err_dict[item.name] = False
-
-    return {'err_dict': err_dict, 'detail': detail}
-
-
 def validate_coordinates(coordinate):
     try:
         float(coordinate)
@@ -151,6 +118,23 @@ def validate_transparency(coordinate):
             _('To determine the transparency a numeric value is required.'))
 
 
+def get_errors_form(*args):
+    err_dict = {}
+    detail = ''
+
+    for form in args:
+        for item in list(form):
+            if item.errors:
+                err_dict[item.name] = True
+                detail += u'{0}: {1}<br>'.format(item.label, item.errors)
+            else:
+                err_dict[item.name] = False
+
+    return {'err_dict': err_dict, 'detail': detail}
+
+
+# GET FILENAME -------------------------------------------------------------------------------------
+
 def make_upload_path(instance, filename):
     extension = Path(filename).suffix
     return os.path.join(instance.upload_dir, '{0}{1}'.format(uuid.uuid4(), extension))
@@ -158,39 +142,40 @@ def make_upload_path(instance, filename):
 
 def get_filename(filename):
     """CKEditor - Filename Generator"""
-    extension = Path(filename).suffix
-    return '{0}{1}'.format(uuid.uuid4(), extension)
+    return re.sub(r'\s+', '_', filename).lower()
 
+
+# CLEANING ORPHAN FILES ----------------------------------------------------------------------------
 
 def cleaning_files_pre_save(sender, instance, **kwargs):
     """Remove old files"""
     old_status = sender.objects.filter(pk=instance.pk)
     dir_name_list = dir(sender)
 
-    if old_status:
+    if old_status.count() > 0:
         for dir_name in dir_name_list:
             field = getattr(sender, dir_name, None)
 
-            if field and (isinstance(field, FileDescriptor) or
-                          isinstance(field, ImageFileDescriptor) or
-                          isinstance(field, ImageSpecField)):
+            if bool(field) and (isinstance(field, FileDescriptor) or
+                                isinstance(field, ImageFileDescriptor) or
+                                isinstance(field, ImageSpecField)):
 
-                old_field = getattr(old_status[0], dir_name)
-                updated_field = getattr(instance, dir_name)
+                old_field = getattr(old_status[0], dir_name, None)
+                updated_field = getattr(instance, dir_name, None)
 
-                if getattr(old_field, 'name', None) != getattr(updated_field, 'name', None):
-
+                if getattr(old_field, 'name', None) != \
+                        getattr(updated_field, 'name', None):
                     try:
-                        path = getattr(old_field, 'path')
+                        path = getattr(old_field, 'path', None)
 
-                        if path and os.path.exists(path):
+                        if bool(path) and os.path.exists(path):
                             if isinstance(field, ImageSpecField):
                                 pattern = re.compile(
                                     r'(/[-_\w()]+\.[a-zA-Z]{3,4}$)')
                                 shutil.rmtree(pattern.sub('', path))
                             else:
                                 os.remove(path)
-                    except (FileNotFoundError, ValueError):
+                    except (FileNotFoundError, ValueError, TypeError):
                         pass
 
 
@@ -201,20 +186,105 @@ def cleaning_files_pre_delete(sender, instance, **kwargs):
     for dir_name in dir_name_list:
         field = getattr(sender, dir_name, None)
 
-        if field and (isinstance(field, FileDescriptor) or
-                      isinstance(field, ImageFileDescriptor) or
-                      isinstance(field, ImageSpecField)):
+        if bool(field) and (isinstance(field, FileDescriptor) or
+                            isinstance(field, ImageFileDescriptor) or
+                            isinstance(field, ImageSpecField)):
 
-            target_field = getattr(instance, dir_name)
+            target_field = getattr(instance, dir_name, None)
 
             try:
                 path = getattr(target_field, 'path', None)
 
-                if path and os.path.exists(path):
+                if bool(path) and os.path.exists(path):
                     if isinstance(field, ImageSpecField):
-                        pattern = re.compile(r'(/[-_\w()]+\.[a-zA-Z]{3,4}$)')
+                        pattern = re.compile(
+                            r'(/[-_\w()]+\.[a-zA-Z]{3,4}$)')
                         shutil.rmtree(pattern.sub('', path))
                     else:
                         os.remove(path)
-            except (FileNotFoundError, ValueError):
+            except (FileNotFoundError, ValueError, TypeError):
                 pass
+
+
+# REFRESH JSON-CODE --------------------------------------------------------------------------------
+
+def placemark_update_json_code(instance):
+    """Refresh json code for Placemark"""
+    json_code = json.loads(instance.json_code)
+
+    if json_code["id"] == 0:
+        json_code["id"] = instance.pk
+
+    json_code['geometry']['coordinates'] = json.loads(instance.coordinates)
+    json_code["properties"]["id"] = instance.pk
+    json_code["properties"]["categoryID"] = instance.category.pk
+    json_code["properties"]["subCategoryIDs"] = list(
+        instance.subcategories.all().values_list('pk', flat=True))
+    json_code["properties"]["iconSlug"] = instance.icon_slug
+
+    if instance.icon_slug != 'djeym-marker-default':
+        icon_collection = instance.ymap.icon_collection
+        icon_marker = apps.get_model('djeym', 'MarkerIcon').objects.get(
+            icon_collection=icon_collection, slug=instance.icon_slug)
+        json_code["options"]['iconImageHref'] = icon_marker.svg.url
+        json_code["options"]['iconImageSize'] = json.loads(
+            icon_marker.get_size())
+        json_code["options"]['iconImageOffset'] = json.loads(
+            icon_marker.get_offset())
+    else:
+        json_code["options"]['iconImageHref'] = '/static/djeym/img/center.svg'
+        json_code["options"]['iconImageSize'] = [32, 60]
+        json_code["options"]['iconImageOffset'] = [-16, -60]
+    return json.dumps(json_code, ensure_ascii=False)
+
+
+def polyline_update_json_code(instance):
+    """Refresh json code for Polyline"""
+    json_code = json.loads(instance.json_code)
+
+    if json_code["id"] == 0:
+        json_code["id"] = instance.pk
+
+    json_code['geometry']['coordinates'] = json.loads(instance.coordinates)
+    json_code["properties"]["id"] = instance.pk
+    json_code["properties"]["categoryID"] = instance.category.pk
+    json_code["properties"]["subCategoryIDs"] = list(
+        instance.subcategories.all().values_list('pk', flat=True))
+    json_code["options"]["strokeWidth"] = float(instance.stroke_width)
+    json_code["options"]["strokeColor"] = instance.stroke_color
+    json_code["options"]["strokeStyle"] = instance.stroke_style
+    json_code["options"]["strokeOpacity"] = float(instance.stroke_opacity)
+    return json.dumps(json_code, ensure_ascii=False)
+
+
+def polygon_update_json_code(instance):
+    """Refresh json code for Polygon"""
+    json_code = json.loads(instance.json_code)
+
+    if json_code["id"] == 0:
+        json_code["id"] = instance.pk
+
+    json_code['geometry']['coordinates'] = json.loads(instance.coordinates)
+    json_code["properties"]["id"] = instance.pk
+    json_code["properties"]["categoryID"] = instance.category.pk
+    json_code["properties"]["subCategoryIDs"] = list(
+        instance.subcategories.all().values_list('pk', flat=True))
+    json_code["options"]["strokeWidth"] = float(instance.stroke_width)
+    json_code["options"]["strokeColor"] = instance.stroke_color
+    json_code["options"]["strokeStyle"] = instance.stroke_style
+    json_code["options"]["strokeOpacity"] = float(instance.stroke_opacity)
+    json_code["options"]["fillColor"] = instance.fill_color
+    json_code["options"]["fillOpacity"] = float(instance.fill_opacity)
+    return json.dumps(json_code, ensure_ascii=False)
+
+
+def heatpoint_update_json_code(instance):
+    """Refresh json code for HeatPoint"""
+    json_code = json.loads(instance.json_code)
+
+    if json_code["id"] == 0:
+        json_code["id"] = instance.id
+
+    json_code['geometry']['coordinates'] = json.loads(instance.coordinates)
+    json_code["properties"]["weight"] = int(instance.weight)
+    return json.dumps(json_code, ensure_ascii=False)

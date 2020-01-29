@@ -54,6 +54,7 @@ Requirements
 - **django-ipware** - `https://github.com/un33k/django-ipware <https://github.com/un33k/django-ipware>`_
 - **django-colorful** - `<https://pypi.org/project/django-colorful/>`_
 - **django-admin-sortable** - `<https://pypi.org/project/django-admin-sortable/>`_
+-
 - **Vue.js** - `<https://vuejs.org/>`_
 - **Vuetify.js** - `<https://vuetifyjs.com/>`_
 

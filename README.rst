@@ -391,6 +391,7 @@ Usage
       <!-- START VENDORS JS -->
       <script type="text/javascript" src="{% static "djeym/js/jquery.min.js" %}"></script>
       <script src="{% static "djeym/js/jquery-regex.min.js" %}"></script>
+      ...
       {% djeym_yandex_map slug='test-map' lang=request.LANGUAGE_CODE %}
       <!-- END VENDORS JS -->
     </body>

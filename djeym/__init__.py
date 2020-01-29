@@ -9,7 +9,7 @@
 #            \ \____/
 #             \/___/
 
-DjEYM_VERSION = (2, 0, 4)
+DjEYM_VERSION = (2, 0, 5)
 PYTHON_VERSION = (3, 6)
 DJANGO_VERSION = (2, 0)
 VUE_VERSION = (2, 6, 11)

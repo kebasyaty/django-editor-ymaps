@@ -22,7 +22,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (2, 0, 2)
+VERSION = (2, 0, 3)
 __version__ = '.'.join(map(str, VERSION))
 
 
@@ -72,7 +72,7 @@ setup(
         'Pillow',
         'django-imagekit',
         'python-slugify',
-        'django-ckeditor @ git+https://github.com/django-ckeditor/django-ckeditor.git',
+        'django-ckeditor',
         'lxml',
         'django-ipware',
         'django-colorful',

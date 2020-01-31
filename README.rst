@@ -407,6 +407,12 @@ Usage
 .. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/map_opened_form.png?raw=true
     :alt: Map with open form
 
+Действия администратора после успешной модерации. ( *Admin actions after successful moderation.* )
+------------------------------------------------------------------------------------------------------------------------
+
+.. image:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/after_successful_moderation.png?raw=true
+    :alt: After successful moderation
+
 Уведомление о новом пользовательском маркере. ( *Notification of a new custom marker.* )
 ----------------------------------------------------------------------------------------
 

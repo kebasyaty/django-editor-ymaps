@@ -1127,10 +1127,14 @@ class Placemark(models.Model):
         super(Placemark, self).save(*args, **kwargs)
         if not self.is_created:
             if bool(self.user_image):
+                self.header = '<p>{}</p>'.format(
+                    re.sub("<.*?>", "", self.header))
                 self.body = '<img src="{0}" width="322px" alt=""><p>{1}</p>'.format(
                     self.user_image_q40.url, re.sub(r'<.*?>', "", self.body))
             else:
                 if self.is_user_marker:
+                    self.header = '<p>{}</p>'.format(
+                        re.sub("<.*?>", "", self.header))
                     self.body = '<p>{}</p>'.format(
                         re.sub("<.*?>", "", self.body))
             self.is_created = True

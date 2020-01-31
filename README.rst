@@ -153,11 +153,6 @@ Add settings::
     # https://github.com/alsoicode/django-admin-sortable#configuration
     CSRF_COOKIE_HTTPONLY = False
     
-    # django-smart-selects
-    # https://github.com/digi604/django-smart-selects
-    JQUERY_URL = False
-    USE_DJANGO_JQUERY = True
-    
     # The API key is used in the free and paid versions.
     # You can get the key in the developer’s office - https://passport.yandex.com/
     # ( API-ключ используется в свободной и платной версиях.

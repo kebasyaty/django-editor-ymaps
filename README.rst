@@ -427,8 +427,8 @@ Add in views.py::
     
         """
         # May come in handy. (Может пригодится.)
-        title = instance.header
-        description = instance.body
+        title = instance.header  # (html)
+        description = instance.body  # (html)
         image_url = instance.user_image.url
         """
         # Notify administrator of a new custom marker.

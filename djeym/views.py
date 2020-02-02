@@ -43,16 +43,16 @@ def vue_vendors_css_js(target):
         if target == 'front':
             ctx['vue_css_app'] = 'app.3a825e69.css'
             ctx['vue_css_chunk_vendors'] = 'chunk-vendors.e7a238a9.css'
-            ctx['vue_js_app'] = 'app.79f3d87c.js'
+            ctx['vue_js_app'] = 'app.6ca34be6.js'
             ctx['vue_js_chunk_vendors'] = 'chunk-vendors.179b8deb.js'
-            ctx['vue_js_app_legacy'] = 'app-legacy.95d7a569.js'
+            ctx['vue_js_app_legacy'] = 'app-legacy.b94b663c.js'
             ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.effb0686.js'
         else:
             ctx['vue_css_app'] = 'app.5f96edde.css'
             ctx['vue_css_chunk_vendors'] = 'chunk-vendors.428d2d05.css'
-            ctx['vue_js_app'] = 'app.c0f35299.js'
+            ctx['vue_js_app'] = 'app.a29deb0e.js'
             ctx['vue_js_chunk_vendors'] = 'chunk-vendors.73813080.js'
-            ctx['vue_js_app_legacy'] = 'app-legacy.efd53f0e.js'
+            ctx['vue_js_app_legacy'] = 'app-legacy.705d55ff.js'
             ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.790a5c43.js'
     else:
         # Automatically get CSS and JS for Vue.js (for development only).

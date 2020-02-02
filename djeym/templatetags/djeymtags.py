@@ -39,8 +39,7 @@ def djeym_load_api_ymaps(lang='en', ns='djeymYMaps'):
     is_enterprise = getattr(
         settings, 'DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE', False)
     mode = getattr(settings, 'DJEYM_YMAPS_DOWNLOAD_MODE', 'release')
-    lang = lang[:2].lower() if len(lang) > 0 else \
-        getattr(settings, 'LANGUAGE_CODE', "en")[:2].lower()
+    lang = lang[:2].lower() if bool(lang) else 'en'
 
     if lang == 'ru':
         lang += '_RU'

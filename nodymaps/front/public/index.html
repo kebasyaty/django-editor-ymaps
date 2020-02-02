@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="robots" content="none">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="<%= BASE_URL %>favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>favicon-16x16.png">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>Nodymaps Front</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="/js/material-design-webfont/css/materialdesignicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but nodymaps-front doesn't work properly without JavaScript enabled. Please enable it to
+      continue.</strong>
+  </noscript>
+  <div style="height: 200px; background: #eee;">
+    <button id="djeym-open-panel" type="button">Open Panel</button>
+    <button id="djeym-add-marker" type="button">Add Marker</button>
+  </div>
+  <div id="djeym-app"></div>
+  <div style="height: 200px; background: #eee;"></div>
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&mode=debug&ns=djeymYMaps"></script>
+  <script>
+    var djeymMapID = 1,
+      djeymCSRFToken = '',
+      djeymLanguageCode = 'ru',
+      djeymWidthMap = '100%',
+      djeymHeightMap = '600px',
+      djeymBalloonMinHeight = 64 + 40;
+  </script>
+</body>
+
+</html>

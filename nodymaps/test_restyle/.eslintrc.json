@@ -1,0 +1,43 @@
+{
+  "extends": [
+    "standard",
+    "eslint:recommended",
+    "mocha/test"
+  ],
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": true
+  },
+  "plugins": [
+    "standard",
+    "promise",
+    "import",
+    "node",
+    "mocha-only"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "eqeqeq": "error",
+    "curly": "error",
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ]
+  }
+}

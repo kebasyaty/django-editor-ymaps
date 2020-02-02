@@ -1,0 +1,240 @@
+/* Warning - Upgrade Your Browser
+----------------------------------------------------------------------------------------------------
+*/
+.browserupgrade {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 11000;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.browserupgrade div {
+  color: #BDBDBD;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  margin: 10% 20px auto 20px;
+  padding: 20px;
+  border: 2px dashed #616161;
+  font-family: Roboto, sans-serif !important;
+}
+
+.browserupgrade span {
+  color: #4CAF50;
+  font-size: 16px;
+  border: 2px solid #4CAF50;
+  border-radius: 50px;
+  padding: 2px 8px 3px;
+  margin-right: 10px;
+  font-family: Roboto, sans-serif !important;
+}
+
+.browserupgrade a {
+  color: #2196F3 !important;
+  font-size: 18px !important;
+  text-decoration: underline !important;
+  font-family: Roboto, sans-serif !important;
+}
+
+.browserupgrade a:hover {
+  color: #F44336 !important;
+}
+
+/* Warning - Necessary to enable JavaScript
+----------------------------------------------------------------------------------------------------
+*/
+.noscript {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 11000;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.noscript div {
+  color: #BDBDBD;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  margin: 10% 20px auto 20px;
+  padding: 20px;
+  border: 2px dashed #616161;
+  font-family: Roboto, sans-serif !important;
+}
+
+.noscript span {
+  color: #FFC107;
+  font-size: 22px;
+  border: 2px solid #FFC107;
+  border-radius: 50px;
+  padding: 2px 8px 5px;
+  margin-right: 10px;
+  font-family: Roboto, sans-serif !important;
+}
+
+.noscript a {
+  color: #2196F3 !important;
+  font-size: 18px !important;
+  text-decoration: underline !important;
+  font-family: Roboto, sans-serif !important;
+}
+
+.noscript a:hover {
+  color: #F44336 !important;
+}
+
+/* Load Indicator
+----------------------------------------------------------------------------------------------------
+*/
+#djeymModalLock {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+  background-color: #fff;
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: .6s;
+  transition-delay: 0s;
+  transition-timing-function: linear;
+}
+
+#djeymLoadIndicator {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+@keyframes djeym-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+/* YMaps
+----------------------------------------------------------------------------------------------------
+*/
+ymaps[class$=-listbox__list-item-text] {
+  max-width: none !important;
+  font-size: 14px !important;
+  line-height: 32px !important;
+  font-family: Roboto, sans-serif !important;
+}
+
+ymaps[class$=-control-popup-parent] {
+  z-index: 2 !important;
+}
+
+/*  For custom layout Balloons
+----------------------------------------------------------------------------------------------------
+*/
+.djeym_ballon_header,
+.djeym_ballon_body,
+.djeym_ballon_footer {
+  display: block;
+  width: 100% !important;
+  max-width: 322px !important;
+  font-family: Roboto, sans-serif !important;
+}
+
+.djeym_ballon_header {
+  margin: 0 0 5px;
+  font-size: 120%;
+  font-weight: 500;
+  color: #212121;
+
+}
+
+.djeym_ballon_body {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #212121;
+}
+
+.djeym_ballon_footer {
+  margin: 5px 0 0;
+  font-size: 90%;
+  color: #424242;
+}
+
+.djeym_ballon_header * {
+  margin: 0 !important;
+}
+
+.djeym_ballon_body p,
+.djeym_ballon_footer p {
+  margin-bottom: 5px !important;
+}
+
+/* Cluster - Icon content
+----------------------------------------------------------------------------------------------------
+*/
+.djeym_layout_cluster_icon {
+  border-radius: 60px;
+}
+
+.djeym_layout_cluster_icon span {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 5px;
+  border-radius: 20px;
+  font-family: Roboto, sans-serif !important;
+}
+
+/* Cursors
+----------------------------------------------------------------------------------------------------
+*/
+.djeym-curs-p {
+  cursor: pointer;
+}
+
+/* Positioning
+----------------------------------------------------------------------------------------------------
+*/
+.djeym-pos-relative {
+  position: relative !important;
+}
+
+/* Display
+----------------------------------------------------------------------------------------------------
+*/
+.djeym-hide {
+  display: none;
+}
+
+/* White space
+----------------------------------------------------------------------------------------------------
+*/
+.djeym-white-space-normal {
+  white-space: normal !important;
+}
+
+/* Width and Height
+----------------------------------------------------------------------------------------------------
+*/
+.djeym-fill-hight {
+  height: 100% !important;
+}
+
+/* Buttons
+----------------------------------------------------------------------------------------------------
+*/
+.djeym-fake-buttons {
+  display: inline-block;
+  padding: 0 5px;
+  border-radius: 20px;
+  margin-bottom: 5px;
+}

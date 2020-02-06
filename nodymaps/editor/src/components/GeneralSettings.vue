@@ -177,10 +177,10 @@ Component for General Settings Map and Editor.
                   </v-row>
                 </v-container>
               </td>
-              <td v-else-if="control.widthPanelEditor !== undefined" class="pt-6">
+              <td v-else-if="control.widthPanelEditor !== undefined" class="pt-1">
+                <v-card-title class="subtitle-1 py-0 px-0">{{ $t('message.81') }}</v-card-title>
                 <v-text-field
                   v-model="panel[index2].widthPanelEditor"
-                  :label="$t('message.81')"
                   outlined
                   dense
                   full-width
@@ -191,10 +191,10 @@ Component for General Settings Map and Editor.
                   @input="actionRefreshWidthPanelEditor()"
                 ></v-text-field>
               </td>
-              <td v-else-if="control.widthPanelFront !== undefined" class="pt-6">
+              <td v-else-if="control.widthPanelFront !== undefined" class="pt-1">
+                <v-card-title class="subtitle-1 py-0 px-0">{{ $t('message.81') }}</v-card-title>
                 <v-text-field
                   v-model="panel[index2].widthPanelFront"
-                  :label="$t('message.81')"
                   outlined
                   dense
                   full-width

@@ -1506,6 +1506,10 @@ export default {
     // Add custom map size.
     this.widthMap = window.djeymWidthMap
     this.heightMap = window.djeymHeightMap
+    // Show buttons - djeym-open-panel, djeym-add-marker
+    if (window.djeymMapID !== undefined) {
+      window.$('.djeym-button-bar').show()
+    }
     // Ajax - Upload all settings.
     this.uploadSettings()
   }

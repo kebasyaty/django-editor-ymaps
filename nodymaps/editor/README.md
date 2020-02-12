@@ -1,8 +1,5 @@
 # nodymaps
 
-Vue.js - Yandex Maps
-git clone git@bitbucket.org:genkosta/nodymaps.git
-
 
 ERRORS
 ------

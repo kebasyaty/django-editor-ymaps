@@ -68,6 +68,24 @@ function relateSuggests(preselector="") {
     });
 }
 
+function relateCitySuggests(preselector="") {
+    var suggests = new Array();
+    $(preselector + "input[type=text][mode=citysuggest]").each(function () {
+        suggests.push(new utilsYMaps.SuggestView(this, {
+                provider: cityprovider,
+                results: 1
+            }));
+        $(this).attr("suggest-id", suggests.length - 1);
+    });
+    $(preselector + "input[type=text][mode=citysuggest]").on("change", function () {
+        let suggest = suggests[$(this).attr("suggest-id")];
+        let dataManager = suggest.state;
+        dataManager.singleSet("activeIndex", 0);
+        this.dispatchEvent(new KeyboardEvent('keydown', {'keyCode':13, 'which':13}));
+    });
+}
+
 function init() {
     relateSuggests();
+    relateCitySuggests();
 }

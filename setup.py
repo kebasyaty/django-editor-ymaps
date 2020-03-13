@@ -49,7 +49,7 @@ setup(
     platforms=['any'],
     keywords=['django', 'yandex', 'maps', 'admin', 'editor'],
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Natural Language :: Russian',
         'Natural Language :: English',

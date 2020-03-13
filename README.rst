@@ -4,21 +4,21 @@
 
 |
 
-.. image:: https://img.shields.io/badge/version-2.0.11%20-brightgreen.svg
+.. image:: https://img.shields.io/badge/pypi-v20.0.2%20-blue.svg
    :target: https://pypi.org/project/django-editor-ymaps/
-   :alt: Version
+   :alt: PyPI badge
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
    :target: https://github.com/kebasyaty/django-editor-ymaps/blob/master/LICENSE
-   :alt: MIT
+   :alt: MIT badge
 .. image:: https://pepy.tech/badge/django-editor-ymaps
    :target: https://pepy.tech/project/django-editor-ymaps
-   :alt: Downloads
+   :alt: Downloads badge
 .. image:: https://img.shields.io/badge/python-%3E%3D%203.6-yellow.svg
    :target: https://www.python.org/
-   :alt: Python
+   :alt: Python badge
 .. image:: https://img.shields.io/badge/django-%3E%3D%202.0-brightgreen.svg
    :target: https://www.djangoproject.com/
-   :alt: Django
+   :alt: Django badge
 
 DjEYM ( django-editor-ymaps )
 =============================

@@ -5,7 +5,7 @@
 |
 
 .. image:: https://img.shields.io/badge/pypi-v20.0.2%20-blue.svg
-   :target: https://pypi.org/project/django-editor-ymaps/
+   :target: https://pypi.org/project/pip/
    :alt: PyPI badge
 .. image:: https://img.shields.io/badge/python-%3E%3D%203.6-yellow.svg
    :target: https://www.python.org/

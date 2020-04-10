@@ -469,6 +469,9 @@ LICENSE
 
 CHANGELOG
 ---------
+#2.1.14
+    - (ru) Небольшой рестайлинг страницы редактора.
+    - (en) A small restyling of the editor page.
 
 .. contents:: Contents
    :depth: 3

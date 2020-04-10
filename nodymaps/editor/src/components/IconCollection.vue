@@ -1,8 +1,8 @@
 <!--
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-----------------------------
 Component for Icon Collection.
 (Selecting icons for markers.)
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-----------------------------
 -->
 <template>
   <v-container fluid class="px-1 py-0">

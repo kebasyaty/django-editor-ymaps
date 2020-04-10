@@ -50,47 +50,20 @@
     </v-navigation-drawer>
 
     <!-- Panel of App -->
-    <v-app-bar app clipped-left color="light-green darken-3">
+    <v-app-bar app clipped-left color="green darken-3">
+      <v-spacer></v-spacer>
       <!-- Button - Open Map Settings -->
       <v-btn icon @click.stop="updateMapSettingsDrawer = true">
-        <v-icon large color="white">mdi-settings</v-icon>
-      </v-btn>
-
-      <!-- Button - Logo icon -->
-      <v-toolbar-title class="pl-2">
-        <v-btn
-          icon
-          href="https://pypi.org/project/django-editor-ymaps/"
-          target="_blank"
-          rel="nofollow noreferrer noopener"
-          color="light-green darken-2"
-          depressed
-        >
-          <IconLogo height="42" color="#FFF59D" />
-        </v-btn>
-      </v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <!-- Button - Find Editable Geo Object -->
-      <v-btn
-        color="white"
-        depressed
-        fab
-        small
-        v-show="showBtnFindEditableGeoObject"
-        @click="findEditableGeoObject()"
-      >
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
-            <v-icon large color="red darken-2" v-on="on">mdi-crosshairs-gps</v-icon>
-          </template>
-          <span>{{ $t("message.2") }}</span>
+        <v-icon large color="white" v-on="on">mdi-settings</v-icon>
+                  </template>
+          <span>{{ $t("message.6") }}</span>
         </v-tooltip>
       </v-btn>
 
       <!-- Button - Back to admin panel -->
-      <v-btn icon :href="`/admin/djeym/map/${mapID}/change/`" color="white" class="ml-3">
+      <v-btn icon :href="`/admin/djeym/map/${mapID}/change/`" color="white" class="ml-1">
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <v-icon large color="white" v-on="on">mdi-reply-circle</v-icon>
@@ -108,17 +81,29 @@
           <span>{{ $t("message.84") }}</span>
         </v-tooltip>
       </v-btn>
+
+      <!-- Button - Find Editable Geo Object -->
+      <v-btn
+        class="ml-3"
+        color="white"
+        depressed
+        fab
+        small
+        v-show="showBtnFindEditableGeoObject"
+        @click="findEditableGeoObject()"
+      >
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-icon large color="red darken-2" v-on="on">mdi-crosshairs-gps</v-icon>
+          </template>
+          <span>{{ $t("message.2") }}</span>
+        </v-tooltip>
+      </v-btn>
+      <v-spacer></v-spacer>
     </v-app-bar>
 
     <!-- Content - Map -->
     <div fluid id="djeymYMapsID" class="djeym-ymap pa-3"></div>
-
-    <!-- Footer -->
-    <v-footer app text-center class="light-green darken-4">
-      <v-flex text-center xs12 class="grey--text text--lighten-5">
-        <span>&copy; 2014 - {{ new Date().getFullYear() }}&ensp;DjEYM</span>
-      </v-flex>
-    </v-footer>
 
     <!-- Modals -->
     <Modals />
@@ -127,7 +112,6 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
-import IconLogo from '@/components/icons/ordinary/IconLogo.vue'
 import CategoryFilters from '@/components/CategoryFilters.vue'
 import TileSources from '@/components/TileSources.vue'
 import GeneralSettings from '@/components/GeneralSettings.vue'
@@ -141,7 +125,6 @@ import Modals from '@/components/Modals.vue'
 export default {
   name: 'App',
   components: {
-    IconLogo,
     CategoryFilters,
     TileSources,
     GeneralSettings,
@@ -249,7 +232,7 @@ export default {
   position: absolute;
   top: 64px;
   right: 0;
-  bottom: 36px;
+  bottom: 0;
   left: 0;
 }
 </style>

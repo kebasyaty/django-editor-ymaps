@@ -48,12 +48,12 @@ def vue_vendors_css_js(target):
             ctx['vue_js_app_legacy'] = 'app-legacy.49ff04c4.js'
             ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.effb0686.js'
         else:
-            ctx['vue_css_app'] = 'app.2ed708aa.css'
-            ctx['vue_css_chunk_vendors'] = 'chunk-vendors.428d2d05.css'
-            ctx['vue_js_app'] = 'app.c971488f.js'
-            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.73813080.js'
-            ctx['vue_js_app_legacy'] = 'app-legacy.844780b6.js'
-            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.790a5c43.js'
+            ctx['vue_css_app'] = 'app.16179a12.css'
+            ctx['vue_css_chunk_vendors'] = 'chunk-vendors.c800e163.css'
+            ctx['vue_js_app'] = 'app.3a71372f.js'
+            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.f5273d59.js'
+            ctx['vue_js_app_legacy'] = 'app-legacy.dd08f097.js'
+            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.22ef8691.js'
     else:
         # Automatically get CSS and JS for Vue.js (for development only).
         import os

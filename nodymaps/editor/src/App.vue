@@ -52,12 +52,24 @@
     <!-- Panel of App -->
     <v-app-bar app clipped-left color="green darken-3">
       <v-spacer></v-spacer>
+      <!-- Button - Logo icon -->
+      <v-btn
+        icon
+        href="https://pypi.org/project/django-editor-ymaps/"
+        target="_blank"
+        rel="nofollow noreferrer noopener"
+        color="white"
+        depressed
+      >
+        <IconLogo height="42" color="white" />
+      </v-btn>
+
       <!-- Button - Open Map Settings -->
-      <v-btn icon @click.stop="updateMapSettingsDrawer = true">
+      <v-btn icon color="white" class="ml-3" @click.stop="updateMapSettingsDrawer = true">
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
-        <v-icon large color="white" v-on="on">mdi-settings</v-icon>
-                  </template>
+            <v-icon large color="white" v-on="on">mdi-settings</v-icon>
+          </template>
           <span>{{ $t("message.6") }}</span>
         </v-tooltip>
       </v-btn>
@@ -112,6 +124,7 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
+import IconLogo from '@/components/icons/ordinary/IconLogo.vue'
 import CategoryFilters from '@/components/CategoryFilters.vue'
 import TileSources from '@/components/TileSources.vue'
 import GeneralSettings from '@/components/GeneralSettings.vue'
@@ -125,6 +138,7 @@ import Modals from '@/components/Modals.vue'
 export default {
   name: 'App',
   components: {
+    IconLogo,
     CategoryFilters,
     TileSources,
     GeneralSettings,
@@ -230,7 +244,7 @@ export default {
 .djeym-ymap {
   min-height: 300px !important;
   position: absolute;
-  top: 64px;
+  top: 66px;
   right: 0;
   bottom: 0;
   left: 0;

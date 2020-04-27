@@ -285,78 +285,76 @@ Usage
 
 Добавьте в шаблон. ( Add to template. ):
 
-    ```django
-    {% load i18n static djeymtags %}
+{% load i18n static djeymtags %}
 
-    <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
-      <!-- START VENDORS CSS -->
-      <!-- Roboto Font:
-            Usage (css):
-              font-size: 16px;
-              font-family: Roboto, sans-serif !important;
-              font-weight: 100|300|400|500|700|900;
-              font-style: italic!important; -->
-      <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-      <!-- Material Design Icons:
-            url: https://materialdesignicons.com/
-            Usage (html):
-              <span class="mdi mdi-name"></span>
-              Size: mdi-18px|mdi-24px|mdi-36px|mdi-48px or font-size: 16px;
-              Rotate: mdi-rotate-45|mdi-rotate-90|mdi-rotate-135|mdi-rotate-180|mdi-rotate-225|mdi-rotate-270|mdi-rotate-315
-              Flip: mdi-flip-h|mdi-flip-v
-              Color: mdi-light|mdi-light mdi-inactive|mdi-dark|mdi-dark mdi-inactive or color: #212121; -->
-      <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
-      <!-- END VENDORS CSS -->
-    </head>
-
-    <body>
-      <!-- START MAP -->
-      <!-- Buttons are optional.
-           (Кнопки не являются обязательными.) -->
-      <style type="text/css">
-        .djeym-button {
-          font-family: Roboto, sans-serif !important;
-          background-color: #4CAF50;
-          border: none;
-          color: white;
-          padding: 10px 24px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
+  <!-- START VENDORS CSS -->
+  <!-- Roboto Font:
+        Usage (css):
           font-size: 16px;
-          margin: 4px 2px;
-          cursor: pointer;
-        }
-        .djeym-button-bar {
-          display: none;
-          margin-bottom: 10px;
-        }
-      </style>
-      <div class="djeym-button-bar">
-        <button id="djeym-open-panel" type="button" class="djeym-button">
-          <span class="mdi mdi-arrow-expand-right"></span>
-          Open Panel
-        </button>
-        <button id="djeym-add-marker" type="button" class="djeym-button">
-          <span class="mdi mdi-map-marker-plus"></span>
-          Add Marker
-        </button>
-      </div>
-      <div id="djeym-app" class="djeym"></div>
-      <!-- END MAP -->
+          font-family: Roboto, sans-serif !important;
+          font-weight: 100|300|400|500|700|900;
+          font-style: italic!important; -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <!-- Material Design Icons:
+        url: https://materialdesignicons.com/
+        Usage (html):
+          <span class="mdi mdi-name"></span>
+          Size: mdi-18px|mdi-24px|mdi-36px|mdi-48px or font-size: 16px;
+          Rotate: mdi-rotate-45|mdi-rotate-90|mdi-rotate-135|mdi-rotate-180|mdi-rotate-225|mdi-rotate-270|mdi-rotate-315
+          Flip: mdi-flip-h|mdi-flip-v
+          Color: mdi-light|mdi-light mdi-inactive|mdi-dark|mdi-dark mdi-inactive or color: #212121; -->
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <!-- END VENDORS CSS -->
+</head>
 
-      <!-- START VENDORS JS -->
-      <script type="text/javascript" src="{% static "djeym/js/jquery.min.js" %}"></script>
-      <script src="{% static "djeym/js/jquery-regex.min.js" %}"></script>
-      ...
-      {% djeym_yandex_map slug='test-map' lang=request.LANGUAGE_CODE %}
-      <!-- END VENDORS JS -->
-    </body>
-    ---
+<body>
+  <!-- START MAP -->
+  <!-- Buttons are optional.
+       (Кнопки не являются обязательными.) -->
+  <style type="text/css">
+    .djeym-button {
+      font-family: Roboto, sans-serif !important;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .djeym-button-bar {
+      display: none;
+      margin-bottom: 10px;
+    }
+  </style>
+  <div class="djeym-button-bar">
+    <button id="djeym-open-panel" type="button" class="djeym-button">
+      <span class="mdi mdi-arrow-expand-right"></span>
+      Open Panel
+    </button>
+    <button id="djeym-add-marker" type="button" class="djeym-button">
+      <span class="mdi mdi-map-marker-plus"></span>
+      Add Marker
+    </button>
+  </div>
+  <div id="djeym-app" class="djeym"></div>
+  <!-- END MAP -->
+
+  <!-- START VENDORS JS -->
+  <script type="text/javascript" src="{% static "djeym/js/jquery.min.js" %}"></script>
+  <script src="{% static "djeym/js/jquery-regex.min.js" %}"></script>
+  ...
+  {% djeym_yandex_map slug='test-map' lang=request.LANGUAGE_CODE %}
+  <!-- END VENDORS JS -->
+</body>
 
 Карта с открытой панелью. ( *Map with open panel.* )
 ----------------------------------------------------

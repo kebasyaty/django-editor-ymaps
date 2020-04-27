@@ -54,7 +54,7 @@ Settings
 --------
 
 Add settings:
-
+    
     import os
 
     # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -153,7 +153,7 @@ Add to main URLs
 ----------------
 
 urls.py:
-
+    
     from django.contrib import admin
     from django.urls import path, include
     from django.conf import settings
@@ -284,7 +284,7 @@ Usage
 ----------------------------------------------------------------------
 
 Добавьте в шаблон. ( Add to template. ):
-
+    
     {% load i18n static djeymtags %}
 
     <head>
@@ -378,7 +378,7 @@ Usage
 ----------------------------------------------------------------------------------------
 
 Add in views.py:
-
+    
     from django.core.mail import send_mail
     from django.db.models.signals import post_save
     from django.dispatch import receiver

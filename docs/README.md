@@ -285,6 +285,7 @@ Usage
 
 Добавьте в шаблон. ( Add to template. ):
 
+    ```django
     {% load i18n static djeymtags %}
 
     <head>
@@ -355,6 +356,7 @@ Usage
       {% djeym_yandex_map slug='test-map' lang=request.LANGUAGE_CODE %}
       <!-- END VENDORS JS -->
     </body>
+    ---
 
 Карта с открытой панелью. ( *Map with open panel.* )
 ----------------------------------------------------

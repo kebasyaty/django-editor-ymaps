@@ -33,9 +33,9 @@ Requirements
 -   **django-ipware** - [<https://github.com/un33k/django-ipware>](https://github.com/un33k/django-ipware)
 -   **django-colorful** - [](https://pypi.org/project/django-colorful/)
 
-- **django-admin-sortable** - [](https://pypi.org/project/django-admin-sortable/)
-- **Vue.js** - [](https://vuejs.org/)
-- **Vuetify.js** - [](https://vuetifyjs.com/)
+- **django-admin-sortable** - [<https://pypi.org/project/django-admin-sortable/>](https://pypi.org/project/django-admin-sortable/)
+- **Vue.js** - [<https://vuejs.org/>](https://vuejs.org/)
+- **Vuetify.js** - [<https://vuetifyjs.com/>](https://vuetifyjs.com/)
 
 Installation
 ------------

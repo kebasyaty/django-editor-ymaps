@@ -1,0 +1,370 @@
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/logo.png?raw=true" /></p>
+<h1 id="djeym-django-editor-ymaps">DjEYM ( django-editor-ymaps )</h1>
+<ul>
+<li><strong>(ru)</strong> <em>Удобное использование картографической службы Яндекса для веб-разработки на популярном и свободном фреймворке Django.</em><br /></li>
+<li><strong>(en)</strong> <em>Convenient use of the Yandex map service for web development on the popular and free Django framework.</em></li>
+</ul>
+<h2 id="--api-.-terms-of-use-for-the-api">Условия использования API Яндекс.Карт ( <em>Terms of use for the API</em> )</h2>
+<ul>
+<li><strong>(ru)</strong> <a href="https://tech.yandex.ru/maps/jsapi/doc/2.1/quick-start/index-docpage/#get-api-key">Условия использования Яндекс.Карт</a><br /></li>
+<li><strong>(ru)</strong> <a href="https://tech.yandex.ru/maps/jsapi/doc/2.1/quick-start/index-docpage/#get-api-key">Получить API-ключ</a><br /></li>
+<li><strong>--</strong><br /></li>
+<li><strong>(en)</strong> <a href="https://tech.yandex.com/maps/jsapi/doc/2.1/terms/index-docpage/">Terms of use for the Yandex.Maps</a><br /></li>
+<li><strong>(en)</strong> <a href="https://tech.yandex.com/maps/jsapi/doc/2.1/quick-start/index-docpage/#get-api-key">Get the API key</a></li>
+</ul>
+<h2 id="attention">Attention</h2>
+<ul>
+<li><strong>(ru)</strong> Версия 2.0 несовместима с предыдущей.<br /></li>
+<li><strong>(en)</strong> Version 2.0 is not compatible with the previous one.</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li><strong>Python</strong> &gt;= 3.6<br /></li>
+<li><strong>Django</strong> &gt;= 2.0<br /></li>
+<li><strong>Pillow</strong> - <a href="https://pypi.org/project/Pillow/"><a href="https://pypi.org/project/Pillow/">https://pypi.org/project/Pillow/</a></a><br /></li>
+<li><strong>django-imagekit</strong> - <a href="https://github.com/matthewwithanm/django-imagekit"><a href="https://github.com/matthewwithanm/django-imagekit">https://github.com/matthewwithanm/django-imagekit</a></a><br /></li>
+<li><strong>python-slugify</strong> - <a href="https://github.com/un33k/python-slugify"><a href="https://github.com/un33k/python-slugify">https://github.com/un33k/python-slugify</a></a><br /></li>
+<li><strong>django-ckeditor</strong> - <a href="https://github.com/django-ckeditor/django-ckeditor"><a href="https://github.com/django-ckeditor/django-ckeditor">https://github.com/django-ckeditor/django-ckeditor</a></a><br /></li>
+<li><strong>lxml</strong> - <a href="https://pypi.org/project/lxml/"><a href="https://pypi.org/project/lxml/">https://pypi.org/project/lxml/</a></a><br /></li>
+<li><strong>django-ipware</strong> - <a href="https://github.com/un33k/django-ipware"><a href="https://github.com/un33k/django-ipware">https://github.com/un33k/django-ipware</a></a><br /></li>
+<li><p><strong>django-colorful</strong> - <a href="https://pypi.org/project/django-colorful/"><a href="https://pypi.org/project/django-colorful/">https://pypi.org/project/django-colorful/</a></a></p></li>
+<li><strong>django-admin-sortable</strong> - <a href="https://pypi.org/project/django-admin-sortable/"><a href="https://pypi.org/project/django-admin-sortable/">https://pypi.org/project/django-admin-sortable/</a></a><br /></li>
+<li><strong>--</strong><br /></li>
+<li><strong>Vue.js</strong> - <a href="https://vuejs.org/"><a href="https://vuejs.org/">https://vuejs.org/</a></a><br /></li>
+<li><p><strong>Vuetify.js</strong> - <a href="https://vuetifyjs.com/"><a href="https://vuetifyjs.com/">https://vuetifyjs.com/</a></a></p></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Install libraries ( Ubuntu &gt;= 18.04, Mint 19.x ):</p>
+<pre><code>sudo apt install -y python-dev python3-dev libjpeg8-dev python-pil libevent-dev build-essential libpq-dev libxml2-dev libxslt1-dev gettext libjpeg-dev python-setuptools python3-setuptools</code></pre>
+<p>Install django-editor-ymaps using pip:</p>
+<pre><code>pip install django-editor-ymaps</code></pre>
+<h2 id="settings">Settings</h2>
+<p>Add settings:</p>
+<pre><code>import os
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+INSTALLED_APPS = [
+    ...
+    &#39;imagekit&#39;,
+    &#39;ckeditor&#39;,
+    &#39;ckeditor_uploader&#39;,
+    &#39;colorful&#39;,
+    &#39;adminsortable&#39;,
+    &#39;djeym&#39;,
+    ...
+]
+
+MIDDLEWARE = [
+    ...
+    &#39;django.middleware.locale.LocaleMiddleware&#39;,
+]
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATIC_URL = &#39;/static/&#39;
+STATIC_ROOT = os.path.join(BASE_DIR, &#39;static&#39;)
+
+MEDIA_URL = &#39;/media/&#39;
+MEDIA_ROOT = os.path.join(BASE_DIR, &#39;media&#39;)
+
+# To send test messages.
+# 1. Notify administrator of a new custom marker.
+# 2. Notify user about successful moderation of his marker.
+# Mail server for testings: $ python -m smtpd -n -c DebuggingServer localhost:1025
+EMAIL_HOST = &#39;localhost&#39;
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = &#39;&#39;
+EMAIL_HOST_PASSWORD = &#39;&#39;
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = &#39;noreply@site.net&#39;
+
+# django-ckeditor
+# https://github.com/django-ckeditor/django-ckeditor
+CKEDITOR_BASEPATH = &#39;/static/ckeditor/ckeditor/&#39;
+CKEDITOR_UPLOAD_PATH = &#39;uploads/&#39;
+CKEDITOR_FILENAME_GENERATOR = &#39;djeym.utils.get_filename&#39;
+CKEDITOR_THUMBNAIL_SIZE = (300, 300)
+CKEDITOR_FORCE_JPEG_COMPRESSION = True
+CKEDITOR_IMAGE_QUALITY = 40
+CKEDITOR_IMAGE_BACKEND = &#39;pillow&#39;
+CKEDITOR_ALLOW_NONIMAGE_FILES = False  # False - Only image files. (At your discretion)
+CKEDITOR_CONFIGS = {
+    &#39;default&#39;: {
+        &#39;toolbar&#39;: &#39;full&#39;,
+        &#39;height&#39;: 400,
+        &#39;width&#39;: &#39;100%&#39;,
+    },
+    &#39;djeym&#39;: {
+        &#39;toolbar&#39;: &#39;full&#39;,
+        &#39;height&#39;: 400,
+        &#39;width&#39;: 362,
+        &#39;colorButton_colors&#39;: &#39;F44336,C62828,E91E63,AD1457,9C27B0,6A1B9A,&#39;
+                              &#39;673AB7,4527A0,3F51B5,283593,2196F3,1565C0,&#39;
+                              &#39;03A9F4,0277BD,00BCD4,00838F,009688,00695C,&#39;
+                              &#39;4CAF50,2E7D32,8BC34A,558B2F,CDDC39,9E9D24,&#39;
+                              &#39;FFEB3B,F9A825,FFC107,FF8F00,FF9800,EF6C00,&#39;
+                              &#39;FF5722,D84315,795548,4E342E,607D8B,37474F,&#39;
+                              &#39;9E9E9E,424242,000000,FFFFFF&#39;,
+        &#39;colorButton_enableAutomatic&#39;: False,
+        &#39;colorButton_enableMore&#39;: True
+    }
+}
+
+# (If a non-authenticated user requests an editor page.)
+# (Если не аутентифицированный пользователь запросит страницу редактора.)
+LOGIN_URL = &#39;/admin/&#39;  # or change to your URL
+
+# Required for django-admin-sortable
+# https://github.com/alsoicode/django-admin-sortable#configuration
+CSRF_COOKIE_HTTPONLY = False
+
+# The API key is used in the free and paid versions.
+# You can get the key in the developer’s office - https://passport.yandex.com/
+# ( API-ключ используется в свободной и платной версиях.
+#   Получить ключ можно в кабинете разработчика - https://developer.tech.yandex.ru/ )
+DJEYM_YMAPS_API_KEY = &#39;&#39;
+
+# For paid use API --&gt; True
+# ( Для платного использования --&gt; True )
+DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE = False
+
+# Map download mode. Default = &#39;release&#39;
+# (Режим загрузки карт.)
+# DJEYM_YMAPS_DOWNLOAD_MODE = &#39;debug&#39;</code></pre>
+<h2 id="add-to-main-urls">Add to main URLs</h2>
+<p>urls.py:</p>
+<pre><code>from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.contrib.staticfiles.urls import static
+
+urlpatterns = [
+    path(&#39;admin/&#39;, admin.site.urls),
+    path(&#39;ckeditor/&#39;, include(&#39;ckeditor_uploader.urls&#39;)),
+    path(&#39;djeym/&#39;, include(&#39;djeym.urls&#39;, namespace=&#39;djeym&#39;)),
+] + static(
+    settings.STATIC_URL,
+    document_root=settings.STATIC_ROOT
+) + static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT
+)</code></pre>
+<h2 id="add-media-directory-to-your-project">Add media directory to your project</h2>
+<blockquote>
+<p>media/uploads</p>
+</blockquote>
+<h2 id="update-migrations">Update Migrations</h2>
+<blockquote>
+<p>python manage.py migrate djeym</p>
+</blockquote>
+<h2 id="usage">Usage</h2>
+<h3 id="--.-add-cluster-icon.">1) Добавьте иконку кластера. ( <em>Add Cluster Icon.</em> )</h3>
+<ol>
+<li><a href="https://github.com/kebasyaty/django-editor-ymaps/blob/master/Cluster_Collection.zip?raw=true">Скачайте коллекцию кластеров. (Download the cluster collection.)</a><br /></li>
+<li><strong>Ознакомьтесь с содержимым архива.</strong> ( <em>Read the contents of the archive.</em> )<br /></li>
+<li><strong>Выберите иконку кластера и добавьте по адресу - Панель администратора &gt; ЯНДЕКС КАРТЫ &gt; Иконки для кластеров &gt; Добавить Иконку для кластеров.</strong> ( <em>Select the cluster icon and add it to the address - Admin Panel &gt; YANDEX MAPS &gt; Icons for Clusters &gt; Add Icon for Clusters.</em> )</li>
+</ol>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/add_cluster.png?raw=true" /></p>
+<h3 id="--.-add-a-collection-of-markers.">2) Добавьте коллекцию маркеров. ( <em>Add a collection of markers.</em> )</h3>
+<ol>
+<li><a href="https://github.com/kebasyaty/django-editor-ymaps/blob/master/Marker_Collection.zip?raw=true">Скачайте коллекцию маркеров. (Download the marker collection.)</a><br /></li>
+<li><strong>Ознакомьтесь с содержимым архива.</strong> ( <em>Read the contents of the archive.</em> )<br /></li>
+<li><strong>Прочитайте readme файл, выберите коллекцию и добавьте через панель администратора.</strong> ( <em>Read the readme file, select the collection and add it through the admin panel.</em> )</li>
+</ol>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/import_icon_collection.png?raw=true" /></p>
+<p><strong>Добавляя собственные иконки, проверяйте смещение по эталону.</strong> ( <em>By adding your own icons, check the offset by standard.</em> )</p>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/offset_icon_for_markers.png?raw=true" /></p>
+<h3 id="---.-add-tile-sources.">3) Добавьте источники тайловых слоев. ( <em>Add tile sources.</em> )</h3>
+<ol>
+<li><a href="https://github.com/kebasyaty/django-editor-ymaps/blob/master/Tile.zip?raw=true">Скачайте источники тайловых слоев. (Download tile sources.)</a><br /></li>
+<li><strong>Ознакомьтесь с содержимым архива.</strong> ( <em>Read the contents of the archive.</em> )<br /></li>
+<li><strong>Прочитайте readme файл и добавьте источники через панель администратора.</strong> ( <em>Read the readme file and add sources through the admin panel.</em> )</li>
+</ol>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/import_tile_sources.png?raw=true" /></p>
+<h3 id="---.-add-loading-indicator-icon.">4) Добавьте иконку индикатора загрузки. ( <em>Add loading indicator icon.</em> )</h3>
+<ol>
+<li><a href="https://github.com/kebasyaty/django-editor-ymaps/blob/master/Spinner.zip?raw=true">Скачайте иконки для индикатора загрузки. (Download the icon for the loading indicator.)</a><br /></li>
+<li><strong>Ознакомьтесь с содержимым архива.</strong> ( <em>Read the contents of the archive.</em> )<br /></li>
+<li><strong>Прочитайте readme файл и добавьте иконку через панель администратора.</strong> ( <em>Read the readme file and add the icon through the admin panel.</em> )</li>
+</ol>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/add_loading_indicator.png?raw=true" /></p>
+<h3 id="---.-create-your-first-map.">5) Создайте вашу первую карту. ( <em>Create your first map.</em> )</h3>
+<ol>
+<li><strong>Перейдите по адресу - Панель администратора &gt; ЯНДЕКС КАРТЫ &gt; Карты &gt; Добавить Карту.</strong> ( <em>Navigate to the address - Admin Panel &gt; YANDEX MAPS &gt; Maps &gt; Add Map.</em> )</li>
+</ol>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/create_map.png?raw=true" /></p>
+<h3 id="-.-edit-map.">6) Редактировать карту. ( <em>Edit map.</em> )</h3>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/edit_map.png?raw=true" /></p>
+<h2 id="--.-editor-page-overview.">Обзор страницы редактора. ( <em>Editor page overview.</em> )</h2>
+<h3 id="------.-editor-menu---filters-by-category.">1) Меню редактора - Фильтры по категориям. ( <em>Editor Menu - Filters by category.</em> )</h3>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_filters.png?raw=true" /></p>
+<h3 id="-----.-editor-menu---tile-sources.">2) Меню редактора - Источники тайлов. ( <em>Editor Menu - Tile Sources.</em> )</h3>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_tile.png?raw=true" /></p>
+<h3 id="-----.-editor-menu---general-settings.">3) Меню редактора - Общие настройки. ( <em>Editor Menu - General settings.</em> )</h3>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_general_settings.png?raw=true" /></p>
+<h3 id="-----.-editor-menu---controls.">4) Меню редактора - Элементы управления. ( <em>Editor Menu - Controls.</em> )</h3>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_controls.png?raw=true" /></p>
+<h3 id="------.-editor-menu---heatmap-settings.">5) Меню редактора - Настройки тепловой карты. (<em>Editor Menu - Heatmap settings.</em>)</h3>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_heatmap.png?raw=true" /></p>
+<h3 id="-----.-editor-menu---loading-indicators.">6) Меню редактора - Индикаторы загрузки. (<em>Editor Menu - Loading indicators.</em>)</h3>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_loading_indicators.png?raw=true" /></p>
+<h2 id="---.-adding-geo-objects-to-the-map.">Добавление геообъектов на карту. ( <em>Adding geo-objects to the map.</em> )</h2>
+<ul>
+<li><strong>(ru)</strong> Левый клик на карте, откроется меню с предложением выбрать тип объекта.<br /></li>
+<li><strong>(en)</strong> Left-clicking on the map opens a menu with a suggestion to choose the type of object.</li>
+</ul>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/adding_geo_objects.png?raw=true" /></p>
+<ul>
+<li><strong>(ru)</strong> Маркер - Сменить иконку.<br /></li>
+<li><strong>(en)</strong> Marker - Change icon.</li>
+</ul>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/marker_change_icon.png?raw=true" /></p>
+<ul>
+<li><strong>(ru)</strong> Пример маршрута на карте.<br /></li>
+<li><strong>(en)</strong> Example route on the map.</li>
+</ul>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/example_route.png?raw=true" /></p>
+<ul>
+<li><strong>(ru)</strong> Пример территории на карте.<br /></li>
+<li><strong>(en)</strong> An example of the territory on the map.</li>
+</ul>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/example_territory.png?raw=true" /></p>
+<h2 id="----.-display-a-map-on-the-site-page.">Выводим карту на страницу сайта. ( <em>Display a map on the site page.</em> )</h2>
+<p>Добавьте в шаблон. ( Add to template. ):</p>
+<pre><code>{% load i18n static djeymtags %}
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui&quot;&gt;
+
+  &lt;!-- START VENDORS CSS --&gt;
+  &lt;!-- Roboto Font:
+        Usage (css):
+          font-size: 16px;
+          font-family: Roboto, sans-serif !important;
+          font-weight: 100|300|400|500|700|900;
+          font-style: italic!important; --&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;!-- Material Design Icons:
+        url: https://materialdesignicons.com/
+        Usage (html):
+          &lt;span class=&quot;mdi mdi-name&quot;&gt;&lt;/span&gt;
+          Size: mdi-18px|mdi-24px|mdi-36px|mdi-48px or font-size: 16px;
+          Rotate: mdi-rotate-45|mdi-rotate-90|mdi-rotate-135|mdi-rotate-180|mdi-rotate-225|mdi-rotate-270|mdi-rotate-315
+          Flip: mdi-flip-h|mdi-flip-v
+          Color: mdi-light|mdi-light mdi-inactive|mdi-dark|mdi-dark mdi-inactive or color: #212121; --&gt;
+  &lt;link href=&quot;https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;!-- END VENDORS CSS --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;!-- START MAP --&gt;
+  &lt;!-- Buttons are optional.
+       (Кнопки не являются обязательными.) --&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+    .djeym-button {
+      font-family: Roboto, sans-serif !important;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .djeym-button-bar {
+      display: none;
+      margin-bottom: 10px;
+    }
+  &lt;/style&gt;
+  &lt;div class=&quot;djeym-button-bar&quot;&gt;
+    &lt;button id=&quot;djeym-open-panel&quot; type=&quot;button&quot; class=&quot;djeym-button&quot;&gt;
+      &lt;span class=&quot;mdi mdi-arrow-expand-right&quot;&gt;&lt;/span&gt;
+      Open Panel
+    &lt;/button&gt;
+    &lt;button id=&quot;djeym-add-marker&quot; type=&quot;button&quot; class=&quot;djeym-button&quot;&gt;
+      &lt;span class=&quot;mdi mdi-map-marker-plus&quot;&gt;&lt;/span&gt;
+      Add Marker
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;djeym-app&quot; class=&quot;djeym&quot;&gt;&lt;/div&gt;
+  &lt;!-- END MAP --&gt;
+
+  &lt;!-- START VENDORS JS --&gt;
+  &lt;script type=&quot;text/javascript&quot; src=&quot;{% static &quot;djeym/js/jquery.min.js&quot; %}&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;{% static &quot;djeym/js/jquery-regex.min.js&quot; %}&quot;&gt;&lt;/script&gt;
+  ...
+  {% djeym_yandex_map slug=&#39;test-map&#39; lang=request.LANGUAGE_CODE %}
+  &lt;!-- END VENDORS JS --&gt;
+&lt;/body&gt;</code></pre>
+<h2 id="---.-map-with-open-panel.">Карта с открытой панелью. ( <em>Map with open panel.</em> )</h2>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/map_opened_panel.png?raw=true%0A%20:alt:%20Map%20with%20open%20panel" /></p>
+<h2 id="-------.-map-with-an-open-form-for-adding-custom-markers.">Карта с открытой формой для добавления пользовательских маркеров. ( <em>Map with an open form for adding custom markers.</em> )</h2>
+<ul>
+<li><strong>(ru)</strong> Для безопасности, в названии и описании, все html теги удаляются.<br /></li>
+<li><strong>(en)</strong> For security, in the title and description, all html tags are deleted.</li>
+</ul>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/map_opened_form.png?raw=true%0A%20:alt:%20Map%20with%20open%20form" /></p>
+<h2 id="----.-admin-actions-after-successful-moderation.">Действия администратора после успешной модерации. ( <em>Admin actions after successful moderation.</em> )</h2>
+<p><embed src="https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/after_successful_moderation.png?raw=true%0A%20:alt:%20After%20successful%20moderation" /></p>
+<h2 id="----.-notification-of-a-new-custom-marker.">Уведомление о новом пользовательском маркере. ( <em>Notification of a new custom marker.</em> )</h2>
+<p>Add in views.py:</p>
+<pre><code>from django.core.mail import send_mail
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from djeym.models import Placemark
+
+# SIMPLE EXAMPLE.
+# 1. Notify administrator of a new custom marker.
+# 2. Notify user about successful moderation of his marker.
+# Mail server for testings: $ python -m smtpd -n -c DebuggingServer localhost:1025
+@receiver(post_save, sender=Placemark)
+def notify_email(instance, **kwargs):
+    &quot;&quot;&quot;Notify by email of a new custom marker.&quot;&quot;&quot;
+
+    &quot;&quot;&quot;
+    # May come in handy. (Может пригодится.)
+    title = instance.header  # (html)
+    description = instance.body  # (html)
+    image_url = instance.user_image.url
+    &quot;&quot;&quot;
+    # Notify administrator of a new custom marker.
+    if instance.is_user_marker and not instance.is_sended_admin_email:
+        subject = &#39;Text subject&#39;
+        message = &#39;Text message - Url: &#39; + \
+            &#39;http(s)://your.domain/admin/djeym/placemark/{}/change/&#39;.format(instance.pk)
+        from_email = &#39;admin@site.net&#39;  # or corporate email
+        recipient_list = [&#39;admin@site.net&#39;]  # Your work email
+        send_mail(subject, message, from_email,
+                  recipient_list, fail_silently=False)
+        # Required
+        instance.is_sended_admin_email = True
+        instance.save()
+    # Notify user about successful moderation of his marker.
+    elif instance.active and instance.is_user_marker and not instance.is_sended_user_email:
+        subject = &#39;Text subject&#39;
+        message = &#39;Text message&#39;
+        from_email = &#39;admin@site.net&#39;  # Your work email
+        recipient_list = [instance.user_email]
+        send_mail(subject, message, from_email,
+                  recipient_list, fail_silently=False)
+        # Required
+        instance.is_sended_user_email = True
+        instance.save()</code></pre>
+<h2 id="license">LICENSE</h2>
+<ul>
+<li><a href="https://github.com/kebasyaty/django-editor-ymaps/blob/master/LICENSE">MIT License</a><br /></li>
+<li>Copyright (c) 2014 kebasyaty</li>
+</ul>
+<h2 id="changelog">CHANGELOG</h2>
+<p>#2.1.14</p>
+<ul>
+<li>(ru) Небольшой рестайлинг страницы редактора.<br /></li>
+<li>(en) A small restyling of the editor page.</li>
+</ul>

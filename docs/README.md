@@ -356,6 +356,7 @@ Usage
       {% djeym_yandex_map slug='test-map' lang=request.LANGUAGE_CODE %}
       <!-- END VENDORS JS -->
     </body>
+    {% endraw %}
 
 Карта с открытой панелью. ( *Map with open panel.* )
 ----------------------------------------------------

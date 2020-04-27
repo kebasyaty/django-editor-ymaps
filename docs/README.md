@@ -11,7 +11,7 @@ DjEYM ( django-editor-ymaps )
 
 -   **(ru)** [Условия использования Яндекс.Карт](https://tech.yandex.ru/maps/jsapi/doc/2.1/quick-start/index-docpage/#get-api-key)
 -   **(ru)** [Получить API-ключ](https://tech.yandex.ru/maps/jsapi/doc/2.1/quick-start/index-docpage/#get-api-key)
--   **---**
+-   **--**
 -   **(en)** [Terms of use for the Yandex.Maps](https://tech.yandex.com/maps/jsapi/doc/2.1/terms/index-docpage/)
 -   **(en)** [Get the API key](https://tech.yandex.com/maps/jsapi/doc/2.1/quick-start/index-docpage/#get-api-key)
 
@@ -35,7 +35,7 @@ Requirements
 -   **django-colorful** - [<https://pypi.org/project/django-colorful/>](https://pypi.org/project/django-colorful/)
 
 - **django-admin-sortable** - [<https://pypi.org/project/django-admin-sortable/>](https://pypi.org/project/django-admin-sortable/)
--   **---**
+-   **--**
 - **Vue.js** - [<https://vuejs.org/>](https://vuejs.org/)
 - **Vuetify.js** - [<https://vuetifyjs.com/>](https://vuetifyjs.com/)
 

@@ -1,17 +1,5 @@
 ![](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/logo.png?raw=true)
 
-|
-
-[![PyPI badge](https://img.shields.io/badge/pypi-v20.0.2%20-blue.svg)](https://pypi.org/project/pip/)
-
-[![Python badge](https://img.shields.io/badge/python-%3E%3D%203.6-yellow.svg)](https://www.python.org/)
-
-[![Django badge](https://img.shields.io/badge/django-%3E%3D%202.0-brightgreen.svg)](https://www.djangoproject.com/)
-
-[![Downloads badge](https://pepy.tech/badge/django-editor-ymaps)](https://pepy.tech/project/django-editor-ymaps)
-
-[![MIT badge](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/kebasyaty/django-editor-ymaps/blob/master/LICENSE)
-
 DjEYM ( django-editor-ymaps )
 =============================
 

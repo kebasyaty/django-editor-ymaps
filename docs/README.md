@@ -285,6 +285,7 @@ Usage
 
 Добавьте в шаблон. ( Add to template. ):
 
+    {% raw %}
     {% load i18n static djeymtags %}
 
     <head>

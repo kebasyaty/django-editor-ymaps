@@ -178,9 +178,11 @@ urls.py::
     from django.contrib.staticfiles.urls import static
     
     urlpatterns = [
+        ...
         path('admin/', admin.site.urls),
         path('ckeditor/', include('ckeditor_uploader.urls')),
         path('djeym/', include('djeym.urls', namespace='djeym')),
+        ...
     ] + static(
         settings.STATIC_URL,
         document_root=settings.STATIC_ROOT

@@ -128,10 +128,10 @@
 
 /* Custom layout for the contents of the balloon. */
 
-div:has(> div.djeym_ballon_header) {
+/*div:has(> div.djeym_ballon_header) {
     padding-left: 10px;
     border: solid 1px blue;
-}
+}*/
 
 .djeym_ballon_header,
 .djeym_ballon_body,
@@ -235,4 +235,7 @@ div:has(> div.djeym_ballon_header) {
 
 .position-relative {
     position: relative !important;
+    overflow-y: auto;
+    padding-left: 10px;
+    border: solid 1px blue;
 }

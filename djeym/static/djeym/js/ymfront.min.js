@@ -433,7 +433,7 @@ function init() {
         Map.balloon.close(true);
 
         let button = $("button[name='balloon_refreshed']");
-        //if (!button) {
+        if (!button || button.length === 0) {
             setTimeout(function () {
                 if (geoObjectType === "Point") {
                     globalObjMngPlacemark.objects.balloon.open(geoObject.id);
@@ -443,7 +443,7 @@ function init() {
                     globalObjMngPolygon.objects.balloon.open(geoObject.id);
                 }
             }, 100);
-        //}
+        }
         $.get("/djeym/ajax-balloon-content/",
             {
                 objID: geoObject.properties.id,

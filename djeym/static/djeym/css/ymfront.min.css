@@ -128,18 +128,17 @@
 
 /* Custom layout for the contents of the balloon. */
 
-.ymaps-2-1-75-balloon__content {
-    position: relative;
-    z-index: 15;
-    margin-top: 13px;
+div:has(> div.djeym_ballon_header) {
+    padding-left: 10px;
+    border: solid 1px blue;
 }
 
 .djeym_ballon_header,
 .djeym_ballon_body,
 .djeym_ballon_footer {
-    display: block;
-    width: 322px !important;
-    max-width: 322px !important;
+    /*display: block;*/
+    width: 100% !important;
+    max-width: 100% !important;
 }
 
 .djeym_ballon_header {

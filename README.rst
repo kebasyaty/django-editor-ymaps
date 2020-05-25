@@ -471,6 +471,10 @@ LICENSE
 
 CHANGELOG
 ---------
+#2.1.16
+    - (ru) Обновлен README.rst и восстановлены скриншоты для первой версии.
+    - (en) Updated README.rst and restored screenshots for the first version.
+
 #2.1.14
     - (ru) Небольшой рестайлинг страницы редактора.
     - (en) A small restyling of the editor page.

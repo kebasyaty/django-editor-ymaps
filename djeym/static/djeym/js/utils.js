@@ -51,7 +51,8 @@ function relateSuggests(preselector="") {
     var suggests = new Array();
     $(preselector + "input[type=text][mode=suggest]").each(function () {
         suggests.push(new utilsYMaps.SuggestView(this, {
-                results: 1
+                results: 1,
+                zIndex: 90000,
             }));
         $(this).attr("suggest-id", suggests.length - 1);
     });
@@ -73,7 +74,8 @@ function relateCitySuggests(preselector="") {
     $(preselector + "input[type=text][mode=citysuggest]").each(function () {
         suggests.push(new utilsYMaps.SuggestView(this, {
                 provider: cityprovider,
-                results: 1
+                results: 1,
+                zIndex: 90000,
             }));
         $(this).attr("suggest-id", suggests.length - 1);
     });

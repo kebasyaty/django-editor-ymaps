@@ -471,6 +471,14 @@ LICENSE
 
 CHANGELOG
 ---------
+#2.1.17
+    - 1
+    - (ru) Исправлен баг для Django 3.1 - Ошибка при открытии страницы редактора.
+    - (en) Fixed bug for Django 3.1 - Error opening editor page.
+    - 2
+    - (ru) Небольшой рестайлинг формы для добавления пользовательских маркеров.
+    - (en) Small restyling of the form to add custom markers.
+
 #2.1.16
     - (ru) Обновлен README.rst и восстановлены скриншоты для первой версии.
     - (en) Updated README.rst and restored screenshots for the first version.

@@ -244,13 +244,23 @@
                 tile
                 depressed
                 block
+                color="green darken-1"
                 :ripple="effectRipple"
                 @click="saveCustomMarker()"
-              >{{ $t('message.10') }}</v-btn>
+              >
+                <span class="white--text">{{ $t('message.10') }}</span>
+              </v-btn>
             </v-col>
             <v-col cols="3" class="pl-0">
-              <v-btn tile depressed block :ripple="effectRipple" @click="closeCustomMarker()">
-                <v-icon color="red darken-3">mdi-cancel</v-icon>
+              <v-btn
+                tile
+                depressed
+                block
+                color="red darken-1"
+                :ripple="effectRipple"
+                @click="closeCustomMarker()"
+              >
+                <v-icon color="white">mdi-close</v-icon>
               </v-btn>
             </v-col>
           </v-row>
@@ -272,7 +282,7 @@
         :color="$vuetify.theme.dark ? '#323232' : 'white'"
       >
         <span
-          v-html="`<table><tr><td width='36px'><span class='mdi mdi-information-variant mdi-36px' style='position:relative;top:-19px;'></span></td><td valign='top'>${textAlert}</td></tr></table>`"
+          v-html="`<table><tr><td width='36px'><span class='mdi mdi-information-variant mdi-36px' style='position:relative;top:-19px;color:#1E88E5;'></span></td><td valign='top'>${textAlert}</td></tr></table>`"
           :class="$vuetify.theme.dark ? 'grey--text text--lighten-5' : 'grey--text text--darken-4'"
         ></span>
         <v-btn

@@ -8,6 +8,7 @@ import VueCroppie from 'vue-croppie'
 import 'croppie/croppie.css'
 
 Vue.config.productionTip = false
+Vue.config.devtools = false
 
 Vue.use(VueCroppie)
 

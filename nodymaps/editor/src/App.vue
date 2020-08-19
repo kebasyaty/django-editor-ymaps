@@ -115,7 +115,7 @@
     </v-app-bar>
 
     <!-- Content - Map -->
-    <div fluid id="djeymYMapsID" class="djeym-ymap pa-3"></div>
+    <div fluid id="djeymYMapsID" class="djeym-ymap pa-0"></div>
 
     <!-- Modals -->
     <Modals />
@@ -244,7 +244,7 @@ export default {
 .djeym-ymap {
   min-height: 300px !important;
   position: absolute;
-  top: 66px;
+  top: 64px;
   right: 0;
   bottom: 0;
   left: 0;

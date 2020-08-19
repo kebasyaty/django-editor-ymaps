@@ -10,6 +10,7 @@ from django.core.files.base import ContentFile
 from django.db.models import Q
 from django.http import (FileResponse, HttpResponse, HttpResponseForbidden,
                          JsonResponse)
+from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView, View
@@ -41,19 +42,19 @@ def vue_vendors_css_js(target):
 
     if not IS_DEVELOPMANT:
         if target == 'front':
-            ctx['vue_css_app'] = 'app.463e512c.css'
+            ctx['vue_css_app'] = 'app.ccb4fc48.css'
             ctx['vue_css_chunk_vendors'] = 'chunk-vendors.e7a238a9.css'
-            ctx['vue_js_app'] = 'app.fdb5b550.js'
-            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.179b8deb.js'
-            ctx['vue_js_app_legacy'] = 'app-legacy.49ff04c4.js'
-            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.effb0686.js'
+            ctx['vue_js_app'] = 'app.a6f69996.js'
+            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.11111a86.js'
+            ctx['vue_js_app_legacy'] = 'app-legacy.0f9eee81.js'
+            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.36c3a3d3.js'
         else:
-            ctx['vue_css_app'] = 'app.b2faea98.css'
-            ctx['vue_css_chunk_vendors'] = 'chunk-vendors.ef153bb0.css'
-            ctx['vue_js_app'] = 'app.563834c7.js'
-            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.f5273d59.js'
-            ctx['vue_js_app_legacy'] = 'app-legacy.b8da75dc.js'
-            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.22ef8691.js'
+            ctx['vue_css_app'] = 'app.39ede0f0.css'
+            ctx['vue_css_chunk_vendors'] = 'chunk-vendors.c47a893d.css'
+            ctx['vue_js_app'] = 'app.273ec893.js'
+            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.61c8bbd1.js'
+            ctx['vue_js_app_legacy'] = 'app-legacy.e4c68de3.js'
+            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.736c5d5a.js'
     else:
         # Automatically get CSS and JS for Vue.js (for development only).
         import os
@@ -255,7 +256,7 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
     template_name = "djeym/ymaps_editor.html"
 
     def get_context_data(self, **kwargs):
-        slug = kwargs.get('slug')
+        slug = force_text(kwargs.get('slug'))
         ymap = Map.objects.filter(slug=slug, active=True).first()
         context = super(YMapEditor, self).get_context_data(**kwargs)
 
@@ -587,7 +588,7 @@ class AjaxUpdateLoadIndicator(View):
 
     def post(self, request, *args, **kwargs):
         map_id = int(request.POST.get('mapID'))
-        slug = request.POST.get('slug')
+        slug = force_text(request.POST.get('slug'))
         size = int(request.POST.get('size'))
         speed = request.POST.get('speed')
         animation = request.POST.get('animation')
@@ -937,7 +938,7 @@ class ExportIconCollection(StaffRequiredMixin, View):
     """Export a icon collection from a database to a json file."""
 
     def dispatch(self, request, *args, **kwargs):
-        slug = kwargs.get("slug")
+        slug = force_text(kwargs.get("slug"))
         collection = IconCollection.objects.get(slug=slug)
         icons = collection.icons.all()
         collection_json = {

@@ -1,4 +1,4 @@
-![image](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/logo.png?raw=true%0A%20:alt:%20Logo)
+![image](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/logo.png?raw=true%0A%20:alt:%20Logo)
 
 DjEYM ( django-editor-ymaps )
 =============================
@@ -190,7 +190,7 @@ Usage
 2.  **Ознакомьтесь с содержимым архива.** ( *Read the contents of the archive.* )
 3.  **Выберите иконку кластера и добавьте по адресу - Панель администратора \> ЯНДЕКС КАРТЫ \> Иконки для кластеров \> Добавить Иконку для кластеров.** ( *Select the cluster icon and add it to the address - Admin Panel \> YANDEX MAPS \> Icons for Clusters \> Add Icon for Clusters.* )
 
-![Add Cluster](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/add_cluster.png?raw=true)
+![Add Cluster](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/add_cluster.png?raw=true)
 
 ### 2) Добавьте коллекцию маркеров. ( *Add a collection of markers.* )
 
@@ -198,11 +198,11 @@ Usage
 2.  **Ознакомьтесь с содержимым архива.** ( *Read the contents of the archive.* )
 3.  **Прочитайте readme файл, выберите коллекцию и добавьте через панель администратора.** ( *Read the readme file, select the collection and add it through the admin panel.* )
 
-![Import the Marker Collection](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/import_icon_collection.png?raw=true)
+![Import the Marker Collection](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/import_icon_collection.png?raw=true)
 
 **Добавляя собственные иконки, проверяйте смещение по эталону.** ( *By adding your own icons, check the offset by standard.* )
 
-![Check marker icon offset](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/offset_icon_for_markers.png?raw=true)
+![Check marker icon offset](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/offset_icon_for_markers.png?raw=true)
 
 ### 3) Добавьте источники тайловых слоев. ( *Add tile sources.* )
 
@@ -210,7 +210,7 @@ Usage
 2.  **Ознакомьтесь с содержимым архива.** ( *Read the contents of the archive.* )
 3.  **Прочитайте readme файл и добавьте источники через панель администратора.** ( *Read the readme file and add sources through the admin panel.* )
 
-![Import the Tile Sources](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/import_tile_sources.png?raw=true)
+![Import the Tile Sources](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/import_tile_sources.png?raw=true)
 
 ### 4) Добавьте иконку индикатора загрузки. ( *Add loading indicator icon.* )
 
@@ -218,36 +218,36 @@ Usage
 2.  **Ознакомьтесь с содержимым архива.** ( *Read the contents of the archive.* )
 3.  **Прочитайте readme файл и добавьте иконку через панель администратора.** ( *Read the readme file and add the icon through the admin panel.* )
 
-![Add Loading Indicator](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/add_loading_indicator.png?raw=true)
+![Add Loading Indicator](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/add_loading_indicator.png?raw=true)
 
 ### 5) Создайте вашу первую карту. ( *Create your first map.* )
 
 1.  **Перейдите по адресу - Панель администратора \> ЯНДЕКС КАРТЫ \> Карты \> Добавить Карту.** ( *Navigate to the address - Admin Panel \> YANDEX MAPS \> Maps \> Add Map.* )
 
-![Create map](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/create_map.png?raw=true)
+![Create map](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/create_map.png?raw=true)
 
 ### 6) Редактировать карту. ( *Edit map.* )
 
-![Edit map](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/edit_map.png?raw=true)
+![Edit map](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/edit_map.png?raw=true)
 
 Обзор страницы редактора. ( *Editor page overview.* )
 -----------------------------------------------------
 
 ### 1) Меню редактора - Фильтры по категориям. ( *Editor Menu - Filters by category.* )
 
-![Editor Menu - Filters by category](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_filters.png?raw=true)
+![Editor Menu - Filters by category](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/editor_menu_filters.png?raw=true)
 
 ### 2) Меню редактора - Источники тайлов. ( *Editor Menu - Tile Sources.* )
 
-![Editor Menu - Tile Sources](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_tile.png?raw=true)
+![Editor Menu - Tile Sources](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/editor_menu_tile.png?raw=true)
 
 ### 3) Меню редактора - Общие настройки. ( *Editor Menu - General settings.* )
 
-![Editor Menu - General settings](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_general_settings.png?raw=true)
+![Editor Menu - General settings](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/editor_menu_general_settings.png?raw=true)
 
 ### 4) Меню редактора - Элементы управления. ( *Editor Menu - Controls.* )
 
-![Editor Menu - Controls](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_controls.png?raw=true)
+![Editor Menu - Controls](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/editor_menu_controls.png?raw=true)
 
 ### 5) Меню редактора - Настройки тепловой карты. (*Editor Menu - Heatmap settings.*)
 
@@ -255,7 +255,7 @@ Usage
 
 ### 6) Меню редактора - Индикаторы загрузки. (*Editor Menu - Loading indicators.*)
 
-![Editor Menu - Loading indicators](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_loading_indicators.png?raw=true)
+![Editor Menu - Loading indicators](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/editor_menu_loading_indicators.png?raw=true)
 
 Добавление геообъектов на карту. ( *Adding geo-objects to the map.* )
 ---------------------------------------------------------------------
@@ -263,22 +263,22 @@ Usage
 -   **(ru)** Левый клик на карте, откроется меню с предложением выбрать тип объекта.
 -   **(en)** Left-clicking on the map opens a menu with a suggestion to choose the type of object.
 
-![Adding geo-objects](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/adding_geo_objects.png?raw=true)
+![Adding geo-objects](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/adding_geo_objects.png?raw=true)
 
 -   **(ru)** Маркер - Сменить иконку.
 -   **(en)** Marker - Change icon.
 
-![Marker - Change icon](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/marker_change_icon.png?raw=true)
+![Marker - Change icon](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/marker_change_icon.png?raw=true)
 
 -   **(ru)** Пример маршрута на карте.
 -   **(en)** Example route on the map.
 
-![Example of the route](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/example_route.png?raw=true)
+![Example of the route](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/example_route.png?raw=true)
 
 -   **(ru)** Пример территории на карте.
 -   **(en)** An example of the territory on the map.
 
-![Example of the territory](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/example_territory.png?raw=true)
+![Example of the territory](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/example_territory.png?raw=true)
 
 Выводим карту на страницу сайта. ( *Display a map on the site page.* )
 ----------------------------------------------------------------------
@@ -361,7 +361,7 @@ Usage
 Карта с открытой панелью. ( *Map with open panel.* )
 ----------------------------------------------------
 
-![image](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/map_opened_panel.png?raw=true%0A%20:alt:%20Map%20with%20open%20panel)
+![image](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/map_opened_panel.png?raw=true%0A%20:alt:%20Map%20with%20open%20panel)
 
 Карта с открытой формой для добавления пользовательских маркеров. ( *Map with an open form for adding custom markers.* )
 ------------------------------------------------------------------------------------------------------------------------
@@ -369,12 +369,12 @@ Usage
 -   **(ru)** Для безопасности, в названии и описании, все html теги удаляются.
 -   **(en)** For security, in the title and description, all html tags are deleted.
 
-![image](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/map_opened_form.png?raw=true%0A%20:alt:%20Map%20with%20open%20form)
+![image](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/map_opened_form.png?raw=true%0A%20:alt:%20Map%20with%20open%20form)
 
 Действия администратора после успешной модерации. ( *Admin actions after successful moderation.* )
 --------------------------------------------------------------------------------------------------
 
-![image](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/after_successful_moderation.png?raw=true%0A%20:alt:%20After%20successful%20moderation)
+![image](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/after_successful_moderation.png?raw=true%0A%20:alt:%20After%20successful%20moderation)
 
 Уведомление о новом пользовательском маркере. ( *Notification of a new custom marker.* )
 ----------------------------------------------------------------------------------------

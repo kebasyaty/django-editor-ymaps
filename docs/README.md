@@ -251,7 +251,7 @@ Usage
 
 ### 5) Меню редактора - Настройки тепловой карты. (*Editor Menu - Heatmap settings.*)
 
-![Editor Menu - Heatmap settings](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots/editor_menu_heatmap.png?raw=true)
+![Editor Menu - Heatmap settings](https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/editor_menu_heatmap.png?raw=true)
 
 ### 6) Меню редактора - Индикаторы загрузки. (*Editor Menu - Loading indicators.*)
 
@@ -433,8 +433,18 @@ LICENSE
 CHANGELOG
 ---------
 
-\#2.1.14  
+\#2.1.17
+-   1
+-   (ru) Исправлен баг для Django 3.1 - Ошибка при открытии страницы редактора.
+-   (en) Fixed bug for Django 3.1 - Error opening editor page.
+-   2
+-   (ru) Небольшой рестайлинг формы для добавления пользовательских маркеров.
+-   (en) Small restyling of the form to add custom markers.
+
+\#2.1.16
+-   (ru) Обновлен README.rst и восстановлены скриншоты для первой версии.
+-   (en) Updated README.rst and restored screenshots for the first version.
+
+\#2.1.14
 -   (ru) Небольшой рестайлинг страницы редактора.
 -   (en) A small restyling of the editor page.
-
-

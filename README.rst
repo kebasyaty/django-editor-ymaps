@@ -471,6 +471,9 @@ LICENSE
 
 CHANGELOG
 ---------
+#2.1.18
+    - (ru) Переход на MaterialDesignIcons v5.x - Обратите внимание на раздел `Выводим карту на страницу сайта`.
+    - (en) Switching to MaterialDesignIcons v5.x - Pay attention to the section `Displaying the map on the site page`.
 #2.1.17
     - 1
     - (ru) Исправлен баг для Django 3.1 - Ошибка при открытии страницы редактора.

@@ -61,6 +61,7 @@ function relateSuggests(preselector="") {
         let dataManager = suggest.state;
         dataManager.singleSet("activeIndex", 0);
         this.dispatchEvent(new KeyboardEvent('keydown', {'keyCode':13, 'which':13}));
+        $(this).change();
         /*let first_item = dataManager.get('items')[0];
         $(this).val(first_item.value);
         //this.value = first_item.value;
@@ -84,10 +85,35 @@ function relateCitySuggests(preselector="") {
         let dataManager = suggest.state;
         dataManager.singleSet("activeIndex", 0);
         this.dispatchEvent(new KeyboardEvent('keydown', {'keyCode':13, 'which':13}));
+        $(this).change();
     });
 }
+
+function relateCityRegionSuggests(preselector="") {
+    var suggests = new Array();
+    $(preselector + "input[type=text][mode=cityregionsuggest]").each(function () {
+        suggests.push(new utilsYMaps.SuggestView(this, {
+                provider: cityregionprovider,
+                results: 2,
+                zIndex: 90000,
+            }));
+        $(this).attr("suggest-id", suggests.length - 1);
+    });
+    $(preselector + "input[type=text][mode=cityregionsuggest]").on("change", function () {
+        let suggest = suggests[$(this).attr("suggest-id")];
+        let dataManager = suggest.state;
+        let items = dataManager.get('items');
+        if (items.length === 1) {
+            dataManager.singleSet("activeIndex", 0);
+            this.dispatchEvent(new KeyboardEvent('keydown', {'keyCode': 13, 'which': 13}));
+            $(this).change();
+        }
+    });
+}
+
 
 function init() {
     relateSuggests();
     relateCitySuggests();
+    relateCityRegionSuggests();
 }

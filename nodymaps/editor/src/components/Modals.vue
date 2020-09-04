@@ -135,7 +135,12 @@ Component for popup dialogs.
     <!-- Message -->
     <v-dialog v-model="messageDialog" persistent max-width="500">
       <v-card :light="!$vuetify.theme.dark">
-        <v-card-title class="title" :class="statusMessageDialog" v-text="titleMessageDialog"></v-card-title>
+        <v-card-title
+          class="title"
+          :class="statusMessageDialog"
+          v-text="titleMessageDialog"
+          :style="`color:white;`"
+        ></v-card-title>
         <v-card-text class="pt-5 font-weight-bold">
           <table>
             <tr>

@@ -27,15 +27,15 @@ Component for filtering geo objects by categories.
     <!-- Start Appearance Settings -->
     <v-card flat>
       <v-card-text class="mt-2 pb-2">
-        <v-expansion-panels v-model="panel" focusable>
+        <v-expansion-panels v-model="panel" flat hover>
           <v-expansion-panel>
-            <v-expansion-panel-header class="py-1">
+            <v-expansion-panel-header class="py-1" :color="colorControlsTheme">
               <span>
-                <v-icon class="pr-2">mdi-settings</v-icon>
-                {{ $t('message.6') }}
+                <v-icon class="pr-2" :color="colorButtonsTextTheme">mdi-settings</v-icon>
+                <span :style="`color: ${colorButtonsTextTheme};`">{{ $t('message.6') }}</span>
               </span>
               <template v-slot:actions>
-                <v-icon :color="colorControlsTheme">$expand</v-icon>
+                <v-icon :color="colorButtonsTextTheme">$expand</v-icon>
               </template>
             </v-expansion-panel-header>
             <v-expansion-panel-content>

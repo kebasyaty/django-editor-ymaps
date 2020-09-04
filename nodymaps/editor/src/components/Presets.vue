@@ -5,7 +5,7 @@ Component for setting of Presets.
 -->
 <template>
   <v-container fluid>
-    <v-expansion-panels v-model="panel" accordion focusable>
+    <v-expansion-panels v-model="panel" accordion hover>
       <v-expansion-panel v-for="(control, index) in controls" :key="`panel-${index}`">
         <v-expansion-panel-header>
           <span>
@@ -13,7 +13,7 @@ Component for setting of Presets.
             {{ control.title }}
           </span>
           <template v-slot:actions>
-            <v-icon :color="colorControlsTheme">$expand</v-icon>
+            <v-icon :color="colorButtonsTextTheme">$expand</v-icon>
           </template>
         </v-expansion-panel-header>
         <v-expansion-panel-content>

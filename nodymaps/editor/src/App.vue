@@ -50,7 +50,7 @@
     </v-navigation-drawer>
 
     <!-- Panel of App -->
-    <v-app-bar app clipped-left color="green darken-3">
+    <v-app-bar app clipped-left :color="colorControlsTheme">
       <v-spacer></v-spacer>
       <!-- Button - Logo icon -->
       <v-btn
@@ -58,37 +58,47 @@
         href="https://pypi.org/project/django-editor-ymaps/"
         target="_blank"
         rel="nofollow noreferrer noopener"
-        color="white"
+        :color="colorButtonsTextTheme"
         depressed
       >
-        <IconLogo height="42" color="white" />
+        <IconLogo height="42" :color="colorButtonsTextTheme" />
       </v-btn>
 
       <!-- Button - Open Map Settings -->
-      <v-btn icon color="white" class="ml-3" @click.stop="updateMapSettingsDrawer = true">
+      <v-btn
+        icon
+        :color="colorButtonsTextTheme"
+        class="ml-3"
+        @click.stop="updateMapSettingsDrawer = true"
+      >
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
-            <v-icon large color="white" v-on="on">mdi-settings</v-icon>
+            <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-settings</v-icon>
           </template>
           <span>{{ $t("message.6") }}</span>
         </v-tooltip>
       </v-btn>
 
       <!-- Button - Back to admin panel -->
-      <v-btn icon :href="`/admin/djeym/map/${mapID}/change/`" color="white" class="ml-1">
+      <v-btn
+        icon
+        :href="`/admin/djeym/map/${mapID}/change/`"
+        :color="colorButtonsTextTheme"
+        class="ml-1"
+      >
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
-            <v-icon large color="white" v-on="on">mdi-reply-circle</v-icon>
+            <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-reply-circle</v-icon>
           </template>
           <span>{{ $t("message.83") }}</span>
         </v-tooltip>
       </v-btn>
 
       <!-- Button - Add geo object -->
-      <v-btn icon color="white" class="ml-1" @click="helpCreateGeoobject()">
+      <v-btn icon :color="colorButtonsTextTheme" class="ml-1" @click="helpCreateGeoobject()">
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
-            <v-icon large color="white" v-on="on">mdi-plus-circle</v-icon>
+            <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-plus-circle</v-icon>
           </template>
           <span>{{ $t("message.84") }}</span>
         </v-tooltip>
@@ -187,6 +197,7 @@ export default {
     ]),
     ...mapState('generalSettings', [
       'colorControlsTheme',
+      'colorButtonsTextTheme',
       'minElevation',
       'maxElevation'
     ]),

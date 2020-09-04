@@ -10,8 +10,8 @@ export default {
   state: {
     // Theme.
     themeType: 'light', // dark or light.
-    colorControlsTheme: '#FFA000',
-    colorButtonsTextTheme: '#FAFAFA',
+    colorControlsTheme: '#FFFFFF',
+    colorButtonsTextTheme: '#FFFFFF',
     // Vuetify - For the "elevation" Attribute - Cards, Buttons and etc...
     minElevation: 2,
     maxElevation: 4,

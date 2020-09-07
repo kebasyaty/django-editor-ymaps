@@ -58,7 +58,7 @@
         href="https://pypi.org/project/django-editor-ymaps/"
         target="_blank"
         rel="nofollow noreferrer noopener"
-        :color="colorButtonsTextTheme"
+        color="white"
         depressed
       >
         <IconLogo height="42" :color="colorButtonsTextTheme" />
@@ -67,7 +67,7 @@
       <!-- Button - Open Map Settings -->
       <v-btn
         icon
-        :color="colorButtonsTextTheme"
+        color="white"
         class="ml-3"
         @click.stop="updateMapSettingsDrawer = true"
       >
@@ -83,7 +83,7 @@
       <v-btn
         icon
         :href="`/admin/djeym/map/${mapID}/change/`"
-        :color="colorButtonsTextTheme"
+        color="white"
         class="ml-1"
       >
         <v-tooltip bottom>
@@ -95,7 +95,7 @@
       </v-btn>
 
       <!-- Button - Add geo object -->
-      <v-btn icon :color="colorButtonsTextTheme" class="ml-1" @click="helpCreateGeoobject()">
+      <v-btn icon color="white" class="ml-1" @click="helpCreateGeoobject()">
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-plus-circle</v-icon>

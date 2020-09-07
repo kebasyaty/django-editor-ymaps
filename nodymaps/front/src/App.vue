@@ -281,16 +281,19 @@
         :timeout="0"
         :color="$vuetify.theme.dark ? '#323232' : 'white'"
       >
-        <span
-          v-html="`<table><tr><td width='36px'><span class='mdi mdi-information-variant mdi-36px' style='position:relative;top:-10px;color:#1E88E5;'></span></td><td valign='top'>${textAlert}</td></tr></table>`"
-          :class="$vuetify.theme.dark ? 'grey--text text--lighten-5' : 'grey--text text--darken-4'"
-        ></span>
         <v-btn
-          text
-          color="pink"
+          class="mt-0 pb-0"
+          icon
+          color="white"
           :ripple="effectRipple"
           @click="showAlert = !showAlert"
-        >{{ $t('message.16') }}</v-btn>
+        >
+          <v-icon color="pink">mdi-close</v-icon>
+        </v-btn>
+        <span
+          v-html="`<table><tr><td width='36px'><span class='mdi mdi-information-variant mdi-36px' style='position:relative;top:-6px;color:#1E88E5;'></span></td><td valign='top'>${textAlert}</td></tr></table>`"
+          :class="$vuetify.theme.dark ? 'grey--text text--lighten-5' : 'grey--text text--darken-4'"
+        ></span>
       </v-snackbar>
 
       <!-- Progress bar -->

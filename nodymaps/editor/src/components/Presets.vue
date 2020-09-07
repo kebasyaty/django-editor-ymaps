@@ -5,12 +5,12 @@ Component for setting of Presets.
 -->
 <template>
   <v-container fluid>
-    <v-expansion-panels v-model="panel" accordion hover>
+    <v-expansion-panels v-model="panel" accordion flat hover>
       <v-expansion-panel v-for="(control, index) in controls" :key="`panel-${index}`">
-        <v-expansion-panel-header>
+        <v-expansion-panel-header :color="colorControlsTheme">
           <span>
-            <v-icon class="pb-1 pr-2">{{ control.icon }}</v-icon>
-            {{ control.title }}
+            <v-icon class="pb-1 pr-2" :color="colorButtonsTextTheme">{{ control.icon }}</v-icon>
+            <span :style="`color: ${colorButtonsTextTheme};`">{{ control.title }}</span>
           </span>
           <template v-slot:actions>
             <v-icon :color="colorButtonsTextTheme">$expand</v-icon>

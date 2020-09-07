@@ -22,7 +22,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (2, 1, 19)
+VERSION = (2, 1, 20)
 __version__ = '.'.join(map(str, VERSION))
 
 

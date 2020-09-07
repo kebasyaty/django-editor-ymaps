@@ -476,8 +476,8 @@ CHANGELOG
     - (ru) Небольшая доработка рестайлинга на странице редактора.
     - (en) Small revision of the restyling on the editor page.
     - 2
-    - (ru) Замена кнопки закрытия на всплывающем сообщении, на странице редактора.
-    - (en) Replacing the close button on the popup message on the editor page.
+    - (ru) Замена кнопки закрытия на всплывающем сообщении, на странице сайта.
+    - (en) Replacing the close button on the pop-up message on the site page.
 
 #2.1.19
     - (ru) Небольшой рестайлинг страницы редактора.

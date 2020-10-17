@@ -46,7 +46,7 @@
 }
 
 .v-snack--vertical .v-snack__content {
-  padding: 3px 12px 5px 5px !important;
+  padding: 0 8px 0 10px !important;
 }
 
 .v-overlay {
@@ -142,6 +142,10 @@ ymaps input[class$=-searchbox-input__input] {
 */
 .djeym-pos-relative {
   position: relative !important;
+}
+
+.djeym-pos-top--8 {
+  top: -8px;
 }
 
 /* Width and Height

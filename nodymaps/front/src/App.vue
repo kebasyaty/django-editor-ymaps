@@ -291,7 +291,7 @@
           <v-icon color="pink">mdi-close</v-icon>
         </v-btn>
         <span
-          v-html="`<table><tr><td width='36px'><span class='mdi mdi-information-variant mdi-36px' style='position:relative;top:-6px;color:#1E88E5;'></span></td><td valign='top'>${textAlert}</td></tr></table>`"
+          v-html="`<table width='294' class='djeym-pos-relative djeym-pos-top--8'><tr><td>${textAlert}</td></tr></table>`"
           :class="$vuetify.theme.dark ? 'grey--text text--lighten-5' : 'grey--text text--darken-4'"
         ></span>
       </v-snackbar>

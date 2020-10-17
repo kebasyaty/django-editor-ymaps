@@ -22,7 +22,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (2, 1, 20)
+VERSION = (2, 1, 21)
 __version__ = '.'.join(map(str, VERSION))
 
 
@@ -64,6 +64,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Topic :: Scientific/Engineering :: GIS',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],

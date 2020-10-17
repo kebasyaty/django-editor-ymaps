@@ -479,8 +479,8 @@ CHANGELOG
     - (ru) Финально обновлен логотип.
     - (en) The logo was finally updated.
     - 3
-    - (ru) Небольшие визуальные изменения для формы "Добавить пользовательский маркер".
-    - (en) Minor visual changes for the "Add custom marker" form.
+    - (ru) Небольшие визуальные изменения для всплывающего окна подсказок связаного с формой "Добавить пользовательский маркер".
+    - (en) Minor visual changes for the tooltip popup associated with the "Add custom marker" form.
 
 #2.1.20
     - 1

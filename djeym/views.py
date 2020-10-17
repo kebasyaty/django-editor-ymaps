@@ -42,12 +42,12 @@ def vue_vendors_css_js(target):
 
     if not IS_DEVELOPMANT:
         if target == 'front':
-            ctx['vue_css_app'] = 'app.73a7fd93.css'
+            ctx['vue_css_app'] = 'app.1c57bc65.css'
             ctx['vue_css_chunk_vendors'] = 'chunk-vendors.e7a238a9.css'
-            ctx['vue_js_app'] = 'app.55e65604.js'
-            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.11111a86.js'
-            ctx['vue_js_app_legacy'] = 'app-legacy.9769f2c8.js'
-            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.36c3a3d3.js'
+            ctx['vue_js_app'] = 'app.96dd699e.js'
+            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.2a912061.js'
+            ctx['vue_js_app_legacy'] = 'app-legacy.6b228a7c.js'
+            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.a8034c80.js'
         else:
             ctx['vue_css_app'] = 'app.304727ca.css'
             ctx['vue_css_chunk_vendors'] = 'chunk-vendors.c47a893d.css'

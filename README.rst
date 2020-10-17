@@ -471,6 +471,17 @@ LICENSE
 
 CHANGELOG
 ---------
+#2.1.21
+    - 1
+    - (ru) Проверено на Python 3.9.0 и Django 3.1.2.
+    - (en) Tested in Python 3.9.0 and Django 3.1.2.
+    - 2
+    - (ru) Финально обновлен логотип.
+    - (en) The logo was finally updated.
+    - 3
+    - (ru) Небольшие визуальные изменения для формы "Добавить пользовательский маркер".
+    - (en) Minor visual changes for the "Add custom marker" form.
+
 #2.1.20
     - 1
     - (ru) Небольшая доработка рестайлинга на странице редактора.

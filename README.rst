@@ -1,4 +1,4 @@
-.. figure:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/logo.svg?raw=true
+.. figure:: https://github.com/kebasyaty/django-editor-ymaps/blob/master/screenshots_v3/logo.png?raw=true
    :target: https://pypi.org/project/django-editor-ymaps/
    :alt: Logo
 

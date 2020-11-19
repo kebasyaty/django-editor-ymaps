@@ -1,8 +1,9 @@
 *.py[cod]
 __pycache__/
 *~
+.DS_Store
+DS_Store
 .directory
 dist/
 build/
 *.egg-info
-

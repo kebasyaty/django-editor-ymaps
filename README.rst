@@ -471,6 +471,10 @@ LICENSE
 
 CHANGELOG
 ---------
+#2.1.22
+    - (ru) Обновлены версии компонентов.
+    - (en) Updated versions of components.
+
 #2.1.21
     - 1
     - (ru) Проверено на Python 3.9.0 и Django 3.1.2.

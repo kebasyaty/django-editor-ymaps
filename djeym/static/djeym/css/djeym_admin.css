@@ -3,7 +3,7 @@
 }
 
 .logo_djeym img {
-  width: 100px;
+  width: 80px;
 }
 
 #id_center_map,
@@ -80,7 +80,7 @@ label[for="id_disable_standard_icons"] {
 
 .hint_center_map,
 .hint_check_icon_offset {
-  color: #2196F3;
+  color: #212121;
   font-size: 16px;
   font-weight: bold;
   margin: 0 0 10px;
@@ -184,7 +184,7 @@ label[for="id_is_cluster"] {
 #id_tile_screenshot,
 #id_icon_load_indicator {
   display: none;
-  max-height: 60px;
+  max-height: 40px;
   position: relative;
   top: 0;
   left: 20px;

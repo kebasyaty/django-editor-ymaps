@@ -50,7 +50,7 @@
     </v-navigation-drawer>
 
     <!-- Panel of App -->
-    <v-app-bar app clipped-left :color="colorControlsTheme">
+    <v-app-bar app dense clipped-left :color="colorControlsTheme">
       <v-spacer></v-spacer>
       <!-- Button - Logo icon -->
       <v-btn
@@ -65,12 +65,7 @@
       </v-btn>
 
       <!-- Button - Open Map Settings -->
-      <v-btn
-        icon
-        color="white"
-        class="ml-3"
-        @click.stop="updateMapSettingsDrawer = true"
-      >
+      <v-btn icon color="white" class="ml-3" @click.stop="updateMapSettingsDrawer = true">
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-settings</v-icon>
@@ -80,12 +75,7 @@
       </v-btn>
 
       <!-- Button - Back to admin panel -->
-      <v-btn
-        icon
-        :href="`/admin/djeym/map/${mapID}/change/`"
-        color="white"
-        class="ml-1"
-      >
+      <v-btn icon :href="`/admin/djeym/map/${mapID}/change/`" color="white" class="ml-1">
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-reply-circle</v-icon>
@@ -205,10 +195,10 @@ export default {
       'mapID'
     ]),
     updateMapSettingsDrawer: {
-      get () {
+      get() {
         return this.mapSettingsDrawer
       },
-      set (flag) {
+      set(flag) {
         this.setMapSettingsDrawer(flag)
       }
     }
@@ -230,7 +220,7 @@ export default {
     ...mapActions('ymap', [
       'findEditableGeoObject'
     ]),
-    helpCreateGeoobject () {
+    helpCreateGeoobject() {
       this.messageDialogShow({
         status: 'info',
         title: this.$t('message.87'),
@@ -242,7 +232,7 @@ export default {
       })
     }
   },
-  mounted () {
+  mounted() {
     /* 1.Ajax - Upload all settings.
        2.Start Map initialization. */
     window.djeymYMaps.ready(['util.calculateArea'])
@@ -255,7 +245,7 @@ export default {
 .djeym-ymap {
   min-height: 300px !important;
   position: absolute;
-  top: 64px;
+  top: 48px;
   right: 0;
   bottom: 0;
   left: 0;

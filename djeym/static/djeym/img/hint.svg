@@ -2,7 +2,7 @@
  <g transform="translate(.82147 -170.11)" fill="#ff5722">
   <path d="m61.913 232.97 36.662 63.5-73.323-1e-5z" fill="#ff5722" stroke-width=".26458"/>
  </g>
- <g transform="translate(.82247 -170.11)" fill="#2196f3">
-  <path transform="scale(-1)" d="m-61.913-234.03 36.662 63.5h-73.323z" fill="#2196f3" stroke-width=".26458"/>
+ <g transform="translate(.82247 -170.11)" fill="#303f9f">
+  <path transform="scale(-1)" d="m-61.913-234.03 36.662 63.5h-73.323z" fill="#303f9f" stroke-width=".26458"/>
  </g>
 </svg>

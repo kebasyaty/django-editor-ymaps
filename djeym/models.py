@@ -123,7 +123,7 @@ class TileSource(models.Model):
     def admin_thumbnail(self):
         if bool(self.screenshot):
             return mark_safe('<img src="{0}" height="{1}" alt="Screenshot">'
-                             .format(self.screenshot.url, 60))
+                             .format(self.screenshot.url, 40))
         else:
             return ""
     admin_thumbnail.short_description = _('Screenshot')
@@ -630,7 +630,7 @@ class Map(models.Model):
     def get_cluster(self):
         if bool(self.icon_cluster):
             return mark_safe('<img src="{0}" height="{1}" alt="Cluster Icon">'
-                             .format(self.icon_cluster.svg.url, 46))
+                             .format(self.icon_cluster.svg.url, 40))
         else:
             return ""
     get_cluster.short_description = _('Cluster')
@@ -640,7 +640,7 @@ class Map(models.Model):
             icon_collection=self.icon_collection).first()
         if icon is not None:
             return mark_safe('<img src="{0}" height="{1}" alt="Icon">'
-                             .format(icon.svg.url, 46))
+                             .format(icon.svg.url, 40))
         else:
             return ""
     get_icon_collection.short_description = _('Collection')
@@ -650,7 +650,7 @@ class Map(models.Model):
         if bool(self.tile):
             screenshot = self.tile.screenshot.url
         return mark_safe(
-            '<img src="{}" height="46" alt="Screenshot">'.format(screenshot))
+            '<img src="{}" height="40" alt="Screenshot">'.format(screenshot))
     get_tile_screenshot.short_description = _('Tile')
 
     def get_status_heatmap(self):
@@ -658,14 +658,14 @@ class Map(models.Model):
         if hasattr(self, 'heatmap_settings') and self.heatmap_settings.active:
             icon = 'hot_fire.svg'
         return mark_safe(
-            '<img src="/static/djeym/img/{}" height="46" alt="Icon">'.format(icon))
+            '<img src="/static/djeym/img/{}" height="40" alt="Icon">'.format(icon))
     get_status_heatmap.short_description = ungettext_lazy(
         'Heatmap', 'Heat maps', 1)
 
     def get_load_indicator(self):
         if bool(self.load_indicator):
             return mark_safe('<img src="{0}" height="{1}" alt="Icon">'
-                             .format(self.load_indicator.svg.url, 46))
+                             .format(self.load_indicator.svg.url, 40))
         else:
             return ""
     get_load_indicator.short_description = _('Indicator')
@@ -1437,7 +1437,7 @@ class ClusterIcon(models.Model):
     def admin_thumbnail(self):
         if bool(self.svg):
             return mark_safe('<img src="{0}" height="{1}" alt="Icon">'
-                             .format(self.svg.url, self.size_height))
+                             .format(self.svg.url, 40))
         else:
             return ""
     admin_thumbnail.short_description = _('Icon')
@@ -1500,7 +1500,7 @@ class IconCollection(models.Model):
         icon = self.icons.all().first()
         if icon is not None:
             return mark_safe('<img src="{0}" height="{1}" alt="Icon">'
-                             .format(icon.svg.url, icon.size_height))
+                             .format(icon.svg.url, 40))
         else:
             return ""
     admin_thumbnail.short_description = _('Sample Icon')
@@ -1584,7 +1584,7 @@ class MarkerIcon(models.Model):
     def admin_thumbnail(self):
         if bool(self.svg):
             return mark_safe('<img src="{0}" height="{1}" alt="Icon">'
-                             .format(self.svg.url, self.size_height))
+                             .format(self.svg.url, 40))
         else:
             return ""
     admin_thumbnail.short_description = _('Icon')

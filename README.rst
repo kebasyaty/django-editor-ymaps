@@ -168,7 +168,7 @@ Add settings::
     
     # Map download mode. Default = 'release'
     # (Режим загрузки карт.)
-    # DJEYM_YMAPS_DOWNLOAD_MODE = 'debug'
+    # DJEYM_YMAPS_DOWNLOAD_MODE = 'debug' if DEBUG else 'release'
 
 Add to main URLs
 ----------------

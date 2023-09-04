@@ -1,13 +1,7 @@
 <template>
   <v-app id="djeym-app">
     <!-- Panel for Map Settings -->
-    <v-navigation-drawer
-      v-model="updateMapSettingsDrawer"
-      app
-      hide-overlay
-      temporary
-      :width="widthPanelSettings"
-    >
+    <v-navigation-drawer v-model="updateMapSettingsDrawer" app hide-overlay temporary :width="widthPanelSettings">
       <v-card-actions class="pb-0">
         <v-spacer></v-spacer>
         <!-- Button - Сlose panel -->
@@ -15,33 +9,21 @@
           <v-icon :color="colorControlsTheme">mdi-close</v-icon>
         </v-btn>
       </v-card-actions>
-      <v-tabs
-        v-model="mapSettingsTab"
-        height="42"
-        show-arrows
-        center-active
-        :color="colorControlsTheme"
-      >
+      <v-tabs v-model="mapSettingsTab" height="42" show-arrows center-active :color="colorControlsTheme">
         <v-tabs-slider></v-tabs-slider>
-        <v-tab
-          v-for="(icon, index) in mapSettingsTabIcons"
-          :key="`map-settings-button-${index}`"
-          :href="`#mapSettingsTab-${index}`"
-        >
+        <v-tab v-for="(icon, index) in mapSettingsTabIcons" :key="`map-settings-button-${index}`"
+          :href="`#mapSettingsTab-${index}`">
           <v-icon>mdi-{{ icon }}</v-icon>
         </v-tab>
       </v-tabs>
 
       <v-tabs-items v-model="mapSettingsTab" v-if="showAllSettings">
-        <v-tab-item
-          v-for="(component, index) in componentList"
-          :key="`map-settings-item-${index}`"
-          :value="`mapSettingsTab-${index}`"
-        >
+        <v-tab-item v-for="(component, index) in componentList" :key="`map-settings-item-${index}`"
+          :value="`mapSettingsTab-${index}`">
           <v-card flat>
-            <v-card-title
-              class="title justify-center"
-            >{{ $t(`message.${transMapSettings[index]}`) }}</v-card-title>
+            <v-card-title class="title justify-center">{{
+              $t(`message.${transMapSettings[index]}`)
+            }}</v-card-title>
           </v-card>
           <v-divider></v-divider>
           <component v-bind:is="component"></component>
@@ -52,58 +34,45 @@
     <!-- Panel of App -->
     <v-app-bar app dense clipped-left :color="colorControlsTheme">
       <v-spacer></v-spacer>
-      <!-- Button - Logo icon -->
-      <v-btn
-        icon
-        href="https://pypi.org/project/django-editor-ymaps/"
-        target="_blank"
-        rel="nofollow noreferrer noopener"
-        color="white"
-        depressed
-      >
-        <IconLogo height="42" :color="colorButtonsTextTheme" />
-      </v-btn>
-
-      <!-- Button - Open Map Settings -->
-      <v-btn icon color="white" class="ml-3" @click.stop="updateMapSettingsDrawer = true">
-        <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
-            <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-settings</v-icon>
-          </template>
-          <span>{{ $t("message.6") }}</span>
-        </v-tooltip>
-      </v-btn>
-
       <!-- Button - Back to admin panel -->
-      <v-btn icon :href="`/admin/djeym/map/${mapID}/change/`" color="white" class="ml-1">
+      <v-btn icon :href="`/admin/djeym/map/${mapID}/change/`" color="white" class="mr-3">
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
-            <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-reply-circle</v-icon>
+            <v-icon :color="colorButtonsTextTheme" v-on="on">mdi-arrow-left-top-bold</v-icon>
           </template>
           <span>{{ $t("message.83") }}</span>
         </v-tooltip>
       </v-btn>
 
-      <!-- Button - Add geo object -->
-      <v-btn icon color="white" class="ml-1" @click="helpCreateGeoobject()">
+      <!-- Button - Logo icon -->
+      <v-btn icon href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="nofollow noreferrer noopener"
+        color="white" depressed>
+        <IconLogo height="42" :color="colorButtonsTextTheme" />
+      </v-btn>
+
+      <!-- Button - Open Map Settings -->
+      <v-btn icon color="white" class="ml-2" @click.stop="updateMapSettingsDrawer = true">
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
-            <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-plus-circle</v-icon>
+            <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-cog</v-icon>
+          </template>
+          <span>{{ $t("message.6") }}</span>
+        </v-tooltip>
+      </v-btn>
+
+      <!-- Button - Add geo object -->
+      <v-btn icon color="white" @click="helpCreateGeoobject()">
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-help</v-icon>
           </template>
           <span>{{ $t("message.84") }}</span>
         </v-tooltip>
       </v-btn>
 
       <!-- Button - Find Editable Geo Object -->
-      <v-btn
-        class="ml-3"
-        color="white"
-        depressed
-        fab
-        small
-        v-show="showBtnFindEditableGeoObject"
-        @click="findEditableGeoObject()"
-      >
+      <v-btn class="ml-2" color="white" depressed fab small v-show="showBtnFindEditableGeoObject"
+        @click="findEditableGeoObject()">
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <v-icon large color="red darken-2" v-on="on">mdi-crosshairs-gps</v-icon>
@@ -123,20 +92,20 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'vuex'
-import IconLogo from '@/components/icons/ordinary/IconLogo.vue'
-import CategoryFilters from '@/components/CategoryFilters.vue'
-import TileSources from '@/components/TileSources.vue'
-import GeneralSettings from '@/components/GeneralSettings.vue'
-import MapControls from '@/components/MapControls.vue'
-import Heatmap from '@/components/Heatmap.vue'
-import LoadIndicators from '@/components/LoadIndicators.vue'
-import Presets from '@/components/Presets.vue'
-import Help from '@/components/Help.vue'
-import Modals from '@/components/Modals.vue'
+import { mapState, mapMutations, mapActions } from "vuex";
+import IconLogo from "@/components/icons/ordinary/IconLogo.vue";
+import CategoryFilters from "@/components/CategoryFilters.vue";
+import TileSources from "@/components/TileSources.vue";
+import GeneralSettings from "@/components/GeneralSettings.vue";
+import MapControls from "@/components/MapControls.vue";
+import Heatmap from "@/components/Heatmap.vue";
+import LoadIndicators from "@/components/LoadIndicators.vue";
+import Presets from "@/components/Presets.vue";
+import Help from "@/components/Help.vue";
+import Modals from "@/components/Modals.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     IconLogo,
     CategoryFilters,
@@ -147,98 +116,91 @@ export default {
     LoadIndicators,
     Presets,
     Help,
-    Modals
+    Modals,
   },
   data: () => ({
     // Panel for Icons.
     iconsDrawer: false, // Open/Close
     mapSettingsTabIcons: [
-      'checkbox-marked-circle-outline',
-      'map-check',
-      'cogs',
-      'tune',
-      'fire',
-      'shape-circle-plus',
-      'needle',
-      'help'
+      "checkbox-marked-circle-outline",
+      "map-check",
+      "cogs",
+      "tune",
+      "fire",
+      "shape-circle-plus",
+      "needle",
+      "help",
     ],
     componentList: [
-      'CategoryFilters',
-      'TileSources',
-      'GeneralSettings',
-      'MapControls',
-      'Heatmap',
-      'LoadIndicators',
-      'Presets',
-      'Help'
+      "CategoryFilters",
+      "TileSources",
+      "GeneralSettings",
+      "MapControls",
+      "Heatmap",
+      "LoadIndicators",
+      "Presets",
+      "Help",
     ],
     transMapSettings: [8, 9, 10, 61, 11, 12, 13, 14],
     // Tab - Map Settings.
-    mapSettingsTab: null // Open/Close
+    mapSettingsTab: null, // Open/Close
   }),
   computed: {
     ...mapState([
-      'enableAjax',
-      'showAllSettings',
-      'showBtnFindEditableGeoObject',
+      "enableAjax",
+      "showAllSettings",
+      "showBtnFindEditableGeoObject",
       // Panel for Map Settings.
-      'mapSettingsDrawer', // Open/Close
-      'widthPanelSettings'
+      "mapSettingsDrawer", // Open/Close
+      "widthPanelSettings",
     ]),
-    ...mapState('generalSettings', [
-      'colorControlsTheme',
-      'colorButtonsTextTheme',
-      'minElevation',
-      'maxElevation'
+    ...mapState("generalSettings", [
+      "colorControlsTheme",
+      "colorButtonsTextTheme",
+      "minElevation",
+      "maxElevation",
     ]),
-    ...mapState('ymap', [
-      'mapID'
-    ]),
+    ...mapState("ymap", ["mapID"]),
     updateMapSettingsDrawer: {
       get() {
-        return this.mapSettingsDrawer
+        return this.mapSettingsDrawer;
       },
       set(flag) {
-        this.setMapSettingsDrawer(flag)
-      }
-    }
+        this.setMapSettingsDrawer(flag);
+      },
+    },
   },
   methods: {
-    ...mapMutations([
-      'setMapSettingsDrawer'
-    ]),
-    ...mapMutations('modals', [
+    ...mapMutations(["setMapSettingsDrawer"]),
+    ...mapMutations("modals", [
       // Message.
-      'messageDialogShow', // Open
-      'messageDialogClose', // Close
+      "messageDialogShow", // Open
+      "messageDialogClose", // Close
       // Global progress bar.
-      'globalProgressBarShow' // Open
+      "globalProgressBarShow", // Open
     ]),
-    ...mapActions([
-      'ajaxUploadSettings'
-    ]),
-    ...mapActions('ymap', [
-      'findEditableGeoObject'
-    ]),
+    ...mapActions(["ajaxUploadSettings"]),
+    ...mapActions("ymap", ["findEditableGeoObject"]),
     helpCreateGeoobject() {
       this.messageDialogShow({
-        status: 'info',
-        title: this.$t('message.87'),
-        text: this.$t('message.40'),
+        status: "info",
+        title: this.$t("message.87"),
+        text: `1) ${this.$t("message.40")}<br /><br />2) ${this.$t("message.148")}`,
         cancelBtn: false,
         okBtn: true,
         actionBtnCancel: null,
-        actionBtnOk: this.messageDialogClose
-      })
-    }
+        actionBtnOk: this.messageDialogClose,
+      });
+    },
   },
   mounted() {
     /* 1.Ajax - Upload all settings.
        2.Start Map initialization. */
-    window.djeymYMaps.ready(['util.calculateArea'])
-      .then(() => this.ajaxUploadSettings())
-  }
-}
+    window.djeymYMaps
+      .ready(["util.calculateArea"])
+      .then(() => this.ajaxUploadSettings());
+  },
+};
 </script>
 
 <style scoped>

@@ -1,283 +1,276 @@
 <!--
-----------------------------------------------
+-----------------------------------------------
 Component for creating and editable Placemarks.
-----------------------------------------------
+-----------------------------------------------
 -->
 <template>
   <v-conteiner fluid>
     <!-- Buttons - Header, Body, Footer, Categories and Subcategories. -->
-    <v-row align="center" justify="center">
-      <v-btn
-        v-for="(icon, index) in icons"
-        :key="`action-btn-${index}`"
-        small
-        fab
-        depressed
-        :color="colorControlsTheme"
-        class="mx-1"
-        @click="openDialog(index)"
-      >
+    <v-row align="center" justify="center" class="pb-8">
+      <v-btn v-for="(icon, index) in icons" :key="`action-btn-${index}`" small fab depressed :color="colorControlsTheme"
+        class="mx-1" @click="openDialog(index)">
         <v-icon :color="colorButtonsTextTheme">{{ icons[index] }}</v-icon>
       </v-btn>
     </v-row>
     <!-- Marker Icon -->
     <v-row align="center" justify="center">
-      <v-col cols="12" class="px-0 pt-7 pb-0">
-        <v-img
-          :src="updateIconUrl"
-          contain
-          max-width="100%"
-          max-height="60px"
-          class="icon-marker"
-          @click="openIconCollection()"
-        ></v-img>
+      <v-col cols="12" class="px-0 pt-3 pb-0 text-center">
+        <span class="icon-marker" @click="openIconCollection()"
+          :style="`background-color:${$vuetify.theme.dark ? '#616161' : '#EEEEEE'}`">
+          <img :src="updateIconUrl" alt="Marker Icon">
+        </span>
       </v-col>
     </v-row>
     <!-- Coordinates - Latitude and Longitude. -->
     <v-row class="pt-5">
       <v-col cols="12" class="py-0">
-        <v-text-field
-          id="id-djeym-latitude"
-          v-model="updateLatitude"
-          :label="$t('message.90')"
-          :placeholder="$t('message.90')"
-          hint="-90.0 ... 90.0"
-          outlined
-          clearable
-          dense
-          full-width
-          maxlength="19"
-          :rules="rulesLatitude()"
-          :color="colorControlsTheme"
-        ></v-text-field>
+        <v-text-field id="id-djeym-latitude" v-model="updateLatitude" :label="$t('message.90')"
+          :placeholder="$t('message.90')" hint="-90.0 ... 90.0" clearable dense full-width maxlength="19"
+          :rules="rulesLatitude()" :color="colorControlsTheme"></v-text-field>
       </v-col>
       <v-col cols="12" class="py-0">
-        <v-text-field
-          id="id-djeym-longitude"
-          v-model="updateLongitude"
-          :label="$t('message.91')"
-          :placeholder="$t('message.91')"
-          hint="-180.0 ... 180.0"
-          outlined
-          clearable
-          dense
-          full-width
-          maxlength="20"
-          :rules="rulesLongitude()"
-          :color="colorControlsTheme"
-        ></v-text-field>
+        <v-text-field id="id-djeym-longitude" v-model="updateLongitude" :label="$t('message.91')"
+          :placeholder="$t('message.91')" hint="-180.0 ... 180.0" clearable dense full-width maxlength="20"
+          :rules="rulesLongitude()" :color="colorControlsTheme"></v-text-field>
       </v-col>
     </v-row>
   </v-conteiner>
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'vuex'
-import helpers from '@/helpers.js'
+import { mapState, mapMutations, mapActions } from "vuex";
+import helpers from "@/helpers.js";
 
 export default {
-  name: 'ContextmenuPlacemark',
+  name: "ContextmenuPlacemark",
   data: () => ({
     icons: [
-      'mdi-page-layout-header',
-      'mdi-page-layout-body',
-      'mdi-page-layout-footer',
-      'mdi-check-circle'
+      "mdi-page-layout-header",
+      "mdi-page-layout-body",
+      "mdi-page-layout-footer",
+      "mdi-check-circle",
     ],
-    transTitle: [101, 102, 103]
+    transTitle: [101, 102, 103],
   }),
   computed: {
-    ...mapState('generalSettings', [
-      'colorControlsTheme',
-      'colorButtonsTextTheme'
+    ...mapState("generalSettings", [
+      "colorControlsTheme",
+      "colorButtonsTextTheme",
     ]),
-    ...mapState('ymap', [
-      'editableGeoObject'
+    ...mapState("ymap", ["editableGeoObject"]),
+    ...mapState(["iconCollection"]),
+    ...mapState("contextmenuPlacemark", [
+      "iconUrl",
+      "category",
+      "subcategories",
+      "coordinates",
     ]),
-    ...mapState([
-      'iconCollection'
-    ]),
-    ...mapState('contextmenuPlacemark', [
-      'iconUrl',
-      'category',
-      'subcategories',
-      'coordinates'
-    ]),
-    ...mapState('selectingCategories', {
-      selectedControls: 'controls'
+    ...mapState("selectingCategories", {
+      selectedControls: "controls",
     }),
     updateIconUrl: {
-      get () {
-        return this.iconUrl
+      get() {
+        return this.iconUrl;
       },
-      set (url) {
-        this.setIconUrl(url)
-      }
+      set(url) {
+        this.setIconUrl(url);
+      },
     },
     updateLatitude: {
-      get () {
-        return this.coordinates[0]
+      get() {
+        return this.coordinates[0];
       },
-      set (coord) {
-        this.setLatitude(coord)
-      }
+      set(coord) {
+        this.setLatitude(coord);
+      },
     },
     updateLongitude: {
-      get () {
-        return this.coordinates[1]
+      get() {
+        return this.coordinates[1];
       },
-      set (coord) {
-        this.setLongitude(coord)
-      }
-    }
+      set(coord) {
+        this.setLongitude(coord);
+      },
+    },
   },
   methods: {
-    ...mapMutations('contextmenuPlacemark', [
-      'setPK',
-      'setCategory',
-      'setSubcategories',
-      'setHeader',
-      'setBody',
-      'setFooter',
-      'setIconSlug',
-      'setLatitude',
-      'setLongitude',
-      'setIconUrl'
+    ...mapMutations("contextmenuPlacemark", [
+      "setPK",
+      "setCategory",
+      "setSubcategories",
+      "setHeader",
+      "setBody",
+      "setFooter",
+      "setIconSlug",
+      "setLatitude",
+      "setLongitude",
+      "setIconUrl",
     ]),
-    ...mapMutations('modals', [
+    ...mapMutations("modals", [
       // Controls
-      'controlsDialogShow', // Open
-      'controlsDialogClose', // Close
+      "controlsDialogShow", // Open
+      "controlsDialogClose", // Close
       // Simple messages
-      'alertSnackbarClose' // Close
+      "alertSnackbarClose", // Close
     ]),
-    ...mapMutations([
-      'setDataAction'
-    ]),
-    ...mapActions('contextmenuPlacemark', [
-      'restoreDefaults'
-    ]),
+    ...mapMutations(["setDataAction"]),
+    ...mapActions("contextmenuPlacemark", ["restoreDefaults"]),
     // Rules
-    rulesLatitude () {
-      return [
-        coord => helpers.checkLatitude(coord) || this.$t('message.92')
-      ]
+    rulesLatitude() {
+      return [(coord) => helpers.checkLatitude(coord) || this.$t("message.92")];
     },
-    rulesLongitude () {
+    rulesLongitude() {
       return [
-        coord => helpers.checkLongitude(coord) || this.$t('message.92')
-      ]
+        (coord) => helpers.checkLongitude(coord) || this.$t("message.92"),
+      ];
     },
     // Open Icon list.
-    openIconCollection () {
-      this.alertSnackbarClose()
+    openIconCollection() {
+      this.alertSnackbarClose();
       this.controlsDialogShow({
-        title: this.$t('message.7'),
-        text: '',
+        title: this.$t("message.7"),
+        text: "",
         cancelBtn: true,
         saveBtn: false,
         componentIcons: true,
         actionBtnSave: null,
-        actionBtnCancel: this.controlsDialogClose
-      })
+        actionBtnCancel: this.controlsDialogClose,
+      });
     },
     // Open CKEditor or Category list and Subcategory list.
-    openDialog (index) {
-      this.alertSnackbarClose()
+    openDialog(index) {
+      this.alertSnackbarClose();
       switch (index) {
         case 0:
         case 1:
         case 2:
           // Open CKEditor.
           this.setDataAction({
-            geoType: 'placemark',
-            position: ['headerPlacemark', 'bodyPlacemark', 'footerPlacemark'][index]
-          })
+            geoType: "placemark",
+            position: ["headerPlacemark", "bodyPlacemark", "footerPlacemark"][
+              index
+            ],
+          });
           this.controlsDialogShow({
             title: this.$t(`message.${this.transTitle[index]}`),
-            text: '',
+            text: "",
             cancelBtn: true,
             saveBtn: true,
             componentCKEditor: true,
             actionBtnSave: () => {
-              const mutation = ['setHeader', 'setBody', 'setFooter'][index]
-              const textHtml = window.djeymCKEditor.val()
-              this[mutation](textHtml)
+              const mutation = ["setHeader", "setBody", "setFooter"][index];
+              const textHtml = window.djeymCKEditor.val();
+              this[mutation](textHtml);
               if (this.editableGeoObject !== null) {
                 switch (mutation) {
-                  case 'setHeader':
-                    this.editableGeoObject.properties.set('balloonContentHeader', textHtml)
-                    break
-                  case 'setBody':
-                    this.editableGeoObject.properties.set('balloonContentBody', textHtml)
-                    break
-                  case 'setFooter':
-                    this.editableGeoObject.properties.set('balloonContentFooter', textHtml)
-                    break
+                  case "setHeader":
+                    this.editableGeoObject.properties.set(
+                      "balloonContentHeader",
+                      textHtml,
+                    );
+                    break;
+                  case "setBody":
+                    this.editableGeoObject.properties.set(
+                      "balloonContentBody",
+                      textHtml,
+                    );
+                    break;
+                  case "setFooter":
+                    this.editableGeoObject.properties.set(
+                      "balloonContentFooter",
+                      textHtml,
+                    );
+                    break;
                 }
               }
-              this.controlsDialogClose()
+              this.controlsDialogClose();
             },
-            actionBtnCancel: this.controlsDialogClose
-          })
-          break
+            actionBtnCancel: this.controlsDialogClose,
+          });
+          break;
         case 3:
           // Open Category list and Subcategory list.
           this.setDataAction({
-            geoType: 'placemark',
+            geoType: "placemark",
             category: this.category,
-            subcategories: this.subcategories
-          })
+            subcategories: this.subcategories,
+          });
           this.controlsDialogShow({
-            title: this.$t('message.105'),
-            text: '',
+            title: this.$t("message.105"),
+            text: "",
             cancelBtn: true,
             saveBtn: true,
             componentCategories: true,
             actionBtnSave: () => {
-              this.setCategory(this.selectedControls.category)
-              this.setSubcategories(this.selectedControls.subcategories)
+              this.setCategory(this.selectedControls.category);
+              this.setSubcategories(this.selectedControls.subcategories);
               if (this.editableGeoObject !== null) {
-                this.editableGeoObject.properties.set('categoryID', this.category)
-                this.editableGeoObject.properties.set('subCategoryIDs', this.subcategories)
+                this.editableGeoObject.properties.set(
+                  "categoryID",
+                  this.category,
+                );
+                this.editableGeoObject.properties.set(
+                  "subCategoryIDs",
+                  this.subcategories,
+                );
               }
-              this.controlsDialogClose()
+              this.controlsDialogClose();
             },
-            actionBtnCancel: this.controlsDialogClose
-          })
-          break
+            actionBtnCancel: this.controlsDialogClose,
+          });
+          break;
       }
-    }
+    },
   },
-  created () {
+  created() {
     // Updating data
     if (this.editableGeoObject === null) {
-      this.restoreDefaults() // Restore Defaults
+      this.restoreDefaults(); // Restore Defaults
     } else {
-      this.setPK(this.editableGeoObject.properties.get('id'))
-      this.setCategory(this.editableGeoObject.properties.get('categoryID'))
-      this.setSubcategories(this.editableGeoObject.properties.get('subCategoryIDs'))
-      this.setHeader(this.editableGeoObject.properties.get('balloonContentHeader'))
-      this.setBody(this.editableGeoObject.properties.get('balloonContentBody'))
-      this.setFooter(this.editableGeoObject.properties.get('balloonContentFooter'))
-      const iconSlug = this.editableGeoObject.properties.get('iconSlug')
-      this.setIconSlug(iconSlug)
-      if (iconSlug !== 'djeym-marker-default') {
-        this.setIconUrl(this.iconCollection.filter(item => item.slug === iconSlug)[0].url)
+      this.setPK(this.editableGeoObject.properties.get("id"));
+      this.setCategory(this.editableGeoObject.properties.get("categoryID"));
+      this.setSubcategories(
+        this.editableGeoObject.properties.get("subCategoryIDs"),
+      );
+      this.setHeader(
+        this.editableGeoObject.properties.get("balloonContentHeader"),
+      );
+      this.setBody(this.editableGeoObject.properties.get("balloonContentBody"));
+      this.setFooter(
+        this.editableGeoObject.properties.get("balloonContentFooter"),
+      );
+      const iconSlug = this.editableGeoObject.properties.get("iconSlug");
+      this.setIconSlug(iconSlug);
+      if (iconSlug !== "djeym-marker-default") {
+        this.setIconUrl(
+          this.iconCollection.filter((item) => item.slug === iconSlug)[0].url,
+        );
       } else {
-        this.setIconUrl('/static/djeym/img/center.svg')
+        this.setIconUrl("/static/djeym/img/center.svg");
       }
-      const coords = this.editableGeoObject.geometry.getCoordinates()
-      this.setLatitude(coords[0])
-      this.setLongitude(coords[1])
+      const coords = this.editableGeoObject.geometry.getCoordinates();
+      this.setLatitude(coords[0]);
+      this.setLongitude(coords[1]);
     }
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
 .icon-marker {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
   z-index: 2;
   cursor: pointer;
+  display: inline-block;
+}
+
+.icon-marker>img {
+  height: 42px;
+  display: block;
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

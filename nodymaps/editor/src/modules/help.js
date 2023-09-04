@@ -1,6 +1,6 @@
 /*
-* Module for the Help.vue component.
-*/
+ * Module for the Help.vue component.
+ */
 
 export default {
   namespaced: true,
@@ -11,37 +11,33 @@ export default {
         python: window.djeymPythonVersion,
         django: window.djeymDjangoVersion,
         vue: window.djeymVueVersion,
-        vuetify: window.djeymVuetifyVersion
-      },
-      donations: {
-        PayPal: 'kebasyaty@gmail.com',
-        Payeer: 'P1015356394',
-        WebMoney: ['Z454852374536', 'R164126521723', 'U349822740200', 'E248179447901']
+        vuetify: window.djeymVuetifyVersion,
       },
       links: [
         {
-          icon: 'language-python',
-          title: 'PyPI',
-          link: 'https://pypi.org/project/django-editor-ymaps/'
+          icon: "language-python",
+          title: "PyPI",
+          link: "https://pypi.org/project/django-editor-ymaps/",
         },
         {
-          icon: 'github-face',
-          title: 'GitHub',
-          link: 'https://github.com/kebasyaty/django-editor-ymaps'
+          icon: "github",
+          title: "GitHub",
+          link: "https://github.com/kebasyaty/django-editor-ymaps",
         },
         {
-          icon: 'email-outline',
-          title: 'Feedback',
-          link: 'mailto:kebasyaty@gmail.com?subject=DjEYM'
-        }, {
-          icon: 'license',
-          title: 'License',
-          link: 'https://github.com/kebasyaty/django-editor-ymaps/blob/master/LICENSE'
-        }
-      ]
-    }
+          icon: "email-outline",
+          title: "Feedback",
+          link: "mailto:kebasyaty@gmail.com?subject=DjEYM",
+        },
+        {
+          icon: "license",
+          title: "License",
+          link: "https://github.com/kebasyaty/django-editor-ymaps/blob/master/LICENSE",
+        },
+      ],
+    },
   },
   getters: {},
   mutations: {},
-  actions: {}
-}
+  actions: {},
+};

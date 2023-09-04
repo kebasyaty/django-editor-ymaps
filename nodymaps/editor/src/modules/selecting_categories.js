@@ -1,23 +1,23 @@
 /*
-* Module for the SelectingCategories.vue component.
-*/
+ * Module for the SelectingCategories.vue component.
+ */
 
 export default {
   namespaced: true,
   state: {
     controls: {
       category: null,
-      subcategories: []
-    }
+      subcategories: [],
+    },
   },
   getters: {},
   mutations: {
-    setCategory (state, txtNum) {
-      state.controls.category = txtNum
+    setCategory(state, txtNum) {
+      state.controls.category = txtNum;
     },
-    setSubcategories (state, arrTxtNum) {
-      state.controls.subcategories = arrTxtNum
-    }
+    setSubcategories(state, arrTxtNum) {
+      state.controls.subcategories = arrTxtNum;
+    },
   },
-  actions: {}
-}
+  actions: {},
+};

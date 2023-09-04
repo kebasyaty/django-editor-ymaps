@@ -1,23 +1,31 @@
 {
   "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
     "baseUrl": ".",
+    "moduleResolution": "node",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-    }
+      "@/*": ["src/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
+  "include": ["src/**/*.js", "src/**/*.vue", "tests/**/*.js"],
   "exclude": [
-    "node_modules",
-    "**/node_modules/*",
-    ".nuxt",
     "dist",
-    "bower_components",
+    "node_modules",
+    "**/node_modules",
+    "build",
+    "public",
+    "static",
+    ".vscode",
+    ".nuxt",
+    "coverage",
+    "jspm_packages",
     "tmp",
     "temp",
-    "jspm_packages"
-  ],
-  "include": [
-    "src/**/*"
+    "bower_components",
+    ".npm",
+    ".yarn",
+    ".git"
   ]
 }

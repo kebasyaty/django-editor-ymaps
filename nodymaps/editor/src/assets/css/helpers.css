@@ -12,7 +12,7 @@
 }
 
 .browserupgrade div {
-  color: #BDBDBD;
+  color: #bdbdbd;
   font-size: 18px;
   line-height: 28px;
   text-align: center;
@@ -23,9 +23,9 @@
 }
 
 .browserupgrade span {
-  color: #4CAF50;
+  color: #4caf50;
   font-size: 16px;
-  border: 2px solid #4CAF50;
+  border: 2px solid #4caf50;
   border-radius: 50px;
   padding: 2px 8px 3px;
   margin-right: 10px;
@@ -33,14 +33,14 @@
 }
 
 .browserupgrade a {
-  color: #2196F3 !important;
+  color: #2196f3 !important;
   font-size: 18px !important;
   text-decoration: underline !important;
   font-family: Roboto, sans-serif !important;
 }
 
 .browserupgrade a:hover {
-  color: #F44336 !important;
+  color: #f44336 !important;
 }
 
 /* Warning - Necessary to enable JavaScript
@@ -57,7 +57,7 @@
 }
 
 .noscript div {
-  color: #BDBDBD;
+  color: #bdbdbd;
   font-size: 18px;
   line-height: 28px;
   text-align: center;
@@ -68,9 +68,9 @@
 }
 
 .noscript span {
-  color: #FFC107;
+  color: #ffc107;
   font-size: 22px;
-  border: 2px solid #FFC107;
+  border: 2px solid #ffc107;
   border-radius: 50px;
   padding: 2px 8px 5px;
   margin-right: 10px;
@@ -78,14 +78,14 @@
 }
 
 .noscript a {
-  color: #2196F3 !important;
+  color: #2196f3 !important;
   font-size: 18px !important;
   text-decoration: underline !important;
   font-family: Roboto, sans-serif !important;
 }
 
 .noscript a:hover {
-  color: #F44336 !important;
+  color: #f44336 !important;
 }
 
 /* Load Indicator
@@ -102,7 +102,7 @@
   background-color: #fff;
   opacity: 1;
   transition-property: opacity;
-  transition-duration: .6s;
+  transition-duration: 0.6s;
   transition-delay: 0s;
   transition-timing-function: linear;
 }
@@ -127,14 +127,14 @@
 /* YMaps
 ----------------------------------------------------------------------------------------------------
 */
-ymaps[class$=-listbox__list-item-text] {
+ymaps[class$="-listbox__list-item-text"] {
   max-width: none !important;
   font-size: 14px !important;
   line-height: 32px !important;
   font-family: Roboto, sans-serif !important;
 }
 
-ymaps[class$=-control-popup-parent] {
+ymaps[class$="-control-popup-parent"] {
   z-index: 2 !important;
 }
 
@@ -155,7 +155,6 @@ ymaps[class$=-control-popup-parent] {
   font-size: 120%;
   font-weight: 500;
   color: #212121;
-
 }
 
 .djeym_ballon_body {

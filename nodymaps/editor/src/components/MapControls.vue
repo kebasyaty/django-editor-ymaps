@@ -1,7 +1,7 @@
 <!--
-----------------------------------
+-----------------------------------
 Component for setting Map Controls.
-----------------------------------
+-----------------------------------
 -->
 <template>
   <v-container fluid>
@@ -11,21 +11,12 @@ Component for setting Map Controls.
           <tbody>
             <tr v-for="(control, index) in controls" :key="`control-${index}`">
               <td>
-                <v-img
-                  :width="+( control.width / 3 ).toFixed( 2 )"
-                  :src="control.img"
-                  :alt="$t(`message.${transMapControls[index]}`)"
-                ></v-img>
+                <v-img :width="+(control.width / 3).toFixed(2)" :src="control.img"
+                  :alt="$t(`message.${transMapControls[index]}`)"></v-img>
               </td>
               <td>
-                <v-switch
-                  v-model="control.isActive"
-                  inset
-                  hide-details
-                  :label="$t(`message.${transMapControls[index]}`)"
-                  class="mt-0 pt-0"
-                  :color="colorControlsTheme"
-                ></v-switch>
+                <v-switch v-model="control.isActive" inset hide-details :label="$t(`message.${transMapControls[index]}`)"
+                  class="mt-0 pt-0" :color="colorControlsTheme"></v-switch>
               </td>
             </tr>
           </tbody>
@@ -43,51 +34,45 @@ Component for setting Map Controls.
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'vuex'
+import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
-  name: 'MapControls',
+  name: "MapControls",
   data: () => ({
     // Translations of Titles
-    transMapControls: [31, 32, 33, 34, 35, 36, 37, 38, 39]
+    transMapControls: [31, 32, 33, 34, 35, 36, 37, 38, 39],
   }),
   computed: {
-    ...mapState('mapControls', [
-      'controls'
+    ...mapState("mapControls", ["controls"]),
+    ...mapState("generalSettings", [
+      "colorControlsTheme",
+      "colorButtonsTextTheme",
+      "minElevation",
     ]),
-    ...mapState('generalSettings', [
-      'colorControlsTheme',
-      'colorButtonsTextTheme',
-      'minElevation'
-    ])
   },
   methods: {
-    ...mapMutations([
-      'setMapSettingsDrawer'
-    ]),
-    ...mapMutations('modals', [
+    ...mapMutations(["setMapSettingsDrawer"]),
+    ...mapMutations("modals", [
       // Message
-      'messageDialogShow', // Open
-      'messageDialogClose' // Close
+      "messageDialogShow", // Open
+      "messageDialogClose", // Close
     ]),
-    ...mapActions('mapControls', [
-      'actionAjaxUpdate'
-    ]),
-    saveUpdate () {
-      this.setMapSettingsDrawer(false)
+    ...mapActions("mapControls", ["actionAjaxUpdate"]),
+    saveUpdate() {
+      this.setMapSettingsDrawer(false);
       this.messageDialogShow({
-        status: 'accent',
-        title: this.$t('message.85'),
-        text: this.$t('message.44'),
+        status: "accent",
+        title: this.$t("message.85"),
+        text: this.$t("message.44"),
         cancelBtn: true,
         okBtn: true,
         actionBtnCancel: () => {
-          this.messageDialogClose()
-          this.setMapSettingsDrawer(true)
+          this.messageDialogClose();
+          this.setMapSettingsDrawer(true);
         },
-        actionBtnOk: this.actionAjaxUpdate
-      })
-    }
-  }
-}
+        actionBtnOk: this.actionAjaxUpdate,
+      });
+    },
+  },
+};
 </script>

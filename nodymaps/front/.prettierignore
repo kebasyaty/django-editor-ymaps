@@ -1,0 +1,5 @@
+# Ignoring all html files
+*.html
+
+# Ignoring all vue files
+*.vue

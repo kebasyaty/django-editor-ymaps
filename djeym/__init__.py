@@ -9,10 +9,10 @@
 #            \ \____/
 #             \/___/
 
-DjEYM_VERSION = (2, 1, 22)
-PYTHON_VERSION = (3, 6)
-DJANGO_VERSION = (2, 0)
-VUE_VERSION = (2, 6, 14)
+DjEYM_VERSION = (2, 2, 0)
+PYTHON_VERSION = (3, 8)
+DJANGO_VERSION = (3, 2, 4)
+VUE_VERSION = (2, 7, 14)
 VUETIFY_VERSION = (2, 2, 1)
 
 __title__ = 'DjEYM (django-editor-ymaps)'

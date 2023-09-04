@@ -10,9 +10,9 @@ from django.core.files.base import ContentFile
 from django.db.models import Q
 from django.http import (FileResponse, HttpResponse, HttpResponseForbidden,
                          JsonResponse)
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.views.generic import TemplateView, View
 from ipware import get_client_ip
 from slugify import slugify
@@ -42,19 +42,15 @@ def vue_vendors_css_js(target):
 
     if not IS_DEVELOPMANT:
         if target == 'front':
-            ctx['vue_css_app'] = 'app.1c57bc65.css'
-            ctx['vue_css_chunk_vendors'] = 'chunk-vendors.3b06159b.css'
-            ctx['vue_js_app'] = 'app.56b637c0.js'
-            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.ffe35844.js'
-            ctx['vue_js_app_legacy'] = 'app-legacy.6161073e.js'
-            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.0219577a.js'
+            ctx['vue_css_app'] = 'app.a9212c90.css'
+            ctx['vue_css_chunk_vendors'] = 'chunk-vendors.73c07480.css'
+            ctx['vue_js_app'] = 'app.c4ec6a7f.js'
+            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.27f15f44.js'
         else:
-            ctx['vue_css_app'] = 'app.c0f38591.css'
-            ctx['vue_css_chunk_vendors'] = 'chunk-vendors.50f99e7f.css'
-            ctx['vue_js_app'] = 'app.15ea8e0c.js'
-            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.34be6d0a.js'
-            ctx['vue_js_app_legacy'] = 'app-legacy.76a2f490.js'
-            ctx['vue_js_chunk_vendors_legacy'] = 'chunk-vendors-legacy.88c5833a.js'
+            ctx['vue_css_app'] = 'app.4da24188.css'
+            ctx['vue_css_chunk_vendors'] = 'chunk-vendors.09dfbb4c.css'
+            ctx['vue_js_app'] = 'app.62ca6c12.js'
+            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.672e24cd.js'
     else:
         # Automatically get CSS and JS for Vue.js (for development only).
         import os
@@ -73,16 +69,10 @@ def vue_vendors_css_js(target):
             r'^app.[0-9a-z]+.js$', name) is not None, js_name_list))[0]
         vue_js_chunk_vendors = list(filter(lambda name: re.match(
             r'^chunk-vendors.[0-9a-z]+.js$', name) is not None, js_name_list))[0]
-        vue_js_app_legacy = list(filter(lambda name: re.match(
-            r'^app-legacy.[0-9a-z]+.js$', name) is not None, js_name_list))[0]
-        vue_js_chunk_vendors_legacy = list(filter(lambda name: re.match(
-            r'^chunk-vendors-legacy.[0-9a-z]+.js$', name) is not None, js_name_list))[0]
         ctx['vue_css_app'] = vue_css_app
         ctx['vue_css_chunk_vendors'] = vue_css_chunk_vendors
         ctx['vue_js_app'] = vue_js_app
         ctx['vue_js_chunk_vendors'] = vue_js_chunk_vendors
-        ctx['vue_js_app_legacy'] = vue_js_app_legacy
-        ctx['vue_js_chunk_vendors_legacy'] = vue_js_chunk_vendors_legacy
 
     return ctx
 
@@ -256,7 +246,7 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
     template_name = "djeym/ymaps_editor.html"
 
     def get_context_data(self, **kwargs):
-        slug = force_text(kwargs.get('slug'))
+        slug = force_str(kwargs.get('slug'))
         ymap = Map.objects.filter(slug=slug, active=True).first()
         context = super(YMapEditor, self).get_context_data(**kwargs)
 
@@ -588,7 +578,7 @@ class AjaxUpdateLoadIndicator(View):
 
     def post(self, request, *args, **kwargs):
         map_id = int(request.POST.get('mapID'))
-        slug = force_text(request.POST.get('slug'))
+        slug = force_str(request.POST.get('slug'))
         size = int(request.POST.get('size'))
         speed = request.POST.get('speed')
         animation = request.POST.get('animation')
@@ -938,7 +928,7 @@ class ExportIconCollection(StaffRequiredMixin, View):
     """Export a icon collection from a database to a json file."""
 
     def dispatch(self, request, *args, **kwargs):
-        slug = force_text(kwargs.get("slug"))
+        slug = force_str(kwargs.get("slug"))
         collection = IconCollection.objects.get(slug=slug)
         icons = collection.icons.all()
         collection_json = {

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 # Maximum size of icons for markers and clusters.
 DJEYM_YMAPS_ICONS_MAX_SIZE = 60

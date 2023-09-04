@@ -14,8 +14,8 @@ from django.db.models.signals import (m2m_changed, post_delete, post_save,
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext_lazy
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext_lazy
 from imagekit.models import ImageSpecField
 from pilkit.processors import ResizeToFill, ResizeToFit
 from slugify import slugify
@@ -45,7 +45,7 @@ class JsonSettings(models.Model):
 
     ymap = models.OneToOneField(
         'Map',
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='json_settings',
         null=True,
         on_delete=models.CASCADE
@@ -134,7 +134,7 @@ class MapControls(models.Model):
 
     ymap = models.OneToOneField(
         'Map',
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='map_controls',
         null=True,
         on_delete=models.CASCADE
@@ -177,7 +177,7 @@ class HeatmapSettings(models.Model):
 
     ymap = models.OneToOneField(
         'Map',
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='heatmap_settings',
         null=True,
         on_delete=models.CASCADE
@@ -237,8 +237,8 @@ class HeatmapSettings(models.Model):
         return '{}'.format(_('Settings'))
 
     class Meta:
-        verbose_name = ungettext_lazy('Heatmap', 'Heat maps', 1)
-        verbose_name_plural = ungettext_lazy('Heatmap', 'Heat maps', 1)
+        verbose_name = ngettext_lazy('Heatmap', 'Heat maps', 1)
+        verbose_name_plural = ngettext_lazy('Heatmap', 'Heat maps', 1)
 
 
 class Preset(models.Model):
@@ -246,7 +246,7 @@ class Preset(models.Model):
 
     ymap = models.ForeignKey(
         'Map',
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='presets',
         null=True,
         on_delete=models.CASCADE)
@@ -284,7 +284,7 @@ class Preset(models.Model):
 
     placemark = models.BooleanField(_('Markers'), default=True)
     polyline = models.BooleanField(_('Routes'), default=True)
-    polygon = models.BooleanField(ungettext_lazy(
+    polygon = models.BooleanField(ngettext_lazy(
         'Territory', 'Territorys', 2), default=True)
 
     slug = models.SlugField(max_length=255, blank=True, null=True)
@@ -316,7 +316,7 @@ class GeneralSettings(models.Model):
 
     ymap = models.OneToOneField(
         'Map',
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='general_settings',
         null=True,
         on_delete=models.CASCADE)
@@ -351,20 +351,20 @@ class GeneralSettings(models.Model):
     controls_color = RGBColorField(
         'Color of controls',
         colors=COLORS,
-        default='#C0CA33',
+        default='#43A047',
     )
 
     buttons_text_color = RGBColorField(
         'Text color on buttons',
         colors=COLORS,
-        default='#FAFAFA',
+        default='#FFFFFF',
     )
 
     theme_type = models.CharField(
         'Theme type - light | dark',
         max_length=255,
         choices=THEME_TYPE_CHOICES,
-        default='light')
+        default='dark')
 
     roundtheme = models.BooleanField(
         'Round theme of controls', default=False)
@@ -458,7 +458,7 @@ class Map(models.Model):
 
     icon_cluster = models.ForeignKey(
         'ClusterIcon',
-        verbose_name=ungettext_lazy(
+        verbose_name=ngettext_lazy(
             'Icon for cluster', 'Icons for clusters', 1),
         related_name='ymap',
         null=True,
@@ -467,8 +467,8 @@ class Map(models.Model):
 
     icon_collection = models.ForeignKey(
         'IconCollection',
-        verbose_name=ungettext_lazy('Icon collection for markers',
-                                    'Icon collections for markers', 1),
+        verbose_name=ngettext_lazy('Icon collection for markers',
+                                   'Icon collections for markers', 1),
         related_name='ymap',
         null=True,
         on_delete=models.SET_NULL
@@ -541,8 +541,8 @@ class Map(models.Model):
 
     class Meta:
         ordering = ('title',)
-        verbose_name = ungettext_lazy('Map', 'Map', 5)
-        verbose_name_plural = ungettext_lazy('Map', 'Map', 2)
+        verbose_name = ngettext_lazy('Map', 'Map', 5)
+        verbose_name_plural = ngettext_lazy('Map', 'Map', 2)
 
     def clean(self):
         # We check the presence in the collection of at least one active icon.
@@ -659,7 +659,7 @@ class Map(models.Model):
             icon = 'hot_fire.svg'
         return mark_safe(
             '<img src="/static/djeym/img/{}" height="40" alt="Icon">'.format(icon))
-    get_status_heatmap.short_description = ungettext_lazy(
+    get_status_heatmap.short_description = ngettext_lazy(
         'Heatmap', 'Heat maps', 1)
 
     def get_load_indicator(self):
@@ -679,7 +679,7 @@ class CategoryPlacemark(SortableMixin):
 
     ymap = SortableForeignKey(
         Map,
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='categories_placemark',
         null=True,
         on_delete=models.CASCADE)
@@ -712,9 +712,9 @@ class CategoryPlacemark(SortableMixin):
 
     class Meta:
         ordering = ('position',)
-        verbose_name = ungettext_lazy(
+        verbose_name = ngettext_lazy(
             '-Category of marker', '-Category of markers', 1)
-        verbose_name_plural = ungettext_lazy(
+        verbose_name_plural = ngettext_lazy(
             '-Category of marker', '-Category of markers', 2)
 
     def save(self, *args, **kwargs):
@@ -736,7 +736,7 @@ class SubCategoryPlacemark(SortableMixin):
 
     ymap = SortableForeignKey(
         Map,
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='subcategories_placemark',
         null=True,
         on_delete=models.CASCADE)
@@ -770,9 +770,9 @@ class SubCategoryPlacemark(SortableMixin):
 
     class Meta:
         ordering = ('position',)
-        verbose_name = ungettext_lazy(
+        verbose_name = ngettext_lazy(
             '_Subcategory of marker', '_Subcategory of markers', 1)
-        verbose_name_plural = ungettext_lazy(
+        verbose_name_plural = ngettext_lazy(
             '_Subcategory of marker', '_Subcategory of markers', 2)
 
     def save(self, *args, **kwargs):
@@ -794,7 +794,7 @@ class CategoryPolyline(SortableMixin):
 
     ymap = SortableForeignKey(
         Map,
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='categories_polyline',
         null=True,
         on_delete=models.CASCADE)
@@ -826,9 +826,9 @@ class CategoryPolyline(SortableMixin):
 
     class Meta:
         ordering = ('position',)
-        verbose_name = ungettext_lazy(
+        verbose_name = ngettext_lazy(
             '-Category of route', '-Category of routes', 1)
-        verbose_name_plural = ungettext_lazy(
+        verbose_name_plural = ngettext_lazy(
             '-Category of route', '-Category of routes', 2)
 
     def save(self, *args, **kwargs):
@@ -850,7 +850,7 @@ class SubCategoryPolyline(SortableMixin):
 
     ymap = SortableForeignKey(
         Map,
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='subcategories_polyline',
         null=True,
         on_delete=models.CASCADE)
@@ -884,9 +884,9 @@ class SubCategoryPolyline(SortableMixin):
 
     class Meta:
         ordering = ('position',)
-        verbose_name = ungettext_lazy(
+        verbose_name = ngettext_lazy(
             '_Subcategory of route', '_Subcategory of routes', 1)
-        verbose_name_plural = ungettext_lazy(
+        verbose_name_plural = ngettext_lazy(
             '_Subcategory of route', '_Subcategory of routes', 2)
 
     def save(self, *args, **kwargs):
@@ -908,7 +908,7 @@ class CategoryPolygon(SortableMixin):
 
     ymap = SortableForeignKey(
         Map,
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='categories_polygon',
         null=True,
         on_delete=models.CASCADE)
@@ -942,9 +942,9 @@ class CategoryPolygon(SortableMixin):
 
     class Meta:
         ordering = ('position',)
-        verbose_name = ungettext_lazy(
+        verbose_name = ngettext_lazy(
             '-Category of territory', '-Category of territories', 1)
-        verbose_name_plural = ungettext_lazy(
+        verbose_name_plural = ngettext_lazy(
             '-Category of territory', '-Category of territories', 2)
 
     def save(self, *args, **kwargs):
@@ -966,7 +966,7 @@ class SubCategoryPolygon(SortableMixin):
 
     ymap = SortableForeignKey(
         Map,
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='subcategories_polygon',
         null=True,
         on_delete=models.CASCADE)
@@ -1000,9 +1000,9 @@ class SubCategoryPolygon(SortableMixin):
 
     class Meta:
         ordering = ('position',)
-        verbose_name = ungettext_lazy(
+        verbose_name = ngettext_lazy(
             '_Subcategory of territory', '_Subcategory of territories', 1)
-        verbose_name_plural = ungettext_lazy(
+        verbose_name_plural = ngettext_lazy(
             '_Subcategory of territory', '_Subcategory of territories', 2)
 
     def save(self, *args, **kwargs):
@@ -1024,7 +1024,7 @@ class Placemark(models.Model):
 
     ymap = models.ForeignKey(
         Map,
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='placemarks',
         on_delete=models.CASCADE)
 
@@ -1147,7 +1147,7 @@ class Polyline(models.Model):
 
     ymap = models.ForeignKey(
         Map,
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='polylines',
         on_delete=models.CASCADE)
 
@@ -1237,7 +1237,7 @@ class Polygon(models.Model):
 
     ymap = models.ForeignKey(
         Map,
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='polygons',
         on_delete=models.CASCADE)
 
@@ -1318,8 +1318,8 @@ class Polygon(models.Model):
 
     class Meta:
         ordering = ("-id",)
-        verbose_name = ungettext_lazy('Territory', 'Territorys', 5)
-        verbose_name_plural = ungettext_lazy('Territory', 'Territorys', 2)
+        verbose_name = ngettext_lazy('Territory', 'Territorys', 5)
+        verbose_name_plural = ngettext_lazy('Territory', 'Territorys', 2)
 
     def save(self, *args, **kwargs):
         # Rounding coordinates through regex.
@@ -1339,7 +1339,7 @@ class HeatPoint(models.Model):
 
     ymap = models.ForeignKey(
         Map,
-        verbose_name=ungettext_lazy('Map', 'Map', 1),
+        verbose_name=ngettext_lazy('Map', 'Map', 1),
         related_name='heat_points',
         on_delete=models.CASCADE)
 
@@ -1373,8 +1373,8 @@ class HeatPoint(models.Model):
         return mark_safe('{}'.format(re.sub(r'<.*?>', "", self.title)[:60]))
 
     class Meta:
-        verbose_name = ungettext_lazy('Heat Point', 'Heat points', 5)
-        verbose_name_plural = ungettext_lazy('Heat Point', 'Heat points', 2)
+        verbose_name = ngettext_lazy('Heat Point', 'Heat points', 5)
+        verbose_name_plural = ngettext_lazy('Heat Point', 'Heat points', 2)
 
     def save(self, *args, **kwargs):
         if bool(self.pk):
@@ -1444,9 +1444,9 @@ class ClusterIcon(models.Model):
 
     class Meta:
         ordering = ("title", "id")
-        verbose_name = ungettext_lazy(
+        verbose_name = ngettext_lazy(
             'Icon for cluster', 'Icons for clusters', 5)
-        verbose_name_plural = ungettext_lazy(
+        verbose_name_plural = ngettext_lazy(
             'Icon for cluster', 'Icons for clusters', 2)
 
     def __init__(self, *args, **kwargs):
@@ -1507,8 +1507,8 @@ class IconCollection(models.Model):
 
     class Meta:
         ordering = ("title", "id")
-        verbose_name = ungettext_lazy('Icon collection for markers',
-                                      'Icon collections for markers', 5)
+        verbose_name = ngettext_lazy('Icon collection for markers',
+                                     'Icon collections for markers', 5)
         verbose_name_plural = _('Icon collections for markers')
 
     def get_icon_count(self):
@@ -1591,9 +1591,9 @@ class MarkerIcon(models.Model):
 
     class Meta:
         ordering = ("title", "id")
-        verbose_name = ungettext_lazy(
+        verbose_name = ngettext_lazy(
             'Icon for marker', 'Icons for markers', 5)
-        verbose_name_plural = ungettext_lazy(
+        verbose_name_plural = ngettext_lazy(
             'Icon for marker', 'Icons for markers', 2)
 
     def __init__(self, *args, **kwargs):

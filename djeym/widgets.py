@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.admin.widgets import AdminFileWidget
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class CenterMapWidget(forms.Widget):
@@ -15,8 +15,8 @@ class CenterMapWidget(forms.Widget):
 
     def render(self, name, value, attrs=None, renderer=None):
         """Render the widget as an HTML string."""
-        text_hint = _("To determine the center of the map - "
-                      "Move the marker or click on the map in the right place.")
+        text_hint = _(
+            "Move the marker or click on the map in the right place.")
         html_hint = "<div class=\"hint_center_map\">{}</div>".format(text_hint)
         html_map = "<div id=\"id_center_map\"></div>"
         text_input_html = "{0}{1}".format(html_hint, html_map)
@@ -34,7 +34,7 @@ class CheckIconOffsetWidget(forms.Widget):
     def render(self, name, value, attrs=None, renderer=None):
         """Render the widget as an HTML string."""
         text_hint = _("Changing values along the axes X and Y, "
-                      "match your marker with the standard:")
+                      "match your marker with the standard")
         img_hint = "<img src=\"/static/djeym/img/hint.svg\" class=\"hint_offset\" alt=\"hint\">"
         html_hint = "<div class=\"hint_check_icon_offset\">{0} {1}</div>"\
             .format(text_hint, img_hint)

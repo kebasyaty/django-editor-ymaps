@@ -1,5 +1,5 @@
 .logo_djeym {
-  margin: 0 0 10px;
+  margin: 10px 0 20px;
 }
 
 .logo_djeym img {
@@ -16,13 +16,12 @@
 label[for="id_center_map"],
 label[for="id_check_icon_offset"] {
   font-weight: bold;
-  color: #424242;
   float: none !important;
   width: auto !important;
 }
 
 label[for="id_disable_standard_icons"] {
-  color: #2196F3;
+  color: #2196f3;
   font-weight: bold;
   font-size: 14px;
 }
@@ -64,12 +63,12 @@ label[for="id_disable_standard_icons"] {
 .editing_map_link_wrapper--table td:nth-child(1) {
   background-color: #ffd54f;
   padding: 0 0 0 8px !important;
-  color: #212121;
+  color: #4d4d4d;
 }
 
 .editing_map_link_wrapper--table td:nth-child(2) {
   background-color: #ffd54f;
-  color: #212121;
+  color: #000;
   font-size: 16px;
   padding: 0 10px 0 5px !important;
 }
@@ -80,11 +79,16 @@ label[for="id_disable_standard_icons"] {
 
 .hint_center_map,
 .hint_check_icon_offset {
-  color: #212121;
-  font-size: 16px;
   font-weight: bold;
-  margin: 0 0 10px;
   font-style: italic;
+}
+
+.hint_center_map {
+  margin: auto 0 auto;
+}
+
+.hint_check_icon_offset {
+  margin: 1px 0 10px;
 }
 
 .field-check_icon_offset,
@@ -94,7 +98,7 @@ label[for="id_disable_standard_icons"] {
 
 .djeym_hint_custom_icons {
   margin: 10px 0 20px;
-  color: #2196F3;
+  color: #2196f3;
   font-size: 16px;
   font-weight: bold;
   font-style: italic;
@@ -153,18 +157,18 @@ label[for="id_disable_standard_icons"] {
 
 .icon_list_wrap__close {
   font-size: 28px;
-  color: #BDBDBD;
+  color: #bdbdbd;
   padding-right: 2px;
   cursor: pointer;
 }
 
 .change_slug_icon {
-  color: #4CAF50;
+  color: #4caf50;
   cursor: pointer;
 }
 
 .block_ip {
-  color: #F44336;
+  color: #f44336;
   cursor: pointer;
 }
 
@@ -174,7 +178,7 @@ label[for="id_disable_standard_icons"] {
 }
 
 label[for="id_is_cluster"] {
-  color: #2196F3;
+  color: #2196f3;
   font-weight: bold;
   font-size: 14px;
 }
@@ -216,20 +220,20 @@ label[for="id_is_cluster"] {
 .import_icon_collection_link,
 .import_tile_source_link {
   background-color: #ffd54f !important;
-  color: #212121 !important;
+  color: #000 !important;
   background-image: url(../img/plus.svg) !important;
 }
 
 .export_tile_source_link {
   background-color: #ffd54f !important;
-  color: #212121 !important;
+  color: #000 !important;
   background-image: url(../img/import.svg) !important;
 }
 
 .export_icon_collection_link {
   position: relative;
   background-color: #ffd54f;
-  color: #212121 !important;
+  color: #000 !important;
   border-radius: 20px;
   padding: 5px 14px 5px;
   text-transform: uppercase;
@@ -264,8 +268,8 @@ label[for="id_is_cluster"] {
   bottom: 0;
   left: 0;
   z-index: 10000;
-  background-color: #FFFFFF;
-  opacity: .85;
+  background-color: #ffffff;
+  opacity: 0.85;
   transition-property: opacity;
   transition-duration: 1s;
   transition-delay: 0s;
@@ -279,7 +283,7 @@ label[for="id_is_cluster"] {
   top: 50%;
   left: 50%;
   margin: -32px 0 0 -32px;
-  content: url('../../djeym/img/spinner.svg');
+  content: url("../../djeym/img/spinner.svg");
   animation: djeym-spin 1s infinite linear;
 }
 

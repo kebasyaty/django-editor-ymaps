@@ -2,7 +2,7 @@
 {% load i18n admin_urls static admin_modify djeymtags %}
 
 {% block extrahead %}
-<link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet">
 {% djeym_load_api_ymaps LANGUAGE_CODE %}
 {{ block.super }}
 <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
@@ -37,7 +37,7 @@
         <tr>
           <td><span class="mdi mdi-map-check mdi-36px"></span></td>
           <td>{% trans 'Editing map' %}</td>
-          <td><img src="{% static 'djeym/img/amber_arrow.svg' %}" alt="Icon"</td>
+          <td><img src="{% static 'djeym/img/amber_arrow.svg' %}" alt="Icon"></td>
         </tr>
       </table>
     </a>

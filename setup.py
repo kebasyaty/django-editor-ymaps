@@ -22,7 +22,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (2, 1, 22)
+VERSION = (2, 2, 0)
 __version__ = '.'.join(map(str, VERSION))
 
 
@@ -37,7 +37,7 @@ setup(
     version=__version__,
     packages=find_packages(),
     include_package_data=True,
-    requires=['python (>= 3.6)', 'django (>= 2.0)'],
+    requires=['python (>= 3.6)', 'django (>= 3.2.4)'],
     description='Creating and editing Yandex maps.',
     long_description=long_description,
     long_description_content_type='text/x-rst',
@@ -61,16 +61,16 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Topic :: Scientific/Engineering :: GIS',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        'Django>=2.0',
-        'Pillow',
+        'Django>=3.2.4',
+        'Pillow==9.5.0',
         'django-imagekit',
         'python-slugify',
         'django-ckeditor',

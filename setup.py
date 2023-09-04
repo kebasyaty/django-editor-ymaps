@@ -22,7 +22,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (2, 2, 0)
+VERSION = (2, 2, 1)
 __version__ = '.'.join(map(str, VERSION))
 
 
@@ -37,7 +37,7 @@ setup(
     version=__version__,
     packages=find_packages(),
     include_package_data=True,
-    requires=['python (>= 3.6)', 'django (>= 3.2.4)'],
+    requires=['python (>= 3.8)', 'django (>= 3.2.4)'],
     description='Creating and editing Yandex maps.',
     long_description=long_description,
     long_description_content_type='text/x-rst',

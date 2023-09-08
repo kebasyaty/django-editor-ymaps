@@ -8,10 +8,11 @@ Component for Icon Collection.
   <v-container fluid class="px-1 py-0">
     <v-row dense style="width: 320px; height: 360px; overflow-y: scroll">
       <v-col cols="3" v-for="icon in iconCollection" :key="`icon-slug-${icon.slug}`">
-        <v-hover v-slot:default="{ hover }">
+        <v-hover v-slot="{ hover }">
           <v-card :elevation="hover ? maxElevation : minElevation" class="djeym-curs-p" width="67px" height="97px">
             <v-card-text class="px-1 pt-2 pb-1 text-center">
-              <v-img contain :src="icon.url" :alt="icon.title" max-width="100%" max-height="60px" @click="
+              <v-img
+contain :src="icon.url" :alt="icon.title" max-width="100%" max-height="60px" @click="
                 assignNewIcon(icon.slug, icon.url, icon.size, icon.offset)
                 "></v-img>
             </v-card-text>

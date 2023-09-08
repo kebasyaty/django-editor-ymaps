@@ -5,8 +5,9 @@ Component for selecting Tile Source.
 -->
 <template>
   <v-container fluid>
-    <v-hover v-slot:default="{ hover }" v-for="tile in tiles" :key="`tile-${tile.id}`">
-      <v-card :elevation="hover ? maxElevation : minElevation" class="djeym-curs-p mb-4"
+    <v-hover v-slot="{ hover }" v-for="tile in tiles" :key="`tile-${tile.id}`">
+      <v-card
+:elevation="hover ? maxElevation : minElevation" class="djeym-curs-p mb-4"
         @click="tileSourceReplacement(tile.id, tile.isActive)">
         <v-container fluid class="py-0">
           <div v-if="tile.isActive" class="ml-2 pb-1 active-tile">

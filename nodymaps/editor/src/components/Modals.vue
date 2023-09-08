@@ -9,7 +9,8 @@ Component for popup dialogs.
     <!-- GeoObject -->
     <v-overlay z-index="8" :value="geoObjectDialog">
       <v-card :light="!$vuetify.theme.dark" width="300px" max-width="300px">
-        <v-card-title class="subtitle-1 justify-center py-0"
+        <v-card-title
+class="subtitle-1 justify-center py-0"
           :style="`background-color:${colorControlsTheme};color:${colorButtonsTextTheme};`"
           v-html="titleGeoObjectDialog"></v-card-title>
         <v-divider></v-divider>
@@ -35,7 +36,8 @@ Component for popup dialogs.
           <v-btn icon color="pink" class="px-0" @click="geoObjectCurrentActionBtnCancel()" v-show="geoObjectCancelBtn">
             <v-icon>mdi-close-thick</v-icon>
           </v-btn>
-          <v-btn icon color="red darken-2" class="px-0" @click="geoObjectCurrentActionBtnDelete()"
+          <v-btn
+icon color="red darken-2" class="px-0" @click="geoObjectCurrentActionBtnDelete()"
             v-show="geoObjectDeleteBtn">
             <v-icon>mdi-trash-can</v-icon>
           </v-btn>
@@ -47,7 +49,8 @@ Component for popup dialogs.
     <!-- Controls -->
     <v-overlay z-index="9" :value="controlsDialog">
       <v-card :light="!$vuetify.theme.dark" max-height="80%">
-        <v-card-title class="subtitle-1 justify-center py-0" :style="controlsTitleColor(componentControlsMenu)"
+        <v-card-title
+class="subtitle-1 justify-center py-0" :style="controlsTitleColor(componentControlsMenu)"
           v-html="titleControlsDialog"></v-card-title>
         <v-divider></v-divider>
         <v-card-text v-if="componentControlsText" v-html="textControlsDialog" class="pt-5"></v-card-text>
@@ -91,7 +94,8 @@ Component for popup dialogs.
     <!-- Message -->
     <v-dialog v-model="messageDialog" persistent max-width="500">
       <v-card :light="!$vuetify.theme.dark">
-        <v-card-title class="subtitle-1 py-0" :class="statusMessageDialog" v-text="titleMessageDialog"
+        <v-card-title
+class="subtitle-1 py-0" :class="statusMessageDialog" v-text="titleMessageDialog"
           :style="`color:white;`"></v-card-title>
         <v-card-text class="pt-5 font-weight-bold">
           <table>

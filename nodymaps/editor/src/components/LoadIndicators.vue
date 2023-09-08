@@ -8,7 +8,7 @@ Component for setting Upload indicator.
   <v-container fluid>
     <v-card :elevation="minElevation">
       <v-simple-table>
-        <template v-slot:default>
+        <template #default>
           <tbody>
             <template v-for="(val, key, index) in controls">
               <tr v-if="key !== 'currentIndicator'" :key="`control-${key}`">
@@ -19,7 +19,8 @@ Component for setting Upload indicator.
                         <v-col cols="12" class="pa-0">{{
                           $t(`message.${transTitles[index]}`)
                         }}</v-col>
-                        <v-col cols="12" v-if="key === 'speed'" class="body-2 font-italic pl-1 pr-0 py-0" v-html="`( ${$t(
+                        <v-col
+cols="12" v-if="key === 'speed'" class="body-2 font-italic pl-1 pr-0 py-0" v-html="`( ${$t(
                           'message.59',
                         )} <span class='font-weight-bold'>${controls.speed
                           }</span> ${$t('message.60')} )`
@@ -35,7 +36,8 @@ Component for setting Upload indicator.
                             <v-img :src="item.img"></v-img>
                           </v-col>
                           <v-col cols="10">
-                            <v-switch v-model="updateCurrentIndicator" inset :value="item.slug" hide-details
+                            <v-switch
+v-model="updateCurrentIndicator" inset :value="item.slug" hide-details
                               :label="item.title" class="mt-0" :color="colorControlsTheme"></v-switch>
                           </v-col>
                         </v-row>
@@ -43,19 +45,22 @@ Component for setting Upload indicator.
                     </template>
                     <template v-else-if="key === 'size'">
                       <v-radio-group v-model="updateSize" row mandatory hide-details>
-                        <v-radio v-for="size in [64, 96, 128]" :key="`size-${size}`" :label="size.toString()"
+                        <v-radio
+v-for="size in [64, 96, 128]" :key="`size-${size}`" :label="size.toString()"
                           :value="size" :color="colorControlsTheme"></v-radio>
                       </v-radio-group>
                     </template>
                     <template v-else-if="key === 'speed'">
-                      <v-slider v-model="updateSpeed" :track-color="$vuetify.theme.dark
+                      <v-slider
+v-model="updateSpeed" :track-color="$vuetify.theme.dark
                         ? 'grey darken-1'
                         : 'grey lighten-2'
                         " min="0.1" max="1" step="0.1" thumb-label hide-details :color="colorControlsTheme"></v-slider>
                     </template>
                     <template v-else-if="key === 'disableAnimation'">
                       <v-icon color="pink" class="mr-3 pt-1">mdi-cancel</v-icon>
-                      <v-switch v-model="controls.disableAnimation" inset hide-details :label="$t('message.58')"
+                      <v-switch
+v-model="controls.disableAnimation" inset hide-details :label="$t('message.58')"
                         class="mt-0" :color="colorControlsTheme"></v-switch>
                     </template>
                   </v-card-actions>

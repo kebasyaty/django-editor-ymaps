@@ -7,12 +7,14 @@ Component for creating Heat Points.
   <v-conteiner fluid>
     <v-row>
       <v-col class="py-0" cols="12">
-        <v-text-field v-model="updateTitle" :label="$t('message.94')" :placeholder="$t('message.94')"
+        <v-text-field
+v-model="updateTitle" :label="$t('message.94')" :placeholder="$t('message.94')"
           :hint="$t('message.96')" clearable dense full-width counter maxlength="60"
           :color="colorControlsTheme"></v-text-field>
       </v-col>
       <v-col class="py-0" cols="12">
-        <v-text-field id="id-djeym-weight" v-model="updateWeight" :label="$t('message.95')"
+        <v-text-field
+id="id-djeym-weight" v-model="updateWeight" :label="$t('message.95')"
           :placeholder="$t('message.95')" hint="0 ... 2147483647" clearable dense full-width maxlength="10"
           :rules="rulesWeight()" :color="colorControlsTheme"></v-text-field>
       </v-col>

@@ -6,12 +6,14 @@ Component for cropping images.
 <template>
   <v-conteiner fluid>
     <v-row class="pa-3">
-      <v-file-input :label="$t('message.135')" outlined dense prepend-icon="mdi-camera" accept="image/jpeg" hide-details
+      <v-file-input
+:label="$t('message.135')" outlined dense prepend-icon="mdi-camera" accept="image/jpeg" hide-details
         full-width :color="colorControlsTheme" @change="newImg"></v-file-input>
     </v-row>
     <v-row align="center" justify="center">
-      <vue-croppie ref="croppieRef" :enableOrientation="true" :enforceBoundary="true" :mouseWheelZoom="false"
-        :enableResize="false" :showZoomer="false" :enableZoom="true"
+      <vue-croppie
+ref="croppieRef" :enable-orientation="true" :enforce-boundary="true" :mouse-wheel-zoom="false"
+        :enable-resize="false" :show-zoomer="false" :enable-zoom="true"
         :boundary="{ width: 300, height: 300, type: 'square' }"
         :viewport="{ width: 100, height: 250, type: 'square' }"></vue-croppie>
     </v-row>

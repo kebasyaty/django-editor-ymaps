@@ -5,17 +5,19 @@ Component for General Settings Map and Editor.
 -->
 <template>
   <v-container fluid>
-    <v-card :elevation="minElevation" v-for="(panel, title, index) in controls" :key="title"
+    <v-card
+:elevation="minElevation" v-for="(panel, title, index) in controls" :key="title"
       :class="title !== 'panel1_69' ? 'mt-5' : ''">
       <v-card-title class="subtitle-1">{{
         $t(`message.${title.slice(-2)}`)
       }}</v-card-title>
       <v-divider></v-divider>
       <v-simple-table>
-        <template v-slot:default>
+        <template #default>
           <tbody>
             <tr v-for="(control, index2) in panel" :key="`control-${index2}`">
-              <td width="56" :class="control.imgBgPanelFront !== undefined
+              <td
+width="56" :class="control.imgBgPanelFront !== undefined
                 ? 'pl-2 pr-0 py-2'
                 : control.hideGroupNamePanelFront !== undefined
                   ? 'pt-1'
@@ -24,10 +26,12 @@ Component for General Settings Map and Editor.
                 <v-icon v-if="control.icon !== undefined">{{
                   control.icon
                 }}</v-icon>
-                <v-img v-else-if="control.imgBgPanelFront !== undefined" :src="control.imgBgPanelFront || undefined"
+                <v-img
+v-else-if="control.imgBgPanelFront !== undefined" :src="control.imgBgPanelFront || undefined"
                   width="48px" max-height="100%"></v-img>
               </td>
-              <td v-if="control.layout === undefined &&
+              <td
+v-if="control.layout === undefined &&
                 control.theme === undefined &&
                 control.widthPanelEditor === undefined &&
                 control.widthPanelFront === undefined &&
@@ -40,7 +44,8 @@ Component for General Settings Map and Editor.
       : 'auto'
     : 'pt-4'
     ">
-                <v-switch v-model="control.isActive" inset hide-details
+                <v-switch
+v-model="control.isActive" inset hide-details
                   :label="$t(`message.${transTitleControls[index][index2]}`)" class="mt-0 pt-0"
                   :color="colorControlsTheme"></v-switch>
                 <div v-if="index === 0 && index2 === 1" class="caption warning--text pt-1">
@@ -51,12 +56,14 @@ Component for General Settings Map and Editor.
                     <v-row>
                       <v-col cols="3" class="pr-0 py-0">
                         <div class="sample-color">
-                          <div class="sample-color__selected-tone"
+                          <div
+class="sample-color__selected-tone"
                             :style="`background-color: ${updateColorBackgroundCountObjects};`"></div>
                         </div>
                       </v-col>
                       <v-col cols="9" class="py-0">
-                        <v-btn small block depressed @click="recolorCountObjects('background')"
+                        <v-btn
+small block depressed @click="recolorCountObjects('background')"
                           :color="colorControlsTheme">
                           <span :style="`color: ${colorButtonsTextTheme};`">{{
                             $t("message.76")
@@ -67,12 +74,14 @@ Component for General Settings Map and Editor.
                     <v-row class="mt-1">
                       <v-col cols="3" class="pr-0 py-0 mt-2">
                         <div class="sample-color">
-                          <div class="sample-color__selected-tone"
+                          <div
+class="sample-color__selected-tone"
                             :style="`background-color: ${updateTextColorCountObjects};`"></div>
                         </div>
                       </v-col>
                       <v-col cols="9" class="py-0">
-                        <v-btn small block depressed @click="recolorCountObjects('text')" class="mt-2"
+                        <v-btn
+small block depressed @click="recolorCountObjects('text')" class="mt-2"
                           :color="colorControlsTheme">
                           <span :style="`color: ${colorButtonsTextTheme};`">{{
                             $t("message.25")
@@ -88,9 +97,11 @@ Component for General Settings Map and Editor.
                   $t(`message.${transTitleControls[index][index2]}`)
                 }}</v-card-title>
                 <v-radio-group v-model="control.layout">
-                  <v-radio :label="$t('message.22')" value="cluster#balloonTwoColumns"
+                  <v-radio
+:label="$t('message.22')" value="cluster#balloonTwoColumns"
                     :color="colorControlsTheme"></v-radio>
-                  <v-radio :label="$t('message.23')" value="cluster#balloonCarousel"
+                  <v-radio
+:label="$t('message.23')" value="cluster#balloonCarousel"
                     :color="colorControlsTheme"></v-radio>
                 </v-radio-group>
               </td>
@@ -101,19 +112,22 @@ Component for General Settings Map and Editor.
                 <v-container fluid class="px-0 pt-2 pb-5">
                   <v-row>
                     <v-col cols="12">
-                      <v-select v-model="updateThemeType" dense outlined hide-details :label="$t('message.75')"
+                      <v-select
+v-model="updateThemeType" dense outlined hide-details :label="$t('message.75')"
                         :items="getItemsTheme()" :color="colorControlsTheme" :item-color="colorControlsTheme"></v-select>
                     </v-col>
                   </v-row>
                   <v-row class="mt-2">
                     <v-col cols="3" class="pr-0 py-0">
                       <div class="sample-color mt-2">
-                        <div class="sample-color__selected-tone"
+                        <div
+class="sample-color__selected-tone"
                           :style="`background-color: ${updateColorControlsTheme};`"></div>
                       </div>
                     </v-col>
                     <v-col cols="9" class="py-0">
-                      <v-btn small block depressed @click="recolorTheme('controls')" class="mt-2"
+                      <v-btn
+small block depressed @click="recolorTheme('controls')" class="mt-2"
                         :color="colorControlsTheme">
                         <span :style="`color: ${colorButtonsTextTheme};`">{{
                           $t("message.72")
@@ -124,7 +138,8 @@ Component for General Settings Map and Editor.
                   <v-row class="mt-3">
                     <v-col cols="3" class="pr-0 py-0">
                       <div class="sample-color">
-                        <div class="sample-color__selected-tone"
+                        <div
+class="sample-color__selected-tone"
                           :style="`background-color: ${updateColorButtonsTextTheme};`"></div>
                       </div>
                     </v-col>
@@ -142,7 +157,8 @@ Component for General Settings Map and Editor.
                 <v-card-title class="subtitle-1 py-0 px-0">{{
                   $t("message.81")
                 }}</v-card-title>
-                <v-text-field v-model="panel[index2].widthPanelEditor" outlined dense full-width type="number" min="300"
+                <v-text-field
+v-model="panel[index2].widthPanelEditor" outlined dense full-width type="number" min="300"
                   :color="colorControlsTheme" :rules="rulesWidthPanel(300)"
                   @input="actionRefreshWidthPanelEditor()"></v-text-field>
               </td>
@@ -150,7 +166,8 @@ Component for General Settings Map and Editor.
                 <v-card-title class="subtitle-1 py-0 px-0">{{
                   $t("message.81")
                 }}</v-card-title>
-                <v-text-field v-model="panel[index2].widthPanelFront" outlined dense full-width type="number" min="260"
+                <v-text-field
+v-model="panel[index2].widthPanelFront" outlined dense full-width type="number" min="260"
                   :color="colorControlsTheme" :rules="rulesWidthPanel(260)"></v-text-field>
               </td>
               <td v-else-if="control.imgBgPanelFront !== undefined" class="py-2">
@@ -169,7 +186,8 @@ Component for General Settings Map and Editor.
                       </v-btn>
                     </v-col>
                     <v-col cols="4" class="py-0">
-                      <v-btn small block depressed @click="delImgBgPanelFront()" color="red darken-3"
+                      <v-btn
+small block depressed @click="delImgBgPanelFront()" color="red darken-3"
                         :disabled="disabledBtnDelImgBgPanelFront">
                         <v-icon color="grey lighten-5">mdi-trash-can</v-icon>
                       </v-btn>
@@ -196,14 +214,16 @@ Component for General Settings Map and Editor.
                 <v-card-title class="subtitle-1 py-0 px-0">{{
                   $t("message.132")
                 }}</v-card-title>
-                <v-text-field v-model="panel[index2].widthMapFront" outlined dense full-width hide-details
+                <v-text-field
+v-model="panel[index2].widthMapFront" outlined dense full-width hide-details
                   :color="colorControlsTheme"></v-text-field>
               </td>
               <td v-else-if="control.heightMapFront !== undefined" class="pt-1 pb-2">
                 <v-card-title class="subtitle-1 py-0 px-0">{{
                   $t("message.138")
                 }}</v-card-title>
-                <v-text-field v-model="panel[index2].heightMapFront" outlined dense full-width hide-details
+                <v-text-field
+v-model="panel[index2].heightMapFront" outlined dense full-width hide-details
                   :color="colorControlsTheme"></v-text-field>
               </td>
             </tr>

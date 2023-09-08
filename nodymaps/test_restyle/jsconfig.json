@@ -1,23 +1,49 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-    }
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "exclude": [
-    "node_modules",
-    "**/node_modules/*",
-    ".nuxt",
     "dist",
-    "bower_components",
+    "node_modules",
+    "**/node_modules",
+    "build",
+    "public",
+    "static",
+    ".vscode",
+    ".nuxt",
+    "coverage",
+    "jspm_packages",
     "tmp",
     "temp",
-    "jspm_packages"
-  ],
-  "include": [
-    "src/**/*"
+    "bower_components",
+    ".npm",
+    ".yarn",
+    ".git"
+    ".idea",
+    "*~",
+    ".directory",
+    ".DS_Store",
+    "*.suo",
+    "*.ntvs*",
+    "*.njsproj",
+    "*.sln",
+    "*.sw?",
+    ".env.local",
+    ".env.*.local",
+    "logs",
+    "*.log",
+    "npm-debug.log*",
+    "yarn-debug.log*",
+    "yarn-error.log*",
+    "lerna-debug.log*",
+    ".pnpm-debug.log*",
+    ".yarn/cache",
+    ".yarn/unplugged",
+    ".yarn/build-state.yml",
+    ".yarn/install-state.gz",
+    ".pnp.*",
   ]
 }

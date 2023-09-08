@@ -17,20 +17,21 @@ Component for setting of Presets.
               control.title
             }}</span>
           </span>
-          <template v-slot:actions>
+          <template #actions>
             <v-icon :color="colorButtonsTextTheme">$expand</v-icon>
           </template>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-simple-table>
-            <template v-slot:default>
+            <template #default>
               <tbody>
                 <tr>
                   <td colspan="2" class="pt-2">
                     <v-card-title class="subtitle-1 pa-0">{{
                       $t("message.62")
                     }}</v-card-title>
-                    <v-text-field dense outlined type="number" v-model="controls[index].position" min="0"
+                    <v-text-field
+dense outlined type="number" v-model="controls[index].position" min="0"
                       :rules="rulesPosition()" :color="colorControlsTheme"></v-text-field>
                   </td>
                 </tr>
@@ -39,7 +40,8 @@ Component for setting of Presets.
                     <v-icon>{{ item.icon }}</v-icon>
                   </td>
                   <td class="py-2">
-                    <v-switch v-model="controls[index][item.title]" inset hide-details
+                    <v-switch
+v-model="controls[index][item.title]" inset hide-details
                       :label="$t(`message.${item.trans}`)" :color="colorControlsTheme" class="mt-0 pt-0"></v-switch>
                   </td>
                 </tr>
@@ -54,7 +56,8 @@ Component for setting of Presets.
                           <v-icon>{{ item.icon }}</v-icon>
                         </v-col>
                         <v-col cols="3" :key="`switch-target-${control.id}-${index3}`" class="pl-2 pr-3 mb-3">
-                          <v-switch v-model="controls[index][item.title]" inset hide-details class="mt-0 pt-0"
+                          <v-switch
+v-model="controls[index][item.title]" inset hide-details class="mt-0 pt-0"
                             :color="colorControlsTheme"></v-switch>
                         </v-col>
                       </template>

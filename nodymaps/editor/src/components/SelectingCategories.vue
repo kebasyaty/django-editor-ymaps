@@ -19,7 +19,8 @@ Component for selecting a categories.
             }}</v-icon>
           </v-col>
           <v-col cols="11" :key="`switch-category-${item.id}`">
-            <v-switch v-model="controls.category" inset :value="item.id.toString()" hide-details :label="item.title"
+            <v-switch
+v-model="controls.category" inset :value="item.id.toString()" hide-details :label="item.title"
               class="mt-0" :color="colorControlsTheme"></v-switch>
           </v-col>
         </template>
@@ -35,7 +36,8 @@ Component for selecting a categories.
             }}</v-icon>
           </v-col>
           <v-col cols="11" :key="`switch-subcategory-${item.id}`">
-            <v-switch v-model="controls.subcategories" multiple inset :value="item.id.toString()" hide-details
+            <v-switch
+v-model="controls.subcategories" multiple inset :value="item.id.toString()" hide-details
               :label="item.title" class="mt-0" :color="colorControlsTheme"></v-switch>
           </v-col>
         </template>

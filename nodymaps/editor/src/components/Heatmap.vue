@@ -5,14 +5,16 @@ Component for setting of Heat map.
 -->
 <template>
   <v-container fluid>
-    <v-card v-for="panelNum in 2" :key="`panel-${panelNum}`" :class="`mt-${panelNum === 2 ? 8 : 0}`"
+    <v-card
+v-for="panelNum in 2" :key="`panel-${panelNum}`" :class="`mt-${panelNum === 2 ? 8 : 0}`"
       :elevation="minElevation">
       <template v-if="panelNum === 1">
         <v-card-text class="py-0">
           <v-container fluid class="pa-0">
             <v-row>
               <v-col cols="12">
-                <v-switch v-model="controls.panel1.isActive" inset hide-details :label="$t('message.46')"
+                <v-switch
+v-model="controls.panel1.isActive" inset hide-details :label="$t('message.46')"
                   class="mt-0 pt-0" :color="colorControlsTheme" @change="saveUpdate()"></v-switch>
               </v-col>
             </v-row>
@@ -31,7 +33,7 @@ Component for setting of Heat map.
       </template>
       <template v-else>
         <v-simple-table>
-          <template v-slot:default>
+          <template #default>
             <tbody>
               <tr v-for="(val, key, index) in controls.panel2" :key="`control-${key}`">
                 <td :class="key !== 'dissipating' ? 'pb-1' : 'pb-0'">
@@ -42,7 +44,8 @@ Component for setting of Heat map.
                       <v-container fluid class="pa-0">
                         <v-row>
                           <v-col cols="3" v-for="(color, title, index2) in val" :key="title" class="pa-0 text-center">
-                            <v-btn fab small depressed :color="[
+                            <v-btn
+fab small depressed :color="[
                               updateGradientColor1,
                               updateGradientColor2,
                               updateGradientColor3,
@@ -54,19 +57,22 @@ Component for setting of Heat map.
                       </v-container>
                     </template>
                     <template v-else-if="key === 'radius'">
-                      <v-text-field outlined dense type="number" v-model="controls.panel2.radius" min="1"
+                      <v-text-field
+outlined dense type="number" v-model="controls.panel2.radius" min="1"
                         :rules="rulesRadius()" class="py-0 my-0" :color="colorControlsTheme"
                         @input="actionRefreshRadius()"></v-text-field>
                     </template>
                     <template v-else-if="key === 'dissipating'">
-                      <v-switch v-model="controls.panel2.dissipating" inset hide-details :label="$t('message.50')"
+                      <v-switch
+v-model="controls.panel2.dissipating" inset hide-details :label="$t('message.50')"
                         class="mt-0 pt-0" :color="colorControlsTheme" @change="actionRefreshDissipating()"></v-switch>
                     </template>
                     <template v-else-if="key === 'opacity' || key === 'intensity'">
                       <span class="subtitle-2 pr-1">{{
                         controls.panel2[key]
                       }}</span>
-                      <v-slider v-model="controls.panel2[key]" :track-color="$vuetify.theme.dark
+                      <v-slider
+v-model="controls.panel2[key]" :track-color="$vuetify.theme.dark
                         ? 'grey darken-1'
                         : 'grey lighten-2'
                         " min="0.1" max="1" step="0.1" thumb-label hide-details :color="colorControlsTheme" @input="

@@ -1,7 +1,8 @@
 <template>
   <v-tooltip bottom>
-    <template v-slot:activator="{ on }">
-      <svg v-on="on" :class="classes" xmlns="http://www.w3.org/2000/svg" :width="computedWidth" :height="height"
+    <template #activator="{ on }">
+      <svg
+v-on="on" :class="classes" xmlns="http://www.w3.org/2000/svg" :width="computedWidth" :height="height"
         :viewBox="computedViewBox" :aria-labelledby="iconName" role="presentation">
         <g stroke-width="1.0086" :fill="color">
           <path

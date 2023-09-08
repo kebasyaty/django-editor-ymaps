@@ -11,14 +11,16 @@
       </v-card-actions>
       <v-tabs v-model="mapSettingsTab" height="42" show-arrows center-active :color="colorControlsTheme">
         <v-tabs-slider></v-tabs-slider>
-        <v-tab v-for="(icon, index) in mapSettingsTabIcons" :key="`map-settings-button-${index}`"
+        <v-tab
+v-for="(icon, index) in mapSettingsTabIcons" :key="`map-settings-button-${index}`"
           :href="`#mapSettingsTab-${index}`">
           <v-icon>mdi-{{ icon }}</v-icon>
         </v-tab>
       </v-tabs>
 
       <v-tabs-items v-model="mapSettingsTab" v-if="showAllSettings">
-        <v-tab-item v-for="(component, index) in componentList" :key="`map-settings-item-${index}`"
+        <v-tab-item
+v-for="(component, index) in componentList" :key="`map-settings-item-${index}`"
           :value="`mapSettingsTab-${index}`">
           <v-card flat>
             <v-card-title class="title justify-center">{{
@@ -26,7 +28,7 @@
             }}</v-card-title>
           </v-card>
           <v-divider></v-divider>
-          <component v-bind:is="component"></component>
+          <component :is="component"></component>
         </v-tab-item>
       </v-tabs-items>
     </v-navigation-drawer>
@@ -37,7 +39,7 @@
       <!-- Button - Back to admin panel -->
       <v-btn icon :href="`/admin/djeym/map/${mapID}/change/`" color="white" class="mr-3">
         <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
+          <template #activator="{ on }">
             <v-icon :color="colorButtonsTextTheme" v-on="on">mdi-arrow-left-top-bold</v-icon>
           </template>
           <span>{{ $t("message.83") }}</span>
@@ -45,7 +47,8 @@
       </v-btn>
 
       <!-- Button - Logo icon -->
-      <v-btn icon href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="nofollow noreferrer noopener"
+      <v-btn
+icon href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="nofollow noreferrer noopener"
         color="white" depressed>
         <IconLogo height="42" :color="colorButtonsTextTheme" />
       </v-btn>
@@ -53,7 +56,7 @@
       <!-- Button - Open Map Settings -->
       <v-btn icon color="white" class="ml-2" @click.stop="updateMapSettingsDrawer = true">
         <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
+          <template #activator="{ on }">
             <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-cog</v-icon>
           </template>
           <span>{{ $t("message.6") }}</span>
@@ -63,7 +66,7 @@
       <!-- Button - Add geo object -->
       <v-btn icon color="white" @click="helpCreateGeoobject()">
         <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
+          <template #activator="{ on }">
             <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-help</v-icon>
           </template>
           <span>{{ $t("message.84") }}</span>
@@ -71,10 +74,11 @@
       </v-btn>
 
       <!-- Button - Find Editable Geo Object -->
-      <v-btn class="ml-2" color="white" depressed fab small v-show="showBtnFindEditableGeoObject"
+      <v-btn
+class="ml-2" color="white" depressed fab small v-show="showBtnFindEditableGeoObject"
         @click="findEditableGeoObject()">
         <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
+          <template #activator="{ on }">
             <v-icon large color="red darken-2" v-on="on">mdi-crosshairs-gps</v-icon>
           </template>
           <span>{{ $t("message.2") }}</span>

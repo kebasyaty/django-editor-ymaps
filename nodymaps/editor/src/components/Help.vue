@@ -59,12 +59,13 @@ Component for Help info.
       </v-card-text>
       <v-card-actions class="pb-4">
         <v-spacer></v-spacer>
-        <v-btn fab :outlined="!$vuetify.theme.dark" small depressed
+        <v-btn
+fab :outlined="!$vuetify.theme.dark" small depressed
           :color="$vuetify.theme.dark ? 'grey darken-1' : 'grey lighten-1'" v-for="(item, index) in controls.links"
           :key="`link-${index}`" :href="item.link" :target="item.title === 'Feedback' ? '' : '_blank'"
           rel="nofollow noreferrer noopener">
           <v-tooltip bottom>
-            <template v-slot:activator="{ on }">
+            <template #activator="{ on }">
               <v-icon color="grey lighten-1" v-on="on">{{
                 `mdi-${item.icon}`
               }}</v-icon>

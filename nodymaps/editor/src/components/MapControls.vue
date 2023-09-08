@@ -7,15 +7,17 @@ Component for setting Map Controls.
   <v-container fluid>
     <v-card :elevation="minElevation">
       <v-simple-table>
-        <template v-slot:default>
+        <template #default>
           <tbody>
             <tr v-for="(control, index) in controls" :key="`control-${index}`">
               <td>
-                <v-img :width="+(control.width / 3).toFixed(2)" :src="control.img"
+                <v-img
+:width="+(control.width / 3).toFixed(2)" :src="control.img"
                   :alt="$t(`message.${transMapControls[index]}`)"></v-img>
               </td>
               <td>
-                <v-switch v-model="control.isActive" inset hide-details :label="$t(`message.${transMapControls[index]}`)"
+                <v-switch
+v-model="control.isActive" inset hide-details :label="$t(`message.${transMapControls[index]}`)"
                   class="mt-0 pt-0" :color="colorControlsTheme"></v-switch>
               </td>
             </tr>

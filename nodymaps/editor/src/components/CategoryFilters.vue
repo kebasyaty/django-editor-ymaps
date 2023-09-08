@@ -7,7 +7,8 @@ Component for filtering geo objects by categories.
   <div>
     <v-tabs v-model="filtersTab" height="42" centered show-arrows center-active :color="colorControlsTheme">
       <v-tabs-slider></v-tabs-slider>
-      <v-tab v-for="(name, index) in tabNameList" :key="`filter-button-${index}`" :href="`#filterTab-${index}`"
+      <v-tab
+v-for="(name, index) in tabNameList" :key="`filter-button-${index}`" :href="`#filterTab-${index}`"
         :ripple="effectRipple">
         <v-icon>{{ tabIcons[name] }}</v-icon>
       </v-tab>
@@ -25,7 +26,7 @@ Component for filtering geo objects by categories.
                   $t("message.6")
                 }}</span>
               </span>
-              <template v-slot:actions>
+              <template #actions>
                 <v-icon :color="colorButtonsTextTheme">$expand</v-icon>
               </template>
             </v-expansion-panel-header>
@@ -39,20 +40,24 @@ Component for filtering geo objects by categories.
               </v-btn>
               <v-divider></v-divider>
               <!-- Multiple choice ? -->
-              <v-switch v-model="updateMultiple" inset hide-details :label="$t('message.78')" class="mt-5 pt-0"
+              <v-switch
+v-model="updateMultiple" inset hide-details :label="$t('message.78')" class="mt-5 pt-0"
                 :color="colorControlsTheme" @change="actionRefreshStateControls()"></v-switch>
               <!-- Links - Material design icons -->
               <div class="subtitle-1 mt-5 text-center">
                 {{ $t("message.80") }}
               </div>
               <v-divider></v-divider>
-              <div class="mt-0 text-center" v-for="(link, index) in iconsLinkList" :key="`icon-link-${index}`"
+              <div
+class="mt-0 text-center" v-for="(link, index) in iconsLinkList" :key="`icon-link-${index}`"
                 :class="iconsLinkList.length === index + 1 ? 'mb-3' : ''">
-                <v-btn link text x-small depressed color="primary" target="_blank" rel="nofollow noreferrer noopener"
+                <v-btn
+link text x-small depressed color="primary" target="_blank" rel="nofollow noreferrer noopener"
                   :href="link">{{ link }}</v-btn>
               </div>
               <!-- Replacing category icons for tabs. -->
-              <v-text-field v-for="(tabName, index) in tabNameList" :key="`icon-${tabName}`" v-model="tabIcons[tabName]"
+              <v-text-field
+v-for="(tabName, index) in tabNameList" :key="`icon-${tabName}`" v-model="tabIcons[tabName]"
                 :placeholder="$t(`message.${transCategoryNames[index]}`)" :color="colorControlsTheme"
                 :prepend-icon="tabIcons[tabName]" @change="actionCheckNameIcon(tabName)" single-line outlined rounded
                 dense clearable :rules="rulesReplacingCategoryIcons()"></v-text-field>
@@ -63,18 +68,23 @@ Component for filtering geo objects by categories.
                 {{ `(${$t("message.144")})` }}
               </div>
               <!-- Changing category names -->
-              <v-text-field v-model="updateGeoTypeNameMarker" :placeholder="$t('message.15')" :color="colorControlsTheme"
+              <v-text-field
+v-model="updateGeoTypeNameMarker" :placeholder="$t('message.15')" :color="colorControlsTheme"
                 single-line outlined dense hide-details full-width clearable class="my-3"></v-text-field>
-              <v-text-field v-model="updateGeoTypeNameRoute" :placeholder="$t('message.16')" :color="colorControlsTheme"
+              <v-text-field
+v-model="updateGeoTypeNameRoute" :placeholder="$t('message.16')" :color="colorControlsTheme"
                 single-line outlined dense hide-details full-width clearable class="mb-3"></v-text-field>
-              <v-text-field v-model="updateGeoTypeNameTerritory" :placeholder="$t('message.17')"
+              <v-text-field
+v-model="updateGeoTypeNameTerritory" :placeholder="$t('message.17')"
                 :color="colorControlsTheme" single-line outlined dense hide-details full-width clearable
                 class="mb-5"></v-text-field>
               <!-- Geo-type names by center -->
-              <v-switch v-model="updateCenterGeoTypes" inset hide-details :label="$t('message.143')" class="mt-0 pt-0"
+              <v-switch
+v-model="updateCenterGeoTypes" inset hide-details :label="$t('message.143')" class="mt-0 pt-0"
                 :color="colorControlsTheme"></v-switch>
               <!-- Hide Geo-Types -->
-              <v-switch v-model="updateHideGeoTypes" inset hide-details :label="$t('message.141')" class="pt-0"
+              <v-switch
+v-model="updateHideGeoTypes" inset hide-details :label="$t('message.141')" class="pt-0"
                 :color="colorControlsTheme"></v-switch>
               <!-- Groups - Categories, Subcategories -->
               <div class="subtitle-1 mt-5 text-center">
@@ -85,14 +95,17 @@ Component for filtering geo objects by categories.
                 {{ `(${$t("message.20")}, ${$t("message.21")})` }}
               </div>
               <!-- Changing group names -->
-              <v-text-field v-model="updateGroupNameCategories" :placeholder="$t('message.20')"
+              <v-text-field
+v-model="updateGroupNameCategories" :placeholder="$t('message.20')"
                 :color="colorControlsTheme" single-line outlined dense hide-details clearable full-width
                 class="my-3"></v-text-field>
-              <v-text-field v-model="updateGroupNameSubcategories" :placeholder="$t('message.21')"
+              <v-text-field
+v-model="updateGroupNameSubcategories" :placeholder="$t('message.21')"
                 :color="colorControlsTheme" single-line outlined dense hide-details clearable full-width
                 class="mb-5"></v-text-field>
               <!-- Hide group names (Categories, Subcategories) -->
-              <v-switch v-model="updateHideGroupNames" inset hide-details :label="$t('message.134')" class="mt-2 pt-0"
+              <v-switch
+v-model="updateHideGroupNames" inset hide-details :label="$t('message.134')" class="mt-2 pt-0"
                 :color="colorControlsTheme"></v-switch>
               <!-- Change appearance of active controls -->
               <div class="subtitle-1 mt-5 text-center">
@@ -100,11 +113,13 @@ Component for filtering geo objects by categories.
               </div>
               <v-divider></v-divider>
               <!-- Select shape of highlighting for of active controls -->
-              <v-select v-model="updateControlsShape" dense outlined hide-details :label="$t('message.146')"
+              <v-select
+v-model="updateControlsShape" dense outlined hide-details :label="$t('message.146')"
                 :items="getItemsControlsShape()" :color="colorControlsTheme" :item-color="colorControlsTheme"
                 class="mt-4"></v-select>
               <!-- Effect Ripple -->
-              <v-switch v-model="updateEffectRipple" inset hide-details :label="$t('message.147')" class="mt-5 pt-0"
+              <v-switch
+v-model="updateEffectRipple" inset hide-details :label="$t('message.147')" class="mt-5 pt-0"
                 :color="colorControlsTheme"></v-switch>
               <!-- Button - Save Update Settings -->
               <v-card-actions class="pt-6 pb-1">
@@ -142,7 +157,8 @@ Component for filtering geo objects by categories.
 
         <v-container fluid class="pt-1">
           <v-divider v-if="!hideGeoTypes"></v-divider>
-          <v-list :shaped="controlsShape === 'shaped'" :rounded="controlsShape === 'rounded'"
+          <v-list
+:shaped="controlsShape === 'shaped'" :rounded="controlsShape === 'rounded'"
             :flat="controlsShape === 'flat'" dense v-for="(filter, modelKey, index2) in nextTwoFilters(index)"
             :key="`filters-${modelKey}`" :class="index2 ? 'pa-0' : 'px-0 pt-2 pb-0'">
             <template v-if="index2 === 0">
@@ -165,7 +181,8 @@ Component for filtering geo objects by categories.
             </template>
 
             <v-list-item-group v-model="models[modelKey]" :multiple="(index2 + 1) % 2 == 0 ? true : multiple">
-              <v-list-item v-for="control in filter" :key="`control-${control.id}`" :color="control.color"
+              <v-list-item
+v-for="control in filter" :key="`control-${control.id}`" :color="control.color"
                 :ripple="effectRipple" class="mb-1" @click="
                   [
                     (control.isActive = !control.isActive),

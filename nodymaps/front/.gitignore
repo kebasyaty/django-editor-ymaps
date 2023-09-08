@@ -3,16 +3,16 @@
 .DS_Store
 
 # Dependency directories
-node_modules/
+node_modules
 
 # Folder of building for Vue JS project
-dist/
+/dist
 
 # local env files
 .env.local
 .env.*.local
 
-# Logs
+# Log files
 logs
 *.log
 npm-debug.log*

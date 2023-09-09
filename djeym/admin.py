@@ -8,7 +8,7 @@ from .models import (BlockedIP, CategoryPlacemark, CategoryPolygon,
                      CategoryPolyline, ClusterIcon, HeatPoint, IconCollection,
                      LoadIndicator, Map, MarkerIcon, Placemark, Polygon,
                      Polyline, Preset, Statistics, SubCategoryPlacemark,
-                     SubCategoryPolygon, SubCategoryPolyline, TileSource)
+                     SubCategoryPolygon, SubCategoryPolyline, TileSource, Status)
 from .widgets import AdminFileThumbWidget
 
 
@@ -319,3 +319,15 @@ class LoadIndicatorAdmin(admin.ModelAdmin):
             '/static/djeym/js/jquery.min.js',
             '/static/djeym/js/get_icon_name.min.js'
         ]
+
+
+@admin.register(Status)
+class StatusAdmin(admin.ModelAdmin):
+    # ckeditor_change_form.html - Used by default.
+    change_form_template = 'djeym/admin/ckeditor_change_form.html'
+    list_display = ('title', 'slug')
+
+    class Media:
+        css = {
+            'all': ['/static/djeym/css/djeym_admin.min.css']
+        }

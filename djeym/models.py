@@ -364,7 +364,7 @@ class GeneralSettings(models.Model):
         'Theme type - light | dark',
         max_length=255,
         choices=THEME_TYPE_CHOICES,
-        default='dark')
+        default='light')
 
     roundtheme = models.BooleanField(
         'Round theme of controls', default=False)
@@ -1085,6 +1085,13 @@ class Placemark(models.Model):
 
     is_user_marker = models.BooleanField(_('Is user marker ?'), default=False)
 
+    status = models.ForeignKey(
+        'Status',
+        verbose_name=_('Status'),
+        related_name='placemarks',
+        on_delete=models.CASCADE,
+        null=True)
+
     json_code = models.TextField(
         _('JSON'), blank=True, default=json.dumps(FEATURE_POINT), editable=False)
 
@@ -1716,7 +1723,37 @@ class BlockedIP(models.Model):
         verbose_name_plural = _('Blocked IPs')
 
 
+class Status(models.Model):
+    """Custom marker status"""
+    title = models.CharField(
+        _('Custom marker status'),
+        max_length=60,
+        unique=True,
+        default="",
+        help_text=_('Examples: Offer accepted | The Offer is being processed | Offer completed'))
+    slug = models.SlugField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return mark_safe('{}'.format(re.sub(r'<.*?>', "", self.title)[:60]))
+
+    class Meta:
+        ordering = ("-title", "-id")
+        verbose_name = _('Custom marker status')
+        verbose_name_plural = _('Statuses of сustom markers')
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Status, self).save(*args, **kwargs)
+
+    def clean(self):
+        slug = slugify(self.title)
+        if slug == 'default':
+            msg = _('Default - Reserved name for the indicator. Choose another name.')
+            raise ValidationError({'title': msg})
+
+
 # SIGNALS ------------------------------------------------------------------------------------------
+
 
 # Cluster Icons - Size correction and offset correction.
 post_save.connect(icon_cluster_size_correction,

@@ -5,7 +5,7 @@ Vue.use(Vuetify);
 
 const opts = {
   theme: {
-    defaultTheme: "dark",
+    defaultTheme: "light",
     themes: {
       light: {
         accent: "#FF4081",

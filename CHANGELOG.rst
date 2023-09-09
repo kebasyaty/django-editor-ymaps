@@ -1,3 +1,7 @@
+#2.3.0
+    - Added Status field for markers.
+    - Use the status field when sending relevant messages to users.
+
 #2.2.0
     - Adaptation for Django >=3.2.4
     - Updated dependencies - Scripts, css, fonts.
@@ -49,4 +53,3 @@
 #2.1.14
     - (ru) Небольшой рестайлинг страницы редактора.
     - (en) A small restyling of the editor page.
-

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-09 07:37+0000\n"
+"POT-Creation-Date: 2023-09-10 06:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -774,7 +774,7 @@ msgstr "Индикатор загрузки"
 msgid "Load indicators"
 msgstr "Индикаторы загрузки"
 
-#: djeym/models.py:1686 djeym/models.py:1747
+#: djeym/models.py:1686
 msgid "Default - Reserved name for the indicator. Choose another name."
 msgstr ""
 "Default - Зарезервированное название для индикатора. Выберите другое "
@@ -796,16 +796,16 @@ msgstr "Заблокированный IP"
 msgid "Blocked IPs"
 msgstr "Заблокированные IP-адреса"
 
-#: djeym/models.py:1729 djeym/models.py:1737
+#: djeym/models.py:1729 djeym/models.py:1741
 msgid "Custom marker status"
 msgstr "Статус пользовательского маркера"
 
-#: djeym/models.py:1732
+#: djeym/models.py:1733
 msgid ""
 "Examples: Offer accepted | The Offer is being processed | Offer completed"
 msgstr "Примеры: Заявка принята | Заявка выполняется | Заявка выполнена"
 
-#: djeym/models.py:1738
+#: djeym/models.py:1742
 msgid "Statuses of сustom markers"
 msgstr "Статусы пользовательских маркеров"
 

@@ -1734,7 +1734,7 @@ class Status(models.Model):
     slug = models.SlugField(max_length=255, blank=True, null=True)
 
     def __str__(self):
-        return mark_safe('{}'.format(re.sub(r'<.*?>', "", self.title)[:60]))
+        return '{}'.format(self.title)
 
     class Meta:
         ordering = ("-title", "-id")
@@ -1744,12 +1744,6 @@ class Status(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Status, self).save(*args, **kwargs)
-
-    def clean(self):
-        slug = slugify(self.title)
-        if slug == 'default':
-            msg = _('Default - Reserved name for the indicator. Choose another name.')
-            raise ValidationError({'title': msg})
 
 
 # SIGNALS ------------------------------------------------------------------------------------------

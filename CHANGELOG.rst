@@ -1,6 +1,7 @@
 #2.3.0
     - Added Status field for markers.
     - Use the status field when sending relevant messages to users.
+    - The default Light theme has returned.
 
 #2.2.0
     - Adaptation for Django >=3.2.4

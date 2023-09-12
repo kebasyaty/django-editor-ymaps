@@ -41,7 +41,7 @@ DjEYM ( django-editor-ymaps )
 Attention
 ---------
 
-Don't forget to add to settings::
+Don't forget to add to settings ( djeym >= 2.2.x )::
 
     MIDDLEWARE = [
         ...
@@ -49,7 +49,7 @@ Don't forget to add to settings::
         'djeym.middlewares.AjaxMiddleware',
     ]
 
-For those who are updating to version 2.3.x
+For those who are updating to version 2.3.x::
 
   python manage.py migrate djeym
 

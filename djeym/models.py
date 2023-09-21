@@ -451,9 +451,8 @@ class Map(models.Model):
         _('Title'),
         max_length=60,
         unique=True,
-        help_text=_('Examples: Supermarkets of the city of Kharkov or '
-                    'Hawaii - Oahu Island or Luxury hotels in Honolulu or '
-                    'Parking of primitive people, etc.')
+        help_text=_('Examples: Supermarkets of the city of Kharkov | '
+                    'Luxury hotels in Honolulu | Parking of primitive people')
     )
 
     icon_cluster = models.ForeignKey(

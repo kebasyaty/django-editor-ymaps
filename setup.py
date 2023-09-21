@@ -22,7 +22,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (2, 3, 1)
+VERSION = (2, 3, 2)
 __version__ = '.'.join(map(str, VERSION))
 
 
@@ -69,7 +69,7 @@ setup(
     ],
     install_requires=[
         'Django>=3.2.4',
-        'Pillow==9.5.0',
+        'Pillow==9.*',
         'django-imagekit',
         'python-slugify',
         'django-ckeditor',

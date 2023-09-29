@@ -9,7 +9,7 @@
 #            \ \____/
 #             \/___/
 
-DjEYM_VERSION = (2, 3, 2)
+DjEYM_VERSION = (2, 3, 3)
 PYTHON_VERSION = (3, 8)
 DJANGO_VERSION = (3, 2, 4)
 VUE_VERSION = (2, 7, 14)
@@ -23,6 +23,6 @@ __vue_version__ = '.'.join(map(str, VUE_VERSION))
 __vuetify_version__ = '.'.join(map(str, VUETIFY_VERSION))
 __author__ = 'kebasyaty'
 __license__ = 'MIT'
-__copyright__ = 'Copyright (c) 2014 kebasyaty'
+__copyright__ = 'Copyright (c) 2014 kebasyaty - Gennady Kostyunin'
 
 default_app_config = 'djeym.apps.DjeymConfig'

@@ -145,13 +145,15 @@
           </v-row>
           <v-row>
             <v-col cols="9">
-              <v-btn tile depressed block color="green darken-1" :ripple="effectRipple" @click="saveCustomMarker()">
-                <span class="white--text">{{ $t("message.10") }}</span>
+              <!-- Button - Save custom marker. -->
+              <v-btn tile depressed block :color="colorControls" :ripple="effectRipple" @click="saveCustomMarker()">
+                <span :style="`color: ${colorButtonsText};`">{{ $t("message.10") }}</span>
               </v-btn>
             </v-col>
             <v-col cols="3" class="pl-0">
-              <v-btn tile depressed block color="red darken-1" :ripple="effectRipple" @click="closeCustomMarker()">
-                <v-icon color="white">mdi-close</v-icon>
+              <!-- Button - Close custom marker. -->
+              <v-btn tile depressed block :color="colorControls" :ripple="effectRipple" @click="closeCustomMarker()">
+                <v-icon :color="colorButtonsText">mdi-close</v-icon>
               </v-btn>
             </v-col>
           </v-row>
@@ -167,7 +169,7 @@
       <v-snackbar v-model="showAlert" top multi-line vertical :timeout="0"
         :color="$vuetify.theme.dark ? '#323232' : 'white'">
         <v-btn class="mt-0 pb-0" icon color="white" :ripple="effectRipple" @click="showAlert = !showAlert">
-          <v-icon color="pink">mdi-close</v-icon>
+          <v-icon :color="colorControls">mdi-close</v-icon>
         </v-btn>
         <span v-html="`<table width='294' class='djeym-pos-relative djeym-pos-top--8'><tr><td>${textAlert}</td></tr></table>`
           " :class="$vuetify.theme.dark

@@ -21,7 +21,7 @@ Component for Help info.
         </div>
       </v-card-text>
       <v-card-text class="pa-1 text-center">
-        <IconStarCompass height="32" :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" />
+        <v-icon :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" x-large>mdi-compass-outline</v-icon>
       </v-card-text>
       <v-card-text class="pa-0">
         <v-container fluid class="pa-0">
@@ -55,12 +55,11 @@ Component for Help info.
         </v-container>
       </v-card-text>
       <v-card-text class="pa-0 text-center">
-        <IconStarCompass height="32" :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" />
+        <v-icon :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" x-large>mdi-compass-outline</v-icon>
       </v-card-text>
       <v-card-actions class="pb-4">
         <v-spacer></v-spacer>
-        <v-btn
-fab :outlined="!$vuetify.theme.dark" small depressed
+        <v-btn fab :outlined="!$vuetify.theme.dark" small depressed
           :color="$vuetify.theme.dark ? 'grey darken-1' : 'grey lighten-1'" v-for="(item, index) in controls.links"
           :key="`link-${index}`" :href="item.link" :target="item.title === 'Feedback' ? '' : '_blank'"
           rel="nofollow noreferrer noopener">
@@ -82,14 +81,12 @@ fab :outlined="!$vuetify.theme.dark" small depressed
 <script>
 import { mapState } from "vuex";
 import IconLogo from "@/components/icons/ordinary/IconLogo.vue";
-import IconStarCompass from "@/components/icons/ordinary/IconStarCompass.vue";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Help",
   components: {
     IconLogo,
-    IconStarCompass,
   },
   data: () => ({
     techLinks: [

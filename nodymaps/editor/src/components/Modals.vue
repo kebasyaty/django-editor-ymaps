@@ -9,8 +9,7 @@ Component for popup dialogs.
     <!-- GeoObject -->
     <v-overlay z-index="8" :value="geoObjectDialog">
       <v-card :light="!$vuetify.theme.dark" width="300px" max-width="300px">
-        <v-card-title
-class="subtitle-1 justify-center py-0"
+        <v-card-title class="subtitle-1 justify-center py-0"
           :style="`background-color:${colorControlsTheme};color:${colorButtonsTextTheme};`"
           v-html="titleGeoObjectDialog"></v-card-title>
         <v-divider></v-divider>
@@ -36,8 +35,7 @@ class="subtitle-1 justify-center py-0"
           <v-btn icon color="pink" class="px-0" @click="geoObjectCurrentActionBtnCancel()" v-show="geoObjectCancelBtn">
             <v-icon>mdi-close-thick</v-icon>
           </v-btn>
-          <v-btn
-icon color="red darken-2" class="px-0" @click="geoObjectCurrentActionBtnDelete()"
+          <v-btn icon color="red darken-2" class="px-0" @click="geoObjectCurrentActionBtnDelete()"
             v-show="geoObjectDeleteBtn">
             <v-icon>mdi-trash-can</v-icon>
           </v-btn>
@@ -49,8 +47,7 @@ icon color="red darken-2" class="px-0" @click="geoObjectCurrentActionBtnDelete()
     <!-- Controls -->
     <v-overlay z-index="9" :value="controlsDialog">
       <v-card :light="!$vuetify.theme.dark" max-height="80%">
-        <v-card-title
-class="subtitle-1 justify-center py-0" :style="controlsTitleColor(componentControlsMenu)"
+        <v-card-title class="subtitle-1 justify-center py-0" :style="controlsTitleColor(componentControlsMenu)"
           v-html="titleControlsDialog"></v-card-title>
         <v-divider></v-divider>
         <v-card-text v-if="componentControlsText" v-html="textControlsDialog" class="pt-5"></v-card-text>
@@ -94,15 +91,19 @@ class="subtitle-1 justify-center py-0" :style="controlsTitleColor(componentContr
     <!-- Message -->
     <v-dialog v-model="messageDialog" persistent max-width="500">
       <v-card :light="!$vuetify.theme.dark">
-        <v-card-title
-class="subtitle-1 py-0" :class="statusMessageDialog" v-text="titleMessageDialog"
+        <v-card-title class="subtitle-1 py-0" :class="statusMessageDialog" v-text="titleMessageDialog"
           :style="`color:white;`"></v-card-title>
         <v-card-text class="pt-5 font-weight-bold">
           <table>
             <tr>
               <td width="56" style="position: relative; min-height: 42px">
                 <div style="position: absolute; top: 50%; margin-top: -21px">
-                  <IconStarCompass height="42" :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" />
+                  <v-icon v-if="statusMessageDialog == 'success'" color="success" x-large>mdi-check-circle</v-icon>
+                  <v-icon v-else-if="statusMessageDialog == 'accent'" color="accent" x-large>mdi-alert</v-icon>
+                  <v-icon v-else-if="statusMessageDialog == 'error'" color="error" x-large>mdi-lightbulb-alert</v-icon>
+                  <v-icon v-else-if="statusMessageDialog == 'info'" color="info"
+                    x-large>mdi-information-variant-circle</v-icon>
+                  <v-icon v-else-if="statusMessageDialog == 'warning'" color="warning" x-large>mdi-alert</v-icon>
                 </div>
               </td>
               <td v-html="textMessageDialog"></td>
@@ -140,7 +141,6 @@ class="subtitle-1 py-0" :class="statusMessageDialog" v-text="titleMessageDialog"
 <script>
 import { mapState, mapMutations } from "vuex";
 import DialogCreate from "@/components/DialogCreate.vue";
-import IconStarCompass from "@/components/icons/ordinary/IconStarCompass.vue";
 import IconCollection from "@/components/IconCollection.vue";
 import CKEditor from "@/components/CKEditor.vue";
 import SelectingCategories from "@/components/SelectingCategories.vue";
@@ -155,7 +155,6 @@ export default {
   name: "Modals",
   components: {
     DialogCreate,
-    IconStarCompass,
     IconCollection,
     CKEditor,
     SelectingCategories,

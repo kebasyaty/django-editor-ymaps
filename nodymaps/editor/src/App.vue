@@ -11,14 +11,16 @@
       </v-card-actions>
       <v-tabs v-model="mapSettingsTab" height="42" show-arrows center-active :color="colorControlsTheme">
         <v-tabs-slider></v-tabs-slider>
-        <v-tab v-for="(icon, index) in mapSettingsTabIcons" :key="`map-settings-button-${index}`"
+        <v-tab
+v-for="(icon, index) in mapSettingsTabIcons" :key="`map-settings-button-${index}`"
           :href="`#mapSettingsTab-${index}`">
           <v-icon>mdi-{{ icon }}</v-icon>
         </v-tab>
       </v-tabs>
 
       <v-tabs-items v-model="mapSettingsTab" v-if="showAllSettings">
-        <v-tab-item v-for="(component, index) in componentList" :key="`map-settings-item-${index}`"
+        <v-tab-item
+v-for="(component, index) in componentList" :key="`map-settings-item-${index}`"
           :value="`mapSettingsTab-${index}`">
           <v-card flat>
             <v-card-title class="title justify-center">{{
@@ -45,7 +47,8 @@
       </v-btn>
 
       <!-- Button - Logo icon -->
-      <v-btn icon href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="nofollow noreferrer noopener"
+      <v-btn
+icon href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="nofollow noreferrer noopener"
         color="white" depressed>
         <IconLogo height="42" :color="colorButtonsTextTheme" />
       </v-btn>
@@ -71,7 +74,8 @@
       </v-btn>
 
       <!-- Button - Find Editable Geo Object -->
-      <v-btn class="ml-2" color="white" depressed fab small v-show="showBtnFindEditableGeoObject"
+      <v-btn
+class="ml-2" color="white" depressed fab small v-show="showBtnFindEditableGeoObject"
         @click="findEditableGeoObject()">
         <v-tooltip bottom>
           <template #activator="{ on }">

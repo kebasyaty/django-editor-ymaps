@@ -47,10 +47,10 @@ def vue_vendors_css_js(target):
             ctx['vue_js_app'] = 'app.3469c26e.js'
             ctx['vue_js_chunk_vendors'] = 'chunk-vendors.d01bfe4b.js'
         else:
-            ctx['vue_css_app'] = 'app.64784cd7.css'
+            ctx['vue_css_app'] = 'app.917f3695.css'
             ctx['vue_css_chunk_vendors'] = 'chunk-vendors.09dfbb4c.css'
-            ctx['vue_js_app'] = 'app.4c333e89.js'
-            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.229b1f48.js'
+            ctx['vue_js_app'] = 'app.a535ea76.js'
+            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.99b56997.js'
     else:
         # Automatically get CSS and JS for Vue.js (for development only).
         import os

@@ -123,8 +123,9 @@ export default new Vuex.Store({
           });
       }
     },
-    // Ajax - To save and update and delete geo objects.
+    // Ajax - To save, update and delete geo objects.
     ajaxContextMenu({ state, commit, dispatch, rootState }) {
+      commit("modals/messageDialogClose", true, { root: true });
       commit("modals/globalProgressBarShow", true, { root: true });
 
       const dataGeoObj = new FormData();

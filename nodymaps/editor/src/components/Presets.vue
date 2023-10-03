@@ -1,13 +1,16 @@
-<!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <!--
 ---------------------------------
 Component for setting of Presets.
 ---------------------------------
 -->
 <template>
+  <!--eslint-disable vue/no-v-text-v-html-on-component-->
   <v-container fluid>
     <v-expansion-panels v-model="panel" accordion flat hover>
-      <v-expansion-panel v-for="(control, index) in controls" :key="`panel-${index}`">
+      <v-expansion-panel
+        v-for="(control, index) in controls"
+        :key="`panel-${index}`"
+      >
         <v-expansion-panel-header :color="colorControlsTheme">
           <span>
             <v-icon class="pb-1 pr-2" :color="colorButtonsTextTheme">{{
@@ -31,18 +34,32 @@ Component for setting of Presets.
                       $t("message.62")
                     }}</v-card-title>
                     <v-text-field
-dense outlined type="number" v-model="controls[index].position" min="0"
-                      :rules="rulesPosition()" :color="colorControlsTheme"></v-text-field>
+                      dense
+                      outlined
+                      type="number"
+                      v-model="controls[index].position"
+                      min="0"
+                      :rules="rulesPosition()"
+                      :color="colorControlsTheme"
+                    ></v-text-field>
                   </td>
                 </tr>
-                <tr v-for="(item, index2) in injections()" :key="`injection-${control.id}-${index2}`">
+                <tr
+                  v-for="(item, index2) in injections()"
+                  :key="`injection-${control.id}-${index2}`"
+                >
                   <td width="56">
                     <v-icon>{{ item.icon }}</v-icon>
                   </td>
                   <td class="py-2">
                     <v-switch
-v-model="controls[index][item.title]" inset hide-details
-                      :label="$t(`message.${item.trans}`)" :color="colorControlsTheme" class="mt-0 pt-0"></v-switch>
+                      v-model="controls[index][item.title]"
+                      inset
+                      hide-details
+                      :label="$t(`message.${item.trans}`)"
+                      :color="colorControlsTheme"
+                      class="mt-0 pt-0"
+                    ></v-switch>
                   </td>
                 </tr>
                 <tr>
@@ -52,13 +69,25 @@ v-model="controls[index][item.title]" inset hide-details
                     }}</v-card-title>
                     <v-row no-gutters>
                       <template v-for="(item, index3) in targets()">
-                        <v-col cols="1" :key="`target-icon-${control.id}-${index3}`" class="mb-3">
+                        <v-col
+                          cols="1"
+                          :key="`target-icon-${control.id}-${index3}`"
+                          class="mb-3"
+                        >
                           <v-icon>{{ item.icon }}</v-icon>
                         </v-col>
-                        <v-col cols="3" :key="`switch-target-${control.id}-${index3}`" class="pl-2 pr-3 mb-3">
+                        <v-col
+                          cols="3"
+                          :key="`switch-target-${control.id}-${index3}`"
+                          class="pl-2 pr-3 mb-3"
+                        >
                           <v-switch
-v-model="controls[index][item.title]" inset hide-details class="mt-0 pt-0"
-                            :color="colorControlsTheme"></v-switch>
+                            v-model="controls[index][item.title]"
+                            inset
+                            hide-details
+                            class="mt-0 pt-0"
+                            :color="colorControlsTheme"
+                          ></v-switch>
                         </v-col>
                       </template>
                     </v-row>
@@ -77,7 +106,13 @@ v-model="controls[index][item.title]" inset hide-details class="mt-0 pt-0"
           </v-simple-table>
           <v-card-actions class="pt-0 pb-1">
             <v-spacer></v-spacer>
-            <v-btn small fab depressed :color="colorControlsTheme" @click="saveUpdate(control.id)">
+            <v-btn
+              small
+              fab
+              depressed
+              :color="colorControlsTheme"
+              @click="saveUpdate(control.id)"
+            >
               <v-icon :color="colorButtonsTextTheme">mdi-content-save</v-icon>
             </v-btn>
             <v-spacer></v-spacer>

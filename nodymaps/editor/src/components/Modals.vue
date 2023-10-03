@@ -1,17 +1,19 @@
-<!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <!--
 ----------------------------
 Component for popup dialogs.
 ----------------------------
 -->
 <template>
+  <!--eslint-disable vue/no-v-text-v-html-on-component-->
   <div>
     <!-- GeoObject -->
     <v-overlay z-index="8" :value="geoObjectDialog">
       <v-card :light="!$vuetify.theme.dark" width="300px" max-width="300px">
-        <v-card-title class="subtitle-1 justify-center py-0"
+        <v-card-title
+          class="subtitle-1 justify-center py-0"
           :style="`background-color:${colorControlsTheme};color:${colorButtonsTextTheme};`"
-          v-html="titleGeoObjectDialog"></v-card-title>
+          v-html="titleGeoObjectDialog"
+        ></v-card-title>
         <v-divider></v-divider>
         <v-card-text class="pt-5">
           <!-- Context Menu - Create and editable a Heat Point. -->
@@ -26,17 +28,40 @@ Component for popup dialogs.
         <v-divider></v-divider>
         <v-card-actions class="py-0">
           <v-spacer></v-spacer>
-          <v-btn icon color="green" class="px-0" @click="geoObjectCurrentActionBtnEdit()" v-show="geoObjectEditBtn">
+          <v-btn
+            icon
+            color="green"
+            class="px-0"
+            @click="geoObjectCurrentActionBtnEdit()"
+            v-show="geoObjectEditBtn"
+          >
             <v-icon v-text="getIconBtnEdit()"></v-icon>
           </v-btn>
-          <v-btn icon color="blue" class="px-0" @click="geoObjectCurrentActionBtnSave()" v-show="geoObjectSaveBtn">
+          <v-btn
+            icon
+            color="blue"
+            class="px-0"
+            @click="geoObjectCurrentActionBtnSave()"
+            v-show="geoObjectSaveBtn"
+          >
             <v-icon>mdi-content-save</v-icon>
           </v-btn>
-          <v-btn icon color="pink" class="px-0" @click="geoObjectCurrentActionBtnCancel()" v-show="geoObjectCancelBtn">
+          <v-btn
+            icon
+            color="pink"
+            class="px-0"
+            @click="geoObjectCurrentActionBtnCancel()"
+            v-show="geoObjectCancelBtn"
+          >
             <v-icon>mdi-close-thick</v-icon>
           </v-btn>
-          <v-btn icon color="red darken-2" class="px-0" @click="geoObjectCurrentActionBtnDelete()"
-            v-show="geoObjectDeleteBtn">
+          <v-btn
+            icon
+            color="red darken-2"
+            class="px-0"
+            @click="messageDelete()"
+            v-show="geoObjectDeleteBtn"
+          >
             <v-icon>mdi-trash-can</v-icon>
           </v-btn>
           <v-spacer></v-spacer>
@@ -47,12 +72,24 @@ Component for popup dialogs.
     <!-- Controls -->
     <v-overlay z-index="9" :value="controlsDialog">
       <v-card :light="!$vuetify.theme.dark" max-height="80%">
-        <v-card-title class="subtitle-1 justify-center py-0" :style="controlsTitleColor(componentControlsMenu)"
-          v-html="titleControlsDialog"></v-card-title>
+        <v-card-title
+          class="subtitle-1 justify-center py-0"
+          :style="controlsTitleColor(componentControlsMenu)"
+          v-html="titleControlsDialog"
+        ></v-card-title>
         <v-divider></v-divider>
-        <v-card-text v-if="componentControlsText" v-html="textControlsDialog" class="pt-5"></v-card-text>
+        <v-card-text
+          v-if="componentControlsText"
+          v-html="textControlsDialog"
+          class="pt-5"
+        ></v-card-text>
         <v-card-text v-if="componentControlsPalette" class="pt-5">
-          <v-color-picker mode="hexa" v-model="updateCurrentColorPalette" hide-mode-switch show-swatches></v-color-picker>
+          <v-color-picker
+            mode="hexa"
+            v-model="updateCurrentColorPalette"
+            hide-mode-switch
+            show-swatches
+          ></v-color-picker>
         </v-card-text>
         <!-- Menu - Select a type and create a geo object. -->
         <v-card-text v-if="componentControlsMenu" class="pt-5">
@@ -71,16 +108,32 @@ Component for popup dialogs.
           <SelectingCategories />
         </v-card-text>
         <!-- Image cropping. -->
-        <v-card-text v-if="componentControlsImageCrop" class="px-3 py-0" style="min-width: 324px">
+        <v-card-text
+          v-if="componentControlsImageCrop"
+          class="px-3 py-0"
+          style="min-width: 324px"
+        >
           <ImageCrop />
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions class="py-0">
           <v-spacer></v-spacer>
-          <v-btn icon color="blue" class="px-0" @click="controlsCurrentActionBtnSave()" v-show="controlsSaveBtn">
+          <v-btn
+            icon
+            color="blue"
+            class="px-0"
+            @click="controlsCurrentActionBtnSave()"
+            v-show="controlsSaveBtn"
+          >
             <v-icon>mdi-content-save</v-icon>
           </v-btn>
-          <v-btn icon color="pink" class="px-0" @click="controlsCurrentActionBtnCancel()" v-show="controlsCancelBtn">
+          <v-btn
+            icon
+            color="pink"
+            class="px-0"
+            @click="controlsCurrentActionBtnCancel()"
+            v-show="controlsCancelBtn"
+          >
             <v-icon>mdi-close-thick</v-icon>
           </v-btn>
           <v-spacer></v-spacer>
@@ -91,19 +144,55 @@ Component for popup dialogs.
     <!-- Message -->
     <v-dialog v-model="messageDialog" persistent max-width="500">
       <v-card :light="!$vuetify.theme.dark">
-        <v-card-title class="subtitle-1 py-0" :class="statusMessageDialog" v-text="titleMessageDialog"
-          :style="`color:white;`"></v-card-title>
+        <v-card-title
+          class="subtitle-1 py-0"
+          :class="
+            statusMessageDialog !== 'delete' ? statusMessageDialog : 'error'
+          "
+          v-text="titleMessageDialog"
+          :style="`color:white;`"
+        ></v-card-title>
         <v-card-text class="pt-5 font-weight-bold">
           <table>
             <tr>
               <td width="56" style="position: relative; min-height: 42px">
                 <div style="position: absolute; top: 50%; margin-top: -21px">
-                  <v-icon v-if="statusMessageDialog == 'success'" color="success" x-large>mdi-check-circle</v-icon>
-                  <v-icon v-else-if="statusMessageDialog == 'accent'" color="accent" x-large>mdi-alert</v-icon>
-                  <v-icon v-else-if="statusMessageDialog == 'error'" color="error" x-large>mdi-lightbulb-alert</v-icon>
-                  <v-icon v-else-if="statusMessageDialog == 'info'" color="info"
-                    x-large>mdi-information-variant-circle</v-icon>
-                  <v-icon v-else-if="statusMessageDialog == 'warning'" color="warning" x-large>mdi-alert</v-icon>
+                  <v-icon
+                    v-if="statusMessageDialog == 'success'"
+                    color="success"
+                    x-large
+                    >mdi-check-circle</v-icon
+                  >
+                  <v-icon
+                    v-else-if="statusMessageDialog == 'accent'"
+                    color="accent"
+                    x-large
+                    >mdi-alert</v-icon
+                  >
+                  <v-icon
+                    v-else-if="statusMessageDialog == 'error'"
+                    color="error"
+                    x-large
+                    >mdi-lightbulb-alert</v-icon
+                  >
+                  <v-icon
+                    v-else-if="statusMessageDialog == 'info'"
+                    color="info"
+                    x-large
+                    >mdi-information-variant-circle</v-icon
+                  >
+                  <v-icon
+                    v-else-if="statusMessageDialog == 'warning'"
+                    color="warning"
+                    x-large
+                    >mdi-alert</v-icon
+                  >
+                  <v-icon
+                    v-else-if="statusMessageDialog == 'delete'"
+                    color="error"
+                    x-large
+                    >mdi-trash-can</v-icon
+                  >
                 </div>
               </td>
               <td v-html="textMessageDialog"></td>
@@ -113,10 +202,22 @@ Component for popup dialogs.
         <v-divider></v-divider>
         <v-card-actions class="py-0">
           <v-spacer></v-spacer>
-          <v-btn icon color="pink" class="px-0" @click="messageCurrentActionBtnCancel()" v-show="messageCancelBtn">
+          <v-btn
+            icon
+            color="pink"
+            class="px-0"
+            @click="messageCurrentActionBtnCancel()"
+            v-show="messageCancelBtn"
+          >
             <v-icon>mdi-close-thick</v-icon>
           </v-btn>
-          <v-btn icon color="green" class="px-0" @click="messageCurrentActionBtnOk()" v-show="messageOkBtn">
+          <v-btn
+            icon
+            color="green"
+            class="px-0"
+            @click="messageCurrentActionBtnOk()"
+            v-show="messageOkBtn"
+          >
             <v-icon>mdi-thumb-up</v-icon>
           </v-btn>
         </v-card-actions>
@@ -230,14 +331,15 @@ export default {
   methods: {
     ...mapMutations("modals", [
       // GeoObject
-      "geoObjectDialogClose", // Close
+      "geoObjectDialogClose",
       // Controls
-      "controlsDialogClose", // Close
+      "controlsDialogClose",
       "refreshCurrentColorPalette",
       // Message
-      "messageDialogClose", // Close
+      "messageDialogShow",
+      "messageDialogClose",
       // Simple messages.
-      "alertSnackbarClose", // Close
+      "alertSnackbarClose",
     ]),
     controlsTitleColor(flag) {
       return flag
@@ -262,6 +364,18 @@ export default {
         }
       }
       return iconName;
+    },
+    // Warning about deleting a geo object.
+    messageDelete() {
+      this.messageDialogShow({
+        status: "delete",
+        title: this.$t("message.85"),
+        text: this.$t("message.44"),
+        cancelBtn: true,
+        okBtn: true,
+        actionBtnCancel: this.messageDialogClose,
+        actionBtnOk: this.geoObjectCurrentActionBtnDelete,
+      });
     },
   },
 };

@@ -7,21 +7,40 @@ Component for Help info.
   <v-container fluid>
     <v-card :elevation="minElevation">
       <v-card-text class="title px-0 pt-5 pb-0 font-weight-bold text-center">
-        <IconLogo height="42" :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" />
-        <span class="pl-3 djeym-pos-relative valign-title">django-editor-ymaps</span>
+        <IconLogo
+          height="42"
+          :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'"
+        />
+        <span class="pl-3 djeym-pos-relative valign-title"
+          >django-editor-ymaps</span
+        >
       </v-card-text>
       <v-card-text class="text-center pa-2">{{ $t("message.68") }}</v-card-text>
       <v-card-text class="pa-2">
-        <div class="mt-0 text-center" v-for="(link, index) in techLinks" :key="`tech-link-${index}`">
-          <v-btn link text x-small color="primary" target="_blank" rel="nofollow noreferrer noopener" :href="link.url">{{
-            link.title }}</v-btn>
+        <div
+          class="mt-0 text-center"
+          v-for="(link, index) in techLinks"
+          :key="`tech-link-${index}`"
+        >
+          <v-btn
+            link
+            text
+            x-small
+            color="primary"
+            target="_blank"
+            rel="nofollow noreferrer noopener"
+            :href="link.url"
+            >{{ link.title }}</v-btn
+          >
           <div class="px-10">
             <v-divider v-if="index === 1"></v-divider>
           </div>
         </div>
       </v-card-text>
       <v-card-text class="pa-1 text-center">
-        <v-icon :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" x-large>mdi-compass-outline</v-icon>
+        <v-icon :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" x-large
+          >mdi-compass-outline</v-icon
+        >
       </v-card-text>
       <v-card-text class="pa-0">
         <v-container fluid class="pa-0">
@@ -55,14 +74,24 @@ Component for Help info.
         </v-container>
       </v-card-text>
       <v-card-text class="pa-0 text-center">
-        <v-icon :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" x-large>mdi-compass-outline</v-icon>
+        <v-icon :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" x-large
+          >mdi-compass-outline</v-icon
+        >
       </v-card-text>
       <v-card-actions class="pb-4">
         <v-spacer></v-spacer>
-        <v-btn fab :outlined="!$vuetify.theme.dark" small depressed
-          :color="$vuetify.theme.dark ? 'grey darken-1' : 'grey lighten-1'" v-for="(item, index) in controls.links"
-          :key="`link-${index}`" :href="item.link" :target="item.title === 'Feedback' ? '' : '_blank'"
-          rel="nofollow noreferrer noopener">
+        <v-btn
+          fab
+          :outlined="!$vuetify.theme.dark"
+          small
+          depressed
+          :color="$vuetify.theme.dark ? 'grey darken-1' : 'grey lighten-1'"
+          v-for="(item, index) in controls.links"
+          :key="`link-${index}`"
+          :href="item.link"
+          :target="item.title === 'Feedback' ? '' : '_blank'"
+          rel="nofollow noreferrer noopener"
+        >
           <v-tooltip bottom>
             <template #activator="{ on }">
               <v-icon color="grey lighten-1" v-on="on">{{

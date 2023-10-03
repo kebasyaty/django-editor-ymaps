@@ -7,26 +7,61 @@ Component for cropping images.
   <v-conteiner fluid>
     <v-row class="pa-3">
       <v-file-input
-:label="$t('message.135')" outlined dense prepend-icon="mdi-camera" accept="image/jpeg" hide-details
-        full-width :color="colorControlsTheme" @change="newImg"></v-file-input>
+        :label="$t('message.135')"
+        outlined
+        dense
+        prepend-icon="mdi-camera"
+        accept="image/jpeg"
+        hide-details
+        full-width
+        :color="colorControlsTheme"
+        @change="newImg"
+      ></v-file-input>
     </v-row>
     <v-row align="center" justify="center">
       <vue-croppie
-ref="croppieRef" :enable-orientation="true" :enforce-boundary="true" :mouse-wheel-zoom="false"
-        :enable-resize="false" :show-zoomer="false" :enable-zoom="true"
+        ref="croppieRef"
+        :enable-orientation="true"
+        :enforce-boundary="true"
+        :mouse-wheel-zoom="false"
+        :enable-resize="false"
+        :show-zoomer="false"
+        :enable-zoom="true"
         :boundary="{ width: 300, height: 300, type: 'square' }"
-        :viewport="{ width: 100, height: 250, type: 'square' }"></vue-croppie>
+        :viewport="{ width: 100, height: 250, type: 'square' }"
+      ></vue-croppie>
     </v-row>
     <v-row align="center" justify="center" class="pa-3">
       <!-- Button - Rotate angle is Number -->
-      <v-btn fab small depressed :color="colorControlsTheme" @click="rotate(-90)" class="mx-1">
+      <v-btn
+        fab
+        small
+        depressed
+        :color="colorControlsTheme"
+        @click="rotate(-90)"
+        class="mx-1"
+      >
         <v-icon :color="colorButtonsTextTheme">mdi-rotate-left</v-icon>
       </v-btn>
-      <v-btn fab small depressed :color="colorControlsTheme" @click="rotate(90)" class="mx-1">
+      <v-btn
+        fab
+        small
+        depressed
+        :color="colorControlsTheme"
+        @click="rotate(90)"
+        class="mx-1"
+      >
         <v-icon :color="colorButtonsTextTheme">mdi-rotate-right</v-icon>
       </v-btn>
       <!-- Button - Cropping  -->
-      <v-btn fab small depressed :color="colorControlsTheme" @click="crop()" class="mx-1">
+      <v-btn
+        fab
+        small
+        depressed
+        :color="colorControlsTheme"
+        @click="crop()"
+        class="mx-1"
+      >
         <v-icon :color="colorButtonsTextTheme">mdi-crop</v-icon>
       </v-btn>
     </v-row>

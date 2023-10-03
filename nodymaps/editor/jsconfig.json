@@ -9,7 +9,7 @@
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": ["src/**/*.js", "src/**/*.vue", "tests/**/*.js"],
+  "include": ["./src/**/*.js", "./src/**/*.vue", "./tests/**/*.js"],
   "exclude": [
     "dist",
     "node_modules",

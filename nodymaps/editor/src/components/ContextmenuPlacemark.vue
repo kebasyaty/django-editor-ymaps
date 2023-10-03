@@ -8,8 +8,15 @@ Component for creating and editable Placemarks.
     <!-- Buttons - Header, Body, Footer, Categories and Subcategories. -->
     <v-row align="center" justify="center" class="pb-8">
       <v-btn
-v-for="(icon, index) in icons" :key="`action-btn-${index}`" small fab depressed :color="colorControlsTheme"
-        class="mx-1" @click="openDialog(index)">
+        v-for="(icon, index) in icons"
+        :key="`action-btn-${index}`"
+        small
+        fab
+        depressed
+        :color="colorControlsTheme"
+        class="mx-1"
+        @click="openDialog(index)"
+      >
         <v-icon :color="colorButtonsTextTheme">{{ icons[index] }}</v-icon>
       </v-btn>
     </v-row>
@@ -17,9 +24,13 @@ v-for="(icon, index) in icons" :key="`action-btn-${index}`" small fab depressed 
     <v-row align="center" justify="center">
       <v-col cols="12" class="px-0 pt-3 pb-0 text-center">
         <span
-class="icon-marker" @click="openIconCollection()"
-          :style="`background-color:${$vuetify.theme.dark ? '#616161' : '#EEEEEE'}`">
-          <img :src="updateIconUrl" alt="Marker Icon">
+          class="icon-marker"
+          @click="openIconCollection()"
+          :style="`background-color:${
+            $vuetify.theme.dark ? '#616161' : '#EEEEEE'
+          }`"
+        >
+          <img :src="updateIconUrl" alt="Marker Icon" />
         </span>
       </v-col>
     </v-row>
@@ -27,15 +38,33 @@ class="icon-marker" @click="openIconCollection()"
     <v-row class="pt-5">
       <v-col cols="12" class="py-0">
         <v-text-field
-id="id-djeym-latitude" v-model="updateLatitude" :label="$t('message.90')"
-          :placeholder="$t('message.90')" hint="-90.0 ... 90.0" clearable dense full-width maxlength="19"
-          :rules="rulesLatitude()" :color="colorControlsTheme"></v-text-field>
+          id="id-djeym-latitude"
+          v-model="updateLatitude"
+          :label="$t('message.90')"
+          :placeholder="$t('message.90')"
+          hint="-90.0 ... 90.0"
+          clearable
+          dense
+          full-width
+          maxlength="19"
+          :rules="rulesLatitude()"
+          :color="colorControlsTheme"
+        ></v-text-field>
       </v-col>
       <v-col cols="12" class="py-0">
         <v-text-field
-id="id-djeym-longitude" v-model="updateLongitude" :label="$t('message.91')"
-          :placeholder="$t('message.91')" hint="-180.0 ... 180.0" clearable dense full-width maxlength="20"
-          :rules="rulesLongitude()" :color="colorControlsTheme"></v-text-field>
+          id="id-djeym-longitude"
+          v-model="updateLongitude"
+          :label="$t('message.91')"
+          :placeholder="$t('message.91')"
+          hint="-180.0 ... 180.0"
+          clearable
+          dense
+          full-width
+          maxlength="20"
+          :rules="rulesLongitude()"
+          :color="colorControlsTheme"
+        ></v-text-field>
       </v-col>
     </v-row>
   </v-conteiner>
@@ -270,7 +299,7 @@ export default {
   display: inline-block;
 }
 
-.icon-marker>img {
+.icon-marker > img {
   height: 42px;
   display: block;
   margin-top: 24px;

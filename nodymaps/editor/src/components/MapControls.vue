@@ -12,13 +12,20 @@ Component for setting Map Controls.
             <tr v-for="(control, index) in controls" :key="`control-${index}`">
               <td>
                 <v-img
-:width="+(control.width / 3).toFixed(2)" :src="control.img"
-                  :alt="$t(`message.${transMapControls[index]}`)"></v-img>
+                  :width="+(control.width / 3).toFixed(2)"
+                  :src="control.img"
+                  :alt="$t(`message.${transMapControls[index]}`)"
+                ></v-img>
               </td>
               <td>
                 <v-switch
-v-model="control.isActive" inset hide-details :label="$t(`message.${transMapControls[index]}`)"
-                  class="mt-0 pt-0" :color="colorControlsTheme"></v-switch>
+                  v-model="control.isActive"
+                  inset
+                  hide-details
+                  :label="$t(`message.${transMapControls[index]}`)"
+                  class="mt-0 pt-0"
+                  :color="colorControlsTheme"
+                ></v-switch>
               </td>
             </tr>
           </tbody>
@@ -26,7 +33,13 @@ v-model="control.isActive" inset hide-details :label="$t(`message.${transMapCont
       </v-simple-table>
       <v-card-actions class="py-5">
         <v-spacer></v-spacer>
-        <v-btn fab small depressed :color="colorControlsTheme" @click="saveUpdate()">
+        <v-btn
+          fab
+          small
+          depressed
+          :color="colorControlsTheme"
+          @click="saveUpdate()"
+        >
           <v-icon :color="colorButtonsTextTheme">mdi-content-save</v-icon>
         </v-btn>
         <v-spacer></v-spacer>

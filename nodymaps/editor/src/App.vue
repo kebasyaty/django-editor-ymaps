@@ -1,7 +1,13 @@
 <template>
   <v-app id="djeym-app">
     <!-- Panel for Map Settings -->
-    <v-navigation-drawer v-model="updateMapSettingsDrawer" app hide-overlay temporary :width="widthPanelSettings">
+    <v-navigation-drawer
+      v-model="updateMapSettingsDrawer"
+      app
+      hide-overlay
+      temporary
+      :width="widthPanelSettings"
+    >
       <v-card-actions class="pb-0">
         <v-spacer></v-spacer>
         <!-- Button - Сlose panel -->
@@ -9,19 +15,29 @@
           <v-icon :color="colorControlsTheme">mdi-close</v-icon>
         </v-btn>
       </v-card-actions>
-      <v-tabs v-model="mapSettingsTab" height="42" show-arrows center-active :color="colorControlsTheme">
+      <v-tabs
+        v-model="mapSettingsTab"
+        height="42"
+        show-arrows
+        center-active
+        :color="colorControlsTheme"
+      >
         <v-tabs-slider></v-tabs-slider>
         <v-tab
-v-for="(icon, index) in mapSettingsTabIcons" :key="`map-settings-button-${index}`"
-          :href="`#mapSettingsTab-${index}`">
+          v-for="(icon, index) in mapSettingsTabIcons"
+          :key="`map-settings-button-${index}`"
+          :href="`#mapSettingsTab-${index}`"
+        >
           <v-icon>mdi-{{ icon }}</v-icon>
         </v-tab>
       </v-tabs>
 
       <v-tabs-items v-model="mapSettingsTab" v-if="showAllSettings">
         <v-tab-item
-v-for="(component, index) in componentList" :key="`map-settings-item-${index}`"
-          :value="`mapSettingsTab-${index}`">
+          v-for="(component, index) in componentList"
+          :key="`map-settings-item-${index}`"
+          :value="`mapSettingsTab-${index}`"
+        >
           <v-card flat>
             <v-card-title class="title justify-center">{{
               $t(`message.${transMapSettings[index]}`)
@@ -37,10 +53,17 @@ v-for="(component, index) in componentList" :key="`map-settings-item-${index}`"
     <v-app-bar app dense clipped-left :color="colorControlsTheme">
       <v-spacer></v-spacer>
       <!-- Button - Back to admin panel -->
-      <v-btn icon :href="`/admin/djeym/map/${mapID}/change/`" color="white" class="mr-3">
+      <v-btn
+        icon
+        :href="`/admin/djeym/map/${mapID}/change/`"
+        color="white"
+        class="mr-3"
+      >
         <v-tooltip bottom>
           <template #activator="{ on }">
-            <v-icon :color="colorButtonsTextTheme" v-on="on">mdi-arrow-left-top-bold</v-icon>
+            <v-icon :color="colorButtonsTextTheme" v-on="on"
+              >mdi-arrow-left-top-bold</v-icon
+            >
           </template>
           <span>{{ $t("message.83") }}</span>
         </v-tooltip>
@@ -48,16 +71,28 @@ v-for="(component, index) in componentList" :key="`map-settings-item-${index}`"
 
       <!-- Button - Logo icon -->
       <v-btn
-icon href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="nofollow noreferrer noopener"
-        color="white" depressed>
+        icon
+        href="https://pypi.org/project/django-editor-ymaps/"
+        target="_blank"
+        rel="nofollow noreferrer noopener"
+        color="white"
+        depressed
+      >
         <IconLogo height="42" :color="colorButtonsTextTheme" />
       </v-btn>
 
       <!-- Button - Open Map Settings -->
-      <v-btn icon color="white" class="ml-2" @click.stop="updateMapSettingsDrawer = true">
+      <v-btn
+        icon
+        color="white"
+        class="ml-2"
+        @click.stop="updateMapSettingsDrawer = true"
+      >
         <v-tooltip bottom>
           <template #activator="{ on }">
-            <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-cog</v-icon>
+            <v-icon large :color="colorButtonsTextTheme" v-on="on"
+              >mdi-cog</v-icon
+            >
           </template>
           <span>{{ $t("message.6") }}</span>
         </v-tooltip>
@@ -67,7 +102,9 @@ icon href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="n
       <v-btn icon color="white" @click="helpCreateGeoobject()">
         <v-tooltip bottom>
           <template #activator="{ on }">
-            <v-icon large :color="colorButtonsTextTheme" v-on="on">mdi-help</v-icon>
+            <v-icon large :color="colorButtonsTextTheme" v-on="on"
+              >mdi-help</v-icon
+            >
           </template>
           <span>{{ $t("message.84") }}</span>
         </v-tooltip>
@@ -75,11 +112,19 @@ icon href="https://pypi.org/project/django-editor-ymaps/" target="_blank" rel="n
 
       <!-- Button - Find Editable Geo Object -->
       <v-btn
-class="ml-2" color="white" depressed fab small v-show="showBtnFindEditableGeoObject"
-        @click="findEditableGeoObject()">
+        class="ml-2"
+        color="white"
+        depressed
+        fab
+        small
+        v-show="showBtnFindEditableGeoObject"
+        @click="findEditableGeoObject()"
+      >
         <v-tooltip bottom>
           <template #activator="{ on }">
-            <v-icon large color="red darken-2" v-on="on">mdi-crosshairs-gps</v-icon>
+            <v-icon large color="red darken-2" v-on="on"
+              >mdi-crosshairs-gps</v-icon
+            >
           </template>
           <span>{{ $t("message.2") }}</span>
         </v-tooltip>
@@ -189,7 +234,9 @@ export default {
       this.messageDialogShow({
         status: "info",
         title: this.$t("message.87"),
-        text: `1) ${this.$t("message.40")}<br /><br />2) ${this.$t("message.148")}`,
+        text: `1) ${this.$t("message.40")}<br /><br />2) ${this.$t(
+          "message.148",
+        )}`,
         cancelBtn: false,
         okBtn: true,
         actionBtnCancel: null,

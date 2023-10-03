@@ -1,9 +1,3 @@
 {
-  "[vue]": {
-    "editor.defaultFormatter": "Vue.volar",
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2
-  },
   "typescript.validate.enable": false
 }

@@ -7,24 +7,49 @@ Component for setting of dialog a create geo objects.
   <v-conteiner fluid>
     <v-row align="center" justify="center" style="width: 252px" class="pb-8">
       <v-btn
-v-for="(icon, index) in icons" :key="`action-btn-${index}`" small fab depressed class="mx-1"
-        :disabled="index === 3 ? !controlsHeatmap.panel1.isActive : false" :color="colorControlsTheme"
-        @click="createGeoObject(index)">
+        v-for="(icon, index) in icons"
+        :key="`action-btn-${index}`"
+        small
+        fab
+        depressed
+        class="mx-1"
+        :disabled="index === 3 ? !controlsHeatmap.panel1.isActive : false"
+        :color="colorControlsTheme"
+        @click="createGeoObject(index)"
+      >
         <v-icon :color="colorButtonsTextTheme">{{ icons[index] }}</v-icon>
       </v-btn>
     </v-row>
     <v-row class="pt-5" style="width: 252px">
       <v-col cols="12" class="py-0">
         <v-text-field
-id="id-djeym-latitude" v-model="updateLatitude" :label="$t('message.90')"
-          :placeholder="$t('message.90')" hint="-90.0 ... 90.0" clearable dense full-width maxlength="19"
-          :rules="rulesLatitude()" :color="colorControlsTheme"></v-text-field>
+          id="id-djeym-latitude"
+          v-model="updateLatitude"
+          :label="$t('message.90')"
+          :placeholder="$t('message.90')"
+          hint="-90.0 ... 90.0"
+          clearable
+          dense
+          full-width
+          maxlength="19"
+          :rules="rulesLatitude()"
+          :color="colorControlsTheme"
+        ></v-text-field>
       </v-col>
       <v-col cols="12" class="py-0">
         <v-text-field
-id="id-djeym-longitude" v-model="updateLongitude" :label="$t('message.91')"
-          :placeholder="$t('message.91')" hint="-180.0 ... 180.0" clearable dense full-width maxlength="20"
-          :rules="rulesLongitude()" :color="colorControlsTheme"></v-text-field>
+          id="id-djeym-longitude"
+          v-model="updateLongitude"
+          :label="$t('message.91')"
+          :placeholder="$t('message.91')"
+          hint="-180.0 ... 180.0"
+          clearable
+          dense
+          full-width
+          maxlength="20"
+          :rules="rulesLongitude()"
+          :color="colorControlsTheme"
+        ></v-text-field>
       </v-col>
     </v-row>
   </v-conteiner>
@@ -94,13 +119,13 @@ export default {
       "geoObjectDialogShow",
       "geoObjectDialogClose",
       // Controls
-      "controlsDialogClose", // Close
+      "controlsDialogClose",
       // Message
-      "messageDialogShow", // Open
-      "messageDialogClose", // Close
+      "messageDialogShow",
+      "messageDialogClose",
       // Simple messages
-      "alertSnackbarShow", // Open
-      "alertSnackbarClose", // Close
+      "alertSnackbarShow",
+      "alertSnackbarClose",
     ]),
     ...mapMutations(["setDataAction"]),
     ...mapMutations("ymap", ["setEditableGeoObject"]),

@@ -6,8 +6,11 @@ Component for General Settings Map and Editor.
 <template>
   <v-container fluid>
     <v-card
-:elevation="minElevation" v-for="(panel, title, index) in controls" :key="title"
-      :class="title !== 'panel1_69' ? 'mt-5' : ''">
+      :elevation="minElevation"
+      v-for="(panel, title, index) in controls"
+      :key="title"
+      :class="title !== 'panel1_69' ? 'mt-5' : ''"
+    >
       <v-card-title class="subtitle-1">{{
         $t(`message.${title.slice(-2)}`)
       }}</v-card-title>
@@ -17,38 +20,55 @@ Component for General Settings Map and Editor.
           <tbody>
             <tr v-for="(control, index2) in panel" :key="`control-${index2}`">
               <td
-width="56" :class="control.imgBgPanelFront !== undefined
-                ? 'pl-2 pr-0 py-2'
-                : control.hideGroupNamePanelFront !== undefined
-                  ? 'pt-1'
-                  : ''
-                ">
+                width="56"
+                :class="
+                  control.imgBgPanelFront !== undefined
+                    ? 'pl-2 pr-0 py-2'
+                    : control.hideGroupNamePanelFront !== undefined
+                    ? 'pt-1'
+                    : ''
+                "
+              >
                 <v-icon v-if="control.icon !== undefined">{{
                   control.icon
                 }}</v-icon>
                 <v-img
-v-else-if="control.imgBgPanelFront !== undefined" :src="control.imgBgPanelFront || undefined"
-                  width="48px" max-height="100%"></v-img>
+                  v-else-if="control.imgBgPanelFront !== undefined"
+                  :src="control.imgBgPanelFront || undefined"
+                  width="48px"
+                  max-height="100%"
+                ></v-img>
               </td>
               <td
-v-if="control.layout === undefined &&
-                control.theme === undefined &&
-                control.widthPanelEditor === undefined &&
-                control.widthPanelFront === undefined &&
-                control.imgBgPanelFront === undefined &&
-                control.widthMapFront === undefined &&
-                control.heightMapFront === undefined
-                " :class="control.count === undefined
-    ? index === 0 && index2 === 1
-      ? 'pt-2 pb-1'
-      : 'auto'
-    : 'pt-4'
-    ">
+                v-if="
+                  control.layout === undefined &&
+                  control.theme === undefined &&
+                  control.widthPanelEditor === undefined &&
+                  control.widthPanelFront === undefined &&
+                  control.imgBgPanelFront === undefined &&
+                  control.widthMapFront === undefined &&
+                  control.heightMapFront === undefined
+                "
+                :class="
+                  control.count === undefined
+                    ? index === 0 && index2 === 1
+                      ? 'pt-2 pb-1'
+                      : 'auto'
+                    : 'pt-4'
+                "
+              >
                 <v-switch
-v-model="control.isActive" inset hide-details
-                  :label="$t(`message.${transTitleControls[index][index2]}`)" class="mt-0 pt-0"
-                  :color="colorControlsTheme"></v-switch>
-                <div v-if="index === 0 && index2 === 1" class="caption warning--text pt-1">
+                  v-model="control.isActive"
+                  inset
+                  hide-details
+                  :label="$t(`message.${transTitleControls[index][index2]}`)"
+                  class="mt-0 pt-0"
+                  :color="colorControlsTheme"
+                ></v-switch>
+                <div
+                  v-if="index === 0 && index2 === 1"
+                  class="caption warning--text pt-1"
+                >
                   {{ `(${$t("message.142")})` }}
                 </div>
                 <div v-if="control.count !== undefined" class="mt-5 mb-6">
@@ -57,14 +77,19 @@ v-model="control.isActive" inset hide-details
                       <v-col cols="3" class="pr-0 py-0">
                         <div class="sample-color">
                           <div
-class="sample-color__selected-tone"
-                            :style="`background-color: ${updateColorBackgroundCountObjects};`"></div>
+                            class="sample-color__selected-tone"
+                            :style="`background-color: ${updateColorBackgroundCountObjects};`"
+                          ></div>
                         </div>
                       </v-col>
                       <v-col cols="9" class="py-0">
                         <v-btn
-small block depressed @click="recolorCountObjects('background')"
-                          :color="colorControlsTheme">
+                          small
+                          block
+                          depressed
+                          @click="recolorCountObjects('background')"
+                          :color="colorControlsTheme"
+                        >
                           <span :style="`color: ${colorButtonsTextTheme};`">{{
                             $t("message.76")
                           }}</span>
@@ -75,14 +100,20 @@ small block depressed @click="recolorCountObjects('background')"
                       <v-col cols="3" class="pr-0 py-0 mt-2">
                         <div class="sample-color">
                           <div
-class="sample-color__selected-tone"
-                            :style="`background-color: ${updateTextColorCountObjects};`"></div>
+                            class="sample-color__selected-tone"
+                            :style="`background-color: ${updateTextColorCountObjects};`"
+                          ></div>
                         </div>
                       </v-col>
                       <v-col cols="9" class="py-0">
                         <v-btn
-small block depressed @click="recolorCountObjects('text')" class="mt-2"
-                          :color="colorControlsTheme">
+                          small
+                          block
+                          depressed
+                          @click="recolorCountObjects('text')"
+                          class="mt-2"
+                          :color="colorControlsTheme"
+                        >
                           <span :style="`color: ${colorButtonsTextTheme};`">{{
                             $t("message.25")
                           }}</span>
@@ -98,11 +129,15 @@ small block depressed @click="recolorCountObjects('text')" class="mt-2"
                 }}</v-card-title>
                 <v-radio-group v-model="control.layout">
                   <v-radio
-:label="$t('message.22')" value="cluster#balloonTwoColumns"
-                    :color="colorControlsTheme"></v-radio>
+                    :label="$t('message.22')"
+                    value="cluster#balloonTwoColumns"
+                    :color="colorControlsTheme"
+                  ></v-radio>
                   <v-radio
-:label="$t('message.23')" value="cluster#balloonCarousel"
-                    :color="colorControlsTheme"></v-radio>
+                    :label="$t('message.23')"
+                    value="cluster#balloonCarousel"
+                    :color="colorControlsTheme"
+                  ></v-radio>
                 </v-radio-group>
               </td>
               <td v-else-if="control.theme !== undefined" class="pt-3">
@@ -113,22 +148,35 @@ small block depressed @click="recolorCountObjects('text')" class="mt-2"
                   <v-row>
                     <v-col cols="12">
                       <v-select
-v-model="updateThemeType" dense outlined hide-details :label="$t('message.75')"
-                        :items="getItemsTheme()" :color="colorControlsTheme" :item-color="colorControlsTheme"></v-select>
+                        v-model="updateThemeType"
+                        dense
+                        outlined
+                        hide-details
+                        :label="$t('message.75')"
+                        :items="getItemsTheme()"
+                        :color="colorControlsTheme"
+                        :item-color="colorControlsTheme"
+                      ></v-select>
                     </v-col>
                   </v-row>
                   <v-row class="mt-2">
                     <v-col cols="3" class="pr-0 py-0">
                       <div class="sample-color mt-2">
                         <div
-class="sample-color__selected-tone"
-                          :style="`background-color: ${updateColorControlsTheme};`"></div>
+                          class="sample-color__selected-tone"
+                          :style="`background-color: ${updateColorControlsTheme};`"
+                        ></div>
                       </div>
                     </v-col>
                     <v-col cols="9" class="py-0">
                       <v-btn
-small block depressed @click="recolorTheme('controls')" class="mt-2"
-                        :color="colorControlsTheme">
+                        small
+                        block
+                        depressed
+                        @click="recolorTheme('controls')"
+                        class="mt-2"
+                        :color="colorControlsTheme"
+                      >
                         <span :style="`color: ${colorButtonsTextTheme};`">{{
                           $t("message.72")
                         }}</span>
@@ -139,12 +187,19 @@ small block depressed @click="recolorTheme('controls')" class="mt-2"
                     <v-col cols="3" class="pr-0 py-0">
                       <div class="sample-color">
                         <div
-class="sample-color__selected-tone"
-                          :style="`background-color: ${updateColorButtonsTextTheme};`"></div>
+                          class="sample-color__selected-tone"
+                          :style="`background-color: ${updateColorButtonsTextTheme};`"
+                        ></div>
                       </div>
                     </v-col>
                     <v-col cols="9" class="py-0">
-                      <v-btn small block depressed @click="recolorTheme('buttons')" :color="colorControlsTheme">
+                      <v-btn
+                        small
+                        block
+                        depressed
+                        @click="recolorTheme('buttons')"
+                        :color="colorControlsTheme"
+                      >
                         <span :style="`color: ${colorButtonsTextTheme};`">{{
                           $t("message.24")
                         }}</span>
@@ -153,24 +208,47 @@ class="sample-color__selected-tone"
                   </v-row>
                 </v-container>
               </td>
-              <td v-else-if="control.widthPanelEditor !== undefined" class="pt-1">
+              <td
+                v-else-if="control.widthPanelEditor !== undefined"
+                class="pt-1"
+              >
                 <v-card-title class="subtitle-1 py-0 px-0">{{
                   $t("message.81")
                 }}</v-card-title>
                 <v-text-field
-v-model="panel[index2].widthPanelEditor" outlined dense full-width type="number" min="300"
-                  :color="colorControlsTheme" :rules="rulesWidthPanel(300)"
-                  @input="actionRefreshWidthPanelEditor()"></v-text-field>
+                  v-model="panel[index2].widthPanelEditor"
+                  outlined
+                  dense
+                  full-width
+                  type="number"
+                  min="300"
+                  :color="colorControlsTheme"
+                  :rules="rulesWidthPanel(300)"
+                  @input="actionRefreshWidthPanelEditor()"
+                ></v-text-field>
               </td>
-              <td v-else-if="control.widthPanelFront !== undefined" class="pt-1">
+              <td
+                v-else-if="control.widthPanelFront !== undefined"
+                class="pt-1"
+              >
                 <v-card-title class="subtitle-1 py-0 px-0">{{
                   $t("message.81")
                 }}</v-card-title>
                 <v-text-field
-v-model="panel[index2].widthPanelFront" outlined dense full-width type="number" min="260"
-                  :color="colorControlsTheme" :rules="rulesWidthPanel(260)"></v-text-field>
+                  v-model="panel[index2].widthPanelFront"
+                  outlined
+                  dense
+                  full-width
+                  type="number"
+                  min="260"
+                  :color="colorControlsTheme"
+                  :rules="rulesWidthPanel(260)"
+                ></v-text-field>
               </td>
-              <td v-else-if="control.imgBgPanelFront !== undefined" class="py-2">
+              <td
+                v-else-if="control.imgBgPanelFront !== undefined"
+                class="py-2"
+              >
                 <v-container fluid class="pa-0">
                   <v-row>
                     <v-col cols="12" class="pt-0 pb-1">
@@ -181,14 +259,27 @@ v-model="panel[index2].widthPanelFront" outlined dense full-width type="number" 
                   </v-row>
                   <v-row>
                     <v-col cols="8" class="py-0">
-                      <v-btn small block depressed @click="addImgBgPanelFront()" :color="colorControlsTheme">
-                        <v-icon :color="colorButtonsTextTheme">mdi-plus-thick</v-icon>
+                      <v-btn
+                        small
+                        block
+                        depressed
+                        @click="addImgBgPanelFront()"
+                        :color="colorControlsTheme"
+                      >
+                        <v-icon :color="colorButtonsTextTheme"
+                          >mdi-plus-thick</v-icon
+                        >
                       </v-btn>
                     </v-col>
                     <v-col cols="4" class="py-0">
                       <v-btn
-small block depressed @click="delImgBgPanelFront()" color="red darken-3"
-                        :disabled="disabledBtnDelImgBgPanelFront">
+                        small
+                        block
+                        depressed
+                        @click="delImgBgPanelFront()"
+                        color="red darken-3"
+                        :disabled="disabledBtnDelImgBgPanelFront"
+                      >
                         <v-icon color="grey lighten-5">mdi-trash-can</v-icon>
                       </v-btn>
                     </v-col>
@@ -196,12 +287,20 @@ small block depressed @click="delImgBgPanelFront()" color="red darken-3"
                   <v-row>
                     <v-col cols="3" class="pr-0">
                       <div class="sample-color">
-                        <div class="sample-color__selected-tone" :style="`background-color: ${updateTintingPanelFront};`">
-                        </div>
+                        <div
+                          class="sample-color__selected-tone"
+                          :style="`background-color: ${updateTintingPanelFront};`"
+                        ></div>
                       </div>
                     </v-col>
                     <v-col cols="9">
-                      <v-btn small block depressed @click="recolorTintingPanelFront()" :color="colorControlsTheme">
+                      <v-btn
+                        small
+                        block
+                        depressed
+                        @click="recolorTintingPanelFront()"
+                        :color="colorControlsTheme"
+                      >
                         <span :style="`color: ${colorButtonsTextTheme};`">{{
                           $t("message.133")
                         }}</span>
@@ -210,21 +309,37 @@ small block depressed @click="delImgBgPanelFront()" color="red darken-3"
                   </v-row>
                 </v-container>
               </td>
-              <td v-else-if="control.widthMapFront !== undefined" class="pt-1 pb-2">
+              <td
+                v-else-if="control.widthMapFront !== undefined"
+                class="pt-1 pb-2"
+              >
                 <v-card-title class="subtitle-1 py-0 px-0">{{
                   $t("message.132")
                 }}</v-card-title>
                 <v-text-field
-v-model="panel[index2].widthMapFront" outlined dense full-width hide-details
-                  :color="colorControlsTheme"></v-text-field>
+                  v-model="panel[index2].widthMapFront"
+                  outlined
+                  dense
+                  full-width
+                  hide-details
+                  :color="colorControlsTheme"
+                ></v-text-field>
               </td>
-              <td v-else-if="control.heightMapFront !== undefined" class="pt-1 pb-2">
+              <td
+                v-else-if="control.heightMapFront !== undefined"
+                class="pt-1 pb-2"
+              >
                 <v-card-title class="subtitle-1 py-0 px-0">{{
                   $t("message.138")
                 }}</v-card-title>
                 <v-text-field
-v-model="panel[index2].heightMapFront" outlined dense full-width hide-details
-                  :color="colorControlsTheme"></v-text-field>
+                  v-model="panel[index2].heightMapFront"
+                  outlined
+                  dense
+                  full-width
+                  hide-details
+                  :color="colorControlsTheme"
+                ></v-text-field>
               </td>
             </tr>
           </tbody>
@@ -232,7 +347,13 @@ v-model="panel[index2].heightMapFront" outlined dense full-width hide-details
       </v-simple-table>
       <v-card-actions :class="addStyleBtnSave(index)">
         <v-spacer></v-spacer>
-        <v-btn fab small depressed :color="colorControlsTheme" @click="saveUpdate(index)">
+        <v-btn
+          fab
+          small
+          depressed
+          :color="colorControlsTheme"
+          @click="saveUpdate(index)"
+        >
           <v-icon :color="colorButtonsTextTheme">mdi-content-save</v-icon>
         </v-btn>
         <v-spacer></v-spacer>
@@ -547,7 +668,8 @@ export default {
   height: 28px;
   position: relative;
   border: 1px solid #bdbdbd;
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC") repeat;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC")
+    repeat;
 }
 
 .sample-color__selected-tone {

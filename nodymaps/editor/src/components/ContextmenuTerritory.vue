@@ -8,15 +8,25 @@ Component for creating and editable Territories.
     <!-- Buttons - Header, Body, Footer, Categories and Subcategories. -->
     <v-row align="center" justify="center" class="pb-8">
       <v-btn
-v-for="(icon, index) in icons" :key="`action-btn-${index}`" small fab depressed :color="colorControlsTheme"
-        class="mx-1" @click="openDialog(index)">
+        v-for="(icon, index) in icons"
+        :key="`action-btn-${index}`"
+        small
+        fab
+        depressed
+        :color="colorControlsTheme"
+        class="mx-1"
+        @click="openDialog(index)"
+      >
         <v-icon :color="colorButtonsTextTheme">{{ icons[index] }}</v-icon>
       </v-btn>
     </v-row>
     <!-- Calculate Area -->
     <v-row v-if="editableGeoObject !== null && coordinates.length > 0">
       <v-col cols="12" class="pt-0 text-center">
-        <span class="grey--text text--darken-2 subtitle-2 font-weight-bold" v-text="calculateArea()"></span>
+        <span
+          class="grey--text text--darken-2 subtitle-2 font-weight-bold"
+          v-text="calculateArea()"
+        ></span>
       </v-col>
     </v-row>
     <!-- Stroke -->
@@ -29,28 +39,62 @@ v-for="(icon, index) in icons" :key="`action-btn-${index}`" small fab depressed 
       </v-col>
       <!-- Color -->
       <v-col cols="12" class="text-center py-0">
-        <v-btn block x-small depressed :color="updateStrokeColor" @click="recolor('stroke')"></v-btn>
+        <v-btn
+          block
+          x-small
+          depressed
+          :color="updateStrokeColor"
+          @click="recolor('stroke')"
+        ></v-btn>
       </v-col>
       <!-- Style -->
       <v-col cols="12">
         <v-select
-v-model="updateStrokeStyle" :items="strokeStyleList" :label="$t('message.114')" item-text="title"
-          item-value="value" dense full-width hide-details :color="colorControlsTheme" :item-color="colorControlsTheme"
-          @change="actionRefreshStrokeStyle()"></v-select>
+          v-model="updateStrokeStyle"
+          :items="strokeStyleList"
+          :label="$t('message.114')"
+          item-text="title"
+          item-value="value"
+          dense
+          full-width
+          hide-details
+          :color="colorControlsTheme"
+          :item-color="colorControlsTheme"
+          @change="actionRefreshStrokeStyle()"
+        ></v-select>
       </v-col>
       <!-- Width -->
       <v-col cols="12" class="pt-0 pl-3 pr-2">
         <v-slider
-v-model="updateStrokeWidth" :track-color="$vuetify.theme.dark ? 'grey darken-1' : 'grey lighten-2'
-          " min="1" max="25" thumb-label hide-details prepend-icon="mdi-arrow-split-vertical"
-          :color="colorControlsTheme" @input="actionRefreshStrokeWidth()"></v-slider>
+          v-model="updateStrokeWidth"
+          :track-color="
+            $vuetify.theme.dark ? 'grey darken-1' : 'grey lighten-2'
+          "
+          min="1"
+          max="25"
+          thumb-label
+          hide-details
+          prepend-icon="mdi-arrow-split-vertical"
+          :color="colorControlsTheme"
+          @input="actionRefreshStrokeWidth()"
+        ></v-slider>
       </v-col>
       <!-- Opacity -->
       <v-col cols="12" class="pl-3 pr-2 py-0">
         <v-slider
-v-model="updateStrokeOpacity" :track-color="$vuetify.theme.dark ? 'grey darken-1' : 'grey lighten-2'
-          " min="0.1" max="1" step="0.1" thumb-label hide-details prepend-icon="mdi-opacity"
-          :color="colorControlsTheme" @input="actionRefreshStrokeOpacity()"></v-slider>
+          v-model="updateStrokeOpacity"
+          :track-color="
+            $vuetify.theme.dark ? 'grey darken-1' : 'grey lighten-2'
+          "
+          min="0.1"
+          max="1"
+          step="0.1"
+          thumb-label
+          hide-details
+          prepend-icon="mdi-opacity"
+          :color="colorControlsTheme"
+          @input="actionRefreshStrokeOpacity()"
+        ></v-slider>
       </v-col>
     </v-row>
     <!-- Fill -->
@@ -63,14 +107,30 @@ v-model="updateStrokeOpacity" :track-color="$vuetify.theme.dark ? 'grey darken-1
       </v-col>
       <!-- Color -->
       <v-col cols="12" class="text-center py-0">
-        <v-btn block x-small depressed :color="updateFillColor" @click="recolor('fill')"></v-btn>
+        <v-btn
+          block
+          x-small
+          depressed
+          :color="updateFillColor"
+          @click="recolor('fill')"
+        ></v-btn>
       </v-col>
       <!-- Opacity -->
       <v-col cols="12" class="pl-3 pr-2 pt-2 pb-0">
         <v-slider
-v-model="updateFillOpacity" :track-color="$vuetify.theme.dark ? 'grey darken-1' : 'grey lighten-2'
-          " min="0.1" max="1" step="0.1" thumb-label hide-details prepend-icon="mdi-opacity"
-          :color="colorControlsTheme" @input="actionRefreshFillOpacity()"></v-slider>
+          v-model="updateFillOpacity"
+          :track-color="
+            $vuetify.theme.dark ? 'grey darken-1' : 'grey lighten-2'
+          "
+          min="0.1"
+          max="1"
+          step="0.1"
+          thumb-label
+          hide-details
+          prepend-icon="mdi-opacity"
+          :color="colorControlsTheme"
+          @input="actionRefreshFillOpacity()"
+        ></v-slider>
       </v-col>
     </v-row>
   </v-conteiner>

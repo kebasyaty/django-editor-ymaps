@@ -26,43 +26,50 @@ Component for popup dialogs.
           <ContextmenuTerritory v-if="componentGeoObjectPolygon" />
         </v-card-text>
         <v-divider></v-divider>
-        <v-card-actions class="py-0">
+        <v-card-actions class="py-1">
           <v-spacer></v-spacer>
           <v-btn
-            icon
-            color="green"
-            class="px-0"
+            fab
+            x-small
+            depressed
+            :color="colorControlsTheme"
             @click="geoObjectCurrentActionBtnEdit()"
             v-show="geoObjectEditBtn"
           >
-            <v-icon v-text="getIconBtnEdit()"></v-icon>
+            <v-icon
+              :color="colorButtonsTextTheme"
+              v-text="getIconBtnEdit()"
+            ></v-icon>
           </v-btn>
           <v-btn
-            icon
-            color="blue"
-            class="px-0"
+            fab
+            x-small
+            depressed
+            :color="colorControlsTheme"
             @click="geoObjectCurrentActionBtnSave()"
             v-show="geoObjectSaveBtn"
           >
-            <v-icon>mdi-content-save</v-icon>
+            <v-icon :color="colorButtonsTextTheme">mdi-content-save</v-icon>
           </v-btn>
           <v-btn
-            icon
-            color="pink"
-            class="px-0"
+            fab
+            x-small
+            depressed
+            :color="colorControlsTheme"
             @click="geoObjectCurrentActionBtnCancel()"
             v-show="geoObjectCancelBtn"
           >
-            <v-icon>mdi-close-thick</v-icon>
+            <v-icon :color="colorButtonsTextTheme">mdi-close-thick</v-icon>
           </v-btn>
           <v-btn
-            icon
-            color="red darken-2"
-            class="px-0"
+            fab
+            x-small
+            depressed
+            :color="colorControlsTheme"
             @click="messageDelete()"
             v-show="geoObjectDeleteBtn"
           >
-            <v-icon>mdi-trash-can</v-icon>
+            <v-icon :color="colorButtonsTextTheme">mdi-trash-can</v-icon>
           </v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
@@ -116,25 +123,27 @@ Component for popup dialogs.
           <ImageCrop />
         </v-card-text>
         <v-divider></v-divider>
-        <v-card-actions class="py-0">
+        <v-card-actions class="py-1">
           <v-spacer></v-spacer>
           <v-btn
-            icon
-            color="blue"
-            class="px-0"
+            fab
+            x-small
+            depressed
+            :color="colorControlsTheme"
             @click="controlsCurrentActionBtnSave()"
             v-show="controlsSaveBtn"
           >
-            <v-icon>mdi-content-save</v-icon>
+            <v-icon :color="colorButtonsTextTheme">mdi-content-save</v-icon>
           </v-btn>
           <v-btn
-            icon
-            color="pink"
-            class="px-0"
+            fab
+            x-small
+            depressed
+            :color="colorControlsTheme"
             @click="controlsCurrentActionBtnCancel()"
             v-show="controlsCancelBtn"
           >
-            <v-icon>mdi-close-thick</v-icon>
+            <v-icon :color="colorButtonsTextTheme">mdi-close-thick</v-icon>
           </v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
@@ -161,13 +170,13 @@ Component for popup dialogs.
                     v-if="statusMessageDialog == 'success'"
                     color="success"
                     x-large
-                    >mdi-check-circle</v-icon
+                    >mdi-check-circle-outline</v-icon
                   >
                   <v-icon
                     v-else-if="statusMessageDialog == 'accent'"
                     color="accent"
                     x-large
-                    >mdi-alert</v-icon
+                    >mdi-alert-outline</v-icon
                   >
                   <v-icon
                     v-else-if="statusMessageDialog == 'error'"
@@ -179,19 +188,19 @@ Component for popup dialogs.
                     v-else-if="statusMessageDialog == 'info'"
                     color="info"
                     x-large
-                    >mdi-information-variant-circle</v-icon
+                    >mdi-information-variant-circle-outline</v-icon
                   >
                   <v-icon
                     v-else-if="statusMessageDialog == 'warning'"
                     color="warning"
                     x-large
-                    >mdi-alert</v-icon
+                    >mdi-alert-outline</v-icon
                   >
                   <v-icon
                     v-else-if="statusMessageDialog == 'delete'"
                     color="error"
                     x-large
-                    >mdi-trash-can</v-icon
+                    >mdi-trash-can-outline</v-icon
                   >
                 </div>
               </td>
@@ -200,25 +209,27 @@ Component for popup dialogs.
           </table>
         </v-card-text>
         <v-divider></v-divider>
-        <v-card-actions class="py-0">
+        <v-card-actions class="py-1">
           <v-spacer></v-spacer>
           <v-btn
-            icon
-            color="pink"
-            class="px-0"
+            fab
+            x-small
+            depressed
+            :color="colorControlsTheme"
             @click="messageCurrentActionBtnCancel()"
             v-show="messageCancelBtn"
           >
-            <v-icon>mdi-close-thick</v-icon>
+            <v-icon :color="colorButtonsTextTheme">mdi-close-thick</v-icon>
           </v-btn>
           <v-btn
-            icon
-            color="green"
-            class="px-0"
+            fab
+            x-small
+            depressed
+            :color="colorControlsTheme"
             @click="messageCurrentActionBtnOk()"
             v-show="messageOkBtn"
           >
-            <v-icon>mdi-thumb-up</v-icon>
+            <v-icon :color="colorButtonsTextTheme">mdi-thumb-up</v-icon>
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -227,8 +238,14 @@ Component for popup dialogs.
     <!-- Simple messages -->
     <v-snackbar v-model="alertSnackbar" top multi-line vertical :timeout="0">
       <span class="font-weight-bold" v-html="textSnackbar"></span>
-      <v-btn icon color="pink" @click="alertSnackbarClose()">
-        <v-icon>mdi-close</v-icon>
+      <v-btn
+        fab
+        x-small
+        depressed
+        :color="colorControlsTheme"
+        @click="alertSnackbarClose()"
+      >
+        <v-icon :color="colorButtonsTextTheme">mdi-close</v-icon>
       </v-btn>
     </v-snackbar>
 

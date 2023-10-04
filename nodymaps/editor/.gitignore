@@ -5,6 +5,9 @@
 # Dependency directories
 node_modules
 
+package-lock.json
+yarn.lock
+
 # Folder of building for Vue JS project
 /dist
 

@@ -1,94 +1,182 @@
 <template>
-  <v-app id="djeym-app" class="djeym" :style="`width:${widthMap};height:${heightMap};`">
-    <v-sheet tile :width="widthMap" :height="heightMap" class="overflow-hidden" style="position: relative">
+  <v-app
+    id="djeym-app"
+    class="djeym"
+    :style="`width:${widthMap};height:${heightMap};`"
+  >
+    <v-sheet
+      tile
+      :width="widthMap"
+      :height="heightMap"
+      class="overflow-hidden"
+      style="position: relative"
+    >
       <!-- Panel for filtering by categories -->
-      <v-navigation-drawer v-if="createPanel" v-model="openPanel" app hide-overlay absolute temporary
-        :permanent="isPermanentPanel" :width="widthPanel" :height="heightMap" :src="imgBgPanel">
-        <v-container fluid class="pa-0" :style="`min-height: 100%; background-color: ${tinting};`">
+      <v-navigation-drawer
+        v-if="createPanel"
+        v-model="openPanel"
+        app
+        hide-overlay
+        absolute
+        temporary
+        :permanent="isPermanentPanel"
+        :width="widthPanel"
+        :height="heightMap"
+        :src="imgBgPanel"
+      >
+        <v-container
+          fluid
+          class="pa-0"
+          :style="`min-height: 100%; background-color: ${tinting};`"
+        >
           <v-card-actions class="pb-0">
             <v-spacer></v-spacer>
             <!-- Button - Сlose panel -->
-            <v-btn icon @click.stop="[(isPermanentPanel = false), (openPanel = false)]" :ripple="effectRipple">
+            <v-btn
+              icon
+              @click.stop="[(isPermanentPanel = false), (openPanel = false)]"
+              :ripple="effectRipple"
+            >
               <v-icon :color="colorControls">mdi-close</v-icon>
             </v-btn>
           </v-card-actions>
-          <v-tabs v-model="tab" height="42" centered show-arrows center-active background-color="transparent"
-            :color="colorControls" :style="isHideTabs ? 'position: relative; top: -45px; z-index: -10;' : ''
-              ">
+          <v-tabs
+            v-model="tab"
+            height="42"
+            centered
+            show-arrows
+            center-active
+            background-color="transparent"
+            :color="colorControls"
+            :style="
+              isHideTabs ? 'position: relative; top: -45px; z-index: -10;' : ''
+            "
+          >
             <v-tabs-slider></v-tabs-slider>
             <template v-for="(icon, index) in сategoryIcons">
-              <v-tab v-if="isShowTab(index)" :key="`button-tab-${index}`" :href="`#tab-${index}`" :ripple="effectRipple">
+              <v-tab
+                v-if="isShowTab(index)"
+                :key="`button-tab-${index}`"
+                :href="`#tab-${index}`"
+                :ripple="effectRipple"
+              >
                 <v-icon>{{ icon }}</v-icon>
               </v-tab>
             </template>
           </v-tabs>
 
           <!-- Controls for filtering geo-objects on Map -->
-          <v-tabs-items v-model="tab" :style="`background-color: transparent;${isHideTabs ? 'top: -45px;' : ''
-            }`">
-            <v-tab-item v-for="(step, index) in 3" :key="`item-${step}`" :value="`tab-${index}`">
+          <v-tabs-items
+            v-model="tab"
+            :style="`background-color: transparent;${
+              isHideTabs ? 'top: -45px;' : ''
+            }`"
+          >
+            <v-tab-item
+              v-for="(step, index) in 3"
+              :key="`item-${step}`"
+              :value="`tab-${index}`"
+            >
               <template v-if="index === 0">
-                <v-card-title v-if="!hideGeoTypes" class="title pt-3 pb-0 px-3"
-                  :class="centerGeoTypes ? 'justify-center' : ''">{{
+                <v-card-title
+                  v-if="!hideGeoTypes"
+                  class="title pt-3 pb-0 px-3"
+                  :class="centerGeoTypes ? 'justify-center' : ''"
+                  >{{
                     geoTypeNameMarker ? geoTypeNameMarker : $t("message.1")
-                  }}</v-card-title>
+                  }}</v-card-title
+                >
               </template>
               <template v-if="index === 1">
-                <v-card-title v-if="!hideGeoTypes" class="title pt-3 pb-0 px-3"
-                  :class="centerGeoTypes ? 'justify-center' : ''">{{
+                <v-card-title
+                  v-if="!hideGeoTypes"
+                  class="title pt-3 pb-0 px-3"
+                  :class="centerGeoTypes ? 'justify-center' : ''"
+                  >{{
                     geoTypeNameRoute ? geoTypeNameRoute : $t("message.2")
-                  }}</v-card-title>
+                  }}</v-card-title
+                >
               </template>
               <template v-if="index === 2">
-                <v-card-title v-if="!hideGeoTypes" class="title pt-3 pb-0 px-3"
-                  :class="centerGeoTypes ? 'justify-center' : ''">{{
+                <v-card-title
+                  v-if="!hideGeoTypes"
+                  class="title pt-3 pb-0 px-3"
+                  :class="centerGeoTypes ? 'justify-center' : ''"
+                  >{{
                     geoTypeNameTerritory
-                    ? geoTypeNameTerritory
-                    : $t("message.3")
-                  }}</v-card-title>
+                      ? geoTypeNameTerritory
+                      : $t("message.3")
+                  }}</v-card-title
+                >
               </template>
 
               <v-divider v-if="!hideGeoTypes"></v-divider>
               <div v-if="hideGeoTypes" class="pt-4"></div>
               <v-container fluid class="pt-0">
-                <v-list :shaped="controlsShape === 'shaped'" :rounded="controlsShape === 'rounded'"
-                  :flat="controlsShape === 'flat'" dense v-for="(filter, modelKey, index2) in nextTwoFilters(index)"
-                  :key="`filters-${modelKey}`" class="pa-0" style="background-color: transparent">
+                <v-list
+                  :shaped="controlsShape === 'shaped'"
+                  :rounded="controlsShape === 'rounded'"
+                  :flat="controlsShape === 'flat'"
+                  dense
+                  v-for="(filter, modelKey, index2) in nextTwoFilters(index)"
+                  :key="`filters-${modelKey}`"
+                  class="pa-0"
+                  style="background-color: transparent"
+                >
                   <template v-if="index2 === 0">
-                    <v-card-subtitle class="font-italic px-0 pb-1" :class="index2 ? 'pt-1' : 'pt-0'">{{
-                      filter.length && !hideGroupNames
-                      ? groupNameCategories
-                        ? groupNameCategories
-                        : $t("message.4")
-                      : ""
-                    }}</v-card-subtitle>
+                    <v-card-subtitle
+                      class="font-italic px-0 pb-1"
+                      :class="index2 ? 'pt-1' : 'pt-0'"
+                      >{{
+                        filter.length && !hideGroupNames
+                          ? groupNameCategories
+                            ? groupNameCategories
+                            : $t("message.4")
+                          : ""
+                      }}</v-card-subtitle
+                    >
                   </template>
                   <template v-if="index2 === 1">
-                    <v-card-subtitle class="font-italic px-0 pb-1" :class="index2 ? 'pt-1' : 'pt-0'">{{
-                      filter.length && !hideGroupNames
-                      ? groupNameSubcategories
-                        ? groupNameSubcategories
-                        : $t("message.5")
-                      : ""
-                    }}</v-card-subtitle>
+                    <v-card-subtitle
+                      class="font-italic px-0 pb-1"
+                      :class="index2 ? 'pt-1' : 'pt-0'"
+                      >{{
+                        filter.length && !hideGroupNames
+                          ? groupNameSubcategories
+                            ? groupNameSubcategories
+                            : $t("message.5")
+                          : ""
+                      }}</v-card-subtitle
+                    >
                   </template>
 
-                  <v-list-item-group v-model="models[modelKey]" :multiple="(index2 + 1) % 2 == 0 ? true : multiple">
-                    <v-list-item v-for="control in filter" :key="`control-${control.id}`" :color="control.color"
-                      :ripple="effectRipple" class="mb-1" @click="
+                  <v-list-item-group
+                    v-model="models[modelKey]"
+                    :multiple="(index2 + 1) % 2 == 0 ? true : multiple"
+                  >
+                    <v-list-item
+                      v-for="control in filter"
+                      :key="`control-${control.id}`"
+                      :color="control.color"
+                      :ripple="effectRipple"
+                      class="mb-1"
+                      @click="
                         [
                           (control.isActive = !control.isActive),
                           filtering({ id: control.id, modelKey: modelKey }),
                         ]
-                        ">
+                      "
+                    >
                       <v-list-item-icon class="my-auto mr-3">
                         <v-icon :color="control.color">{{
                           control.icon
                         }}</v-icon>
                       </v-list-item-icon>
                       <v-list-item-content>
-                        <v-list-item-title class="subtitle-2 djeym-white-space-normal">{{ control.title
-                        }}</v-list-item-title>
+                        <v-list-item-title
+                          class="subtitle-2 djeym-white-space-normal"
+                          >{{ control.title }}</v-list-item-title
+                        >
                       </v-list-item-content>
                     </v-list-item>
                   </v-list-item-group>
@@ -100,59 +188,133 @@
       </v-navigation-drawer>
 
       <!-- A form for adding a custom marker to the map -->
-      <v-navigation-drawer v-if="createForm" v-model="openForm" app right absolute temporary hide-overlay
-        :permanent="isPermanentForm" :height="heightMap">
+      <v-navigation-drawer
+        v-if="createForm"
+        v-model="openForm"
+        app
+        right
+        absolute
+        temporary
+        hide-overlay
+        :permanent="isPermanentForm"
+        :height="heightMap"
+      >
         <v-container fluid class="pt-0">
           <v-row>
             <v-col cols="12" class="pt-3 pb-5">
-              <v-select v-model="updateCustomMarkerCategory" :items="customMarkerCategoryList" item-text="title"
-                item-value="id" :label="$t('message.4')" dense prepend-icon="mdi-select-marker" :color="colorControls"
-                :item-color="colorControls" hide-details></v-select>
+              <v-select
+                v-model="updateCustomMarkerCategory"
+                :items="customMarkerCategoryList"
+                item-text="title"
+                item-value="id"
+                :label="$t('message.4')"
+                dense
+                prepend-icon="mdi-select-marker"
+                :color="colorControls"
+                :item-color="colorControls"
+                hide-details
+              ></v-select>
             </v-col>
           </v-row>
           <v-row v-if="customMarkerSubcategoryList.length">
             <v-col cols="12" class="pt-3 pb-5">
-              <v-select v-model="updateCustomMarkerSubcategories" :items="customMarkerSubcategoryList" item-text="title"
-                item-value="id" :label="$t('message.5')" dense multiple prepend-icon="mdi-select-multiple-marker"
-                :color="colorControls" :item-color="colorControls" hide-details></v-select>
+              <v-select
+                v-model="updateCustomMarkerSubcategories"
+                :items="customMarkerSubcategoryList"
+                item-text="title"
+                item-value="id"
+                :label="$t('message.5')"
+                dense
+                multiple
+                prepend-icon="mdi-select-multiple-marker"
+                :color="colorControls"
+                :item-color="colorControls"
+                hide-details
+              ></v-select>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" class="pt-0 pb-0">
-              <v-file-input :label="$t('message.7')" prepend-icon="mdi-camera-outline" accept="image/jpeg"
-                :hint="$t('message.15')" persistent-hint clearable :color="colorControls"
-                @change="optimizeImage"></v-file-input>
+              <v-file-input
+                :label="$t('message.7')"
+                prepend-icon="mdi-camera-outline"
+                accept="image/jpeg"
+                :hint="$t('message.15')"
+                persistent-hint
+                clearable
+                :color="colorControls"
+                @change="optimizeImage"
+              ></v-file-input>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" class="py-0">
-              <v-text-field v-model="customMarkerTitle" :label="$t('message.6')" :color="colorControls" counter="60"
-                prepend-icon="mdi-map-marker-circle" :rules="titleRules()" clearable></v-text-field>
+              <v-text-field
+                v-model="customMarkerTitle"
+                :label="$t('message.6')"
+                :color="colorControls"
+                counter="60"
+                prepend-icon="mdi-map-marker-circle"
+                :rules="titleRules()"
+                clearable
+              ></v-text-field>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" class="py-0">
-              <v-textarea v-model="customMarkerDescription" counter="300" :label="$t('message.8')" rows="1"
-                prepend-icon="mdi-tooltip-text-outline" :color="colorControls" :rules="descriptionRules()"
-                clearable></v-textarea>
+              <v-textarea
+                v-model="customMarkerDescription"
+                counter="300"
+                :label="$t('message.8')"
+                rows="1"
+                prepend-icon="mdi-tooltip-text-outline"
+                :color="colorControls"
+                :rules="descriptionRules()"
+                clearable
+              ></v-textarea>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" class="py-0">
-              <v-text-field v-model="customMarkerEmail" :label="$t('message.11')" :color="colorControls" maxlength="254"
-                prepend-icon="mdi-email-outline" clearable :rules="emailRules()"></v-text-field>
+              <v-text-field
+                v-model="customMarkerEmail"
+                :label="$t('message.11')"
+                :color="colorControls"
+                maxlength="254"
+                prepend-icon="mdi-email-outline"
+                clearable
+                :rules="emailRules()"
+              ></v-text-field>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="9">
               <!-- Button - Save custom marker. -->
-              <v-btn tile depressed block :color="colorControls" :ripple="effectRipple" @click="saveCustomMarker()">
-                <span :style="`color: ${colorButtonsText};`">{{ $t("message.10") }}</span>
+              <v-btn
+                tile
+                small
+                depressed
+                block
+                :color="colorControls"
+                :ripple="effectRipple"
+                @click="saveCustomMarker()"
+              >
+                <span :style="`color: ${colorButtonsText};`">{{
+                  $t("message.10")
+                }}</span>
               </v-btn>
             </v-col>
             <v-col cols="3" class="pl-0">
               <!-- Button - Close custom marker. -->
-              <v-btn tile depressed block :color="colorControls" :ripple="effectRipple" @click="closeCustomMarker()">
+              <v-btn
+                tile
+                small
+                depressed
+                block
+                :color="colorControls"
+                :ripple="effectRipple"
+                @click="closeCustomMarker()"
+              >
                 <v-icon :color="colorButtonsText">mdi-close</v-icon>
               </v-btn>
             </v-col>
@@ -166,16 +328,33 @@
       </v-container>
 
       <!-- Simple messages -->
-      <v-snackbar v-model="showAlert" top multi-line vertical :timeout="0"
-        :color="$vuetify.theme.dark ? '#323232' : 'white'">
-        <v-btn class="mt-0 pb-0" icon color="white" :ripple="effectRipple" @click="showAlert = !showAlert">
+      <v-snackbar
+        v-model="showAlert"
+        top
+        multi-line
+        vertical
+        :timeout="0"
+        :color="$vuetify.theme.dark ? '#323232' : 'white'"
+      >
+        <v-btn
+          class="mt-0 pb-0"
+          icon
+          color="white"
+          :ripple="effectRipple"
+          @click="showAlert = !showAlert"
+        >
           <v-icon :color="colorControls">mdi-close</v-icon>
         </v-btn>
-        <span v-html="`<table width='294' class='djeym-pos-relative djeym-pos-top--8'><tr><td>${textAlert}</td></tr></table>`
-          " :class="$vuetify.theme.dark
-    ? 'grey--text text--lighten-5'
-    : 'grey--text text--darken-4'
-    "></span>
+        <span
+          v-html="
+            `<table width='294' class='djeym-pos-relative djeym-pos-top--8'><tr><td>${textAlert}</td></tr></table>`
+          "
+          :class="
+            $vuetify.theme.dark
+              ? 'grey--text text--lighten-5'
+              : 'grey--text text--darken-4'
+          "
+        ></span>
       </v-snackbar>
 
       <!-- Progress bar -->
@@ -411,7 +590,7 @@ export default {
           return (
             categoriesIDs.includes(object.properties.categoryID) &&
             tmpIDs.filter((num) => subcategoriesIDs.includes(num)).length ===
-            countSubcategories
+              countSubcategories
           );
         });
       } else {
@@ -717,7 +896,7 @@ export default {
       const randomTileUrl =
         currentTile !== null
           ? // eslint-disable-next-line no-new-func
-          new Function("return " + currentTile.randomTileUrl)
+            new Function("return " + currentTile.randomTileUrl)
           : null;
 
       const isTypeSelector = data.activeControls.includes("typeSelector");
@@ -785,19 +964,19 @@ export default {
       const customBalloonContentLayout =
         window.djeymYMaps.templateLayoutFactory.createClass(
           '<div class="djeym-pos-relative djeym-fill-hight">' +
-          '<div id="djeymModalLock"><div id="djeymLoadIndicator"></div></div>' +
-          '<div class="djeym_ballon_header">{{ properties.balloonContentHeader|raw }}</div>' +
-          '<div class="djeym_ballon_body">{{ properties.balloonContentBody|raw }}</div>' +
-          '<div class="djeym_ballon_footer">{{ properties.balloonContentFooter|raw }}</div></div>',
+            '<div id="djeymModalLock"><div id="djeymLoadIndicator"></div></div>' +
+            '<div class="djeym_ballon_header">{{ properties.balloonContentHeader|raw }}</div>' +
+            '<div class="djeym_ballon_body">{{ properties.balloonContentBody|raw }}</div>' +
+            '<div class="djeym_ballon_footer">{{ properties.balloonContentFooter|raw }}</div></div>',
         );
       // Custom layout for icon of Cluster.
       const customLayoutForClusterIcon =
         window.djeymYMaps.templateLayoutFactory.createClass(
           '<div class="djeym_layout_cluster_icon"><span style="background-color:' +
-          data.colorBackgroundCountObjects +
-          ";color:" +
-          data.textColorCountObjects +
-          ';">$[properties.geoObjects.length]</span></div>',
+            data.colorBackgroundCountObjects +
+            ";color:" +
+            data.textColorCountObjects +
+            ';">$[properties.geoObjects.length]</span></div>',
         );
 
       // CREATE A MAP
@@ -1112,8 +1291,8 @@ export default {
         .on(
           "click",
           "ymaps:regex(class, .*-cluster-tabs__menu-item.*), " +
-          "ymaps:regex(class, .*-cluster-carousel__pager-item.*), " +
-          "ymaps:regex(class, .*-cluster-carousel__nav.*)",
+            "ymaps:regex(class, .*-cluster-carousel__pager-item.*), " +
+            "ymaps:regex(class, .*-cluster-carousel__nav.*)",
           (event) => {
             event.stopPropagation();
             for (let idx = 0, len = spinTimers.length; idx < len; idx++) {

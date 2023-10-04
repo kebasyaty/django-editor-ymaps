@@ -622,22 +622,11 @@ export default {
       this.controlsDialogShow({
         title: this.$t("message.136"),
         text: "",
-        cancelBtn: true,
-        saveBtn: true,
+        cancelBtn: false,
+        saveBtn: false,
         componentImageCrop: true,
-        actionBtnCancel: () => {
-          this.alertSnackbarClose();
-          this.destroyComponentControlsImageCrop();
-          this.controlsDialogClose();
-          this.setMapSettingsDrawer(true);
-        },
-        actionBtnSave: () => {
-          this.alertSnackbarClose();
-          this.destroyComponentControlsImageCrop();
-          this.actionRefreshImgBgPanelFront();
-          this.controlsDialogClose();
-          this.setMapSettingsDrawer(true);
-        },
+        actionBtnCancel: () => {},
+        actionBtnSave: () => {},
       });
     },
     // Delete the background image for the panel.

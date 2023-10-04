@@ -33,12 +33,13 @@ Component for cropping images.
     </v-row>
     <v-row align="center" justify="center" class="pa-3">
       <!-- Button - Rotate angle is Number -->
+      <!--
       <v-btn
         fab
         small
         depressed
         :color="colorControlsTheme"
-        @click="rotate(-90)"
+        @click="btnRotate(-90)"
         class="mx-1"
       >
         <v-icon :color="colorButtonsTextTheme">mdi-rotate-left</v-icon>
@@ -48,28 +49,40 @@ Component for cropping images.
         small
         depressed
         :color="colorControlsTheme"
-        @click="rotate(90)"
+        @click="btnRotate(90)"
         class="mx-1"
       >
         <v-icon :color="colorButtonsTextTheme">mdi-rotate-right</v-icon>
       </v-btn>
+      -->
       <!-- Button - Cropping  -->
       <v-btn
         fab
         small
         depressed
         :color="colorControlsTheme"
-        @click="crop()"
+        @click="btnCrop()"
         class="mx-1"
       >
         <v-icon :color="colorButtonsTextTheme">mdi-crop</v-icon>
+      </v-btn>
+      <!-- Button - Cancel  -->
+      <v-btn
+        fab
+        small
+        depressed
+        :color="colorControlsTheme"
+        @click="btnCancel()"
+        class="mx-1"
+      >
+        <v-icon :color="colorButtonsTextTheme">mdi-close-thick</v-icon>
       </v-btn>
     </v-row>
   </v-conteiner>
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
   name: "ImageCrop",
@@ -86,24 +99,41 @@ export default {
     ]),
   },
   methods: {
-    ...mapMutations(["setCurrentImageCrop"]),
+    ...mapMutations(["setCurrentImageCrop", "setMapSettingsDrawer"]),
     ...mapMutations("modals", [
       // Simple messages
       "alertSnackbarShow", // Open
       "alertSnackbarClose", // Close
+      // Controls
+      "controlsDialogClose", // Close
+      "destroyComponentControlsImageCrop", // Show/Hide
     ]),
+    ...mapActions("generalSettings", ["actionRefreshImgBgPanelFront"]),
     // Rotates the image.
-    rotate(rotationAngle) {
+    /*
+    btnRotate(rotationAngle) {
       this.$refs.croppieRef.rotate(rotationAngle);
     },
-    crop() {
+    */
+    btnCrop() {
       if (this.currImg !== null) {
         this.$refs.croppieRef.result(this.dataAction.options, (output) => {
           this.setCurrentImageCrop(output);
+          this.alertSnackbarClose();
+          this.destroyComponentControlsImageCrop();
+          this.actionRefreshImgBgPanelFront();
+          this.controlsDialogClose();
+          this.setMapSettingsDrawer(true);
         });
       } else {
         this.alertSnackbarShow(`${this.$t("message.135")} !`);
       }
+    },
+    btnCancel() {
+      this.alertSnackbarClose();
+      this.destroyComponentControlsImageCrop();
+      this.controlsDialogClose();
+      this.setMapSettingsDrawer(true);
     },
     newImg(file) {
       this.currImg = file;

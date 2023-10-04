@@ -122,7 +122,7 @@ Component for popup dialogs.
         >
           <ImageCrop />
         </v-card-text>
-        <v-divider></v-divider>
+        <v-divider v-if="!componentControlsImageCrop"></v-divider>
         <v-card-actions class="py-1">
           <v-spacer></v-spacer>
           <v-btn

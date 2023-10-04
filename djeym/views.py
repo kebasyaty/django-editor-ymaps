@@ -42,14 +42,14 @@ def vue_vendors_css_js(target):
 
     if not IS_DEVELOPMANT:
         if target == 'front':
-            ctx['vue_css_app'] = 'app.39827dca.css'
+            ctx['vue_css_app'] = 'app.b3d068e9.css'
             ctx['vue_css_chunk_vendors'] = 'chunk-vendors.73c07480.css'
-            ctx['vue_js_app'] = 'app.3469c26e.js'
-            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.d01bfe4b.js'
+            ctx['vue_js_app'] = 'app.7561b101.js'
+            ctx['vue_js_chunk_vendors'] = 'chunk-vendors.f8eb8799.js'
         else:
-            ctx['vue_css_app'] = 'app.baab2ecc.css'
+            ctx['vue_css_app'] = 'app.520c61d4.css'
             ctx['vue_css_chunk_vendors'] = 'chunk-vendors.09dfbb4c.css'
-            ctx['vue_js_app'] = 'app.97a89f00.js'
+            ctx['vue_js_app'] = 'app.87bf87d6.js'
             ctx['vue_js_chunk_vendors'] = 'chunk-vendors.8e19894a.js'
     else:
         # Automatically get CSS and JS for Vue.js (for development only).

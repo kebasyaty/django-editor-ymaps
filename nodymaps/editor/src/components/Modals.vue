@@ -25,8 +25,8 @@ Component for popup dialogs.
           <!-- Context Menu - Create and editable a Territory. -->
           <ContextmenuTerritory v-if="componentGeoObjectPolygon" />
         </v-card-text>
-        <v-divider></v-divider>
-        <v-card-actions class="py-1">
+        <!--<v-divider></v-divider>-->
+        <v-card-actions class="pt-0 pb-2">
           <v-spacer></v-spacer>
           <v-btn
             fab
@@ -56,20 +56,20 @@ Component for popup dialogs.
             x-small
             depressed
             :color="colorControlsTheme"
-            @click="geoObjectCurrentActionBtnCancel()"
-            v-show="geoObjectCancelBtn"
+            @click="messageDelete()"
+            v-show="geoObjectDeleteBtn"
           >
-            <v-icon :color="colorButtonsTextTheme">mdi-close-thick</v-icon>
+            <v-icon :color="colorButtonsTextTheme">mdi-trash-can</v-icon>
           </v-btn>
           <v-btn
             fab
             x-small
             depressed
             :color="colorControlsTheme"
-            @click="messageDelete()"
-            v-show="geoObjectDeleteBtn"
+            @click="geoObjectCurrentActionBtnCancel()"
+            v-show="geoObjectCancelBtn"
           >
-            <v-icon :color="colorButtonsTextTheme">mdi-trash-can</v-icon>
+            <v-icon :color="colorButtonsTextTheme">mdi-close-thick</v-icon>
           </v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
@@ -122,8 +122,16 @@ Component for popup dialogs.
         >
           <ImageCrop />
         </v-card-text>
-        <v-divider v-if="!componentControlsImageCrop"></v-divider>
-        <v-card-actions class="py-1">
+        <v-divider v-if="componentControlsCKEditor"></v-divider>
+        <v-card-actions
+          :class="
+            componentControlsCKEditor
+              ? 'py-1'
+              : componentControlsCategories
+              ? 'py-2'
+              : 'pt-0 pb-2'
+          "
+        >
           <v-spacer></v-spacer>
           <v-btn
             fab
@@ -133,7 +141,7 @@ Component for popup dialogs.
             @click="controlsCurrentActionBtnSave()"
             v-show="controlsSaveBtn"
           >
-            <v-icon :color="colorButtonsTextTheme">mdi-content-save</v-icon>
+            <v-icon :color="colorButtonsTextTheme">mdi-thumb-up</v-icon>
           </v-btn>
           <v-btn
             fab
@@ -208,19 +216,9 @@ Component for popup dialogs.
             </tr>
           </table>
         </v-card-text>
-        <v-divider></v-divider>
-        <v-card-actions class="py-1">
+        <!--<v-divider></v-divider>-->
+        <v-card-actions class="pt-0 pb-2">
           <v-spacer></v-spacer>
-          <v-btn
-            fab
-            x-small
-            depressed
-            :color="colorControlsTheme"
-            @click="messageCurrentActionBtnCancel()"
-            v-show="messageCancelBtn"
-          >
-            <v-icon :color="colorButtonsTextTheme">mdi-close-thick</v-icon>
-          </v-btn>
           <v-btn
             fab
             x-small
@@ -230,6 +228,16 @@ Component for popup dialogs.
             v-show="messageOkBtn"
           >
             <v-icon :color="colorButtonsTextTheme">mdi-thumb-up</v-icon>
+          </v-btn>
+          <v-btn
+            fab
+            x-small
+            depressed
+            :color="colorControlsTheme"
+            @click="messageCurrentActionBtnCancel()"
+            v-show="messageCancelBtn"
+          >
+            <v-icon :color="colorButtonsTextTheme">mdi-close-thick</v-icon>
           </v-btn>
         </v-card-actions>
       </v-card>

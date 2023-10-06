@@ -37,7 +37,7 @@ Component for Help info.
           </div>
         </div>
       </v-card-text>
-      <v-card-text class="pa-1 text-center">
+      <v-card-text class="px-1 pt-1 pb-4 text-center">
         <v-icon :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" x-large
           >mdi-compass-outline</v-icon
         >
@@ -73,7 +73,7 @@ Component for Help info.
           </v-row>
         </v-container>
       </v-card-text>
-      <v-card-text class="pa-0 text-center">
+      <v-card-text class="px-1 py-3 text-center">
         <v-icon :color="$vuetify.theme.dark ? '#757575' : '#E0E0E0'" x-large
           >mdi-compass-outline</v-icon
         >

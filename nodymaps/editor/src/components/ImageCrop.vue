@@ -31,7 +31,7 @@ Component for cropping images.
         :viewport="{ width: 100, height: 250, type: 'square' }"
       ></vue-croppie>
     </v-row>
-    <v-row align="center" justify="center" class="pa-3">
+    <v-row align="center" justify="center" class="px-2 py-0">
       <!-- Button - Rotate angle is Number -->
       <!--
       <v-btn
@@ -58,7 +58,7 @@ Component for cropping images.
       <!-- Button - Cropping  -->
       <v-btn
         fab
-        small
+        x-small
         depressed
         :color="colorControlsTheme"
         @click="btnCrop()"
@@ -69,7 +69,7 @@ Component for cropping images.
       <!-- Button - Cancel  -->
       <v-btn
         fab
-        small
+        x-small
         depressed
         :color="colorControlsTheme"
         @click="btnCancel()"

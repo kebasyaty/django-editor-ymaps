@@ -81,7 +81,7 @@ export default {
     80: "Icons",
     81: "Panel width",
     83: "Return to admin panel",
-    84: "Create geo object",
+    84: "How to create and edit a geo object ?",
     85: "Attention",
     86: "Error",
     87: "Info",

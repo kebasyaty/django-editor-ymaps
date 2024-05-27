@@ -4,7 +4,7 @@
 
 |
 
-.. image:: https://img.shields.io/badge/pypi-v23.2.1%20-blue.svg
+.. image:: https://img.shields.io/badge/pypi-v24.0%20-blue.svg
    :target: https://pypi.org/project/pip/
    :alt: PyPI badge
 .. image:: https://img.shields.io/badge/python-%3E%3D%203.12-yellow.svg

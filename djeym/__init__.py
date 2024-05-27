@@ -9,9 +9,9 @@
 #            \ \____/
 #             \/___/
 
-DjEYM_VERSION = (2, 3, 8)
-PYTHON_VERSION = (3, 8)
-DJANGO_VERSION = (3, 2, 4)
+DjEYM_VERSION = (2, 3, 9)
+PYTHON_VERSION = (3, 12)
+DJANGO_VERSION = (5, 0, 6)
 VUE_VERSION = (2, 7, 14)
 VUETIFY_VERSION = (2, 2, 1)
 

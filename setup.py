@@ -54,7 +54,6 @@ setup(
         'Natural Language :: Russian',
         'Natural Language :: English',
         'Framework :: Django',
-        'Framework :: Django :: 5',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',

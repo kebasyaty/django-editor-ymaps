@@ -57,8 +57,8 @@ For those who are updating to version 2.3.x::
 
 Requirements
 ------------
-- **Python** >= 3.8
-- **Django** >= 3.2.4
+- **Python** >= 3.12
+- **Django** >= 5.0
 - **Pillow** - `https://pypi.org/project/Pillow/ <https://pypi.org/project/Pillow/>`_
 - **django-imagekit** - `https://github.com/matthewwithanm/django-imagekit <https://github.com/matthewwithanm/django-imagekit>`_
 - **python-slugify** - `https://github.com/un33k/python-slugify <https://github.com/un33k/python-slugify>`_

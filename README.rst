@@ -7,18 +7,15 @@
 .. image:: https://img.shields.io/badge/pypi-v23.2.1%20-blue.svg
    :target: https://pypi.org/project/pip/
    :alt: PyPI badge
-.. image:: https://img.shields.io/badge/python-%3E%3D%203.8-yellow.svg
+.. image:: https://img.shields.io/badge/python-%3E%3D%203.12-yellow.svg
    :target: https://www.python.org/
    :alt: Python badge
-.. image:: https://img.shields.io/badge/django-%3E%3D%203.2.4-brightgreen.svg
+.. image:: https://img.shields.io/badge/django-%3E%3D%205.0-brightgreen.svg
    :target: https://www.djangoproject.com/
    :alt: Django badge
 .. image:: https://pepy.tech/badge/django-editor-ymaps
    :target: https://pepy.tech/project/django-editor-ymaps
    :alt: Downloads badge
-.. image:: https://snyk.io/advisor/python/django-editor-ymaps/badge.svg
-   :target: https://snyk.io/advisor/python/django-editor-ymaps
-   :alt: django-editor-ymaps
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
    :target: https://github.com/kebasyaty/django-editor-ymaps/blob/master/LICENSE
    :alt: MIT badge

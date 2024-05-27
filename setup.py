@@ -65,7 +65,7 @@ setup(
     ],
     install_requires=[
         'Django>=5.0.6',
-        'Pillow,
+        'Pillow',
         'django-imagekit',
         'python-slugify',
         'django-ckeditor',

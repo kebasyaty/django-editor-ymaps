@@ -22,7 +22,7 @@ from os import path
 from setuptools import find_packages, setup
 
 
-VERSION = (2, 3, 10)
+VERSION = (2, 3, 11)
 __version__ = '.'.join(map(str, VERSION))
 
 
@@ -53,17 +53,16 @@ setup(
         'Environment :: Web Environment',
         'Natural Language :: Russian',
         'Natural Language :: English',
-        'Framework :: Django',
+        'Framework :: Django :: 5.0',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
-        'Programming Language :: Python',
         'Programming Language :: Python :: 3.12',
         'Topic :: Scientific/Engineering :: GIS',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        'Django>=5.0.6',
+        'Django>=5.0',
         'Pillow',
         'django-imagekit',
         'python-slugify',

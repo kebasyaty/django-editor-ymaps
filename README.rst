@@ -59,6 +59,10 @@ Install libraries ( Ubuntu >= 18.04, Mint >= 19.x )::
 
     sudo apt install -y python3-dev libevent-dev build-essential libpq-dev libxml2-dev libxslt1-dev gettext libjpeg-dev python3-setuptools
 
+Install libraries ( Fedora >= 38 )::
+
+    sudo dnf install python3-devel python3-setuptools libevent-devel libpq-devel libxml2-devel libxslt-devel libjpeg-turbo-devel gettext
+
 Install django-editor-ymaps using pip::
 
     pip install django-editor-ymaps

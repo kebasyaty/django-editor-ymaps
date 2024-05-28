@@ -25,30 +25,15 @@ DjEYM ( django-editor-ymaps )
 - **(ru)** *Удобное использование картографической службы Яндекса для веб-разработки на популярном и свободном фреймворке Django.*
 - **(en)** *Convenient use of the Yandex map service for web development on the popular and free Django framework.*
 
-Условия использования API Яндекс.Карт ( *Terms of use for the API* )
+Условия использования API Яндекс.Карт
 --------------------------------------------------------------------
 - **(ru)** `Условия использования Яндекс.Карт <https://tech.yandex.ru/maps/jsapi/doc/2.1/quick-start/index-docpage/#get-api-key>`_
 - **(ru)** `Получить API-ключ <https://tech.yandex.ru/maps/jsapi/doc/2.1/quick-start/index-docpage/#get-api-key>`_
-- 
+
+Terms of use for the API
+--------------------------------------------------------------------
 - **(en)** `Terms of use for the Yandex.Maps <https://tech.yandex.com/maps/jsapi/doc/2.1/terms/index-docpage/>`_
 - **(en)** `Get the API key <https://tech.yandex.com/maps/jsapi/doc/2.1/quick-start/index-docpage/#get-api-key>`_
-
-|
-
-Attention
----------
-
-Don't forget to add to settings ( djeym >= 2.2.x )::
-
-    MIDDLEWARE = [
-        ...
-        'django.middleware.locale.LocaleMiddleware',
-        'djeym.middlewares.AjaxMiddleware',
-    ]
-
-For those who are updating to version 2.3.x::
-
-  python manage.py migrate djeym
 
 |
 
@@ -70,9 +55,9 @@ Requirements
 
 Installation
 ------------
-Install libraries ( Ubuntu >= 18.04, Mint 19.x )::
+Install libraries ( Ubuntu >= 18.04, Mint >= 19.x )::
 
-    sudo apt install -y python-dev python3-dev libjpeg8-dev python-pil libevent-dev build-essential libpq-dev libxml2-dev libxslt1-dev gettext libjpeg-dev python-setuptools python3-setuptools
+    sudo apt install -y python3-dev libevent-dev build-essential libpq-dev libxml2-dev libxslt1-dev gettext libjpeg-dev python3-setuptools
 
 Install django-editor-ymaps using pip::
 

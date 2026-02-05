@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="badge-svg" width="173.98" height="28" data-v-3c87b7b4="" version="1.1" viewBox="0 0 217.47 35" xmlns="http://www.w3.org/2000/svg">
+ <path d="m10 0h45.958v35h-45.958q-10 0-10-10v-15q0-10 10-10z" fill="#424242" data-v-3c87b7b4=""/>
+ <rect x="55.958" width="112.05" height="35" fill="#1565c0" data-v-3c87b7b4=""/>
+ <text x="27.978783" y="17.5" dy="0.34999999em" fill="#ffffff" font-family="Roboto, sans-serif" font-size="12px" font-weight="600" letter-spacing="2" text-anchor="middle" style="text-decoration-line:none;text-transform:uppercase" data-v-3c87b7b4="">LINK</text>
+ <g transform="matrix(.66667 0 0 .66667 65.958 9.5)" data-v-3c87b7b4="">
+  <path d="m12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0.344 20.251a8.251 8.251 0 1 1 0-16.502 8.21 8.21 0 0 1 5.633 2.234l-2.458 2.547a4.686 4.686 0 0 0-3.175-1.239 4.709 4.709 0 1 0 3.284 8.081l2.657 2.346a8.224 8.224 0 0 1-5.941 2.533z" fill="#fff" data-v-3c87b7b4=""/>
+ </g>
+ <text x="121.98045" y="17.5" dy="0.34999999em" fill="#ffffff" font-family="Montserrat, sans-serif" font-size="12px" font-weight="900" letter-spacing="2" text-anchor="middle" style="text-decoration-line:none;text-transform:uppercase" data-v-3c87b7b4="">LICENSE</text>
+ <path d="m168 0h39.47q10 0 10 10v15q0 10-10 10h-39.47z" fill="#ff8f00" data-v-3c87b7b4=""/>
+ <text x="192.73813" y="17.5" dy="0.34999999em" fill="#ffffff" font-family="Montserrat, sans-serif" font-size="12px" font-weight="900" letter-spacing="2" text-anchor="middle" style="text-decoration-line:none;text-transform:uppercase" data-v-3c87b7b4="">MIT</text>
+</svg>

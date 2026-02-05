@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="badge-svg" data-v-3c87b7b4="" version="1.1" width="193.56" height="28" viewBox="0 0 193.56 28" xmlns="http://www.w3.org/2000/svg">
+ <g transform="scale(.8)">
+  <path d="m10 0h46v35h-46q-10 0-10-10v-15q0-10 10-10z" fill="#424242" data-v-3c87b7b4=""/>
+  <path d="m56 0h175.95q10 0 10 10v15q0 10-10 10h-175.95z" fill="#1565c0" data-v-3c87b7b4=""/>
+  <text x="28" y="17.5" dy="0.34999999em" fill="#ffffff" font-family="Roboto, sans-serif" font-size="12px" font-weight="600" letter-spacing="2" text-anchor="middle" style="text-decoration-line:none;text-transform:uppercase" data-v-3c87b7b4="">LINK</text>
+  <g transform="matrix(.66667 0 0 .66667 66 9.5)" data-v-3c87b7b4="">
+   <path d="m14.727 6.727h-0.727v-6.727h-9.09c-0.905 0-1.637 0.732-1.637 1.636v20.728c0 0.904 0.732 1.636 1.636 1.636h14.182c0.904 0 1.636-0.732 1.636-1.636v-15.637zm-0.545 10.455h-7.092v-1.364h7.09v1.364zm2.727-3.273h-9.818v-1.364h9.818zm0-3.273h-9.818v-1.363h9.818zm-2.182-4.636h6l-6-6z" fill="#fff" data-v-3c87b7b4=""/>
+  </g>
+  <text x="158.97656" y="17.5" dy="0.34999999em" fill="#ffffff" font-family="Montserrat, sans-serif" font-size="12px" font-weight="900" letter-spacing="2" text-anchor="middle" style="text-decoration-line:none;text-transform:uppercase" data-v-3c87b7b4="">DOCUMENTATION</text>
+ </g>
+</svg>

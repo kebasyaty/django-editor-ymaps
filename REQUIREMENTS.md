@@ -6,12 +6,20 @@
 
 #### Dependencies
 
-- None
+- [Django](https://pypi.org/project/django/ "Django")
+- [Pillow](https://pypi.org/project/pillow/ "Pillow")
+- [django-imagekit](https://pypi.org/project/django-imagekit/ "django-imagekit")
+- [python-slugify](https://pypi.org/project/python-slugify/ "python-slugify")
+- [django-ckeditor](https://pypi.org/project/django-ckeditor/ "django-ckeditor")
+- [lxml](https://pypi.org/project/lxml/ "lxml")
+- [django-ipware](https://pypi.org/project/django-ipware/ "django-ipware")
+- [django-colorful](https://pypi.org/project/django-colorful/ "django-colorful")
+- [django-admin-sortable](https://pypi.org/project/django-admin-sortable/ "django-admin-sortable")
 
 #### Dev-Dependencies
 
 - [ruff](https://pypi.org/project/ruff/ "ruff")
-- [pyrefly](https://pypi.org/project/pyrefly/ "")
+- [pyrefly](https://pypi.org/project/pyrefly/)
 - [pre-commit](https://pypi.org/project/pre-commit/ "pre-commit")
 - [pytest](https://pypi.org/project/pytest/ "pytest")
 - [pytest-asyncio](https://pypi.org/project/pytest-asyncio/ "pytest-asyncio")

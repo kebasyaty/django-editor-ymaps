@@ -1,0 +1,100 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "UV: Run Lock",
+      "type": "shell",
+      "command": ["uv lock"],
+      "problemMatcher": []
+    },
+    {
+      "label": "UV: Run Deploy",
+      "type": "shell",
+      "command": ["uv build --wheel;", "uv publish"],
+      "problemMatcher": []
+    },
+    {
+      "label": "UV: Run Upgrade",
+      "type": "shell",
+      "command": ["uv sync --upgrade"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Ruff: Run Check",
+      "type": "shell",
+      "command": [
+        "uv run ruff check --fix --show-fixes --config pyproject.toml"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Pyrefly: Run Type Checker",
+      "type": "shell",
+      "command": ["uv run pyrefly check ."],
+      "problemMatcher": []
+    },
+    {
+      "label": "Pre-Commit: Run Install",
+      "type": "shell",
+      "command": ["uv run pre-commit install"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Pre-Commit: Run Autoupdate",
+      "type": "shell",
+      "command": ["uv run pre-commit autoupdate"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Pre-Commit: Run Check",
+      "type": "shell",
+      "command": [
+        "uv run pre-commit run --show-diff-on-failure --color=always --all-files"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Pre-Commit: Fix conflict with auto-fixes",
+      "type": "shell",
+      "command": ["git add ."],
+      "problemMatcher": []
+    },
+    {
+      "label": "PyTest: Run Tests",
+      "type": "shell",
+      "command": [
+        "uv run python remove_pycache.py;",
+        "uv run pytest -v tests/;",
+        "uv run python remove_pycache.py"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "MkDocs: Create New Docs",
+      "type": "shell",
+      "command": ["uv run mkdocs new ."],
+      "problemMatcher": []
+    },
+    {
+      "label": "MkDocs: Run Build",
+      "type": "shell",
+      "command": ["uv run mkdocs build"],
+      "problemMatcher": []
+    },
+    {
+      "label": "MkDocs: Run Serve",
+      "type": "shell",
+      "command": ["uv run mkdocs serve"],
+      "problemMatcher": []
+    },
+    {
+      "label": "MkDocs: Run Deploy 3.0",
+      "type": "shell",
+      "command": [
+        "uv run mike deploy --push --update-aliases 3.0 latest;",
+        "uv run mike set-default --push latest"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

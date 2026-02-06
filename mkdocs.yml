@@ -1,0 +1,89 @@
+site_name: Django-Editor-YMaps Docs
+site_description: "Convenient use of the Yandex map service for web development on the popular and free Django framework."
+site_url: https://kebasyaty.github.io/django-editor-ymaps/
+site_author: Kebasyaty
+copyright: Copyright &copy; 2025 Maintained by <a href="https://github.com/kebasyaty">Kebasyaty</a>
+repo_name: kebasyaty/django-editor-ymaps
+repo_url: https://github.com/kebasyaty/django-editor-ymaps
+
+theme:
+  name: material
+  language: en
+  custom_dir: docs/overrides
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    # Extra:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.tabs.sticky
+    # Minimum:
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+  palette:
+    scheme: slate
+    primary: yellow
+    accent: yellow
+
+extra_css:
+  - stylesheets/themes/github_yellow.css
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - tags:
+      tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+extra:
+  version:
+    provider: mike
+    default: latest
+    alias: true
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/kebasyaty
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com
+
+nav:
+  - Django-Editor-YMaps: index.md
+  - Installation: pages/installation.md
+  - Usage: pages/usage.md
+  - DEYM: pages/deym.md

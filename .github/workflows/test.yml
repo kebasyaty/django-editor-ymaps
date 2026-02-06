@@ -1,0 +1,43 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "windows-latest", "macOS-latest"]
+        python-version: ["3.12", "3.13", "3.14"]
+        uv-version: ["latest"]
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }} Python ${{ matrix.python-version }}
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          version: ${{ matrix.uv-version }}
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies with uv
+        run: uv sync --locked --dev --group test
+
+      - name: Install Pyrefly
+        run: pip install pyrefly
+
+      - uses: pre-commit/action@v3.0.1
+
+      - name: Run tests
+        run: uv run pytest -v tests/

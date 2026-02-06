@@ -1,0 +1,192 @@
+[project]
+name = "django-editor-ymaps"
+version = "3.0.0"
+description = "Convenient use of the Yandex map service for web development on the popular and free Django framework."
+readme = "README.md"
+authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.12,<4.0"
+keywords = []
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: CPython",
+    # https://pypi.org/classifiers/
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://kebasyaty.github.io/django-editor-ymaps/"
+Repository = "https://github.com/kebasyaty/django-editor-ymaps"
+Source = "https://github.com/kebasyaty/django-editor-ymaps"
+"Bug Tracker" = "https://github.com/kebasyaty/django-editor-ymaps/issues"
+Changelog = "https://github.com/kebasyaty/django-editor-ymaps/blob/v3/CHANGELOG.md"
+
+[tool.uv]
+package = true
+default-groups = ["dev", "lint", "test", "docs", "types"]
+compile-bytecode = true
+check-url = "https://pypi.org/simple"
+
+[tool.uv.build-backend]
+module-root = "src"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ql"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = []
+lint = []
+test = []
+docs = []
+types = []
+
+[tool.ruff]
+fix = true
+line-length = 120
+indent-width = 4
+src = ["src", "tests"]
+include = ["src/**/*.py", "tests/**/*.py"]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    ".github",
+    "assets",
+    "docs",
+    "site",
+    "examples",
+]
+
+[tool.ruff.lint]
+preview = true
+select = [
+    "D",     # pydocstyle
+    "I",     # isort
+    "E",     # flake8-errors
+    "W",     # flake8-warnings
+    "F",     # flake8-pyflakes
+    "B",     # flake8-bugbear
+    "C4",    # flake8-comprehensions
+    "S",     # flake8-bandit
+    "BLE",   # flake8-blind-except
+    "T20",   # flake8-print
+    "T10",   # flake8-debugger
+    "PT",    # flake8-pytest-style
+    "RUF",   # Ruff-specific
+    "DTZ",   # flake8-datetimez
+    "ERA",   # eradicate
+    "FURB",  # refurb
+    "ARG",   # flake8-unused-arguments
+    "EM",    # flake8-errmsg
+    "ICN",   # flake8-import-conventions
+    "G",     # flake8-logging-format
+    "PGH",   # pygrep-hooks
+    "PIE",   # flake8-pie
+    "PL",    # pylint
+    "PTH",   # flake8-use-pathlib
+    "RET",   # flake8-return
+    "SIM",   # flake8-simplify
+    "UP",    # pyupgrade
+    "YTT",   # flake8-2020
+    "EXE",   # flake8-executable
+    "ASYNC", # flake8-async
+]
+ignore = [
+    "D417",   # Missing argument descriptions in the docstring
+    "D206",   # Docstring should be indented with spaces, not tabs
+    "C408",   # Unnecessary `dict` call (rewrite as a literal)
+    "RUF001", # ambiguous-unicode-character-docstring
+    "RUF002", # ambiguous-unicode-character-docstring
+    "RUF003", # ambiguous-unicode-character-docstring
+    "RUF022", # unsorted-dunder-all
+    "E722",   # Do not use bare except
+    "S110",   # try-except-pass detected, consider logging the exception
+    "S101",   # Use of `assert` detected
+    "PLR",    # Design related pylint codes
+    "EM101",  # Exception must not use a string literal, assign to variable first
+    "EM102",  # Exception must not use an f-string literal, assign to variable first
+    "ARG002", # Unused method argument
+]
+fixable = ["I"]
+unfixable = [
+    "RUF100", # Unused noqa
+    "T20",    # Removes print statements
+    "F841",   # Removes unused variables
+]
+flake8-unused-arguments.ignore-variadic-names = true
+isort.required-imports = ["from __future__ import annotations"]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?)|dummy.*)$"
+
+[tool.ruff.lint.flake8-bandit]
+check-typed-exception = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+docstring-code-line-length = 120
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.pyrefly]
+project-includes = ["src", "tests"]
+search-path = ["src", "tests"]
+ignore-errors-in-generated-code = true
+untyped_def_behavior = "check-and-infer-return-any"
+
+[tool.pyrefly.errors]
+missing-attribute = false
+
+[[tool.pyrefly.sub-config]]
+matches = "tests/**"
+
+[tool.pyrefly.sub-config.errors]
+missing-attribute = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

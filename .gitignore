@@ -1,9 +1,41 @@
-*.py[cod]
+# Python-generated files
 __pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+site/
+
+# Virtual environments
+.venv
+
+### Mac OS ###
+.DS_Store
+
+### Linux ###
 *~
 .directory
-.DS_Store
-dist/
-build/
-*.egg-info
 
+### Windows ###
+desktop.ini
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+.pytest_cache
+coverage.xml
+
+# ruff
+.ruff_cache/
+
+# Editor directories and files
+.idea
+#.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

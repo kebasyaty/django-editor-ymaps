@@ -1,6 +1,6 @@
 # Python-generated files
 __pycache__/
-*.py[oc]
+*.py[cod]
 build/
 dist/
 wheels/
@@ -19,6 +19,16 @@ site/
 
 ### Windows ###
 desktop.ini
+
+# Django
+*.log
+*.ini
+*.pid
+media/
+
+# SQLite
+db.sqlite3
+db.sqlite3-journal
 
 # Unit test / coverage reports
 htmlcov/

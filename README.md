@@ -35,6 +35,7 @@
 <p>Some text ...</a>
 
 <br>
+<br>
 
 [![Documentation](https://raw.githubusercontent.com/kebasyaty/django-editor-ymaps/v3/assets/links/documentation.svg "Documentation")](https://kebasyaty.github.io/django-editor-ymaps/ "Documentation")
 

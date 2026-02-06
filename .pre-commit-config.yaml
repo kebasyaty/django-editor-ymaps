@@ -2,7 +2,7 @@ exclude: "^(dist|site|.git|.venv|.pytest_cache|.ruff_cache|.mypy_cache)$"
 
 repos:
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.9.18
+    rev: 0.10.0
     hooks:
       - id: uv-lock
 
@@ -63,7 +63,7 @@ repos:
       - id: pyupgrade
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.10
+    rev: v0.15.0
     hooks:
       - id: ruff-check
         types_or: [python, pyi]
@@ -72,7 +72,7 @@ repos:
         types_or: [python, pyi]
 
   - repo: https://github.com/facebook/pyrefly-pre-commit
-    rev: 0.46.0
+    rev: 0.51.1
     hooks:
       - id: pyrefly-check
         name: Pyrefly (type checking)
@@ -80,7 +80,7 @@ repos:
         language: system
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.36.0
+    rev: 0.36.1
     hooks:
       - id: check-github-workflows
         args: ["--verbose"]

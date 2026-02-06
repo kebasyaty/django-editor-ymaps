@@ -9,7 +9,7 @@
   </p>
   <p>
     <h1>django-editor-ymaps</h1>
-    <h3>Plugin for Django framework.</h3>
+    <h3>Plugin for creating and editing Yandex maps with Django framework.</h3>
     <p align="center">
       <a href="https://github.com/kebasyaty/django-editor-ymaps/actions/workflows/test.yml" alt="Build Status"><img src="https://github.com/kebasyaty/django-editor-ymaps/actions/workflows/test.yml/badge.svg" alt="Build Status"></a>
       <a href="https://kebasyaty.github.io/django-editor-ymaps/" alt="Docs"><img src="https://img.shields.io/badge/docs-available-brightgreen.svg" alt="Docs"></a>

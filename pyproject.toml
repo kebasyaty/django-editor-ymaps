@@ -1,15 +1,17 @@
 [project]
 name = "django-editor-ymaps"
 version = "3.0.0"
-description = "Convenient use of the Yandex map service for web development on the popular and free Django framework."
+description = "Plugin for creating and editing Yandex maps with Django framework."
 readme = "README.md"
 authors = [{ name = "kebasyaty", email = "kebasyaty@gmail.com" }]
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.12,<4.0"
-keywords = []
+keywords = ['django', 'editor', 'yandex', 'maps', "map", 'admin', "panel"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
+    'Environment :: Web Environment',
+    'Framework :: Django :: 6.0',
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: MacOS :: MacOS X",
@@ -25,6 +27,8 @@ classifiers = [
     # https://pypi.org/classifiers/
     "Topic :: Software Development :: Libraries",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    'Topic :: Scientific/Engineering :: GIS',
+    'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     "Typing :: Typed",
 ]
 dependencies = []

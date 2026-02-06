@@ -1,5 +1,5 @@
 site_name: Django-Editor-YMaps Docs
-site_description: "Convenient use of the Yandex map service for web development on the popular and free Django framework."
+site_description: "Plugin for creating and editing Yandex maps with Django framework."
 site_url: https://kebasyaty.github.io/django-editor-ymaps/
 site_author: Kebasyaty
 copyright: Copyright &copy; 2025 Maintained by <a href="https://github.com/kebasyaty">Kebasyaty</a>

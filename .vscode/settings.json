@@ -15,11 +15,5 @@
   },
   "emmet.includeLanguages": {
     "django-html": "html"
-  },
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.tabSize": 4
   }
 }

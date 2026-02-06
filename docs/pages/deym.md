@@ -1,1 +1,1 @@
-::: <package name>.<module name>
+::: django_editor_ymaps.deym

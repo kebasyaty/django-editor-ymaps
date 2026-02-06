@@ -50,7 +50,7 @@ check-url = "https://pypi.org/simple"
 module-root = "src"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/ql"]
+packages = ["src/django_editor_ymaps/deym"]
 
 [build-system]
 requires = ["hatchling"]

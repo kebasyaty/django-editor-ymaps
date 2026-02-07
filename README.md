@@ -195,6 +195,17 @@ urlpatterns = [
 ]
 ```
 
+- **Add media directory to your project:** `media/uploads`.
+
+- **Update Migrations:**
+
+```shell
+cd project-name
+python manage.py migrate djeym
+# or
+uv run python app_name/manage.py migrate app_name/djeym
+```
+
 <br>
 
 [![Changelog](https://raw.githubusercontent.com/kebasyaty/django-editor-ymaps/v3/assets/links/changelog.svg "Changelog")](https://github.com/kebasyaty/django-editor-ymaps/blob/v3/CHANGELOG.md "Changelog")

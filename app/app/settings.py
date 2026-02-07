@@ -30,7 +30,7 @@ SECRET_KEY = "django-insecure-w#t@o6v2cugc24z@d-n(_&+vf8_#04%^y^%pcbs2ta1b9)xi31
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]"]
 
 ADMINS = [("admin", "kebasyaty@gmail.com")]
 
@@ -149,7 +149,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-STATIC_ROOT = str(BASE_DIR / "djeym/static")
+STATIC_ROOT = BASE_DIR / "djeym/static"
 
 # Additional locations of static files
 STATICFILES_DIRS = (BASE_DIR.joinpath("static"),)
@@ -165,7 +165,7 @@ STATICFILES_FINDERS = (
 
 # Media files
 MEDIA_URL = "media/"
-MEDIA_ROOT = str(BASE_DIR.joinpath("media"))
+MEDIA_ROOT = BASE_DIR.joinpath("media")
 
 # Email
 EMAIL_HOST = "localhost"
@@ -173,7 +173,10 @@ EMAIL_PORT = 1025
 EMAIL_HOST_USER = ""
 EMAIL_HOST_PASSWORD = ""
 EMAIL_USE_TLS = False
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 DEFAULT_FROM_EMAIL = "noreply@site.net"
+
+INTERNAL_IPS = ["127.0.0.1"]
 
 TEST_RUNNER = "django.test.runner.DiscoverRunner"
 

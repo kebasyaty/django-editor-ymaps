@@ -1,0 +1,114 @@
+{% if ymap %}
+{% load i18n static djeymtags %}
+{% with request.LANGUAGE_CODE|default:'en' as language_code %}
+<!DOCTYPE html>
+<html lang="{{ language_code }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="robots" content="none">
+
+  <title>{{ ymap.title }}</title>
+
+  <!-- START VENDORS FAVICONS -->
+  <link rel="icon" type="image/png" sizes="96x96" href="{% static 'djeym/img/favicons/favicon-96x96.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'djeym/img/favicons/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'djeym/img/favicons/favicon-16x16.png' %}">
+  <link rel="shortcut icon" href="{% static 'djeym/img/favicons/favicon.ico' %}" type="image/x-icon">
+  <link rel="icon" href="{% static 'djeym/img/favicons/favicon.ico' %}" type="image/x-icon">
+  <!-- END VENDORS  FAVICONS -->
+
+  <!-- START VENDORS CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <!-- For Vue.js -->
+  <link href="{% static 'djeym/nodymaps/editor/css/'|add:vue_css_chunk_vendors %}" rel="stylesheet">
+  <link href="{% static 'djeym/nodymaps/editor/css/'|add:vue_css_app %}" rel="stylesheet">
+  <!-- Upload indicator -->
+  {% if load_indicator %}
+    {% widthratio load_indicator_size 2 1 as margin_offset %}
+    <style type="text/css">
+        #djeymModalLock { display: block; }
+        #djeymLoadIndicator {
+            width: {{ load_indicator_size }}px;
+            height: {{ load_indicator_size }}px;
+            margin: -{{ margin_offset }}px 0 0 -{{ margin_offset }}px;
+            content: url('{{ load_indicator.svg.url }}');
+            {% if not ymap.disable_indicator_animation %}animation: djeym-spin {{ ymap.animation_speed }}s infinite linear;{% endif %}
+        }
+    </style>
+  {% endif %}
+  <!-- END VENDORS CSS -->
+</head>
+
+<body>
+  <!-- Warning - Upgrade Your Browser -->
+  <!--[if lte IE 10]>
+    <div class="browserupgrade"><div><span>upgrade</span>
+{% blocktrans %}You are using an <strong>outdated</strong> browser.<br>
+Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.{% endblocktrans %}
+    </div></div>
+  <![endif]-->
+
+ <!-- Warning - Necessary to enable JavaScript -->
+  <noscript>
+    <div class="noscript">
+      <div><span>js</span>
+{% blocktrans %}For full functionality of this site it is necessary to enable JavaScript.<br>
+Here are the <a href="http://www.enable-javascript.com/" target="_blank">&ensp;
+instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %}</div></div>
+  </noscript>
+
+  <!-- CKEditor - Get config -->
+  <div class="djeym-hide">{{ form_cke.ckeditor_textarea }}</div>
+  <!-- CKEditor_- Resize image -->
+  <canvas id="cke_temp_canvas" class="djeym-hide"></canvas>
+
+  <div id="djeym-app"></div>
+
+  <!-- START VENDORS JS -->
+  <script src="{% static "djeym/js/jquery.min.js" %}"></script>
+  <script src="{% static "djeym/js/jquery-regex.min.js" %}"></script>
+  <script src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+  <script src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+  <script src="{% static "ckeditor/ckeditor/adapters/jquery.js" %}"></script>
+  <script src="{% static "djeym/js/ckeditor_resize_image.min.js" %}"></script>
+  <script src="{% url 'djeym:javascript-catalog' %}"></script>
+  <script>
+    window.CKEDITOR_BASEPATH = "{% static 'ckeditor/ckeditor/' %}";
+    var djeymMapID = {{ ymap.pk }},
+      djeymCSRFToken = '{{ csrf_token }}',
+      djeymLanguageCode = '{{ language_code }}',
+      djeymVersion = '{{ djeym_version }}',
+      djeymPythonVersion = '{{ python_version|safe }}',
+      djeymDjangoVersion = '{{ django_version|safe }}',
+      djeymVueVersion = '{{ vue_version }}',
+      djeymVuetifyVersion = '{{ vuetify_version }}',
+      djeymCKEditor = null,
+      djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",
+      djeymBalloonMinHeight = {% if load_indicator %}{{ load_indicator_size }} + 40{% else %}60{% endif %};
+  </script>
+  {% djeym_load_api_ymaps language_code %}
+  <script src="{% static "djeym/plugins/calculate-area/util.calculateArea.min.js" %}"></script>
+  {% if is_heatmap %}<script src="{% static "djeym/plugins/heatmap/heatmap.min.js" %}"></script>{% endif %}
+  {% if is_round_theme %}<script src="{% static "djeym/plugins/round-theme/all.min.js" %}"></script>{% endif %}
+  <script type="text/javascript">{% for preset in presets %}{{ preset|safe }}{% endfor %}</script>
+  <!-- For Vue.js -->
+    <script type="module" src="{% static 'djeym/nodymaps/editor/js/'|add:vue_js_chunk_vendors %}"></script>
+    <script type="module" src="{% static 'djeym/nodymaps/editor/js/'|add:vue_js_app %}"></script>
+    <script>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()},!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <!-- END VENDORS JS -->
+</body>
+
+</html>
+{% endwith %}
+{% else %}
+    <style>body {background-color: #212121;}</style>
+    <h2 style="color: #BDBDBD;">404 - {% trans 'Page not found' %}</h2>
+    <div style="color: #607D8B; font-size: 22px; font-weight: bold;">
+        {% trans "We're sorry, but the requested map could not be found." %}</div>
+    <div style="color: #E91E63; font-size: 18px; font-weight: bold;">
+        ( {% trans "Maybe the map is not active or just missing." %} )</div>
+{% endif %}

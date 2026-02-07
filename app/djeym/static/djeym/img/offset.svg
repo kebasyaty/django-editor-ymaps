@@ -1,0 +1,14 @@
+<svg width="38" height="60" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 303.26 485.22">
+ <g transform="matrix(1,0,0,-1,-90.981,485.21)" fill="#f57c00">
+  <path transform="matrix(1,0,0,-1,0,485.21)" d="m242.61 0-60.65 181.96c-50.244 0-90.979 40.717-90.979 90.977v121.3c1e-6 50.228 40.736 90.979 90.979 90.979h121.3c50.26 0 90.98-40.751 90.979-90.979v-121.3c-1e-5 -50.26-40.72-90.977-90.98-90.977l-60.648-181.96z" fill="#f57c00"/>
+ </g>
+ <g transform="translate(-90.981)" fill="#fafafa">
+  <path transform="scale(8.0868)" d="m22.963 24.949-2.4219 4.1836 1.5293 2e-3v8.2363l-4.6953-0.01172 2e-3 -1.4082-4.1895 2.4121 4.1816 2.4219 2e-3 -1.5195 4.6992 0.01172v14.545h-1.4062l2.4219 4.1836 2.4102-4.1875h-1.5195v-14.535l18.076 0.04687-0.0039 1.3984 4.1953-2.4023-4.1777-2.4316-0.0059 1.5273-18.084-0.04492v-8.2402l1.3984 2e-3 -2.4121-4.1895z" stroke-width=".12366"/>
+  <g style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal" aria-label="x">
+   <path d="m291.66 261.99-16.833-22.792h15.792l9.5416 13.833 9.6666-13.833h15.792l-16.833 22.708 17.667 23.958h-15.792l-10.5-14.75-10.375 14.75h-15.792z" fill="#fafafa"/>
+  </g>
+  <g style="font-feature-settings:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal" aria-label="y">
+   <path d="m213.2 359.22h14.917l12.542 31.667 10.667-31.667h14.917l-19.625 51.083q-2.9583 7.7916-6.9166 10.875-3.9166 3.125-10.375 3.125h-8.625v-9.7916h4.6666q3.7917 0 5.5-1.2083 1.75-1.2083 2.7083-4.3333l0.41666-1.2917z" fill="#fafafa"/>
+  </g>
+ </g>
+</svg>

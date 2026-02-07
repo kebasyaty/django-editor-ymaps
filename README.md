@@ -41,6 +41,12 @@
 
 [![Requirements](https://raw.githubusercontent.com/kebasyaty/django-editor-ymaps/v3/assets/links/requirements.svg "Requirements")](https://github.com/kebasyaty/django-editor-ymaps/blob/v3/REQUIREMENTS.md "Requirements")
 
+## Terms of use for the API
+
+[Terms of use for the Yandex.Maps](https://yandex.ru/dev/commercial/doc/en/ "Terms of use for the Yandex.Maps")
+
+[Get the API key](https://yandex.com/dev/jsapi-v2-1/doc/en/#get-api-key "Get the API key")
+
 ## Installation
 
 ```shell

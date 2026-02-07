@@ -50,6 +50,21 @@
 ## Installation
 
 ```shell
+# Install gettext:
+# https://docs.python.org/3/library/gettext.html
+# Ubuntu
+sudo apt install gettext
+# Fedora
+sudo dnf install gettext
+# MacOS
+brew install gettext
+brew link gettext --force
+# Windows
+# https://mlocati.github.io/articles/gettext-iconv-windows.html
+run: gettext0.25-iconv1.17-shared-64.exe
+
+# Install django-editor-ymaps:
+cd project-name
 pip install django-editor-ymaps
 # or
 uv add django-editor-ymaps

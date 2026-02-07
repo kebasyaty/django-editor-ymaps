@@ -1,6 +1,14 @@
+"""Export Icons.
+
+Hint:
+- --name - 'Icon Collection Name
+- --path - '/home/user_name/The path to the directory with icons'
+- python manage.py exporticons --name '' --path ''
+"""
+
 from __future__ import annotations
 
-import os
+from pathlib import Path
 
 from django.core.files import File
 from django.core.management import BaseCommand, CommandError
@@ -10,17 +18,13 @@ from slugify import slugify
 
 from djeym.models import IconCollection, MarkerIcon
 
-# --name - 'Icon Collection Name
-# --path - '/home/user_name/The path to the directory with icons'
-# python manage.py exporticons --name '' --path ''
 
-
-class Command(BaseCommand):
-    def add_arguments(self, parser):
+class Command(BaseCommand):  # noqa: D101
+    def add_arguments(self, parser):  # noqa: D102
         parser.add_argument("--name", type=str, default="")
         parser.add_argument("--path", type=str, default="")
 
-    def handle(self, *args, **options):
+    def handle(self, *args, **options):  # noqa: D102
         collection_name = options["name"]
         dir_path = options["path"]
 
@@ -28,7 +32,7 @@ class Command(BaseCommand):
             msg = _("Error - Collection name not specified. Parameter: --name")
             raise CommandError(msg)
 
-        if not os.path.isdir(dir_path):
+        if not Path(dir_path).is_dir():
             msg = _("Error - Specify a directory with icons. Parameter: --path")
             raise CommandError(msg)
 
@@ -37,17 +41,17 @@ class Command(BaseCommand):
             raise CommandError(msg.format(collection_name))
 
         collection = IconCollection.objects.create(title=collection_name)
-        icon_list = os.listdir(path=dir_path)
+        icon_list = Path(dir_path).iterdir()
 
         try:
             with transaction.atomic():
                 for icon in icon_list:
-                    icon_path = "{}/{}".format(dir_path, icon)
-                    with open(icon_path, mode="rb") as svg_file:
+                    icon_path = f"{dir_path}/{icon}"
+                    with Path(icon_path).open(mode="rb") as svg_file:
                         MarkerIcon.objects.create(
                             icon_collection=collection,
-                            title=os.path.splitext(icon)[0],
+                            title=Path(icon).suffix()[0],
                             svg=File(svg_file),
                         )
         except IntegrityError as err:
-            raise CommandError(err)
+            raise CommandError from err

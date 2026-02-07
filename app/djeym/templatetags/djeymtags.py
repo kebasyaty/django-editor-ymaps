@@ -1,3 +1,5 @@
+"""DjEYM Tags."""
+
 from __future__ import annotations
 
 from django import template
@@ -12,7 +14,6 @@ register = template.Library()
 @register.inclusion_tag("djeym/includes/ymaps_front.html")
 def djeym_yandex_map(slug, lang="en"):
     """Load the map to the front page."""
-
     ymap = Map.objects.filter(slug=slug, active=True).first()
     ctx = {"ymap": ymap}
     if ymap is not None:
@@ -32,8 +33,7 @@ def djeym_yandex_map(slug, lang="en"):
 
 @register.inclusion_tag("djeym/includes/api_ymaps.html")
 def djeym_load_api_ymaps(lang="en", ns="djeymYMaps"):
-    """Get URL for API Yandex Maps"""
-
+    """Get URL for API Yandex Maps."""
     api_version = "2.1"
     api_key = getattr(settings, "DJEYM_YMAPS_API_KEY", "")
     is_enterprise = getattr(settings, "DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE", False)

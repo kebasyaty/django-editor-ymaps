@@ -24,7 +24,10 @@ desktop.ini
 *.log
 *.ini
 *.pid
-media/
+
+# Ignore temporary media files
+/app/media/uploads/**
+!/app/media/uploads/.gitkeep
 
 # SQLite
 db.sqlite3

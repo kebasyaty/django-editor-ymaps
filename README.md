@@ -178,26 +178,21 @@ DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE = False
 - **Add to main URLs**
 
 ```python
-"""???"""
+"""Main URLs."""
 
-from django.contrib import admin
-from django.urls import path, include
 from django.conf import settings
+from django.contrib import admin
 from django.contrib.staticfiles.urls import static
+from django.urls import include, path
 
 urlpatterns = [
-    ...
-    path('admin/', admin.site.urls),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('djeym/', include('djeym.urls', namespace='djeym')),
-    ...
-] + static(
-    settings.STATIC_URL,
-    document_root=settings.STATIC_ROOT
-) + static(
-    settings.MEDIA_URL,
-    document_root=settings.MEDIA_ROOT
-)
+    path("admin/", admin.site.urls),
+    path("ckeditor/", include("ckeditor_uploader.urls")),
+    path("djeym/", include("djeym.urls", namespace="djeym")),
+    #
+    static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
+    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
+]
 ```
 
 <br>

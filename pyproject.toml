@@ -57,10 +57,10 @@ compile-bytecode = true
 check-url = "https://pypi.org/simple"
 
 [tool.uv.build-backend]
-module-root = "src"
+module-root = "app/djeym"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/django_editor_ymaps/djeym"]
+packages = ["app/djeym"]
 
 [build-system]
 requires = ["hatchling"]
@@ -94,8 +94,8 @@ types = []
 fix = true
 line-length = 120
 indent-width = 4
-src = ["src", "tests"]
-include = ["src/**/*.py", "tests/**/*.py"]
+src = ["app", "tests"]
+include = ["app/**/*.py", "tests/**/*.py"]
 exclude = [
     ".bzr",
     ".direnv",
@@ -205,8 +205,8 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 
 [tool.pyrefly]
-project-includes = ["src", "tests"]
-search-path = ["src", "tests"]
+project-includes = ["app", "tests"]
+search-path = ["app", "tests"]
 ignore-errors-in-generated-code = true
 untyped_def_behavior = "check-and-infer-return-any"
 

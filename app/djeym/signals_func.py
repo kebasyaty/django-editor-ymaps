@@ -1,3 +1,5 @@
+"""Signals Func."""
+
 from __future__ import annotations
 
 import json
@@ -68,17 +70,17 @@ def refresh_json_code(instance, **kwargs):
 
 
 def placemark_delete_statistics(instance, **kwargs):
-    """Placemark - Delete orphaned statistics"""
+    """Placemark - Delete orphaned statistics."""
     apps.get_model("djeym", "Statistics").objects.filter(obj_type="Point", obj_id=instance.pk).delete()
 
 
 def polyline_delete_statistics(instance, **kwargs):
-    """Polyline - Delete orphaned statistics"""
+    """Polyline - Delete orphaned statistics."""
     apps.get_model("djeym", "Statistics").objects.filter(obj_type="LineString", obj_id=instance.pk).delete()
 
 
 def polygon_delete_statistics(instance, **kwargs):
-    """Polygon - Delete orphaned statistics"""
+    """Polygon - Delete orphaned statistics."""
     apps.get_model("djeym", "Statistics").objects.filter(obj_type="Polygon", obj_id=instance.pk).delete()
 
 
@@ -93,7 +95,7 @@ def refresh_icon(instance, **kwargs):
 
 # Save all json settings
 def save_json_settings(json_settings, editor):
-    """Save all json settings"""
+    """Save all json settings."""
     generalSettings = editor["generalSettings"]
     mapControls = editor["mapControls"]
     heatmapSettings = editor["heatmapSettings"]
@@ -132,7 +134,7 @@ def save_json_settings(json_settings, editor):
         "isClusterize": generalSettings["controls"]["panel3_71"][0]["isActive"],
         "isIconContentLayout": generalSettings["controls"]["panel1_69"][3]["isActive"],
         "balloonContentLayout": generalSettings["controls"]["panel1_69"][2]["layout"],
-        "сategoryIcons": [icon for icon in categories["tabIcons"].values()],
+        "сategoryIcons": [icon for icon in categories["tabIcons"].values()],  # noqa: C416
         "multiple": categories["multiple"],
         "filters": categories["filters"],
         "imgBgPanel": generalSettings["controls"]["panel3_71"][3]["large"],
@@ -156,15 +158,15 @@ def save_json_settings(json_settings, editor):
 # Tile Sources - Add random subdomains. Add api key or access token.
 def random_domain(source, apikey):
     """Tile Sources - Add random subdomains. Add api key or access token."""
-    source = re.sub("\r?\n", "", source)
+    source = re.sub("\r?\n", "", source)  # noqa: RUF039
     count_elem = re.search(r"\[\[(.+)\]\]", source)
 
     if count_elem is not None:
-        count_elem = len(eval(count_elem.group(0))[0])
+        count_elem = len(eval(count_elem.group(0))[0])  # noqa: S307
 
     value = re.sub(
         r"\[(\[.+\])\]",
-        '" + \\1[ Math.round( Math.random() * {} ) ] + "'.format(int(count_elem) - 1),
+        f'" + \\1[ Math.round( Math.random() * {int(count_elem) - 1} ) ] + "',  # pyrefly: ignore[no-matching-overload]
         source,
     )
     if len(apikey) > 0:
@@ -178,7 +180,6 @@ def random_domain(source, apikey):
 
 def convert_all_settings_to_json(instance, **kwargs):
     """Converting and updating all settings of Maps to JSON."""
-
     class_name = instance.__class__.__name__
     is_map = class_name == "Map"
 
@@ -188,7 +189,7 @@ def convert_all_settings_to_json(instance, **kwargs):
         ymaps = apps.get_model("djeym", "Map").objects.all()
         if class_name == "MarkerIcon" and ymaps.filter(icon_collection=instance.icon_collection).count() == 0:
             return
-        elif (
+        if (
             class_name == "GeneralSettings"
             or class_name == "Preset"
             or class_name == "MapControls"
@@ -225,7 +226,7 @@ def convert_all_settings_to_json(instance, **kwargs):
                 continue
 
         # Get categories
-        if bool(re.search(r"Category", class_name)) or is_map:
+        if bool(re.search(r"Category", class_name)) or is_map:  # noqa: RUF055
             default_filters = {
                 "a": [],  # Categories of placemarks
                 "b": [],  # Subcategories of placemarks
@@ -270,7 +271,7 @@ def convert_all_settings_to_json(instance, **kwargs):
                 if bool(val):
                     lock = True
                     for item in val:
-                        categories["filters"][key].append(
+                        categories["filters"][key].append(  # pyrefly: ignore[bad-index]
                             {
                                 "id": item.pk,
                                 "title": item.title,
@@ -288,7 +289,7 @@ def convert_all_settings_to_json(instance, **kwargs):
             tile_list = [
                 {
                     "id": 0,
-                    "img": "{}djeym/img/default_tile.png".format(settings.STATIC_URL),
+                    "img": f"{settings.STATIC_URL}djeym/img/default_tile.png",
                     "title": "Default",
                     "maxZoom": 23,
                     "isActive": not bool(ymap.tile),
@@ -303,7 +304,7 @@ def convert_all_settings_to_json(instance, **kwargs):
                     "maxZoom": current_tile.maxzoom,
                     "minZoom": current_tile.minzoom,
                     "copyrights": current_tile.copyrights,
-                    "randomTileUrl": '"{}"'.format(random_domain(current_tile.source, current_tile.apikey)),
+                    "randomTileUrl": random_domain(current_tile.source, current_tile.apikey),
                 }
             tile_list.extend(
                 [
@@ -496,7 +497,7 @@ def convert_all_settings_to_json(instance, **kwargs):
         # Get settings for YMap and Cluster
         cluster = ymap.icon_cluster
         tmp_ymap = {
-            "mapCenter": json.loads("[{}, {}]".format(ymap.latitude, ymap.longitude)),
+            "mapCenter": json.loads(f"[{ymap.latitude}, {ymap.longitude}]"),
             "mapZoom": ymap.zoom,
             "cluster": {},
         }
@@ -504,7 +505,7 @@ def convert_all_settings_to_json(instance, **kwargs):
             tmp_ymap["cluster"] = {
                 "url": cluster.svg.url,
                 "size": [cluster.size_width, cluster.size_height],
-                "offset": json.loads("[{:f}, {:f}]".format(cluster.offset_x, cluster.offset_y)),
+                "offset": json.loads(f"[{cluster.offset_x:f}, {cluster.offset_y:f}]"),
             }
         editor["ymap"] = tmp_ymap
 

@@ -22,7 +22,7 @@
     {
       "label": "UV: Run Web App",
       "type": "shell",
-      "command": ["uv run python runserver app/manage.py --noreload"],
+      "command": ["uv run python app/manage.py runserver --noreload"],
       "problemMatcher": []
     },
     {

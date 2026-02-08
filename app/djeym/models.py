@@ -12,7 +12,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from colorful.fields import RGBColorField
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models.signals import m2m_changed, post_delete, post_save, pre_delete, pre_save
+from django.db.models.signals import m2m_changed, post_delete, post_save, pre_delete
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.safestring import mark_safe
@@ -48,8 +48,6 @@ from .signals_func import (
     refresh_json_code,
 )
 from .utils import (
-    cleaning_files_pre_delete,
-    cleaning_files_pre_save,
     heatpoint_update_json_code,
     make_upload_path,
     placemark_update_json_code,
@@ -57,7 +55,6 @@ from .utils import (
     polyline_update_json_code,
     validate_coordinates,
     validate_image,
-    validate_svg,
     validate_transparency,
 )
 
@@ -1336,7 +1333,6 @@ class ClusterIcon(models.Model):
     svg = models.FileField(
         _("Icon"),
         upload_to=make_upload_path,
-        validators=[validate_svg],
         null=True,
         help_text=_("Only SVG files."),
     )
@@ -1466,7 +1462,6 @@ class MarkerIcon(models.Model):
     svg = models.FileField(
         _("Icon"),
         upload_to=make_upload_path,
-        validators=[validate_svg],
         null=True,
         help_text=_("Only SVG files."),
     )
@@ -1565,7 +1560,7 @@ class MarkerIcon(models.Model):
 class LoadIndicator(models.Model):
     """Load Indicator."""
 
-    svg = models.FileField(_("Icon"), upload_to=make_upload_path, validators=[validate_svg], null=True)
+    svg = models.FileField(_("Icon"), upload_to=make_upload_path, null=True)
 
     title = models.CharField(_("Title"), unique=True, max_length=60, default="")
 
@@ -1671,24 +1666,6 @@ m2m_changed.connect(refresh_json_code, sender=Placemark.subcategories.through)
 m2m_changed.connect(refresh_json_code, sender=Polyline.subcategories.through)
 m2m_changed.connect(refresh_json_code, sender=Polygon.subcategories.through)
 
-# Clean old icons.
-pre_save.connect(cleaning_files_pre_save, sender=ClusterIcon)
-pre_delete.connect(cleaning_files_pre_delete, sender=ClusterIcon)
-pre_save.connect(cleaning_files_pre_save, sender=MarkerIcon)
-pre_delete.connect(cleaning_files_pre_delete, sender=MarkerIcon)
-pre_save.connect(cleaning_files_pre_save, sender=LoadIndicator)
-pre_delete.connect(cleaning_files_pre_delete, sender=LoadIndicator)
-
-# Clean old screenshots.
-pre_save.connect(cleaning_files_pre_save, sender=TileSource)
-pre_delete.connect(cleaning_files_pre_delete, sender=TileSource)
-
-# Clean old image for background panel.
-pre_save.connect(cleaning_files_pre_save, sender=GeneralSettings)
-pre_delete.connect(cleaning_files_pre_delete, sender=GeneralSettings)
-
-# Delete orphaned image from user.
-pre_delete.connect(cleaning_files_pre_delete, sender=Placemark)
 
 # Delete orphaned presets.
 pre_delete.connect(placemark_delete_statistics, sender=Placemark)

@@ -179,6 +179,8 @@ ignore = [
     "EM101",  # Exception must not use a string literal, assign to variable first
     "EM102",  # Exception must not use an f-string literal, assign to variable first
     "ARG002", # Unused method argument
+    "RUF012",
+    "E501",
 ]
 fixable = ["I"]
 unfixable = [

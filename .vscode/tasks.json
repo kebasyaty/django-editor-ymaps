@@ -22,9 +22,7 @@
     {
       "label": "UV: Run Web App",
       "type": "shell",
-      "command": [
-        "uv run python runserver src/django_editor_ymaps/manage.py --noreload"
-      ],
+      "command": ["uv run python runserver app/manage.py --noreload"],
       "problemMatcher": []
     },
     {

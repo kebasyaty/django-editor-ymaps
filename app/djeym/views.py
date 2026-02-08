@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import base64
 import copy
 import io
@@ -106,7 +107,7 @@ class AjaxBalloonContent(View):
         pk = request.GET.get("objID")
         obj_type = request.GET.get("objType")
         ids = request.GET.get("ids")
-        is_presets = eval(request.GET.get("isPresets"))  # noqa: S307
+        is_presets = ast.literal_eval(request.GET.get("isPresets"))
         presets = []
         sign_loading = '<div id="djeymSignLoaded"></div>'
 
@@ -575,7 +576,7 @@ class AjaxUpdateLoadIndicator(View):
         ymap.load_indicator = LoadIndicator.objects.filter(slug=slug).first()
         ymap.load_indicator_size = size
         ymap.animation_speed = speed
-        ymap.disable_indicator_animation = eval(animation)  # noqa: S307
+        ymap.disable_indicator_animation = ast.literal_eval(animation)
         ymap.save()
 
         response_data = {"successfully": True}

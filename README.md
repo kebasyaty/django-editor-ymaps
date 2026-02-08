@@ -189,10 +189,14 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("ckeditor/", include("ckeditor_uploader.urls")),
     path("djeym/", include("djeym.urls", namespace="djeym")),
-    #
-    static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
-    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
+
+if settings.DEBUG:
+    (
+        urlpatterns
+        + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+        + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    )
 ```
 
 - **Add media directory to your project:** `media/uploads`.

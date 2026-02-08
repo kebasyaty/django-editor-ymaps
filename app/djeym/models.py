@@ -1,3 +1,5 @@
+"""Models."""
+
 from __future__ import annotations
 
 import json
@@ -61,7 +63,7 @@ from .utils import (
 
 
 class JsonSettings(models.Model):
-    """All settings in json format"""
+    """All settings in json format."""
 
     ymap = models.OneToOneField(
         "Map",
@@ -75,12 +77,12 @@ class JsonSettings(models.Model):
 
     front = models.TextField("All settings for front page", default="{}")
 
-    def __str__(self):
+    def __str__(self):  # noqa: D105
         return "Json Settings"
 
 
 class TileSource(models.Model):
-    """Source tile layer"""
+    """Source tile layer."""
 
     title = models.CharField(_("Title"), max_length=255, unique=True, default="")
 
@@ -116,32 +118,31 @@ class TileSource(models.Model):
     middle = ImageSpecField(source="screenshot", processors=[ResizeToFill(360, 180, upscale=True)])
 
     @property
-    def upload_dir(self):
+    def upload_dir(self):  # noqa: D102
         return "djeym/tile_screenshot"
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("title",)
         verbose_name = _("Tile Source")
         verbose_name_plural = _("Tile Sources")
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify("{}".format(self.title))
+    def save(self, *args, **kwargs):  # noqa: D102
+        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
-    def admin_thumbnail(self):
+    def admin_thumbnail(self):  # noqa: D102
         if bool(self.screenshot):
-            return mark_safe('<img src="{}" height="{}" alt="Screenshot">'.format(self.screenshot.url, 40))
-        else:
-            return ""
+            return mark_safe(f'<img src="{self.screenshot.url}" height="40" alt="Screenshot">')  # noqa: S308
+        return ""
 
     admin_thumbnail.short_description = _("Screenshot")
 
 
 class MapControls(models.Model):
-    """Map Controls"""
+    """Map Controls."""
 
     ymap = models.OneToOneField(
         "Map",
@@ -161,10 +162,10 @@ class MapControls(models.Model):
     zoom = models.BooleanField(_("Zoom"), default=True)
     ruler = models.BooleanField(_("Ruler"), default=True)
 
-    def __str__(self):
+    def __str__(self):  # noqa: D105
         return "{}".format(_("Map Controls"))
 
-    class Meta:
+    class Meta:  # noqa: D106
         verbose_name_plural = _("Map Controls")
 
     def get_active_control_list(self):
@@ -183,7 +184,7 @@ class MapControls(models.Model):
 
 
 class HeatmapSettings(models.Model):
-    """Heatmap settings"""
+    """Heatmap settings."""
 
     ymap = models.OneToOneField(
         "Map",
@@ -243,16 +244,16 @@ class HeatmapSettings(models.Model):
 
     active = models.BooleanField(_("Active Heatmap ?"), default=False)
 
-    def __str__(self):
+    def __str__(self):  # noqa: D105
         return "{}".format(_("Settings"))
 
-    class Meta:
+    class Meta:  # noqa: D106
         verbose_name = ngettext_lazy("Heatmap", "Heat maps", 1)
         verbose_name_plural = ngettext_lazy("Heatmap", "Heat maps", 1)
 
 
 class Preset(models.Model):
-    """Preset custom solution"""
+    """Preset custom solution."""
 
     ymap = models.ForeignKey(
         "Map",
@@ -294,29 +295,29 @@ class Preset(models.Model):
 
     slug = models.SlugField(max_length=255, blank=True, null=True)
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("position",)
         verbose_name = _("Preset")
         verbose_name_plural = _("Presets")
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify("{}".format(self.title))
-        if re.match(r"mdi-", self.icon) is None:
-            self.icon = "mdi-{}".format(self.icon)
+    def save(self, *args, **kwargs):  # noqa: D102
+        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
+        if re.match(r"mdi-", self.icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
+            self.icon = f"mdi-{self.icon}"  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
-    def clean(self):
+    def clean(self):  # noqa: D102
         ymap = self.ymap
-        raw_slug = slugify("{}".format(self.title))
+        raw_slug = slugify(str(self.title))
         if not bool(self.pk) and Preset.objects.filter(ymap=ymap, slug=raw_slug).count() > 0:
             raise ValidationError({"title": _("A preset with this name already exists for this map.")})
 
 
 class GeneralSettings(models.Model):
-    """General map settings"""
+    """General map settings."""
 
     ymap = models.OneToOneField(
         "Map",
@@ -337,7 +338,10 @@ class GeneralSettings(models.Model):
         default="cluster#balloonTwoColumns",
     )
 
-    cluster_icon_content = models.BooleanField("Display the number of objects in the cluster icon", default=True)
+    cluster_icon_content = models.BooleanField(
+        "Display the number of objects in the cluster icon",
+        default=True,
+    )
 
     cluster_icon_content_bg_color = RGBColorField(
         "Background color",
@@ -387,13 +391,28 @@ class GeneralSettings(models.Model):
         null=True,
     )
 
-    tinting_panel_front = models.CharField("Background under controls of panel", max_length=9, default="#00000000")
+    tinting_panel_front = models.CharField(
+        "Background under controls of panel",
+        max_length=9,
+        default="#00000000",
+    )
 
-    hide_group_name_panel_front = models.BooleanField("Hide group names (Categories, Subcategories)", default=False)
+    hide_group_name_panel_front = models.BooleanField(
+        "Hide group names (Categories, Subcategories)",
+        default=False,
+    )
 
-    width_map_front = models.CharField("Width of Map for Front page", max_length=255, default="100%")
+    width_map_front = models.CharField(
+        "Width of Map for Front page",
+        max_length=255,
+        default="100%",
+    )
 
-    height_map_front = models.CharField("Height of Map for Front page", max_length=255, default="600px")
+    height_map_front = models.CharField(
+        "Height of Map for Front page",
+        max_length=255,
+        default="600px",
+    )
 
     img_bg_panel_front_thumb = ImageSpecField(
         source="img_bg_panel_front",
@@ -409,17 +428,17 @@ class GeneralSettings(models.Model):
     )
 
     @property
-    def upload_dir(self):
+    def upload_dir(self):  # noqa: D102
         return "djeym/general_settings"
 
-    def __str__(self):
+    def __str__(self):  # noqa: D105
         return "Settings"
 
-    class Meta:
+    class Meta:  # noqa: D106
         verbose_name = "General settings"
         verbose_name_plural = "General settings"
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):  # noqa: D102
         colors_with_alpha = ["tinting_panel_front"]
         for color_name in colors_with_alpha:
             color = getattr(self, color_name)
@@ -428,13 +447,13 @@ class GeneralSettings(models.Model):
                 color += "FF"
             elif len_txt_color == 4:
                 clean_hex = color.replace("#", "")
-                color = "#{}FF".format(clean_hex * 2)
+                color = f"#{clean_hex * 2}FF"
             setattr(self, color_name, color)
         super().save(*args, **kwargs)
 
 
 class Map(models.Model):
-    """Create a map"""
+    """Create a map."""
 
     title = models.CharField(
         _("Title"),
@@ -529,15 +548,15 @@ class Map(models.Model):
 
     demo_categories = models.BooleanField("Add one-time categories", blank=True, default=True, editable=False)
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("title",)
         verbose_name = ngettext_lazy("Map", "Map", 5)
         verbose_name_plural = ngettext_lazy("Map", "Map", 2)
 
-    def clean(self):
+    def clean(self):  # noqa: D102
         # We check the presence in the collection of at least one active icon.
         # (Проверяем наличие в коллекции хотя бы одной активной иконки.)
         if bool(self.icon_collection) and self.icon_collection.icons.filter(active=True).count() == 0:
@@ -545,15 +564,15 @@ class Map(models.Model):
             raise ValidationError({"icon_collection": msg})
         # Coordinate check
         pattern = re.compile(r"^-?\d+(\.\d+)?$")
-        if pattern.match(self.latitude) is None:
+        if pattern.match(self.latitude) is None:  # pyrefly: ignore[no-matching-overload]
             msg = _("Invalid value.")
             raise ValidationError({"latitude": msg})
-        if pattern.match(self.longitude) is None:
+        if pattern.match(self.longitude) is None:  # pyrefly: ignore[no-matching-overload]
             msg = _("Invalid value.")
             raise ValidationError({"longitude": msg})
 
     @staticmethod
-    def create_preset(ymap, raw_preset):
+    def create_preset(ymap, raw_preset):  # noqa: D102
         Preset.objects.create(
             ymap=ymap,
             position=raw_preset["position"],
@@ -564,14 +583,14 @@ class Map(models.Model):
             description=raw_preset["description"],
         )
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # noqa: D107
         super().__init__(*args, **kwargs)
         self.__icon_collection = self.icon_collection
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify("{}".format(self.title))
-        self.latitude = "{}".format(round(float(self.latitude), 6))
-        self.longitude = "{}".format(round(float(self.longitude), 6))
+    def save(self, *args, **kwargs):  # noqa: D102
+        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
+        self.latitude = str(round(float(self.latitude), 6))  # pyrefly: ignore[bad-assignment, bad-argument-type]
+        self.longitude = str(round(float(self.longitude), 6))  # pyrefly: ignore[bad-assignment, bad-argument-type]
         super().save(*args, **kwargs)
         if not hasattr(self, "map_controls"):
             MapControls.objects.create(ymap=self)
@@ -612,60 +631,61 @@ class Map(models.Model):
                 category_icon="mdi-help",
                 category_color="#00C853",
             )
-            self.demo_categories = False
+            self.demo_categories = False  # pyrefly: ignore[bad-assignment]
             self.save()
         if self.__icon_collection != self.icon_collection:
             placemarks = Placemark.objects.filter(ymap=self)
             for placemark in placemarks:
                 placemark.save()
 
-    def get_cluster(self):
+    def get_cluster(self):  # noqa: D102
         if bool(self.icon_cluster):
-            return mark_safe('<img src="{}" height="{}" alt="Cluster Icon">'.format(self.icon_cluster.svg.url, 40))
-        else:
-            return ""
+            return mark_safe(  # noqa: S308
+                f'<img src="{self.icon_cluster.svg.url}" height="40" alt="Cluster Icon">',
+            )
+        return ""
 
     get_cluster.short_description = _("Cluster")
 
-    def get_icon_collection(self):
+    def get_icon_collection(self):  # noqa: D102
         icon = MarkerIcon.objects.filter(icon_collection=self.icon_collection).first()
         if icon is not None:
-            return mark_safe('<img src="{}" height="{}" alt="Icon">'.format(icon.svg.url, 40))
-        else:
-            return ""
+            return mark_safe(f'<img src="{icon.svg.url}" height="40" alt="Icon">')  # noqa: S308
+        return ""
 
     get_icon_collection.short_description = _("Collection")
 
-    def get_tile_screenshot(self):
+    def get_tile_screenshot(self):  # noqa: D102
         screenshot = "/static/djeym/img/default_tile.png"
         if bool(self.tile):
             screenshot = self.tile.screenshot.url
-        return mark_safe('<img src="{}" height="40" alt="Screenshot">'.format(screenshot))
+        return mark_safe(f'<img src="{screenshot}" height="40" alt="Screenshot">')  # noqa: S308
 
     get_tile_screenshot.short_description = _("Tile")
 
-    def get_status_heatmap(self):
+    def get_status_heatmap(self):  # noqa: D102
         icon = "cold_fire.svg"
         if hasattr(self, "heatmap_settings") and self.heatmap_settings.active:
             icon = "hot_fire.svg"
-        return mark_safe('<img src="/static/djeym/img/{}" height="40" alt="Icon">'.format(icon))
+        return mark_safe(f'<img src="/static/djeym/img/{icon}" height="40" alt="Icon">')  # noqa: S308
 
     get_status_heatmap.short_description = ngettext_lazy("Heatmap", "Heat maps", 1)
 
-    def get_load_indicator(self):
+    def get_load_indicator(self):  # noqa: D102
         if bool(self.load_indicator):
-            return mark_safe('<img src="{}" height="{}" alt="Icon">'.format(self.load_indicator.svg.url, 40))
-        else:
-            return ""
+            return mark_safe(  # noqa: S308
+                f'<img src="{self.load_indicator.svg.url}" height="40" alt="Icon">',
+            )
+        return ""
 
     get_load_indicator.short_description = _("Indicator")
 
-    def get_absolute_url(self):
+    def get_absolute_url(self):  # noqa: D102
         return reverse("djeym:ymap_editor", args=(self.slug,))
 
 
 class CategoryPlacemark(SortableMixin):
-    """Category of Placemark"""
+    """Category of Placemark."""
 
     ymap = SortableForeignKey(
         Map,
@@ -696,20 +716,20 @@ class CategoryPlacemark(SortableMixin):
     position = models.PositiveIntegerField(default=0, editable=False, db_index=True)
     active = models.BooleanField(_("Active category ?"), default=True)
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("position",)
         verbose_name = ngettext_lazy("-Category of marker", "-Category of markers", 1)
         verbose_name_plural = ngettext_lazy("-Category of marker", "-Category of markers", 2)
 
-    def save(self, *args, **kwargs):
-        if re.match(r"mdi-", self.category_icon) is None:
-            self.category_icon = "mdi-{}".format(self.category_icon)
+    def save(self, *args, **kwargs):  # noqa: D102
+        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
+            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
-    def clean(self):
+    def clean(self):  # noqa: D102
         count_category = CategoryPlacemark.objects.filter(ymap=self.ymap, title=self.title).count()
         if not bool(self.pk) and count_category > 0:
             msg = _("A category with this name already exists for the selected map.")
@@ -717,7 +737,7 @@ class CategoryPlacemark(SortableMixin):
 
 
 class SubCategoryPlacemark(SortableMixin):
-    """Subcategory of Placemark"""
+    """Subcategory of Placemark."""
 
     ymap = SortableForeignKey(
         Map,
@@ -749,20 +769,20 @@ class SubCategoryPlacemark(SortableMixin):
     position = models.PositiveIntegerField(default=0, editable=False, db_index=True)
     active = models.BooleanField(_("Active category ?"), default=True)
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("position",)
         verbose_name = ngettext_lazy("_Subcategory of marker", "_Subcategory of markers", 1)
         verbose_name_plural = ngettext_lazy("_Subcategory of marker", "_Subcategory of markers", 2)
 
-    def save(self, *args, **kwargs):
-        if re.match(r"mdi-", self.category_icon) is None:
-            self.category_icon = "mdi-{}".format(self.category_icon)
+    def save(self, *args, **kwargs):  # noqa: D102
+        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
+            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
-    def clean(self):
+    def clean(self):  # noqa: D102
         count_category = SubCategoryPlacemark.objects.filter(ymap=self.ymap, title=self.title).count()
         if not bool(self.pk) and count_category > 0:
             msg = _("A subcategory with this name already exists for the selected map.")
@@ -770,7 +790,7 @@ class SubCategoryPlacemark(SortableMixin):
 
 
 class CategoryPolyline(SortableMixin):
-    """Category of Route"""
+    """Category of Route."""
 
     ymap = SortableForeignKey(
         Map,
@@ -794,20 +814,20 @@ class CategoryPolyline(SortableMixin):
     position = models.PositiveIntegerField(default=0, editable=False, db_index=True)
     active = models.BooleanField(_("Active category ?"), default=True)
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("position",)
         verbose_name = ngettext_lazy("-Category of route", "-Category of routes", 1)
         verbose_name_plural = ngettext_lazy("-Category of route", "-Category of routes", 2)
 
-    def save(self, *args, **kwargs):
-        if re.match(r"mdi-", self.category_icon) is None:
-            self.category_icon = "mdi-{}".format(self.category_icon)
+    def save(self, *args, **kwargs):  # noqa: D102
+        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
+            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
-    def clean(self):
+    def clean(self):  # noqa: D102
         count_category = CategoryPolyline.objects.filter(ymap=self.ymap, title=self.title).count()
         if not bool(self.pk) and count_category > 0:
             msg = _("A category with this name already exists for the selected map.")
@@ -815,7 +835,7 @@ class CategoryPolyline(SortableMixin):
 
 
 class SubCategoryPolyline(SortableMixin):
-    """Subcategory of Polyline"""
+    """Subcategory of Polyline."""
 
     ymap = SortableForeignKey(
         Map,
@@ -843,20 +863,20 @@ class SubCategoryPolyline(SortableMixin):
     position = models.PositiveIntegerField(default=0, editable=False, db_index=True)
     active = models.BooleanField(_("Active category ?"), default=True)
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("position",)
         verbose_name = ngettext_lazy("_Subcategory of route", "_Subcategory of routes", 1)
         verbose_name_plural = ngettext_lazy("_Subcategory of route", "_Subcategory of routes", 2)
 
-    def save(self, *args, **kwargs):
-        if re.match(r"mdi-", self.category_icon) is None:
-            self.category_icon = "mdi-{}".format(self.category_icon)
+    def save(self, *args, **kwargs):  # noqa: D102
+        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
+            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
-    def clean(self):
+    def clean(self):  # noqa: D102
         count_category = SubCategoryPolyline.objects.filter(ymap=self.ymap, title=self.title).count()
         if not bool(self.pk) and count_category > 0:
             msg = _("A subcategory with this name already exists for the selected map.")
@@ -864,7 +884,7 @@ class SubCategoryPolyline(SortableMixin):
 
 
 class CategoryPolygon(SortableMixin):
-    """Category of Polygon"""
+    """Category of Polygon."""
 
     ymap = SortableForeignKey(
         Map,
@@ -896,20 +916,20 @@ class CategoryPolygon(SortableMixin):
     position = models.PositiveIntegerField(default=0, editable=False, db_index=True)
     active = models.BooleanField(_("Active category ?"), default=True)
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("position",)
         verbose_name = ngettext_lazy("-Category of territory", "-Category of territories", 1)
         verbose_name_plural = ngettext_lazy("-Category of territory", "-Category of territories", 2)
 
-    def save(self, *args, **kwargs):
-        if re.match(r"mdi-", self.category_icon) is None:
-            self.category_icon = "mdi-{}".format(self.category_icon)
+    def save(self, *args, **kwargs):  # noqa: D102
+        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
+            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
-    def clean(self):
+    def clean(self):  # noqa: D102
         count_category = CategoryPolygon.objects.filter(ymap=self.ymap, title=self.title).count()
         if not bool(self.pk) and count_category > 0:
             msg = _("A category with this name already exists for the selected map.")
@@ -917,7 +937,7 @@ class CategoryPolygon(SortableMixin):
 
 
 class SubCategoryPolygon(SortableMixin):
-    """Subcategory of Polygon"""
+    """Subcategory of Polygon."""
 
     ymap = SortableForeignKey(
         Map,
@@ -945,20 +965,20 @@ class SubCategoryPolygon(SortableMixin):
     position = models.PositiveIntegerField(default=0, editable=False, db_index=True)
     active = models.BooleanField(_("Active category ?"), default=True)
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("position",)
         verbose_name = ngettext_lazy("_Subcategory of territory", "_Subcategory of territories", 1)
         verbose_name_plural = ngettext_lazy("_Subcategory of territory", "_Subcategory of territories", 2)
 
-    def save(self, *args, **kwargs):
-        if re.match(r"mdi-", self.category_icon) is None:
-            self.category_icon = "mdi-{}".format(self.category_icon)
+    def save(self, *args, **kwargs):  # noqa: D102
+        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
+            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
-    def clean(self):
+    def clean(self):  # noqa: D102
         count_category = SubCategoryPolygon.objects.filter(ymap=self.ymap, title=self.title).count()
         if not bool(self.pk) and count_category > 0:
             msg = _("A subcategory with this name already exists for the selected map.")
@@ -966,7 +986,7 @@ class SubCategoryPolygon(SortableMixin):
 
 
 class Placemark(models.Model):
-    """Placemark"""
+    """Placemark."""
 
     ymap = models.ForeignKey(
         Map,
@@ -1038,7 +1058,7 @@ class Placemark(models.Model):
     json_code = models.TextField(_("JSON"), blank=True, default=json.dumps(FEATURE_POINT), editable=False)
 
     created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
-    created_at = models.DateTimeField(_("Updated at"), auto_now=True)
+    updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
     is_created = models.BooleanField("Is created ?", default=False, editable=False)
 
@@ -1049,20 +1069,24 @@ class Placemark(models.Model):
     user_image_q40 = ImageSpecField(source="user_image", format="JPEG", options={"quality": 40})
 
     @property
-    def upload_dir(self):
+    def upload_dir(self):  # noqa: D102
         return "djeym/user_images"
 
-    def __str__(self):
-        return mark_safe("{}".format(re.sub(r"<.*?>", "", self.header)[:60]))
+    def __str__(self):  # noqa: D105
+        return mark_safe(re.sub(r"<.*?>", "", self.header)[:60])  # noqa: S308 # pyrefly: ignore[no-matching-overload]
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("-id",)
         verbose_name = _("Marker")
         verbose_name_plural = _("Markers")
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):  # noqa: D102
         # Rounding coordinates through regex.
-        self.coordinates = re.sub(r"\d*\.\d+", lambda match: "{:.6f}".format(float(match.group())), self.coordinates)
+        self.coordinates = re.sub(  # pyrefly: ignore[no-matching-overload]
+            r"\d*\.\d+",
+            lambda match: "{:.6f}".format(float(match.group())),  # noqa: UP032
+            self.coordinates,
+        )
         # Run create json_code.
         if self.is_created:
             self.json_code = placemark_update_json_code(self)
@@ -1070,22 +1094,23 @@ class Placemark(models.Model):
         if not self.is_created:
             if bool(self.user_image):
                 pattern = re.compile(r"<.*?>")
-                self.header = "<p>{}</p>".format(pattern.sub("", self.header))
-                self.body = '<img src="{}" width="322px" alt=""><p>{}</p>'.format(
-                    self.user_image_q40.url,
-                    pattern.sub("", self.body),
+                self.header = (
+                    f"<p>{pattern.sub('', self.header)}</p>"  # pyrefly: ignore[bad-assignment, no-matching-overload]
+                )
+                self.body = (
+                    '<img src="{self.user_image_q40.url,}" width="322px" alt=""><p>{pattern.sub("", self.body)}</p>'  # noqa: E501, RUF100 # pyrefly: ignore[bad-assignment]
                 )
             else:
                 if self.is_user_marker:
                     pattern = re.compile(r"<.*?>")
-                    self.header = "<p>{}</p>".format(pattern.sub("", self.header))
-                    self.body = "<p>{}</p>".format(pattern.sub("", self.body))
-            self.is_created = True
+                    self.header = f"<p>{pattern.sub('', self.header)}</p>"  # pyrefly: ignore[bad-assignment, no-matching-overload]  # noqa: E261, E501, RUF100
+                    self.body = f"<p>{pattern.sub('', self.body)}</p>"  # pyrefly: ignore[bad-assignment, no-matching-overload]  # noqa: E261, E501, RUF100
+            self.is_created = True  # pyrefly: ignore[bad-assignment]
             self.save()
 
 
 class Polyline(models.Model):
-    """Polyline"""
+    """Polyline."""
 
     ymap = models.ForeignKey(
         Map,
@@ -1139,28 +1164,28 @@ class Polyline(models.Model):
 
     is_created = models.BooleanField("Is created ?", default=False, editable=False)
 
-    def __str__(self):
-        return mark_safe("{}".format(re.sub(r"<.*?>", "", self.header)[:60]))
+    def __str__(self):  # noqa: D105
+        return mark_safe(re.sub(r"<.*?>", "", self.header)[:60])  # noqa: S308 # pyrefly: ignore[no-matching-overload]
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("-id",)
         verbose_name = _("Route")
         verbose_name_plural = _("Routes")
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):  # noqa: D102
         # Rounding coordinates through regex.
-        self.coordinates = re.sub(r"\d*\.\d+", lambda match: "{:.6f}".format(float(match.group())), self.coordinates)
+        self.coordinates = re.sub(r"\d*\.\d+", lambda match: "{:.6f}".format(float(match.group())), self.coordinates)  # noqa: UP032 # pyrefly: ignore[no-matching-overload]
         # Run create json_code.
         if self.is_created:
             self.json_code = polyline_update_json_code(self)
         super().save(*args, **kwargs)
         if not self.is_created:
-            self.is_created = True
+            self.is_created = True  # pyrefly: ignore[bad-assignment]
             self.save()
 
 
 class Polygon(models.Model):
-    """Polygon"""
+    """Polygon."""
 
     ymap = models.ForeignKey(
         Map,
@@ -1224,28 +1249,28 @@ class Polygon(models.Model):
 
     is_created = models.BooleanField("Is created ?", default=False, editable=False)
 
-    def __str__(self):
-        return mark_safe("{}".format(re.sub(r"<.*?>", "", self.header)[:60]))
+    def __str__(self):  # noqa: D105
+        return mark_safe(re.sub(r"<.*?>", "", self.header)[:60])  # noqa: S308 # pyrefly: ignore[no-matching-overload]
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("-id",)
         verbose_name = ngettext_lazy("Territory", "Territorys", 5)
         verbose_name_plural = ngettext_lazy("Territory", "Territorys", 2)
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):  # noqa: D102
         # Rounding coordinates through regex.
-        self.coordinates = re.sub(r"\d*\.\d+", lambda match: "{:.6f}".format(float(match.group())), self.coordinates)
+        self.coordinates = re.sub(r"\d*\.\d+", lambda match: "{:.6f}".format(float(match.group())), self.coordinates)  # noqa: UP032 # pyrefly: ignore[no-matching-overload]
         # Run create json_code.
         if self.is_created:
             self.json_code = polygon_update_json_code(self)
         super().save(*args, **kwargs)
         if not self.is_created:
-            self.is_created = True
+            self.is_created = True  # pyrefly: ignore[bad-assignment]
             self.save()
 
 
 class HeatPoint(models.Model):
-    """Heat Point"""
+    """Heat Point."""
 
     ymap = models.ForeignKey(
         Map,
@@ -1275,32 +1300,38 @@ class HeatPoint(models.Model):
 
     is_created = models.BooleanField("Is created ?", default=False, editable=False)
 
-    def __str__(self):
-        return mark_safe("{}".format(re.sub(r"<.*?>", "", self.title)[:60]))
+    def __str__(self):  # noqa: D105
+        return mark_safe(re.sub(r"<.*?>", "", self.title)[:60])  # noqa: S308 # pyrefly: ignore[no-matching-overload]
 
-    class Meta:
+    class Meta:  # noqa: D106
         verbose_name = ngettext_lazy("Heat Point", "Heat points", 5)
         verbose_name_plural = ngettext_lazy("Heat Point", "Heat points", 2)
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):  # noqa: D102
         if bool(self.pk):
-            if len(self.title) == 0:
-                self.title = "point {}".format(self.pk)
+            if len(self.title) == 0:  # pyrefly: ignore[bad-argument-type]
+                self.title = f"point {self.pk}"  # pyrefly: ignore[bad-assignment]
             title = self.title
-            self.slug = slugify("{}-{}".format(re.sub(r"-*\d+$", "", title), self.pk))
+            self.slug = slugify(  # pyrefly: ignore[bad-assignment]
+                f"{re.sub(r'-*\d+$', '', title)}-{self.pk}",  # pyrefly: ignore[no-matching-overload]
+            )
         # Rounding coordinates through regex.
-        self.coordinates = re.sub(r"\d*\.\d+", lambda match: "{:.6f}".format(float(match.group())), self.coordinates)
+        self.coordinates = re.sub(  # pyrefly: ignore[no-matching-overload]
+            r"\d*\.\d+",
+            lambda match: "{:.6f}".format(float(match.group())),  # noqa: UP032
+            self.coordinates,
+        )
         # Run create json_code.
         if self.is_created:
             self.json_code = heatpoint_update_json_code(self)
         super().save(*args, **kwargs)
         if not self.is_created:
-            self.is_created = True
+            self.is_created = True  # pyrefly: ignore[bad-assignment]
             self.save()
 
 
 class ClusterIcon(models.Model):
-    """Icon for cluster"""
+    """Icon for cluster."""
 
     svg = models.FileField(
         _("Icon"),
@@ -1326,43 +1357,42 @@ class ClusterIcon(models.Model):
     offset_y = models.DecimalField(_("Offset by axis - Y"), max_digits=3, decimal_places=1, default=Decimal(".0"))
 
     @property
-    def upload_dir(self):
+    def upload_dir(self):  # noqa: D102
         return "djeym/cluster_icons"
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    def admin_thumbnail(self):
+    def admin_thumbnail(self):  # noqa: D102
         if bool(self.svg):
-            return mark_safe('<img src="{}" height="{}" alt="Icon">'.format(self.svg.url, 40))
-        else:
-            return ""
+            return mark_safe(f'<img src="{self.svg.url}" height="40" alt="Icon">')  # noqa: S308
+        return ""
 
     admin_thumbnail.short_description = _("Icon")
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("title", "id")
         verbose_name = ngettext_lazy("Icon for cluster", "Icons for clusters", 5)
         verbose_name_plural = ngettext_lazy("Icon for cluster", "Icons for clusters", 2)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # noqa: D107
         super().__init__(*args, **kwargs)
         self.__old_image = self.svg
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):  # noqa: D102
         old_image = self.__old_image
         new_image = self.svg
         if not bool(old_image) or (bool(old_image) and bool(new_image) and old_image.name != new_image.name):
             self.__old_image = new_image
-            self.size_width = 0
-            self.size_height = 0
-            self.offset_x = Decimal(".0")
-            self.offset_y = Decimal(".0")
+            self.size_width = 0  # pyrefly: ignore[bad-assignment]
+            self.size_height = 0  # pyrefly: ignore[bad-assignment]
+            self.offset_x = Decimal(".0")  # pyrefly: ignore[bad-assignment]
+            self.offset_y = Decimal(".0")  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
 
 class IconCollection(models.Model):
-    """Icon collection"""
+    """Icon collection."""
 
     title = models.CharField(
         _("Collection name"),
@@ -1374,11 +1404,11 @@ class IconCollection(models.Model):
 
     slug = models.SlugField(unique=True, max_length=255, blank=True, null=True)
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    def clean(self):
-        slug = slugify("{}".format(self.title))
+    def clean(self):  # noqa: D102
+        slug = slugify(str(self.title))
 
         if bool(self.pk):
             slug_in_db = IconCollection.objects.get(pk=self.pk).slug
@@ -1387,37 +1417,36 @@ class IconCollection(models.Model):
                 msg = _("You cannot change the title, if the collection is tied to a map.")
                 raise ValidationError({"title": msg})
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify("{}".format(self.title))
+    def save(self, *args, **kwargs):  # noqa: D102
+        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
-    def admin_thumbnail(self):
+    def admin_thumbnail(self):  # noqa: D102
         icon = self.icons.all().first()
         if icon is not None:
-            return mark_safe('<img src="{}" height="{}" alt="Icon">'.format(icon.svg.url, 40))
-        else:
-            return ""
+            return mark_safe(f'<img src="{icon.svg.url}" height="40" alt="Icon">')  # noqa: S308
+        return ""
 
     admin_thumbnail.short_description = _("Sample Icon")
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("title", "id")
         verbose_name = ngettext_lazy("Icon collection for markers", "Icon collections for markers", 5)
         verbose_name_plural = _("Icon collections for markers")
 
-    def get_icon_count(self):
+    def get_icon_count(self):  # noqa: D102
         return self.icons.all().count()
 
     get_icon_count.short_description = _("Icon count")
 
-    def get_count_of_active_icons(self):
+    def get_count_of_active_icons(self):  # noqa: D102
         return self.icons.filter(active=True).count()
 
     get_count_of_active_icons.short_description = _("Count of active icons")
 
-    def get_export_file_btn(self):
+    def get_export_file_btn(self):  # noqa: D102
         url = reverse("djeym:export_icon_collection", kwargs={"slug": self.slug})
-        return mark_safe(
+        return mark_safe(  # noqa: S308
             '<a href="{}" class="export_icon_collection_link">{} <div></div></a>'.format(url, _("Export Collection")),
         )
 
@@ -1425,7 +1454,7 @@ class IconCollection(models.Model):
 
 
 class MarkerIcon(models.Model):
-    """Icon for marker"""
+    """Icon for marker."""
 
     icon_collection = models.ForeignKey(
         IconCollection,
@@ -1472,43 +1501,42 @@ class MarkerIcon(models.Model):
     slug = models.SlugField(max_length=255, blank=True, null=True)
 
     @property
-    def upload_dir(self):
+    def upload_dir(self):  # noqa: D102
         return "djeym/marker_icons"
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    def admin_thumbnail(self):
+    def admin_thumbnail(self):  # noqa: D102
         if bool(self.svg):
-            return mark_safe('<img src="{}" height="{}" alt="Icon">'.format(self.svg.url, 40))
-        else:
-            return ""
+            return mark_safe('<img src="{}" height="{}" alt="Icon">'.format(self.svg.url, 40))  # noqa: S308, UP032
+        return ""
 
     admin_thumbnail.short_description = _("Icon")
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("title", "id")
         verbose_name = ngettext_lazy("Icon for marker", "Icons for markers", 5)
         verbose_name_plural = ngettext_lazy("Icon for marker", "Icons for markers", 2)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # noqa: D107
         super().__init__(*args, **kwargs)
         self.__old_image = self.svg
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify("{}".format(self.title))
+    def save(self, *args, **kwargs):  # noqa: D102
+        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
         old_image = self.__old_image
         new_image = self.svg
         if not bool(old_image) or (bool(old_image) and bool(new_image) and old_image.name != new_image.name):
             self.__old_image = new_image
-            self.size_width = 0
-            self.size_height = 0
-            self.offset_x = Decimal(".0")
-            self.offset_y = Decimal(".0")
+            self.size_width = 0  # pyrefly: ignore[bad-assignment]
+            self.size_height = 0  # pyrefly: ignore[bad-assignment]
+            self.offset_x = Decimal(".0")  # pyrefly: ignore[bad-assignment]
+            self.offset_y = Decimal(".0")  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
-    def clean(self):
-        slug = slugify("{}".format(self.title))
+    def clean(self):  # noqa: D102
+        slug = slugify(str(self.title))
 
         if bool(self.pk):
             slug_in_db = MarkerIcon.objects.get(pk=self.pk).slug
@@ -1522,20 +1550,20 @@ class MarkerIcon(models.Model):
             msg = _("For the selected collection, there is already an icon with a similar name.")
             raise ValidationError({"title": msg})
 
-    def get_collection_name(self):
-        return "{}".format(self.icon_collection.title)
+    def get_collection_name(self):  # noqa: D102
+        return str(self.icon_collection.title)
 
     get_collection_name.short_description = _("Collection name")
 
-    def get_size(self):
-        return "[{},{}]".format(self.size_width, self.size_height)
+    def get_size(self):  # noqa: D102
+        return f"[{self.size_width},{self.size_height}]"
 
-    def get_offset(self):
-        return "[{:f},{:f}]".format(self.offset_x, self.offset_y)
+    def get_offset(self):  # noqa: D102
+        return f"[{self.offset_x:f},{self.offset_y:f}]"
 
 
 class LoadIndicator(models.Model):
-    """Load Indicator"""
+    """Load Indicator."""
 
     svg = models.FileField(_("Icon"), upload_to=make_upload_path, validators=[validate_svg], null=True)
 
@@ -1544,38 +1572,37 @@ class LoadIndicator(models.Model):
     slug = models.SlugField(max_length=255, blank=True, null=True)
 
     @property
-    def upload_dir(self):
+    def upload_dir(self):  # noqa: D102
         return "djeym/load_indicators"
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("title", "id")
         verbose_name = _("Load indicator")
         verbose_name_plural = _("Load indicators")
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+    def save(self, *args, **kwargs):  # noqa: D102
+        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
-    def clean(self):
-        slug = slugify(self.title)
+    def clean(self):  # noqa: D102
+        slug = slugify(str(self.title))
         if slug == "default":
             msg = _("Default - Reserved name for the indicator. Choose another name.")
             raise ValidationError({"title": msg})
 
-    def admin_thumbnail(self):
+    def admin_thumbnail(self):  # noqa: D102
         if bool(self.svg):
-            return mark_safe('<img src="{}" height="40" alt="Icon">'.format(self.svg.url))
-        else:
-            return ""
+            return mark_safe(f'<img src="{self.svg.url}" height="40" alt="Icon">')  # noqa: S308
+        return ""
 
     admin_thumbnail.short_description = _("Icon")
 
 
 class Statistics(models.Model):
-    """Statistics"""
+    """Statistics."""
 
     obj_type = models.CharField("Object type", max_length=255, default="")
     obj_id = models.PositiveIntegerField("Object ID", default=0)
@@ -1583,30 +1610,30 @@ class Statistics(models.Model):
     likes = models.BooleanField("Likes", default=False)
     timestamp = models.DateTimeField("Date and Time", default=timezone.now)
 
-    def __str__(self):
-        return "{}".format(self.obj_type)
+    def __str__(self):  # noqa: D105
+        return str(self.obj_type)
 
-    class Meta:
+    class Meta:  # noqa: D106
         verbose_name = _("Record")
         verbose_name_plural = _("Statistics")
 
 
 class BlockedIP(models.Model):
-    """Blocked IP"""
+    """Blocked IP."""
 
     ip = models.GenericIPAddressField("IP-address", null=True, unique=True)
     timestamp = models.DateTimeField("Date and Time", default=timezone.now)
 
-    def __str__(self):
-        return "{}".format(self.ip)
+    def __str__(self):  # noqa: D105
+        return str(self.ip)
 
-    class Meta:
+    class Meta:  # noqa: D106
         verbose_name = _("Blocked IP")
         verbose_name_plural = _("Blocked IPs")
 
 
 class Status(models.Model):
-    """Custom marker status"""
+    """Custom marker status."""
 
     title = models.CharField(
         _("Custom marker status"),
@@ -1617,16 +1644,16 @@ class Status(models.Model):
     )
     slug = models.SlugField(max_length=255, blank=True, null=True)
 
-    def __str__(self):
-        return "{}".format(self.title)
+    def __str__(self):  # noqa: D105
+        return str(self.title)
 
-    class Meta:
+    class Meta:  # noqa: D106
         ordering = ("-title", "-id")
         verbose_name = _("Custom marker status")
         verbose_name_plural = _("Statuses of сustom markers")
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+    def save(self, *args, **kwargs):  # noqa: D102
+        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
 

@@ -1,3 +1,5 @@
+"""Mixins."""
+
 from __future__ import annotations
 
 from django.conf import settings
@@ -9,14 +11,11 @@ from django.utils.translation import gettext_lazy as _
 
 
 class StaffRequiredMixin:
-    """
-    Mixin which requires that the authenticated user is a staff member
-    (i.e. `is_staff` is True).
-    """
+    """Mixin which requires that the authenticated user is a staff member (i.e. `is_staff` is True)."""
 
-    # login_required(redirect_field_name='next', login_url=None)
+    # login_required(redirect_field_name='next', login_url=None)  # noqa: ERA001
     @method_decorator(login_required)
-    def dispatch(self, request, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):  # noqa: D102
         if not request.user.is_staff:
             messages.error(request, _("You do not have the permission required to perform the requested operation."))
             return redirect(settings.LOGIN_URL)

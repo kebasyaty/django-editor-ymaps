@@ -1,3 +1,5 @@
+"""Decorators."""
+
 from __future__ import annotations
 
 from functools import wraps
@@ -6,8 +8,8 @@ from django.http import HttpResponseForbidden, JsonResponse
 
 
 def ajax_login_required(view_func):
-    """
-    Ajax.
+    """Ajax.
+
     Class-based views - dispatch.
     Verify that the current user is authenticated.
     """
@@ -25,8 +27,8 @@ def ajax_login_required(view_func):
 
 
 def ajax_login_required_and_staff(view_func):
-    """
-    Ajax.
+    """Ajax.
+
     Class-based views - dispatch.
     Verify that the current user is authenticated.
     """

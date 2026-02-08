@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import json
 import re
 from decimal import ROUND_CEILING, ROUND_HALF_UP, Decimal
@@ -162,7 +163,7 @@ def random_domain(source, apikey):
     count_elem = re.search(r"\[\[(.+)\]\]", source)
 
     if count_elem is not None:
-        count_elem = len(eval(count_elem.group(0))[0])  # noqa: S307
+        count_elem = len(ast.literal_eval(count_elem.group(0))[0])
 
     value = re.sub(
         r"\[(\[.+\])\]",

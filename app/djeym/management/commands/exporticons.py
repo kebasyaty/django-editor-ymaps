@@ -13,7 +13,7 @@ from pathlib import Path
 from django.core.files import File
 from django.core.management import BaseCommand, CommandError
 from django.db import IntegrityError, transaction
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext as _  # pyrefly: ignore[missing-module-attribute]
 from slugify import slugify
 
 from djeym.models import IconCollection, MarkerIcon
@@ -50,7 +50,7 @@ class Command(BaseCommand):  # noqa: D101
                     with Path(icon_path).open(mode="rb") as svg_file:
                         MarkerIcon.objects.create(
                             icon_collection=collection,
-                            title=Path(icon).suffix()[0],
+                            title=icon.suffix()[0],  # pyrefly: ignore[not-callable]
                             svg=File(svg_file),
                         )
         except IntegrityError as err:

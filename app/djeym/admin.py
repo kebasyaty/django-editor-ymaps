@@ -41,12 +41,12 @@ class TileSourceAdmin(admin.ModelAdmin):  # noqa: D101
     list_display_links = ("title", "admin_thumbnail")  # pyrefly: ignore[bad-override]
     readonly_fields = ("slug",)  # pyrefly: ignore[bad-override]
 
-    formfield_overrides = {  # noqa: RUF012
+    formfield_overrides = {
         models.ImageField: {"widget": AdminFileThumbWidget()},
     }
 
     class Media:  # noqa: D106
-        css = {  # noqa: RUF012
+        css = {
             "all": [
                 "/static/djeym/css/djeym_admin.css",
             ],
@@ -66,7 +66,7 @@ class StatisticsAdmin(admin.ModelAdmin):  # noqa: D101
     readonly_fields = ("likes",)  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106
-        css = {"all": ["/static/djeym/css/djeym_admin.css"]}  # noqa: RUF012
+        css = {"all": ["/static/djeym/css/djeym_admin.css"]}
 
 
 @admin.register(BlockedIP)
@@ -76,50 +76,50 @@ class BlockedIPAdmin(admin.ModelAdmin):  # noqa: D101
     list_display = ("ip", "timestamp")  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106
-        css = {"all": ["/static/djeym/css/djeym_admin.css"]}  # noqa: RUF012
+        css = {"all": ["/static/djeym/css/djeym_admin.css"]}
 
 
 class PresetInline(admin.StackedInline):  # noqa: D101
     model = Preset
     extra = 0
     exclude = ("slug",)
-    classes = ["collapse"]  # noqa: RUF012
+    classes = ["collapse"]
 
 
 class CategoryPlacemarkInline(SortableTabularInline):  # noqa: D101
     model = CategoryPlacemark
     extra = 0
-    classes = ["collapse"]  # noqa: RUF012
+    classes = ["collapse"]
 
 
 class SubCategoryPlacemarkInline(SortableTabularInline):  # noqa: D101
     model = SubCategoryPlacemark
     extra = 0
-    classes = ["collapse"]  # noqa: RUF012
+    classes = ["collapse"]
 
 
 class CategoryPolylineInline(SortableTabularInline):  # noqa: D101
     model = CategoryPolyline
     extra = 0
-    classes = ["collapse"]  # noqa: RUF012
+    classes = ["collapse"]
 
 
 class SubCategoryPolylineInline(SortableTabularInline):  # noqa: D101
     model = SubCategoryPolyline
     extra = 0
-    classes = ["collapse"]  # noqa: RUF012
+    classes = ["collapse"]
 
 
 class CategoryPolygonInline(SortableTabularInline):  # noqa: D101
     model = CategoryPolygon
     extra = 0
-    classes = ["collapse"]  # noqa: RUF012
+    classes = ["collapse"]
 
 
 class SubCategoryPolygonInline(SortableTabularInline):  # noqa: D101
     model = SubCategoryPolygon
     extra = 0
-    classes = ["collapse"]  # noqa: RUF012
+    classes = ["collapse"]
 
 
 @admin.register(Map)
@@ -157,7 +157,7 @@ class MapAdmin(NonSortableParentAdmin):  # noqa: D101
     )
 
     class Media:  # noqa: D106
-        css = {"all": ["/static/djeym/css/djeym_admin.css"]}  # noqa: RUF012
+        css = {"all": ["/static/djeym/css/djeym_admin.css"]}
 
         js = (
             "/static/djeym/js/jquery.min.js",
@@ -173,12 +173,12 @@ class PlacemarkAdmin(admin.ModelAdmin):  # noqa: D101
     list_editable = ("active",)  # pyrefly: ignore[bad-override]
     filter_horizontal = ("subcategories",)  # pyrefly: ignore[bad-override]
 
-    formfield_overrides = {  # noqa: RUF012
+    formfield_overrides = {
         models.ImageField: {"widget": AdminFileThumbWidget()},
     }
 
     class Media:  # noqa: D106
-        css = {  # noqa: RUF012
+        css = {
             "all": [
                 "/static/djeym/css/djeym_admin.css",
             ],
@@ -201,7 +201,7 @@ class PolylineAdmin(admin.ModelAdmin):  # noqa: D101
     filter_horizontal = ("subcategories",)  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106
-        css = {  # noqa: RUF012
+        css = {
             "all": [
                 "/static/djeym/css/djeym_admin.css",
             ],
@@ -222,7 +222,7 @@ class PolygonAdmin(admin.ModelAdmin):  # noqa: D101
     filter_horizontal = ("subcategories",)  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106
-        css = {  # noqa: RUF012
+        css = {
             "all": [
                 "/static/djeym/css/djeym_admin.css",
             ],
@@ -245,7 +245,7 @@ class HeatPointAdmin(admin.ModelAdmin):  # noqa: D101
     search_fields = ("title",)  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106
-        css = {  # noqa: RUF012
+        css = {
             "all": [
                 "/static/djeym/css/djeym_admin.css",
             ],
@@ -265,12 +265,12 @@ class ClusterIconAdmin(admin.ModelAdmin):  # noqa: D101
         "offset_y",
     )
 
-    formfield_overrides = {  # noqa: RUF012
+    formfield_overrides = {
         models.FileField: {"widget": AdminFileThumbWidget()},
     }
 
     class Media:  # noqa: D106
-        css = {  # noqa: RUF012
+        css = {
             "all": [
                 "/static/djeym/css/djeym_admin.css",
             ],
@@ -298,7 +298,7 @@ class IconCollectionAdmin(admin.ModelAdmin):  # noqa: D101
     readonly_fields = ("slug",)  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106
-        css = {  # noqa: RUF012
+        css = {
             "all": [
                 "/static/djeym/css/djeym_admin.css",
             ],
@@ -326,12 +326,12 @@ class MarkerIconAdmin(admin.ModelAdmin):  # noqa: D101
     list_editable = ("active",)  # pyrefly: ignore[bad-override]
     list_filter = ("icon_collection",)  # pyrefly: ignore[bad-override]
 
-    formfield_overrides = {  # noqa: RUF012
+    formfield_overrides = {
         models.FileField: {"widget": AdminFileThumbWidget()},
     }
 
     class Media:  # noqa: D106
-        css = {  # noqa: RUF012
+        css = {
             "all": [
                 "/static/djeym/css/djeym_admin.css",
             ],
@@ -339,7 +339,7 @@ class MarkerIconAdmin(admin.ModelAdmin):  # noqa: D101
 
         js = (
             "/static/djeym/js/jquery.min.js",
-            "/static/djeym/plugins/jquery_mousewheel/jquery.mousewheel.js",
+            "/static/djeym/plugins/jquery_mousewheel/jquery.mousewheel.min.js",
             "/static/djeym/js/get_icon_name.js",
         )
 
@@ -353,12 +353,12 @@ class LoadIndicatorAdmin(admin.ModelAdmin):  # noqa: D101
     list_display_links = ("title", "admin_thumbnail")  # pyrefly: ignore[bad-override]
     readonly_fields = ("slug",)  # pyrefly: ignore[bad-override]
 
-    formfield_overrides = {  # noqa: RUF012
+    formfield_overrides = {
         models.FileField: {"widget": AdminFileThumbWidget()},
     }
 
     class Media:  # noqa: D106
-        css = {  # noqa: RUF012
+        css = {
             "all": [
                 "/static/djeym/css/djeym_admin.css",
             ],
@@ -377,4 +377,4 @@ class StatusAdmin(admin.ModelAdmin):  # noqa: D101
     list_display = ("title", "slug")  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106
-        css = {"all": ["/static/djeym/css/djeym_admin.css"]}  # noqa: RUF012
+        css = {"all": ["/static/djeym/css/djeym_admin.css"]}

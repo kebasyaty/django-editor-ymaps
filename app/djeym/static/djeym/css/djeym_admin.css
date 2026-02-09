@@ -61,13 +61,13 @@ label[for="id_disable_standard_icons"] {
 }
 
 .editing_map_link_wrapper--table td:nth-child(1) {
-  background-color: #ffd54f;
+  background-color: #d4aa00;
   padding: 0 0 0 8px !important;
   color: #4d4d4d;
 }
 
 .editing_map_link_wrapper--table td:nth-child(2) {
-  background-color: #ffd54f;
+  background-color: #d4aa00;
   color: #000;
   font-size: 16px;
   padding: 0 10px 0 5px !important;
@@ -219,21 +219,24 @@ label[for="id_is_cluster"] {
 
 .import_icon_collection_link,
 .import_tile_source_link {
-  background-color: #ffd54f !important;
+  background-color: #d4aa00 !important;
   color: #000 !important;
+  font-weight: 800;
   background-image: url(../img/plus.svg) !important;
 }
 
 .export_tile_source_link {
-  background-color: #ffd54f !important;
+  background-color: #d4aa00 !important;
   color: #000 !important;
+  font-weight: 800;
   background-image: url(../img/import.svg) !important;
 }
 
 .export_icon_collection_link {
   position: relative;
-  background-color: #ffd54f;
+  background-color: #d4aa00;
   color: #000 !important;
+  font-weight: 800;
   border-radius: 20px;
   padding: 5px 14px 5px;
   text-transform: uppercase;
@@ -268,7 +271,7 @@ label[for="id_is_cluster"] {
   bottom: 0;
   left: 0;
   z-index: 10000;
-  background-color: #ffffff;
+  background-color: #000;
   opacity: 0.85;
   transition-property: opacity;
   transition-duration: 1s;

@@ -1032,7 +1032,7 @@ class Placemark(models.Model):
         _("User Email"),
         blank=True,
         null=True,
-        help_text=_("To automatically send a one-time message if the user's marker has been moderated and activated."),
+        help_text=_("To automatically send a one-time message if the user's geotag has been moderated and activated."),
     )
 
     user_ip = models.GenericIPAddressField(
@@ -1042,11 +1042,11 @@ class Placemark(models.Model):
         help_text=_("Ban user if vandalism is to be prevented."),
     )
 
-    is_user_marker = models.BooleanField(_("Is user marker ?"), default=False)
+    is_user_geotag = models.BooleanField(_("Is user's geotag ?"), default=False)
 
-    status = models.ForeignKey(
-        "Status",
-        verbose_name=_("Status"),
+    geotag_status = models.ForeignKey(
+        "GeotagStatus",
+        verbose_name=_("Geotag status"),
         related_name="placemarks",
         on_delete=models.CASCADE,
         null=True,
@@ -1627,11 +1627,14 @@ class BlockedIP(models.Model):
         verbose_name_plural = _("Blocked IPs")
 
 
-class GeolocationStatus(models.Model):
-    """Geolocation status."""
+class GeotagStatus(models.Model):
+    """Geotag status.
+
+    Geotag - Geolocation sent by the user on the site page.
+    """
 
     title = models.CharField(
-        _("Geolocation status"),
+        _("Geotag status"),
         max_length=60,
         unique=True,
         default="",
@@ -1644,8 +1647,8 @@ class GeolocationStatus(models.Model):
 
     class Meta:  # noqa: D106
         ordering = ("-title", "-id")
-        verbose_name = _("Geolocation status")
-        verbose_name_plural = _("Geolocation statuses")
+        verbose_name = _("Geotag status")
+        verbose_name_plural = _("Geotag statuses")
 
     def save(self, *args, **kwargs):  # noqa: D102
         self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]

@@ -13,6 +13,7 @@ from .models import (
     CategoryPolygon,
     CategoryPolyline,
     ClusterIcon,
+    GeolocationStatus,
     HeatPoint,
     IconCollection,
     LoadIndicator,
@@ -23,7 +24,6 @@ from .models import (
     Polyline,
     Preset,
     Statistics,
-    Status,
     SubCategoryPlacemark,
     SubCategoryPolygon,
     SubCategoryPolyline,
@@ -370,8 +370,8 @@ class LoadIndicatorAdmin(admin.ModelAdmin):  # noqa: D101
         )
 
 
-@admin.register(Status)
-class StatusAdmin(admin.ModelAdmin):  # noqa: D101
+@admin.register(GeolocationStatus)
+class GeolocationStatusAdmin(admin.ModelAdmin):  # noqa: D101
     # ckeditor_change_form.html - Used by default.
     change_form_template = "djeym/admin/ckeditor_change_form.html"
     list_display = ("title", "slug")  # pyrefly: ignore[bad-override]

@@ -1627,11 +1627,11 @@ class BlockedIP(models.Model):
         verbose_name_plural = _("Blocked IPs")
 
 
-class Status(models.Model):
-    """Custom marker status."""
+class GeolocationStatus(models.Model):
+    """Geolocation status."""
 
     title = models.CharField(
-        _("Custom marker status"),
+        _("Geolocation status"),
         max_length=60,
         unique=True,
         default="",
@@ -1644,8 +1644,8 @@ class Status(models.Model):
 
     class Meta:  # noqa: D106
         ordering = ("-title", "-id")
-        verbose_name = _("Custom marker status")
-        verbose_name_plural = _("Statuses of сustom markers")
+        verbose_name = _("Geolocation status")
+        verbose_name_plural = _("Geolocation statuses")
 
     def save(self, *args, **kwargs):  # noqa: D102
         self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]

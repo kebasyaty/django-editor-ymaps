@@ -115,7 +115,7 @@ class CustomPlacemarkForm(forms.ModelForm):  # noqa: D101
             "coordinates",
             "user_email",
             "active",
-            "is_user_marker",
+            "is_user_geotag",
         )
 
 

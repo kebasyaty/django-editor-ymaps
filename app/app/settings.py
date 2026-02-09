@@ -15,7 +15,7 @@ from pathlib import Path
 
 from django.utils.translation import gettext_lazy as _
 
-PROJECT_NAME: str = "app"
+BASE_DIR_NAME = "app"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,9 +30,9 @@ SECRET_KEY = "django-insecure-w#t@o6v2cugc24z@d-n(_&+vf8_#04%^y^%pcbs2ta1b9)xi31
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]"]
+ALLOWED_HOSTS = [] if not DEBUG else ["localhost", "127.0.0.1", "[::1]"]
 
-ADMINS = [("admin", "kebasyaty@gmail.com")]
+ADMINS = [("admin", "noreply@site.net")]
 
 
 # Application definition
@@ -51,12 +51,11 @@ INSTALLED_APPS = [
     "colorful",
     "adminsortable",
     # apps
-    "app",
+    BASE_DIR_NAME,
     "djeym",
 ]
 
 MIDDLEWARE = [
-    # "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -67,8 +66,10 @@ MIDDLEWARE = [
     # custom middlewares
     "djeym.middleware.AjaxMiddleware",
 ]
+if not DEBUG:
+    MIDDLEWARE.insert(0, "django.middleware.security.SecurityMiddleware")
 
-ROOT_URLCONF = "app.urls"
+ROOT_URLCONF = f"{BASE_DIR_NAME}.urls"
 
 TEMPLATES = [
     {
@@ -91,7 +92,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "app.wsgi.application"
+WSGI_APPLICATION = f"{BASE_DIR_NAME}.wsgi.application"
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
@@ -148,8 +149,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "static"
 
-STATIC_ROOT = BASE_DIR / "djeym/static"
+# Additional locations of static files
+STATICFILES_DIRS = (BASE_DIR.joinpath("static"),)
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -162,7 +165,7 @@ STATICFILES_FINDERS = (
 
 # Media files
 MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR.joinpath("media")
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Email
 EMAIL_HOST = "localhost"

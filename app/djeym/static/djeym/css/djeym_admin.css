@@ -34,48 +34,9 @@ label[for="id_disable_standard_icons"] {
 .editing_map_link_wrapper a {
   position: relative;
   top: 3px;
-}
-
-.editing_map_link_wrapper a:link,
-.editing_map_link_wrapper a:visited {
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  background-color: transparent;
-}
-
-.editing_map_link_wrapper a:hover,
-.editing_map_link_wrapper a:active {
-  background-color: transparent;
-}
-
-.editing_map_link_wrapper--table {
-  border-collapse: collapse !important;
-}
-
-.editing_map_link_wrapper--table td {
-  height: 30px;
-  max-height: 30px;
-  border-color: transparent !important;
-  vertical-align: middle !important;
-}
-
-.editing_map_link_wrapper--table td:nth-child(1) {
-  background-color: #d4aa00;
-  padding: 0 0 0 8px !important;
-  color: #000;
-  font-weight: 800;
-}
-
-.editing_map_link_wrapper--table td:nth-child(2) {
-  background-color: #d4aa00;
-  color: #000;
-  font-size: 16px;
-  padding: 0 10px 0 5px !important;
-}
-
-.editing_map_link_wrapper--table td:nth-child(3) {
-  padding: 0;
+  background-color: #d4aa00 !important;
+  color: #000 !important;
+  font-weight: bold;
 }
 
 .hint_center_map,
@@ -222,14 +183,14 @@ label[for="id_is_cluster"] {
 .import_tile_source_link {
   background-color: #d4aa00 !important;
   color: #000 !important;
-  font-weight: 800;
+  font-weight: bold;
   background-image: url(../img/plus.svg) !important;
 }
 
 .export_tile_source_link {
   background-color: #d4aa00 !important;
   color: #000 !important;
-  font-weight: 800;
+  font-weight: bold;
   background-image: url(../img/import.svg) !important;
 }
 
@@ -237,11 +198,10 @@ label[for="id_is_cluster"] {
   position: relative;
   background-color: #d4aa00;
   color: #000 !important;
-  font-weight: 800;
+  font-weight: bold;
   border-radius: 20px;
   padding: 5px 14px 5px;
   text-transform: uppercase;
-  font-weight: 400;
   letter-spacing: 0.5px;
   font-size: 11px;
 }

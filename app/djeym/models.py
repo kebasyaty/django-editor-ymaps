@@ -1504,7 +1504,7 @@ class MarkerIcon(models.Model):
 
     def admin_thumbnail(self):  # noqa: D102
         if bool(self.svg):
-            return mark_safe('<img src="{}" height="{}" alt="Icon">'.format(self.svg.url, 40))  # noqa: S308, UP032
+            return mark_safe(f'<img src="{self.svg.url}" height="40" alt="Icon">')  # noqa: S308
         return ""
 
     admin_thumbnail.short_description = _("Icon")
@@ -1652,8 +1652,8 @@ class Status(models.Model):
         super().save(*args, **kwargs)
 
 
-# SIGNALS ------------------------------------------------------------------------------------------
-
+# SIGNALS
+# ------------------------------------------------------------------------------
 
 # Cluster Icons - Size correction and offset correction.
 post_save.connect(icon_cluster_size_correction, sender=ClusterIcon)

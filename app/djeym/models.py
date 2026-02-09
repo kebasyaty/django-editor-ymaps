@@ -1098,7 +1098,7 @@ class Placemark(models.Model):
                     '<img src="{self.user_image_q40.url,}" width="322px" alt=""><p>{pattern.sub("", self.body)}</p>'  # noqa: E501, RUF100 # pyrefly: ignore[bad-assignment]
                 )
             else:
-                if self.is_user_marker:
+                if self.is_user_geotag:
                     pattern = re.compile(r"<.*?>")
                     self.header = f"<p>{pattern.sub('', self.header)}</p>"  # pyrefly: ignore[bad-assignment, no-matching-overload]  # noqa: E261, E501, RUF100
                     self.body = f"<p>{pattern.sub('', self.body)}</p>"  # pyrefly: ignore[bad-assignment, no-matching-overload]  # noqa: E261, E501, RUF100

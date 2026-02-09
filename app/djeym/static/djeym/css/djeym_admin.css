@@ -63,7 +63,8 @@ label[for="id_disable_standard_icons"] {
 .editing_map_link_wrapper--table td:nth-child(1) {
   background-color: #d4aa00;
   padding: 0 0 0 8px !important;
-  color: #4d4d4d;
+  color: #000;
+  font-weight: 800;
 }
 
 .editing_map_link_wrapper--table td:nth-child(2) {

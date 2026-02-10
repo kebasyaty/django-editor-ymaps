@@ -1633,8 +1633,8 @@ class GeotagStatus(models.Model):
     Geotag - Geolocation sent by the user on the site page.
     """
 
-    title = models.CharField(
-        _("Geotag status"),
+    status = models.CharField(
+        _("Status"),
         max_length=60,
         unique=True,
         default="",

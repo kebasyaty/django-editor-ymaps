@@ -35,9 +35,9 @@
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css"
               rel="stylesheet">
         <!-- For Vue.js -->
-        <link href="{% static 'djeym/vue_vendors/editor/css/'|add:vue_css_chunk_vendors %}"
+        <link href="{% static 'djeym/vue_vendors/editor/css/chunk-vendors.css' %}"
               rel="stylesheet">
-        <link href="{% static 'djeym/vue_vendors/editor/css/'|add:vue_css_app %}"
+        <link href="{% static 'djeym/vue_vendors/editor/css/app.css' %}"
               rel="stylesheet">
         <!-- Upload indicator -->
         {% if load_indicator %}
@@ -112,9 +112,8 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
         <script type="text/javascript">{% for preset in presets %}{{ preset|safe }}{% endfor %}</script>
         <!-- For Vue.js -->
         <script type="module"
-                src="{% static 'djeym/vue_vendors/editor/js/'|add:vue_js_chunk_vendors %}"></script>
-        <script type="module"
-                src="{% static 'djeym/vue_vendors/editor/js/'|add:vue_js_app %}"></script>
+                src="{% static 'djeym/vue_vendors/editor/js/chunk-vendors.js' %}"></script>
+        <script type="module" src="{% static 'djeym/vue_vendors/editor/js/app.js' %}"></script>
         <script>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()},!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
         <!-- END VENDORS JS -->
       </body>

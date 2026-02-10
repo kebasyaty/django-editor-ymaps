@@ -6,7 +6,6 @@ from django import template
 from django.conf import settings
 
 from ..models import Map
-from ..views import vue_vendors
 
 register = template.Library()
 
@@ -16,6 +15,7 @@ def djeym_yandex_map(slug, lang="en"):
     """Load the map to the front page."""
     ymap = Map.objects.filter(slug=slug, active=True).first()
     ctx = {"ymap": ymap}
+
     if ymap is not None:
         general_settings = ymap.general_settings
         ctx["lang"] = (lang or "en",)
@@ -26,7 +26,7 @@ def djeym_yandex_map(slug, lang="en"):
         ctx["width_map_front"] = general_settings.width_map_front
         ctx["height_map_front"] = general_settings.height_map_front
         ctx["presets"] = ymap.presets.values_list("js", flat=True)
-        ctx.update(vue_vendors("front"))
+
     return ctx
 
 

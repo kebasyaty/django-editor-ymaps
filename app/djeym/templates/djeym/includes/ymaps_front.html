@@ -1,9 +1,9 @@
 {% if ymap %}
   {% load i18n static djeymtags %}
   {% with lang.0 as language_code %}
-    <link href="{% static 'djeym/vue_vendors/front/css/'|add:vue_css_chunk_vendors %}"
+    <link href="{% static 'djeym/vue_vendors/front/css/chunk-vendors.css' %}"
           rel="stylesheet">
-    <link href="{% static 'djeym/vue_vendors/front/css/'|add:vue_css_app %}"
+    <link href="{% static 'djeym/vue_vendors/front/css/app.css' %}"
           rel="stylesheet">
     {% if load_indicator %}
       {% widthratio load_indicator_size 2 1 as margin_offset %}
@@ -35,9 +35,8 @@
     {% endif %}
     <script type="text/javascript">{% for preset in presets %}{{ preset|safe }}{% endfor %}</script>
     <script type="module"
-            src="{% static 'djeym/vue_vendors/front/js/'|add:vue_js_chunk_vendors %}"></script>
-    <script type="module"
-            src="{% static 'djeym/vue_vendors/front/js/'|add:vue_js_app %}"></script>
+            src="{% static 'djeym/vue_vendors/front/js/chunk-vendors.js' %}"></script>
+    <script type="module" src="{% static 'djeym/vue_vendors/front/js/app.js' %}"></script>
     <script>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()},!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
   {% endwith %}
 {% endif %}

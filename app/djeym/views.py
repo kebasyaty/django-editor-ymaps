@@ -63,25 +63,8 @@ from .signals_func import save_json_settings
 from .utils import get_errors_form
 
 
-def vue_vendors(target):
-    """Vendors CSS and JS for a framework Vue.js."""
-    ctx = {}
-
-    if target == "front":
-        ctx["vue_css_app"] = "app.b3d068e9.css"
-        ctx["vue_css_chunk_vendors"] = "chunk-vendors.73c07480.css"
-        ctx["vue_js_app"] = "app.7561b101.js"
-        ctx["vue_js_chunk_vendors"] = "chunk-vendors.f8eb8799.js"
-    else:  # editor
-        ctx["vue_css_app"] = "app.9902f5bc.css"
-        ctx["vue_css_chunk_vendors"] = "chunk-vendors.09dfbb4c.css"
-        ctx["vue_js_app"] = "app.f0bb9295.js"
-        ctx["vue_js_chunk_vendors"] = "chunk-vendors.8e19894a.js"
-
-    return ctx
-
-
-# UPLOADING BALLOON CONTENT ------------------------------------------------------------------------
+# UPLOADING BALLOON CONTENT
+# ------------------------------------------------------------------------------
 class AjaxBalloonContent(View):
     """Ajax - Upload Balloon Content."""
 
@@ -154,7 +137,8 @@ class AjaxBalloonContent(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-# UPLOADING GEO OBJECTS ----------------------------------------------------------------------------
+# UPLOADING GEO OBJECTS
+# ------------------------------------------------------------------------------
 class AjaxUploadPlacemarks(View):
     """Ajax - Upload placemarks to map."""
 
@@ -243,7 +227,8 @@ class AjaxUploadPolygons(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-# UPLOADING MAP AND SETTINGS TO THE EDITOR PAGE AND FRONT PAGE -------------------------------------
+# UPLOADING MAP AND SETTINGS TO THE EDITOR PAGE AND FRONT PAGE
+# ------------------------------------------------------------------------------
 class YMapEditor(StaffRequiredMixin, TemplateView):
     """Load the map to the editor page."""
 
@@ -266,7 +251,6 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
             context["is_heatmap"] = ymap.heatmap_settings.active
             context["is_round_theme"] = ymap.general_settings.roundtheme
             context["presets"] = ymap.presets.values_list("js", flat=True)
-            context.update(vue_vendors("editor"))
 
         context["ymap"] = ymap
         return context
@@ -301,7 +285,8 @@ class AjaxUploadSettingsFront(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-# GEO OBJECTS - SAVING | UPDATING | DELETING -------------------------------------------------------
+# GEO OBJECTS - SAVING | UPDATING | DELETING
+# ------------------------------------------------------------------------------
 class AjaxSaveGeoObjects(View):
     """Geo objects - saving, updating and deleting."""
 
@@ -432,7 +417,8 @@ class AjaxSaveCusotmMarker(View):
         return JsonResponse(response_data)
 
 
-# BLOCK IP ADDRESSES -------------------------------------------------------------------------------
+# BLOCK IP ADDRESSES
+# ------------------------------------------------------------------------------
 class AjaxBlockIPAddress(View):
     """Ajax - Block ip address."""
 
@@ -453,7 +439,8 @@ class AjaxBlockIPAddress(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-# UPLOADING - SCREENSHOTS, EXAMPLE ICON, ICON COLLECTION --------------------------------------------
+# UPLOADING - SCREENSHOTS, EXAMPLE ICON, ICON COLLECTION
+# ------------------------------------------------------------------------------
 # (For admin panel.)
 class AjaxClusterIcon(View):
     """Ajax - Upload a example of cluster icon to admin panel."""
@@ -541,7 +528,8 @@ class AjaxIconCollection(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-# SAVING CHANGES -----------------------------------------------------------------------------------
+# SAVING CHANGES
+# ------------------------------------------------------------------------------
 class AjaxUpdateTileSource(View):
     """Ajax - Tile source replacement."""
 
@@ -737,7 +725,8 @@ class AjaxUpdateFiltersCategories(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-# GETTING AND UPDATING - LIKES | DISLIKES ----------------------------------------------------------
+# GETTING AND UPDATING - LIKES | DISLIKES
+# ------------------------------------------------------------------------------
 class AjaxUpdateLikes(View):
     """Ajax - Getting and updating likes;dislikes."""
 
@@ -810,7 +799,8 @@ class AjaxUpdateLikes(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-# HEATMAP - ACTIVATE | RESET -----------------------------------------------------------------------
+# HEATMAP - ACTIVATE | RESET
+# ------------------------------------------------------------------------------
 class AjaxActivateHeatmap(View):
     """Ajax - Activate Heatmap."""
 
@@ -864,7 +854,8 @@ class AjaxHeatmapUndoSettings(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-# IMPORT | EXPORT ----------------------------------------------------------------------------------
+# IMPORT | EXPORT
+# ------------------------------------------------------------------------------
 # (Icon Collections and Tile Sources)
 class AjaxImportIconCollection(View):
     """Ajax - Import icon collection from the json file to the database."""

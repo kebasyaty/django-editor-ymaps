@@ -15,7 +15,7 @@ from pathlib import Path
 
 from django.utils.translation import gettext_lazy as _
 
-BASE_DIR_NAME = "app"
+APP_NAME = "app"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "colorful",
     "adminsortable",
     # apps
-    BASE_DIR_NAME,
+    APP_NAME,
     "djeym",
 ]
 
@@ -68,7 +68,7 @@ MIDDLEWARE = [
     "djeym.middleware.AjaxMiddleware",
 ]
 
-ROOT_URLCONF = f"{BASE_DIR_NAME}.urls"
+ROOT_URLCONF = f"{APP_NAME}.urls"
 
 TEMPLATES = [
     {
@@ -91,7 +91,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = f"{BASE_DIR_NAME}.wsgi.application"
+WSGI_APPLICATION = f"{APP_NAME}.wsgi.application"
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
@@ -131,9 +131,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "ru"
 
-LANGUAGES = [("en", _("English")), ("ru", _("Russian")), ("uk", _("Ukrainian")), ("tr", _("Turkish"))]
+LANGUAGES = (
+    ("en", _("English")),
+    ("ru", _("Russian")),
+    ("uk", _("Ukrainian")),
+    ("tr", _("Turkish")),
+)
 
 LOCALE_PATHS = (BASE_DIR.joinpath("locale"),)
+
 
 SITE_ID = 1
 

@@ -72,7 +72,7 @@ def vue_vendors_css_js(target):
         ctx["vue_css_chunk_vendors"] = "chunk-vendors.73c07480.css"
         ctx["vue_js_app"] = "app.7561b101.js"
         ctx["vue_js_chunk_vendors"] = "chunk-vendors.f8eb8799.js"
-    else:
+    else:  # editor
         ctx["vue_css_app"] = "app.9902f5bc.css"
         ctx["vue_css_chunk_vendors"] = "chunk-vendors.09dfbb4c.css"
         ctx["vue_js_app"] = "app.f0bb9295.js"

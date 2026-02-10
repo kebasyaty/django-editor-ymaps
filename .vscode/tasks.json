@@ -101,6 +101,18 @@
         "uv run mike set-default --push latest"
       ],
       "problemMatcher": []
+    },
+    {
+      "label": "i18n: Make (ru)",
+      "type": "shell",
+      "command": ["uv run python app/manage.py makemessages -l ru"],
+      "problemMatcher": []
+    },
+    {
+      "label": "i18n: Compile",
+      "type": "shell",
+      "command": ["uv run python app/manage.py compilemessages"],
+      "problemMatcher": []
     }
   ]
 }

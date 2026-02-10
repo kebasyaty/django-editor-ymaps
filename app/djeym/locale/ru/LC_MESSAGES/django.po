@@ -935,5 +935,3 @@ msgstr "Для определения координат требуется чи
 #: app/djeym/utils.py:66
 msgid "To determine the transparency a numeric value is required."
 msgstr "Для определения прозрачности требуется числовое значение."
-
-

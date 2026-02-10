@@ -63,7 +63,7 @@ from .signals_func import save_json_settings
 from .utils import get_errors_form
 
 
-def vue_vendors_css_js(target):
+def vue_vendors(target):
     """Vendors CSS and JS for a framework Vue.js."""
     ctx = {}
 
@@ -266,8 +266,7 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
             context["is_heatmap"] = ymap.heatmap_settings.active
             context["is_round_theme"] = ymap.general_settings.roundtheme
             context["presets"] = ymap.presets.values_list("js", flat=True)
-            vue_vendors = vue_vendors_css_js("editor")
-            context.update(vue_vendors)
+            context.update(vue_vendors("editor"))
 
         context["ymap"] = ymap
         return context

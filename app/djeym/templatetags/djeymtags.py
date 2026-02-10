@@ -6,7 +6,7 @@ from django import template
 from django.conf import settings
 
 from ..models import Map
-from ..views import vue_vendors_css_js
+from ..views import vue_vendors
 
 register = template.Library()
 
@@ -26,8 +26,7 @@ def djeym_yandex_map(slug, lang="en"):
         ctx["width_map_front"] = general_settings.width_map_front
         ctx["height_map_front"] = general_settings.height_map_front
         ctx["presets"] = ymap.presets.values_list("js", flat=True)
-        vue_vendors = vue_vendors_css_js("front")
-        ctx.update(vue_vendors)
+        ctx.update(vue_vendors("front"))
     return ctx
 
 

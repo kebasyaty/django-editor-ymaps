@@ -15,14 +15,14 @@
 
 label[for="id_center_map"],
 label[for="id_check_icon_offset"] {
-  font-weight: bold;
+  font-weight: bold !important;
   float: none !important;
   width: auto !important;
 }
 
 label[for="id_disable_standard_icons"] {
   color: #2196f3;
-  font-weight: bold;
+  font-weight: bold !important;
   font-size: 14px;
 }
 
@@ -36,12 +36,12 @@ label[for="id_disable_standard_icons"] {
   top: 3px;
   background-color: #d4aa00 !important;
   color: #000 !important;
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 .hint_center_map,
 .hint_check_icon_offset {
-  font-weight: bold;
+  font-weight: bold !important;
   font-style: italic;
 }
 
@@ -62,7 +62,7 @@ label[for="id_disable_standard_icons"] {
   margin: 10px 0 20px;
   color: #2196f3;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: bold !important;
   font-style: italic;
 }
 
@@ -141,7 +141,7 @@ label[for="id_disable_standard_icons"] {
 
 label[for="id_is_cluster"] {
   color: #2196f3;
-  font-weight: bold;
+  font-weight: bold !important;
   font-size: 14px;
 }
 
@@ -183,14 +183,14 @@ label[for="id_is_cluster"] {
 .import_tile_source_link {
   background-color: #d4aa00 !important;
   color: #000 !important;
-  font-weight: bold;
+  font-weight: bold !important;
   background-image: url(../img/plus.svg) !important;
 }
 
 .export_tile_source_link {
   background-color: #d4aa00 !important;
   color: #000 !important;
-  font-weight: bold;
+  font-weight: bold !important;
   background-image: url(../img/import.svg) !important;
 }
 
@@ -198,7 +198,7 @@ label[for="id_is_cluster"] {
   position: relative;
   background-color: #d4aa00;
   color: #000 !important;
-  font-weight: bold;
+  font-weight: bold !important;
   border-radius: 20px;
   padding: 5px 14px 5px;
   text-transform: uppercase;

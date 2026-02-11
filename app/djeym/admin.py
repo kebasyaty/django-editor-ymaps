@@ -374,7 +374,7 @@ class LoadIndicatorAdmin(admin.ModelAdmin):  # noqa: D101
 class GeotagStatusAdmin(admin.ModelAdmin):  # noqa: D101
     # ckeditor_change_form.html - Used by default.
     change_form_template = "djeym/admin/ckeditor_change_form.html"
-    list_display = ("title", "slug")  # pyrefly: ignore[bad-override]
+    list_display = ("status", "slug")  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106
         css = {"all": ["/static/djeym/css/djeym_admin.css"]}

@@ -32,11 +32,14 @@ label[for="id_disable_standard_icons"] {
 }
 
 .editing_map_link_wrapper a {
-  position: relative;
-  top: 3px;
-  background-color: #d4aa00 !important;
-  color: #000 !important;
-  font-weight: bold !important;
+    position: relative;
+    top: 40px;
+    background-color: #d4aa00 !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    border-radius: 20px;
+    padding: 5px 14px 5px;
+    text-decoration: none !important;
 }
 
 .hint_center_map,

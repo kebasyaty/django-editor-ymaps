@@ -184,6 +184,7 @@ label[for="id_is_cluster"] {
   background-color: #d4aa00 !important;
   color: #000 !important;
   font-weight: bold !important;
+  text-decoration: none !important;
   background-image: url(../img/plus.svg) !important;
 }
 

@@ -1643,7 +1643,7 @@ class GeotagStatus(models.Model):
     slug = models.SlugField(max_length=255, blank=True, null=True)
 
     def __str__(self):  # noqa: D105
-        return str(self.title)
+        return str(self.status)
 
     class Meta:  # noqa: D106
         ordering = ("-title", "-id")
@@ -1651,7 +1651,7 @@ class GeotagStatus(models.Model):
         verbose_name_plural = _("Geotag statuses")
 
     def save(self, *args, **kwargs):  # noqa: D102
-        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
+        self.slug = slugify(str(self.status))  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
 

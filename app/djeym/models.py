@@ -1646,7 +1646,7 @@ class GeotagStatus(models.Model):
         return str(self.status)
 
     class Meta:  # noqa: D106
-        ordering = ("-title", "-id")
+        ordering = ("-status", "-id")
         verbose_name = _("Geotag status")
         verbose_name_plural = _("Geotag statuses")
 

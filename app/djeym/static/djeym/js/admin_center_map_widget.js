@@ -64,7 +64,7 @@ window.djeymYMaps.ready(function () {
         iconLayout: "default#image",
         iconImageHref: "/static/djeym/img/center.svg",
         iconImageSize: [23, 60],
-        iconImageOffset: [-11.6, -59.3],
+        iconImageOffset: [-11.2, -58.0],
         draggable: true,
       },
     );

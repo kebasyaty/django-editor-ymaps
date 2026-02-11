@@ -248,6 +248,7 @@ label[for="id_is_cluster"] {
   top: 50%;
   left: 50%;
   margin: -32px 0 0 -32px;
+  opacity: 1;
   content: url("../../djeym/img/spinner.svg");
   animation: djeym-spin 1s infinite linear;
 }

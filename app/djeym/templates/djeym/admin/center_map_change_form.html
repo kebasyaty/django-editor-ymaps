@@ -47,7 +47,7 @@
     </div>
     {% if original.pk %}
       <div class="editing_map_link_wrapper">
-        <a href="{{ original.get_absolute_url }}" class="addlink">{% trans 'Editing map' %}</a>
+        <a href="{{ original.get_absolute_url }}">{% trans 'Editing map' %}</a>
       </div>
     {% endif %}
     {% block object-tools %}

@@ -132,7 +132,8 @@ class TileSource(models.Model):
 
     def admin_thumbnail(self):  # noqa: D102
         if bool(self.screenshot):
-            return mark_safe(f'<img src="{self.screenshot.url}" height="40" alt="Screenshot">')  # noqa: S308
+            img_html = f'<img src="{self.screenshot.url}" height="40" alt="Screenshot">'
+            return mark_safe(img_html)  # noqa: S308
         return ""
 
     admin_thumbnail.short_description = _("Screenshot")
@@ -637,9 +638,8 @@ class Map(models.Model):
 
     def get_cluster(self):  # noqa: D102
         if bool(self.icon_cluster):
-            return mark_safe(  # noqa: S308
-                f'<img src="{self.icon_cluster.svg.url}" height="40" alt="Cluster Icon">',
-            )
+            img_html = f'<img src="{self.icon_cluster.svg.url}" height="40" alt="Cluster Icon">'
+            return mark_safe(img_html)  # noqa: S308
         return ""
 
     get_cluster.short_description = _("Cluster")
@@ -647,7 +647,8 @@ class Map(models.Model):
     def get_icon_collection(self):  # noqa: D102
         icon = MarkerIcon.objects.filter(icon_collection=self.icon_collection).first()
         if icon is not None:
-            return mark_safe(f'<img src="{icon.svg.url}" height="40" alt="Icon">')  # noqa: S308
+            img_html = f'<img src="{icon.svg.url}" height="40" alt="Icon">'
+            return mark_safe(img_html)  # noqa: S308
         return ""
 
     get_icon_collection.short_description = _("Collection")
@@ -656,7 +657,8 @@ class Map(models.Model):
         screenshot = "/static/djeym/img/default_tile.png"
         if bool(self.tile):
             screenshot = self.tile.screenshot.url
-        return mark_safe(f'<img src="{screenshot}" height="40" alt="Screenshot">')  # noqa: S308
+        img_html = f'<img src="{screenshot}" height="40" alt="Screenshot">'
+        return mark_safe(img_html)  # noqa: S308
 
     get_tile_screenshot.short_description = _("Tile")
 
@@ -664,15 +666,15 @@ class Map(models.Model):
         icon = "cold_fire.svg"
         if hasattr(self, "heatmap_settings") and self.heatmap_settings.active:
             icon = "hot_fire.svg"
-        return mark_safe(f'<img src="/static/djeym/img/{icon}" height="40" alt="Icon">')  # noqa: S308
+        img_html = f'<img src="/static/djeym/img/{icon}" height="40" alt="Icon">'
+        return mark_safe(img_html)  # noqa: S308
 
     get_status_heatmap.short_description = ngettext_lazy("Heatmap", "Heat maps", 1)
 
     def get_load_indicator(self):  # noqa: D102
         if bool(self.load_indicator):
-            return mark_safe(  # noqa: S308
-                f'<img src="{self.load_indicator.svg.url}" height="40" alt="Icon">',
-            )
+            img_html = f'<img src="{self.load_indicator.svg.url}" height="40" alt="Icon">'
+            return mark_safe(img_html)  # noqa: S308
         return ""
 
     get_load_indicator.short_description = _("Indicator")
@@ -1070,7 +1072,8 @@ class Placemark(models.Model):
         return "djeym/user_images"
 
     def __str__(self):  # noqa: D105
-        return mark_safe(re.sub(r"<.*?>", "", self.header)[:60])  # noqa: S308 # pyrefly: ignore[no-matching-overload]
+        header = re.sub(r"<.*?>", "", self.header)[:60]  # pyrefly: ignore[no-matching-overload]
+        return mark_safe(header)  # noqa: S308
 
     class Meta:  # noqa: D106
         ordering = ("-id",)
@@ -1162,7 +1165,8 @@ class Polyline(models.Model):
     is_created = models.BooleanField("Is created ?", default=False, editable=False)
 
     def __str__(self):  # noqa: D105
-        return mark_safe(re.sub(r"<.*?>", "", self.header)[:60])  # noqa: S308 # pyrefly: ignore[no-matching-overload]
+        header = re.sub(r"<.*?>", "", self.header)[:60]  # pyrefly: ignore[no-matching-overload]
+        return mark_safe(header)  # noqa: S308
 
     class Meta:  # noqa: D106
         ordering = ("-id",)
@@ -1247,7 +1251,8 @@ class Polygon(models.Model):
     is_created = models.BooleanField("Is created ?", default=False, editable=False)
 
     def __str__(self):  # noqa: D105
-        return mark_safe(re.sub(r"<.*?>", "", self.header)[:60])  # noqa: S308 # pyrefly: ignore[no-matching-overload]
+        header = re.sub(r"<.*?>", "", self.header)[:60]  # pyrefly: ignore[no-matching-overload]
+        return mark_safe(header)  # noqa: S308
 
     class Meta:  # noqa: D106
         ordering = ("-id",)
@@ -1298,7 +1303,8 @@ class HeatPoint(models.Model):
     is_created = models.BooleanField("Is created ?", default=False, editable=False)
 
     def __str__(self):  # noqa: D105
-        return mark_safe(re.sub(r"<.*?>", "", self.title)[:60])  # noqa: S308 # pyrefly: ignore[no-matching-overload]
+        title = re.sub(r"<.*?>", "", self.title)[:60]  # pyrefly: ignore[no-matching-overload]
+        return mark_safe(title)  # noqa: S308
 
     class Meta:  # noqa: D106
         verbose_name = ngettext_lazy("Heat Point", "Heat points", 5)
@@ -1361,7 +1367,8 @@ class ClusterIcon(models.Model):
 
     def admin_thumbnail(self):  # noqa: D102
         if bool(self.svg):
-            return mark_safe(f'<img src="{self.svg.url}" height="40" alt="Icon">')  # noqa: S308
+            img_html = f'<img src="{self.svg.url}" height="40" alt="Icon">'
+            return mark_safe(img_html)  # noqa: S308
         return ""
 
     admin_thumbnail.short_description = _("Icon")
@@ -1420,7 +1427,8 @@ class IconCollection(models.Model):
     def admin_thumbnail(self):  # noqa: D102
         icon = self.icons.all().first()
         if icon is not None:
-            return mark_safe(f'<img src="{icon.svg.url}" height="40" alt="Icon">')  # noqa: S308
+            img_html = f'<img src="{icon.svg.url}" height="40" alt="Icon">'
+            return mark_safe(img_html)  # noqa: S308
         return ""
 
     admin_thumbnail.short_description = _("Sample Icon")
@@ -1442,9 +1450,11 @@ class IconCollection(models.Model):
 
     def get_export_file_btn(self):  # noqa: D102
         url = reverse("djeym:export_icon_collection", kwargs={"slug": self.slug})
-        return mark_safe(  # noqa: S308
-            '<a href="{}" class="export_icon_collection_link">{} <div></div></a>'.format(url, _("Export Collection")),
+        link_html = '<a href="{}" class="export_icon_collection_link">{} <div></div></a>'.format(
+            url,
+            _("Export Collection"),
         )
+        return mark_safe(link_html)  # noqa: S308
 
     get_export_file_btn.short_description = _("Get a collection of icons")
 
@@ -1504,7 +1514,8 @@ class MarkerIcon(models.Model):
 
     def admin_thumbnail(self):  # noqa: D102
         if bool(self.svg):
-            return mark_safe(f'<img src="{self.svg.url}" height="40" alt="Icon">')  # noqa: S308
+            img_html = f'<img src="{self.svg.url}" height="40" alt="Icon">'
+            return mark_safe(img_html)  # noqa: S308
         return ""
 
     admin_thumbnail.short_description = _("Icon")
@@ -1590,7 +1601,8 @@ class LoadIndicator(models.Model):
 
     def admin_thumbnail(self):  # noqa: D102
         if bool(self.svg):
-            return mark_safe(f'<img src="{self.svg.url}" height="40" alt="Icon">')  # noqa: S308
+            img_html = f'<img src="{self.svg.url}" height="40" alt="Icon">'
+            return mark_safe(img_html)  # noqa: S308
         return ""
 
     admin_thumbnail.short_description = _("Icon")

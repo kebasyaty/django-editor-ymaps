@@ -138,14 +138,12 @@ LANGUAGES = (
     ("tr", _("Turkish")),
 )
 
-LOCALE_PATHS = (BASE_DIR.joinpath("locale"),)
+LOCALE_PATHS = (BASE_DIR / f"{APP_NAME}/locale",)
 
-
-SITE_ID = 1
-
-TIME_ZONE = "UTC"
 
 USE_I18N = True
+
+TIME_ZONE = "UTC"
 
 USE_TZ = True
 

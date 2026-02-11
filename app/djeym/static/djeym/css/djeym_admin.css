@@ -184,7 +184,6 @@ label[for="id_is_cluster"] {
   background-color: #d4aa00 !important;
   color: #000 !important;
   font-weight: bold !important;
-  text-decoration: none !important;
   background-image: url(../img/plus.svg) !important;
 }
 
@@ -192,6 +191,7 @@ label[for="id_is_cluster"] {
   background-color: #d4aa00 !important;
   color: #000 !important;
   font-weight: bold !important;
+  text-decoration: none !important;
   background-image: url(../img/import.svg) !important;
 }
 
@@ -205,6 +205,7 @@ label[for="id_is_cluster"] {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-size: 11px;
+  text-decoration: none !important;
 }
 
 .export_icon_collection_link div {

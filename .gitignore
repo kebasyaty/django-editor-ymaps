@@ -26,7 +26,7 @@ desktop.ini
 *.pid
 
 # Ignore temporary media files
-/app/media/uploads/**
+/app/media/**
 !/app/media/uploads/.gitkeep
 
 # SQLite

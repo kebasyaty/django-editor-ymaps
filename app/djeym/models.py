@@ -303,8 +303,6 @@ class Preset(models.Model):
 
     def save(self, *args, **kwargs):  # noqa: D102
         self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
-        if re.match(r"mdi-", self.icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
-            self.icon = f"mdi-{self.icon}"  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
     def clean(self):  # noqa: D102

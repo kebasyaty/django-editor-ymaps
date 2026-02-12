@@ -172,8 +172,10 @@ DEFAULT_FROM_EMAIL = "noreply@site.net"
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 4194304
 
+
 # django-ckeditor
 # https://github.com/django-ckeditor/django-ckeditor
+
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_FILENAME_GENERATOR = "djeym.utils.get_filename"
@@ -205,6 +207,7 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+
 # If a non-authenticated user requests an editor page.
 LOGIN_URL = "admin/"  # or change to your URL
 
@@ -212,13 +215,18 @@ LOGIN_URL = "admin/"  # or change to your URL
 # https://github.com/alsoicode/django-admin-sortable#configuration
 CSRF_COOKIE_HTTPONLY = False
 
+
+# Yandex Maps
+# Terms of use for the Yandex.Maps: https://yandex.ru/dev/commercial/doc/en/
+# Get the API key: https://yandex.com/dev/jsapi-v2-1/doc/en/#get-api-key
+
 # The API key is used in the free and paid versions.
 # You can get the key in the developer’s office - https://passport.yandex.com/
 DJEYM_YMAPS_API_KEY = "aadb75d5-cd13-4d2d-8c0b-79e8d1d0f19a"
 
-# For paid use API --> True
+# True, if you use a paid API
 DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE = False
 
-# Map download mode.
+# Map download mode
 # Default = "release".
 DJEYM_YMAPS_DOWNLOAD_MODE = "debug" if DEBUG else "release"

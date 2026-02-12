@@ -231,5 +231,6 @@ DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE = False
 # Default = "release".
 DJEYM_YMAPS_DOWNLOAD_MODE = "debug" if DEBUG else "release"
 
+
 # Material Design Icons
 MD_ICONS_VERSION = 7

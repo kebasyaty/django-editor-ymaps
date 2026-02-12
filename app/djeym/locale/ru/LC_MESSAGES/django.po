@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-12 11:41+0000\n"
+"POT-Creation-Date: 2026-02-12 23:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,7 +99,7 @@ msgstr "Ошибка - Не указано имя коллекции. Парам
 msgid "Error - Specify a directory with icons. Parameter: --path"
 msgstr "Ошибка - Укажите каталог с иконками. Параметр: --path"
 
-#: app/djeym/management/commands/exporticons.py:40 app/djeym/views.py:859
+#: app/djeym/management/commands/exporticons.py:40 app/djeym/views.py:861
 msgid "The {} collection already exists."
 msgstr "Коллекция {} уже существует."
 
@@ -268,8 +268,8 @@ msgstr "Иконка"
 #: app/djeym/models.py:272 app/djeym/models.py:708 app/djeym/models.py:756
 #: app/djeym/models.py:796 app/djeym/models.py:840 app/djeym/models.py:888
 #: app/djeym/models.py:932
-msgid "http://materialdesignicons.com/ - Example: help"
-msgstr "http://materialdesignicons.com/ - Пример: help"
+msgid "https://materialdesignicons.com/ - Example: help"
+msgstr "https://materialdesignicons.com/ - Пример: help"
 
 #: app/djeym/models.py:280
 msgid "Description"
@@ -809,7 +809,7 @@ msgstr "Примеры: Заявка принята | Заявка выполн�
 msgid "Geotag statuses"
 msgstr "Статусы геометок"
 
-#: app/djeym/templates/djeym/admin/center_map_change_form.html:22
+#: app/djeym/templates/djeym/admin/center_map_change_form.html:21
 #: app/djeym/templates/djeym/admin/check_icon_offset_change_form.html:20
 #: app/djeym/templates/djeym/admin/ckeditor_change_form.html:22
 #: app/djeym/templates/djeym/admin/icon_collection_change_list.html:32
@@ -817,42 +817,42 @@ msgstr "Статусы геометок"
 msgid "Home"
 msgstr "Главная"
 
-#: app/djeym/templates/djeym/admin/center_map_change_form.html:32
+#: app/djeym/templates/djeym/admin/center_map_change_form.html:31
 #: app/djeym/templates/djeym/admin/check_icon_offset_change_form.html:23
-#: app/djeym/templates/djeym/admin/ckeditor_change_form.html:25
+#: app/djeym/templates/djeym/admin/ckeditor_change_form.html:32
 #: app/djeym/templates/djeym/admin/icon_collection_change_list.html:60
 #: app/djeym/templates/djeym/admin/tile_source_change_list.html:63
 #, python-format
 msgid "Add %(name)s"
 msgstr "Добавить %(name)s"
 
-#: app/djeym/templates/djeym/admin/center_map_change_form.html:50
+#: app/djeym/templates/djeym/admin/center_map_change_form.html:49
 msgid "Editing map"
 msgstr "Редактировать карту"
 
-#: app/djeym/templates/djeym/admin/center_map_change_form.html:60
+#: app/djeym/templates/djeym/admin/center_map_change_form.html:59
 #: app/djeym/templates/djeym/admin/check_icon_offset_change_form.html:41
-#: app/djeym/templates/djeym/admin/ckeditor_change_form.html:41
+#: app/djeym/templates/djeym/admin/ckeditor_change_form.html:56
 msgid "History"
 msgstr "История"
 
-#: app/djeym/templates/djeym/admin/center_map_change_form.html:64
+#: app/djeym/templates/djeym/admin/center_map_change_form.html:63
 #: app/djeym/templates/djeym/admin/check_icon_offset_change_form.html:43
-#: app/djeym/templates/djeym/admin/ckeditor_change_form.html:43
+#: app/djeym/templates/djeym/admin/ckeditor_change_form.html:60
 msgid "View on site"
 msgstr "Посмотреть на сайте"
 
-#: app/djeym/templates/djeym/admin/center_map_change_form.html:90
+#: app/djeym/templates/djeym/admin/center_map_change_form.html:89
 #: app/djeym/templates/djeym/admin/check_icon_offset_change_form.html:55
-#: app/djeym/templates/djeym/admin/ckeditor_change_form.html:55
+#: app/djeym/templates/djeym/admin/ckeditor_change_form.html:86
 #: app/djeym/templates/djeym/admin/icon_collection_change_list.html:69
 #: app/djeym/templates/djeym/admin/tile_source_change_list.html:72
 msgid "Please correct the error below."
 msgstr "Исправьте ошибку ниже."
 
-#: app/djeym/templates/djeym/admin/center_map_change_form.html:92
+#: app/djeym/templates/djeym/admin/center_map_change_form.html:91
 #: app/djeym/templates/djeym/admin/check_icon_offset_change_form.html:55
-#: app/djeym/templates/djeym/admin/ckeditor_change_form.html:55
+#: app/djeym/templates/djeym/admin/ckeditor_change_form.html:88
 #: app/djeym/templates/djeym/admin/icon_collection_change_list.html:69
 #: app/djeym/templates/djeym/admin/tile_source_change_list.html:72
 msgid "Please correct the errors below."

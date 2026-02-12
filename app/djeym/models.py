@@ -705,7 +705,7 @@ class CategoryPlacemark(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help"),
+        help_text=_("https://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#00C853")
@@ -753,7 +753,7 @@ class SubCategoryPlacemark(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help"),
+        help_text=_("https://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#0091EA")
@@ -793,7 +793,7 @@ class CategoryPolyline(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help"),
+        help_text=_("https://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#00C853")
@@ -837,7 +837,7 @@ class SubCategoryPolyline(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help"),
+        help_text=_("https://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#0091EA")
@@ -885,7 +885,7 @@ class CategoryPolygon(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help"),
+        help_text=_("https://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#00C853")
@@ -929,7 +929,7 @@ class SubCategoryPolygon(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help"),
+        help_text=_("https://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#0091EA")

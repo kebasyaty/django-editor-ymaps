@@ -269,7 +269,7 @@ class Preset(models.Model):
         _("Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help OR mdi-help"),
+        help_text=_("http://materialdesignicons.com/ - Example: help"),
     )
 
     html = models.TextField("Text | Html", default='<p style="color:#E91E63;">iPreset</p>')
@@ -303,8 +303,6 @@ class Preset(models.Model):
 
     def save(self, *args, **kwargs):  # noqa: D102
         self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
-        if re.match(r"mdi-", self.icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
-            self.icon = f"mdi-{self.icon}"  # pyrefly: ignore[bad-assignment]
         super().save(*args, **kwargs)
 
     def clean(self):  # noqa: D102
@@ -614,19 +612,19 @@ class Map(models.Model):
             CategoryPlacemark.objects.create(
                 ymap=self,
                 title="Demo Category",
-                category_icon="mdi-help",
+                category_icon="help",
                 category_color="#00C853",
             )
             CategoryPolyline.objects.create(
                 ymap=self,
                 title="Demo Category",
-                category_icon="mdi-help",
+                category_icon="help",
                 category_color="#00C853",
             )
             CategoryPolygon.objects.create(
                 ymap=self,
                 title="Demo Category",
-                category_icon="mdi-help",
+                category_icon="help",
                 category_color="#00C853",
             )
             self.demo_categories = False  # pyrefly: ignore[bad-assignment]
@@ -707,7 +705,7 @@ class CategoryPlacemark(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help OR mdi-help"),
+        help_text=_("http://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#00C853")
@@ -722,11 +720,6 @@ class CategoryPlacemark(SortableMixin):
         ordering = ("position",)
         verbose_name = ngettext_lazy("-Category of marker", "-Category of markers", 1)
         verbose_name_plural = ngettext_lazy("-Category of marker", "-Category of markers", 2)
-
-    def save(self, *args, **kwargs):  # noqa: D102
-        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
-            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
-        super().save(*args, **kwargs)
 
     def clean(self):  # noqa: D102
         count_category = CategoryPlacemark.objects.filter(ymap=self.ymap, title=self.title).count()
@@ -760,7 +753,7 @@ class SubCategoryPlacemark(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help OR mdi-help"),
+        help_text=_("http://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#0091EA")
@@ -775,11 +768,6 @@ class SubCategoryPlacemark(SortableMixin):
         ordering = ("position",)
         verbose_name = ngettext_lazy("_Subcategory of marker", "_Subcategory of markers", 1)
         verbose_name_plural = ngettext_lazy("_Subcategory of marker", "_Subcategory of markers", 2)
-
-    def save(self, *args, **kwargs):  # noqa: D102
-        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
-            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
-        super().save(*args, **kwargs)
 
     def clean(self):  # noqa: D102
         count_category = SubCategoryPlacemark.objects.filter(ymap=self.ymap, title=self.title).count()
@@ -805,7 +793,7 @@ class CategoryPolyline(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help OR mdi-help"),
+        help_text=_("http://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#00C853")
@@ -820,11 +808,6 @@ class CategoryPolyline(SortableMixin):
         ordering = ("position",)
         verbose_name = ngettext_lazy("-Category of route", "-Category of routes", 1)
         verbose_name_plural = ngettext_lazy("-Category of route", "-Category of routes", 2)
-
-    def save(self, *args, **kwargs):  # noqa: D102
-        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
-            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
-        super().save(*args, **kwargs)
 
     def clean(self):  # noqa: D102
         count_category = CategoryPolyline.objects.filter(ymap=self.ymap, title=self.title).count()
@@ -854,7 +837,7 @@ class SubCategoryPolyline(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help OR mdi-help"),
+        help_text=_("http://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#0091EA")
@@ -869,11 +852,6 @@ class SubCategoryPolyline(SortableMixin):
         ordering = ("position",)
         verbose_name = ngettext_lazy("_Subcategory of route", "_Subcategory of routes", 1)
         verbose_name_plural = ngettext_lazy("_Subcategory of route", "_Subcategory of routes", 2)
-
-    def save(self, *args, **kwargs):  # noqa: D102
-        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
-            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
-        super().save(*args, **kwargs)
 
     def clean(self):  # noqa: D102
         count_category = SubCategoryPolyline.objects.filter(ymap=self.ymap, title=self.title).count()
@@ -907,7 +885,7 @@ class CategoryPolygon(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help OR mdi-help"),
+        help_text=_("http://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#00C853")
@@ -922,11 +900,6 @@ class CategoryPolygon(SortableMixin):
         ordering = ("position",)
         verbose_name = ngettext_lazy("-Category of territory", "-Category of territories", 1)
         verbose_name_plural = ngettext_lazy("-Category of territory", "-Category of territories", 2)
-
-    def save(self, *args, **kwargs):  # noqa: D102
-        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
-            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
-        super().save(*args, **kwargs)
 
     def clean(self):  # noqa: D102
         count_category = CategoryPolygon.objects.filter(ymap=self.ymap, title=self.title).count()
@@ -956,7 +929,7 @@ class SubCategoryPolygon(SortableMixin):
         _("Category Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help OR mdi-help"),
+        help_text=_("http://materialdesignicons.com/ - Example: help"),
     )
 
     category_color = RGBColorField(_("Category color"), colors=COLORS, default="#0091EA")
@@ -971,11 +944,6 @@ class SubCategoryPolygon(SortableMixin):
         ordering = ("position",)
         verbose_name = ngettext_lazy("_Subcategory of territory", "_Subcategory of territories", 1)
         verbose_name_plural = ngettext_lazy("_Subcategory of territory", "_Subcategory of territories", 2)
-
-    def save(self, *args, **kwargs):  # noqa: D102
-        if re.match(r"mdi-", self.category_icon) is None:  # noqa: RUF055 # pyrefly: ignore[no-matching-overload]
-            self.category_icon = f"mdi-{self.category_icon}"  # pyrefly: ignore[bad-assignment]
-        super().save(*args, **kwargs)
 
     def clean(self):  # noqa: D102
         count_category = SubCategoryPolygon.objects.filter(ymap=self.ymap, title=self.title).count()

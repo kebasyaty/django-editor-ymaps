@@ -269,7 +269,7 @@ class Preset(models.Model):
         _("Icon"),
         max_length=255,
         default="",
-        help_text=_("http://materialdesignicons.com/ - Example: help"),
+        help_text=_("https://materialdesignicons.com/ - Example: help"),
     )
 
     html = models.TextField("Text | Html", default='<p style="color:#E91E63;">iPreset</p>')

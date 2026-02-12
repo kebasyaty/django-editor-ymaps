@@ -21,13 +21,6 @@ from django.views.generic import TemplateView, View
 from ipware import get_client_ip
 from slugify import slugify
 
-from .__init__ import (
-    __django_version__,
-    __djeym_version__,
-    __python_version__,
-    __vue_version__,
-    __vuetify_version__,
-)
 from .decorators import ajax_login_required_and_staff
 from .forms import (
     BanIPForm,
@@ -243,11 +236,6 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
             context["load_indicator"] = ymap.load_indicator
             context["load_indicator_size"] = ymap.load_indicator_size
             context["form_cke"] = CKEditorTextareaForm()
-            context["djeym_version"] = __djeym_version__
-            context["python_version"] = ">= " + __python_version__
-            context["django_version"] = ">= " + __django_version__
-            context["vue_version"] = "== " + __vue_version__
-            context["vuetify_version"] = "== " + __vuetify_version__
             context["is_heatmap"] = ymap.heatmap_settings.active
             context["is_round_theme"] = ymap.general_settings.roundtheme
             context["presets"] = ymap.presets.values_list("js", flat=True)

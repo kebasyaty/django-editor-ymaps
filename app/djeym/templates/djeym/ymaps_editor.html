@@ -92,11 +92,6 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
     var djeymMapID = {{ ymap.pk }},
       djeymCSRFToken = '{{ csrf_token }}',
       djeymLanguageCode = '{{ language_code }}',
-      djeymVersion = '{{ djeym_version }}',
-      djeymPythonVersion = '{{ python_version|safe }}',
-      djeymDjangoVersion = '{{ django_version|safe }}',
-      djeymVueVersion = '{{ vue_version }}',
-      djeymVuetifyVersion = '{{ vuetify_version }}',
       djeymCKEditor = null,
       djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",
       djeymBalloonMinHeight = {% if load_indicator %}{{ load_indicator_size }} + 40{% else %}60{% endif %};

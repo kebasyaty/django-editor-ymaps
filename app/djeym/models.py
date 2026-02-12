@@ -1603,8 +1603,8 @@ class BannedIP(models.Model):
         return str(self.ip)
 
     class Meta:  # noqa: D106
-        verbose_name = _("Blocked IP")
-        verbose_name_plural = _("Blocked IPs")
+        verbose_name = _("Banned IP address")
+        verbose_name_plural = _("Banned IP addresses")
 
 
 class GeotagStatus(models.Model):

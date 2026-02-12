@@ -15,7 +15,7 @@ $(document).ready(function () {
       const csrftoken = $('input[name="csrfmiddlewaretoken"').val();
       inputUserIP.after(
         '<span class="view_icon ban_ip" title="' +
-          window.gettext("Ban IP") +
+          window.gettext("Ban IP address") +
           '">' +
           '<span class="mdi mdi-cancel"></span></span>',
       );

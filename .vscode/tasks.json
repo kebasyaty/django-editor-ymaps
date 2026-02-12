@@ -105,7 +105,10 @@
     {
       "label": "i18n: Make (ru,)",
       "type": "shell",
-      "command": ["uv run python app/manage.py makemessages -l ru"],
+      "command": [
+        "uv run python app/manage.py makemessages -l ru;",
+        "uv run python app/manage.py makemessages -l ru -d djangojs"
+      ],
       "problemMatcher": []
     },
     {

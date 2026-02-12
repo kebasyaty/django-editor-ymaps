@@ -30,7 +30,7 @@ from .__init__ import (
 )
 from .decorators import ajax_login_required_and_staff
 from .forms import (
-    BlockedIPForm,
+    BanIPForm,
     CKEditorTextareaForm,
     CustomPlacemarkForm,
     GeneralSettingsForm,
@@ -44,7 +44,7 @@ from .forms import (
 )
 from .mixins import StaffRequiredMixin
 from .models import (
-    BlockedIP,
+    BannedIP,
     ClusterIcon,
     HeatPoint,
     IconCollection,
@@ -400,7 +400,7 @@ class AjaxSaveCusotmMarker(View):
     def post(self, request, *args, **kwargs):  # noqa: D102
         client_ip, is_routable = get_client_ip(request)  # noqa: RUF059
 
-        if BlockedIP.objects.filter(ip=client_ip).count() == 0:
+        if BannedIP.objects.filter(ip=client_ip).count() == 0:
             form = CustomPlacemarkForm(request.POST)
 
             if form.is_valid():
@@ -417,13 +417,13 @@ class AjaxSaveCusotmMarker(View):
         return JsonResponse(response_data)
 
 
-# BLOCK IP ADDRESSES
+# BAN IP ADDRESSES
 # ------------------------------------------------------------------------------
-class AjaxBlockIPAddress(View):
-    """Ajax - Block ip address."""
+class AjaxBanIPAddress(View):
+    """Ajax - Ban ip address."""
 
     def post(self, request, *args, **kwargs):  # noqa: D102
-        form = BlockedIPForm(request.POST)
+        form = BanIPForm(request.POST)
 
         if form.is_valid():
             form.save()

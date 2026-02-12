@@ -8,7 +8,7 @@ from django.db import models
 
 from .forms import CenterMapForm, OffsetMarkerIconForm
 from .models import (
-    BlockedIP,
+    BannedIP,
     CategoryPlacemark,
     CategoryPolygon,
     CategoryPolyline,
@@ -33,7 +33,7 @@ from .widgets import AdminFileThumbWidget
 
 
 @admin.register(TileSource)
-class TileSourceAdmin(admin.ModelAdmin):  # noqa: D101
+class TileSourceAdmin(admin.ModelAdmin):
     # ckeditor_change_form.html - Used by default.
     change_form_template = "djeym/admin/ckeditor_change_form.html"
     change_list_template = "djeym/admin/tile_source_change_list.html"
@@ -59,7 +59,7 @@ class TileSourceAdmin(admin.ModelAdmin):  # noqa: D101
 
 
 @admin.register(Statistics)
-class StatisticsAdmin(admin.ModelAdmin):  # noqa: D101
+class StatisticsAdmin(admin.ModelAdmin):
     # ckeditor_change_form.html - Used by default.
     change_form_template = "djeym/admin/ckeditor_change_form.html"
     list_display = ("obj_type", "obj_id", "ip", "timestamp")  # pyrefly: ignore[bad-override]
@@ -69,8 +69,8 @@ class StatisticsAdmin(admin.ModelAdmin):  # noqa: D101
         css = {"all": ["/static/djeym/css/djeym_admin.css"]}
 
 
-@admin.register(BlockedIP)
-class BlockedIPAdmin(admin.ModelAdmin):  # noqa: D101
+@admin.register(BannedIP)
+class BannedIPAdmin(admin.ModelAdmin):
     # ckeditor_change_form.html - Used by default.
     change_form_template = "djeym/admin/ckeditor_change_form.html"
     list_display = ("ip", "timestamp")  # pyrefly: ignore[bad-override]
@@ -79,51 +79,51 @@ class BlockedIPAdmin(admin.ModelAdmin):  # noqa: D101
         css = {"all": ["/static/djeym/css/djeym_admin.css"]}
 
 
-class PresetInline(admin.StackedInline):  # noqa: D101
+class PresetInline(admin.StackedInline):
     model = Preset
     extra = 0
     exclude = ("slug",)
     classes = ["collapse"]
 
 
-class CategoryPlacemarkInline(SortableTabularInline):  # noqa: D101
+class CategoryPlacemarkInline(SortableTabularInline):
     model = CategoryPlacemark
     extra = 0
     classes = ["collapse"]
 
 
-class SubCategoryPlacemarkInline(SortableTabularInline):  # noqa: D101
+class SubCategoryPlacemarkInline(SortableTabularInline):
     model = SubCategoryPlacemark
     extra = 0
     classes = ["collapse"]
 
 
-class CategoryPolylineInline(SortableTabularInline):  # noqa: D101
+class CategoryPolylineInline(SortableTabularInline):
     model = CategoryPolyline
     extra = 0
     classes = ["collapse"]
 
 
-class SubCategoryPolylineInline(SortableTabularInline):  # noqa: D101
+class SubCategoryPolylineInline(SortableTabularInline):
     model = SubCategoryPolyline
     extra = 0
     classes = ["collapse"]
 
 
-class CategoryPolygonInline(SortableTabularInline):  # noqa: D101
+class CategoryPolygonInline(SortableTabularInline):
     model = CategoryPolygon
     extra = 0
     classes = ["collapse"]
 
 
-class SubCategoryPolygonInline(SortableTabularInline):  # noqa: D101
+class SubCategoryPolygonInline(SortableTabularInline):
     model = SubCategoryPolygon
     extra = 0
     classes = ["collapse"]
 
 
 @admin.register(Map)
-class MapAdmin(NonSortableParentAdmin):  # noqa: D101
+class MapAdmin(NonSortableParentAdmin):
     form = CenterMapForm
     change_form_template_extends = "djeym/admin/center_map_change_form.html"
     list_display = (  # pyrefly: ignore[bad-override]
@@ -166,7 +166,7 @@ class MapAdmin(NonSortableParentAdmin):  # noqa: D101
 
 
 @admin.register(Placemark)
-class PlacemarkAdmin(admin.ModelAdmin):  # noqa: D101
+class PlacemarkAdmin(admin.ModelAdmin):
     change_form_template = "djeym/admin/ckeditor_change_form.html"
     list_display = ("__str__", "ymap", "category", "active")  # pyrefly: ignore[bad-override]
     list_filter = ("ymap",)  # pyrefly: ignore[bad-override]
@@ -188,12 +188,12 @@ class PlacemarkAdmin(admin.ModelAdmin):  # noqa: D101
             "/static/djeym/js/jquery.min.js",
             "/static/djeym/js/ckeditor_resize_image.js",
             "/static/djeym/js/admin_icon_collection.js",
-            "/static/djeym/js/admin_block_ip.js",
+            "/static/djeym/js/admin_ban_ip.js",
         )
 
 
 @admin.register(Polyline)
-class PolylineAdmin(admin.ModelAdmin):  # noqa: D101
+class PolylineAdmin(admin.ModelAdmin):
     change_form_template = "djeym/admin/ckeditor_change_form.html"
     list_display = ("__str__", "active")  # pyrefly: ignore[bad-override]
     list_filter = ("ymap",)  # pyrefly: ignore[bad-override]
@@ -214,7 +214,7 @@ class PolylineAdmin(admin.ModelAdmin):  # noqa: D101
 
 
 @admin.register(Polygon)
-class PolygonAdmin(admin.ModelAdmin):  # noqa: D101
+class PolygonAdmin(admin.ModelAdmin):
     change_form_template = "djeym/admin/ckeditor_change_form.html"
     list_display = ("__str__", "active")  # pyrefly: ignore[bad-override]
     list_filter = ("ymap",)  # pyrefly: ignore[bad-override]
@@ -235,7 +235,7 @@ class PolygonAdmin(admin.ModelAdmin):  # noqa: D101
 
 
 @admin.register(HeatPoint)
-class HeatPointAdmin(admin.ModelAdmin):  # noqa: D101
+class HeatPointAdmin(admin.ModelAdmin):
     # ckeditor_change_form.html - Used by default.
     change_form_template = "djeym/admin/ckeditor_change_form.html"
     list_display = ("title", "weight", "slug", "active")  # pyrefly: ignore[bad-override]
@@ -253,7 +253,7 @@ class HeatPointAdmin(admin.ModelAdmin):  # noqa: D101
 
 
 @admin.register(ClusterIcon)
-class ClusterIconAdmin(admin.ModelAdmin):  # noqa: D101
+class ClusterIconAdmin(admin.ModelAdmin):
     # ckeditor_change_form.html - Used by default.
     change_form_template = "djeym/admin/ckeditor_change_form.html"
     list_display = ("title", "admin_thumbnail")  # pyrefly: ignore[bad-override]
@@ -283,7 +283,7 @@ class ClusterIconAdmin(admin.ModelAdmin):  # noqa: D101
 
 
 @admin.register(IconCollection)
-class IconCollectionAdmin(admin.ModelAdmin):  # noqa: D101
+class IconCollectionAdmin(admin.ModelAdmin):
     # ckeditor_change_form.html - Used by default.
     change_form_template = "djeym/admin/ckeditor_change_form.html"
     change_list_template = "djeym/admin/icon_collection_change_list.html"
@@ -311,7 +311,7 @@ class IconCollectionAdmin(admin.ModelAdmin):  # noqa: D101
 
 
 @admin.register(MarkerIcon)
-class MarkerIconAdmin(admin.ModelAdmin):  # noqa: D101
+class MarkerIconAdmin(admin.ModelAdmin):
     form = OffsetMarkerIconForm
     change_form_template = "djeym/admin/check_icon_offset_change_form.html"
     list_display = (  # pyrefly: ignore[bad-override]
@@ -345,7 +345,7 @@ class MarkerIconAdmin(admin.ModelAdmin):  # noqa: D101
 
 
 @admin.register(LoadIndicator)
-class LoadIndicatorAdmin(admin.ModelAdmin):  # noqa: D101
+class LoadIndicatorAdmin(admin.ModelAdmin):
     # ckeditor_change_form.html - Used by default.
     change_form_template = "djeym/admin/ckeditor_change_form.html"
 
@@ -371,7 +371,7 @@ class LoadIndicatorAdmin(admin.ModelAdmin):  # noqa: D101
 
 
 @admin.register(GeotagStatus)
-class GeotagStatusAdmin(admin.ModelAdmin):  # noqa: D101
+class GeotagStatusAdmin(admin.ModelAdmin):
     # ckeditor_change_form.html - Used by default.
     change_form_template = "djeym/admin/ckeditor_change_form.html"
     list_display = ("status", "slug")  # pyrefly: ignore[bad-override]

@@ -32,14 +32,14 @@ label[for="id_disable_standard_icons"] {
 }
 
 .editing_map_link_wrapper a {
-    position: relative;
-    top: 42px;
-    background-color: #d4aa00 !important;
-    color: #000 !important;
-    font-weight: bold !important;
-    border-radius: 20px;
-    padding: 5px 14px 5px;
-    text-decoration: none !important;
+  position: relative;
+  top: 42px;
+  background-color: #d4aa00 !important;
+  color: #000 !important;
+  font-weight: bold !important;
+  border-radius: 20px;
+  padding: 5px 14px 5px;
+  text-decoration: none !important;
 }
 
 .hint_center_map,
@@ -132,7 +132,7 @@ label[for="id_disable_standard_icons"] {
   cursor: pointer;
 }
 
-.block_ip {
+.ban_ip {
   color: #f44336;
   cursor: pointer;
 }

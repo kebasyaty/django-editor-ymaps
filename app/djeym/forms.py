@@ -7,7 +7,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 
 from .models import (
-    BlockedIP,
+    BannedIP,
     GeneralSettings,
     HeatmapSettings,
     HeatPoint,
@@ -22,7 +22,7 @@ from .models import (
 from .widgets import CenterMapWidget, CheckIconOffsetWidget
 
 
-class GeneralSettingsForm(forms.ModelForm):  # noqa: D101
+class GeneralSettingsForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = GeneralSettings
         fields = (
@@ -49,19 +49,19 @@ class GeneralSettingsForm(forms.ModelForm):  # noqa: D101
         )
 
 
-class PresetForm(forms.ModelForm):  # noqa: D101
+class PresetForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = Preset
         fields = ("ymap", "autoheader", "autobody", "autofooter", "placemark", "polyline", "polygon", "position")
 
 
-class HeatPointForm(forms.ModelForm):  # noqa: D101
+class HeatPointForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = HeatPoint
         fields = ("ymap", "title", "weight", "coordinates")
 
 
-class HeatmapSettingsForm(forms.ModelForm):  # noqa: D101
+class HeatmapSettingsForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = HeatmapSettings
         fields = (
@@ -78,7 +78,7 @@ class HeatmapSettingsForm(forms.ModelForm):  # noqa: D101
         )
 
 
-class MapControlsForm(forms.ModelForm):  # noqa: D101
+class MapControlsForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = MapControls
         fields = (
@@ -95,13 +95,13 @@ class MapControlsForm(forms.ModelForm):  # noqa: D101
         )
 
 
-class PlacemarkForm(forms.ModelForm):  # noqa: D101
+class PlacemarkForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = Placemark
         fields = ("ymap", "category", "subcategories", "header", "body", "footer", "icon_slug", "coordinates")
 
 
-class CustomPlacemarkForm(forms.ModelForm):  # noqa: D101
+class CustomPlacemarkForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = Placemark
         fields = (
@@ -119,7 +119,7 @@ class CustomPlacemarkForm(forms.ModelForm):  # noqa: D101
         )
 
 
-class PolylineForm(forms.ModelForm):  # noqa: D101
+class PolylineForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = Polyline
         fields = (
@@ -137,7 +137,7 @@ class PolylineForm(forms.ModelForm):  # noqa: D101
         )
 
 
-class PolygonForm(forms.ModelForm):  # noqa: D101
+class PolygonForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = Polygon
         fields = (
@@ -157,13 +157,13 @@ class PolygonForm(forms.ModelForm):  # noqa: D101
         )
 
 
-class BlockedIPForm(forms.ModelForm):  # noqa: D101
+class BanIPForm(forms.ModelForm):
     class Meta:  # noqa: D106
-        model = BlockedIP
+        model = BannedIP
         fields = ("ip",)
 
 
-class CenterMapForm(forms.ModelForm):  # noqa: D101
+class CenterMapForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = Map
         fields = "__all__"
@@ -171,7 +171,7 @@ class CenterMapForm(forms.ModelForm):  # noqa: D101
     center_map = forms.CharField(widget=CenterMapWidget, label=_("Center map"), required=False)
 
 
-class OffsetMarkerIconForm(forms.ModelForm):  # noqa: D101
+class OffsetMarkerIconForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = MarkerIcon
         fields = "__all__"
@@ -179,7 +179,7 @@ class OffsetMarkerIconForm(forms.ModelForm):  # noqa: D101
     check_icon_offset = forms.CharField(widget=CheckIconOffsetWidget, label=_("Check icon offset"), required=False)
 
 
-class CKEditorTextareaForm(forms.Form):  # noqa: D101
+class CKEditorTextareaForm(forms.Form):
     ckeditor_textarea = forms.CharField(
         widget=CKEditorUploadingWidget(config_name="djeym"),
     )

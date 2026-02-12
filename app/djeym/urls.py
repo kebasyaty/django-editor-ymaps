@@ -55,6 +55,6 @@ urlpatterns = [
         name="ajax_update_filters_categories",
     ),
     path("ajax-del-img-bg-panel-front/", views.AjaxDeleteImgBgPanelFront.as_view(), name="ajax_del_img_bg_panel_front"),
-    path("ajax-block-ip-address/", views.AjaxBlockIPAddress.as_view(), name="ajax_block_ip_address"),
+    path("ajax-ban-ip-address/", views.AjaxBanIPAddress.as_view(), name="ajax_ban_ip_address"),
     path("ajax-upload-icon-collection/", views.AjaxIconCollection.as_view(), name="ajax_upload_icon_collection"),
 ]

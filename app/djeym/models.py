@@ -1593,8 +1593,8 @@ class Statistics(models.Model):
         verbose_name_plural = _("Statistics")
 
 
-class BlockedIP(models.Model):
-    """Blocked IP."""
+class BannedIP(models.Model):
+    """Banned IP address."""
 
     ip = models.GenericIPAddressField("IP-address", null=True, unique=True)
     timestamp = models.DateTimeField("Date and Time", default=timezone.now)

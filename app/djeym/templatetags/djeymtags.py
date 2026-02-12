@@ -58,3 +58,9 @@ def djeym_load_api_ymaps(lang="en", ns="djeymYMaps"):
         "mode": mode,
         "ns": ns,
     }
+
+
+@register.inclusion_tag("djeym/includes/md_icons_version.html")
+def load_md_icons_version():
+    """Get URL for Material Design Icons."""
+    return {"mdi_version": settings.MD_ICONS_VERSION}

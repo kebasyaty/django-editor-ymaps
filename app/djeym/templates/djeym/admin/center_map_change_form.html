@@ -1,8 +1,7 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_urls static admin_modify djeymtags %}
 {% block extrahead %}
-  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css"
-        rel="stylesheet">
+  {% load_md_icons_version %}
   {% djeym_load_api_ymaps LANGUAGE_CODE %}
   {{ block.super }}
   <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>

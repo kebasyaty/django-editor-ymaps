@@ -170,8 +170,6 @@ EMAIL_BACKEND = (
 )
 DEFAULT_FROM_EMAIL = "noreply@site.net"
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = 4194304
-
 
 # django-ckeditor
 # https://github.com/django-ckeditor/django-ckeditor
@@ -206,6 +204,8 @@ CKEDITOR_CONFIGS = {
         "colorButton_enableMore": True,
     },
 }
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 4194304
 
 
 # If a non-authenticated user requests an editor page.

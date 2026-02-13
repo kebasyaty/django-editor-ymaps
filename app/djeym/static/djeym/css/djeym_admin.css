@@ -42,7 +42,7 @@ label[for="id_disable_standard_icons"] {
   text-decoration: none !important;
 }
 .editing_map_link_wrapper a:hover {
-  background-color: #f4eed7;
+  background-color: #f4eed7 !important;
 }
 
 .hint_center_map,
@@ -189,7 +189,7 @@ label[for="id_is_cluster"] {
 }
 .import_icon_collection_link:hover,
 .import_tile_source_link:hover {
-  background-color: #f4eed7;
+  background-color: #f4eed7 !important;
 }
 
 .export_icon_collection_link {
@@ -205,7 +205,7 @@ label[for="id_is_cluster"] {
   text-decoration: none !important;
 }
 .export_icon_collection_link:hover {
-  background-color: #f4eed7;
+  background-color: #f4eed7 !important;
 }
 .export_icon_collection_link div {
   display: inline-block;
@@ -226,7 +226,7 @@ label[for="id_is_cluster"] {
   background-image: url(../img/import.svg) !important;
 }
 .export_tile_source_link:hover {
-  background-color: #f4eed7;
+  background-color: #f4eed7 !important;
 }
 
 .tile_go_to_website_btn {

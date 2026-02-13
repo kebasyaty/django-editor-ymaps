@@ -81,7 +81,7 @@ label[for="id_disable_standard_icons"] {
   position: relative;
   top: 7px;
   left: 10px;
-  color: #616161;
+  color: #757575;
 }
 
 .icon_list_wrap {
@@ -135,11 +135,6 @@ label[for="id_disable_standard_icons"] {
 .ban_ip {
   color: #f44336;
   cursor: pointer;
-}
-
-.category_icon {
-  color: #616161;
-  font-size: 20px;
 }
 
 label[for="id_is_cluster"] {

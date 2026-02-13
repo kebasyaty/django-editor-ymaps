@@ -183,6 +183,7 @@ ignore = [
     "RUF012",
     "E501",
     "D101",
+    "D103",
 ]
 fixable = ["I"]
 unfixable = [

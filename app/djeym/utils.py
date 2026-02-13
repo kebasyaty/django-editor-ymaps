@@ -7,6 +7,7 @@ import math
 import re
 import uuid
 from decimal import Decimal
+from io import BytesIO
 from pathlib import Path
 
 from django.apps import apps
@@ -16,7 +17,8 @@ from lxml import etree
 
 from .globals import DJEYM_YMAPS_ICONS_MAX_SIZE
 
-# SIZE CORRECTION ----------------------------------------------------------------------------------
+# SIZE CORRECTION
+# --------------------------------------------------------------------------------------------------
 
 
 def get_size_correction(width, height):
@@ -26,7 +28,7 @@ def get_size_correction(width, height):
     if size_width > DJEYM_YMAPS_ICONS_MAX_SIZE or size_height > DJEYM_YMAPS_ICONS_MAX_SIZE:
         size_width = math.ceil(size_width * (DJEYM_YMAPS_ICONS_MAX_SIZE / size_height))
         size_height = DJEYM_YMAPS_ICONS_MAX_SIZE
-    return [size_width, size_height]
+    return (size_width, size_height)
 
 
 def get_size_from_svg(svg):
@@ -36,10 +38,46 @@ def get_size_from_svg(svg):
     return {"width": int(Decimal(root.get("width"))), "height": int(Decimal(root.get("height")))}
 
 
-# VALIDATORS ---------------------------------------------------------------------------------------
+# VALIDATORS
+# --------------------------------------------------------------------------------------------------
 
 
-def validate_image(image):  # noqa: D103
+def validate_svg(svg):
+    extension = Path(svg.name).suffix.lower()
+
+    if extension != ".svg":
+        raise ValidationError(_("Only SVG (file_name.svg) files."))
+
+    if hasattr(svg, "temporary_file_path"):
+        svg_path = svg.temporary_file_path()
+    else:
+        svg_path = BytesIO(svg.read()) if hasattr(svg, "read") else BytesIO(svg["content"])
+
+    if bool(svg_path):
+        xml_content = svg_path.read()
+        try:
+            root = etree.XML(xml_content)
+        except etree.XMLSyntaxError as err:
+            svg_path.close()
+            raise ValidationError(
+                _("This is an invalid SVG file. Open this file in the vector editor and try to fix it."),
+            ) from err
+        tag = root.tag
+        if bool(tag) and tag == "{http://www.w3.org/2000/svg}svg":
+            if root.get("width") is None or root.get("height") is None or root.get("viewBox") is None:
+                svg_path.close()
+                raise ValidationError(_("There are no width, height and viewBox attributes in the SVG tag."))
+        else:
+            svg_path.close()
+            raise ValidationError(
+                _("This is an invalid SVG file. Open this file in the vector editor and try to fix it."),
+            )
+    else:
+        svg_path.close()
+        raise ValidationError(_("Unable to read file attributes. The file may be damaged."))
+
+
+def validate_image(image):
     extension_list = [".jpg", ".jpeg", ".png"]
     size = image.size
     extension = Path(image.name).suffix.lower()
@@ -52,21 +90,21 @@ def validate_image(image):  # noqa: D103
         raise ValidationError(_("Maximum image size 0.5 mb."))
 
 
-def validate_coordinates(coordinate):  # noqa: D103
+def validate_coordinates(coordinate):
     try:
         float(coordinate)
     except ValueError:
         raise ValidationError(_("To determine the coordinates a numeric value is required."))  # noqa: B904
 
 
-def validate_transparency(coordinate):  # noqa: D103
+def validate_transparency(coordinate):
     try:
         float(coordinate)
     except ValueError:
         raise ValidationError(_("To determine the transparency a numeric value is required."))  # noqa: B904
 
 
-def get_errors_form(*args):  # noqa: D103
+def get_errors_form(*args):
     err_dict = {}
     detail = ""
 
@@ -81,10 +119,11 @@ def get_errors_form(*args):  # noqa: D103
     return {"err_dict": err_dict, "detail": detail}
 
 
-# GET FILENAME -------------------------------------------------------------------------------------
+# GET FILENAME
+# --------------------------------------------------------------------------------------------------
 
 
-def make_upload_path(instance, filename):  # noqa: D103
+def make_upload_path(instance, filename):
     extension = Path(filename).suffix
     return Path(instance.upload_dir) / f"{uuid.uuid4()}{extension}"
 
@@ -94,7 +133,8 @@ def get_filename(filename):
     return re.sub(r"\s+", "_", filename).lower()
 
 
-# REFRESH JSON-CODE --------------------------------------------------------------------------------
+# REFRESH JSON-CODE
+# --------------------------------------------------------------------------------------------------
 
 
 def placemark_update_json_code(instance):

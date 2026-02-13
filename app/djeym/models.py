@@ -55,6 +55,7 @@ from .utils import (
     polyline_update_json_code,
     validate_coordinates,
     validate_image,
+    validate_svg,
     validate_transparency,
 )
 
@@ -1307,6 +1308,7 @@ class ClusterIcon(models.Model):
     svg = models.FileField(
         _("Icon"),
         upload_to=make_upload_path,
+        validators=[validate_svg],
         null=True,
         help_text=_("Only SVG files."),
     )
@@ -1440,6 +1442,7 @@ class MarkerIcon(models.Model):
     svg = models.FileField(
         _("Icon"),
         upload_to=make_upload_path,
+        validators=[validate_svg],
         null=True,
         help_text=_("Only SVG files."),
     )
@@ -1539,7 +1542,12 @@ class MarkerIcon(models.Model):
 class LoadIndicator(models.Model):
     """Load Indicator."""
 
-    svg = models.FileField(_("Icon"), upload_to=make_upload_path, null=True)
+    svg = models.FileField(
+        _("Icon"),
+        upload_to=make_upload_path,
+        validators=[validate_svg],
+        null=True,
+    )
 
     title = models.CharField(_("Title"), unique=True, max_length=60, default="")
 

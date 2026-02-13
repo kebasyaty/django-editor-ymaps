@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-13 17:08+0000\n"
+"POT-Creation-Date: 2026-02-13 21:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -685,8 +685,8 @@ msgid "Collection name"
 msgstr "Название коллекции"
 
 #: app/djeym/models.py:1375
-msgid "Example: Сherry Light Amber"
-msgstr "Пример: Сherry Light Amber"
+msgid "Example: Drop Light Peach"
+msgstr "Пример: Drop Light Peach"
 
 #: app/djeym/models.py:1390
 msgid "You cannot change the title, if the collection is tied to a map."
@@ -925,8 +925,8 @@ msgid ""
 "This is an invalid SVG file. Open this file in the vector editor and try to "
 "fix it."
 msgstr ""
-"Это неверный файл SVG. Откройте этот файл в векторном редакторе "
-"и попробуйте исправить."
+"Это неверный файл SVG. Откройте этот файл в векторном редакторе и попробуйте "
+"исправить."
 
 #: app/djeym/utils.py:69
 msgid "There are no width, height and viewBox attributes in the SVG tag."

@@ -34,7 +34,7 @@ label[for="id_disable_standard_icons"] {
 .editing_map_link_wrapper a {
   position: relative;
   top: 42px;
-  background-color: #d4aa00 !important;
+  background-color: #e9ddaf !important;
   color: #000 !important;
   font-weight: bold !important;
   border-radius: 20px;
@@ -179,23 +179,15 @@ label[for="id_is_cluster"] {
 
 .import_icon_collection_link,
 .import_tile_source_link {
-  background-color: #d4aa00 !important;
+  background-color: #e9ddaf !important;
   color: #000 !important;
   font-weight: bold !important;
   background-image: url(../img/plus.svg) !important;
 }
 
-.export_tile_source_link {
-  background-color: #d4aa00 !important;
-  color: #000 !important;
-  font-weight: bold !important;
-  text-decoration: none !important;
-  background-image: url(../img/import.svg) !important;
-}
-
 .export_icon_collection_link {
   position: relative;
-  background-color: #d4aa00;
+  background-color: #e9ddaf;
   color: #000 !important;
   font-weight: bold !important;
   border-radius: 20px;
@@ -204,6 +196,14 @@ label[for="id_is_cluster"] {
   letter-spacing: 0.5px;
   font-size: 11px;
   text-decoration: none !important;
+}
+
+.export_tile_source_link {
+  background-color: #e9ddaf !important;
+  color: #000 !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+  background-image: url(../img/import.svg) !important;
 }
 
 .export_icon_collection_link div {

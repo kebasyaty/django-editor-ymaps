@@ -1365,14 +1365,14 @@ class ClusterIcon(models.Model):
 
 
 class IconCollection(models.Model):
-    """Icon collection."""
+    """Collection of icons for markers."""
 
     title = models.CharField(
         _("Collection name"),
         max_length=60,
         default="",
         unique=True,
-        help_text=_("Example: Сherry Light Amber"),
+        help_text=_("Example: Drop Light Peach"),
     )
 
     slug = models.SlugField(unique=True, max_length=255, blank=True, null=True)

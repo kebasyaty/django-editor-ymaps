@@ -63,10 +63,10 @@ def validate_svg(svg):
                 _("This is an invalid SVG file. Open this file in the vector editor and try to fix it."),
             ) from err
         tag = root.tag
-        if bool(tag) and tag == "{http://www.w3.org/2000/svg}svg":
-            if root.get("width") is None or root.get("height") is None or root.get("viewBox") is None:
+        if bool(tag):
+            if root.get("viewBox") is None:
                 svg_path.close()
-                raise ValidationError(_("There are no width, height and viewBox attributes in the SVG tag."))
+                raise ValidationError(_("There are no `viewBox` attributes in the SVG tag."))
         else:
             svg_path.close()
             raise ValidationError(

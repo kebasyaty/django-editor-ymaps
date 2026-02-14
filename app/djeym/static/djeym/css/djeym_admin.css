@@ -35,7 +35,7 @@ label[for="id_disable_standard_icons"] {
   position: relative;
   top: 42px;
   background-color: #e9ddaf !important;
-  color: #000 !important;
+  color: #554400 !important;
   font-weight: bold !important;
   border-radius: 20px;
   padding: 5px 14px 5px;
@@ -183,7 +183,7 @@ label[for="id_is_cluster"] {
 .import_icon_collection_link,
 .import_tile_source_link {
   background-color: #e9ddaf !important;
-  color: #000 !important;
+  color: #554400 !important;
   font-weight: bold !important;
   background-image: url(../img/plus.svg) !important;
 }
@@ -195,7 +195,7 @@ label[for="id_is_cluster"] {
 .export_icon_collection_link {
   position: relative;
   background-color: #e9ddaf;
-  color: #000 !important;
+  color: #554400 !important;
   font-weight: bold !important;
   border-radius: 20px;
   padding: 5px 14px 5px;
@@ -220,7 +220,7 @@ label[for="id_is_cluster"] {
 
 .export_tile_source_link {
   background-color: #e9ddaf !important;
-  color: #000 !important;
+  color: #554400 !important;
   font-weight: bold !important;
   text-decoration: none !important;
   background-image: url(../img/import.svg) !important;

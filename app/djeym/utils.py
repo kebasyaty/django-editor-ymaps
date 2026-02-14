@@ -35,7 +35,15 @@ def get_size_from_svg(svg):
     """Get width and height from SVG file."""
     xml_content = Path(svg.path).read_bytes()
     root = etree.XML(xml_content)
-    return {"width": int(Decimal(root.get("width"))), "height": int(Decimal(root.get("height")))}
+    width = root.get("width")
+    height = root.get("height")
+
+    if width is None or height is None:
+        view_box_list = root.get("viewBox").split(" ")
+        width = view_box_list[2]
+        height = view_box_list[3]
+
+    return {"width": int(Decimal(width)), "height": int(Decimal(height))}
 
 
 # VALIDATORS

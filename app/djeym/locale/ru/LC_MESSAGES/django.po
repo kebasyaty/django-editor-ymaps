@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-13 21:18+0000\n"
+"POT-Creation-Date: 2026-02-15 12:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -916,11 +916,11 @@ msgstr "К сожалению, запрошенная карта не найде
 msgid "Maybe the map is not active or just missing."
 msgstr "Возможно карта не активна или просто отсутствует."
 
-#: app/djeym/utils.py:49
+#: app/djeym/utils.py:57
 msgid "Only SVG (file_name.svg) files."
 msgstr "Только SVG (file_name.svg) файлы."
 
-#: app/djeym/utils.py:63 app/djeym/utils.py:73
+#: app/djeym/utils.py:71 app/djeym/utils.py:81
 msgid ""
 "This is an invalid SVG file. Open this file in the vector editor and try to "
 "fix it."
@@ -928,30 +928,30 @@ msgstr ""
 "Это неверный файл SVG. Откройте этот файл в векторном редакторе и попробуйте "
 "исправить."
 
-#: app/djeym/utils.py:69
-msgid "There are no width, height and viewBox attributes in the SVG tag."
-msgstr "В теге SVG нет атрибутов ширины, высоты и viewBox."
-
 #: app/djeym/utils.py:77
+msgid "There are no `viewBox` attribute in the `svg` tag."
+msgstr "В теге `svg` нет атрибута `viewBox`."
+
+#: app/djeym/utils.py:85
 msgid "Unable to read file attributes. The file may be damaged."
 msgstr "Невозможно прочитать атрибуты файла. Возможно, файл поврежден."
 
-#: app/djeym/utils.py:86
+#: app/djeym/utils.py:94
 msgid "Only JPG or PNG format files."
 msgstr "Только файлы формата JPG или PNG."
 
-#: app/djeym/utils.py:88
+#: app/djeym/utils.py:96
 msgid "Image cannot be 0.0 mb."
 msgstr "Изображение не может быть 0 мб."
 
-#: app/djeym/utils.py:90
+#: app/djeym/utils.py:98
 msgid "Maximum image size 0.5 mb."
 msgstr "Максимальный размер изображения 0,5 мб."
 
-#: app/djeym/utils.py:97
+#: app/djeym/utils.py:105
 msgid "To determine the coordinates a numeric value is required."
 msgstr "Для определения координат требуется числовое значение."
 
-#: app/djeym/utils.py:104
+#: app/djeym/utils.py:112
 msgid "To determine the transparency a numeric value is required."
 msgstr "Для определения прозрачности требуется числовое значение."

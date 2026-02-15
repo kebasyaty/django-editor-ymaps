@@ -74,7 +74,7 @@ def validate_svg(svg):
         if bool(tag):
             if root.get("viewBox") is None:
                 svg_path.close()
-                raise ValidationError(_("There are no `viewBox` attributes in the SVG tag."))
+                raise ValidationError(_("There are no `viewBox` attribute in the `svg` tag."))
         else:
             svg_path.close()
             raise ValidationError(

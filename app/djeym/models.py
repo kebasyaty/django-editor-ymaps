@@ -285,7 +285,6 @@ class Preset(models.Model):
     )
 
     autoheader = models.BooleanField(_("Automatically add to end of header"), default=False)
-    autobody = models.BooleanField(_("Automatically add to end of description"), default=False)
     autofooter = models.BooleanField(_("Automatically add to end of footer"), default=False)
 
     placemark = models.BooleanField(_("Markers"), default=True)
@@ -1033,8 +1032,6 @@ class Placemark(models.Model):
 
     is_sended_user_email = models.BooleanField("Is sended user email ?", default=False, editable=False)
 
-    user_image_q40 = ImageSpecField(source="user_image", format="JPEG", options={"quality": 40})
-
     @property
     def upload_dir(self):  # noqa: D102
         return "djeym/placemark_images"
@@ -1060,19 +1057,11 @@ class Placemark(models.Model):
             self.json_code = placemark_update_json_code(self)
         super().save(*args, **kwargs)
         if not self.is_created:
-            if bool(self.user_image):
+            if self.is_user_geotag:
                 pattern = re.compile(r"<.*?>")
                 self.header = (
                     f"<p>{pattern.sub('', self.header)}</p>"  # pyrefly: ignore[bad-assignment, no-matching-overload]
                 )
-                self.body = (
-                    '<img src="{self.user_image_q40.url,}" width="322px" alt=""><p>{pattern.sub("", self.body)}</p>'  # noqa: E501, RUF100 # pyrefly: ignore[bad-assignment]
-                )
-            else:
-                if self.is_user_geotag:
-                    pattern = re.compile(r"<.*?>")
-                    self.header = f"<p>{pattern.sub('', self.header)}</p>"  # pyrefly: ignore[bad-assignment, no-matching-overload]  # noqa: E261, E501, RUF100
-                    self.body = f"<p>{pattern.sub('', self.body)}</p>"  # pyrefly: ignore[bad-assignment, no-matching-overload]  # noqa: E261, E501, RUF100
             self.is_created = True  # pyrefly: ignore[bad-assignment]
             self.save()
 

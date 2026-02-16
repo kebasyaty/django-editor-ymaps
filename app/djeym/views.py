@@ -71,8 +71,6 @@ class AjaxBalloonContent(View):
             ):
                 if preset.autoheader:
                     geoobject.header += preset_html
-                if preset.autobody:
-                    geoobject.body += preset_html
                 if preset.autofooter:
                     geoobject.footer += preset_html
         return geoobject
@@ -91,11 +89,11 @@ class AjaxBalloonContent(View):
 
         if ids is None:
             if obj_type == "Point":
-                geoobject = Placemark.objects.filter(id=pk).only("header", "body", "footer").first()
+                geoobject = Placemark.objects.filter(id=pk).only("header", "image_geo_object", "footer").first()
             elif obj_type == "LineString":
-                geoobject = Polyline.objects.filter(id=pk).only("header", "body", "footer").first()
+                geoobject = Polyline.objects.filter(id=pk).only("header", "image_geo_object", "footer").first()
             elif obj_type == "Polygon":
-                geoobject = Polygon.objects.filter(id=pk).only("header", "body", "footer").first()
+                geoobject = Polygon.objects.filter(id=pk).only("header", "image_geo_object", "footer").first()
 
             if presets:
                 geoobject = self.add_presets(presets, geoobject, obj_type, pk)  # pyrefly: ignore[unbound-name]

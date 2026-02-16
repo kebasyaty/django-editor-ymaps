@@ -77,6 +77,8 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
         <canvas id="resize_image_temp_canvas" class="djeym-hide"></canvas>
         <div id="djeym-app"></div>
         <!-- START VENDORS JS -->
+        <script src="{% static "djeym/js/jquery.js" %}"></script>
+        <script src="{% static "djeym/js/jquery-regex.js" %}"></script>
         <script src="{% url 'djeym:javascript-catalog' %}"></script>
         <script>
           var djeymMapID = {{ ymap.pk }},

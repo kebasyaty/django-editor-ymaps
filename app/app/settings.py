@@ -168,10 +168,6 @@ EMAIL_BACKEND = (
 )
 DEFAULT_FROM_EMAIL = "noreply@site.net"
 
-
-DATA_UPLOAD_MAX_MEMORY_SIZE = 4194304
-
-
 # If a non-authenticated user requests an editor page.
 LOGIN_URL = "admin/"  # or change to your URL
 
@@ -200,4 +196,12 @@ DJEYM_YMAPS_DOWNLOAD_MODE = "debug" if DEBUG else "release"
 MD_ICONS_VERSION = 7
 
 # Maximum size of geo object images in bytes
-MAX_SIZE_IMAGE_GEO_OBJECT = 0
+# 4194304 = 4 MB
+# Hint: This size is for the admin panel, saved images will be much smaller in size.
+MAX_SIZE_IMAGE_GEO_OBJECT = 4194304
+
+# The maximum size in bytes that a request body may be before a
+# SuspiciousOperation (RequestDataTooBig) is raised.
+# Default: 2621440 (i.e. 2.5 MB).
+# 5242880 = 5 MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880

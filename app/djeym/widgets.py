@@ -7,7 +7,7 @@ from django.contrib.admin.widgets import AdminFileWidget
 from django.utils.safestring import mark_safe
 
 
-class CenterMapWidget(forms.Widget):  # noqa: D101
+class CenterMapWidget(forms.Widget):
     class Media:  # noqa: D106
         js = ("/static/djeym/js/jquery.min.js", "/static/djeym/js/admin_center_map_widget.js")
 
@@ -17,7 +17,7 @@ class CenterMapWidget(forms.Widget):  # noqa: D101
         return mark_safe(html_map)  # noqa: S308
 
 
-class CheckIconOffsetWidget(forms.Widget):  # noqa: D101
+class CheckIconOffsetWidget(forms.Widget):
     class Media:  # noqa: D106
         js = ("/static/djeym/js/jquery.min.js", "/static/djeym/js/admin_check_icon_offset_widget.js")
 
@@ -27,5 +27,5 @@ class CheckIconOffsetWidget(forms.Widget):  # noqa: D101
         return mark_safe(html_map)  # noqa: S308
 
 
-class AdminFileThumbWidget(AdminFileWidget):  # noqa: D101
+class AdminFileThumbWidget(AdminFileWidget):
     template_name = "djeym/admin/widgets/clearable_file_input.html"

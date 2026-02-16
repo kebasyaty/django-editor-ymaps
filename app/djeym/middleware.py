@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 
-class AjaxMiddleware:  # noqa: D101
+class AjaxMiddleware:
     def __init__(self, get_response):  # noqa: D107
         self.get_response = get_response
 

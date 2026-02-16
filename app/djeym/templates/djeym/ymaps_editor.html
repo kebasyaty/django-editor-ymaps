@@ -87,13 +87,13 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
         <script src="{% static "djeym/js/ckeditor_resize_image.min.js" %}"></script>
         <script src="{% url 'djeym:javascript-catalog' %}"></script>
         <script>
-    window.CKEDITOR_BASEPATH = "{% static 'ckeditor/ckeditor/' %}";
-    var djeymMapID = {{ ymap.pk }},
-      djeymCSRFToken = '{{ csrf_token }}',
-      djeymLanguageCode = '{{ language_code }}',
-      djeymCKEditor = null,
-      djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",
-      djeymBalloonMinHeight = {% if load_indicator %}{{ load_indicator_size }} + 40{% else %}60{% endif %};
+          window.CKEDITOR_BASEPATH = "{% static 'ckeditor/ckeditor/' %}";
+          var djeymMapID = {{ ymap.pk }},
+            djeymCSRFToken = '{{ csrf_token }}',
+            djeymLanguageCode = '{{ language_code }}',
+            djeymCKEditor = null,
+            djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",
+            djeymBalloonMinHeight = {% if load_indicator %}{{ load_indicator_size }} + 40{% else %}60{% endif %};
         </script>
         {% djeym_load_api_ymaps language_code %}
         <script src="{% static "djeym/plugins/calculate-area/util.calculateArea.min.js" %}"></script>

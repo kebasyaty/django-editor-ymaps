@@ -9,6 +9,7 @@ from decimal import Decimal
 from adminsortable.fields import SortableForeignKey
 from adminsortable.models import SortableMixin
 from colorful.fields import RGBColorField
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models.signals import m2m_changed, post_delete, post_save, pre_delete
@@ -1051,7 +1052,10 @@ class Placemark(models.Model, ResizeImageMixin):
     def save(self, *args, **kwargs):  # noqa: D102
         # Resize image of geo object.
         if self.pk is None:
-            self.resize(self.image_geo_object, (966, 966))
+            self.resize(
+                self.image_geo_object,
+                settings.MAX_SIZE_WIDTH_HEIGHT_IMAGE_GEO_OBJECT,
+            )
         # Rounding coordinates through regex.
         self.coordinates = re.sub(  # pyrefly: ignore[no-matching-overload]
             r"\d*\.\d+",
@@ -1150,7 +1154,10 @@ class Polyline(models.Model, ResizeImageMixin):
     def save(self, *args, **kwargs):  # noqa: D102
         # Resize image of geo object
         if self.pk is None:
-            self.resize(self.image_geo_object, (966, 966))
+            self.resize(
+                self.image_geo_object,
+                settings.MAX_SIZE_WIDTH_HEIGHT_IMAGE_GEO_OBJECT,
+            )
         # Rounding coordinates through regex.
         self.coordinates = re.sub(r"\d*\.\d+", lambda match: "{:.6f}".format(float(match.group())), self.coordinates)  # noqa: UP032 # pyrefly: ignore[no-matching-overload]
         # Run create json_code.
@@ -1250,7 +1257,10 @@ class Polygon(models.Model, ResizeImageMixin):
     def save(self, *args, **kwargs):  # noqa: D102
         # Resize image of geo object.
         if self.pk is None:
-            self.resize(self.image_geo_object, (966, 966))
+            self.resize(
+                self.image_geo_object,
+                settings.MAX_SIZE_WIDTH_HEIGHT_IMAGE_GEO_OBJECT,
+            )
         # Rounding coordinates through regex.
         self.coordinates = re.sub(r"\d*\.\d+", lambda match: "{:.6f}".format(float(match.group())), self.coordinates)  # noqa: UP032 # pyrefly: ignore[no-matching-overload]
         # Run create json_code.

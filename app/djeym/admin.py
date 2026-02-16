@@ -53,7 +53,7 @@ class TileSourceAdmin(admin.ModelAdmin):
         }
 
         js = (
-            "/static/djeym/js/jquery.min.js",
+            "/static/djeym/js/jquery.js",
             "/static/djeym/js/import_export.js",
         )
 
@@ -160,7 +160,7 @@ class MapAdmin(NonSortableParentAdmin):
         css = {"all": ["/static/djeym/css/djeym_admin.css"]}
 
         js = (
-            "/static/djeym/js/jquery.min.js",
+            "/static/djeym/js/jquery.js",
             "/static/djeym/js/view_icons.js",
         )
 
@@ -185,7 +185,7 @@ class PlacemarkAdmin(admin.ModelAdmin):
         }
 
         js = (
-            "/static/djeym/js/jquery.min.js",
+            "/static/djeym/js/jquery.js",
             "/static/djeym/js/icon_collection.js",
             "/static/djeym/js/ban_ip.js",
         )
@@ -206,7 +206,7 @@ class PolylineAdmin(admin.ModelAdmin):
             ],
         }
 
-        js = ("/static/djeym/js/jquery.min.js",)
+        js = ("/static/djeym/js/jquery.js",)
 
 
 @admin.register(Polygon)
@@ -224,7 +224,7 @@ class PolygonAdmin(admin.ModelAdmin):
             ],
         }
 
-        js = ("/static/djeym/js/jquery.min.js",)
+        js = ("/static/djeym/js/jquery.js",)
 
 
 @admin.register(HeatPoint)
@@ -270,7 +270,7 @@ class ClusterIconAdmin(admin.ModelAdmin):
         }
 
         js = (
-            "/static/djeym/js/jquery.min.js",
+            "/static/djeym/js/jquery.js",
             "/static/djeym/js/get_icon_name.js",
         )
 
@@ -298,7 +298,7 @@ class IconCollectionAdmin(admin.ModelAdmin):
         }
 
         js = (
-            "/static/djeym/js/jquery.min.js",
+            "/static/djeym/js/jquery.js",
             "/static/djeym/js/import_export.js",
         )
 
@@ -331,7 +331,7 @@ class MarkerIconAdmin(admin.ModelAdmin):
         }
 
         js = (
-            "/static/djeym/js/jquery.min.js",
+            "/static/djeym/js/jquery.js",
             "/static/djeym/plugins/jquery_mousewheel/jquery.mousewheel.min.js",
             "/static/djeym/js/get_icon_name.js",
         )
@@ -358,7 +358,7 @@ class LoadIndicatorAdmin(admin.ModelAdmin):
         }
 
         js = (
-            "/static/djeym/js/jquery.min.js",
+            "/static/djeym/js/jquery.js",
             "/static/djeym/js/get_icon_name.js",
         )
 

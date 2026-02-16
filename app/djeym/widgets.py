@@ -9,7 +9,7 @@ from django.utils.safestring import mark_safe
 
 class CenterMapWidget(forms.Widget):
     class Media:  # noqa: D106
-        js = ("/static/djeym/js/jquery.min.js", "/static/djeym/js/center_map_widget.js")
+        js = ("/static/djeym/js/jquery.js", "/static/djeym/js/center_map_widget.js")
 
     def render(self, name, value, attrs=None, renderer=None):
         """Render the widget as an HTML string."""
@@ -19,7 +19,7 @@ class CenterMapWidget(forms.Widget):
 
 class CheckIconOffsetWidget(forms.Widget):
     class Media:  # noqa: D106
-        js = ("/static/djeym/js/jquery.min.js", "/static/djeym/js/check_icon_offset_widget.js")
+        js = ("/static/djeym/js/jquery.js", "/static/djeym/js/check_icon_offset_widget.js")
 
     def render(self, name, value, attrs=None, renderer=None):
         """Render the widget as an HTML string."""

@@ -36,6 +36,7 @@ from .globals import (
     TRANSPARENCY_CHOICES,
     ZOOM_CHOICES,
 )
+from .mixins import ResizeImageMixin
 from .raw_presets import raw_presets
 from .signals_func import (
     convert_all_settings_to_json,
@@ -954,7 +955,7 @@ class SubCategoryPolygon(SortableMixin):
             raise ValidationError({"title": msg})
 
 
-class Placemark(models.Model):
+class Placemark(models.Model, ResizeImageMixin):
     """Placemark."""
 
     ymap = models.ForeignKey(
@@ -1048,6 +1049,9 @@ class Placemark(models.Model):
         verbose_name_plural = _("Markers")
 
     def save(self, *args, **kwargs):  # noqa: D102
+        # Resize image of geo object.
+        if self.pk is None:
+            self.resize(self.image_geo_object, (966, 966))
         # Rounding coordinates through regex.
         self.coordinates = re.sub(  # pyrefly: ignore[no-matching-overload]
             r"\d*\.\d+",
@@ -1068,7 +1072,7 @@ class Placemark(models.Model):
             self.save()
 
 
-class Polyline(models.Model):
+class Polyline(models.Model, ResizeImageMixin):
     """Polyline."""
 
     ymap = models.ForeignKey(
@@ -1144,6 +1148,9 @@ class Polyline(models.Model):
         verbose_name_plural = _("Routes")
 
     def save(self, *args, **kwargs):  # noqa: D102
+        # Resize image of geo object
+        if self.pk is None:
+            self.resize(self.image_geo_object, (966, 966))
         # Rounding coordinates through regex.
         self.coordinates = re.sub(r"\d*\.\d+", lambda match: "{:.6f}".format(float(match.group())), self.coordinates)  # noqa: UP032 # pyrefly: ignore[no-matching-overload]
         # Run create json_code.
@@ -1155,7 +1162,7 @@ class Polyline(models.Model):
             self.save()
 
 
-class Polygon(models.Model):
+class Polygon(models.Model, ResizeImageMixin):
     """Polygon."""
 
     ymap = models.ForeignKey(
@@ -1241,6 +1248,9 @@ class Polygon(models.Model):
         verbose_name_plural = ngettext_lazy("Territory", "Territorys", 2)
 
     def save(self, *args, **kwargs):  # noqa: D102
+        # Resize image of geo object.
+        if self.pk is None:
+            self.resize(self.image_geo_object, (966, 966))
         # Rounding coordinates through regex.
         self.coordinates = re.sub(r"\d*\.\d+", lambda match: "{:.6f}".format(float(match.group())), self.coordinates)  # noqa: UP032 # pyrefly: ignore[no-matching-overload]
         # Run create json_code.

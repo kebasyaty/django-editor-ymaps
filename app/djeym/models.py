@@ -977,15 +977,12 @@ class Placemark(models.Model):
     )
 
     header = models.SlugField(_("Place name"), default="")
-
     image_geo_object = models.ImageField(
         _("Image of geo object"),
         upload_to=make_upload_path,
         blank=True,
         null=True,
-        editable=False,
     )
-
     footer = models.SlugField(_("Footer"), blank=True, default="")
 
     icon_slug = models.SlugField("{} (slug)".format(_("Icon")), max_length=255, null=True)
@@ -1101,7 +1098,12 @@ class Polyline(models.Model):
     )
 
     header = models.SlugField(_("Route name"), default="")
-
+    image_geo_object = models.ImageField(
+        _("Image of geo object"),
+        upload_to=make_upload_path,
+        blank=True,
+        null=True,
+    )
     footer = models.SlugField(_("Footer"), blank=True, default="")
 
     stroke_width = models.PositiveIntegerField(_("Stroke width"), default=5)
@@ -1129,6 +1131,10 @@ class Polyline(models.Model):
     updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
     is_created = models.BooleanField("Is created ?", default=False, editable=False)
+
+    @property
+    def upload_dir(self):  # noqa: D102
+        return "djeym/polyline_images"
 
     def __str__(self):  # noqa: D105
         header = re.sub(r"<.*?>", "", self.header)[:60]  # pyrefly: ignore[no-matching-overload]
@@ -1176,7 +1182,12 @@ class Polygon(models.Model):
     )
 
     header = models.SlugField(_("Territory name"), default="")
-
+    image_geo_object = models.ImageField(
+        _("Image of geo object"),
+        upload_to=make_upload_path,
+        blank=True,
+        null=True,
+    )
     footer = models.SlugField(_("Footer"), blank=True, default="")
 
     stroke_width = models.PositiveIntegerField(_("Stroke width"), default=2)
@@ -1214,6 +1225,10 @@ class Polygon(models.Model):
     updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
 
     is_created = models.BooleanField("Is created ?", default=False, editable=False)
+
+    @property
+    def upload_dir(self):  # noqa: D102
+        return "djeym/polygon_images"
 
     def __str__(self):  # noqa: D105
         header = re.sub(r"<.*?>", "", self.header)[:60]  # pyrefly: ignore[no-matching-overload]

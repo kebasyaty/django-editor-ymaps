@@ -97,7 +97,16 @@ class MapControlsForm(forms.ModelForm):
 class PlacemarkForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = Placemark
-        fields = ("ymap", "category", "subcategories", "header", "body", "footer", "icon_slug", "coordinates")
+        fields = (
+            "ymap",
+            "category",
+            "subcategories",
+            "header",
+            "image_geo_object",
+            "footer",
+            "icon_slug",
+            "coordinates",
+        )
 
 
 class CustomPlacemarkForm(forms.ModelForm):
@@ -108,7 +117,7 @@ class CustomPlacemarkForm(forms.ModelForm):
             "category",
             "subcategories",
             "header",
-            "body",
+            "image_geo_object",
             "footer",
             "icon_slug",
             "coordinates",
@@ -126,7 +135,7 @@ class PolylineForm(forms.ModelForm):
             "category",
             "subcategories",
             "header",
-            "body",
+            "image_geo_object",
             "footer",
             "stroke_width",
             "stroke_color",
@@ -144,7 +153,7 @@ class PolygonForm(forms.ModelForm):
             "category",
             "subcategories",
             "header",
-            "body",
+            "image_geo_object",
             "footer",
             "stroke_width",
             "stroke_color",

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-12 11:54+0000\n"
+"POT-Creation-Date: 2026-02-16 02:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,19 +32,19 @@ msgstr "Добавлен в список заблокированных IP-ад�
 msgid "Icon replacement"
 msgstr "Замена иконки"
 
-#: app/djeym/static/djeym/js/ckeditor_resize_image.js:24
+#: app/djeym/static/djeym/js/resize_image.js:24
 msgid "Only JPG and PNG files."
 msgstr "Только файлы JPG и PNG."
 
-#: app/djeym/static/djeym/js/ckeditor_resize_image.js:99
+#: app/djeym/static/djeym/js/resize_image.js:101
 msgid "Server Error ???"
 msgstr "Ошибка сервера ???"
 
-#: app/djeym/static/djeym/js/ckeditor_resize_image.js:171
+#: app/djeym/static/djeym/js/resize_image.js:189
 msgid "Image size will be optimized to 966 pixels."
 msgstr "Размер изображения будет оптимизирован до 966 пикселей."
 
-#: app/djeym/static/djeym/js/ckeditor_resize_image.js:199
+#: app/djeym/static/djeym/js/resize_image.js:228
 msgid ""
 "The File APIs are not fully supported in this browser. Upgrade your browser "
 "- http://browsehappy.com/"

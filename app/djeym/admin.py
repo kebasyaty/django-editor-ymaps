@@ -186,7 +186,6 @@ class PlacemarkAdmin(admin.ModelAdmin):
 
         js = (
             "/static/djeym/js/jquery.min.js",
-            "/static/djeym/js/resize_image.js",
             "/static/djeym/js/icon_collection.js",
             "/static/djeym/js/ban_ip.js",
         )
@@ -207,10 +206,7 @@ class PolylineAdmin(admin.ModelAdmin):
             ],
         }
 
-        js = (
-            "/static/djeym/js/jquery.min.js",
-            "/static/djeym/js/resize_image.js",
-        )
+        js = ("/static/djeym/js/jquery.min.js",)
 
 
 @admin.register(Polygon)
@@ -228,10 +224,7 @@ class PolygonAdmin(admin.ModelAdmin):
             ],
         }
 
-        js = (
-            "/static/djeym/js/jquery.min.js",
-            "/static/djeym/js/resize_image.js",
-        )
+        js = ("/static/djeym/js/jquery.min.js",)
 
 
 @admin.register(HeatPoint)

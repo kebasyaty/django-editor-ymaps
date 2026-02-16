@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 07:12+0000\n"
+"POT-Creation-Date: 2026-02-16 07:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -880,15 +880,15 @@ msgstr ""
 "<br>Вот <a href=\"http://www.enable-javascript.com/ru/\" target=\"_blank\"> "
 "инструкции, как включить JavaScript в вашем браузере.</a>"
 
-#: app/djeym/templates/djeym/ymaps_editor.html:111
+#: app/djeym/templates/djeym/ymaps_editor.html:110
 msgid "Page not found"
 msgstr "Страница не найдена"
 
-#: app/djeym/templates/djeym/ymaps_editor.html:113
+#: app/djeym/templates/djeym/ymaps_editor.html:112
 msgid "We're sorry, but the requested map could not be found."
 msgstr "К сожалению, запрошенная карта не найдена."
 
-#: app/djeym/templates/djeym/ymaps_editor.html:116
+#: app/djeym/templates/djeym/ymaps_editor.html:115
 msgid "Maybe the map is not active or just missing."
 msgstr "Возможно карта не активна или просто отсутствует."
 

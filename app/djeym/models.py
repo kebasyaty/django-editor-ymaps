@@ -976,14 +976,14 @@ class Placemark(models.Model):
         blank=True,
     )
 
-    header = models.SlugField(_("Place name"), default="")
+    header = models.CharField(_("Place name"), default="")
     image_geo_object = models.ImageField(
         _("Image of geo object"),
         upload_to=make_upload_path,
         blank=True,
         null=True,
     )
-    footer = models.SlugField(_("Footer"), blank=True, default="")
+    footer = models.CharField(_("Footer"), blank=True, default="")
 
     icon_slug = models.SlugField("{} (slug)".format(_("Icon")), max_length=255, null=True)
 
@@ -1097,14 +1097,16 @@ class Polyline(models.Model):
         blank=True,
     )
 
-    header = models.SlugField(_("Route name"), default="")
+    header = models.CharField(_("Route name"), default="")
+
     image_geo_object = models.ImageField(
         _("Image of geo object"),
         upload_to=make_upload_path,
         blank=True,
         null=True,
     )
-    footer = models.SlugField(_("Footer"), blank=True, default="")
+
+    footer = models.CharField(_("Footer"), blank=True, default="")
 
     stroke_width = models.PositiveIntegerField(_("Stroke width"), default=5)
 
@@ -1181,14 +1183,16 @@ class Polygon(models.Model):
         blank=True,
     )
 
-    header = models.SlugField(_("Territory name"), default="")
+    header = models.CharField(_("Territory name"), default="")
+
     image_geo_object = models.ImageField(
         _("Image of geo object"),
         upload_to=make_upload_path,
         blank=True,
         null=True,
     )
-    footer = models.SlugField(_("Footer"), blank=True, default="")
+
+    footer = models.CharField(_("Footer"), blank=True, default="")
 
     stroke_width = models.PositiveIntegerField(_("Stroke width"), default=2)
 

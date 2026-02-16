@@ -106,7 +106,7 @@ def validate_image_geo_object(image):
     extension_list = [".jpg", ".jpeg", ".png"]
     size = image.size
     extension = Path(image.name).suffix.lower()
-    max_size = settings.MAX_SIZE_IMAGE_GEO_OBJECT
+    max_size = settings.MAX_SIZE_BYTES_IMAGE_GEO_OBJECT
 
     if extension not in extension_list:
         raise ValidationError(_("Only JPG or PNG format files."))

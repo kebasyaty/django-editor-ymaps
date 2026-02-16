@@ -198,7 +198,11 @@ MD_ICONS_VERSION = 7
 # Maximum size of geo object images in bytes
 # 4194304 = 4 MB
 # Hint: This size is for the admin panel, saved images will be much smaller in size.
-MAX_SIZE_IMAGE_GEO_OBJECT = 4194304
+MAX_SIZE_BYTES_IMAGE_GEO_OBJECT = 4194304
+
+# Maximum size width and height of geo object image in pixels
+# Hint: (width, height)  # noqa: ERA001
+MAX_SIZE_WIDTH_HEIGHT_IMAGE_GEO_OBJECT = (966, 966)
 
 # The maximum size in bytes that a request body may be before a
 # SuspiciousOperation (RequestDataTooBig) is raised.

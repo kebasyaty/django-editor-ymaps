@@ -115,7 +115,6 @@ class PlacemarkForm(forms.ModelForm):
             "icon_slug",
             "coordinates",
         )
-        footer = forms.CharField(widget=forms.Textarea)
 
 
 class CustomPlacemarkForm(forms.ModelForm):
@@ -134,7 +133,6 @@ class CustomPlacemarkForm(forms.ModelForm):
             "active",
             "is_user_geotag",
         )
-        footer = forms.CharField(widget=forms.Textarea)
 
 
 class PolylineForm(forms.ModelForm):
@@ -153,7 +151,6 @@ class PolylineForm(forms.ModelForm):
             "stroke_opacity",
             "coordinates",
         )
-        footer = forms.CharField(widget=forms.Textarea)
 
 
 class PolygonForm(forms.ModelForm):
@@ -174,7 +171,6 @@ class PolygonForm(forms.ModelForm):
             "fill_opacity",
             "coordinates",
         )
-        footer = forms.CharField(widget=forms.Textarea)
 
 
 class BanIPForm(forms.ModelForm):

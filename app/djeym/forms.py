@@ -51,7 +51,15 @@ class GeneralSettingsForm(forms.ModelForm):
 class PresetForm(forms.ModelForm):
     class Meta:  # noqa: D106
         model = Preset
-        fields = ("ymap", "autoheader", "autobody", "autofooter", "placemark", "polyline", "polygon", "position")
+        fields = (
+            "ymap",
+            "autoheader",
+            "autofooter",
+            "placemark",
+            "polyline",
+            "polygon",
+            "position",
+        )
 
 
 class HeatPointForm(forms.ModelForm):

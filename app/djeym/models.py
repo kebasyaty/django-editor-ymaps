@@ -54,6 +54,7 @@ from .utils import (
     polyline_update_json_code,
     validate_coordinates,
     validate_image,
+    validate_image_geo_object,
     validate_svg,
     validate_transparency,
 )
@@ -981,6 +982,7 @@ class Placemark(models.Model):
     image_geo_object = models.ImageField(
         _("Image of geo object"),
         upload_to=make_upload_path,
+        validators=[validate_image_geo_object],
         blank=True,
         null=True,
     )
@@ -1104,6 +1106,7 @@ class Polyline(models.Model):
     image_geo_object = models.ImageField(
         _("Image of geo object"),
         upload_to=make_upload_path,
+        validators=[validate_image_geo_object],
         blank=True,
         null=True,
     )
@@ -1190,6 +1193,7 @@ class Polygon(models.Model):
     image_geo_object = models.ImageField(
         _("Image of geo object"),
         upload_to=make_upload_path,
+        validators=[validate_image_geo_object],
         blank=True,
         null=True,
     )

@@ -196,5 +196,8 @@ DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE = False
 DJEYM_YMAPS_DOWNLOAD_MODE = "debug" if DEBUG else "release"
 
 
-# Material Design Icons
+# Version of Material Design Icons
 MD_ICONS_VERSION = 7
+
+# Maximum size of geo object images in bytes
+MAX_SIZE_IMAGE_GEO_OBJECT = 0

@@ -10,6 +10,7 @@ from io import BytesIO
 from pathlib import Path
 
 from django.apps import apps
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from lxml import etree
@@ -102,13 +103,14 @@ def validate_image_geo_object(image):
     extension_list = [".jpg", ".jpeg", ".png"]
     size = image.size
     extension = Path(image.name).suffix.lower()
+    max_size = settings.MAX_SIZE_IMAGE_GEO_OBJECT
 
     if extension not in extension_list:
         raise ValidationError(_("Only JPG or PNG format files."))
     elif not size:  # noqa: RET506
         raise ValidationError(_("Image cannot be 0.0 mb."))
-    elif not size or size > 524288:
-        err_msg = _("Maximum image size {}.").format(to_human_size(524288))
+    elif not size or size > max_size:
+        err_msg = _("Maximum image size {}.").format(to_human_size(max_size))
         raise ValidationError(err_msg)
 
 

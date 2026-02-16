@@ -32,8 +32,7 @@
         <!-- START VENDORS CSS -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
               rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@{{ mdi_version }}.x/css/materialdesignicons.min.css"
-              rel="stylesheet">
+        {% djeym_load_vendor_md_icons %}
         <!-- For Vue.js -->
         <link href="{% static 'djeym/vue_vendors/editor/css/chunk-vendors.css' %}"
               rel="stylesheet">

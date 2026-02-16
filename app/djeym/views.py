@@ -10,7 +10,6 @@ import json
 import re
 from pathlib import Path
 
-from django.conf import settings
 from django.core.files import File
 from django.core.files.base import ContentFile
 from django.db.models import Q
@@ -240,7 +239,6 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
             context["is_heatmap"] = ymap.heatmap_settings.active
             context["is_round_theme"] = ymap.general_settings.roundtheme
             context["presets"] = ymap.presets.values_list("js", flat=True)
-            context["mdi_version"] = settings.MD_ICONS_VERSION
 
         context["ymap"] = ymap
         return context

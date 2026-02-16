@@ -32,7 +32,7 @@ def djeym_yandex_map(slug, lang="en"):
 
 @register.inclusion_tag("djeym/includes/api_ymaps.html")
 def djeym_load_api_ymaps(lang="en", ns="djeymYMaps"):
-    """Get URL for API Yandex Maps."""
+    """Load URL for API Yandex Maps."""
     api_version = "2.1"
     api_key = getattr(settings, "DJEYM_YMAPS_API_KEY", "")
     is_enterprise = getattr(settings, "DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE", False)
@@ -60,7 +60,7 @@ def djeym_load_api_ymaps(lang="en", ns="djeymYMaps"):
     }
 
 
-@register.inclusion_tag("djeym/includes/md_icons_version.html")
-def load_md_icons_version():
-    """Get URL for Material Design Icons."""
+@register.inclusion_tag("djeym/includes/vendor_md_icons.html")
+def djeym_load_vendor_md_icons():
+    """Load URL vendor of Material Design Icons."""
     return {"mdi_version": settings.MD_ICONS_VERSION}

@@ -990,7 +990,7 @@ class Placemark(models.Model, ResizeImageMixin):
         null=True,
     )
 
-    footer = models.CharField(_("Footer"), blank=True, default="")
+    footer = models.TextField(_("Footer"), blank=True, default="")
 
     icon_slug = models.SlugField("{} (slug)".format(_("Icon")), max_length=255, null=True)
 
@@ -1110,7 +1110,7 @@ class Polyline(models.Model, ResizeImageMixin):
         null=True,
     )
 
-    footer = models.CharField(_("Footer"), blank=True, default="")
+    footer = models.TextField(_("Footer"), blank=True, default="")
 
     stroke_width = models.PositiveIntegerField(_("Stroke width"), default=5)
 
@@ -1203,7 +1203,7 @@ class Polygon(models.Model, ResizeImageMixin):
         null=True,
     )
 
-    footer = models.CharField(_("Footer"), blank=True, default="")
+    footer = models.TextField(_("Footer"), blank=True, default="")
 
     stroke_width = models.PositiveIntegerField(_("Stroke width"), default=2)
 

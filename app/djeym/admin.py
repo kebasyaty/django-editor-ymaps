@@ -161,7 +161,7 @@ class MapAdmin(NonSortableParentAdmin):
 
         js = (
             "/static/djeym/js/jquery.min.js",
-            "/static/djeym/js/admin_view_icons.js",
+            "/static/djeym/js/view_icons.js",
         )
 
 
@@ -187,8 +187,8 @@ class PlacemarkAdmin(admin.ModelAdmin):
         js = (
             "/static/djeym/js/jquery.min.js",
             "/static/djeym/js/resize_image.js",
-            "/static/djeym/js/admin_icon_collection.js",
-            "/static/djeym/js/admin_ban_ip.js",
+            "/static/djeym/js/icon_collection.js",
+            "/static/djeym/js/ban_ip.js",
         )
 
 

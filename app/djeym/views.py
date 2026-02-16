@@ -85,7 +85,7 @@ class AjaxBalloonContent(View):
         sign_loading = '<div id="djeymSignLoaded"></div>'
 
         if is_presets:
-            presets = Preset.objects.filter(Q(autoheader=True) | Q(autobody=True) | Q(autofooter=True))
+            presets = Preset.objects.filter(Q(autoheader=True) | Q(autofooter=True))
 
         if ids is None:
             if obj_type == "Point":
@@ -101,7 +101,7 @@ class AjaxBalloonContent(View):
             geoobject.footer += sign_loading if is_presets else ""  # pyrefly: ignore[unbound-name]
             response_data = {
                 "header": mark_safe(geoobject.header),  # noqa: S308 # pyrefly: ignore[unbound-name]
-                "body": mark_safe(geoobject.body),  # noqa: S308 # pyrefly: ignore[unbound-name]
+                "body": geoobject.image_geo_object.url,  # pyrefly: ignore[unbound-name]
                 "footer": mark_safe(geoobject.footer),  # noqa: S308 # pyrefly: ignore[unbound-name]
             }
         else:
@@ -115,7 +115,7 @@ class AjaxBalloonContent(View):
                 placemark.footer += sign_loading if is_presets else ""
                 response_data[pk] = {
                     "header": mark_safe(placemark.header),  # noqa: S308
-                    "body": mark_safe(placemark.body),  # noqa: S308
+                    "body": placemark.image_geo_object.url,
                     "footer": mark_safe(placemark.footer),  # noqa: S308
                 }
 
@@ -671,7 +671,6 @@ class AjaxUpdatePresetSettings(View):
                 "icon": item.icon,
                 "description": item.description,
                 "autoheader": item.autoheader,
-                "autobody": item.autobody,
                 "autofooter": item.autofooter,
                 "placemark": item.placemark,
                 "polyline": item.polyline,

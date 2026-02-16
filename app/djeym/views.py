@@ -24,7 +24,6 @@ from slugify import slugify
 from .decorators import ajax_login_required_and_staff
 from .forms import (
     BanIPForm,
-    CKEditorTextareaForm,
     CustomPlacemarkForm,
     GeneralSettingsForm,
     HeatmapSettingsForm,
@@ -235,7 +234,6 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
         if ymap is not None:
             context["load_indicator"] = ymap.load_indicator
             context["load_indicator_size"] = ymap.load_indicator_size
-            context["form_cke"] = CKEditorTextareaForm()
             context["is_heatmap"] = ymap.heatmap_settings.active
             context["is_round_theme"] = ymap.general_settings.roundtheme
             context["presets"] = ymap.presets.values_list("js", flat=True)

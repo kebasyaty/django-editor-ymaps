@@ -34,8 +34,8 @@ from .widgets import AdminFileThumbWidget
 
 @admin.register(TileSource)
 class TileSourceAdmin(admin.ModelAdmin):
-    # ckeditor_change_form.html - Used by default.
-    change_form_template = "djeym/admin/ckeditor_change_form.html"
+    # change_form.html - Used by default.
+    change_form_template = "djeym/admin/change_form.html"
     change_list_template = "djeym/admin/tile_source_change_list.html"
     list_display = ("title", "admin_thumbnail", "maxzoom", "minzoom", "slug")  # pyrefly: ignore[bad-override]
     list_display_links = ("title", "admin_thumbnail")  # pyrefly: ignore[bad-override]
@@ -60,8 +60,8 @@ class TileSourceAdmin(admin.ModelAdmin):
 
 @admin.register(Statistics)
 class StatisticsAdmin(admin.ModelAdmin):
-    # ckeditor_change_form.html - Used by default.
-    change_form_template = "djeym/admin/ckeditor_change_form.html"
+    # change_form.html - Used by default.
+    change_form_template = "djeym/admin/change_form.html"
     list_display = ("obj_type", "obj_id", "ip", "timestamp")  # pyrefly: ignore[bad-override]
     readonly_fields = ("likes",)  # pyrefly: ignore[bad-override]
 
@@ -71,8 +71,8 @@ class StatisticsAdmin(admin.ModelAdmin):
 
 @admin.register(BannedIP)
 class BannedIPAdmin(admin.ModelAdmin):
-    # ckeditor_change_form.html - Used by default.
-    change_form_template = "djeym/admin/ckeditor_change_form.html"
+    # change_form.html - Used by default.
+    change_form_template = "djeym/admin/change_form.html"
     list_display = ("ip", "timestamp")  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106
@@ -167,7 +167,7 @@ class MapAdmin(NonSortableParentAdmin):
 
 @admin.register(Placemark)
 class PlacemarkAdmin(admin.ModelAdmin):
-    change_form_template = "djeym/admin/ckeditor_change_form.html"
+    change_form_template = "djeym/admin/change_form.html"
     list_display = ("__str__", "ymap", "category", "active")  # pyrefly: ignore[bad-override]
     list_filter = ("ymap",)  # pyrefly: ignore[bad-override]
     list_editable = ("active",)  # pyrefly: ignore[bad-override]
@@ -186,7 +186,7 @@ class PlacemarkAdmin(admin.ModelAdmin):
 
         js = (
             "/static/djeym/js/jquery.min.js",
-            "/static/djeym/js/ckeditor_resize_image.js",
+            "/static/djeym/js/resize_image.js",
             "/static/djeym/js/admin_icon_collection.js",
             "/static/djeym/js/admin_ban_ip.js",
         )
@@ -194,7 +194,7 @@ class PlacemarkAdmin(admin.ModelAdmin):
 
 @admin.register(Polyline)
 class PolylineAdmin(admin.ModelAdmin):
-    change_form_template = "djeym/admin/ckeditor_change_form.html"
+    change_form_template = "djeym/admin/change_form.html"
     list_display = ("__str__", "active")  # pyrefly: ignore[bad-override]
     list_filter = ("ymap",)  # pyrefly: ignore[bad-override]
     list_editable = ("active",)  # pyrefly: ignore[bad-override]
@@ -209,13 +209,13 @@ class PolylineAdmin(admin.ModelAdmin):
 
         js = (
             "/static/djeym/js/jquery.min.js",
-            "/static/djeym/js/ckeditor_resize_image.js",
+            "/static/djeym/js/resize_image.js",
         )
 
 
 @admin.register(Polygon)
 class PolygonAdmin(admin.ModelAdmin):
-    change_form_template = "djeym/admin/ckeditor_change_form.html"
+    change_form_template = "djeym/admin/change_form.html"
     list_display = ("__str__", "active")  # pyrefly: ignore[bad-override]
     list_filter = ("ymap",)  # pyrefly: ignore[bad-override]
     list_editable = ("active",)  # pyrefly: ignore[bad-override]
@@ -230,14 +230,14 @@ class PolygonAdmin(admin.ModelAdmin):
 
         js = (
             "/static/djeym/js/jquery.min.js",
-            "/static/djeym/js/ckeditor_resize_image.js",
+            "/static/djeym/js/resize_image.js",
         )
 
 
 @admin.register(HeatPoint)
 class HeatPointAdmin(admin.ModelAdmin):
-    # ckeditor_change_form.html - Used by default.
-    change_form_template = "djeym/admin/ckeditor_change_form.html"
+    # change_form.html - Used by default.
+    change_form_template = "djeym/admin/change_form.html"
     list_display = ("title", "weight", "slug", "active")  # pyrefly: ignore[bad-override]
     list_editable = ("active",)  # pyrefly: ignore[bad-override]
     list_filter = ("ymap",)  # pyrefly: ignore[bad-override]
@@ -254,8 +254,8 @@ class HeatPointAdmin(admin.ModelAdmin):
 
 @admin.register(ClusterIcon)
 class ClusterIconAdmin(admin.ModelAdmin):
-    # ckeditor_change_form.html - Used by default.
-    change_form_template = "djeym/admin/ckeditor_change_form.html"
+    # change_form.html - Used by default.
+    change_form_template = "djeym/admin/change_form.html"
     list_display = ("title", "admin_thumbnail")  # pyrefly: ignore[bad-override]
     list_display_links = ("title", "admin_thumbnail")  # pyrefly: ignore[bad-override]
     readonly_fields = (  # pyrefly: ignore[bad-override]
@@ -284,8 +284,8 @@ class ClusterIconAdmin(admin.ModelAdmin):
 
 @admin.register(IconCollection)
 class IconCollectionAdmin(admin.ModelAdmin):
-    # ckeditor_change_form.html - Used by default.
-    change_form_template = "djeym/admin/ckeditor_change_form.html"
+    # change_form.html - Used by default.
+    change_form_template = "djeym/admin/change_form.html"
     change_list_template = "djeym/admin/icon_collection_change_list.html"
     list_display = (  # pyrefly: ignore[bad-override]
         "title",
@@ -346,8 +346,8 @@ class MarkerIconAdmin(admin.ModelAdmin):
 
 @admin.register(LoadIndicator)
 class LoadIndicatorAdmin(admin.ModelAdmin):
-    # ckeditor_change_form.html - Used by default.
-    change_form_template = "djeym/admin/ckeditor_change_form.html"
+    # change_form.html - Used by default.
+    change_form_template = "djeym/admin/change_form.html"
 
     list_display = ("title", "admin_thumbnail", "slug")  # pyrefly: ignore[bad-override]
     list_display_links = ("title", "admin_thumbnail")  # pyrefly: ignore[bad-override]
@@ -372,8 +372,8 @@ class LoadIndicatorAdmin(admin.ModelAdmin):
 
 @admin.register(GeotagStatus)
 class GeotagStatusAdmin(admin.ModelAdmin):
-    # ckeditor_change_form.html - Used by default.
-    change_form_template = "djeym/admin/ckeditor_change_form.html"
+    # change_form.html - Used by default.
+    change_form_template = "djeym/admin/change_form.html"
     list_display = ("status", "slug")  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106

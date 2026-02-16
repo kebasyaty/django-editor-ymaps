@@ -8,7 +8,6 @@ from decimal import Decimal
 
 from adminsortable.fields import SortableForeignKey
 from adminsortable.models import SortableMixin
-from ckeditor_uploader.fields import RichTextUploadingField
 from colorful.fields import RGBColorField
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -977,26 +976,25 @@ class Placemark(models.Model):
         blank=True,
     )
 
-    header = RichTextUploadingField(_("Place name"), default="", config_name="djeym")
+    header = models.SlugField(_("Place name"), default="")
 
-    body = RichTextUploadingField(_("Description of the geo object"), blank=True, default="", config_name="djeym")
-
-    user_image = models.ImageField(
-        _("Image from user"),
+    image_geo_object = models.ImageField(
+        _("Image of geo object"),
         upload_to=make_upload_path,
         blank=True,
         null=True,
         editable=False,
-        help_text=_("Image from the user to description the geo-object (width = 966px, quality = 40)."),
     )
 
-    footer = RichTextUploadingField(_("Footer"), blank=True, default="", config_name="djeym")
+    footer = models.SlugField(_("Footer"), blank=True, default="")
+
     icon_slug = models.SlugField("{} (slug)".format(_("Icon")), max_length=255, null=True)
 
     coordinates = models.CharField(_("Coordinates"), max_length=255, default="[0,0]")
 
     like = models.PositiveIntegerField("Like", default=0, blank=True)
     dislike = models.PositiveIntegerField("Dislike", default=0, blank=True)
+
     active = models.BooleanField(_("Active placemark ?"), default=True)
 
     user_email = models.EmailField(
@@ -1038,7 +1036,7 @@ class Placemark(models.Model):
 
     @property
     def upload_dir(self):  # noqa: D102
-        return "djeym/user_images"
+        return "djeym/placemark_images"
 
     def __str__(self):  # noqa: D105
         header = re.sub(r"<.*?>", "", self.header)[:60]  # pyrefly: ignore[no-matching-overload]
@@ -1102,11 +1100,10 @@ class Polyline(models.Model):
         blank=True,
     )
 
-    header = RichTextUploadingField(_("Route name"), default="", config_name="djeym")
+    header = models.SlugField(_("Route name"), default="")
 
-    body = RichTextUploadingField(_("Description of the geo object"), blank=True, default="", config_name="djeym")
+    footer = models.SlugField(_("Footer"), blank=True, default="")
 
-    footer = RichTextUploadingField(_("Footer"), blank=True, default="", config_name="djeym")
     stroke_width = models.PositiveIntegerField(_("Stroke width"), default=5)
 
     stroke_color = RGBColorField(_("Line color"), colors=COLORS, default="#00C853")
@@ -1178,11 +1175,10 @@ class Polygon(models.Model):
         blank=True,
     )
 
-    header = RichTextUploadingField(_("Territory name"), default="", config_name="djeym")
+    header = models.SlugField(_("Territory name"), default="")
 
-    body = RichTextUploadingField(_("Description of the geo object"), blank=True, default="", config_name="djeym")
+    footer = models.SlugField(_("Footer"), blank=True, default="")
 
-    footer = RichTextUploadingField(_("Footer"), blank=True, default="", config_name="djeym")
     stroke_width = models.PositiveIntegerField(_("Stroke width"), default=2)
 
     stroke_color = RGBColorField(_("Line color"), colors=COLORS, default="#4caf50")

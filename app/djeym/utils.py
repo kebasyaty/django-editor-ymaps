@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import math
-import re
 import uuid
 from decimal import Decimal
 from io import BytesIO
@@ -127,18 +126,13 @@ def get_errors_form(*args):
     return {"err_dict": err_dict, "detail": detail}
 
 
-# GET FILENAME
+# GET UPLOAD PATH
 # --------------------------------------------------------------------------------------------------
 
 
 def make_upload_path(instance, filename):
     extension = Path(filename).suffix
     return Path(instance.upload_dir) / f"{uuid.uuid4()}{extension}"
-
-
-def get_filename(filename):
-    """CKEditor - Filename Generator."""
-    return re.sub(r"\s+", "_", filename).lower()
 
 
 # REFRESH JSON-CODE

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
@@ -177,9 +176,3 @@ class OffsetMarkerIconForm(forms.ModelForm):
         fields = "__all__"
 
     check_icon_offset = forms.CharField(widget=CheckIconOffsetWidget, label=_("Check icon offset"), required=False)
-
-
-class CKEditorTextareaForm(forms.Form):
-    ckeditor_textarea = forms.CharField(
-        widget=CKEditorUploadingWidget(config_name="djeym"),
-    )

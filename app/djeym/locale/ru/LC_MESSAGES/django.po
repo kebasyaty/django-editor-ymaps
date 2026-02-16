@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 08:42+0000\n"
+"POT-Creation-Date: 2026-02-16 08:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -912,27 +912,23 @@ msgstr "В теге `svg` нет атрибута `viewBox`."
 msgid "Unable to read file attributes. The file may be damaged."
 msgstr "Невозможно прочитать атрибуты файла. Возможно, файл поврежден."
 
-#: app/djeym/utils.py:95 app/djeym/utils.py:109
+#: app/djeym/utils.py:96 app/djeym/utils.py:111
 msgid "Only JPG or PNG format files."
 msgstr "Только файлы формата JPG или PNG."
 
-#: app/djeym/utils.py:97 app/djeym/utils.py:111
-msgid "Image cannot be 0.0 mb."
-msgstr "Изображение не может быть 0 мб."
+#: app/djeym/utils.py:98 app/djeym/utils.py:113
+msgid "Image cannot be 0.0 MB."
+msgstr "Изображение не может быть 0 MB."
 
-#: app/djeym/utils.py:99
-msgid "Maximum image size 0.5 mb."
-msgstr "Максимальный размер изображения 0,5 мб."
-
-#: app/djeym/utils.py:113
+#: app/djeym/utils.py:100 app/djeym/utils.py:115
 msgid "Maximum image size {}."
 msgstr "Максимальный размер изображения {}."
 
-#: app/djeym/utils.py:121
+#: app/djeym/utils.py:123
 msgid "To determine the coordinates a numeric value is required."
 msgstr "Для определения координат требуется числовое значение."
 
-#: app/djeym/utils.py:128
+#: app/djeym/utils.py:130
 msgid "To determine the transparency a numeric value is required."
 msgstr "Для определения прозрачности требуется числовое значение."
 

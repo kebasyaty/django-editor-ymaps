@@ -90,13 +90,15 @@ def validate_image(image):
     extension_list = [".jpg", ".jpeg", ".png"]
     size = image.size
     extension = Path(image.name).suffix.lower()
+    max_size = 524288  # 0.5 MB
 
     if extension not in extension_list:
         raise ValidationError(_("Only JPG or PNG format files."))
     elif not size:  # noqa: RET506
-        raise ValidationError(_("Image cannot be 0.0 mb."))
-    elif not size or size > 524288:
-        raise ValidationError(_("Maximum image size 0.5 mb."))
+        raise ValidationError(_("Image cannot be 0.0 MB."))
+    elif size > max_size:
+        err_msg = _("Maximum image size {}.").format(to_human_size(max_size))
+        raise ValidationError(err_msg)
 
 
 def validate_image_geo_object(image):
@@ -108,8 +110,8 @@ def validate_image_geo_object(image):
     if extension not in extension_list:
         raise ValidationError(_("Only JPG or PNG format files."))
     elif not size:  # noqa: RET506
-        raise ValidationError(_("Image cannot be 0.0 mb."))
-    elif not size or size > max_size:
+        raise ValidationError(_("Image cannot be 0.0 MB."))
+    elif size > max_size:
         err_msg = _("Maximum image size {}.").format(to_human_size(max_size))
         raise ValidationError(err_msg)
 

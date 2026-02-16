@@ -155,14 +155,6 @@ def make_upload_path(instance, filename):
     return Path(instance.upload_dir) / f"{uuid.uuid4()}{extension}"
 
 
-# RESIZE IMAGE
-# --------------------------------------------------------------------------------------------------
-
-
-def resize_image():
-    pass
-
-
 # REFRESH JSON-CODE
 # --------------------------------------------------------------------------------------------------
 

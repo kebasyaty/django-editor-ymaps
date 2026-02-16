@@ -12,6 +12,7 @@ from pathlib import Path
 from django.apps import apps
 from django.conf import settings
 from django.core.exceptions import ValidationError
+from django.templatetags.static import static
 from django.utils.translation import gettext_lazy as _
 from lxml import etree
 from xloft import to_human_size
@@ -189,7 +190,7 @@ def placemark_update_json_code(instance):
         json_code["options"]["iconImageSize"] = json.loads(icon_marker.get_size())
         json_code["options"]["iconImageOffset"] = json.loads(icon_marker.get_offset())
     else:
-        json_code["options"]["iconImageHref"] = "/static/djeym/img/center.svg"
+        json_code["options"]["iconImageHref"] = static("djeym/img/center.svg")
         json_code["options"]["iconImageSize"] = [32, 60]
         json_code["options"]["iconImageOffset"] = [-16, -60]
     return json.dumps(json_code, ensure_ascii=False)

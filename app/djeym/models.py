@@ -12,6 +12,7 @@ from colorful.fields import RGBColorField
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models.signals import m2m_changed, post_delete, post_save, pre_delete
+from django.templatetags.static import static
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.safestring import mark_safe
@@ -652,7 +653,7 @@ class Map(models.Model):
     get_icon_collection.short_description = _("Collection")
 
     def get_tile_screenshot(self):  # noqa: D102
-        screenshot = "/static/djeym/img/default_tile.png"
+        screenshot = static("djeym/img/default_tile.png")
         if bool(self.tile):
             screenshot = self.tile.screenshot.url
         img_html = f'<img src="{screenshot}" height="40" alt="Screenshot">'
@@ -664,7 +665,8 @@ class Map(models.Model):
         icon = "cold_fire.svg"
         if hasattr(self, "heatmap_settings") and self.heatmap_settings.active:
             icon = "hot_fire.svg"
-        img_html = f'<img src="/static/djeym/img/{icon}" height="40" alt="Icon">'
+            src = static(f"djeym/img/{icon}")
+        img_html = f'<img src="{src}" height="40" alt="Icon">'  # pyrefly: ignore[unbound-name]
         return mark_safe(img_html)  # noqa: S308
 
     get_status_heatmap.short_description = ngettext_lazy("Heatmap", "Heat maps", 1)

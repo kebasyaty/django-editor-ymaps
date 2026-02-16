@@ -977,12 +977,14 @@ class Placemark(models.Model):
     )
 
     header = models.CharField(_("Place name"), default="")
+
     image_geo_object = models.ImageField(
         _("Image of geo object"),
         upload_to=make_upload_path,
         blank=True,
         null=True,
     )
+
     footer = models.CharField(_("Footer"), blank=True, default="")
 
     icon_slug = models.SlugField("{} (slug)".format(_("Icon")), max_length=255, null=True)

@@ -13,6 +13,7 @@ from django.apps import apps
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from lxml import etree
+from xloft import to_human_size
 
 from .globals import DJEYM_YMAPS_ICONS_MAX_SIZE
 
@@ -97,6 +98,20 @@ def validate_image(image):
         raise ValidationError(_("Maximum image size 0.5 mb."))
 
 
+def validate_image_geo_object(image):
+    extension_list = [".jpg", ".jpeg", ".png"]
+    size = image.size
+    extension = Path(image.name).suffix.lower()
+
+    if extension not in extension_list:
+        raise ValidationError(_("Only JPG or PNG format files."))
+    elif not size:  # noqa: RET506
+        raise ValidationError(_("Image cannot be 0.0 mb."))
+    elif not size or size > 524288:
+        err_msg = _("Maximum image size {}.").format(to_human_size(524288))
+        raise ValidationError(err_msg)
+
+
 def validate_coordinates(coordinate):
     try:
         float(coordinate)
@@ -133,6 +148,14 @@ def get_errors_form(*args):
 def make_upload_path(instance, filename):
     extension = Path(filename).suffix
     return Path(instance.upload_dir) / f"{uuid.uuid4()}{extension}"
+
+
+# RESIZE IMAGE
+# --------------------------------------------------------------------------------------------------
+
+
+def resize_image():
+    pass
 
 
 # REFRESH JSON-CODE

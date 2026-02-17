@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 18:20+0000\n"
+"POT-Creation-Date: 2026-02-17 16:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,11 +23,11 @@ msgstr ""
 msgid "Yandex maps"
 msgstr "Яндекс карты"
 
-#: app/djeym/forms.py:191
+#: app/djeym/forms.py:187
 msgid "Center map"
 msgstr "Центр карты"
 
-#: app/djeym/forms.py:199
+#: app/djeym/forms.py:195
 msgid "Check icon offset"
 msgstr "Проверьте смещение иконки"
 
@@ -499,12 +499,12 @@ msgstr "Категория"
 msgid "Subcategories"
 msgstr "Подкатегории"
 
-#: app/djeym/models.py:983 app/djeym/models.py:1285
-msgid "Place name"
-msgstr "Название места"
+#: app/djeym/models.py:983 app/djeym/models.py:1103 app/djeym/models.py:1196
+msgid "Geoobject name"
+msgstr "Название геообъекта"
 
 #: app/djeym/models.py:986 app/djeym/models.py:1106 app/djeym/models.py:1199
-msgid "Image of geo object"
+msgid "Geoobject image"
 msgstr "Изображение геообъекта"
 
 #: app/djeym/models.py:993 app/djeym/models.py:1113 app/djeym/models.py:1206
@@ -557,10 +557,6 @@ msgstr "JSON"
 msgid "Marker"
 msgstr "Маркер"
 
-#: app/djeym/models.py:1103
-msgid "Route name"
-msgstr "Название маршрута"
-
 #: app/djeym/models.py:1115 app/djeym/models.py:1208
 msgid "Stroke width"
 msgstr "Ширина линии"
@@ -585,10 +581,6 @@ msgstr "Активный маршрут ?"
 msgid "Route"
 msgstr "Маршрут"
 
-#: app/djeym/models.py:1196
-msgid "Territory name"
-msgstr "Название территории"
-
 #: app/djeym/models.py:1220
 msgid "Fill color"
 msgstr "Цвет заливки"
@@ -600,6 +592,10 @@ msgstr "Прозрачность заливки"
 #: app/djeym/models.py:1235
 msgid "Active territory ?"
 msgstr "Активная территория ?"
+
+#: app/djeym/models.py:1285
+msgid "Place name"
+msgstr "Название места"
 
 #: app/djeym/models.py:1288
 msgid "Weight"

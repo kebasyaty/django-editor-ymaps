@@ -980,10 +980,10 @@ class Placemark(models.Model, ResizeImageMixin):
         blank=True,
     )
 
-    header = models.CharField(_("Place name"), default="")
+    header = models.CharField(_("Geoobject name"), default="")
 
     image = models.ImageField(
-        _("Image of geo object"),
+        _("Geoobject image"),
         upload_to=make_upload_path,
         validators=[validate_image_geo_object],
         blank=True,
@@ -1100,10 +1100,10 @@ class Polyline(models.Model, ResizeImageMixin):
         blank=True,
     )
 
-    header = models.CharField(_("Route name"), default="")
+    header = models.CharField(_("Geoobject name"), default="")
 
     image = models.ImageField(
-        _("Image of geo object"),
+        _("Geoobject image"),
         upload_to=make_upload_path,
         validators=[validate_image_geo_object],
         blank=True,
@@ -1193,10 +1193,10 @@ class Polygon(models.Model, ResizeImageMixin):
         blank=True,
     )
 
-    header = models.CharField(_("Territory name"), default="")
+    header = models.CharField(_("Geoobject name"), default="")
 
     image = models.ImageField(
-        _("Image of geo object"),
+        _("Geoobject image"),
         upload_to=make_upload_path,
         validators=[validate_image_geo_object],
         blank=True,

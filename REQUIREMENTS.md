@@ -14,6 +14,7 @@
 - [django-ipware](https://pypi.org/project/django-ipware/ "django-ipware")
 - [django-colorful](https://pypi.org/project/django-colorful/ "django-colorful")
 - [django-admin-sortable](https://pypi.org/project/django-admin-sortable/ "django-admin-sortable")
+- [xloft](https://pypi.org/project/xloft/ "xloft")
 
 #### Dev-Dependencies
 

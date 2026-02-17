@@ -982,7 +982,7 @@ class Placemark(models.Model, ResizeImageMixin):
 
     header = models.CharField(_("Place name"), default="")
 
-    image_geo_object = models.ImageField(
+    image = models.ImageField(
         _("Image of geo object"),
         upload_to=make_upload_path,
         validators=[validate_image_geo_object],
@@ -1053,7 +1053,7 @@ class Placemark(models.Model, ResizeImageMixin):
         # Resize image of geo object.
         if self.pk is None:
             self.resize(
-                self.image_geo_object,
+                self.image,
                 settings.MAX_SIZE_WIDTH_HEIGHT_IMAGE_GEO_OBJECT,
             )
         # Rounding coordinates through regex.
@@ -1102,7 +1102,7 @@ class Polyline(models.Model, ResizeImageMixin):
 
     header = models.CharField(_("Route name"), default="")
 
-    image_geo_object = models.ImageField(
+    image = models.ImageField(
         _("Image of geo object"),
         upload_to=make_upload_path,
         validators=[validate_image_geo_object],
@@ -1155,7 +1155,7 @@ class Polyline(models.Model, ResizeImageMixin):
         # Resize image of geo object
         if self.pk is None:
             self.resize(
-                self.image_geo_object,
+                self.image,
                 settings.MAX_SIZE_WIDTH_HEIGHT_IMAGE_GEO_OBJECT,
             )
         # Rounding coordinates through regex.
@@ -1195,7 +1195,7 @@ class Polygon(models.Model, ResizeImageMixin):
 
     header = models.CharField(_("Territory name"), default="")
 
-    image_geo_object = models.ImageField(
+    image = models.ImageField(
         _("Image of geo object"),
         upload_to=make_upload_path,
         validators=[validate_image_geo_object],
@@ -1258,7 +1258,7 @@ class Polygon(models.Model, ResizeImageMixin):
         # Resize image of geo object.
         if self.pk is None:
             self.resize(
-                self.image_geo_object,
+                self.image,
                 settings.MAX_SIZE_WIDTH_HEIGHT_IMAGE_GEO_OBJECT,
             )
         # Rounding coordinates through regex.

@@ -89,11 +89,11 @@ class AjaxBalloonContent(View):
 
         if ids is None:
             if obj_type == "Point":
-                geoobject = Placemark.objects.filter(id=pk).only("header", "image_geo_object", "footer").first()
+                geoobject = Placemark.objects.filter(id=pk).only("header", "image", "footer").first()
             elif obj_type == "LineString":
-                geoobject = Polyline.objects.filter(id=pk).only("header", "image_geo_object", "footer").first()
+                geoobject = Polyline.objects.filter(id=pk).only("header", "image", "footer").first()
             elif obj_type == "Polygon":
-                geoobject = Polygon.objects.filter(id=pk).only("header", "image_geo_object", "footer").first()
+                geoobject = Polygon.objects.filter(id=pk).only("header", "image", "footer").first()
 
             if presets:
                 geoobject = self.add_presets(presets, geoobject, obj_type, pk)  # pyrefly: ignore[unbound-name]
@@ -101,7 +101,7 @@ class AjaxBalloonContent(View):
             geoobject.footer += sign_loading if is_presets else ""  # pyrefly: ignore[unbound-name]
             response_data = {
                 "header": mark_safe(geoobject.header),  # noqa: S308 # pyrefly: ignore[unbound-name]
-                "body": geoobject.image_geo_object.url,  # pyrefly: ignore[unbound-name]
+                "body": geoobject.image.url,  # pyrefly: ignore[unbound-name]
                 "footer": mark_safe(geoobject.footer),  # noqa: S308 # pyrefly: ignore[unbound-name]
             }
         else:
@@ -115,7 +115,7 @@ class AjaxBalloonContent(View):
                 placemark.footer += sign_loading if is_presets else ""
                 response_data[pk] = {
                     "header": mark_safe(placemark.header),  # noqa: S308
-                    "body": placemark.image_geo_object.url,
+                    "body": placemark.image.url,
                     "footer": mark_safe(placemark.footer),  # noqa: S308
                 }
 

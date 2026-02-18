@@ -664,11 +664,11 @@ class Map(models.Model):
     get_tile_screenshot.short_description = _("Tile")
 
     def get_status_heatmap(self):  # noqa: D102
-        icon = "cold_fire.svg"
+        icon_name = "cold_fire.svg"
         if hasattr(self, "heatmap_settings") and self.heatmap_settings.active:
-            icon = "hot_fire.svg"
-            src = static(f"djeym/img/{icon}")
-        img_html = f'<img src="{src}" height="40" alt="Icon">'  # pyrefly: ignore[unbound-name]
+            icon_name = "hot_fire.svg"
+        icon_src = static(f"djeym/img/{icon_name}")
+        img_html = f'<img src="{icon_src}" height="40" alt="Icon">'  # pyrefly: ignore[unbound-name]
         return mark_safe(img_html)  # noqa: S308
 
     get_status_heatmap.short_description = ngettext_lazy("Heatmap", "Heat maps", 1)

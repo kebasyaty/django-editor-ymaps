@@ -481,7 +481,6 @@ def convert_all_settings_to_json(instance, **kwargs):
                     "icon": item.icon,
                     "description": item.description,
                     "autoheader": item.autoheader,
-                    "autobody": item.autobody,
                     "autofooter": item.autofooter,
                     "placemark": item.placemark,
                     "polyline": item.polyline,

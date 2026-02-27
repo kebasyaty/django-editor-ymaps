@@ -31,8 +31,17 @@
 
 ##
 
+<!--
 <img src="https://raw.githubusercontent.com/kebasyaty/django-editor-ymaps/v3/assets/attention.svg" alt="Attention">
 <p>Some text ...</a>
+-->
+
+<p>
+  <a href="https://github.com/kebasyaty/django-editor-ymaps" alt="Project Status">
+    <img src="https://raw.githubusercontent.com/kebasyaty/django-editor-ymaps/v3/assets/project_status/alpha.svg"
+      alt="Project Status">
+  </a>
+</p>
 
 <br>
 <br>

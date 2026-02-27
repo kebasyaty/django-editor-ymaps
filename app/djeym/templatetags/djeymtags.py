@@ -25,7 +25,6 @@ def djeym_yandex_map(slug, lang="en"):
         ctx["is_round_theme"] = general_settings.roundtheme
         ctx["width_map_front"] = general_settings.width_map_front
         ctx["height_map_front"] = general_settings.height_map_front
-        ctx["presets"] = ymap.presets.values_list("js", flat=True)
 
     return ctx
 

@@ -33,7 +33,6 @@
     {% if is_round_theme %}
       <script src="{% static "djeym/plugins/round-theme/all.min.js" %}"></script>
     {% endif %}
-    <script type="text/javascript">{% for preset in presets %}{{ preset|safe }}{% endfor %}</script>
     <script type="module"
             src="{% static 'djeym/vue_vendors/front/js/chunk-vendors.js' %}"></script>
     <script type="module" src="{% static 'djeym/vue_vendors/front/js/app.js' %}"></script>

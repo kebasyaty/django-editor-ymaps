@@ -57,11 +57,11 @@ $(document).ready(function () {
   if ($("form").is("#map_form")) {
     //
     /*
-    Icons for Presets, Categories and Subcategories.
+    Icons for Categories and Subcategories.
     ------------------------------------------------------------------------------------------------
     */
     const textObjs =
-      "#id_category_icon, input:regex(id, ^id_presets-.+-icon)," +
+      "#id_category_icon" +
       "input:regex(id, ^id_categories_placemark-.+-category_icon)," +
       "input:regex(id, ^id_subcategories_placemark-.+-category_icon)," +
       "input:regex(id, ^id_categories_polyline-.+-category_icon)," +
@@ -73,12 +73,10 @@ $(document).ready(function () {
     $icon.each(function () {
       const $this = $(this);
       const id = $this.attr("id");
-      if (!/^id_presets-/.test(id)) {
-        $this.after(
-          '<br><a href="https://materialdesignicons.com/" target="_blank" ' +
-            'rel="nofollow noreferrer noopener">MaterialDesignIcons.com</a>',
-        );
-      }
+      $this.after(
+        '<br><a href="https://materialdesignicons.com/" target="_blank" ' +
+          'rel="nofollow noreferrer noopener">MaterialDesignIcons.com</a>',
+      );
       $this.after(
         '<span class="view_icon"><span class="mdi mdi-' +
           $this.val() +

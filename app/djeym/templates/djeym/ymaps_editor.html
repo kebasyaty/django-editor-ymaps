@@ -95,7 +95,6 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
         {% if is_round_theme %}
           <script src="{% static "djeym/plugins/round-theme/all.min.js" %}"></script>
         {% endif %}
-        <script type="text/javascript">{% for preset in presets %}{{ preset|safe }}{% endfor %}</script>
         <!-- For Vue.js -->
         <script type="module"
                 src="{% static 'djeym/vue_vendors/editor/js/chunk-vendors.js' %}"></script>

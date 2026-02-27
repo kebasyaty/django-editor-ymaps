@@ -190,12 +190,7 @@ def convert_all_settings_to_json(instance, **kwargs):
         ymaps = apps.get_model("djeym", "Map").objects.all()
         if class_name == "MarkerIcon" and ymaps.filter(icon_collection=instance.icon_collection).count() == 0:
             return
-        if (
-            class_name == "GeneralSettings"
-            or class_name == "Preset"
-            or class_name == "MapControls"
-            or class_name == "HeatmapSettings"
-        ):
+        if class_name == "GeneralSettings" or class_name == "MapControls" or class_name == "HeatmapSettings":
             try:
                 ymaps = [ymaps.get(pk=instance.ymap.pk)]
             except ObjectDoesNotExist:
@@ -467,29 +462,6 @@ def convert_all_settings_to_json(instance, **kwargs):
                 "currentIndicator": ymap.load_indicator.slug if ymap.load_indicator is not None else "",
             }
             editor["loadIndicators"] = load_indicators
-            if not is_map:
-                save_json_settings(json_settings, editor)
-                continue
-
-        # Get Presets
-        if class_name == "Preset" or is_map:
-            presets = ymap.presets.all()
-            presets = [
-                {
-                    "id": item.pk,
-                    "title": item.title,
-                    "icon": item.icon,
-                    "description": item.description,
-                    "autoheader": item.autoheader,
-                    "autofooter": item.autofooter,
-                    "placemark": item.placemark,
-                    "polyline": item.polyline,
-                    "polygon": item.polygon,
-                    "position": item.position,
-                }
-                for item in presets
-            ]
-            editor["presets"] = presets
             if not is_map:
                 save_json_settings(json_settings, editor)
                 continue

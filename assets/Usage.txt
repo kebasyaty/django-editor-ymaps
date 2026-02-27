@@ -1,0 +1,100 @@
+- **Add to Settings**
+
+```python
+"""Settings."""
+
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+INSTALLED_APPS = [
+    ...
+    "imagekit",
+    "colorful",
+    "adminsortable",
+    "djeym",
+    ...
+]
+
+MIDDLEWARE = [
+    ...
+    'django.middleware.locale.LocaleMiddleware',
+    'djeym.middleware.AjaxMiddleware',
+]
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# To send test messages.
+# 1. Notify administrator of a new custom marker.
+# 2. Notify user about successful moderation of his marker.
+# Mail server for testings: $ python -m smtpd -n -c DebuggingServer localhost:1025
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'noreply@site.net'
+
+# (If a non-authenticated user requests an editor page.)
+# (Если не аутентифицированный пользователь запросит страницу редактора.)
+LOGIN_URL = '/admin/'  # or change to your URL
+
+# Required for django-admin-sortable
+# https://github.com/alsoicode/django-admin-sortable#configuration
+CSRF_COOKIE_HTTPONLY = False
+
+# The API key is used in the free and paid versions.
+# You can get the key in the developer’s office - https://passport.yandex.com/
+# ( API-ключ используется в свободной и платной версиях.
+#   Получить ключ можно в кабинете разработчика - https://developer.tech.yandex.ru/ )
+DJEYM_YMAPS_API_KEY = ''
+
+# For paid use API --> True
+# ( Для платного использования --> True )
+DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE = False
+
+# Map download mode.
+# Default = 'release'
+# DJEYM_YMAPS_DOWNLOAD_MODE = 'debug' if DEBUG else 'release'
+```
+
+- **Add to main URLs**
+
+```python
+"""Main URLs."""
+
+from django.conf import settings
+from django.contrib import admin
+from django.contrib.staticfiles.urls import static
+from django.urls import include, path
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("djeym/", include("djeym.urls", namespace="djeym")),
+]
+
+if settings.DEBUG:
+    (
+        urlpatterns
+        + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+        + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    )
+```
+
+- **Add media directory to your project:** `media/uploads`.
+
+- **Update Migrations:**
+
+```shell
+cd project-name
+python manage.py migrate djeym
+# or
+uv run python app_name/manage.py migrate app_name/djeym
+```

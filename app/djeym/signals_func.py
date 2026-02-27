@@ -56,7 +56,7 @@ def icon_marker_size_correction(instance, **kwargs):
         instance.offset_x = (Decimal(width) / Decimal(2)).quantize(Decimal(".0"), ROUND_CEILING)
         instance.offset_y = Decimal(height) * Decimal(-1)
 
-        if instance.offset_x.to_integral_exact() - instance.offset_x == 0.5:
+        if instance.offset_x.to_integral_exact() - instance.offset_x == Decimal("0.5"):
             instance.offset_x += Decimal("0.1")
             instance.offset_x *= Decimal(-1)
         else:

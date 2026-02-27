@@ -38,7 +38,6 @@ from .globals import (
     ZOOM_CHOICES,
 )
 from .mixins import ResizeImageMixin
-from .raw_presets import raw_presets
 from .signals_func import (
     convert_all_settings_to_json,
     icon_cluster_size_correction,
@@ -252,67 +251,6 @@ class HeatmapSettings(models.Model):
     class Meta:  # noqa: D106
         verbose_name = ngettext_lazy("Heatmap", "Heat maps", 1)
         verbose_name_plural = ngettext_lazy("Heatmap", "Heat maps", 1)
-
-
-class Preset(models.Model):
-    """Preset custom solution."""
-
-    ymap = models.ForeignKey(
-        "Map",
-        verbose_name=ngettext_lazy("Map", "Map", 1),
-        related_name="presets",
-        null=True,
-        on_delete=models.CASCADE,
-    )
-
-    position = models.PositiveSmallIntegerField(_("Position"), default=0)
-
-    title = models.CharField(_("Title"), max_length=60, default="")
-
-    icon = models.CharField(
-        _("Icon"),
-        max_length=255,
-        default="",
-        help_text=_("https://materialdesignicons.com/ - Example: help"),
-    )
-
-    html = models.TextField("Text | Html", default='<p style="color:#E91E63;">iPreset</p>')
-
-    js = models.TextField("JS", blank=True, default="", help_text="JavaScript and jQuery")
-
-    description = models.TextField(
-        _("Description"),
-        default="""<div style="color:#3F51B5;">Описание</div>
-<div style="color:#E91E63;">Description</div>""",
-        help_text=_("Brief description of the preset."),
-    )
-
-    autoheader = models.BooleanField(_("Automatically add to end of header"), default=False)
-    autofooter = models.BooleanField(_("Automatically add to end of footer"), default=False)
-
-    placemark = models.BooleanField(_("Markers"), default=True)
-    polyline = models.BooleanField(_("Routes"), default=True)
-    polygon = models.BooleanField(ngettext_lazy("Territory", "Territorys", 2), default=True)
-
-    slug = models.SlugField(max_length=255, blank=True, null=True)
-
-    def __str__(self):  # noqa: D105
-        return str(self.title)
-
-    class Meta:  # noqa: D106
-        ordering = ("position",)
-        verbose_name = _("Preset")
-        verbose_name_plural = _("Presets")
-
-    def save(self, *args, **kwargs):  # noqa: D102
-        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
-        super().save(*args, **kwargs)
-
-    def clean(self):  # noqa: D102
-        ymap = self.ymap
-        raw_slug = slugify(str(self.title))
-        if not bool(self.pk) and Preset.objects.filter(ymap=ymap, slug=raw_slug).count() > 0:
-            raise ValidationError({"title": _("A preset with this name already exists for this map.")})
 
 
 class GeneralSettings(models.Model):
@@ -570,18 +508,6 @@ class Map(models.Model):
             msg = _("Invalid value.")
             raise ValidationError({"longitude": msg})
 
-    @staticmethod
-    def create_preset(ymap, raw_preset):  # noqa: D102
-        Preset.objects.create(
-            ymap=ymap,
-            position=raw_preset["position"],
-            title=raw_preset["title"],
-            icon=raw_preset["icon"],
-            html=raw_preset["html"],
-            js=raw_preset["js"],
-            description=raw_preset["description"],
-        )
-
     def __init__(self, *args, **kwargs):  # noqa: D107
         super().__init__(*args, **kwargs)
         self.__icon_collection = self.icon_collection
@@ -597,15 +523,6 @@ class Map(models.Model):
             HeatmapSettings.objects.create(ymap=self)
         if not hasattr(self, "general_settings"):
             GeneralSettings.objects.create(ymap=self)
-        if hasattr(self, "presets"):
-            slugs = [item.slug for item in self.presets.all()]
-            if len(slugs) > 0:
-                for raw_preset in raw_presets:
-                    if raw_preset["slug"] not in slugs:
-                        self.create_preset(self, raw_preset)
-            else:
-                for raw_preset in raw_presets:
-                    self.create_preset(self, raw_preset)
         if hasattr(self, "json_settings"):
             convert_all_settings_to_json(self)
         else:
@@ -1690,7 +1607,7 @@ m2m_changed.connect(refresh_json_code, sender=Polyline.subcategories.through)
 m2m_changed.connect(refresh_json_code, sender=Polygon.subcategories.through)
 
 
-# Delete orphaned presets.
+# Delete orphaned statistics.
 pre_delete.connect(placemark_delete_statistics, sender=Placemark)
 pre_delete.connect(polyline_delete_statistics, sender=Polyline)
 pre_delete.connect(polygon_delete_statistics, sender=Polygon)
@@ -1705,7 +1622,6 @@ post_save.connect(convert_all_settings_to_json, sender=GeneralSettings)
 post_save.connect(convert_all_settings_to_json, sender=MapControls)
 post_save.connect(convert_all_settings_to_json, sender=HeatmapSettings)
 post_save.connect(convert_all_settings_to_json, sender=LoadIndicator)
-post_save.connect(convert_all_settings_to_json, sender=Preset)
 post_save.connect(convert_all_settings_to_json, sender=ClusterIcon)
 post_save.connect(convert_all_settings_to_json, sender=CategoryPlacemark)
 post_save.connect(convert_all_settings_to_json, sender=SubCategoryPlacemark)
@@ -1717,7 +1633,6 @@ post_save.connect(convert_all_settings_to_json, sender=SubCategoryPolygon)
 post_delete.connect(convert_all_settings_to_json, sender=MarkerIcon)
 post_delete.connect(convert_all_settings_to_json, sender=TileSource)
 post_delete.connect(convert_all_settings_to_json, sender=LoadIndicator)
-post_delete.connect(convert_all_settings_to_json, sender=Preset)
 post_delete.connect(convert_all_settings_to_json, sender=CategoryPlacemark)
 post_delete.connect(convert_all_settings_to_json, sender=SubCategoryPlacemark)
 post_delete.connect(convert_all_settings_to_json, sender=CategoryPolyline)

@@ -16,7 +16,6 @@ from .models import (
     Placemark,
     Polygon,
     Polyline,
-    Preset,
 )
 from .widgets import CenterMapWidget, CheckIconOffsetWidget
 
@@ -45,20 +44,6 @@ class GeneralSettingsForm(forms.ModelForm):
             "hide_group_name_panel_front",
             "width_map_front",
             "height_map_front",
-        )
-
-
-class PresetForm(forms.ModelForm):
-    class Meta:  # noqa: D106
-        model = Preset
-        fields = (
-            "ymap",
-            "autoheader",
-            "autofooter",
-            "placemark",
-            "polyline",
-            "polygon",
-            "position",
         )
 
 

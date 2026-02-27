@@ -23,7 +23,6 @@ from .models import (
     Placemark,
     Polygon,
     Polyline,
-    Preset,
     Statistics,
     SubCategoryPlacemark,
     SubCategoryPolygon,
@@ -78,13 +77,6 @@ class BannedIPAdmin(admin.ModelAdmin):
 
     class Media:  # noqa: D106
         css = {"all": [static("djeym/css/djeym_admin.css")]}
-
-
-class PresetInline(admin.StackedInline):
-    model = Preset
-    extra = 0
-    exclude = ("slug",)
-    classes = ["collapse"]
 
 
 class CategoryPlacemarkInline(SortableTabularInline):
@@ -148,7 +140,6 @@ class MapAdmin(NonSortableParentAdmin):
     )
     list_editable = ("active",)  # pyrefly: ignore[bad-override]
     inlines = (  # pyrefly: ignore[bad-override]
-        PresetInline,
         CategoryPlacemarkInline,
         SubCategoryPlacemarkInline,
         CategoryPolylineInline,

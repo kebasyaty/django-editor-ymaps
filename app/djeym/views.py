@@ -12,7 +12,6 @@ from pathlib import Path
 
 from django.core.files import File
 from django.core.files.base import ContentFile
-from django.db.models import Q
 from django.http import FileResponse, HttpResponse, HttpResponseForbidden, JsonResponse
 from django.utils.encoding import force_str
 from django.utils.safestring import mark_safe
@@ -32,7 +31,6 @@ from .forms import (
     PlacemarkForm,
     PolygonForm,
     PolylineForm,
-    PresetForm,
 )
 from .mixins import StaffRequiredMixin
 from .models import (
@@ -47,7 +45,6 @@ from .models import (
     Placemark,
     Polygon,
     Polyline,
-    Preset,
     Statistics,
     TileSource,
 )
@@ -60,32 +57,11 @@ from .utils import get_errors_form
 class AjaxBalloonContent(View):
     """Ajax - Upload Balloon Content."""
 
-    @staticmethod
-    def add_presets(presets, geoobject, geoobject_type, pk):  # noqa: D102
-        for preset in presets:
-            preset_html = preset.html.replace("djeymObjectType", geoobject_type).replace("djeymObjectID", pk)
-            if (
-                (geoobject_type == "Point" and preset.placemark)
-                or (geoobject_type == "LineString" and preset.polyline)
-                or (geoobject_type == "Polygon" and preset.polygon)
-            ):
-                if preset.autoheader:
-                    geoobject.header += preset_html
-                if preset.autofooter:
-                    geoobject.footer += preset_html
-        return geoobject
-
     def get(self, request, *args, **kwargs):  # noqa: D102
         response_data = {}
         pk = request.GET.get("objID")
         obj_type = request.GET.get("objType")
         ids = request.GET.get("ids")
-        is_presets = ast.literal_eval(request.GET.get("isPresets"))
-        presets = []
-        sign_loading = '<div id="djeymSignLoaded"></div>'
-
-        if is_presets:
-            presets = Preset.objects.filter(Q(autoheader=True) | Q(autofooter=True))
 
         if ids is None:
             if obj_type == "Point":
@@ -95,10 +71,6 @@ class AjaxBalloonContent(View):
             elif obj_type == "Polygon":
                 geoobject = Polygon.objects.filter(id=pk).only("header", "image", "footer").first()
 
-            if presets:
-                geoobject = self.add_presets(presets, geoobject, obj_type, pk)  # pyrefly: ignore[unbound-name]
-
-            geoobject.footer += sign_loading if is_presets else ""  # pyrefly: ignore[unbound-name]
             response_data = {
                 "header": mark_safe(geoobject.header),  # noqa: S308 # pyrefly: ignore[unbound-name]
                 "body": geoobject.image.url,  # pyrefly: ignore[unbound-name]
@@ -109,11 +81,7 @@ class AjaxBalloonContent(View):
             placemarks = Placemark.objects.filter(id__in=ids)
 
             for placemark in placemarks:
-                pk = placemark.pk
-                if presets:
-                    placemark = self.add_presets(presets, placemark, obj_type, str(pk))  # noqa: PLW2901
-                placemark.footer += sign_loading if is_presets else ""
-                response_data[pk] = {
+                response_data[placemark.pk] = {
                     "header": mark_safe(placemark.header),  # noqa: S308
                     "body": placemark.image.url,
                     "footer": mark_safe(placemark.footer),  # noqa: S308
@@ -234,7 +202,6 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
             context["load_indicator_size"] = ymap.load_indicator_size
             context["is_heatmap"] = ymap.heatmap_settings.active
             context["is_round_theme"] = ymap.general_settings.roundtheme
-            context["presets"] = ymap.presets.values_list("js", flat=True)
 
         context["ymap"] = ymap
         return context
@@ -640,47 +607,6 @@ class AjaxUpdateHeatmapSettings(View):
             return JsonResponse(response_data, status=400)
 
         response_data = {"successfully": True}
-        return JsonResponse(response_data)
-
-    @ajax_login_required_and_staff
-    def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        return super().dispatch(request, *args, **kwargs)
-
-
-class AjaxUpdatePresetSettings(View):
-    """Ajax - Update Preset settings."""
-
-    def post(self, request, *args, **kwargs):  # noqa: D102
-        map_id = request.POST.get("ymap")
-        preset_id = request.POST.get("presetID")
-        ymap = Map.objects.get(pk=map_id)
-        preset = Preset.objects.get(pk=preset_id, ymap=ymap)
-        form = PresetForm(request.POST, instance=preset)
-
-        if form.is_valid():
-            form.save()
-        else:
-            response_data = {"detail": get_errors_form(form)["detail"]}
-            return JsonResponse(response_data, status=400)
-
-        presets = ymap.presets.all()
-        presets = [
-            {
-                "id": item.pk,
-                "title": item.title,
-                "icon": item.icon,
-                "description": item.description,
-                "autoheader": item.autoheader,
-                "autofooter": item.autofooter,
-                "placemark": item.placemark,
-                "polyline": item.polyline,
-                "polygon": item.polygon,
-                "position": item.position,
-            }
-            for item in presets
-        ]
-
-        response_data = {"presets": presets}
         return JsonResponse(response_data)
 
     @ajax_login_required_and_staff

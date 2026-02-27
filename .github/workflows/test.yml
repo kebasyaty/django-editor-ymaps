@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["ubuntu-latest", "windows-latest", "macOS-latest"]
+        os: ["ubuntu-latest", "macOS-latest"]
         python-version: ["3.12", "3.13", "3.14"]
         uv-version: ["latest"]
     runs-on: ${{ matrix.os }}

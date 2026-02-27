@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="badge-svg" data-v-3c87b7b4="" version="1.1" width="148.78" height="28" viewBox="0 0 148.78 28" xmlns="http://www.w3.org/2000/svg">
+ <g transform="scale(.8)">
+  <path d="m10 0h46v35h-46q-10 0-10-10v-15q0-10 10-10z" fill="#424242" data-v-3c87b7b4=""/>
+  <path d="m56 0h119.98q10 0 10 10v15q0 10-10 10h-119.98z" fill="#455a64" data-v-3c87b7b4=""/>
+  <text x="28" y="17.5" dy="0.34999999em" fill="#ffffff" font-family="Roboto, sans-serif" font-size="12px" font-weight="600" letter-spacing="2" text-anchor="middle" style="text-decoration-line:none;text-transform:uppercase" data-v-3c87b7b4="">LINK</text>
+  <g transform="matrix(.66667 0 0 .66667 66 9.5)" data-v-3c87b7b4="">
+   <path d="m9.825 17.527a0.111 0.111 0 0 1-0.107-0.142l3.05-10.837a0.111 0.111 0 0 1 0.108-0.081h1.324c0.074 0 0.127 0.07 0.107 0.141l-3.063 10.838a0.111 0.111 0 0 1-0.107 0.08h-1.312zm-2.146-2.732a0.11 0.11 0 0 1-0.079-0.033l-2.667-2.704a0.111 0.111 0 0 1 0-0.156l2.667-2.691a0.111 0.111 0 0 1 0.08-0.033h1.702c0.1 0 0.149 0.12 0.079 0.19l-2.534 2.534a0.111 0.111 0 0 0 0 0.157l2.535 2.546c0.07 0.07 0.02 0.19-0.079 0.19h-1.703zm6.954 0a0.111 0.111 0 0 1-0.079-0.19l2.525-2.546a0.111 0.111 0 0 0 0-0.157l-2.524-2.535a0.111 0.111 0 0 1 0.079-0.19h1.692c0.03 0 0.058 0.013 0.078 0.034l2.68 2.69a0.111 0.111 0 0 1 0 0.157l-2.68 2.704a0.111 0.111 0 0 1-0.078 0.033zm-2.633 9.205c-6.617 0-12-5.383-12-12s5.383-12 12-12 12 5.383 12 12-5.383 12-12 12zm0-22.667c-5.882 0-10.667 4.785-10.667 10.667s4.785 10.667 10.667 10.667 10.667-4.785 10.667-10.667-4.785-10.667-10.667-10.667z" fill="#fff" data-v-3c87b7b4=""/>
+  </g>
+  <text x="130.99219" y="17.5" dy="0.34999999em" fill="#ffffff" font-family="Montserrat, sans-serif" font-size="12px" font-weight="900" letter-spacing="2" text-anchor="middle" style="text-decoration-line:none;text-transform:uppercase" data-v-3c87b7b4="">EXAMPLES</text>
+ </g>
+</svg>

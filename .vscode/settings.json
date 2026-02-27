@@ -1,0 +1,20 @@
+{
+  "files.associations": {
+    "**/templates/*.html": "django-html",
+    "**/views/**/*.html": "django-html",
+    "*.tpl": "django-html",
+    "**/templates/*": "django-txt",
+    "**/*.html": "html",
+    "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+  },
+  "[html][django-html][handlebars][hbs][mustache][jinja][jinja-html][nj][njk][nunjucks][twig]": {
+    "editor.defaultFormatter": "monosans.djlint",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "djlint.useVenv": true,
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  }
+}

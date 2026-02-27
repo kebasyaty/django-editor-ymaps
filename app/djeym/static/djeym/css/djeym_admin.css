@@ -1,0 +1,281 @@
+.logo_djeym {
+  margin: 10px 0 20px;
+}
+
+.logo_djeym img {
+  width: 80px;
+}
+
+#id_center_map,
+#id_check_icon_offset_map {
+  width: 80%;
+  height: 400px;
+  position: relative;
+}
+
+label[for="id_center_map"],
+label[for="id_check_icon_offset"] {
+  font-weight: bold !important;
+  float: none !important;
+  width: auto !important;
+}
+
+label[for="id_disable_standard_icons"] {
+  color: #2196f3;
+  font-weight: bold !important;
+  font-size: 14px;
+}
+
+.editing_map_link_wrapper {
+  position: relative;
+  margin: 0 0 20px;
+}
+
+.editing_map_link_wrapper a {
+  position: relative;
+  top: 42px;
+  background-color: #e9ddaf !important;
+  color: #554400 !important;
+  font-weight: bold !important;
+  border-radius: 20px;
+  padding: 5px 14px 5px;
+  text-decoration: none !important;
+}
+.editing_map_link_wrapper a:hover {
+  background-color: #f4eed7 !important;
+}
+
+.hint_center_map,
+.hint_check_icon_offset {
+  font-weight: bold !important;
+  font-style: italic;
+}
+
+.hint_center_map {
+  margin: auto 0 auto;
+}
+
+.hint_check_icon_offset {
+  margin: 1px 0 10px;
+}
+
+.field-check_icon_offset,
+.hint_check_icon_offset {
+  display: none;
+}
+
+.djeym_hint_custom_icons {
+  margin: 10px 0 20px;
+  color: #2196f3;
+  font-size: 16px;
+  font-weight: bold !important;
+  font-style: italic;
+}
+
+.hint_offset {
+  height: 32px;
+  position: relative;
+  top: -1px;
+  left: 5px;
+}
+
+.view_icon {
+  font-size: 28px;
+  position: relative;
+  top: 7px;
+  left: 10px;
+  color: #757575;
+}
+
+.icon_list_wrap {
+  display: none;
+  width: 300px;
+  height: 410px;
+  position: relative;
+  top: 0;
+  left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.icon_list_wrap__top_block {
+  width: 100%;
+  text-align: right;
+  border-bottom: 1px solid #ccc;
+}
+
+.icon_list_wrap__center_block {
+  width: 100%;
+  height: 360px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-bottom: 1px solid #ccc;
+}
+
+.icon_list_wrap__icon {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.icon_list_wrap__close {
+  font-size: 28px;
+  color: #bdbdbd;
+  padding-right: 2px;
+  cursor: pointer;
+}
+
+.change_slug_icon {
+  color: #4caf50;
+  cursor: pointer;
+}
+
+.ban_ip {
+  color: #f44336;
+  cursor: pointer;
+}
+
+label[for="id_is_cluster"] {
+  color: #2196f3;
+  font-weight: bold !important;
+  font-size: 14px;
+}
+
+#id_custom_cluster_icon,
+#id_collection_example_icon,
+#id_tile_screenshot,
+#id_icon_load_indicator {
+  display: none;
+  max-height: 40px;
+  position: relative;
+  top: 0;
+  left: 20px;
+}
+
+.custom_cluster_icon_wrapper,
+.icon_collection_wrapper,
+.tile_screenshot_wrapper,
+.load_indicator_icon_wrapper {
+  overflow: visible !important;
+}
+
+.djeym_category_color {
+  width: 26px;
+  height: 26px;
+}
+
+/* Marker offset - Buttons for touch screen. */
+
+.marker_offset_btn {
+  display: inline-block;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Import/Export - Icon Collection.
+   Import/Export - Source tile layer */
+
+.import_icon_collection_link,
+.import_tile_source_link {
+  background-color: #e9ddaf !important;
+  color: #554400 !important;
+  font-weight: bold !important;
+  background-image: url(../img/plus.svg) !important;
+}
+.import_icon_collection_link:hover,
+.import_tile_source_link:hover {
+  background-color: #f4eed7 !important;
+}
+
+.export_icon_collection_link {
+  position: relative;
+  background-color: #e9ddaf;
+  color: #554400 !important;
+  font-weight: bold !important;
+  border-radius: 20px;
+  padding: 5px 14px 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 11px;
+  text-decoration: none !important;
+}
+.export_icon_collection_link:hover {
+  background-color: #f4eed7 !important;
+}
+.export_icon_collection_link div {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 4px;
+  left: 3px;
+  background: url(../img/import.svg) no-repeat center;
+  background-size: cover;
+}
+
+.export_tile_source_link {
+  background-color: #e9ddaf !important;
+  color: #554400 !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+  background-image: url(../img/import.svg) !important;
+}
+.export_tile_source_link:hover {
+  background-color: #f4eed7 !important;
+}
+
+.tile_go_to_website_btn {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/* Modal lock */
+
+#djeymModalLock {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+  background-color: #000;
+  opacity: 0.85;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-delay: 0s;
+  transition-timing-function: linear;
+}
+
+.djeym-load-indicator {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -32px 0 0 -32px;
+  opacity: 1;
+  content: url("../../djeym/img/spinner.svg");
+  animation: djeym-spin 1s infinite linear;
+}
+
+@keyframes djeym-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+/* Helpers */
+
+.hidden {
+  display: none !important;
+}

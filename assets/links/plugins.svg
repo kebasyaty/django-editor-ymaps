@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="badge-svg" data-v-3c87b7b4="" version="1.1" width="136.42" height="28" viewBox="0 0 136.42 28" xmlns="http://www.w3.org/2000/svg">
+ <g transform="scale(.8)">
+  <path d="m10 0h46v35h-46q-10 0-10-10v-15q0-10 10-10z" fill="#424242" data-v-3c87b7b4=""/>
+  <path d="m56 0h104.52q10 0 10 10v15q0 10-10 10h-104.52z" fill="#2e7d32" data-v-3c87b7b4=""/>
+  <text x="28" y="17.5" dy="0.34999999em" fill="#ffffff" font-family="Roboto, sans-serif" font-size="12px" font-weight="600" letter-spacing="2" text-anchor="middle" style="text-decoration-line:none;text-transform:uppercase" data-v-3c87b7b4="">LINK</text>
+  <g transform="matrix(.66667 0 0 .66667 66 9.5)" data-v-3c87b7b4="">
+   <path d="m12.291 17.883a11.733 11.733 0 0 1-6.1742 3.0338 2.4598 2.4598 0 0 1-2.1647-0.7461c-4.2466-4.6258-4.2466-11.732 0-16.358a2.4599 2.4599 0 0 1 2.1729-0.7461 11.668 11.668 0 0 1 6.289 3.1404 27.166 27.166 0 0 0-0.6969 6.1004 27.776 27.776 0 0 0 0.5739 5.5756zm9.8962-3.9376a1.394 1.394 0 0 0-1.5244 0.5266 24.68 24.68 0 0 1-11.914 8.9375 35.442 35.442 0 0 0 6.4284 0.5903 36.286 36.286 0 0 0 4.4605-0.2788 3.5997 3.5997 0 0 0 3.0338-2.6977c0.4692-1.884 0.6453-3.8838 0.5166-5.8134a1.394 1.394 0 0 0-1.001-1.2645zm-1.5245-4.3356a1.394 1.394 0 0 0 2.5255-0.7462c0.1354-1.9699-0.0438-3.9689-0.5166-5.8872a3.5997 3.5997 0 0 0-3.0338-2.6976 36.268 36.268 0 0 0-4.4606-0.2789 35.434 35.434 0 0 0-6.4284 0.5904 24.64 24.64 0 0 1 11.914 9.0195z" fill="#fff" data-v-3c87b7b4=""/>
+  </g>
+  <text x="123.25781" y="17.5" dy="0.34999999em" fill="#ffffff" font-family="Montserrat, sans-serif" font-size="12px" font-weight="900" letter-spacing="2" text-anchor="middle" style="text-decoration-line:none;text-transform:uppercase" data-v-3c87b7b4="">PLUGINS</text>
+ </g>
+</svg>

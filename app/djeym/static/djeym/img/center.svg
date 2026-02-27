@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23" height="60" version="1.1" viewBox="0 0 23.077 60" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="linearGradient6471" x1="205.97" x2="205.97" y1="126.38" y2="128.66" gradientUnits="userSpaceOnUse">
+   <stop offset="0"/>
+   <stop stop-color="#666" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient6473" x1="204" x2="206" y1="119.36" y2="119.36" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#666" offset="0"/>
+   <stop stop-color="#b3b3b3" offset=".125"/>
+   <stop stop-color="#ccc" offset=".22656"/>
+   <stop stop-color="#ebebeb" offset=".34375"/>
+   <stop stop-color="#b3b3b3" offset=".6875"/>
+   <stop stop-color="#808080" offset=".85938"/>
+   <stop stop-color="#4d4d4d" offset="1"/>
+  </linearGradient>
+  <radialGradient id="radialGradient6475" cx="203.71" cy="106.36" r="5" gradientTransform="matrix(1.4,0,0,1.4,-81.2,-42.545)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#ffd5d5" offset="0"/>
+   <stop stop-color="#ff8080" offset=".14286"/>
+   <stop stop-color="#ff2a2a" offset=".3465"/>
+   <stop stop-color="#d40000" offset=".57774"/>
+   <stop stop-color="#800000" offset="1"/>
+  </radialGradient>
+ </defs>
+ <g transform="translate(-10 -1017.4)">
+  <g transform="matrix(2.3077 0 0 2.3077 -451.54 781.14)" fill-rule="evenodd">
+   <ellipse cx="205" cy="127.36" rx="2" ry="1" fill="url(#linearGradient6471)"/>
+   <path d="m203 127.45c-5e-3 -0.0284 0-0.0648 0-0.0937 0-0.55228 0.89543-1 2-1s2 0.44772 2 1c0 0.029 5e-3 0.0654 0 0.0937-0.0686-0.52122-0.94021-0.9375-2-0.9375s-1.9314 0.41628-2 0.9375z" fill="#999"/>
+   <path d="m204 111.36h2v16s-6e-3 0.46485-0.99219 0.46485c-1.0116 0-1.0078-0.46485-1.0078-0.46485z" fill="url(#linearGradient6473)"/>
+   <circle cx="205" cy="107.36" r="5" fill="url(#radialGradient6475)"/>
+   <path d="m203.12 127.62c0.0886 0.15673 0.25083 0.30119 0.48438 0.41797 0.35402 0.17701 0.84812 0.28906 1.3945 0.28906s1.0405-0.11205 1.3945-0.28906c0.23355-0.11678 0.3958-0.26124 0.48438-0.41797-0.11517 0.13851-0.27922 0.26081-0.48829 0.35938-0.36633 0.1727-0.85503 0.27734-1.3906 0.27734s-1.0243-0.10464-1.3906-0.27734c-0.20906-0.0986-0.37311-0.22087-0.48828-0.35938z" fill="#ececec"/>
+  </g>
+ </g>
+</svg>

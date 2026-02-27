@@ -68,9 +68,6 @@ sudo dnf install gettext
 # MacOS
 brew install gettext
 brew link gettext --force
-# Windows
-# https://mlocati.github.io/articles/gettext-iconv-windows.html
-run: gettext0.25-iconv1.17-shared-64.exe
 
 # Install django-editor-ymaps:
 cd project-name

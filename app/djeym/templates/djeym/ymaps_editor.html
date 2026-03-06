@@ -78,12 +78,9 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
             djeymBalloonMinHeight = 60;
         </script>
         {% djeym_load_api_ymaps language_code %}
-        <script src="{% static "djeym/plugins/calculate-area/util.calculateArea.min.js" %}"></script>
+        <script src="{% static "djeym/plugins/util.calculateArea.js" %}"></script>
         {% if is_heatmap %}
-          <script src="{% static "djeym/plugins/heatmap/heatmap.min.js" %}"></script>
-        {% endif %}
-        {% if is_round_theme %}
-          <script src="{% static "djeym/plugins/round-theme/all.min.js" %}"></script>
+          <script src="{% static "djeym/plugins/heatmap.js" %}"></script>
         {% endif %}
         <!-- For Vue.js -->
         <script type="module"

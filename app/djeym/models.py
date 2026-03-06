@@ -1344,7 +1344,7 @@ class IconCollection(models.Model):
 
     def get_export_file_btn(self):  # noqa: D102
         url = reverse("djeym:export_icon_collection", kwargs={"slug": self.slug})
-        link_html = '<a href="{}" class="export_icon_collection_link">{} <div></div></a>'.format(
+        link_html = '<a href="{}" class="export_icon_collection_link" style="padding: 4px 11px !important;">{} <div></div></a>'.format(
             url,
             _("Export Collection"),
         )

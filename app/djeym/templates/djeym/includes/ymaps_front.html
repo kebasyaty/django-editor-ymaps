@@ -18,10 +18,7 @@
     </script>
     {% djeym_load_api_ymaps language_code %}
     {% if is_heatmap %}
-      <script src="{% static "djeym/plugins/heatmap/heatmap.min.js" %}"></script>
-    {% endif %}
-    {% if is_round_theme %}
-      <script src="{% static "djeym/plugins/round-theme/all.min.js" %}"></script>
+      <script src="{% static "djeym/plugins/heatmap.js" %}"></script>
     {% endif %}
     <script type="module"
             src="{% static 'djeym/vue_vendors/front/js/chunk-vendors.js' %}"></script>

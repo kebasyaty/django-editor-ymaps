@@ -321,7 +321,7 @@ class MarkerIconAdmin(admin.ModelAdmin):
 
         js = (
             static("djeym/js/jquery.js"),
-            static("djeym/plugins/jquery_mousewheel/jquery.mousewheel.min.js"),
+            static("djeym/plugins/jquery.mousewheel.min.js"),
             static("djeym/js/get_icon_name.js"),
         )
 

@@ -426,15 +426,6 @@ class Map(models.Model):
         on_delete=models.SET_NULL,
     )
 
-    load_indicator = models.ForeignKey(
-        "LoadIndicator",
-        verbose_name="Load indicator",
-        related_name="ymap",
-        blank=True,
-        null=True,
-        on_delete=models.SET_NULL,
-    )
-
     load_indicator_size = models.PositiveSmallIntegerField(
         "Load indicator size",
         choices=LOAD_INDICATOR_SIZE_CHOICES,
@@ -1488,51 +1479,6 @@ class MarkerIcon(models.Model):
         return f"[{self.offset_x:f},{self.offset_y:f}]"
 
 
-class LoadIndicator(models.Model):
-    """Load Indicator."""
-
-    svg = models.FileField(
-        _("Icon"),
-        upload_to=make_upload_path,
-        validators=[validate_svg],
-        null=True,
-    )
-
-    title = models.CharField(_("Title"), unique=True, max_length=60, default="")
-
-    slug = models.SlugField(max_length=255, blank=True, null=True)
-
-    @property
-    def upload_dir(self):  # noqa: D102
-        return "djeym/load_indicators"
-
-    def __str__(self):  # noqa: D105
-        return str(self.title)
-
-    class Meta:  # noqa: D106
-        ordering = ("title", "id")
-        verbose_name = _("Load indicator")
-        verbose_name_plural = _("Load indicators")
-
-    def save(self, *args, **kwargs):  # noqa: D102
-        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
-        super().save(*args, **kwargs)
-
-    def clean(self):  # noqa: D102
-        slug = slugify(str(self.title))
-        if slug == "default":
-            msg = _("Default - Reserved name for the indicator. Choose another name.")
-            raise ValidationError({"title": msg})
-
-    def admin_thumbnail(self):  # noqa: D102
-        if bool(self.svg):
-            img_html = f'<img src="{self.svg.url}" height="40" alt="Icon">'
-            return mark_safe(img_html)  # noqa: S308
-        return ""
-
-    admin_thumbnail.short_description = _("Icon")
-
-
 class Statistics(models.Model):
     """Statistics."""
 
@@ -1621,7 +1567,6 @@ post_save.connect(convert_all_settings_to_json, sender=TileSource)
 post_save.connect(convert_all_settings_to_json, sender=GeneralSettings)
 post_save.connect(convert_all_settings_to_json, sender=MapControls)
 post_save.connect(convert_all_settings_to_json, sender=HeatmapSettings)
-post_save.connect(convert_all_settings_to_json, sender=LoadIndicator)
 post_save.connect(convert_all_settings_to_json, sender=ClusterIcon)
 post_save.connect(convert_all_settings_to_json, sender=CategoryPlacemark)
 post_save.connect(convert_all_settings_to_json, sender=SubCategoryPlacemark)
@@ -1632,7 +1577,6 @@ post_save.connect(convert_all_settings_to_json, sender=SubCategoryPolygon)
 
 post_delete.connect(convert_all_settings_to_json, sender=MarkerIcon)
 post_delete.connect(convert_all_settings_to_json, sender=TileSource)
-post_delete.connect(convert_all_settings_to_json, sender=LoadIndicator)
 post_delete.connect(convert_all_settings_to_json, sender=CategoryPlacemark)
 post_delete.connect(convert_all_settings_to_json, sender=SubCategoryPlacemark)
 post_delete.connect(convert_all_settings_to_json, sender=CategoryPolyline)

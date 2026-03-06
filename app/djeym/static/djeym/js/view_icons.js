@@ -120,10 +120,6 @@ $(document).ready(function () {
     let tileSourceID = $tileSource.find("option:selected").val();
     const ajaxTileSourceURL = "/djeym/ajax-tile-screenshot/";
 
-    const $iconLoadIndicator = $("#id_load_indicator");
-    let loadIndicatorIconID = $iconLoadIndicator.find("option:selected").val();
-    const ajaxLoadIndicatorIconURL = "/djeym/ajax-load-indicator-icon/";
-
     /* If there is no cluster or collection, hide the "Edit Map" button.
        (Если нет кластера или коллекции, скрыть кнопку "Редактировать карту".) */
     if (
@@ -179,26 +175,6 @@ $(document).ready(function () {
       } else {
         $imageTile.attr("src", "/static/djeym/img/default_tile.png").show();
       }
-    });
-
-    // Upload icon of load indicator for Map.
-    $iconLoadIndicator
-      .parent()
-      .addClass("load_indicator_icon_wrapper")
-      .append('<img src="" id="id_icon_load_indicator" alt="Icon">');
-    const $imageLoadIndicator = $("#id_icon_load_indicator");
-    ajaxGetIcon(
-      ajaxLoadIndicatorIconURL,
-      $imageLoadIndicator,
-      loadIndicatorIconID,
-    );
-    $iconLoadIndicator.on("change", function () {
-      loadIndicatorIconID = $(this).find("option:selected").val();
-      ajaxGetIcon(
-        ajaxLoadIndicatorIconURL,
-        $imageLoadIndicator,
-        loadIndicatorIconID,
-      );
     });
   }
 });

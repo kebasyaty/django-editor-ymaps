@@ -17,7 +17,6 @@ from .models import (
     GeotagStatus,
     HeatPoint,
     IconCollection,
-    LoadIndicator,
     Map,
     MarkerIcon,
     Placemark,
@@ -125,7 +124,6 @@ class MapAdmin(NonSortableParentAdmin):
         "get_cluster",
         "get_icon_collection",
         "get_tile_screenshot",
-        "get_load_indicator",
         "get_status_heatmap",
         "zoom",
         "active",
@@ -136,7 +134,6 @@ class MapAdmin(NonSortableParentAdmin):
         "get_status_heatmap",
         "get_icon_collection",
         "get_tile_screenshot",
-        "get_load_indicator",
     )
     list_editable = ("active",)  # pyrefly: ignore[bad-override]
     inlines = (  # pyrefly: ignore[bad-override]
@@ -325,32 +322,6 @@ class MarkerIconAdmin(admin.ModelAdmin):
         js = (
             static("djeym/js/jquery.js"),
             static("djeym/plugins/jquery_mousewheel/jquery.mousewheel.min.js"),
-            static("djeym/js/get_icon_name.js"),
-        )
-
-
-@admin.register(LoadIndicator)
-class LoadIndicatorAdmin(admin.ModelAdmin):
-    # change_form.html - Used by default.
-    change_form_template = "djeym/admin/change_form.html"
-
-    list_display = ("title", "admin_thumbnail", "slug")  # pyrefly: ignore[bad-override]
-    list_display_links = ("title", "admin_thumbnail")  # pyrefly: ignore[bad-override]
-    readonly_fields = ("slug",)  # pyrefly: ignore[bad-override]
-
-    formfield_overrides = {
-        models.FileField: {"widget": AdminFileThumbWidget()},
-    }
-
-    class Media:  # noqa: D106
-        css = {
-            "all": [
-                static("djeym/css/djeym_admin.css"),
-            ],
-        }
-
-        js = (
-            static("djeym/js/jquery.js"),
             static("djeym/js/get_icon_name.js"),
         )
 

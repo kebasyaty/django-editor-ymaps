@@ -46,8 +46,6 @@ urlpatterns = [
         views.AjaxUpdateGeneralSettings.as_view(),
         name="ajax_update_general_settings",
     ),
-    path("ajax-load-indicator-icon/", views.AjaxLoadIndicatorIcon.as_view(), name="ajax_load_indicator_icon"),
-    path("ajax-update-load-indicator/", views.AjaxUpdateLoadIndicator.as_view(), name="ajax_update_load_indicator"),
     path(
         "ajax-update-filters-categories/",
         views.AjaxUpdateFiltersCategories.as_view(),

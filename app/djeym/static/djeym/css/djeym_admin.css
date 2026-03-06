@@ -183,7 +183,7 @@ label[for="id_is_cluster"] {
   background-color: #e9ddaf !important;
   color: #554400 !important;
   font-weight: bold !important;
-  background-image: url(../img/plus.svg) !important;
+  background-image: url(../img/export.svg) !important;
 }
 .import_icon_collection_link:hover,
 .import_tile_source_link:hover {

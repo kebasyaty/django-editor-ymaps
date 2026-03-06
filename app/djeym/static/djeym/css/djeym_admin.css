@@ -180,49 +180,58 @@ label[for="id_is_cluster"] {
 
 .import_icon_collection_link,
 .import_tile_source_link {
+  position: relative;
   background-color: #e9ddaf !important;
   color: #554400 !important;
   font-weight: bold !important;
-  background-image: url(../img/export.svg) !important;
+  border-radius: 20px;
+  padding: 1px 10px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 11px;
+  text-decoration: none !important;
+}
+.import_icon_collection_link div,
+.import_tile_source_link div {
+  display: inline-block;
+  width: 17px;
+  height: 16px;
+  position: relative;
+  top: 4px;
+  left: 2px;
+  background: url(../img/import.svg) no-repeat center;
+  background-size: cover;
 }
 .import_icon_collection_link:hover,
 .import_tile_source_link:hover {
   background-color: #f4eed7 !important;
 }
 
-.export_icon_collection_link {
+.export_icon_collection_link,
+.export_tile_source_link {
   position: relative;
-  background-color: #e9ddaf;
+  background-color: #e9ddaf !important;
   color: #554400 !important;
   font-weight: bold !important;
   border-radius: 20px;
-  padding: 5px 14px 5px;
+  padding: 1px 10px !important;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-size: 11px;
   text-decoration: none !important;
 }
-.export_icon_collection_link:hover {
-  background-color: #f4eed7 !important;
-}
-.export_icon_collection_link div {
+.export_icon_collection_link div,
+.export_tile_source_link div {
   display: inline-block;
   width: 16px;
   height: 16px;
   position: relative;
   top: 4px;
-  left: 3px;
-  background: url(../img/import.svg) no-repeat center;
+  left: 2px;
+  background: url(../img/export.svg) no-repeat center;
   background-size: cover;
 }
-
-.export_tile_source_link {
-  background-color: #e9ddaf !important;
-  color: #554400 !important;
-  font-weight: bold !important;
-  text-decoration: none !important;
-  background-image: url(../img/import.svg) !important;
-}
+.export_icon_collection_link:hover,
 .export_tile_source_link:hover {
   background-color: #f4eed7 !important;
 }

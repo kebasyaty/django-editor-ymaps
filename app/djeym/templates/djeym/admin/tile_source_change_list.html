@@ -46,13 +46,13 @@
             {% if has_add_permission %}
             <li>
               <a href="{% url 'djeym:export_tile_source' %}" id="id_export_tile_source"
-                class="addlink export_tile_source_link" style="display: none">
-                {% trans "Export tile sources" %}</a>
+                class="export_tile_source_link" style="display: none">
+                {% trans "Export tile sources" %} <div></div></a>
             </li>
             <li>
               <a href="javascript:void(0);" onclick="document.getElementById('id_import_file_tile_source').click();"
-                id="id_import_tile_source" class="addlink import_tile_source_link"
-                data-import-url="{% url 'djeym:ajax_import_tile_source' %}">{% trans "Import tile sources" %}
+                id="id_import_tile_source" class="import_tile_source_link"
+                data-import-url="{% url 'djeym:ajax_import_tile_source' %}">{% trans "Import tile sources" %} <div></div>
               </a>
               <div class="hidden">
                 <input id="id_import_file_tile_source" type="file" accept=".json"></div>

@@ -20,12 +20,6 @@
       "problemMatcher": []
     },
     {
-      "label": "UV: Run Web App",
-      "type": "shell",
-      "command": ["uv run python app/manage.py runserver --noreload"],
-      "problemMatcher": []
-    },
-    {
       "label": "Ruff: Run Check",
       "type": "shell",
       "command": [
@@ -115,6 +109,36 @@
       "label": "i18n: Compile",
       "type": "shell",
       "command": ["uv run python app/manage.py compilemessages"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Django: Check",
+      "type": "shell",
+      "command": ["uv run python app/manage.py check"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Django: Make Migration DjEYM",
+      "type": "shell",
+      "command": ["uv run python app/manage.py makemigrations djeym"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Django: Migrate",
+      "type": "shell",
+      "command": ["uv run python app/manage.py migrate"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Django: Create Super User",
+      "type": "shell",
+      "command": ["uv run python app/manage.py createsuperuser"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Django: Run Server",
+      "type": "shell",
+      "command": ["uv run python app/manage.py runserver --noreload"],
       "problemMatcher": []
     }
   ]

@@ -449,23 +449,6 @@ def convert_all_settings_to_json(instance, **kwargs):
                 save_json_settings(json_settings, editor)
                 continue
 
-        # Get load indicators
-        if class_name == "LoadIndicator" or is_map:
-            load_indicators = apps.get_model("djeym", "LoadIndicator").objects.all()
-            load_indicators = {
-                "indicators": [
-                    {"title": item.title, "slug": item.slug, "img": item.svg.url} for item in load_indicators
-                ],
-                "size": ymap.load_indicator_size,
-                "speed": ymap.animation_speed,
-                "disableAnimation": ymap.disable_indicator_animation,
-                "currentIndicator": ymap.load_indicator.slug if ymap.load_indicator is not None else "",
-            }
-            editor["loadIndicators"] = load_indicators
-            if not is_map:
-                save_json_settings(json_settings, editor)
-                continue
-
         # Get settings for YMap and Cluster
         cluster = ymap.icon_cluster
         tmp_ymap = {

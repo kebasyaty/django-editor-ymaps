@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import ast
 import base64
 import copy
 import io
@@ -39,7 +38,6 @@ from .models import (
     HeatPoint,
     IconCollection,
     JsonSettings,
-    LoadIndicator,
     Map,
     MarkerIcon,
     Placemark,
@@ -198,8 +196,6 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
 
         if ymap is not None:
-            context["load_indicator"] = ymap.load_indicator
-            context["load_indicator_size"] = ymap.load_indicator_size
             context["is_heatmap"] = ymap.heatmap_settings.active
             context["is_round_theme"] = ymap.general_settings.roundtheme
 
@@ -410,23 +406,6 @@ class AjaxClusterIcon(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-class AjaxLoadIndicatorIcon(View):
-    """Ajax - Upload a example of icon for Upload Indicator to admin panel."""
-
-    def get(self, request, *args, **kwargs):  # noqa: D102
-        icon_id = request.GET.get("obj_id")
-        icon = LoadIndicator.objects.filter(pk=icon_id).first()
-
-        if icon is not None:
-            return JsonResponse({"url": icon.svg.url})
-        else:  # noqa: RET505
-            return JsonResponse({"detail": "Icon not found."}, status=404)
-
-    @ajax_login_required_and_staff
-    def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        return super().dispatch(request, *args, **kwargs)
-
-
 class AjaxCollectionExampleIcon(View):
     """Ajax - Upload a example of cluster icon to admin panel."""
 
@@ -490,31 +469,6 @@ class AjaxUpdateTileSource(View):
 
         ymap = Map.objects.get(pk=map_id)
         ymap.tile = TileSource.objects.get(pk=tile_id) if tile_id > 0 else None
-        ymap.save()
-
-        response_data = {"successfully": True}
-        return JsonResponse(response_data)
-
-    @ajax_login_required_and_staff
-    def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        return super().dispatch(request, *args, **kwargs)
-
-
-class AjaxUpdateLoadIndicator(View):
-    """Ajax - Change the Load Indicator."""
-
-    def post(self, request, *args, **kwargs):  # noqa: D102
-        map_id = int(request.POST.get("mapID"))
-        slug = force_str(request.POST.get("slug"))
-        size = int(request.POST.get("size"))
-        speed = request.POST.get("speed")
-        animation = request.POST.get("animation")
-
-        ymap = Map.objects.get(pk=map_id)
-        ymap.load_indicator = LoadIndicator.objects.filter(slug=slug).first()
-        ymap.load_indicator_size = size
-        ymap.animation_speed = speed
-        ymap.disable_indicator_animation = ast.literal_eval(animation)
         ymap.save()
 
         response_data = {"successfully": True}

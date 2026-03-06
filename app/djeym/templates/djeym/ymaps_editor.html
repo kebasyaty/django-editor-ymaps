@@ -39,19 +39,9 @@
         <link href="{% static 'djeym/vue_vendors/editor/css/app.css' %}"
               rel="stylesheet">
         <!-- Upload indicator -->
-        {% if load_indicator %}
-          {% widthratio load_indicator_size 2 1 as margin_offset %}
-          <style type="text/css">
-        #djeymModalLock { display: block; }
-        #djeymLoadIndicator {
-            width: {{ load_indicator_size }}px;
-            height: {{ load_indicator_size }}px;
-            margin: -{{ margin_offset }}px 0 0 -{{ margin_offset }}px;
-            content: url('{{ load_indicator.svg.url }}');
-            {% if not ymap.disable_indicator_animation %}animation: djeym-spin {{ ymap.animation_speed }}s infinite linear;{% endif %}
-        }
-          </style>
-        {% endif %}
+        <style type="text/css">
+          #djeymModalLock { display: block; }
+        </style>
         <!-- END VENDORS CSS -->
       </head>
       <body>
@@ -85,7 +75,7 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
             djeymCSRFToken = '{{ csrf_token }}',
             djeymLanguageCode = '{{ language_code }}',
             djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",
-            djeymBalloonMinHeight = {% if load_indicator %}{{ load_indicator_size }} + 40{% else %}60{% endif %};
+            djeymBalloonMinHeight = 60;
         </script>
         {% djeym_load_api_ymaps language_code %}
         <script src="{% static "djeym/plugins/calculate-area/util.calculateArea.min.js" %}"></script>

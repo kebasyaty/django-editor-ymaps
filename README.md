@@ -37,7 +37,7 @@
 -->
 
 <p>
-  **Version 3.0**
+  <b>Version 3.0</b>
   <br>
   <a href="https://github.com/kebasyaty/django-editor-ymaps" alt="Project Status">
     <img src="https://raw.githubusercontent.com/kebasyaty/django-editor-ymaps/v3/assets/project_status/pre-alpha.svg"

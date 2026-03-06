@@ -148,8 +148,7 @@ label[for="id_is_cluster"] {
 
 #id_custom_cluster_icon,
 #id_collection_example_icon,
-#id_tile_screenshot,
-#id_icon_load_indicator {
+#id_tile_screenshot {
   display: none;
   max-height: 40px;
   position: relative;
@@ -159,8 +158,7 @@ label[for="id_is_cluster"] {
 
 .custom_cluster_icon_wrapper,
 .icon_collection_wrapper,
-.tile_screenshot_wrapper,
-.load_indicator_icon_wrapper {
+.tile_screenshot_wrapper {
   overflow: visible !important;
 }
 

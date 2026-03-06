@@ -19,8 +19,6 @@ def djeym_yandex_map(slug, lang="en"):
     if ymap is not None:
         general_settings = ymap.general_settings
         ctx["lang"] = (lang or "en",)
-        ctx["load_indicator"] = ymap.load_indicator
-        ctx["load_indicator_size"] = ymap.load_indicator_size
         ctx["is_heatmap"] = ymap.heatmap_settings.active
         ctx["is_round_theme"] = general_settings.roundtheme
         ctx["width_map_front"] = general_settings.width_map_front

@@ -117,8 +117,6 @@ CLUSTER_BALLOON_CONTENT_LAYOUT_CHOICES = (
 
 THEME_TYPE_CHOICES = (("light", _("Light")), ("dark", _("Dark")))
 
-LOAD_INDICATOR_SIZE_CHOICES = ((64, "64"), (96, "96"), (128, "128"))
-
 FEATURE_POINT = {
     "type": "Feature",
     "id": 0,

@@ -5,19 +5,16 @@
           rel="stylesheet">
     <link href="{% static 'djeym/vue_vendors/front/css/app.css' %}"
           rel="stylesheet">
-    {% if load_indicator %}
-      {% widthratio load_indicator_size 2 1 as margin_offset %}
-      <style type="text/css">
-    #djeymModalLock { display: block; }
-      </style>
-    {% endif %}
+    <style type="text/css">
+      #djeymModalLock { display: block; }
+    </style>
     <script>
   var djeymMapID = {{ ymap.pk }},
     djeymCSRFToken = '{{ csrf_token }}',
     djeymLanguageCode = '{{ language_code }}',
     djeymWidthMap = '{{ width_map_front }}',
     djeymHeightMap = '{{ height_map_front }}',
-    djeymBalloonMinHeight = {% if load_indicator %}{{ load_indicator_size }} + 40{% else %}60{% endif %};
+    djeymBalloonMinHeight = 60;
     </script>
     {% djeym_load_api_ymaps language_code %}
     {% if is_heatmap %}

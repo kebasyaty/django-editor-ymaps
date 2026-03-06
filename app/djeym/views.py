@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import ast
 import base64
 import copy
 import io
@@ -197,8 +196,6 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
 
         if ymap is not None:
-            context["load_indicator"] = ymap.load_indicator
-            context["load_indicator_size"] = ymap.load_indicator_size
             context["is_heatmap"] = ymap.heatmap_settings.active
             context["is_round_theme"] = ymap.general_settings.roundtheme
 

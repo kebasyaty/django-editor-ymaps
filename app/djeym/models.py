@@ -31,7 +31,6 @@ from .globals import (
     FEATURE_LINE,
     FEATURE_POINT,
     FEATURE_POLYGON,
-    LOAD_INDICATOR_SIZE_CHOICES,
     STROKE_STYLE_CHOICES,
     THEME_TYPE_CHOICES,
     TRANSPARENCY_CHOICES,
@@ -426,13 +425,6 @@ class Map(models.Model):
         on_delete=models.SET_NULL,
     )
 
-    load_indicator_size = models.PositiveSmallIntegerField(
-        "Load indicator size",
-        choices=LOAD_INDICATOR_SIZE_CHOICES,
-        default=64,
-        editable=False,
-    )
-
     animation_speed = models.CharField(
         "Load indicator animation speed",
         max_length=255,
@@ -580,14 +572,6 @@ class Map(models.Model):
         return mark_safe(img_html)  # noqa: S308
 
     get_status_heatmap.short_description = ngettext_lazy("Heatmap", "Heat maps", 1)
-
-    def get_load_indicator(self):  # noqa: D102
-        if bool(self.load_indicator):
-            img_html = f'<img src="{self.load_indicator.svg.url}" height="40" alt="Icon">'
-            return mark_safe(img_html)  # noqa: S308
-        return ""
-
-    get_load_indicator.short_description = _("Indicator")
 
     def get_absolute_url(self):  # noqa: D102
         return reverse("djeym:ymap_editor", args=(self.slug,))

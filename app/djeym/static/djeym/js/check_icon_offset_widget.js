@@ -43,7 +43,7 @@ window.djeymYMaps.ready(function () {
         {},
         {
           iconLayout: "default#image",
-          iconImageHref: "/static/djeym/img/offset.svg",
+          iconImageHref: window.iconOffset,
           iconImageSize: [38, 60],
           iconImageOffset: [-19, 0],
           hasBalloon: false,

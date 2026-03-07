@@ -4,6 +4,7 @@
     {% djeym_load_api_ymaps LANGUAGE_CODE %}
     {{ block.super }}
     <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+    <script>var iconOffset = "{% static 'djeym/img/offset.svg' %}";</script>
     {{ media }}
 {% endblock %}
 {% block extrastyle %}

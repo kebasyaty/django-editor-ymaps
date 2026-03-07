@@ -888,9 +888,6 @@ class Placemark(models.Model, ResizeImageMixin):
 
     coordinates = models.CharField(_("Coordinates"), max_length=255, default="[0,0]")
 
-    like = models.PositiveIntegerField("Like", default=0, blank=True)
-    dislike = models.PositiveIntegerField("Dislike", default=0, blank=True)
-
     active = models.BooleanField(_("Active placemark ?"), default=True)
 
     user_email = models.EmailField(
@@ -1019,8 +1016,7 @@ class Polyline(models.Model, ResizeImageMixin):
     )
 
     coordinates = models.TextField(_("Coordinates"), default="")
-    like = models.PositiveIntegerField("Like", default=0, blank=True)
-    dislike = models.PositiveIntegerField("Dislike", default=0, blank=True)
+
     active = models.BooleanField(_("Active route ?"), default=True)
 
     json_code = models.TextField(_("JSON"), blank=True, default=json.dumps(FEATURE_LINE), editable=False)
@@ -1122,8 +1118,7 @@ class Polygon(models.Model, ResizeImageMixin):
     )
 
     coordinates = models.TextField(_("Coordinates"), default="")
-    like = models.PositiveIntegerField("Like", default=0, blank=True)
-    dislike = models.PositiveIntegerField("Dislike", default=0, blank=True)
+
     active = models.BooleanField(_("Active territory ?"), default=True)
 
     json_code = models.TextField(_("JSON"), blank=True, default=json.dumps(FEATURE_POLYGON), editable=False)

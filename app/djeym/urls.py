@@ -40,7 +40,6 @@ urlpatterns = [
     ),
     path("ajax-activate-heatmap/", views.AjaxActivateHeatmap.as_view(), name="ajax_activate_heatmap"),
     path("ajax-heatmap-undo-settings/", views.AjaxHeatmapUndoSettings.as_view(), name="ajax_heatmap_undo_settings"),
-    path("ajax-update-likes/", views.AjaxUpdateLikes.as_view(), name="ajax_update_likes"),
     path(
         "ajax-update-general-settings/",
         views.AjaxUpdateGeneralSettings.as_view(),

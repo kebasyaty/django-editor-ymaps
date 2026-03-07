@@ -14,7 +14,7 @@ $(document).ready(function () {
     $("#djeymModalLock")
       .show()
       .find("#djeymLoadIndicator")
-      .addClass("djeym-load-indicator");
+      .addClass("djeym-show-load-indicator");
   }
 
   function sandFormAjax(url, formData) {

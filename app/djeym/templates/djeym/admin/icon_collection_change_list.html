@@ -40,7 +40,9 @@
 {% block coltype %}flex{% endblock %}
 
 {% block content %}
-  <div id="djeymModalLock"><div id="djeymLoadIndicator"></div></div>
+  <div id="djeymModalLock">
+    <img id="djeymLoadIndicator" src="{% static "djeym/img/spinner.svg" %}" alt="Load Indicator">
+  </div>
   <div id="content-main">
     {% block object-tools %}
         <ul class="object-tools"><br><br>

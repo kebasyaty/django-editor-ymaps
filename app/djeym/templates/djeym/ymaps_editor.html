@@ -33,11 +33,6 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
               rel="stylesheet">
         {% djeym_load_vendor_md_icons %}
-        <!-- For Vue.js -->
-        <link href="{% static 'djeym/vue_vendors/editor/css/chunk-vendors.css' %}"
-              rel="stylesheet">
-        <link href="{% static 'djeym/vue_vendors/editor/css/app.css' %}"
-              rel="stylesheet">
         <!-- Upload indicator -->
         <style type="text/css">
           #djeymModalLock { display: block; }
@@ -82,11 +77,6 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
         {% if is_heatmap %}
           <script src="{% static "djeym/plugins/heatmap.js" %}"></script>
         {% endif %}
-        <!-- For Vue.js -->
-        <script type="module"
-                src="{% static 'djeym/vue_vendors/editor/js/chunk-vendors.js' %}"></script>
-        <script type="module" src="{% static 'djeym/vue_vendors/editor/js/app.js' %}"></script>
-        <script>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()},!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
         <!-- END VENDORS JS -->
       </body>
     </html>

@@ -1,13 +1,13 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_urls static admin_modify djeymtags %}
 {% block extrahead %}
-    {% djeym_load_vendor_md_icons %}
     <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
     <script type="text/javascript" src="{% url 'djeym:javascript-catalog' %}"></script>
     {{ block.super }}
     {{ media }}
 {% endblock %}
 {% block extrastyle %}
+    {% djeym_load_vendor_md_icons %}
     {{ block.super }}
     <link rel="stylesheet"
           type="text/css"

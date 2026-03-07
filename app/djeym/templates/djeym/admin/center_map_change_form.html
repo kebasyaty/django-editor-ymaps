@@ -1,13 +1,13 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_urls static admin_modify djeymtags %}
 {% block extrahead %}
-  {% djeym_load_vendor_md_icons %}
   {% djeym_load_api_ymaps LANGUAGE_CODE %}
   {{ block.super }}
   <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
   {{ media }}
 {% endblock %}
 {% block extrastyle %}
+  {% djeym_load_vendor_md_icons %}
   {{ block.super }}
   <link rel="stylesheet"
         type="text/css"
@@ -45,9 +45,7 @@
       </a>
     </div>
     {% if original.pk %}
-      <div class="editing_map_link_wrapper">
-        <a href="{{ original.get_absolute_url }}">{% trans 'Editing map' %}</a>
-      </div>
+      <a href="{{ original.get_absolute_url }}" class="editing_map_link_wrapper"><span class="mdi mdi-map"></span>{% trans 'Editing map' %}</a>
     {% endif %}
     {% block object-tools %}
       {% if change %}

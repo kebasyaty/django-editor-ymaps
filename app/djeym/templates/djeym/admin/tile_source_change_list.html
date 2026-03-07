@@ -1,7 +1,8 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_urls static admin_list %}
+{% load i18n admin_urls static admin_list djeymtags %}
 
 {% block extrastyle %}
+  {% djeym_load_vendor_md_icons %}
   {{ block.super }}
   <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
   {% if cl.formset %}
@@ -46,13 +47,15 @@
             {% if has_add_permission %}
             <li>
               <a href="{% url 'djeym:export_tile_source' %}" id="id_export_tile_source"
-                class="export_tile_source_link" style="display: none">
-                {% trans "Export tile sources" %} <div></div></a>
+                class="djeym_text_icon_btn" style="display: none">
+                {% trans "Export tile sources" %}
+                <span class="mdi mdi-export"></span></a>
             </li>
             <li>
               <a href="javascript:void(0);" onclick="document.getElementById('id_import_file_tile_source').click();"
-                id="id_import_tile_source" class="import_tile_source_link"
-                data-import-url="{% url 'djeym:ajax_import_tile_source' %}">{% trans "Import tile sources" %} <div></div>
+                id="id_import_tile_source" class="djeym_text_icon_btn"
+                data-import-url="{% url 'djeym:ajax_import_tile_source' %}">
+                {% trans "Import tile sources" %}<span class="mdi mdi-import"></span>
               </a>
               <div class="hidden">
                 <input id="id_import_file_tile_source" type="file" accept=".json"></div>

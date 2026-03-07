@@ -35,7 +35,13 @@ class TileSourceAdmin(admin.ModelAdmin):
     # change_form.html - Used by default.
     change_form_template = "djeym/admin/change_form.html"
     change_list_template = "djeym/admin/tile_source_change_list.html"
-    list_display = ("title", "admin_thumbnail", "maxzoom", "minzoom", "slug")  # pyrefly: ignore[bad-override]
+    list_display = (  # pyrefly: ignore[bad-override]
+        "title",
+        "admin_thumbnail",
+        "maxzoom",
+        "minzoom",
+        "apikey_is_required",
+    )
     list_display_links = ("title", "admin_thumbnail")  # pyrefly: ignore[bad-override]
     readonly_fields = ("slug",)  # pyrefly: ignore[bad-override]
 

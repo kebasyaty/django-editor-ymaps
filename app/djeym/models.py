@@ -108,6 +108,8 @@ class TileSource(models.Model):
         help_text=_("API key or access_token"),
     )
 
+    apikey_is_required = models.BooleanField(_("API Key is required?"), default=False)
+
     note = models.TextField(_("Note"), blank=True, default="")
     slug = models.SlugField(unique=True, max_length=255, blank=True, null=True)
 

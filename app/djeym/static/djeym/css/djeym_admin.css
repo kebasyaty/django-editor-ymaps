@@ -207,9 +207,15 @@ label[for="id_is_cluster"] {
 .djeym_input_icon_btn span:hover {
   color: #f4eed7 !important;
 }
-.djeym_input_icon_btn a {
+.djeym_input_icon_btn a span {
   position: relative;
   top: 8px;
+  color: var(--link-fg) !important;
+}
+.djeym_input_icon_btn a span:hover {
+  position: relative;
+  top: 8px;
+  color: var(--link-hover-color) !important;
 }
 
 /* Modal lock */

@@ -130,7 +130,7 @@
       "problemMatcher": []
     },
     {
-      "label": "Django: Create Super User",
+      "label": "Django: Create Superuser",
       "type": "shell",
       "command": ["uv run python app/manage.py createsuperuser"],
       "problemMatcher": []

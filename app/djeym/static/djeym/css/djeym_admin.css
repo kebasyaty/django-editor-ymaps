@@ -205,6 +205,10 @@ label[for="id_is_cluster"] {
 .djeym_icon_btn:hover {
   color: #f4eed7 !important;
 }
+.djeym_icon_btn a {
+  position: relative;
+  top: 8px;
+}
 
 /* Modal lock */
 

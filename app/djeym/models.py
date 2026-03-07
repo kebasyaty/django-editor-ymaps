@@ -12,7 +12,7 @@ from colorful.fields import RGBColorField
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models.signals import m2m_changed, post_delete, post_save, pre_delete
+from django.db.models.signals import m2m_changed, post_delete, post_save
 from django.templatetags.static import static
 from django.urls import reverse
 from django.utils import timezone
@@ -41,9 +41,6 @@ from .signals_func import (
     convert_all_settings_to_json,
     icon_cluster_size_correction,
     icon_marker_size_correction,
-    placemark_delete_statistics,
-    polygon_delete_statistics,
-    polyline_delete_statistics,
     refresh_icon,
     refresh_json_code,
 )
@@ -1461,23 +1458,6 @@ class MarkerIcon(models.Model):
         return f"[{self.offset_x:f},{self.offset_y:f}]"
 
 
-class Statistics(models.Model):
-    """Statistics."""
-
-    obj_type = models.CharField("Object type", max_length=255, default="")
-    obj_id = models.PositiveIntegerField("Object ID", default=0)
-    ip = models.GenericIPAddressField("IP-address", null=True)
-    likes = models.BooleanField("Likes", default=False)
-    timestamp = models.DateTimeField("Date and Time", default=timezone.now)
-
-    def __str__(self):  # noqa: D105
-        return str(self.obj_type)
-
-    class Meta:  # noqa: D106
-        verbose_name = _("Record")
-        verbose_name_plural = _("Statistics")
-
-
 class BannedIP(models.Model):
     """Banned IP address."""
 
@@ -1534,11 +1514,6 @@ m2m_changed.connect(refresh_json_code, sender=Placemark.subcategories.through)
 m2m_changed.connect(refresh_json_code, sender=Polyline.subcategories.through)
 m2m_changed.connect(refresh_json_code, sender=Polygon.subcategories.through)
 
-
-# Delete orphaned statistics.
-pre_delete.connect(placemark_delete_statistics, sender=Placemark)
-pre_delete.connect(polyline_delete_statistics, sender=Polyline)
-pre_delete.connect(polygon_delete_statistics, sender=Polygon)
 
 # Refresh icon (slug) in placemarks after refreshing icon in MarkerIcon.
 post_save.connect(refresh_icon, sender=MarkerIcon)

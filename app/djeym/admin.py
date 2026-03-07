@@ -22,7 +22,6 @@ from .models import (
     Placemark,
     Polygon,
     Polyline,
-    Statistics,
     SubCategoryPlacemark,
     SubCategoryPolygon,
     SubCategoryPolyline,
@@ -55,17 +54,6 @@ class TileSourceAdmin(admin.ModelAdmin):
             static("djeym/js/jquery.js"),
             static("djeym/js/import_export.js"),
         )
-
-
-@admin.register(Statistics)
-class StatisticsAdmin(admin.ModelAdmin):
-    # change_form.html - Used by default.
-    change_form_template = "djeym/admin/change_form.html"
-    list_display = ("obj_type", "obj_id", "ip", "timestamp")  # pyrefly: ignore[bad-override]
-    readonly_fields = ("likes",)  # pyrefly: ignore[bad-override]
-
-    class Media:  # noqa: D106
-        css = {"all": [static("djeym/css/djeym_admin.css")]}
 
 
 @admin.register(BannedIP)

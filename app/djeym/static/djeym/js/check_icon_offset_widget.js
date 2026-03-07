@@ -116,19 +116,19 @@ window.djeymYMaps.ready(function () {
       // Add buttons for touch screen.
       offsetX.after(
         '<div id="id_offset_x_right_btn" class="marker_offset_btn">' +
-          '<img src="/static/djeym/img/arrow_right.svg" alt="Plus"></div>',
+          '<span class="mdi mdi-arrow-right-bold-circle"></span></div>',
       );
       offsetX.after(
         '<div id="id_offset_x_left_btn" class="marker_offset_btn">' +
-          '<img src="/static/djeym/img/arrow_left.svg" alt="Minus"></div>',
+          '<span class="mdi mdi-arrow-left-bold-circle"></span></div>',
       );
       offsetY.after(
         '<div id="id_offset_y_down_btn" class="marker_offset_btn">' +
-          '<img src="/static/djeym/img/arrow_down.svg" alt="Minus"></div>',
+          '<span class="mdi mdi-arrow-down-bold-circle"></span></div>',
       );
       offsetY.after(
         '<div id="id_offset_y_up_btn" class="marker_offset_btn">' +
-          '<img src="/static/djeym/img/arrow_up.svg" alt="Plus"></div>',
+          '<span class="mdi mdi-arrow-up-bold-circle"></span></div>',
       );
 
       $("#id_offset_x_right_btn").on("click", function (event) {

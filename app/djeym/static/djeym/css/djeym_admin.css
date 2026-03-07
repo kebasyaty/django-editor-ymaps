@@ -206,6 +206,11 @@ label[for="id_is_cluster"] {
   display: inline-block;
   margin-left: 10px;
   cursor: pointer;
+  font-size: 30px !important;
+  color: #e9ddaf !important;
+}
+.marker_offset_btn:hover {
+  color: #f4eed7 !important;
 }
 
 /* Modal lock */

@@ -733,6 +733,7 @@ class AjaxImportTileSource(View):
                     copyrights=source["copyrights"],
                     site=source["site"],
                     apikey=source["apikey"],
+                    apikey_is_required=source["apikey_is_required"],
                     note=source["note"],
                 )
 
@@ -771,6 +772,7 @@ class ExportTileSource(StaffRequiredMixin, View):
             include_json["copyrights"] = source.copyrights
             include_json["site"] = source.site
             include_json["apikey"] = source.apikey
+            include_json["apikey_is_required"] = source.apikey_is_required
             include_json["note"] = source.note
             sources_list.append(include_json)
 

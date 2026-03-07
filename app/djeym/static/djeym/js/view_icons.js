@@ -165,7 +165,7 @@ $(document).ready(function () {
     if (tileSourceID.length > 0) {
       ajaxGetIcon(ajaxTileSourceURL, $imageTile, tileSourceID);
     } else {
-      $imageTile.attr("src", "/static/djeym/img/default_tile.png").show();
+      $imageTile.attr("src", window.defaultTile).show();
     }
 
     $tileSource.on("change", function () {
@@ -173,7 +173,7 @@ $(document).ready(function () {
       if (tileSourceID.length > 0) {
         ajaxGetIcon(ajaxTileSourceURL, $imageTile, tileSourceID);
       } else {
-        $imageTile.attr("src", "/static/djeym/img/default_tile.png").show();
+        $imageTile.attr("src", window.defaultTile).show();
       }
     });
   }

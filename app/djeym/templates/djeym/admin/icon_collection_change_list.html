@@ -50,9 +50,7 @@
               <a href="javascript:void(0);" onclick="document.getElementById('id_import_file_icon_collection').click();"
                 id="id_import_icon_collection" class="djeym_text_icon_btn"
                 data-import-url="{% url 'djeym:ajax_import_icon_collection' %}">
-                {% blocktrans with cl.opts.verbose_name as name %}
-                  Import {{ name }}
-                {% endblocktrans %}
+                {% blocktrans with cl.opts.verbose_name as name %}Import {{ name }}{% endblocktrans %}
                 <span class="mdi mdi-import"></span>
               </a>
               <div class="hidden">

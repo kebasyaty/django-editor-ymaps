@@ -195,21 +195,14 @@ label[for="id_is_cluster"] {
   font-size: 18px !important;
 }
 
-.tile_go_to_website_btn {
-  display: inline-block;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-/* Marker offset - Buttons for touch screen. */
-.marker_offset_btn {
+.djeym_icon_btn {
   display: inline-block;
   margin-left: 10px;
   cursor: pointer;
   font-size: 30px !important;
   color: #e9ddaf !important;
 }
-.marker_offset_btn:hover {
+.djeym_icon_btn:hover {
   color: #f4eed7 !important;
 }
 

@@ -61,7 +61,7 @@ $(document).ready(function () {
     ------------------------------------------------------------------------------------------------
     */
     const textObjs =
-      "#id_category_icon" +
+      "#id_category_icon," +
       "input:regex(id, ^id_categories_placemark-.+-category_icon)," +
       "input:regex(id, ^id_subcategories_placemark-.+-category_icon)," +
       "input:regex(id, ^id_categories_polyline-.+-category_icon)," +

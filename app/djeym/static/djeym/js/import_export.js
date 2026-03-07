@@ -14,7 +14,7 @@ $(document).ready(function () {
     $("#djeymModalLock")
       .show()
       .find("#djeymLoadIndicator")
-      .addClass("djeym-load-indicator");
+      .addClass("djeym-show-load-indicator");
   }
 
   function sandFormAjax(url, formData) {
@@ -89,10 +89,10 @@ $(document).ready(function () {
     if ($site.val().length > 0) {
       const url = $site.val();
       const btn =
-        '<div class="tile_go_to_website_btn"><a href="' +
+        '<div class="djeym_input_icon_btn"><a href="' +
         url +
         '" target="_blank" rel="nofollow noreferrer noopener">' +
-        '<img src="/static/djeym/img/arrow_right.svg" alt="Button"></a></div>';
+        '<span class="mdi mdi-open-in-new"></span></a></div>';
       $site.after(btn);
     }
   }

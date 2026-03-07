@@ -70,21 +70,6 @@ def refresh_json_code(instance, **kwargs):
     instance.save()
 
 
-def placemark_delete_statistics(instance, **kwargs):
-    """Placemark - Delete orphaned statistics."""
-    apps.get_model("djeym", "Statistics").objects.filter(obj_type="Point", obj_id=instance.pk).delete()
-
-
-def polyline_delete_statistics(instance, **kwargs):
-    """Polyline - Delete orphaned statistics."""
-    apps.get_model("djeym", "Statistics").objects.filter(obj_type="LineString", obj_id=instance.pk).delete()
-
-
-def polygon_delete_statistics(instance, **kwargs):
-    """Polygon - Delete orphaned statistics."""
-    apps.get_model("djeym", "Statistics").objects.filter(obj_type="Polygon", obj_id=instance.pk).delete()
-
-
 def refresh_icon(instance, **kwargs):
     """Refresh icon (slug) in placemarks after refreshing icon in MarkerIcon."""
     maps = apps.get_model("djeym", "Map").objects.filter(icon_collection=instance.icon_collection)

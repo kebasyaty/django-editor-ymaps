@@ -43,7 +43,6 @@ from .models import (
     Placemark,
     Polygon,
     Polyline,
-    Statistics,
     TileSource,
 )
 from .signals_func import save_json_settings
@@ -585,80 +584,6 @@ class AjaxUpdateFiltersCategories(View):
 
     @ajax_login_required_and_staff
     def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        return super().dispatch(request, *args, **kwargs)
-
-
-# GETTING AND UPDATING - LIKES | DISLIKES
-# ------------------------------------------------------------------------------
-class AjaxUpdateLikes(View):
-    """Ajax - Getting and updating likes;dislikes."""
-
-    def get(self, request, *args, **kwargs):  # noqa: D102
-        obj_type = request.GET.get("djeymObjectType")
-        obj_id = request.GET.get("djeymObjectID")
-
-        if obj_type == "Point":
-            result = Placemark.objects.get(id=obj_id)
-        elif obj_type == "LineString":
-            result = Polyline.objects.get(id=obj_id)
-        elif obj_type == "Polygon":
-            result = Polygon.objects.get(id=obj_id)
-
-        response_data = {"like": result.like, "dislike": result.dislike}  # pyrefly: ignore[unbound-name]
-
-        return JsonResponse(response_data)
-
-    def post(self, request, *args, **kwargs):  # noqa: D102
-        obj_type = request.POST.get("djeymObjectType")
-        obj_id = request.POST.get("djeymObjectID")
-        target_action = request.POST.get("targetAction")
-        client_ip, is_routable = get_client_ip(request)  # pyrefly: ignore[unbound-name]  # noqa: RUF059
-        result = None
-
-        if client_ip is not None:
-            statistics = Statistics.objects.filter(obj_type=obj_type, obj_id=obj_id, ip=client_ip, likes=True).count()
-            if statistics == 0:
-                Statistics.objects.create(obj_type=obj_type, obj_id=obj_id, ip=client_ip, likes=True)
-                if obj_type == "Point":
-                    result = Placemark.objects.get(id=obj_id)
-                    if target_action == "id_djeym_hand_like":
-                        result.like += 1
-                        result.save()
-                    elif target_action == "id_djeym_hand_dislike":
-                        result.dislike += 1
-                        result.save()
-                elif obj_type == "LineString":
-                    result = Polyline.objects.get(id=obj_id)
-                    if target_action == "id_djeym_hand_like":
-                        result.like += 1
-                        result.save()
-                    elif target_action == "id_djeym_hand_dislike":
-                        result.dislike += 1
-                        result.save()
-                elif obj_type == "Polygon":
-                    result = Polygon.objects.get(id=obj_id)
-                    if target_action == "id_djeym_hand_like":
-                        result.like += 1
-                        result.save()
-                    elif target_action == "id_djeym_hand_dislike":
-                        result.dislike += 1
-                        result.save()
-
-        if result is None:
-            if obj_type == "Point":
-                result = Placemark.objects.get(id=obj_id)
-            elif obj_type == "LineString":
-                result = Polyline.objects.get(id=obj_id)
-            elif obj_type == "Polygon":
-                result = Polygon.objects.get(id=obj_id)
-
-        response_data = {"like": result.like, "dislike": result.dislike}
-
-        return JsonResponse(response_data)
-
-    def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        if not request.is_ajax():
-            return HttpResponseForbidden()
         return super().dispatch(request, *args, **kwargs)
 
 

@@ -12,7 +12,7 @@ from colorful.fields import RGBColorField
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models.signals import m2m_changed, post_delete, post_save, pre_delete
+from django.db.models.signals import m2m_changed, post_delete, post_save
 from django.templatetags.static import static
 from django.urls import reverse
 from django.utils import timezone
@@ -41,9 +41,6 @@ from .signals_func import (
     convert_all_settings_to_json,
     icon_cluster_size_correction,
     icon_marker_size_correction,
-    placemark_delete_statistics,
-    polygon_delete_statistics,
-    polyline_delete_statistics,
     refresh_icon,
     refresh_json_code,
 )
@@ -888,9 +885,6 @@ class Placemark(models.Model, ResizeImageMixin):
 
     coordinates = models.CharField(_("Coordinates"), max_length=255, default="[0,0]")
 
-    like = models.PositiveIntegerField("Like", default=0, blank=True)
-    dislike = models.PositiveIntegerField("Dislike", default=0, blank=True)
-
     active = models.BooleanField(_("Active placemark ?"), default=True)
 
     user_email = models.EmailField(
@@ -1019,8 +1013,7 @@ class Polyline(models.Model, ResizeImageMixin):
     )
 
     coordinates = models.TextField(_("Coordinates"), default="")
-    like = models.PositiveIntegerField("Like", default=0, blank=True)
-    dislike = models.PositiveIntegerField("Dislike", default=0, blank=True)
+
     active = models.BooleanField(_("Active route ?"), default=True)
 
     json_code = models.TextField(_("JSON"), blank=True, default=json.dumps(FEATURE_LINE), editable=False)
@@ -1122,8 +1115,7 @@ class Polygon(models.Model, ResizeImageMixin):
     )
 
     coordinates = models.TextField(_("Coordinates"), default="")
-    like = models.PositiveIntegerField("Like", default=0, blank=True)
-    dislike = models.PositiveIntegerField("Dislike", default=0, blank=True)
+
     active = models.BooleanField(_("Active territory ?"), default=True)
 
     json_code = models.TextField(_("JSON"), blank=True, default=json.dumps(FEATURE_POLYGON), editable=False)
@@ -1344,9 +1336,12 @@ class IconCollection(models.Model):
 
     def get_export_file_btn(self):  # noqa: D102
         url = reverse("djeym:export_icon_collection", kwargs={"slug": self.slug})
-        link_html = '<a href="{}" class="export_icon_collection_link" style="padding: 4px 11px !important;">{} <div></div></a>'.format(
+        link_html = '<a href="{}" class="{}" style="{}">{} {}</a>'.format(
             url,
+            "djeym_text_icon_btn",
+            "padding: 6px 10px 5px !important;",
             _("Export Collection"),
+            '<span class="mdi mdi-export"></span>',
         )
         return mark_safe(link_html)  # noqa: S308
 
@@ -1463,23 +1458,6 @@ class MarkerIcon(models.Model):
         return f"[{self.offset_x:f},{self.offset_y:f}]"
 
 
-class Statistics(models.Model):
-    """Statistics."""
-
-    obj_type = models.CharField("Object type", max_length=255, default="")
-    obj_id = models.PositiveIntegerField("Object ID", default=0)
-    ip = models.GenericIPAddressField("IP-address", null=True)
-    likes = models.BooleanField("Likes", default=False)
-    timestamp = models.DateTimeField("Date and Time", default=timezone.now)
-
-    def __str__(self):  # noqa: D105
-        return str(self.obj_type)
-
-    class Meta:  # noqa: D106
-        verbose_name = _("Record")
-        verbose_name_plural = _("Statistics")
-
-
 class BannedIP(models.Model):
     """Banned IP address."""
 
@@ -1536,11 +1514,6 @@ m2m_changed.connect(refresh_json_code, sender=Placemark.subcategories.through)
 m2m_changed.connect(refresh_json_code, sender=Polyline.subcategories.through)
 m2m_changed.connect(refresh_json_code, sender=Polygon.subcategories.through)
 
-
-# Delete orphaned statistics.
-pre_delete.connect(placemark_delete_statistics, sender=Placemark)
-pre_delete.connect(polyline_delete_statistics, sender=Polyline)
-pre_delete.connect(polygon_delete_statistics, sender=Polygon)
 
 # Refresh icon (slug) in placemarks after refreshing icon in MarkerIcon.
 post_save.connect(refresh_icon, sender=MarkerIcon)

@@ -89,7 +89,7 @@ $(document).ready(function () {
     if ($site.val().length > 0) {
       const url = $site.val();
       const btn =
-        '<div class="djeym_icon_btn"><a href="' +
+        '<div class="djeym_input_icon_btn"><a href="' +
         url +
         '" target="_blank" rel="nofollow noreferrer noopener">' +
         '<span class="mdi mdi-open-in-new"></span></a></div>';

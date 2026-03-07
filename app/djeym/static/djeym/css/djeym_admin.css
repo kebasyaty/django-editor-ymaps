@@ -195,17 +195,19 @@ label[for="id_is_cluster"] {
   font-size: 18px !important;
 }
 
-.djeym_icon_btn {
+.djeym_input_icon_btn {
   display: inline-block;
   margin-left: 10px;
-  cursor: pointer;
   font-size: 30px !important;
-  color: #e9ddaf !important;
 }
-.djeym_icon_btn:hover {
+.djeym_input_icon_btn span {
+  color: #e9ddaf !important;
+  cursor: pointer;
+}
+.djeym_input_icon_btn span:hover {
   color: #f4eed7 !important;
 }
-.djeym_icon_btn a {
+.djeym_input_icon_btn a {
   position: relative;
   top: 8px;
 }

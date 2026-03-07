@@ -751,29 +751,21 @@ class ExportTileSource(StaffRequiredMixin, View):
     def dispatch(self, request, *args, **kwargs):  # noqa: D102
         sources = TileSource.objects.all()
         sources_list = []
-        raw_include_json = {
-            "title": "",
-            "maxzoom": 0,
-            "minzoom": 0,
-            "source": "",
-            "screenshot": None,
-            "copyrights": "",
-            "note": "",
-        }
 
         for source in sources:
             image_file_bytes = Path(source.screenshot.path).read_bytes()
-            include_json = copy.deepcopy(raw_include_json)
-            include_json["title"] = source.title
-            include_json["maxzoom"] = source.maxzoom
-            include_json["minzoom"] = source.minzoom
-            include_json["source"] = source.source
-            include_json["screenshot"] = base64.b64encode(image_file_bytes).decode("utf-8")
-            include_json["copyrights"] = source.copyrights
-            include_json["site"] = source.site
-            include_json["apikey"] = source.apikey
-            include_json["apikey_is_required"] = source.apikey_is_required
-            include_json["note"] = source.note
+            include_json = {
+                "title": source.title,
+                "maxzoom": source.maxzoom,
+                "minzoom": source.minzoom,
+                "source": source.source,
+                "screenshot": base64.b64encode(image_file_bytes).decode("utf-8"),
+                "copyrights": source.copyrights,
+                "site": source.site,
+                "apikey": source.apikey,
+                "apikey_is_required": source.apikey_is_required,
+                "note": source.note,
+            }
             sources_list.append(include_json)
 
         sources_json = json.dumps(sources_list, ensure_ascii=False).encode("utf-8")

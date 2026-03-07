@@ -84,7 +84,7 @@ label[for="id_disable_standard_icons"] {
 .view_icon {
   font-size: 28px;
   position: relative;
-  top: 7px;
+  top: 5px;
   left: 10px;
   color: #757575;
 }

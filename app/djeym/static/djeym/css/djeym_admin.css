@@ -31,7 +31,7 @@ label[for="id_disable_standard_icons"] {
   top: 22px;
   background-color: #e9ddaf !important;
   color: #554400 !important;
-  font-weight: bold !important;
+  font-weight: 500 !important;
   border-radius: 20px;
   padding: 4px 10px 5px;
   text-decoration: none !important;
@@ -175,7 +175,7 @@ label[for="id_is_cluster"] {
   position: relative;
   background-color: #e9ddaf !important;
   color: #554400 !important;
-  font-weight: bold !important;
+  font-weight: 500 !important;
   border-radius: 20px;
   padding: 1px 10px 2px !important;
   text-transform: uppercase;

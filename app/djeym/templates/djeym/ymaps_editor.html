@@ -1,5 +1,5 @@
 {% if ymap %}
-  {% load i18n static include djeymtags %}
+  {% load i18n static djeymtags %}
   {% with request.LANGUAGE_CODE|default:'en' as language_code %}
     <!DOCTYPE html>
     <html lang="{{ language_code }}">

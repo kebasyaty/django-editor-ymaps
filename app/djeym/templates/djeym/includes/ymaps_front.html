@@ -2,15 +2,17 @@
   {% load i18n static djeymtags %}
   {% with lang.0 as language_code %}
     <style type="text/css">
-      #djeymModalLock { display: block; }
+        #djeymModalLock {
+            display: block;
+        }
     </style>
     <script>
-  var djeymMapID = '{{ ymap.pk }}',
-    djeymCSRFToken = '{{ csrf_token }}',
-    djeymLanguageCode = '{{ language_code }}',
-    djeymWidthMap = '{{ width_map_front }}',
-    djeymHeightMap = '{{ height_map_front }}',
-    djeymBalloonMinHeight = 60;
+        var djeymMapID = '{{ ymap.pk }}',
+            djeymCSRFToken = '{{ csrf_token }}',
+            djeymLanguageCode = '{{ language_code }}',
+            djeymWidthMap = '{{ width_map_front }}',
+            djeymHeightMap = '{{ height_map_front }}',
+            djeymBalloonMinHeight = 60;
     </script>
     {% djeym_load_api_ymaps language_code %}
     {% if is_heatmap %}

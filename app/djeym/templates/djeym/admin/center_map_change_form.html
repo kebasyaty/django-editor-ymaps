@@ -5,8 +5,8 @@
   {{ block.super }}
   <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
   <script>
-    var defaultTile = "{% static 'djeym/img/default_tile.png' %}";
-    var iconCenter = "{% static 'djeym/img/center.svg' %}";
+      var defaultTile = "{% static 'djeym/img/default_tile.png' %}";
+      var iconCenter = "{% static 'djeym/img/center.svg' %}";
   </script>
   {{ media }}
 {% endblock %}
@@ -49,7 +49,8 @@
       </a>
     </div>
     {% if original.pk %}
-      <a href="{{ original.get_absolute_url }}" class="editing_map_link_wrapper"><span class="mdi mdi-map"></span>{% trans 'Editing map' %}</a>
+      <a href="{{ original.get_absolute_url }}"
+         class="editing_map_link_wrapper"><span class="mdi mdi-map"></span>{% trans 'Editing map' %}</a>
     {% endif %}
     {% block object-tools %}
       {% if change %}

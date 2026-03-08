@@ -34,15 +34,10 @@
         <!-- START VENDORS CSS -->
         {% djeym_load_vendor_md_icons %}
         {% djeym_load_vendor_bootstrap_css %}
-        <!-- Upload indicator -->
-        <style type="text/css">
-            #djeymModalLock {
-                display: block;
-            }
-        </style>
+        <link href="{% static 'djeym/css/djeym_helpers.css' %}" rel="stylesheet">
         <!-- END VENDORS CSS -->
       </head>
-      <body>
+      <body data-bs-theme="dark">
         <!-- Warning - Upgrade Your Browser -->
         <!--[if lte IE 10]>
     <div class="browserupgrade"><div><span>upgrade</span>
@@ -62,9 +57,11 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
           </div>
         </noscript>
         <!-- For resize image -->
-        <canvas id="resize_image_temp_canvas" class="djeym-hide"></canvas>
+        <canvas id="resize_image_temp_canvas" class="visually-hidden"></canvas>
         <!-- Application entry point -->
-        <div id="djeym-app">{% include 'djeym/includes/editor_components/main.html' %}</div>
+        <div id="djeym-app" class="vw-100 vh-100" data-bs-theme="dark">
+          {% include 'djeym/includes/editor_components/main.html' %}
+        </div>
         <!-- START VENDORS JS -->
         <script src="{% static "djeym/js/jquery.js" %}"></script>
         <script src="{% static "djeym/js/jquery-regex.js" %}"></script>

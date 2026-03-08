@@ -65,7 +65,7 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
         <script src="{% static "djeym/js/jquery-regex.js" %}"></script>
         <script src="{% url 'djeym:javascript-catalog' %}"></script>
         <script>
-          var djeymMapID = {{ ymap.pk }},
+          var djeymMapID = '{{ ymap.pk }}',
             djeymCSRFToken = '{{ csrf_token }}',
             djeymLanguageCode = '{{ language_code }}',
             djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",

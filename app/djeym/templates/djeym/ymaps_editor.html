@@ -1,5 +1,5 @@
 {% if ymap %}
-  {% load i18n static djeymtags %}
+  {% load i18n static include djeymtags %}
   {% with request.LANGUAGE_CODE|default:'en' as language_code %}
     <!DOCTYPE html>
     <html lang="{{ language_code }}">
@@ -64,7 +64,7 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
         <!-- For resize image -->
         <canvas id="resize_image_temp_canvas" class="djeym-hide"></canvas>
         <!-- Application entry point -->
-        <div id="djeym-app"></div>
+        <div id="djeym-app">{% include 'djeym/includes/editor_components/main.html' %}</div>
         <!-- START VENDORS JS -->
         <script src="{% static "djeym/js/jquery.js" %}"></script>
         <script src="{% static "djeym/js/jquery-regex.js" %}"></script>

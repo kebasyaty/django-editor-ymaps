@@ -30,9 +30,8 @@
               type="image/x-icon">
         <!-- END VENDORS  FAVICONS -->
         <!-- START VENDORS CSS -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
-              rel="stylesheet">
         {% djeym_load_vendor_md_icons %}
+        {% djeym_load_vendor_bootstrap_css %}
         <!-- Upload indicator -->
         <style type="text/css">
           #djeymModalLock { display: block; }
@@ -72,6 +71,7 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
             djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",
             djeymBalloonMinHeight = 60;
         </script>
+        {% djeym_load_vendor_bootstrap_js %}
         {% djeym_load_api_ymaps language_code %}
         <script src="{% static "djeym/plugins/util.calculateArea.js" %}"></script>
         {% if is_heatmap %}

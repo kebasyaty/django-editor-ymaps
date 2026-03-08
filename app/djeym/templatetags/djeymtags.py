@@ -9,6 +9,10 @@ from ..models import Map
 
 register = template.Library()
 
+YANDEX_MAPS_API_VERSION = "2.1"
+
+BOOTSTRAP_VERSION = "5.3.8"
+
 
 @register.inclusion_tag("djeym/includes/ymaps_front.html")
 def djeym_yandex_map(slug, lang="en"):
@@ -30,7 +34,7 @@ def djeym_yandex_map(slug, lang="en"):
 @register.inclusion_tag("djeym/includes/api_ymaps.html")
 def djeym_load_api_ymaps(lang="en", ns="djeymYMaps"):
     """Load URL for API Yandex Maps."""
-    api_version = "2.1"
+    api_version = YANDEX_MAPS_API_VERSION
     api_key = getattr(settings, "DJEYM_YMAPS_API_KEY", "")
     is_enterprise = getattr(settings, "DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE", False)
     mode = getattr(settings, "DJEYM_YMAPS_DOWNLOAD_MODE", "release")
@@ -61,3 +65,15 @@ def djeym_load_api_ymaps(lang="en", ns="djeymYMaps"):
 def djeym_load_vendor_md_icons():
     """Load URL vendor of Material Design Icons."""
     return {"mdi_version": settings.MD_ICONS_VERSION}
+
+
+@register.inclusion_tag("djeym/includes/vendor_bootstrap_css.html")
+def djeym_load_vendor_bootstrap_css():
+    """CSS vendor of Bootstrap."""
+    return {"version": BOOTSTRAP_VERSION}
+
+
+@register.inclusion_tag("djeym/includes/vendor_bootstrap_js.html")
+def djeym_load_vendor_bootstrap_js():
+    """JavaSscript vendor of Bootstrap."""
+    return {"version": BOOTSTRAP_VERSION}

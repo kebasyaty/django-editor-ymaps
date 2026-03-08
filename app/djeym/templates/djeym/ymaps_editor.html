@@ -36,7 +36,11 @@
         {% djeym_load_vendor_md_icons %}
         {% djeym_load_vendor_bootstrap_css %}
         <!-- Upload indicator -->
-        <style type="text/css">#djeymModalLock { display: block; }</style>
+        <style type="text/css">
+            #djeymModalLock {
+                display: block;
+            }
+        </style>
         <!-- END VENDORS CSS -->
       </head>
       <body>
@@ -66,11 +70,11 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
         <script src="{% static "djeym/js/jquery-regex.js" %}"></script>
         <script src="{% url 'djeym:javascript-catalog' %}"></script>
         <script>
-          var djeymMapID = '{{ ymap.pk }}',
-            djeymCSRFToken = '{{ csrf_token }}',
-            djeymLanguageCode = '{{ language_code }}',
-            djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",
-            djeymBalloonMinHeight = 60;
+            var djeymMapID = '{{ ymap.pk }}',
+                djeymCSRFToken = '{{ csrf_token }}',
+                djeymLanguageCode = '{{ language_code }}',
+                djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",
+                djeymBalloonMinHeight = 60;
         </script>
         {% djeym_load_vendor_bootstrap_js %}
         {% djeym_load_api_ymaps language_code %}
@@ -83,7 +87,11 @@ instructions how to enable JavaScript in your web browser</a>.{% endblocktrans %
     </html>
   {% endwith %}
 {% else %}
-  <style>body {background-color: #212121;}</style>
+  <style>
+      body {
+          background-color: #212121;
+      }
+  </style>
   <h2 style="color: #BDBDBD;">404 - {% trans 'Page not found' %}</h2>
   <div style="color: #607D8B; font-size: 22px; font-weight: bold;">
     {% trans "We're sorry, but the requested map could not be found." %}

@@ -64,6 +64,8 @@ def djeym_load_api_ymaps(lang="en", ns="djeymYMaps"):
     }
 
 
+# Vendors - Icons, CSS and JS
+# ------------------------------------------------------------------------------
 @register.inclusion_tag("djeym/includes/vendor_md_icons.html")
 def djeym_load_vendor_md_icons():
     """Load URL vendor of Material Design Icons."""

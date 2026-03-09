@@ -52,7 +52,7 @@ class TileSourceAdmin(admin.ModelAdmin):
     class Media:  # noqa: D106
         css = {
             "all": [
-                static("djeym/css/djeym_admin.css"),
+                static("djeym/css/admin.css"),
             ],
         }
 
@@ -69,7 +69,7 @@ class BannedIPAdmin(admin.ModelAdmin):
     list_display = ("ip", "timestamp")  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106
-        css = {"all": [static("djeym/css/djeym_admin.css")]}
+        css = {"all": [static("djeym/css/admin.css")]}
 
 
 class CategoryPlacemarkInline(SortableTabularInline):
@@ -140,7 +140,7 @@ class MapAdmin(NonSortableParentAdmin):
     )
 
     class Media:  # noqa: D106
-        css = {"all": [static("djeym/css/djeym_admin.css")]}
+        css = {"all": [static("djeym/css/admin.css")]}
 
         js = (
             static("djeym/js/jquery.js"),
@@ -163,7 +163,7 @@ class PlacemarkAdmin(admin.ModelAdmin):
     class Media:  # noqa: D106
         css = {
             "all": [
-                static("djeym/css/djeym_admin.css"),
+                static("djeym/css/admin.css"),
             ],
         }
 
@@ -185,7 +185,7 @@ class PolylineAdmin(admin.ModelAdmin):
     class Media:  # noqa: D106
         css = {
             "all": [
-                static("djeym/css/djeym_admin.css"),
+                static("djeym/css/admin.css"),
             ],
         }
 
@@ -203,7 +203,7 @@ class PolygonAdmin(admin.ModelAdmin):
     class Media:  # noqa: D106
         css = {
             "all": [
-                static("djeym/css/djeym_admin.css"),
+                static("djeym/css/admin.css"),
             ],
         }
 
@@ -223,7 +223,7 @@ class HeatPointAdmin(admin.ModelAdmin):
     class Media:  # noqa: D106
         css = {
             "all": [
-                static("djeym/css/djeym_admin.css"),
+                static("djeym/css/admin.css"),
             ],
         }
 
@@ -248,7 +248,7 @@ class ClusterIconAdmin(admin.ModelAdmin):
     class Media:  # noqa: D106
         css = {
             "all": [
-                static("djeym/css/djeym_admin.css"),
+                static("djeym/css/admin.css"),
             ],
         }
 
@@ -276,7 +276,7 @@ class IconCollectionAdmin(admin.ModelAdmin):
     class Media:  # noqa: D106
         css = {
             "all": [
-                static("djeym/css/djeym_admin.css"),
+                static("djeym/css/admin.css"),
             ],
         }
 
@@ -309,7 +309,7 @@ class MarkerIconAdmin(admin.ModelAdmin):
     class Media:  # noqa: D106
         css = {
             "all": [
-                static("djeym/css/djeym_admin.css"),
+                static("djeym/css/admin.css"),
             ],
         }
 
@@ -327,4 +327,4 @@ class GeotagStatusAdmin(admin.ModelAdmin):
     list_display = ("status", "slug")  # pyrefly: ignore[bad-override]
 
     class Media:  # noqa: D106
-        css = {"all": [static("djeym/css/djeym_admin.css")]}
+        css = {"all": [static("djeym/css/admin.css")]}

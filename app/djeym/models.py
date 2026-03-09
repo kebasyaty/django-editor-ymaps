@@ -12,7 +12,7 @@ from colorful.fields import RGBColorField
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models.signals import m2m_changed, post_delete, post_save
+from django.db.models.signals import m2m_changed, post_save
 from django.templatetags.static import static
 from django.urls import reverse
 from django.utils import timezone
@@ -37,7 +37,6 @@ from .globals import (
 )
 from .mixins import ResizeImageMixin
 from .signals_func import (
-    convert_all_settings_to_json,
     icon_cluster_size_correction,
     icon_marker_size_correction,
     refresh_icon,
@@ -54,25 +53,6 @@ from .utils import (
     validate_svg,
     validate_transparency,
 )
-
-
-class JsonSettings(models.Model):
-    """All settings in json format."""
-
-    ymap = models.OneToOneField(
-        "Map",
-        verbose_name=ngettext_lazy("Map", "Map", 1),
-        related_name="json_settings",
-        null=True,
-        on_delete=models.CASCADE,
-    )
-
-    editor = models.TextField("All settings for editor page", default="{}")
-
-    site = models.TextField("All settings for site page", default="{}")
-
-    def __str__(self):  # noqa: D105
-        return "Json Settings"
 
 
 class MapControls(models.Model):
@@ -410,11 +390,6 @@ class Map(models.Model):
             HeatmapSettings.objects.create(ymap=self)
         if not hasattr(self, "general_settings"):
             GeneralSettings.objects.create(ymap=self)
-        if hasattr(self, "json_settings"):
-            convert_all_settings_to_json(self)
-        else:
-            JsonSettings.objects.create(ymap=self)
-            convert_all_settings_to_json(self)
         if self.demo_categories:
             CategoryPlacemark.objects.create(
                 ymap=self,
@@ -1415,24 +1390,3 @@ m2m_changed.connect(refresh_json_code, sender=Polygon.subcategories.through)
 
 # Refresh icon (slug) in placemarks after refreshing icon in MarkerIcon.
 post_save.connect(refresh_icon, sender=MarkerIcon)
-
-# Converting and updating all settings of Maps to JSON.
-post_save.connect(convert_all_settings_to_json, sender=MarkerIcon)
-post_save.connect(convert_all_settings_to_json, sender=GeneralSettings)
-post_save.connect(convert_all_settings_to_json, sender=MapControls)
-post_save.connect(convert_all_settings_to_json, sender=HeatmapSettings)
-post_save.connect(convert_all_settings_to_json, sender=ClusterIcon)
-post_save.connect(convert_all_settings_to_json, sender=CategoryPlacemark)
-post_save.connect(convert_all_settings_to_json, sender=SubCategoryPlacemark)
-post_save.connect(convert_all_settings_to_json, sender=CategoryPolyline)
-post_save.connect(convert_all_settings_to_json, sender=SubCategoryPolyline)
-post_save.connect(convert_all_settings_to_json, sender=CategoryPolygon)
-post_save.connect(convert_all_settings_to_json, sender=SubCategoryPolygon)
-
-post_delete.connect(convert_all_settings_to_json, sender=MarkerIcon)
-post_delete.connect(convert_all_settings_to_json, sender=CategoryPlacemark)
-post_delete.connect(convert_all_settings_to_json, sender=SubCategoryPlacemark)
-post_delete.connect(convert_all_settings_to_json, sender=CategoryPolyline)
-post_delete.connect(convert_all_settings_to_json, sender=SubCategoryPolyline)
-post_delete.connect(convert_all_settings_to_json, sender=CategoryPolygon)
-post_delete.connect(convert_all_settings_to_json, sender=SubCategoryPolygon)

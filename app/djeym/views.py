@@ -36,14 +36,12 @@ from .models import (
     ClusterIcon,
     HeatPoint,
     IconCollection,
-    JsonSettings,
     Map,
     MarkerIcon,
     Placemark,
     Polygon,
     Polyline,
 )
-from .signals_func import save_json_settings
 from .utils import get_errors_form
 
 
@@ -520,26 +518,6 @@ class AjaxUpdateHeatmapSettings(View):
         else:
             response_data = {"detail": get_errors_form(form)["detail"]}
             return JsonResponse(response_data, status=400)
-
-        response_data = {"successfully": True}
-        return JsonResponse(response_data)
-
-    @ajax_login_required_and_staff
-    def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        return super().dispatch(request, *args, **kwargs)
-
-
-class AjaxUpdateFiltersCategories(View):
-    """Ajax - Update filters of categories."""
-
-    def post(self, request, *args, **kwargs):  # noqa: D102
-        map_id = request.POST.get("mapID")
-        json_categories = request.POST.get("jsonCategories")
-
-        json_settings = JsonSettings.objects.get(ymap__pk=map_id)
-        editor = json.loads(json_settings.editor)
-        editor["categories"] = json.loads(json_categories)
-        save_json_settings(json_settings, editor)
 
         response_data = {"successfully": True}
         return JsonResponse(response_data)

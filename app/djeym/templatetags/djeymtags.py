@@ -14,11 +14,11 @@ YANDEX_MAPS_API_VERSION = "2.1"
 BOOTSTRAP_VERSION = "5.3.8"
 
 
-# Load Yandex Map to front page
+# Load data of model Map to site page
 # ------------------------------------------------------------------------------
-@register.inclusion_tag("djeym/includes/ymaps_front.html")
+@register.inclusion_tag("djeym/includes/ymaps_site.html")
 def djeym_yandex_map(slug, lang="en"):
-    """Load the map to the front page."""
+    """Load data of model Map to site page."""
     ymap = Map.objects.filter(slug=slug, active=True).first()
     ctx = {"ymap": ymap}
 

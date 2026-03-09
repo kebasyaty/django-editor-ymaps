@@ -193,8 +193,8 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
 
         if ymap is not None:
-            context["is_heatmap"] = ymap.heatmap_settings.active
             context["general_settings"] = ymap.general_settings
+            context["is_heatmap"] = ymap.heatmap_settings.active
 
         context["ymap"] = ymap
         return context

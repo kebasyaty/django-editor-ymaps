@@ -24,7 +24,6 @@ from pilkit.processors import ResizeToFit
 from slugify import slugify
 
 from .globals import (
-    ANIMATION_SPEED,
     CLUSTER_BALLOON_CONTENT_LAYOUT_CHOICES,
     COLORS,
     FEATURE_HEAT_POINT,
@@ -347,23 +346,6 @@ class Map(models.Model):
         related_name="ymap",
         null=True,
         on_delete=models.SET_NULL,
-    )
-
-    animation_speed = models.CharField(
-        "Load indicator animation speed",
-        max_length=255,
-        choices=ANIMATION_SPEED,
-        default="0.8",
-        editable=False,
-    )
-
-    disable_indicator_animation = models.BooleanField(
-        "Disable loading indicator animation",
-        default=False,
-        help_text=_(
-            "It may be useful for the abbreviation or logo of the company, if it does not make sense to animate them.",
-        ),
-        editable=False,
     )
 
     slug = models.SlugField(unique=True, max_length=255, blank=True, null=True)

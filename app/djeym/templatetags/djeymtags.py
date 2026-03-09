@@ -14,6 +14,8 @@ YANDEX_MAPS_API_VERSION = "2.1"
 BOOTSTRAP_VERSION = "5.3.8"
 
 
+# Load Yandex Map to front page
+# ------------------------------------------------------------------------------
 @register.inclusion_tag("djeym/includes/ymaps_front.html")
 def djeym_yandex_map(slug, lang="en"):
     """Load the map to the front page."""
@@ -24,13 +26,14 @@ def djeym_yandex_map(slug, lang="en"):
         general_settings = ymap.general_settings
         ctx["lang"] = (lang or "en",)
         ctx["is_heatmap"] = ymap.heatmap_settings.active
-        ctx["is_round_theme"] = general_settings.roundtheme
-        ctx["width_map_front"] = general_settings.width_map_front
-        ctx["height_map_front"] = general_settings.height_map_front
+        ctx["width_map"] = general_settings.width_map_front
+        ctx["height_map"] = general_settings.height_map_front
 
     return ctx
 
 
+# Load URL for API Yandex Maps
+# ------------------------------------------------------------------------------
 @register.inclusion_tag("djeym/includes/api_ymaps.html")
 def djeym_load_api_ymaps(lang="en", ns="djeymYMaps"):
     """Load URL for API Yandex Maps."""

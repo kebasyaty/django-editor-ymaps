@@ -99,12 +99,12 @@ def save_json_settings(json_settings, editor):
             "color4": gradient["color4"],
         },
     }
-    front = {
+    site = {
         "themeType": generalSettings["themeType"],
         "colorControls": generalSettings["colorControlsTheme"],
         "colorButtonsText": generalSettings["colorButtonsTextTheme"],
         "openPanel": generalSettings["controls"]["panel3_71"][2]["isActive"],
-        "widthPanel": generalSettings["controls"]["panel3_71"][1]["widthPanelFront"],
+        "widthPanel": generalSettings["controls"]["panel3_71"][1]["widthPanelSite"],
         "mapCenter": editor["ymap"]["mapCenter"],
         "mapZoom": editor["ymap"]["mapZoom"],
         "cluster": editor["ymap"]["cluster"],
@@ -122,7 +122,7 @@ def save_json_settings(json_settings, editor):
         "multiple": categories["multiple"],
         "filters": categories["filters"],
         "imgBgPanel": generalSettings["controls"]["panel3_71"][3]["large"],
-        "tinting": generalSettings["tintingPanelFront"],
+        "tinting": generalSettings["tintingPanelSite"],
         "hideGeoTypes": categories["hideGeoTypes"],
         "hideGroupNames": categories["hideGroupNames"],
         "centerGeoTypes": categories["centerGeoTypes"],
@@ -135,7 +135,7 @@ def save_json_settings(json_settings, editor):
         "effectRipple": categories["effectRipple"],
     }
     json_settings.editor = json.dumps(editor, ensure_ascii=False)
-    json_settings.front = json.dumps(front, ensure_ascii=False)
+    json_settings.site = json.dumps(site, ensure_ascii=False)
     json_settings.save()
 
 
@@ -262,18 +262,18 @@ def convert_all_settings_to_json(instance, **kwargs):
                     ],
                     "panel3_71": [
                         {"icon": "mdi-chart-bubble", "isActive": general_settings.clustering_site},
-                        {"icon": "mdi-arrow-split-vertical", "widthPanelFront": general_settings.width_panel_front},
-                        {"icon": "mdi-arrow-expand-right", "isActive": general_settings.open_panel_front},
+                        {"icon": "mdi-arrow-split-vertical", "widthPanelSite": general_settings.width_panel_site},
+                        {"icon": "mdi-arrow-expand-right", "isActive": general_settings.open_panel_site},
                         {
-                            "imgBgPanelFront": general_settings.img_bg_panel_front_thumb.url
-                            if bool(general_settings.img_bg_panel_front)
+                            "imgBgPanelSite": general_settings.img_bg_panel_site_thumb.url
+                            if bool(general_settings.img_bg_panel_site)
                             else None,
-                            "large": general_settings.img_bg_panel_front_large.url
-                            if bool(general_settings.img_bg_panel_front)
+                            "large": general_settings.img_bg_panel_site_large.url
+                            if bool(general_settings.img_bg_panel_site)
                             else None,
                         },
-                        {"icon": "mdi-arrow-split-vertical", "widthMapFront": general_settings.width_map_front},
-                        {"icon": "mdi-arrow-split-horizontal", "heightMapFront": general_settings.height_map_front},
+                        {"icon": "mdi-arrow-split-vertical", "widthMapSite": general_settings.width_map_site},
+                        {"icon": "mdi-arrow-split-horizontal", "heightMapSite": general_settings.height_map_site},
                     ],
                 },
                 "themeType": general_settings.theme_type,
@@ -281,7 +281,7 @@ def convert_all_settings_to_json(instance, **kwargs):
                 "colorButtonsTextTheme": general_settings.buttons_text_color,
                 "colorBackgroundCountObjects": general_settings.cluster_icon_content_bg_color,
                 "textColorCountObjects": general_settings.cluster_icon_content_txt_color,
-                "tintingPanelFront": general_settings.tinting_panel_front,
+                "tintingPanelSite": general_settings.tinting_panel_site,
             }
             editor["generalSettings"] = general_settings
             if not is_map:

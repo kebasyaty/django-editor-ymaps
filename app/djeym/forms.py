@@ -37,13 +37,13 @@ class GeneralSettingsForm(forms.ModelForm):
             "roundtheme",
             "panorama",
             "width_panel_editor",
-            "width_panel_front",
-            "open_panel_front",
-            "img_bg_panel_front",
-            "tinting_panel_front",
-            "hide_group_name_panel_front",
-            "width_map_front",
-            "height_map_front",
+            "width_panel_site",
+            "open_panel_site",
+            "img_bg_panel_site",
+            "tinting_panel_site",
+            "hide_group_name_panel_site",
+            "width_map_site",
+            "height_map_site",
         )
 
 

@@ -12,7 +12,7 @@ urlpatterns = [
     path("jsi18n/", JavaScriptCatalog.as_view(packages=["djeym"]), name="javascript-catalog"),
     path("ajax-balloon-content/", views.AjaxBalloonContent.as_view(), name="ajax_balloon_content"),
     path("ajax-upload-placemarks/", views.AjaxUploadPlacemarks.as_view(), name="ajax_get_geo_objects_placemark"),
-    path("ajax-upload-settings-front/", views.AjaxUploadSettingsFront.as_view(), name="ajax_upload_settings_front"),
+    path("ajax-upload-settings-site/", views.AjaxUploadSettingsSite.as_view(), name="ajax_upload_settings_site"),
     path("ajax-upload-heat-points/", views.AjaxUploadHeatPoints.as_view(), name="ajax_get_heat_points"),
     path("ajax-upload-polylines/", views.AjaxUploadPolylines.as_view(), name="ajax_get_geo_objects_polyline"),
     path("ajax-upload-polygons/", views.AjaxUploadPolygons.as_view(), name="ajax_get_geo_objects_polygon"),
@@ -46,7 +46,7 @@ urlpatterns = [
         views.AjaxUpdateFiltersCategories.as_view(),
         name="ajax_update_filters_categories",
     ),
-    path("ajax-del-img-bg-panel-front/", views.AjaxDeleteImgBgPanelFront.as_view(), name="ajax_del_img_bg_panel_front"),
+    path("ajax-del-img-bg-panel-site/", views.AjaxDeleteImgBgPanelSite.as_view(), name="ajax_del_img_bg_panel_site"),
     path("ajax-ban-ip-address/", views.AjaxBanIPAddress.as_view(), name="ajax_ban_ip_address"),
     path("ajax-upload-icon-collection/", views.AjaxIconCollection.as_view(), name="ajax_upload_icon_collection"),
 ]

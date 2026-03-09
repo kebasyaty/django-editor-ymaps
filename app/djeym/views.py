@@ -180,7 +180,7 @@ class AjaxUploadPolygons(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-# UPLOADING MAP AND SETTINGS TO THE EDITOR PAGE AND FRONT PAGE
+# UPLOADING MAP AND SETTINGS TO THE EDITOR PAGE AND SITE PAGE
 # ------------------------------------------------------------------------------
 class YMapEditor(StaffRequiredMixin, TemplateView):
     """Load the map to the editor page."""
@@ -214,12 +214,12 @@ class AjaxUploadSettingsEditor(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-class AjaxUploadSettingsFront(View):
-    """Ajax - Upload the settings for the front page."""
+class AjaxUploadSettingsSite(View):
+    """Ajax - Upload the settings for the site page."""
 
     def get(self, request, *args, **kwargs):  # noqa: D102
         map_id = int(request.GET.get("mapID"))
-        response_data = Map.objects.get(pk=map_id).json_settings.front
+        response_data = Map.objects.get(pk=map_id).json_settings.site
 
         return HttpResponse(response_data, content_type="application/json")
 
@@ -446,14 +446,14 @@ class AjaxUpdateGeneralSettings(View):
     def post(self, request, *args, **kwargs):  # noqa: D102
         map_id = request.POST.get("ymap")
         ymap = Map.objects.get(pk=map_id)
-        img_bg_panel_front_b64 = request.POST.get("img_bg_panel_front_b64", "")
+        img_bg_panel_site_b64 = request.POST.get("img_bg_panel_site_b64", "")
         form = GeneralSettingsForm(request.POST, instance=ymap.general_settings)
 
         if form.is_valid():
             instance = form.save(commit=False)
-            if len(img_bg_panel_front_b64) > 0:
-                img_bg_panel_front_b64 = img_bg_panel_front_b64.split(",")[1]
-                instance.img_bg_panel_front = ContentFile(base64.b64decode(img_bg_panel_front_b64), "pic.jpg")
+            if len(img_bg_panel_site_b64) > 0:
+                img_bg_panel_site_b64 = img_bg_panel_site_b64.split(",")[1]
+                instance.img_bg_panel_site = ContentFile(base64.b64decode(img_bg_panel_site_b64), "pic.jpg")
             instance.save()
         else:
             response_data = {"detail": get_errors_form(form)["detail"]}
@@ -467,14 +467,14 @@ class AjaxUpdateGeneralSettings(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-class AjaxDeleteImgBgPanelFront(View):
+class AjaxDeleteImgBgPanelSite(View):
     """Ajax - Delete the background image for the panel."""
 
     def post(self, request, *args, **kwargs):  # noqa: D102
         map_id = request.POST.get("mapID")
         ymap = Map.objects.get(pk=map_id)
         general_settings = ymap.general_settings
-        general_settings.img_bg_panel_front = None
+        general_settings.img_bg_panel_site = None
         general_settings.save()
 
         response_data = {"successfully": True}

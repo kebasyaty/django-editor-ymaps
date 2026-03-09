@@ -34,7 +34,6 @@ class GeneralSettingsForm(forms.ModelForm):
             "controls_color",
             "buttons_text_color",
             "theme_type",
-            "roundtheme",
             "panorama",
             "width_panel_editor",
             "width_panel_site",

@@ -194,7 +194,6 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
 
         if ymap is not None:
             context["is_heatmap"] = ymap.heatmap_settings.active
-            context["is_round_theme"] = ymap.general_settings.roundtheme
 
         context["ymap"] = ymap
         return context

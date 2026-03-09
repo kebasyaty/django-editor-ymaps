@@ -110,7 +110,6 @@ def save_json_settings(json_settings, editor):
         "cluster": editor["ymap"]["cluster"],
         "activeControls": mapControls["activeControls"],
         "isSearchByOrganization": mapControls["controls"][2]["isActive"],
-        "isRoundTheme": generalSettings["controls"]["panel1_69"][0]["isActive"],
         "isPanorama": generalSettings["controls"]["panel1_69"][1]["isActive"],
         "heatmap": heatmap,
         "colorBackgroundCountObjects": generalSettings["colorBackgroundCountObjects"],
@@ -246,7 +245,6 @@ def convert_all_settings_to_json(instance, **kwargs):
             general_settings = {
                 "controls": {
                     "panel1_69": [
-                        {"icon": "mdi-alpha-t-circle-outline", "isActive": general_settings.roundtheme},
                         {"icon": "mdi-airplay", "isActive": general_settings.panorama},
                         {"icon": "mdi-comment-text-outline", "layout": general_settings.cluster_layout},
                         {

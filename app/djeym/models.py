@@ -70,7 +70,7 @@ class JsonSettings(models.Model):
 
     editor = models.TextField("All settings for editor page", default="{}")
 
-    front = models.TextField("All settings for front page", default="{}")
+    site = models.TextField("All settings for site page", default="{}")
 
     def __str__(self):  # noqa: D105
         return "Json Settings"
@@ -242,57 +242,55 @@ class GeneralSettings(models.Model):
         "Theme type - light | dark",
         max_length=255,
         choices=THEME_TYPE_CHOICES,
-        default="light",
+        default="dark",
     )
-
-    roundtheme = models.BooleanField("Round theme of controls", default=False)
 
     panorama = models.BooleanField("Panorama - on|off", default=True)
 
     width_panel_editor = models.PositiveSmallIntegerField("Width for panel of editor", default=380)
 
-    width_panel_front = models.PositiveSmallIntegerField("Width for panel of front", default=380)
+    width_panel_site = models.PositiveSmallIntegerField("Width for panel of site", default=380)
 
-    open_panel_front = models.BooleanField("Open panel automatically", default=False)
+    open_panel_site = models.BooleanField("Open panel automatically", default=False)
 
-    img_bg_panel_front = models.ImageField(
+    img_bg_panel_site = models.ImageField(
         "Background image for the site panel",
         upload_to=make_upload_path,
         blank=True,
         null=True,
     )
 
-    tinting_panel_front = models.CharField(
+    tinting_panel_site = models.CharField(
         "Background under controls of panel",
         max_length=9,
         default="#00000000",
     )
 
-    hide_group_name_panel_front = models.BooleanField(
+    hide_group_name_panel_site = models.BooleanField(
         "Hide group names (Categories, Subcategories)",
         default=False,
     )
 
-    width_map_front = models.CharField(
-        "Width of Map for Front page",
+    width_map_site = models.CharField(
+        "Width of Map for site page",
         max_length=255,
         default="100%",
     )
 
-    height_map_front = models.CharField(
-        "Height of Map for Front page",
+    height_map_site = models.CharField(
+        "Height of Map for site page",
         max_length=255,
         default="600px",
     )
 
-    img_bg_panel_front_thumb = ImageSpecField(
-        source="img_bg_panel_front",
+    img_bg_panel_site_thumb = ImageSpecField(
+        source="img_bg_panel_site",
         processors=[ResizeToFit(width=96, upscale=False)],
         format="JPEG",
     )
 
-    img_bg_panel_front_large = ImageSpecField(
-        source="img_bg_panel_front",
+    img_bg_panel_site_large = ImageSpecField(
+        source="img_bg_panel_site",
         processors=[ResizeToFit(width=800, upscale=False)],
         format="JPEG",
         options={"quality": 40},
@@ -310,7 +308,7 @@ class GeneralSettings(models.Model):
         verbose_name_plural = "General settings"
 
     def save(self, *args, **kwargs):  # noqa: D102
-        colors_with_alpha = ["tinting_panel_front"]
+        colors_with_alpha = ["tinting_panel_site"]
         for color_name in colors_with_alpha:
             color = getattr(self, color_name)
             len_txt_color = len(color)

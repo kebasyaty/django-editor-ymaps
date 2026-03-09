@@ -26,8 +26,8 @@ def djeym_yandex_map(slug, lang="en"):
         general_settings = ymap.general_settings
         ctx["lang"] = (lang or "en",)
         ctx["is_heatmap"] = ymap.heatmap_settings.active
-        ctx["width_map"] = general_settings.width_map_front
-        ctx["height_map"] = general_settings.height_map_front
+        ctx["width_map"] = general_settings.width_map_site
+        ctx["height_map"] = general_settings.height_map_site
 
     return ctx
 

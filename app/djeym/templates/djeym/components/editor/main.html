@@ -1,8 +1,10 @@
 {% load i18n static %}
+<!-- HTML -->
 <main class="min-vw-100 min-vh-100"
       data-bs-theme="{{ settings.theme_type }}">
-  {% include 'djeym/components/editor/nav_bar.html' with settings=settings %}
+    {% include 'djeym/components/editor/nav_bar.html' with settings=settings %}
 </main>
+<!-- JS -->
 <script>
     // Check the DOM is loaded
     const domReady = (callBack) => {
@@ -18,3 +20,11 @@
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     });
 </script>
+<!-- CSS -->
+<style>
+    .dark-tooltip {
+        --bs-tooltip-bg: #343a40;
+        --bs-tooltip-color: #cc9a06;
+        --bs-tooltip-opacity: 1;
+    }
+</style>

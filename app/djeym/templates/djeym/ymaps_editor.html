@@ -42,7 +42,7 @@
         <canvas id="resize_image_temp_canvas" class="visually-hidden"></canvas>
         <!-- Application entry point -->
         <div id="djeym-app">
-          {% include 'djeym/components/editor/main.html' with general_settings={{ general_settings }} %}
+          {% include 'djeym/components/editor/main.html' with general_settings=general_settings %}
         </div>
         <!-- START VENDORS JS -->
         <script src="{% static "djeym/js/jquery.js" %}"></script>

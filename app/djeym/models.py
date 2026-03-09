@@ -208,7 +208,7 @@ class GeneralSettings(models.Model):
     controls_color = RGBColorField(
         "Color of controls",
         colors=COLORS,
-        default="#43A047",
+        default="#ffc107",
     )
 
     buttons_text_color = RGBColorField(

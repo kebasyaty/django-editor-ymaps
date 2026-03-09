@@ -1,4 +1,5 @@
 {% load i18n static %}
-<main class="vw-100 vh-100" data-bs-theme="dark">
-  {% include 'djeym/components/editor/nav_bar.html' %}
+<main class="vw-100 vh-100"
+      data-bs-theme="{{ general_settings.theme_type }}">
+  {% include 'djeym/components/editor/nav_bar.html' with general_settings={{ general_settings }} %}
 </main>

@@ -222,7 +222,7 @@ class GeneralSettings(models.Model):
     cluster_icon_content_txt_color = RGBColorField(
         "Text color",
         colors=COLORS,
-        default="#212121",
+        default="#000000",
     )
 
     controls_color = RGBColorField(
@@ -234,7 +234,7 @@ class GeneralSettings(models.Model):
     buttons_text_color = RGBColorField(
         "Text color on buttons",
         colors=COLORS,
-        default="#FFFFFF",
+        default="#000000",
     )
 
     theme_type = models.CharField(
@@ -245,8 +245,6 @@ class GeneralSettings(models.Model):
     )
 
     panorama = models.BooleanField("Panorama - on|off", default=True)
-
-    width_panel_editor = models.PositiveSmallIntegerField("Width for panel of editor", default=380)
 
     width_panel_site = models.PositiveSmallIntegerField("Width for panel of site", default=380)
 

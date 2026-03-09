@@ -37,11 +37,13 @@
         <link href="{% static 'djeym/css/helpers.css' %}" rel="stylesheet">
         <!-- END VENDORS CSS -->
       </head>
-      <body data-bs-theme="dark">
+      <body data-bs-theme="{{ general_settings.theme_type }}">
         <!-- For resize image -->
         <canvas id="resize_image_temp_canvas" class="visually-hidden"></canvas>
         <!-- Application entry point -->
-        <div id="djeym-app">{% include 'djeym/components/editor/main.html' %}</div>
+        <div id="djeym-app">
+          {% include 'djeym/components/editor/main.html' with general_settings={{ general_settings }} %}
+        </div>
         <!-- START VENDORS JS -->
         <script src="{% static "djeym/js/jquery.js" %}"></script>
         <script src="{% static "djeym/js/jquery-regex.js" %}"></script>

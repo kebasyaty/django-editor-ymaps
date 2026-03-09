@@ -256,7 +256,6 @@ def convert_all_settings_to_json(instance, **kwargs):
                     ],
                     "panel2_70": [
                         {"icon": "mdi-chart-bubble", "isActive": general_settings.clustering_edit},
-                        {"icon": "mdi-arrow-split-vertical", "widthPanelEditor": general_settings.width_panel_editor},
                     ],
                     "panel3_71": [
                         {"icon": "mdi-chart-bubble", "isActive": general_settings.clustering_site},

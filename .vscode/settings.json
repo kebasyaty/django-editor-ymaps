@@ -18,6 +18,7 @@
   "djlint.indentJs": 2,
   "djlint.formatCss": true,
   "djlint.formatJs": true,
+  "djlint.maxBlankLines": 1,
   "djlint.formatAttributeTemplateTags": true,
   "djlint.ignore": ["H021"],
   "emmet.includeLanguages": {

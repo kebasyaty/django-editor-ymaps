@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 12:09+0000\n"
+"POT-Creation-Date: 2026-03-09 17:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,6 +177,7 @@ msgid "Active Heatmap ?"
 msgstr "Активная тепловая карта ?"
 
 #: app/djeym/models.py:162
+#: app/djeym/templates/djeym/components/editor/nav_bar.html:27
 msgid "Settings"
 msgstr "Настройки"
 
@@ -715,15 +716,31 @@ msgstr "Импортировать %(name)s"
 msgid "Filter"
 msgstr "Фильтр"
 
-#: app/djeym/templates/djeym/ymaps_editor.html:74
+#: app/djeym/templates/djeym/components/editor/nav_bar.html:11
+msgid "Filter by categories"
+msgstr "Фильтр по категориям"
+
+#: app/djeym/templates/djeym/components/editor/nav_bar.html:19
+msgid "Go back to admin panel"
+msgstr "Вернутся в панель администратора"
+
+#: app/djeym/templates/djeym/components/editor/nav_bar.html:35
+msgid "Help"
+msgstr "Помощь"
+
+#: app/djeym/templates/djeym/components/editor/nav_bar.html:43
+msgid "Show editable geo-object"
+msgstr "Показать редактируемый гео-объект"
+
+#: app/djeym/templates/djeym/ymaps_editor.html:72
 msgid "Page not found"
 msgstr "Страница не найдена"
 
-#: app/djeym/templates/djeym/ymaps_editor.html:76
+#: app/djeym/templates/djeym/ymaps_editor.html:74
 msgid "We're sorry, but the requested map could not be found."
 msgstr "К сожалению, запрошенная карта не найдена."
 
-#: app/djeym/templates/djeym/ymaps_editor.html:79
+#: app/djeym/templates/djeym/ymaps_editor.html:77
 msgid "Maybe the map is not active or just missing."
 msgstr "Возможно карта не активна или просто отсутствует."
 
@@ -767,6 +784,6 @@ msgstr "Для определения координат требуется чи
 msgid "To determine the transparency a numeric value is required."
 msgstr "Для определения прозрачности требуется числовое значение."
 
-#: app/djeym/views.py:598
+#: app/djeym/views.py:569
 msgid "The {} collection already exists."
 msgstr "Коллекция {} уже существует."

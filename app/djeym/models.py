@@ -20,7 +20,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import ngettext_lazy
 from imagekit.models import ImageSpecField
-from pilkit.processors import ResizeToFill, ResizeToFit
+from pilkit.processors import ResizeToFit
 from slugify import slugify
 
 from .globals import (
@@ -51,7 +51,6 @@ from .utils import (
     polygon_update_json_code,
     polyline_update_json_code,
     validate_coordinates,
-    validate_image,
     validate_image_geo_object,
     validate_svg,
     validate_transparency,
@@ -75,69 +74,6 @@ class JsonSettings(models.Model):
 
     def __str__(self):  # noqa: D105
         return "Json Settings"
-
-
-class TileSource(models.Model):
-    """Source tile layer."""
-
-    title = models.CharField(_("Title"), max_length=255, unique=True, default="")
-
-    maxzoom = models.PositiveSmallIntegerField(_("Maximum zoom"), choices=ZOOM_CHOICES, default=12)
-
-    minzoom = models.PositiveSmallIntegerField(_("Minimum zoom"), choices=ZOOM_CHOICES, default=0)
-
-    source = models.TextField(_("Source"), default="")
-
-    screenshot = models.ImageField(
-        _("Screenshot"),
-        upload_to=make_upload_path,
-        validators=[validate_image],
-        null=True,
-        help_text=_("Recommended size - Width=360 x Height=180"),
-    )
-
-    copyrights = models.TextField(_("Copyrights"), default="")
-
-    site = models.URLField(_("Site"), blank=True, default="")
-
-    apikey = models.CharField(
-        _("API Key"),
-        max_length=255,
-        blank=True,
-        default="",
-        help_text=_("API key or access_token"),
-    )
-
-    apikey_is_required = models.BooleanField(_("API Key is required?"), default=False)
-
-    note = models.TextField(_("Note"), blank=True, default="")
-    slug = models.SlugField(unique=True, max_length=255, blank=True, null=True)
-
-    middle = ImageSpecField(source="screenshot", processors=[ResizeToFill(360, 180, upscale=True)])
-
-    @property
-    def upload_dir(self):  # noqa: D102
-        return "djeym/tile_screenshot"
-
-    def __str__(self):  # noqa: D105
-        return str(self.title)
-
-    class Meta:  # noqa: D106
-        ordering = ("title",)
-        verbose_name = _("Tile Source")
-        verbose_name_plural = _("Tile Sources")
-
-    def save(self, *args, **kwargs):  # noqa: D102
-        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
-        super().save(*args, **kwargs)
-
-    def admin_thumbnail(self):  # noqa: D102
-        if bool(self.screenshot):
-            img_html = f'<img src="{self.screenshot.url}" height="40" alt="Screenshot">'
-            return mark_safe(img_html)  # noqa: S308
-        return ""
-
-    admin_thumbnail.short_description = _("Screenshot")
 
 
 class MapControls(models.Model):
@@ -415,15 +351,6 @@ class Map(models.Model):
         on_delete=models.SET_NULL,
     )
 
-    tile = models.ForeignKey(
-        TileSource,
-        verbose_name=_("Tile Source"),
-        related_name="ymap",
-        blank=True,
-        null=True,
-        on_delete=models.SET_NULL,
-    )
-
     animation_speed = models.CharField(
         "Load indicator animation speed",
         max_length=255,
@@ -552,15 +479,6 @@ class Map(models.Model):
         return ""
 
     get_icon_collection.short_description = _("Collection")
-
-    def get_tile_screenshot(self):  # noqa: D102
-        screenshot = static("djeym/img/default_tile.png")
-        if bool(self.tile):
-            screenshot = self.tile.screenshot.url
-        img_html = f'<img src="{screenshot}" height="40" alt="Screenshot">'
-        return mark_safe(img_html)  # noqa: S308
-
-    get_tile_screenshot.short_description = _("Tile")
 
     def get_status_heatmap(self):  # noqa: D102
         icon_name = "cold_fire.svg"
@@ -1522,7 +1440,6 @@ post_save.connect(refresh_icon, sender=MarkerIcon)
 
 # Converting and updating all settings of Maps to JSON.
 post_save.connect(convert_all_settings_to_json, sender=MarkerIcon)
-post_save.connect(convert_all_settings_to_json, sender=TileSource)
 post_save.connect(convert_all_settings_to_json, sender=GeneralSettings)
 post_save.connect(convert_all_settings_to_json, sender=MapControls)
 post_save.connect(convert_all_settings_to_json, sender=HeatmapSettings)
@@ -1535,7 +1452,6 @@ post_save.connect(convert_all_settings_to_json, sender=CategoryPolygon)
 post_save.connect(convert_all_settings_to_json, sender=SubCategoryPolygon)
 
 post_delete.connect(convert_all_settings_to_json, sender=MarkerIcon)
-post_delete.connect(convert_all_settings_to_json, sender=TileSource)
 post_delete.connect(convert_all_settings_to_json, sender=CategoryPlacemark)
 post_delete.connect(convert_all_settings_to_json, sender=SubCategoryPlacemark)
 post_delete.connect(convert_all_settings_to_json, sender=CategoryPolyline)

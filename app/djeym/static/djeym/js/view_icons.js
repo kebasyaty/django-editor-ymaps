@@ -25,7 +25,7 @@ $(document).ready(function () {
     return regex.test($(elem)[attr.method](attr.property));
   };
 
-  // Ajax - Get icon for Clusters, Icon Collections, Tile Sources and Upload Indicators.
+  // Ajax - Get icon for Clusters, Icon Collections and Upload Indicators.
   function ajaxGetIcon(ajaxURL, $image, objID) {
     if (parseInt(objID)) {
       $.getJSON(ajaxURL, { obj_id: objID })
@@ -58,7 +58,7 @@ $(document).ready(function () {
     //
     /*
     Icons for Categories and Subcategories.
-    ------------------------------------------------------------------------------------------------
+    ----------------------------------------------------------------------------
     */
     const textObjs =
       "#id_category_icon," +
@@ -105,8 +105,8 @@ $(document).ready(function () {
     });
 
     /*
-    Icons for Clusters, Icon Collections, Tile Sources and Upload Indicators.
-    ------------------------------------------------------------------------------------------------
+    Icons for Clusters, Icon Collections and Upload Indicators.
+    ----------------------------------------------------------------------------
     */
     const $iconCluster = $("#id_icon_cluster");
     let clusterIconID = $iconCluster.find("option:selected").val();
@@ -115,10 +115,6 @@ $(document).ready(function () {
     const $iconCollection = $("#id_icon_collection");
     const ajaxExampleIconURL = "/djeym/ajax-collection-example-icon/";
     let collectionIconID = $iconCollection.find("option:selected").val();
-
-    const $tileSource = $("#id_tile");
-    let tileSourceID = $tileSource.find("option:selected").val();
-    const ajaxTileSourceURL = "/djeym/ajax-tile-screenshot/";
 
     /* If there is no cluster or collection, hide the "Edit Map" button.
        (Если нет кластера или коллекции, скрыть кнопку "Редактировать карту".) */
@@ -153,28 +149,6 @@ $(document).ready(function () {
     $iconCollection.on("change", function () {
       collectionIconID = $(this).find("option:selected").val();
       ajaxGetIcon(ajaxExampleIconURL, $imageExampleIcon, collectionIconID);
-    });
-
-    // Upload a screenshot of the tile.
-    $tileSource
-      .parent()
-      .addClass("tile_screenshot_wrapper")
-      .append('<img src="" id="id_tile_screenshot" alt="Screenshot">');
-    const $imageTile = $("#id_tile_screenshot");
-
-    if (tileSourceID.length > 0) {
-      ajaxGetIcon(ajaxTileSourceURL, $imageTile, tileSourceID);
-    } else {
-      $imageTile.attr("src", window.defaultTile).show();
-    }
-
-    $tileSource.on("change", function () {
-      tileSourceID = $(this).find("option:selected").val();
-      if (tileSourceID.length > 0) {
-        ajaxGetIcon(ajaxTileSourceURL, $imageTile, tileSourceID);
-      } else {
-        $imageTile.attr("src", window.defaultTile).show();
-      }
     });
   }
 });

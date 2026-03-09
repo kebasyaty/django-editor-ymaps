@@ -1,5 +1,5 @@
 /*
- * Import/Export - Icon Collection and Source tile layer.
+ * Import/Export - Icon Collection.
  * Copyright (c) 2014 kebasyaty
  * License MIT
  */
@@ -61,24 +61,6 @@ $(document).ready(function () {
 
       formData.append("csrfmiddlewaretoken", csrftoken);
       formData.append("collection", collectionFile);
-
-      sandFormAjax(url, formData);
-    });
-  } else if ($("a").is("#id_import_tile_source")) {
-    //
-    if ($("table#result_list tr").length - 1 > 0) {
-      $("#id_export_tile_source").show();
-    }
-
-    // Import file with sources of tile layers.
-    $("#id_import_file_tile_source").on("change", function () {
-      const url = $("#id_import_tile_source").data("import-url");
-      const sourcesFile = $(this)[0].files[0];
-      const csrftoken = $('input[name="csrfmiddlewaretoken"').val();
-      const formData = new FormData();
-
-      formData.append("csrfmiddlewaretoken", csrftoken);
-      formData.append("sources", sourcesFile);
 
       sandFormAjax(url, formData);
     });

@@ -28,10 +28,6 @@ urlpatterns = [
     ),
     path("ajax-import-icon-collection/", views.AjaxImportIconCollection.as_view(), name="ajax_import_icon_collection"),
     path("export-icon-collection/<slug:slug>/", views.ExportIconCollection.as_view(), name="export_icon_collection"),
-    path("ajax-import-tile-source/", views.AjaxImportTileSource.as_view(), name="ajax_import_tile_source"),
-    path("export-tile-source/", views.ExportTileSource.as_view(), name="export_tile_source"),
-    path("ajax-tile-screenshot/", views.AjaxTileScreenshot.as_view(), name="ajax_tile_screenshot"),
-    path("ajax-update-tile-source/", views.AjaxUpdateTileSource.as_view(), name="ajax_update_tile_source"),
     path("ajax-update-map-controls/", views.AjaxUpdateMapControls.as_view(), name="ajax_update_map_controls"),
     path(
         "ajax-update-heatmap-settings/",

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import ast
 import json
 import re
 from decimal import ROUND_CEILING, ROUND_HALF_UP, Decimal
@@ -113,7 +112,6 @@ def save_json_settings(json_settings, editor):
         "isSearchByOrganization": mapControls["controls"][2]["isActive"],
         "isRoundTheme": generalSettings["controls"]["panel1_69"][0]["isActive"],
         "isPanorama": generalSettings["controls"]["panel1_69"][1]["isActive"],
-        "currentTile": editor["tileSources"]["currentTile"],
         "heatmap": heatmap,
         "colorBackgroundCountObjects": generalSettings["colorBackgroundCountObjects"],
         "textColorCountObjects": generalSettings["textColorCountObjects"],
@@ -139,29 +137,6 @@ def save_json_settings(json_settings, editor):
     json_settings.editor = json.dumps(editor, ensure_ascii=False)
     json_settings.front = json.dumps(front, ensure_ascii=False)
     json_settings.save()
-
-
-# Tile Sources - Add random subdomains. Add api key or access token.
-def random_domain(source, apikey):
-    """Tile Sources - Add random subdomains. Add api key or access token."""
-    source = re.sub("\r?\n", "", source)  # noqa: RUF039
-    count_elem = re.search(r"\[\[(.+)\]\]", source)
-
-    if count_elem is not None:
-        count_elem = len(ast.literal_eval(count_elem.group(0))[0])
-
-    value = re.sub(
-        r"\[(\[.+\])\]",
-        f'" + \\1[ Math.round( Math.random() * {int(count_elem) - 1} ) ] + "',  # pyrefly: ignore[no-matching-overload]
-        source,
-    )
-    if len(apikey) > 0:
-        var_key = re.search(r"\{\{(.+)\}\}", value).group(0)
-        clean_var_key = re.sub(r"{{|}}", "", var_key)
-        value = value.replace(var_key, clean_var_key + apikey, 1)
-    else:
-        value = re.sub(r"\{\{.+\}\}", "", value)
-    return value
 
 
 def convert_all_settings_to_json(instance, **kwargs):
@@ -264,46 +239,6 @@ def convert_all_settings_to_json(instance, **kwargs):
                         lock = multiple
                 flag = not flag
             editor["categories"] = categories
-
-        # Get tile sources
-        if class_name == "TileSource" or is_map:
-            tile_list = [
-                {
-                    "id": 0,
-                    "img": f"{settings.STATIC_URL}djeym/img/default_tile.png",
-                    "title": "Default",
-                    "maxZoom": 23,
-                    "isActive": not bool(ymap.tile),
-                },
-            ]
-            current_tile_id = ymap.tile.pk if bool(ymap.tile) else 0
-            tiles = apps.get_model("djeym", "TileSource").objects.all()
-            current_tile = tiles.filter(pk=current_tile_id).first()
-            if current_tile is not None:
-                current_tile = {
-                    "title": current_tile.title,
-                    "maxZoom": current_tile.maxzoom,
-                    "minZoom": current_tile.minzoom,
-                    "copyrights": current_tile.copyrights,
-                    "randomTileUrl": random_domain(current_tile.source, current_tile.apikey),
-                }
-            tile_list.extend(
-                [
-                    {
-                        "id": item.pk,
-                        "img": item.middle.url,
-                        "title": item.title,
-                        "maxZoom": item.maxzoom,
-                        "isActive": item.pk == current_tile_id,
-                    }
-                    for item in tiles
-                ],
-            )
-            tile_sources = {"tiles": tile_list, "currentTile": current_tile}
-            editor["tileSources"] = tile_sources
-            if not is_map:
-                save_json_settings(json_settings, editor)
-                continue
 
         # Get general settings
         if class_name == "GeneralSettings" or is_map:

@@ -6,7 +6,6 @@ import base64
 import copy
 import io
 import json
-import re
 from pathlib import Path
 
 from django.core.files import File
@@ -43,7 +42,6 @@ from .models import (
     Placemark,
     Polygon,
     Polyline,
-    TileSource,
 )
 from .signals_func import save_json_settings
 from .utils import get_errors_form
@@ -422,23 +420,6 @@ class AjaxCollectionExampleIcon(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-class AjaxTileScreenshot(View):
-    """Ajax - Upload a example of screenshot of the tile to admin panel."""
-
-    def get(self, request, *args, **kwargs):  # noqa: D102
-        source_id = request.GET.get("obj_id")
-        tile_source = TileSource.objects.filter(pk=source_id).first()
-
-        if tile_source is not None:
-            return JsonResponse({"url": tile_source.screenshot.url})
-        else:  # noqa: RET505
-            return JsonResponse({"detail": "Screenshot not found."}, status=404)
-
-    @ajax_login_required_and_staff
-    def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        return super().dispatch(request, *args, **kwargs)
-
-
 class AjaxIconCollection(View):
     """Ajax - Upload icon collection for custom marker."""
 
@@ -459,25 +440,6 @@ class AjaxIconCollection(View):
 
 # SAVING CHANGES
 # ------------------------------------------------------------------------------
-class AjaxUpdateTileSource(View):
-    """Ajax - Tile source replacement."""
-
-    def post(self, request, *args, **kwargs):  # noqa: D102
-        map_id = request.POST.get("mapID")
-        tile_id = int(request.POST.get("tileID"))
-
-        ymap = Map.objects.get(pk=map_id)
-        ymap.tile = TileSource.objects.get(pk=tile_id) if tile_id > 0 else None
-        ymap.save()
-
-        response_data = {"successfully": True}
-        return JsonResponse(response_data)
-
-    @ajax_login_required_and_staff
-    def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        return super().dispatch(request, *args, **kwargs)
-
-
 class AjaxUpdateGeneralSettings(View):
     """Ajax - Update general settings."""
 
@@ -642,9 +604,8 @@ class AjaxHeatmapUndoSettings(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-# IMPORT | EXPORT
+# IMPORT | EXPORT - Icon Collections
 # ------------------------------------------------------------------------------
-# (Icon Collections and Tile Sources)
 class AjaxImportIconCollection(View):
     """Ajax - Import icon collection from the json file to the database."""
 
@@ -708,68 +669,4 @@ class ExportIconCollection(StaffRequiredMixin, View):
         stream = io.BytesIO(collection_json)
         response = FileResponse(stream, content_type="application/json")
         response["Content-Disposition"] = "attachment; filename={}.json".format(slug.replace("-", "_"))
-        return response
-
-
-class AjaxImportTileSource(View):
-    """Import tile sources from json file to database."""
-
-    def post(self, request, *args, **kwargs):  # noqa: D102
-        with request.FILES.get("sources").file as json_file:
-            source_list = json_file.read()
-
-        source_list = json.loads(source_list.decode("utf-8"))
-
-        for source in source_list:
-            if TileSource.objects.filter(slug=slugify(source["title"])).count() == 0:
-                image_type = "png" if re.search(r"png", source["screenshot"]) is not None else "jpg"  # noqa: RUF055
-                screenshot = re.sub(r"^data:image/(png|jpeg);base64,", "", source["screenshot"])
-                TileSource.objects.create(
-                    title=source["title"],
-                    maxzoom=source["maxzoom"],
-                    minzoom=source["minzoom"],
-                    source=source["source"],
-                    screenshot=ContentFile(base64.b64decode(screenshot), "pic." + image_type),
-                    copyrights=source["copyrights"],
-                    site=source["site"],
-                    apikey=source["apikey"],
-                    apikey_is_required=source["apikey_is_required"],
-                    note=source["note"],
-                )
-
-        response_data = {"successfully": True}
-        return JsonResponse(response_data)
-
-    @ajax_login_required_and_staff
-    def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        return super().dispatch(request, *args, **kwargs)
-
-
-class ExportTileSource(StaffRequiredMixin, View):
-    """Export tile sources from a database to a json file."""
-
-    def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        sources = TileSource.objects.all()
-        sources_list = []
-
-        for source in sources:
-            image_file_bytes = Path(source.screenshot.path).read_bytes()
-            include_json = {
-                "title": source.title,
-                "maxzoom": source.maxzoom,
-                "minzoom": source.minzoom,
-                "source": source.source,
-                "screenshot": base64.b64encode(image_file_bytes).decode("utf-8"),
-                "copyrights": source.copyrights,
-                "site": source.site,
-                "apikey": source.apikey,
-                "apikey_is_required": source.apikey_is_required,
-                "note": source.note,
-            }
-            sources_list.append(include_json)
-
-        sources_json = json.dumps(sources_list, ensure_ascii=False).encode("utf-8")
-        stream = io.BytesIO(sources_json)
-        response = FileResponse(stream, content_type="application/json")
-        response["Content-Disposition"] = "attachment; filename=Tile_Sources.json"
         return response

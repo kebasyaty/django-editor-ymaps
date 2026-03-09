@@ -178,10 +178,10 @@ class AjaxUploadPolygons(View):
         return super().dispatch(request, *args, **kwargs)
 
 
-# UPLOADING MAP AND SETTINGS TO THE EDITOR PAGE AND SITE PAGE
+# LOADING MAP TO EDITOR PAGE
 # ------------------------------------------------------------------------------
 class YMapEditor(StaffRequiredMixin, TemplateView):
-    """Load the map to the editor page."""
+    """Load map to editor page."""
 
     template_name = "djeym/ymaps_editor.html"
 
@@ -191,46 +191,17 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
 
         if ymap is not None:
-            context["general_settings"] = ymap.general_settings
+            context["settings"] = ymap.general_settings
             context["is_heatmap"] = ymap.heatmap_settings.active
 
         context["ymap"] = ymap
         return context
 
 
-class AjaxUploadSettingsEditor(View):
-    """Ajax - Upload the settings for the editor page."""
-
-    def get(self, request, *args, **kwargs):  # noqa: D102
-        map_id = int(request.GET.get("mapID"))
-        response_data = Map.objects.get(pk=map_id).json_settings.editor
-
-        return HttpResponse(response_data, content_type="application/json")
-
-    @ajax_login_required_and_staff
-    def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        return super().dispatch(request, *args, **kwargs)
-
-
-class AjaxUploadSettingsSite(View):
-    """Ajax - Upload the settings for the site page."""
-
-    def get(self, request, *args, **kwargs):  # noqa: D102
-        map_id = int(request.GET.get("mapID"))
-        response_data = Map.objects.get(pk=map_id).json_settings.site
-
-        return HttpResponse(response_data, content_type="application/json")
-
-    def dispatch(self, request, *args, **kwargs):  # noqa: D102
-        if not request.is_ajax():
-            return HttpResponseForbidden()
-        return super().dispatch(request, *args, **kwargs)
-
-
-# GEO OBJECTS - SAVING | UPDATING | DELETING
+# GEO-OBJECTS - SAVING | UPDATING | DELETING
 # ------------------------------------------------------------------------------
 class AjaxSaveGeoObjects(View):
-    """Geo objects - saving, updating and deleting."""
+    """Geo-objects - saving, updating and deleting."""
 
     def post(self, request, *args, **kwargs):  # noqa: D102
         pk = int(request.POST.get("pk"))

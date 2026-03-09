@@ -12,7 +12,7 @@ from colorful.fields import RGBColorField
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models.signals import m2m_changed, post_delete, post_save
+from django.db.models.signals import m2m_changed, post_save
 from django.templatetags.static import static
 from django.urls import reverse
 from django.utils import timezone
@@ -20,11 +20,10 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import ngettext_lazy
 from imagekit.models import ImageSpecField
-from pilkit.processors import ResizeToFill, ResizeToFit
+from pilkit.processors import ResizeToFit
 from slugify import slugify
 
 from .globals import (
-    ANIMATION_SPEED,
     CLUSTER_BALLOON_CONTENT_LAYOUT_CHOICES,
     COLORS,
     FEATURE_HEAT_POINT,
@@ -38,7 +37,6 @@ from .globals import (
 )
 from .mixins import ResizeImageMixin
 from .signals_func import (
-    convert_all_settings_to_json,
     icon_cluster_size_correction,
     icon_marker_size_correction,
     refresh_icon,
@@ -51,93 +49,10 @@ from .utils import (
     polygon_update_json_code,
     polyline_update_json_code,
     validate_coordinates,
-    validate_image,
     validate_image_geo_object,
     validate_svg,
     validate_transparency,
 )
-
-
-class JsonSettings(models.Model):
-    """All settings in json format."""
-
-    ymap = models.OneToOneField(
-        "Map",
-        verbose_name=ngettext_lazy("Map", "Map", 1),
-        related_name="json_settings",
-        null=True,
-        on_delete=models.CASCADE,
-    )
-
-    editor = models.TextField("All settings for editor page", default="{}")
-
-    front = models.TextField("All settings for front page", default="{}")
-
-    def __str__(self):  # noqa: D105
-        return "Json Settings"
-
-
-class TileSource(models.Model):
-    """Source tile layer."""
-
-    title = models.CharField(_("Title"), max_length=255, unique=True, default="")
-
-    maxzoom = models.PositiveSmallIntegerField(_("Maximum zoom"), choices=ZOOM_CHOICES, default=12)
-
-    minzoom = models.PositiveSmallIntegerField(_("Minimum zoom"), choices=ZOOM_CHOICES, default=0)
-
-    source = models.TextField(_("Source"), default="")
-
-    screenshot = models.ImageField(
-        _("Screenshot"),
-        upload_to=make_upload_path,
-        validators=[validate_image],
-        null=True,
-        help_text=_("Recommended size - Width=360 x Height=180"),
-    )
-
-    copyrights = models.TextField(_("Copyrights"), default="")
-
-    site = models.URLField(_("Site"), blank=True, default="")
-
-    apikey = models.CharField(
-        _("API Key"),
-        max_length=255,
-        blank=True,
-        default="",
-        help_text=_("API key or access_token"),
-    )
-
-    apikey_is_required = models.BooleanField(_("API Key is required?"), default=False)
-
-    note = models.TextField(_("Note"), blank=True, default="")
-    slug = models.SlugField(unique=True, max_length=255, blank=True, null=True)
-
-    middle = ImageSpecField(source="screenshot", processors=[ResizeToFill(360, 180, upscale=True)])
-
-    @property
-    def upload_dir(self):  # noqa: D102
-        return "djeym/tile_screenshot"
-
-    def __str__(self):  # noqa: D105
-        return str(self.title)
-
-    class Meta:  # noqa: D106
-        ordering = ("title",)
-        verbose_name = _("Tile Source")
-        verbose_name_plural = _("Tile Sources")
-
-    def save(self, *args, **kwargs):  # noqa: D102
-        self.slug = slugify(str(self.title))  # pyrefly: ignore[bad-assignment]
-        super().save(*args, **kwargs)
-
-    def admin_thumbnail(self):  # noqa: D102
-        if bool(self.screenshot):
-            img_html = f'<img src="{self.screenshot.url}" height="40" alt="Screenshot">'
-            return mark_safe(img_html)  # noqa: S308
-        return ""
-
-    admin_thumbnail.short_description = _("Screenshot")
 
 
 class MapControls(models.Model):
@@ -287,76 +202,72 @@ class GeneralSettings(models.Model):
     cluster_icon_content_txt_color = RGBColorField(
         "Text color",
         colors=COLORS,
-        default="#212121",
+        default="#000000",
     )
 
     controls_color = RGBColorField(
         "Color of controls",
         colors=COLORS,
-        default="#43A047",
+        default="#ffc107",
     )
 
     buttons_text_color = RGBColorField(
         "Text color on buttons",
         colors=COLORS,
-        default="#FFFFFF",
+        default="#000000",
     )
 
     theme_type = models.CharField(
         "Theme type - light | dark",
         max_length=255,
         choices=THEME_TYPE_CHOICES,
-        default="light",
+        default="dark",
     )
-
-    roundtheme = models.BooleanField("Round theme of controls", default=False)
 
     panorama = models.BooleanField("Panorama - on|off", default=True)
 
-    width_panel_editor = models.PositiveSmallIntegerField("Width for panel of editor", default=380)
+    width_panel_site = models.PositiveSmallIntegerField("Width for panel of site", default=380)
 
-    width_panel_front = models.PositiveSmallIntegerField("Width for panel of front", default=380)
+    open_panel_site = models.BooleanField("Open panel automatically", default=False)
 
-    open_panel_front = models.BooleanField("Open panel automatically", default=False)
-
-    img_bg_panel_front = models.ImageField(
+    img_bg_panel_site = models.ImageField(
         "Background image for the site panel",
         upload_to=make_upload_path,
         blank=True,
         null=True,
     )
 
-    tinting_panel_front = models.CharField(
+    tinting_panel_site = models.CharField(
         "Background under controls of panel",
         max_length=9,
         default="#00000000",
     )
 
-    hide_group_name_panel_front = models.BooleanField(
+    hide_group_name_panel_site = models.BooleanField(
         "Hide group names (Categories, Subcategories)",
         default=False,
     )
 
-    width_map_front = models.CharField(
-        "Width of Map for Front page",
+    width_map_site = models.CharField(
+        "Width of Map for site page",
         max_length=255,
         default="100%",
     )
 
-    height_map_front = models.CharField(
-        "Height of Map for Front page",
+    height_map_site = models.CharField(
+        "Height of Map for site page",
         max_length=255,
         default="600px",
     )
 
-    img_bg_panel_front_thumb = ImageSpecField(
-        source="img_bg_panel_front",
+    img_bg_panel_site_thumb = ImageSpecField(
+        source="img_bg_panel_site",
         processors=[ResizeToFit(width=96, upscale=False)],
         format="JPEG",
     )
 
-    img_bg_panel_front_large = ImageSpecField(
-        source="img_bg_panel_front",
+    img_bg_panel_site_large = ImageSpecField(
+        source="img_bg_panel_site",
         processors=[ResizeToFit(width=800, upscale=False)],
         format="JPEG",
         options={"quality": 40},
@@ -374,7 +285,7 @@ class GeneralSettings(models.Model):
         verbose_name_plural = "General settings"
 
     def save(self, *args, **kwargs):  # noqa: D102
-        colors_with_alpha = ["tinting_panel_front"]
+        colors_with_alpha = ["tinting_panel_site"]
         for color_name in colors_with_alpha:
             color = getattr(self, color_name)
             len_txt_color = len(color)
@@ -413,32 +324,6 @@ class Map(models.Model):
         related_name="ymap",
         null=True,
         on_delete=models.SET_NULL,
-    )
-
-    tile = models.ForeignKey(
-        TileSource,
-        verbose_name=_("Tile Source"),
-        related_name="ymap",
-        blank=True,
-        null=True,
-        on_delete=models.SET_NULL,
-    )
-
-    animation_speed = models.CharField(
-        "Load indicator animation speed",
-        max_length=255,
-        choices=ANIMATION_SPEED,
-        default="0.8",
-        editable=False,
-    )
-
-    disable_indicator_animation = models.BooleanField(
-        "Disable loading indicator animation",
-        default=False,
-        help_text=_(
-            "It may be useful for the abbreviation or logo of the company, if it does not make sense to animate them.",
-        ),
-        editable=False,
     )
 
     slug = models.SlugField(unique=True, max_length=255, blank=True, null=True)
@@ -505,11 +390,6 @@ class Map(models.Model):
             HeatmapSettings.objects.create(ymap=self)
         if not hasattr(self, "general_settings"):
             GeneralSettings.objects.create(ymap=self)
-        if hasattr(self, "json_settings"):
-            convert_all_settings_to_json(self)
-        else:
-            JsonSettings.objects.create(ymap=self)
-            convert_all_settings_to_json(self)
         if self.demo_categories:
             CategoryPlacemark.objects.create(
                 ymap=self,
@@ -552,15 +432,6 @@ class Map(models.Model):
         return ""
 
     get_icon_collection.short_description = _("Collection")
-
-    def get_tile_screenshot(self):  # noqa: D102
-        screenshot = static("djeym/img/default_tile.png")
-        if bool(self.tile):
-            screenshot = self.tile.screenshot.url
-        img_html = f'<img src="{screenshot}" height="40" alt="Screenshot">'
-        return mark_safe(img_html)  # noqa: S308
-
-    get_tile_screenshot.short_description = _("Tile")
 
     def get_status_heatmap(self):  # noqa: D102
         icon_name = "cold_fire.svg"
@@ -1519,26 +1390,3 @@ m2m_changed.connect(refresh_json_code, sender=Polygon.subcategories.through)
 
 # Refresh icon (slug) in placemarks after refreshing icon in MarkerIcon.
 post_save.connect(refresh_icon, sender=MarkerIcon)
-
-# Converting and updating all settings of Maps to JSON.
-post_save.connect(convert_all_settings_to_json, sender=MarkerIcon)
-post_save.connect(convert_all_settings_to_json, sender=TileSource)
-post_save.connect(convert_all_settings_to_json, sender=GeneralSettings)
-post_save.connect(convert_all_settings_to_json, sender=MapControls)
-post_save.connect(convert_all_settings_to_json, sender=HeatmapSettings)
-post_save.connect(convert_all_settings_to_json, sender=ClusterIcon)
-post_save.connect(convert_all_settings_to_json, sender=CategoryPlacemark)
-post_save.connect(convert_all_settings_to_json, sender=SubCategoryPlacemark)
-post_save.connect(convert_all_settings_to_json, sender=CategoryPolyline)
-post_save.connect(convert_all_settings_to_json, sender=SubCategoryPolyline)
-post_save.connect(convert_all_settings_to_json, sender=CategoryPolygon)
-post_save.connect(convert_all_settings_to_json, sender=SubCategoryPolygon)
-
-post_delete.connect(convert_all_settings_to_json, sender=MarkerIcon)
-post_delete.connect(convert_all_settings_to_json, sender=TileSource)
-post_delete.connect(convert_all_settings_to_json, sender=CategoryPlacemark)
-post_delete.connect(convert_all_settings_to_json, sender=SubCategoryPlacemark)
-post_delete.connect(convert_all_settings_to_json, sender=CategoryPolyline)
-post_delete.connect(convert_all_settings_to_json, sender=SubCategoryPolyline)
-post_delete.connect(convert_all_settings_to_json, sender=CategoryPolygon)
-post_delete.connect(convert_all_settings_to_json, sender=SubCategoryPolygon)

@@ -25,41 +25,8 @@ from .models import (
     SubCategoryPlacemark,
     SubCategoryPolygon,
     SubCategoryPolyline,
-    TileSource,
 )
 from .widgets import AdminFileThumbWidget
-
-
-@admin.register(TileSource)
-class TileSourceAdmin(admin.ModelAdmin):
-    # change_form.html - Used by default.
-    change_form_template = "djeym/admin/change_form.html"
-    change_list_template = "djeym/admin/tile_source_change_list.html"
-    list_display = (  # pyrefly: ignore[bad-override]
-        "title",
-        "admin_thumbnail",
-        "maxzoom",
-        "minzoom",
-        "apikey_is_required",
-    )
-    list_display_links = ("title", "admin_thumbnail")  # pyrefly: ignore[bad-override]
-    readonly_fields = ("slug",)  # pyrefly: ignore[bad-override]
-
-    formfield_overrides = {
-        models.ImageField: {"widget": AdminFileThumbWidget()},
-    }
-
-    class Media:  # noqa: D106
-        css = {
-            "all": [
-                static("djeym/css/admin.css"),
-            ],
-        }
-
-        js = (
-            static("djeym/js/jquery.js"),
-            static("djeym/js/import_export.js"),
-        )
 
 
 @admin.register(BannedIP)
@@ -117,7 +84,6 @@ class MapAdmin(NonSortableParentAdmin):
         "slug",
         "get_cluster",
         "get_icon_collection",
-        "get_tile_screenshot",
         "get_status_heatmap",
         "zoom",
         "active",
@@ -127,7 +93,6 @@ class MapAdmin(NonSortableParentAdmin):
         "get_cluster",
         "get_status_heatmap",
         "get_icon_collection",
-        "get_tile_screenshot",
     )
     list_editable = ("active",)  # pyrefly: ignore[bad-override]
     inlines = (  # pyrefly: ignore[bad-override]

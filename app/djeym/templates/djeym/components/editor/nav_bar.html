@@ -1,7 +1,8 @@
 {% load i18n static %}
-<nav class="d-flex flex-nowrap vh-100" data-bs-theme="dark">
+<nav class="d-flex flex-nowrap vh-100"
+     data-bs-theme="{{ general_settings.theme_type }}">
   <div class="d-flex flex-column flex-shrink-0 bg-warning"
-       style="width: 4.5rem">
+       style="width: 60px">
     <a href="/"
        class="d-block p-3 link-body-emphasis text-decoration-none"
        data-bs-toggle="tooltip"

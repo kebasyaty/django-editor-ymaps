@@ -2,11 +2,9 @@
 
 <nav class="d-flex flex-nowrap min-vh-100"
      data-bs-theme="{{ settings.theme_type }}">
-  <div class="d-flex flex-column flex-shrink-0"
-       style="width: 64px;
-              background-color: #cc9a06">
+  <div class="d-flex flex-column flex-shrink-0 bg-nav-bar">
     <ul class="nav flex-column">
-      <li class="nav-item d-grid gap-2 nav-bar-item">
+      <li class="nav-item d-grid gap-2 bg-nav-bar-item">
         <button type="button"
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
@@ -16,7 +14,7 @@
           <span class="mdi mdi-menu mdi-36px text-black"></span>
         </button>
       </li>
-      <li class="nav-item d-grid gap-2 nav-bar-item">
+      <li class="nav-item d-grid gap-2 bg-nav-bar-item">
         <button type="button"
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
@@ -26,7 +24,7 @@
           <span class="mdi mdi-arrow-left-top-bold mdi-36px text-black"></span>
         </button>
       </li>
-      <li class="nav-item d-grid gap-2 nav-bar-item">
+      <li class="nav-item d-grid gap-2 bg-nav-bar-item">
         <button type="button"
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
@@ -36,7 +34,7 @@
           <span class="mdi mdi-cog mdi-36px text-black"></span>
         </button>
       </li>
-      <li class="nav-item d-grid gap-2 nav-bar-item">
+      <li class="nav-item d-grid gap-2 bg-nav-bar-item">
         <button type="button"
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
@@ -46,7 +44,7 @@
           <span class="mdi mdi-help-circle mdi-36px text-black"></span>
         </button>
       </li>
-      <li class="nav-item d-grid gap-2 nav-bar-item">
+      <li class="nav-item d-grid gap-2 bg-nav-bar-item">
         <button type="button"
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
@@ -61,7 +59,13 @@
 </nav>
 
 <style>
-  .nav-bar-item {
+  .bg-nav-bar {
+    width: 64px;
+    background-color: #cc9a06"
+
+  }
+
+  .bg-nav-bar-item {
     background-color: #cc9a06;
   }
 

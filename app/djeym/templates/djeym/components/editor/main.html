@@ -11,10 +11,12 @@
   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
 
-<style>
-  .dark-tooltip {
-    --bs-tooltip-bg: #343a40;
-    --bs-tooltip-color: #fecba1;
-    --bs-tooltip-opacity: 1;
-  }
-</style>
+{% if is_dark_theme %}
+  <style>
+    .dark-tooltip {
+      --bs-tooltip-bg: #2D313A;
+      --bs-tooltip-color: #A9B0BD;
+      --bs-tooltip-opacity: 1;
+    }
+  </style>
+{% endif %}

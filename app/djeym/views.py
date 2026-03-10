@@ -191,7 +191,9 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
 
         if ymap is not None:
-            context["settings"] = ymap.general_settings
+            settings = ymap.general_settings
+            context["settings"] = settings
+            context["is_dark_theme"] = settings.theme_type == "dark"
             context["is_heatmap"] = ymap.heatmap_settings.active
 
         context["ymap"] = ymap

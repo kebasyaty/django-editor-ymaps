@@ -11,7 +11,7 @@
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
                 data-bs-placement="right"
-                data-bs-custom-class="dark-tooltip"
+                {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
                 data-bs-title="{% trans 'Filter by categories' %}">
           <span class="mdi mdi-menu mdi-36px text-black"></span>
         </button>
@@ -21,7 +21,7 @@
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
                 data-bs-placement="right"
-                data-bs-custom-class="dark-tooltip"
+                {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
                 data-bs-title="{% trans 'Go back to admin panel' %}">
           <span class="mdi mdi-arrow-left-top-bold mdi-36px text-black"></span>
         </button>
@@ -31,7 +31,7 @@
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
                 data-bs-placement="right"
-                data-bs-custom-class="dark-tooltip"
+                {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
                 data-bs-title="{% trans 'Settings' %}">
           <span class="mdi mdi-cog mdi-36px text-black"></span>
         </button>
@@ -41,7 +41,7 @@
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
                 data-bs-placement="right"
-                data-bs-custom-class="dark-tooltip"
+                {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
                 data-bs-title="{% trans 'Help' %}">
           <span class="mdi mdi-help-circle mdi-36px text-black"></span>
         </button>
@@ -51,7 +51,7 @@
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
                 data-bs-placement="right"
-                data-bs-custom-class="dark-tooltip"
+                {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
                 data-bs-title="{% trans 'Show editable geo-object' %}">
           <span class="mdi mdi-image-filter-center-focus-strong mdi-36px text-danger"></span>
         </button>

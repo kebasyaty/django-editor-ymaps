@@ -194,6 +194,7 @@ class YMapEditor(StaffRequiredMixin, TemplateView):
             settings = ymap.general_settings
             context["settings"] = settings
             context["is_dark_theme"] = settings.theme_type == "dark"
+            context["map_controls"] = ymap.map_controls
             context["is_heatmap"] = ymap.heatmap_settings.active
 
         context["ymap"] = ymap

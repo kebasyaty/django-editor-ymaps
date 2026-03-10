@@ -40,7 +40,7 @@
       <body>
         <!-- Application entry point -->
         <div id="djeym-app">
-          {% include 'djeym/components/editor/store.html' with ymap=ymap settings=settings lang_code=lang_code csrf_token=csrf_token %}
+          {% include 'djeym/components/editor/store.html' with ymap=ymap settings=settings map_controls=map_controls lang_code=lang_code csrf_token=csrf_token %}
           {% include 'djeym/components/editor/main.html' with settings=settings %}
         </div>
         <!-- START VENDORS JS -->

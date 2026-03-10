@@ -51,7 +51,7 @@
                 data-bs-placement="right"
                 {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
                 data-bs-title="{% trans 'Show editable geo-object' %}">
-          <span class="mdi mdi-image-filter-center-focus-strong mdi-36px text-danger"></span>
+          <span class="mdi mdi-image-filter-center-focus-strong mdi-36px editable-geo-object-icon-color"></span>
         </button>
       </li>
     </ul>
@@ -76,24 +76,32 @@
     .nav-bar-icon-color {
       color: #A9B0BD;
     }
+
+    .editable-geo-object-icon-color {
+      color: #dc3545;
+    }
   </style>
 {% else %}
   <style>
     .bg-nav-bar {
       width: 64px;
-      background-color: #79dfc1;
+      background-color: #26C6DA;
     }
 
     .bg-nav-bar-item {
-      background-color: #79dfc1;
+      background-color: #26C6DA;
     }
 
     .bg-nav-bar-item:hover {
-      background-color: #d2f4ea;
+      background-color: #4DD0E1;
     }
 
     .nav-bar-icon-color {
-      color: #2D8C72;
+      color: #fff;
+    }
+
+    .editable-geo-object-icon-color {
+      color: #e685b5;
     }
   </style>
 {% endif %}

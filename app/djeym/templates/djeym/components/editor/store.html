@@ -1,0 +1,64 @@
+{% load i18n static %}
+
+{# Global Variables #}
+
+<script type="module" async>
+  export const LANG_CODE = "{{ lang_code }}";
+  export const CSRF_TOKEN = "{{ csrf_token }}";
+  export const DEFAULT_IMAGE_CROP = "{% static 'djeym/img/no-photo.jpg' %}";
+  export const BALLOON_MIN_HEIGHT = 60;
+  export default {
+    // Map
+    map: {
+      id: parseInt("{{ ymap.pk }}"),
+      title: "{{ ymap.title }}",
+      icon_cluster: "{{ ymap.icon_cluster. }}",
+      slug: "{{ ymap.slug }}",
+      zoom: parseInt("{{ ymap.zoom }}"),
+      latitude: "{{ ymap.latitude }}",
+      longitude: "{{ ymap.longitude }}",
+    },
+    // Map Controls
+    map_controls: {
+      geolocation: JSON.parse("{{ map_controls.geolocation|lower }}"),
+      search: JSON.parse("{{ map_controls.search|lower }}"),
+      provider: JSON.parse("{{ map_controls.provider|lower }}"),
+      route: JSON.parse("{{ map_controls.route|lower }}"),
+      traffic: JSON.parse("{{ map_controls.traffic|lower }}"),
+      typeselector: JSON.parse("{{ map_controls.typeselector|lower }}"),
+      fullscreen: JSON.parse("{{ map_controls.fullscreen|lower }}"),
+      zoom: JSON.parse("{{ map_controls.zoom|lower }}"),
+      ruler: JSON.parse("{{ map_controls.ruler|lower }}"),
+    },
+    // Heatmap settings
+    heatmap_settings: {
+      radius: parseInt("{{ heatmap_settings.radius }}"),
+      dissipating: JSON.parse("{{ heatmap_settings.dissipating|lower }}"),
+      opacity: "{{ heatmap_settings.opacity }}",
+      intensity: "{{ heatmap_settings.intensity }}",
+      gradient_color1: "{{ heatmap_settings.gradient_color1 }}",
+      gradient_color2: "{{ heatmap_settings.gradient_color2 }}",
+      gradient_color3: "{{ heatmap_settings.gradient_color3 }}",
+      gradient_color4: "{{ heatmap_settings.gradient_color4 }}",
+    },
+    // General Settings
+    general_settings: {
+      clustering_editor: JSON.parse("{{ settings.clustering_editor|lower }}"),
+      clustering_site: JSON.parse("{{ settings.clustering_site|lower }}"),
+      cluster_layout: "{{ settings.cluster_layout }}",
+      cluster_icon_content: JSON.parse("{{ settings.cluster_icon_content|lower }}"),
+      cluster_icon_content_bg_color: "{{ settings.cluster_icon_content_bg_color }}",
+      cluster_icon_content_txt_color: "{{ settings.cluster_icon_content_txt_color }}",
+      controls_color: "{{ settings.controls_color }}",
+      buttons_text_color: "{{ settings.buttons_text_color }}",
+      theme_type: "{{ settings.theme_type }}",
+      panorama: JSON.parse("{{ settings.panorama|lower }}"),
+      width_panel_site: parseInt('{{ settings.width_panel_site }}'),
+      open_panel_site: JSON.parse("{{ settings.open_panel_site|lower }}"),
+      tinting_panel_site: "{{ settings.tinting_panel_site }}",
+      hide_group_name_panel_site: JSON.parse("{{ settings.hide_group_name_panel_site|lower }}"),
+      width_map_site: "{{ settings.width_map_site }}",
+      height_map_site: "{{ setting.height_map_site }}",
+    },
+  };
+</script>

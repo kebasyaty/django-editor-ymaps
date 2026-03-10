@@ -177,7 +177,7 @@ class GeneralSettings(models.Model):
         on_delete=models.CASCADE,
     )
 
-    clustering_edit = models.BooleanField("Сlustering in editor", default=True)
+    clustering_editor = models.BooleanField("Сlustering in editor", default=True)
 
     clustering_site = models.BooleanField("Сlustering on site", default=True)
 
@@ -327,6 +327,7 @@ class Map(models.Model):
     )
 
     slug = models.SlugField(unique=True, max_length=255, blank=True, null=True)
+
     active = models.BooleanField(_("Active map ?"), default=True)
 
     zoom = models.PositiveSmallIntegerField(_("Zoom"), choices=ZOOM_CHOICES, default=3)

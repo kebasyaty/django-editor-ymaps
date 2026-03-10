@@ -25,7 +25,7 @@ class GeneralSettingsForm(forms.ModelForm):
         model = GeneralSettings
         fields = (
             "ymap",
-            "clustering_edit",
+            "clustering_editor",
             "clustering_site",
             "cluster_layout",
             "cluster_icon_content",

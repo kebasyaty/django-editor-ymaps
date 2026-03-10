@@ -2,51 +2,49 @@
 
 <nav class="d-flex flex-nowrap min-vh-100"
      data-bs-theme="{{ settings.theme_type }}">
-  <div class="d-flex flex-column flex-shrink-0"
-       style="width: 64px;
-              background-color: #cc9a06">
+  <div class="d-flex flex-column flex-shrink-0 bg-nav-bar">
     <ul class="nav flex-column">
-      <li class="nav-item d-grid gap-2 nav-bar-item">
+      <li class="nav-item d-grid gap-2 bg-nav-bar-item">
         <button type="button"
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
                 data-bs-placement="right"
                 {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
                 data-bs-title="{% trans 'Filter by categories' %}">
-          <span class="mdi mdi-menu mdi-36px text-black"></span>
+          <span class="mdi mdi-menu mdi-36px nav-bar-icon-color"></span>
         </button>
       </li>
-      <li class="nav-item d-grid gap-2 nav-bar-item">
+      <li class="nav-item d-grid gap-2 bg-nav-bar-item">
         <button type="button"
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
                 data-bs-placement="right"
                 {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
                 data-bs-title="{% trans 'Go back to admin panel' %}">
-          <span class="mdi mdi-arrow-left-top-bold mdi-36px text-black"></span>
+          <span class="mdi mdi-arrow-left-top-bold mdi-36px nav-bar-icon-color"></span>
         </button>
       </li>
-      <li class="nav-item d-grid gap-2 nav-bar-item">
+      <li class="nav-item d-grid gap-2 bg-nav-bar-item">
         <button type="button"
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
                 data-bs-placement="right"
                 {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
                 data-bs-title="{% trans 'Settings' %}">
-          <span class="mdi mdi-cog mdi-36px text-black"></span>
+          <span class="mdi mdi-cog mdi-36px nav-bar-icon-color"></span>
         </button>
       </li>
-      <li class="nav-item d-grid gap-2 nav-bar-item">
+      <li class="nav-item d-grid gap-2 bg-nav-bar-item">
         <button type="button"
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
                 data-bs-placement="right"
                 {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
                 data-bs-title="{% trans 'Help' %}">
-          <span class="mdi mdi-help-circle mdi-36px text-black"></span>
+          <span class="mdi mdi-help-circle mdi-36px nav-bar-icon-color"></span>
         </button>
       </li>
-      <li class="nav-item d-grid gap-2 nav-bar-item">
+      <li class="nav-item d-grid gap-2 bg-nav-bar-item">
         <button type="button"
                 class="btn btn-link"
                 data-bs-toggle="tooltip"
@@ -60,12 +58,42 @@
   </div>
 </nav>
 
-<style>
-  .nav-bar-item {
-    background-color: #cc9a06;
-  }
+{% if is_dark_theme %}
+  <style>
+    .bg-nav-bar {
+      width: 64px;
+      background-color: #2D313A;
+    }
 
-  .nav-bar-item:hover {
-    background-color: #ffc107;
-  }
-</style>
+    .bg-nav-bar-item {
+      background-color: #2D313A;
+    }
+
+    .bg-nav-bar-item:hover {
+      background-color: #3e4450;
+    }
+
+    .nav-bar-icon-color {
+      color: #A9B0BD;
+    }
+  </style>
+{% else %}
+  <style>
+    .bg-nav-bar {
+      width: 64px;
+      background-color: #79dfc1;
+    }
+
+    .bg-nav-bar-item {
+      background-color: #79dfc1;
+    }
+
+    .bg-nav-bar-item:hover {
+      background-color: #d2f4ea;
+    }
+
+    .nav-bar-icon-color {
+      color: #2D8C72;
+    }
+  </style>
+{% endif %}

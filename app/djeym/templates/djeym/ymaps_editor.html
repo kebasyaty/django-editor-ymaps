@@ -37,7 +37,7 @@
         <link href="{% static 'djeym/css/helpers.css' %}" rel="stylesheet">
         <!-- END VENDORS CSS -->
       </head>
-      <body>
+      <body data-bs-theme="{{ settings.theme_type }}">
         <!-- Application entry point -->
         <div id="djeym-app">
           {% include 'djeym/components/editor/store.html' %}

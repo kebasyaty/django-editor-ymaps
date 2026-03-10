@@ -43,6 +43,7 @@
         <!-- START VENDORS JS -->
         <script src="{% static 'djeym/js/jquery.js' %}"></script>
         <script src="{% static 'djeym/js/jquery-regex.js' %}"></script>
+        <!-- For handling JavaScript localization or API documentation. -->
         <script src="{% url 'djeym:javascript-catalog' %}"></script>
         <script>
           var djeymMapID = parseInt('{{ ymap.pk }}'),

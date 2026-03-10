@@ -196,7 +196,7 @@ class GeneralSettings(models.Model):
     cluster_icon_content_bg_color = RGBColorField(
         "Background color",
         colors=COLORS,
-        default="#F5F5F5",
+        default="#ffffff",
     )
 
     cluster_icon_content_txt_color = RGBColorField(
@@ -208,7 +208,7 @@ class GeneralSettings(models.Model):
     controls_color = RGBColorField(
         "Color of controls",
         colors=COLORS,
-        default="#ffc107",
+        default="#cc9a06",
     )
 
     buttons_text_color = RGBColorField(

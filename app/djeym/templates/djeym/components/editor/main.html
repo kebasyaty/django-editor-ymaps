@@ -1,5 +1,20 @@
 {% load i18n static %}
-<main class="vw-100 vh-100"
-      data-bs-theme="{{ general_settings.theme_type }}">
-  {% include 'djeym/components/editor/nav_bar.html' with general_settings=general_settings %}
+
+<main class="min-vw-100 min-vh-100"
+      data-bs-theme="{{ settings.theme_type }}">
+  {% include 'djeym/components/editor/nav_bar.html' with settings=settings %}
 </main>
+
+<script type="module">
+  // Enable all tooltips on a page
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+
+<style>
+  .dark-tooltip {
+    --bs-tooltip-bg: #343a40;
+    --bs-tooltip-color: #fecba1;
+    --bs-tooltip-opacity: 1;
+  }
+</style>

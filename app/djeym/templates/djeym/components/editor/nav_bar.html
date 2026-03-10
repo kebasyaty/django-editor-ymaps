@@ -1,99 +1,71 @@
 {% load i18n static %}
-<nav class="d-flex flex-nowrap vh-100"
-     data-bs-theme="{{ general_settings.theme_type }}">
-  <div class="d-flex flex-column flex-shrink-0 bg-warning"
-       style="width: 60px">
-    <a href="/"
-       class="d-block p-3 link-body-emphasis text-decoration-none"
-       data-bs-toggle="tooltip"
-       data-bs-placement="right"
-       data-bs-original-title="Icon-only">
-      <svg class="bi pe-none" width="40" height="32" aria-hidden="true">
-        <use xlink:href="#bootstrap"></use>
-      </svg>
-      <span class="visually-hidden">Icon-only</span> </a>
-    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-      <li class="nav-item">
-        <a href="#"
-           class="nav-link active py-3 border-bottom rounded-0"
-           aria-current="page"
-           data-bs-toggle="tooltip"
-           data-bs-placement="right"
-           aria-label="Home"
-           data-bs-original-title="Home">
-          <svg class="bi pe-none"
-               width="24"
-               height="24"
-               role="img"
-               aria-label="Home">
-            <use xlink:href="#home"></use>
-          </svg>
-        </a>
+
+<nav class="d-flex flex-nowrap min-vh-100"
+     data-bs-theme="{{ settings.theme_type }}">
+  <div class="d-flex flex-column flex-shrink-0"
+       style="width: 64px;
+              background-color: #cc9a06">
+    <ul class="nav flex-column">
+      <li class="nav-item d-grid gap-2 nav-bar-item">
+        <button type="button"
+                class="btn btn-link"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
+                data-bs-title="{% trans 'Filter by categories' %}">
+          <span class="mdi mdi-menu mdi-36px text-black"></span>
+        </button>
       </li>
-      <li>
-        <a href="#"
-           class="nav-link py-3 border-bottom rounded-0"
-           data-bs-toggle="tooltip"
-           data-bs-placement="right"
-           aria-label="Dashboard"
-           data-bs-original-title="Dashboard">
-          <svg class="bi pe-none"
-               width="24"
-               height="24"
-               role="img"
-               aria-label="Dashboard">
-            <use xlink:href="#speedometer2"></use>
-          </svg>
-        </a>
+      <li class="nav-item d-grid gap-2 nav-bar-item">
+        <button type="button"
+                class="btn btn-link"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
+                data-bs-title="{% trans 'Go back to admin panel' %}">
+          <span class="mdi mdi-arrow-left-top-bold mdi-36px text-black"></span>
+        </button>
       </li>
-      <li>
-        <a href="#"
-           class="nav-link py-3 border-bottom rounded-0"
-           data-bs-toggle="tooltip"
-           data-bs-placement="right"
-           aria-label="Orders"
-           data-bs-original-title="Orders">
-          <svg class="bi pe-none"
-               width="24"
-               height="24"
-               role="img"
-               aria-label="Orders">
-            <use xlink:href="#table"></use>
-          </svg>
-        </a>
+      <li class="nav-item d-grid gap-2 nav-bar-item">
+        <button type="button"
+                class="btn btn-link"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
+                data-bs-title="{% trans 'Settings' %}">
+          <span class="mdi mdi-cog mdi-36px text-black"></span>
+        </button>
       </li>
-      <li>
-        <a href="#"
-           class="nav-link py-3 border-bottom rounded-0"
-           data-bs-toggle="tooltip"
-           data-bs-placement="right"
-           aria-label="Products"
-           data-bs-original-title="Products">
-          <svg class="bi pe-none"
-               width="24"
-               height="24"
-               role="img"
-               aria-label="Products">
-            <use xlink:href="#grid"></use>
-          </svg>
-        </a>
+      <li class="nav-item d-grid gap-2 nav-bar-item">
+        <button type="button"
+                class="btn btn-link"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
+                data-bs-title="{% trans 'Help' %}">
+          <span class="mdi mdi-help-circle mdi-36px text-black"></span>
+        </button>
       </li>
-      <li>
-        <a href="#"
-           class="nav-link py-3 border-bottom rounded-0"
-           data-bs-toggle="tooltip"
-           data-bs-placement="right"
-           aria-label="Customers"
-           data-bs-original-title="Customers">
-          <svg class="bi pe-none"
-               width="24"
-               height="24"
-               role="img"
-               aria-label="Customers">
-            <use xlink:href="#people-circle"></use>
-          </svg>
-        </a>
+      <li class="nav-item d-grid gap-2 nav-bar-item">
+        <button type="button"
+                class="btn btn-link"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                {% if is_dark_theme %}data-bs-custom-class="dark-tooltip"{% endif %}
+                data-bs-title="{% trans 'Show editable geo-object' %}">
+          <span class="mdi mdi-image-filter-center-focus-strong mdi-36px text-danger"></span>
+        </button>
       </li>
     </ul>
   </div>
 </nav>
+
+<style>
+  .nav-bar-item {
+    background-color: #cc9a06;
+  }
+
+  .nav-bar-item:hover {
+    background-color: #ffc107;
+  }
+</style>

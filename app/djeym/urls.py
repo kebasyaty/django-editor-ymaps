@@ -12,13 +12,11 @@ urlpatterns = [
     path("jsi18n/", JavaScriptCatalog.as_view(packages=["djeym"]), name="javascript-catalog"),
     path("ajax-balloon-content/", views.AjaxBalloonContent.as_view(), name="ajax_balloon_content"),
     path("ajax-upload-placemarks/", views.AjaxUploadPlacemarks.as_view(), name="ajax_get_geo_objects_placemark"),
-    path("ajax-upload-settings-site/", views.AjaxUploadSettingsSite.as_view(), name="ajax_upload_settings_site"),
     path("ajax-upload-heat-points/", views.AjaxUploadHeatPoints.as_view(), name="ajax_get_heat_points"),
     path("ajax-upload-polylines/", views.AjaxUploadPolylines.as_view(), name="ajax_get_geo_objects_polyline"),
     path("ajax-upload-polygons/", views.AjaxUploadPolygons.as_view(), name="ajax_get_geo_objects_polygon"),
     path("ajax-save-geo-object/", views.AjaxSaveGeoObjects.as_view(), name="ajax_save_geo_object"),
     path("ymeditor/<slug:slug>/", views.YMapEditor.as_view(), name="ymap_editor"),
-    path("ajax-upload-settings-editor/", views.AjaxUploadSettingsEditor.as_view(), name="ajax_upload_settings_editor"),
     path("ajax-save-cusotm-marker/", views.AjaxSaveCusotmMarker.as_view(), name="ajax_save_cusotm_marker"),
     path("ajax-cluster-icon/", views.AjaxClusterIcon.as_view(), name="ajax_cluster_icon"),
     path(

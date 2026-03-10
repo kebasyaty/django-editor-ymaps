@@ -40,8 +40,8 @@
       <body>
         <!-- Application entry point -->
         <div id="djeym-app">
-          {% include 'djeym/components/editor/store.html' with ymap=ymap settings=settings map_controls=map_controls lang_code=lang_code csrf_token=csrf_token %}
-          {% include 'djeym/components/editor/main.html' with settings=settings %}
+          {% include 'djeym/components/editor/store.html' %}
+          {% include 'djeym/components/editor/main.html' %}
         </div>
         <!-- START VENDORS JS -->
         <script src="{% static 'djeym/js/jquery.js' %}"></script>

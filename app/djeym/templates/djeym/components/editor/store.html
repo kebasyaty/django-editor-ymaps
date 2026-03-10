@@ -30,6 +30,17 @@
       zoom: JSON.parse("{{ map_controls.zoom|lower }}"),
       ruler: JSON.parse("{{ map_controls.ruler|lower }}"),
     },
+    // Heatmap settings
+    heatmap_settings: {
+      radius: parseInt("{{ heatmap_settings.radius }}"),
+      dissipating: JSON.parse("{{ heatmap_settings.dissipating|lower }}"),
+      opacity: "{{ heatmap_settings.opacity }}",
+      intensity: "{{ heatmap_settings.intensity }}",
+      gradient_color1: "{{ heatmap_settings.gradient_color1 }}",
+      gradient_color2: "{{ heatmap_settings.gradient_color2 }}",
+      gradient_color3: "{{ heatmap_settings.gradient_color3 }}",
+      gradient_color4: "{{ heatmap_settings.gradient_color4 }}",
+    },
     // General Settings
     general_settings: {
       clustering_editor: JSON.parse("{{ settings.clustering_editor|lower }}"),

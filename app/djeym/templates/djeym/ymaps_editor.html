@@ -37,9 +37,7 @@
         <link href="{% static 'djeym/css/helpers.css' %}" rel="stylesheet">
         <!-- END VENDORS CSS -->
       </head>
-      <body data-bs-theme="{{ settings.theme_type }}">
-        <!-- For resize image -->
-        <canvas id="resize_image_temp_canvas" class="visually-hidden"></canvas>
+      <body>
         <!-- Application entry point -->
         <div id="djeym-app">{% include 'djeym/components/editor/main.html' with settings=settings %}</div>
         <!-- START VENDORS JS -->
@@ -59,7 +57,6 @@
         {% if is_heatmap %}
           <script src="{% static 'djeym/plugins/heatmap.js' %}"></script>
         {% endif %}
-        {% djeym_load_vendors_editor_js %}
         <!-- END VENDORS JS -->
       </body>
     </html>

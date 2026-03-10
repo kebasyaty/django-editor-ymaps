@@ -1,21 +1,15 @@
 {% load i18n static %}
 
+<!-- Component - Main -->
 <main class="min-vw-100 min-vh-100"
       data-bs-theme="{{ settings.theme_type }}">
   {% include 'djeym/components/editor/nav_bar.html' with settings=settings %}
 </main>
 
 <script type="module">
-  import {
-    domReady
-  } from "{% static 'djeym/vendors/editor/js/main.js' %}";
-
-  // Run App
-  domReady(function() {
-    // Enable all tooltips on a page
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-  });
+  // Enable all tooltips on a page
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
 
 <style>

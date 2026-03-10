@@ -82,9 +82,3 @@ def djeym_load_vendor_bootstrap_css():
 def djeym_load_vendor_bootstrap_js():
     """Javascript vendor of Bootstrap."""
     return {"version": BOOTSTRAP_VERSION}
-
-
-@register.inclusion_tag("djeym/includes/vendor_editor_js.html")
-def djeym_load_vendors_editor_js():
-    """Javascript vendors for Editor Page."""
-    return

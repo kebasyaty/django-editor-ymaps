@@ -43,37 +43,29 @@
         <!-- Application entry point -->
         <div id="djeym-app">{% include 'djeym/components/editor/main.html' with settings=settings %}</div>
         <!-- START VENDORS JS -->
-        <script src="{% static "djeym/js/jquery.js" %}"></script>
-        <script src="{% static "djeym/js/jquery-regex.js" %}"></script>
+        <script src="{% static 'djeym/js/jquery.js' %}"></script>
+        <script src="{% static 'djeym/js/jquery-regex.js' %}"></script>
         <script src="{% url 'djeym:javascript-catalog' %}"></script>
         <script>
-            var djeymMapID = parseInt('{{ ymap.pk }}'),
-                djeymCSRFToken = '{{ csrf_token }}',
-                djeymLanguageCode = '{{ language_code }}',
-                djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",
-                djeymBalloonMinHeight = 60;
+          var djeymMapID = parseInt('{{ ymap.pk }}'),
+            djeymCSRFToken = '{{ csrf_token }}',
+            djeymLanguageCode = '{{ language_code }}',
+            djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",
+            djeymBalloonMinHeight = 60;
         </script>
         {% djeym_load_vendor_bootstrap_js %}
         {% djeym_load_api_ymaps language_code %}
-        <script src="{% static "djeym/plugins/util.calculateArea.js" %}"></script>
+        <script src="{% static 'djeym/plugins/util.calculateArea.js' %}"></script>
         {% if is_heatmap %}
-          <script src="{% static "djeym/plugins/heatmap.js" %}"></script>
+          <script src="{% static 'djeym/plugins/heatmap.js' %}"></script>
         {% endif %}
+        {% djeym_load_vendors_editor_js %}
         <!-- END VENDORS JS -->
       </body>
     </html>
   {% endwith %}
 {% else %}
-  <style>
-      body {
-          background-color: #212121;
-      }
-  </style>
-  <h2 style="color: #BDBDBD;">404 - {% trans 'Page not found' %}</h2>
-  <div style="color: #607D8B; font-size: 22px; font-weight: bold;">
-    {% trans "We're sorry, but the requested map could not be found." %}
-  </div>
-  <div style="color: #E91E63; font-size: 18px; font-weight: bold;">
-    ( {% trans "Maybe the map is not active or just missing." %} )
-  </div>
+  <h2>404 - {% trans 'Page not found' %}</h2>
+  <p>{% trans "We're sorry, but the requested map could not be found." %}</p>
+  <p>( {% trans "Maybe the map is not active or just missing." %} )</p>
 {% endif %}

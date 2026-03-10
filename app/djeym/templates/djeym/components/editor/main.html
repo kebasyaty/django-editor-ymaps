@@ -2,19 +2,15 @@
 
 <main class="min-vw-100 min-vh-100"
       data-bs-theme="{{ settings.theme_type }}">
-    {% include 'djeym/components/editor/nav_bar.html' with settings=settings %}
+  {% include 'djeym/components/editor/nav_bar.html' with settings=settings %}
 </main>
 
-<script>
-  // Check the DOM is loaded
-  const domReady = (callBack) => {
-    if (document.readyState === "loading") {
-      document.addEventListener('DOMContentLoaded', callBack);
-    } else {
-      callBack();
-    }
-  };
-  // Run code
+<script type="module">
+  import {
+    domReady
+  } from "{% static 'djeym/vendors/editor/js/main.js' %}";
+
+  // Run App
   domReady(function() {
     // Enable all tooltips on a page
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -25,7 +21,7 @@
 <style>
   .dark-tooltip {
     --bs-tooltip-bg: #343a40;
-    --bs-tooltip-color: #cc9a06;
+    --bs-tooltip-color: #fecba1;
     --bs-tooltip-opacity: 1;
   }
 </style>

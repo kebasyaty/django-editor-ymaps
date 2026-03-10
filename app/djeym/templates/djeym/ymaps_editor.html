@@ -1,8 +1,8 @@
 {% if ymap %}
   {% load i18n static djeymtags %}
-  {% with request.LANGUAGE_CODE|default:'en' as language_code %}
+  {% with request.LANGUAGE_CODE|default:'en' as lang_code %}
     <!DOCTYPE html>
-    <html lang="{{ language_code }}">
+    <html lang="{{ lang_code }}">
       <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,21 +39,17 @@
       </head>
       <body>
         <!-- Application entry point -->
-        <div id="djeym-app">{% include 'djeym/components/editor/main.html' with settings=settings %}</div>
+        <div id="djeym-app">
+          {% include 'djeym/components/editor/store.html' with ymap=ymap settings=settings lang_code=lang_code csrf_token=csrf_token %}
+          {% include 'djeym/components/editor/main.html' with settings=settings %}
+        </div>
         <!-- START VENDORS JS -->
         <script src="{% static 'djeym/js/jquery.js' %}"></script>
         <script src="{% static 'djeym/js/jquery-regex.js' %}"></script>
         <!-- For handling JavaScript localization or API documentation. -->
         <script src="{% url 'djeym:javascript-catalog' %}"></script>
-        <script>
-          var djeymMapID = parseInt('{{ ymap.pk }}'),
-            djeymCSRFToken = '{{ csrf_token }}',
-            djeymLanguageCode = '{{ language_code }}',
-            djeymDefaultImageCrop = "{% static 'djeym/img/no-photo.jpg' %}",
-            djeymBalloonMinHeight = 60;
-        </script>
         {% djeym_load_vendor_bootstrap_js %}
-        {% djeym_load_api_ymaps language_code %}
+        {% djeym_load_api_ymaps lang_code %}
         <script src="{% static 'djeym/plugins/util.calculateArea.js' %}"></script>
         {% if is_heatmap %}
           <script src="{% static 'djeym/plugins/heatmap.js' %}"></script>

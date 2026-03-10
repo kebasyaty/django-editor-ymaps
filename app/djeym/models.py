@@ -177,7 +177,7 @@ class GeneralSettings(models.Model):
         on_delete=models.CASCADE,
     )
 
-    clustering_edit = models.BooleanField("Сlustering in editor", default=True)
+    clustering_editor = models.BooleanField("Сlustering in editor", default=True)
 
     clustering_site = models.BooleanField("Сlustering on site", default=True)
 

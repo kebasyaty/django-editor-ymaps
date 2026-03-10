@@ -1,0 +1,25 @@
+{% load i18n static %}
+
+{# Global Variables #}
+
+<script type="module" async>
+  export const LANG_CODE = "{{ lang_code }}";
+  export const CSRF_TOKEN = "{{ csrf_token }}";
+  export const DEFAULT_IMAGE_CROP = "{% static 'djeym/img/no-photo.jpg' %}";
+  export const BALLOON_MIN_HEIGHT = 60;
+  export default {
+    // Map
+    map: {
+      id: parseInt('{{ ymap.pk }}'),
+    },
+    // General Settings
+    settings: {
+      clustering_editor: JSON.parse("{{ settings.clustering_editor|lower }}"),
+      clustering_site: JSON.parse("{{ settings.clustering_site|lower }}"),
+      cluster_layout: "{{ settings.cluster_layout }}",
+      cluster_icon_content: JSON.parse("{{ settings.cluster_icon_content|lower }}"),
+      cluster_icon_content_bg_color: "{{ settings.cluster_icon_content_bg_color }}",
+      cluster_icon_content_txt_color: "{{ settings.cluster_icon_content_txt_color }}"
+    },
+  };
+</script>

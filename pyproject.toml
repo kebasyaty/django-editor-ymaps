@@ -57,9 +57,6 @@ default-groups = ["dev", "lint", "test", "docs", "types"]
 compile-bytecode = true
 check-url = "https://pypi.org/simple"
 
-[tool.uv.build-backend]
-module-root = "app/djeym"
-
 [tool.hatch.build.targets.wheel]
 packages = ["app/djeym"]
 

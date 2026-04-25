@@ -829,9 +829,7 @@ class Placemark(models.Model, ResizeImageMixin):
         if not self.is_created:
             if self.is_user_geotag:
                 pattern = re.compile(r"<.*?>")
-                self.header = (
-                    f"<p>{pattern.sub('', self.header)}</p>"  # pyrefly: ignore[bad-assignment, no-matching-overload]
-                )
+                self.header = f"<p>{pattern.sub('', self.header)}</p>"  # pyrefly: ignore[bad-assignment, no-matching-overload]
             self.is_created = True  # pyrefly: ignore[bad-assignment]
             self.save()
 

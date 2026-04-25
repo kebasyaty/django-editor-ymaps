@@ -19,7 +19,7 @@ from __future__ import annotations
 
 from django.conf import settings
 from django.contrib import admin
-from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import static  # pyrefly: ignore[missing-module-attribute]
 from django.urls import include, path
 
 urlpatterns = [

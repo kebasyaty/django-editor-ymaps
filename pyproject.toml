@@ -93,8 +93,15 @@ fix = true
 line-length = 120
 indent-width = 4
 src = ["app", "tests"]
-include = ["app/**/*.py", "tests/**/*.py"]
+include = [
+    "pyhelpers/**/*.py",
+    "src/**/*.py",
+    "tests/**/*.py",
+]
 exclude = [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.[!/.]*/**",
     ".bzr",
     ".direnv",
     ".eggs",
@@ -102,7 +109,6 @@ exclude = [
     ".git-rewrite",
     ".hg",
     ".ipynb_checkpoints",
-    ".mypy_cache",
     ".nox",
     ".pants.d",
     ".pyenv",
@@ -118,14 +124,12 @@ exclude = [
     "buck-out",
     "build",
     "dist",
-    "node_modules",
     "site-packages",
-    "venv",
+    "examples",
     ".github",
     "assets",
     "docs",
     "site",
-    "examples",
 ]
 
 [tool.ruff.lint]
@@ -209,6 +213,40 @@ line-ending = "auto"
 [tool.pyrefly]
 project-includes = ["app", "tests"]
 search-path = ["app", "tests"]
+project-excludes = [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.[!/.]*/**",
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "site-packages",
+    "examples",
+    ".github",
+    "assets",
+    "docs",
+    "site",
+]
+site-package-path = [".venv/lib/python3.14/site-packages"]
 ignore-errors-in-generated-code = true
 untyped_def_behavior = "check-and-infer-return-any"
 

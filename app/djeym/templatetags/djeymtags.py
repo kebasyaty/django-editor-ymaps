@@ -19,12 +19,12 @@ BOOTSTRAP_VERSION = "5.3.8"
 @register.inclusion_tag("djeym/includes/ymaps_site.html")
 def djeym_yandex_map(slug, lang="en"):
     """Load data of model Map to site page."""
-    ymap = Map.objects.filter(slug=slug, active=True).first()
-    ctx = {"ymap": ymap}
+    ymap: Map | None = Map.objects.filter(slug=slug, active=True).first()
+    ctx: dict[str, Map | str | None] = {"ymap": ymap}
 
     if ymap is not None:
         general_settings = ymap.general_settings
-        ctx["lang"] = (lang or "en",)
+        ctx["lang"] = lang
         ctx["is_heatmap"] = ymap.heatmap_settings.active
         ctx["width_map"] = general_settings.width_map_site
         ctx["height_map"] = general_settings.height_map_site

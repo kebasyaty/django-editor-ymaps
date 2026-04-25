@@ -1,22 +1,20 @@
 {% if ymap %}
   {% load i18n static djeymtags %}
-  {% with lang.0 as language_code %}
-    <style type="text/css">
-        #djeymModalLock {
-            display: block;
-        }
-    </style>
-    <script>
-        var djeymMapID = parseInt('{{ ymap.pk }}'),
-            djeymCSRFToken = '{{ csrf_token }}',
-            djeymLanguageCode = '{{ language_code }}',
-            djeymWidthMap = '{{ width_map }}',
-            djeymHeightMap = '{{ height_map }}',
-            djeymBalloonMinHeight = 60;
-    </script>
-    {% djeym_load_api_ymaps language_code %}
-    {% if is_heatmap %}
-      <script src="{% static "djeym/plugins/heatmap.js" %}"></script>
-    {% endif %}
-  {% endwith %}
+  <style type="text/css">
+      #djeymModalLock {
+          display: block;
+      }
+  </style>
+  <script>
+      var djeymMapID = parseInt('{{ ymap.pk }}'),
+          djeymCSRFToken = '{{ csrf_token }}',
+          djeymLanguageCode = '{{ lang }}',
+          djeymWidthMap = '{{ width_map }}',
+          djeymHeightMap = '{{ height_map }}',
+          djeymBalloonMinHeight = 60;
+  </script>
+  {% djeym_load_api_ymaps language_code %}
+  {% if is_heatmap %}
+    <script src="{% static "djeym/plugins/heatmap.js" %}"></script>
+  {% endif %}
 {% endif %}

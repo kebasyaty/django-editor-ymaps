@@ -23,5 +23,6 @@
   "djlint.ignore": ["H021"],
   "emmet.includeLanguages": {
     "django-html": "html"
-  }
+  },
+  "djlint.showInstallError": false
 }

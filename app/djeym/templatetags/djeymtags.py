@@ -9,7 +9,7 @@ from ..models import Map
 
 register = template.Library()
 
-YANDEX_MAPS_API_VERSION = "2.1"
+YANDEX_MAPS_API_VERSION = "v3"
 
 BOOTSTRAP_VERSION = "5.3.8"
 
@@ -35,32 +35,27 @@ def djeym_yandex_map(slug, lang="en"):
 # Load URL for API Yandex Maps
 # ------------------------------------------------------------------------------
 @register.inclusion_tag("djeym/includes/api_ymaps.html")
-def djeym_load_api_ymaps(lang="en", ns="djeymYMaps"):
-    """Load URL for API Yandex Maps."""
+def djeym_load_api_ymaps(lang="en_US"):
+    """Load URL for API Yandex Maps.
+
+    Supported languages:
+    lang="ru_RU"
+    lang="ru_UA"
+    lang="uk_UA"
+    lang="tr_TR"
+    lang="en_RU"
+    lang="en_US"
+    lang="he_IL"
+    lang="en_IL"
+    """
     api_version = YANDEX_MAPS_API_VERSION
     api_key = getattr(settings, "DJEYM_YMAPS_API_KEY", "")
-    is_enterprise = getattr(settings, "DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE", False)
-    mode = getattr(settings, "DJEYM_YMAPS_DOWNLOAD_MODE", "release")
     lang = lang[:2].lower() if bool(lang) else "en"
-
-    if lang == "ru":
-        lang += "_RU"
-    elif lang == "en":
-        lang += "_US"
-    elif lang == "uk":
-        lang += "_UA"
-    elif lang == "tr":
-        lang += "_TR"
-    else:
-        lang = "en_US"
 
     return {
         "api_key": api_key,
-        "is_enterprise": is_enterprise,
         "api_version": api_version,
         "lang": lang,
-        "mode": mode,
-        "ns": ns,
     }
 
 

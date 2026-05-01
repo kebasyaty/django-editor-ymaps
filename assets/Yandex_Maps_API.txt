@@ -8,6 +8,9 @@ https://yandex.com/maps-api/tariffs?lang=en
 # Buy a license
 https://yandex.com/maps-api/products/js-api?lang=en
 
+# Guide for migrating to the JS API v3:
+https://yandex.com/maps-api/docs/js-api/upgrade/index.html
+
 На данный момент поддерживаются следующие локали:
 lang=ru_RU
 lang=ru_UA
@@ -59,3 +62,7 @@ https://yandex.com/maps-api/docs
             map.addChild(new YMapDefaultSchemeLayer());
         }
 </script>
+
+// Пример добавления спутникового слоя
+const {YMapDefaultLayer} = ymaps3;
+map.addChild(new YMapDefaultLayer({layer: 'satellite'}));

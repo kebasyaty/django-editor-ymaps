@@ -1,0 +1,68 @@
+# Yandex Maps
+# Terms of free use of the Yandex Maps API
+https://yandex.ru/dev/commercial/doc/en/
+# Get the API key:
+https://selectel.ru/blog/tutorials/yandex-maps-api/#registration
+# Plans and Pricing
+https://yandex.com/maps-api/tariffs?lang=en
+# Buy a license
+https://yandex.com/maps-api/products/js-api?lang=en
+
+# Guide for migrating to the JS API v3:
+https://yandex.com/maps-api/docs/js-api/upgrade/index.html
+
+На данный момент поддерживаются следующие локали:
+lang=ru_RU
+lang=ru_UA
+lang=uk_UA
+lang=tr_TR
+lang=en_RU
+lang=en_US
+lang=he_IL
+lang=en_IL
+
+https://selectel.ru/blog/tutorials/yandex-maps-api/
+https://yandex.com/maps-api/docs
+
+<head>
+    ...
+    <script src="https://api-maps.yandex.ru/v3/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript" defer></script>
+    ...
+</head>
+
+<body>
+    ...
+    <div id="map" style="width: 600px; height: 400px"></div>
+    ...
+</body>
+
+Инициализация карты
+Чтобы наконец вывести карту, нужно добавить JavaScript-код для инициализации после загрузки основного скрипта.
+<script>
+        initMap();
+
+        // функция асинхронная, так как она может занимать много времени в основном потоке 
+        // *зависит от соединения, стабильности API и другого
+        async function initMap() {
+            // основной объект для загрузки других объектов карты
+            await ymaps3.ready;
+            const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+            // подложка, на которой будут располагаться маркеры
+            const map = new YMap(
+                document.getElementById('map'),
+                {
+                    location: {
+                        // Координаты задаются нестандартно: сначала идет долгота,
+                        // потом широта. Это важно учитывать.
+                        center: [37.588144, 55.733842],
+                        zoom: 10
+                    }
+                }
+            );
+            map.addChild(new YMapDefaultSchemeLayer());
+        }
+</script>
+
+// Пример добавления спутникового слоя
+const {YMapDefaultLayer} = ymaps3;
+map.addChild(new YMapDefaultLayer({layer: 'satellite'}));

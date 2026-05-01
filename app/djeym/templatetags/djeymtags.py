@@ -39,14 +39,14 @@ def djeym_load_api_ymaps(lang="en_US"):
     """Load URL for API Yandex Maps.
 
     Supported languages:
-    lang="ru_RU"
-    lang="ru_UA"
-    lang="uk_UA"
-    lang="tr_TR"
-    lang="en_RU"
-    lang="en_US"
-    lang="he_IL"
-    lang="en_IL"
+        ru_RU
+        ru_UA
+        uk_UA
+        tr_TR
+        en_RU
+        en_US
+        he_IL
+        en_IL
     """
     api_version = YANDEX_MAPS_API_VERSION
     api_key = getattr(settings, "DJEYM_YMAPS_API_KEY", "")

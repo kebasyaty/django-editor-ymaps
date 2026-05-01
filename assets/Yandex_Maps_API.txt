@@ -1,6 +1,22 @@
 # Yandex Maps
-# Terms of use for the Yandex.Maps: https://yandex.ru/dev/commercial/doc/en/
-# Get the API key: https://selectel.ru/blog/tutorials/yandex-maps-api/#registration
+# Terms of free use of the Yandex Maps API
+https://yandex.ru/dev/commercial/doc/en/
+# Get the API key:
+https://selectel.ru/blog/tutorials/yandex-maps-api/#registration
+# Plans and Pricing
+https://yandex.com/maps-api/tariffs?lang=en
+# Buy a license
+https://yandex.com/maps-api/products/js-api?lang=en
+
+На данный момент поддерживаются следующие локали:
+lang=ru_RU
+lang=ru_UA
+lang=uk_UA
+lang=tr_TR
+lang=en_RU
+lang=en_US
+lang=he_IL
+lang=en_IL
 
 https://selectel.ru/blog/tutorials/yandex-maps-api/
 https://yandex.com/maps-api/docs

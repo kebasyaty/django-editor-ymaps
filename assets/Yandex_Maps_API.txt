@@ -66,3 +66,44 @@ https://yandex.com/maps-api/docs
 // Пример добавления спутникового слоя
 const {YMapDefaultLayer} = ymaps3;
 map.addChild(new YMapDefaultLayer({layer: 'satellite'}));
+
+
+# Geo objects:
+import {YMapDefaultMarker} from '@yandex/ymaps3-default-ui-theme';
+
+ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', '@yandex/ymaps3-default-ui-theme@latest');
+const pkg = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
+
+const defaultMarker = new YMapDefaultMarker({
+  title: 'Hello, world!',
+  subtitle: 'Nice and kind'
+});
+
+const content = document.createElement('div');
+const marker = new ymaps3.YMapMarker(content);
+content.innerHTML = '<div>Put anything here</div>';
+
+const map = new ymaps3.YMap(document.getElementById('map-root'), {
+  location: INITIAL_LOCATION
+})
+  .addChild(new ymaps3.YMapDefaultSchemeLayer())
+  .addChild(new ymaps3.YMapDefaultFeaturesLayer({zIndex: 1800}))
+  .addChild(defaultMarker)
+  .addChild(marker);
+
+
+const markerElement = document.createElement('div');
+markerElement.className = 'marker-class';
+markerElement.innerText = "I'm marker!";
+
+const marker = new YMapMarker(
+  {
+    source: 'markerSource',
+    coordinates: [37.588144, 55.733842],
+    draggable: true,
+    mapFollowsOnDrag: true
+  },
+  markerElement
+);
+
+map.addChild(marker);

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="keywords" content="djeym, editor, yandex, maps">
+    <meta name="description" content="Editor Yandex maps">
+    <title>Yandex Map</title>
+    <!-- START VENDORS CSS -->
+    <!-- END VENDORS CSS -->
+  </head>
+  <body>
+    <!-- YMap -->
+    <div id="map" style="width: 100%; height: 400px"></div>
+    <!-- START VENDORS JS -->
+    <script src="https://api-maps.yandex.ru/v3/?apikey=aadb75d5-cd13-4d2d-8c0b-79e8d1d0f19a&lang=ru_RU" type="text/javascript"></script>
+    <script>
+        initMap();
+        async function initMap() {
+            await ymaps3.ready;
+            ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', '@yandex/ymaps3-default-ui-theme@latest');
+            const defaultUITheme = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
+
+            const markerElement = document.createElement('div');
+            markerElement.className = 'marker-class';
+            markerElement.innerText = "I'm marker!";
+
+            // Creating a map instance.
+            const map = new ymaps3.YMap(document.getElementById('map'), {
+              location: {
+                center: [0, 0],
+                zoom: 3
+              }
+            });
+            map.addChild(new ymaps3.YMapDefaultSchemeLayer());
+            map.addChild(new ymaps3.YMapDefaultFeaturesLayer({zIndex: 1800}))
+            map.addChild(new defaultUITheme.YMapDefaultMarker({
+                coordinates: [0, 0],
+                title: 'Hello World!',
+                subtitle: 'kind and bright',
+                color: 'blue',
+            }));
+            map.addChild(new defaultUITheme.YMapMarker(
+              {
+                source: 'markerSource',
+                coordinates: [37.588144, 55.733842],
+                draggable: true,
+                mapFollowsOnDrag: true
+              },
+              markerElement
+            ));
+        }
+    </script>
+    <!-- END VENDORS JS -->
+  </body>
+</html>

@@ -19,12 +19,12 @@
         initMap();
         async function initMap() {
             await ymaps3.ready;
-            ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', '@yandex/ymaps3-default-ui-theme@latest');
             ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', ['@yandex/ymaps3-clusterer@latest']);
-            const defaultUITheme = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
+            const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker} = ymaps3;
+            const {YMapClusterer, clusterByGrid} = await ymaps3.import('@yandex/ymaps3-clusterer');
 
             // Creating a map instance.
-            const map = new ymaps3.YMap(document.getElementById('map'), {
+            const map = new YMap(document.getElementById('map'), {
               location: {
                 center: [0, 0], // starting position [lng, lat]
                 zoom: 3 // starting zoom
@@ -33,9 +33,9 @@
               margin: [100, 100, 100, 100]
             }, [
                 // Add a map scheme layer
-                new ymaps3.YMapDefaultSchemeLayer({}),
+                new YMapDefaultSchemeLayer({}),
                 // Add a layer of geo objects to display the markers
-                new ymaps3.YMapDefaultFeaturesLayer({})
+                new YMapDefaultFeaturesLayer({})
             ]);
         }
     </script>

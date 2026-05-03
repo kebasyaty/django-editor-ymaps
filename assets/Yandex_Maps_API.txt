@@ -24,90 +24,6 @@ lang=en_IL
 https://selectel.ru/blog/tutorials/yandex-maps-api/
 https://yandex.com/maps-api/docs
 
-<head>
-    ...
-    <script src="https://api-maps.yandex.ru/v3/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript" defer></script>
-    ...
-</head>
-
-<body>
-    ...
-    <div id="map" style="width: 600px; height: 400px"></div>
-    ...
-</body>
-
-Инициализация карты
-Чтобы наконец вывести карту, нужно добавить JavaScript-код для инициализации после загрузки основного скрипта.
-<script>
-        initMap();
-
-        // функция асинхронная, так как она может занимать много времени в основном потоке 
-        // *зависит от соединения, стабильности API и другого
-        async function initMap() {
-            // основной объект для загрузки других объектов карты
-            await ymaps3.ready;
-            const {YMap, YMapDefaultSchemeLayer} = ymaps3;
-            // подложка, на которой будут располагаться маркеры
-            const map = new YMap(
-                document.getElementById('map'),
-                {
-                    location: {
-                        // Координаты задаются нестандартно: сначала идет долгота,
-                        // потом широта. Это важно учитывать.
-                        center: [37.588144, 55.733842],
-                        zoom: 10
-                    }
-                }
-            );
-            map.addChild(new YMapDefaultSchemeLayer());
-        }
-</script>
-
-// Пример добавления спутникового слоя
-const {YMapDefaultLayer} = ymaps3;
-map.addChild(new YMapDefaultLayer({layer: 'satellite'}));
-
-
-# Geo objects:
-import {YMapDefaultMarker} from '@yandex/ymaps3-default-ui-theme';
-
-ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', '@yandex/ymaps3-default-ui-theme@latest');
-const pkg = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
-
-const defaultMarker = new YMapDefaultMarker({
-  title: 'Hello, world!',
-  subtitle: 'Nice and kind'
-});
-
-const content = document.createElement('div');
-const marker = new ymaps3.YMapMarker(content);
-content.innerHTML = '<div>Put anything here</div>';
-
-const map = new ymaps3.YMap(document.getElementById('map-root'), {
-  location: INITIAL_LOCATION
-})
-  .addChild(new ymaps3.YMapDefaultSchemeLayer())
-  .addChild(new ymaps3.YMapDefaultFeaturesLayer({zIndex: 1800}))
-  .addChild(defaultMarker)
-  .addChild(marker);
-
-
-const markerElement = document.createElement('div');
-markerElement.className = 'marker-class';
-markerElement.innerText = "I'm marker!";
-
-const marker = new YMapMarker(
-  {
-    source: 'markerSource',
-    coordinates: [37.588144, 55.733842],
-    draggable: true,
-    mapFollowsOnDrag: true
-  },
-  markerElement
-);
-
-map.addChild(marker);
-
 --------------------------------------------------------------------------------
 // 1. Create a container for the SVG
 const markerElement = document.createElement('div');
@@ -131,3 +47,18 @@ const marker = new ymaps3.YMapMarker(
 );
 
 map.addChild(marker);
+
+--------------------------------------------------------------------------------
+Стилизация карты
+https://yandex.ru/maps-api/map-style-editor
+
+// Универсальная - День
+map.addChild(new YMapDefaultSchemeLayer({}));
+
+// Универсальная - Ночь
+map.addChild(new YMapDefaultSchemeLayer({theme: "dark"}));
+
+// Для check_icon_offset_widget.js
+map.addChild(new YMapDefaultSchemeLayer({
+    theme: "dark", customization: [{"tags":{"any":["urban_area","locality"]},"elements":"geometry","stylers":{"visibility":"off"}},{"tags":{"any":["terrain","bathymetry","landscape"],"none":"land"},"stylers":{"visibility":"off"}},{"tags":{"any":["park","cemetery"]},"stylers":{"visibility":"off"}},{"tags":{"any":["vegetation"]},"stylers":{"visibility":"off"}},{"tags":{"any":["industrial","construction_site","medical","sports_ground","beach"]},"types":"polygon","stylers":{"visibility":"off"}},{"tags":{"any":"transit","none":["transit_location","transit_line","transit_schema","is_unclassified_transit"]},"stylers":{"visibility":"off"}},{"tags":{"any":"urban_area","none":["residential","industrial","cemetery","park","medical","sports_ground","beach","construction_site"]},"stylers":{"visibility":"off"}},{"tags":{"any":["transit"]},"elements":["label.icon","label.text"],"stylers":{"visibility":"off"}},{"tags":{"any":["outdoor","park","cemetery","medical"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":"poi","none":["outdoor","park","cemetery","medical"]},"stylers":{"visibility":"off"}},{"tags":{"any":"road"},"types":"point","stylers":{"visibility":"off"}},{"tags":{"any":["food_and_drink","shopping","commercial_services"]},"stylers":{"visibility":"off"}},{"tags":{"any":["traffic_light"]},"stylers":{"visibility":"off"}},{"tags":{"any":["entrance"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road"],"none":["road_1","road_2","road_3","road_4","road_5","road_6","road_7"]},"elements":"label.icon","stylers":{"visibility":"off"}},{"tags":{"any":["road"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_3","road_4"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_5","road_6"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_7"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_construction","road_minor","road_unclassified","path","road_limited"]},"stylers":{"visibility":"off"}},{"elements":"label.text","tags":{"none":["poi","transit"]},"stylers":{"visibility":"off"}},{"tags":"locality","elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["region","road_1","road_2","road_3","road_4"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["district"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":"admin","none":["country","region","locality","district","address"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["road_5","road_6"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["address","road_7","road_limited","road_unclassified","road_minor","road_construction","path"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["building","address","fence"]},"stylers":{"visibility":"off"}},{"tags":{"any":["transit"]},"stylers":{"visibility":"off"}}]
+}));

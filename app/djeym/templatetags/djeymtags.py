@@ -49,7 +49,7 @@ def djeym_load_api_ymaps(lang="en_US"):
         en_IL
     """
     api_version = YANDEX_MAPS_API_VERSION
-    api_key = getattr(settings, "DJEYM_YMAPS_API_KEY", "")
+    api_key = getattr(settings, "YMAPS_API_KEY", "")
     lang = lang[:2].lower() if bool(lang) else "en"
 
     return {

@@ -107,3 +107,27 @@ const marker = new YMapMarker(
 );
 
 map.addChild(marker);
+
+--------------------------------------------------------------------------------
+// 1. Create a container for the SVG
+const markerElement = document.createElement('div');
+markerElement.className = 'custom-marker';
+
+// 2. Add your SVG code
+markerElement.innerHTML = `
+  <svg width="30" height="40" viewBox="0 0 30 40" xmlns="http://w3.org">
+    <path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 15 25 15 25s15-14.5 15-25c0-8.3-6.7-15-15-15z" fill="#ff0000"/>
+    <circle cx="15" cy="15" r="5" fill="white"/>
+  </svg>
+`;
+
+// 3. Create and add the marker to the map
+const marker = new ymaps3.YMapMarker(
+  {
+    coordinates: [37.623, 55.752], // [Longitude, Latitude]
+    draggable: true
+  },
+  markerElement
+);
+
+map.addChild(marker);

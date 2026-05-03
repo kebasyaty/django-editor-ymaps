@@ -20,6 +20,7 @@
         async function initMap() {
             await ymaps3.ready;
             ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', '@yandex/ymaps3-default-ui-theme@latest');
+            ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', ['@yandex/ymaps3-clusterer@latest']);
             const defaultUITheme = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
 
             // Creating a map instance.

@@ -35,7 +35,7 @@ def djeym_yandex_map(slug, lang="en"):
 # Load URL for API Yandex Maps
 # ------------------------------------------------------------------------------
 @register.inclusion_tag("djeym/includes/api_ymaps.html")
-def djeym_load_api_ymaps(lang="en_US"):
+def djeym_add_vendor_api_ymaps(lang="en_US"):
     """Load URL for API Yandex Maps.
 
     Supported languages:
@@ -62,18 +62,18 @@ def djeym_load_api_ymaps(lang="en_US"):
 # Vendors - Icons, CSS and JS
 # ------------------------------------------------------------------------------
 @register.inclusion_tag("djeym/includes/vendor_md_icons.html")
-def djeym_load_vendor_md_icons():
+def djeym_add_vendor_md_icons():
     """Load URL vendor of Material Design Icons."""
     return {"mdi_version": settings.MD_ICONS_VERSION}
 
 
 @register.inclusion_tag("djeym/includes/vendor_bootstrap_css.html")
-def djeym_load_vendor_bootstrap_css():
+def djeym_add_vendor_bootstrap_css():
     """CSS vendor of Bootstrap."""
     return {"version": BOOTSTRAP_VERSION}
 
 
 @register.inclusion_tag("djeym/includes/vendor_bootstrap_js.html")
-def djeym_load_vendor_bootstrap_js():
+def djeym_add_vendor_bootstrap_js():
     """Javascript vendor of Bootstrap."""
     return {"version": BOOTSTRAP_VERSION}

@@ -6,7 +6,7 @@
       <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <meta name="keywords" content="djeym, editor, yandex, maps">
         <meta name="description" content="Editor Yandex maps">
         <meta name="robots" content="none" />
@@ -32,8 +32,8 @@
               type="image/x-icon">
         <!-- END VENDORS  FAVICONS -->
         <!-- START VENDORS CSS -->
-        {% djeym_load_vendor_md_icons %}
-        {% djeym_load_vendor_bootstrap_css %}
+        {% djeym_add_vendor_md_icons %}
+        {% djeym_add_vendor_bootstrap_css %}
         <link href="{% static 'djeym/css/helpers.css' %}" rel="stylesheet">
         <!-- END VENDORS CSS -->
       </head>
@@ -48,8 +48,8 @@
         <script src="{% static 'djeym/js/jquery-regex.js' %}"></script>
         <!-- For handling JavaScript localization or API documentation. -->
         <script src="{% url 'djeym:javascript-catalog' %}"></script>
-        {% djeym_load_vendor_bootstrap_js %}
-        {% djeym_load_api_ymaps lang_code %}
+        {% djeym_add_vendor_bootstrap_js %}
+        {% djeym_add_vendor_api_ymaps lang_code %}
         <script src="{% static 'djeym/plugins/util.calculateArea.js' %}"></script>
         {% if is_heatmap %}
           <script src="{% static 'djeym/plugins/heatmap.js' %}"></script>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <meta name="keywords" content="djeym, editor, yandex, maps">
     <meta name="description" content="Editor Yandex maps">
     <title>Yandex Map</title>
@@ -22,34 +22,20 @@
             ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', '@yandex/ymaps3-default-ui-theme@latest');
             const defaultUITheme = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
 
-            const markerElement = document.createElement('div');
-            markerElement.className = 'marker-class';
-            markerElement.innerText = "I'm marker!";
-
             // Creating a map instance.
             const map = new ymaps3.YMap(document.getElementById('map'), {
               location: {
-                center: [0, 0],
-                zoom: 3
-              }
-            });
-            map.addChild(new ymaps3.YMapDefaultSchemeLayer());
-            map.addChild(new ymaps3.YMapDefaultFeaturesLayer({zIndex: 1800}))
-            map.addChild(new defaultUITheme.YMapDefaultMarker({
-                coordinates: [0, 0],
-                title: 'Hello World!',
-                subtitle: 'kind and bright',
-                color: 'blue',
-            }));
-            map.addChild(new defaultUITheme.YMapMarker(
-              {
-                source: 'markerSource',
-                coordinates: [37.588144, 55.733842],
-                draggable: true,
-                mapFollowsOnDrag: true
+                center: [0, 0], // starting position [lng, lat]
+                zoom: 3 // starting zoom
               },
-              markerElement
-            ));
+              showScaleInCopyrights: true,
+              margin: [100, 100, 100, 100]
+            }, [
+                // Add a map scheme layer
+                new ymaps3.YMapDefaultSchemeLayer({}),
+                // Add a layer of geo objects to display the markers
+                new ymaps3.YMapDefaultFeaturesLayer({})
+            ]);
         }
     </script>
     <!-- END VENDORS JS -->

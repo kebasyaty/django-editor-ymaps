@@ -62,3 +62,46 @@ map.addChild(new YMapDefaultSchemeLayer({theme: "dark"}));
 map.addChild(new YMapDefaultSchemeLayer({
     theme: "dark", customization: [{"tags":{"any":["urban_area","locality"]},"elements":"geometry","stylers":{"visibility":"off"}},{"tags":{"any":["terrain","bathymetry","landscape"],"none":"land"},"stylers":{"visibility":"off"}},{"tags":{"any":["park","cemetery"]},"stylers":{"visibility":"off"}},{"tags":{"any":["vegetation"]},"stylers":{"visibility":"off"}},{"tags":{"any":["industrial","construction_site","medical","sports_ground","beach"]},"types":"polygon","stylers":{"visibility":"off"}},{"tags":{"any":"transit","none":["transit_location","transit_line","transit_schema","is_unclassified_transit"]},"stylers":{"visibility":"off"}},{"tags":{"any":"urban_area","none":["residential","industrial","cemetery","park","medical","sports_ground","beach","construction_site"]},"stylers":{"visibility":"off"}},{"tags":{"any":["transit"]},"elements":["label.icon","label.text"],"stylers":{"visibility":"off"}},{"tags":{"any":["outdoor","park","cemetery","medical"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":"poi","none":["outdoor","park","cemetery","medical"]},"stylers":{"visibility":"off"}},{"tags":{"any":"road"},"types":"point","stylers":{"visibility":"off"}},{"tags":{"any":["food_and_drink","shopping","commercial_services"]},"stylers":{"visibility":"off"}},{"tags":{"any":["traffic_light"]},"stylers":{"visibility":"off"}},{"tags":{"any":["entrance"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road"],"none":["road_1","road_2","road_3","road_4","road_5","road_6","road_7"]},"elements":"label.icon","stylers":{"visibility":"off"}},{"tags":{"any":["road"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_3","road_4"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_5","road_6"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_7"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_construction","road_minor","road_unclassified","path","road_limited"]},"stylers":{"visibility":"off"}},{"elements":"label.text","tags":{"none":["poi","transit"]},"stylers":{"visibility":"off"}},{"tags":"locality","elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["region","road_1","road_2","road_3","road_4"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["district"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":"admin","none":["country","region","locality","district","address"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["road_5","road_6"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["address","road_7","road_limited","road_unclassified","road_minor","road_construction","path"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["building","address","fence"]},"stylers":{"visibility":"off"}},{"tags":{"any":["transit"]},"stylers":{"visibility":"off"}}]
 }));
+
+--------------------------------------------------------------------------------
+custom icon for cluster
+
+// A simple renderer for a custom cluster icon
+const clustererRenderer = (coordinates, features) => {
+  const count = features.length;
+
+  // Create a custom HTML element for the cluster icon
+  const element = document.createElement('div');
+  element.className = 'custom-cluster-icon';
+  element.innerHTML = `
+    <div style="
+      background-image: url('your-custom-image.png');
+      background-size: cover;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    ">
+      ${count}
+    </div>
+  `;
+
+  // Return a YMapMarker with your custom element
+  return new ymaps3.YMapMarker({
+    coordinates,
+    element
+  });
+};
+
+// Usage in your map initialization
+const clusterer = new ymaps3.YMapClusterer({
+  method: 'grid', // or 'cluster'
+  gridSize: 64,
+  features: myPoints,
+  marker: clustererRenderer // This is where the custom icon is applied
+});
+
+map.addChild(clusterer);

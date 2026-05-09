@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="keywords" content="djeym, editor, yandex, maps">
+    <meta name="description" content="Editor Yandex maps">
+    <title>Yandex Map</title>
+    <!-- START VENDORS CSS -->
+    <!-- END VENDORS CSS -->
+  </head>
+  <body>
+    <!-- YMap -->
+    <div id="map" style="width: 100%; height: 400px"></div>
+    <!-- START VENDORS JS -->
+    <script src="https://api-maps.yandex.ru/v3/?apikey=aadb75d5-cd13-4d2d-8c0b-79e8d1d0f19a&lang=ru_RU" type="text/javascript"></script>
+    <script>
+        initMap();
+        async function initMap() {
+            await ymaps3.ready;
+            ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', ['@yandex/ymaps3-clusterer@latest']);
+            const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker} = ymaps3;
+            const {YMapClusterer, clusterByGrid} = await ymaps3.import('@yandex/ymaps3-clusterer');
+
+            // Creating a map instance.
+            const map = new YMap(document.getElementById('map'), {
+              location: {
+                center: [0, 0], // starting position [Longitude, Latitude]
+                zoom: 3 // starting zoom
+              },
+              showScaleInCopyrights: true,
+              margin: [100, 100, 100, 100]
+            }, [
+                // Add a map scheme layer
+                new YMapDefaultSchemeLayer({theme: "dark"}),
+                // Add a layer of geo objects to display the markers
+                new YMapDefaultFeaturesLayer({})
+            ]);
+        }
+    </script>
+    <!-- END VENDORS JS -->
+  </body>
+</html>

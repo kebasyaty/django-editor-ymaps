@@ -24,45 +24,84 @@ lang=en_IL
 https://selectel.ru/blog/tutorials/yandex-maps-api/
 https://yandex.com/maps-api/docs
 
-<head>
-    ...
-    <script src="https://api-maps.yandex.ru/v3/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript" defer></script>
-    ...
-</head>
+--------------------------------------------------------------------------------
+// 1. Create a container for the SVG
+const markerElement = document.createElement('div');
+markerElement.className = 'custom-marker';
 
-<body>
-    ...
-    <div id="map" style="width: 600px; height: 400px"></div>
-    ...
-</body>
+// 2. Add your SVG code
+markerElement.innerHTML = `
+  <svg width="30" height="40" viewBox="0 0 30 40" xmlns="http://w3.org">
+    <path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 15 25 15 25s15-14.5 15-25c0-8.3-6.7-15-15-15z" fill="#ff0000"/>
+    <circle cx="15" cy="15" r="5" fill="white"/>
+  </svg>
+`;
 
-Инициализация карты
-Чтобы наконец вывести карту, нужно добавить JavaScript-код для инициализации после загрузки основного скрипта.
-<script>
-        initMap();
+// 3. Create and add the marker to the map
+const marker = new ymaps3.YMapMarker(
+  {
+    coordinates: [37.623, 55.752], // [Longitude, Latitude]
+    draggable: true
+  },
+  markerElement
+);
 
-        // функция асинхронная, так как она может занимать много времени в основном потоке 
-        // *зависит от соединения, стабильности API и другого
-        async function initMap() {
-            // основной объект для загрузки других объектов карты
-            await ymaps3.ready;
-            const {YMap, YMapDefaultSchemeLayer} = ymaps3;
-            // подложка, на которой будут располагаться маркеры
-            const map = new YMap(
-                document.getElementById('map'),
-                {
-                    location: {
-                        // Координаты задаются нестандартно: сначала идет долгота,
-                        // потом широта. Это важно учитывать.
-                        center: [37.588144, 55.733842],
-                        zoom: 10
-                    }
-                }
-            );
-            map.addChild(new YMapDefaultSchemeLayer());
-        }
-</script>
+map.addChild(marker);
 
-// Пример добавления спутникового слоя
-const {YMapDefaultLayer} = ymaps3;
-map.addChild(new YMapDefaultLayer({layer: 'satellite'}));
+--------------------------------------------------------------------------------
+Стилизация карты
+https://yandex.ru/maps-api/map-style-editor
+
+// Универсальная - День
+map.addChild(new YMapDefaultSchemeLayer({}));
+
+// Универсальная - Ночь
+map.addChild(new YMapDefaultSchemeLayer({theme: "dark"}));
+
+// Для check_icon_offset_widget.js
+map.addChild(new YMapDefaultSchemeLayer({
+    theme: "dark", customization: [{"tags":{"any":["urban_area","locality"]},"elements":"geometry","stylers":{"visibility":"off"}},{"tags":{"any":["terrain","bathymetry","landscape"],"none":"land"},"stylers":{"visibility":"off"}},{"tags":{"any":["park","cemetery"]},"stylers":{"visibility":"off"}},{"tags":{"any":["vegetation"]},"stylers":{"visibility":"off"}},{"tags":{"any":["industrial","construction_site","medical","sports_ground","beach"]},"types":"polygon","stylers":{"visibility":"off"}},{"tags":{"any":"transit","none":["transit_location","transit_line","transit_schema","is_unclassified_transit"]},"stylers":{"visibility":"off"}},{"tags":{"any":"urban_area","none":["residential","industrial","cemetery","park","medical","sports_ground","beach","construction_site"]},"stylers":{"visibility":"off"}},{"tags":{"any":["transit"]},"elements":["label.icon","label.text"],"stylers":{"visibility":"off"}},{"tags":{"any":["outdoor","park","cemetery","medical"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":"poi","none":["outdoor","park","cemetery","medical"]},"stylers":{"visibility":"off"}},{"tags":{"any":"road"},"types":"point","stylers":{"visibility":"off"}},{"tags":{"any":["food_and_drink","shopping","commercial_services"]},"stylers":{"visibility":"off"}},{"tags":{"any":["traffic_light"]},"stylers":{"visibility":"off"}},{"tags":{"any":["entrance"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road"],"none":["road_1","road_2","road_3","road_4","road_5","road_6","road_7"]},"elements":"label.icon","stylers":{"visibility":"off"}},{"tags":{"any":["road"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_3","road_4"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_5","road_6"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_7"]},"stylers":{"visibility":"off"}},{"tags":{"any":["road_construction","road_minor","road_unclassified","path","road_limited"]},"stylers":{"visibility":"off"}},{"elements":"label.text","tags":{"none":["poi","transit"]},"stylers":{"visibility":"off"}},{"tags":"locality","elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["region","road_1","road_2","road_3","road_4"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["district"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":"admin","none":["country","region","locality","district","address"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["road_5","road_6"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["address","road_7","road_limited","road_unclassified","road_minor","road_construction","path"]},"elements":"label","stylers":{"visibility":"off"}},{"tags":{"any":["building","address","fence"]},"stylers":{"visibility":"off"}},{"tags":{"any":["transit"]},"stylers":{"visibility":"off"}}]
+}));
+
+--------------------------------------------------------------------------------
+custom icon for cluster
+
+// A simple renderer for a custom cluster icon
+const clustererRenderer = (coordinates, features) => {
+  const count = features.length;
+
+  // Create a custom HTML element for the cluster icon
+  const element = document.createElement('div');
+  element.className = 'custom-cluster-icon';
+  element.innerHTML = `
+    <div style="
+      background-image: url('your-custom-image.png');
+      background-size: cover;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    ">
+      ${count}
+    </div>
+  `;
+
+  // Return a YMapMarker with your custom element
+  return new ymaps3.YMapMarker({
+    coordinates,
+    element
+  });
+};
+
+// Usage in your map initialization
+const clusterer = new ymaps3.YMapClusterer({
+  method: 'grid', // or 'cluster'
+  gridSize: 64,
+  features: myPoints,
+  marker: clustererRenderer // This is where the custom icon is applied
+});
+
+map.addChild(clusterer);

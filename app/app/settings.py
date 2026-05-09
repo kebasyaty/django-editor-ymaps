@@ -175,19 +175,11 @@ CSRF_COOKIE_HTTPONLY = False
 
 
 # Yandex Maps
-# Terms of use for the Yandex.Maps: https://yandex.ru/dev/commercial/doc/en/
-# Get the API key: https://yandex.com/dev/jsapi-v2-1/doc/en/#get-api-key
-
-# The API key is used in the free and paid versions.
-# You can get the key in the developer’s office - https://passport.yandex.com/
-DJEYM_YMAPS_API_KEY = "aadb75d5-cd13-4d2d-8c0b-79e8d1d0f19a"
-
-# True, if you use a paid API
-DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE = False
-
-# Map download mode
-# Default = "release".
-DJEYM_YMAPS_DOWNLOAD_MODE = "debug" if DEBUG else "release"
+# Terms of free use of the Yandex Maps API: https://yandex.ru/dev/commercial/doc/en/
+# Get the API key: https://selectel.ru/blog/tutorials/yandex-maps-api/#registration
+# Plans and Pricing: https://yandex.com/maps-api/tariffs?lang=en
+# Buy a license: https://yandex.com/maps-api/products/js-api?lang=en
+YMAPS_API_KEY = "aadb75d5-cd13-4d2d-8c0b-79e8d1d0f19a"
 
 
 # Version of Material Design Icons

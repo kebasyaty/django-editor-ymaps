@@ -287,7 +287,7 @@ docs = [
     { name = "mkdocs-material", specifier = ">=9.7.1" },
     { name = "mkdocstrings", extras = ["python"], specifier = ">=1.0.2" },
     { name = "pygments", specifier = ">=2.19.2" },
-    { name = "pymdown-extensions", specifier = ">=10.20.1" },
+    { name = "pymdown-extensions", specifier = ">=10.21.3" },
 ]
 lint = [
     { name = "djlint", specifier = ">=1.36.4" },

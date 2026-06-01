@@ -59,7 +59,7 @@ docs = [
   "mkdocs-material>=9.7.1",
   "mkdocstrings[python]>=1.0.2",
   "pygments>=2.19.2",
-  "pymdown-extensions>=10.20.1",
+  "pymdown-extensions>=10.21.3",
 ]
 lint = [
   "djlint>=1.36.4",

@@ -8,15 +8,15 @@
       "problemMatcher": []
     },
     {
-      "label": "UV: Run Deploy",
-      "type": "shell",
-      "command": ["uv build --wheel;", "uv publish"],
-      "problemMatcher": []
-    },
-    {
       "label": "UV: Run Upgrade",
       "type": "shell",
       "command": ["uv sync --upgrade"],
+      "problemMatcher": []
+    },
+    {
+      "label": "PYPI: Run Deploy",
+      "type": "shell",
+      "command": ["uv build --wheel;", "uv publish"],
       "problemMatcher": []
     },
     {
